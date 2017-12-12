@@ -43,11 +43,37 @@
                 </a>
 
               <ul class="nav navbar-nav navbar-right user-nav">
-                <li class="user-name"><span>Nhân viên</span></li>
+                <li class="user-name"><span>Kế Toán</span></li>
                   <li class="dropdown avatar-dropdown">
-                   <img src="asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
+                   <img src="asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/><span id="notification_count_outside">1</span>
                    <ul class="dropdown-menu user-dropdown">
-                     <li><a href="#"><span class="fa fa-user"></span> Trang cá nhân</a></li>
+                     <li><a href="#"><span class="fa fa-user"></span>&nbsp; Trang cá nhân</a></li>
+					 <li id="notification_li">
+		<a href="#" id="notificationLink"><span class="fa fa-calendar"></span> Thông báo</a>
+			<span id="notification_count">1</span>
+
+			<div id="notificationContainer">
+			<div id="notificationTitle">Thông báo</div>
+			<div id="notificationsBody" class="notifications">
+			<table id="notificationTable">
+			<tr class="notification-new">
+				<td><a href="#" onclick="$(this).parent().parent().removeClass('notification-new');
+            return false;"><span class="noti noti-icon"></span><span style="margin-left: 10px; vertical-align: 25%;">Nhân viên vừa lập phiếu với mã đơn O1349 - ngày 15/12/2017</span></a></td>
+			<tr>
+			<tr>
+				<td><a href="#"><span class="noti noti-icon"></span><span style="margin-left: 10px; vertical-align: 25%;">Nhân viên vừa lập phiếu với mã đơn O1348 - ngày 05/12/2017</span></a></td>
+			<tr>
+			<tr>
+				<td><a href="#"><span class="noti noti-icon"></span><span style="margin-left: 10px; vertical-align: 25%;">Nhân viên vừa lập phiếu với mã đơn O1347 - ngày 13/11/2017</span></a></td>
+			<tr>
+			<tr>
+				<td><a href="#"><span class="noti noti-icon"></span><span style="margin-left: 10px; vertical-align: 25%;">Nhân viên vừa lập phiếu với mã đơn O1346 - ngày 01/11/2017</span></a></td>
+			<tr>
+			</table>
+			</div>
+			<div id="notificationFooter"><a href="#">Xem tất cả</a></div>
+			</div>
+		</li>
                      <li role="separator" class="divider"></li>
                      <li class="more">
                       <ul>
