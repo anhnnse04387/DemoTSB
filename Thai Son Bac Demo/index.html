@@ -211,46 +211,6 @@
 
                 // start: Chart =============
 
-                Chart.defaults.global.pointHitDetectionRadius = 1;
-                Chart.defaults.global.customTooltips = function (tooltip) {
-
-                    var tooltipEl = $('#chartjs-tooltip');
-
-                    if (!tooltip) {
-                        tooltipEl.css({
-                            opacity: 0
-                        });
-                        return;
-                    }
-
-                    tooltipEl.removeClass('above below');
-                    tooltipEl.addClass(tooltip.yAlign);
-
-                    var innerHtml = '';
-                    if (undefined !== tooltip.labels && tooltip.labels.length) {
-                        for (var i = tooltip.labels.length - 1; i >= 0; i--) {
-                            innerHtml += [
-                                '<div class="chartjs-tooltip-section">',
-                                '   <span class="chartjs-tooltip-key" style="background-color:' + tooltip.legendColors[i].fill + '"></span>',
-                                '   <span class="chartjs-tooltip-value">' + tooltip.labels[i] + '</span>',
-                                '</div>'
-                            ].join('');
-                        }
-                        tooltipEl.html(innerHtml);
-                    }
-
-                    tooltipEl.css({
-                        opacity: 1,
-                        left: tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
-                        top: tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
-                        fontFamily: tooltip.fontFamily,
-                        fontSize: tooltip.fontSize,
-                        fontStyle: tooltip.fontStyle
-                    });
-                };
-                var randomScalingFactor = function () {
-                    return Math.round(Math.random() * 100);
-                };
                 var lineChartData = {
                     labels: ["January", "February", "March", "April", "May", "June", "July"],
                     datasets: [{
@@ -395,69 +355,6 @@
                 };
 
                 //  end:  Chart =============
-
-                // start: Calendar =========
-                $('.dashboard .calendar').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    defaultDate: '2015-02-12',
-                    businessHours: true, // display business hours
-                    editable: true,
-                    events: [
-                        {
-                            title: 'Business Lunch',
-                            start: '2015-02-03T13:00:00',
-                            constraint: 'businessHours'
-                        },
-                        {
-                            title: 'Meeting',
-                            start: '2015-02-13T11:00:00',
-                            constraint: 'availableForMeeting', // defined below
-                            color: '#20C572'
-                        },
-                        {
-                            title: 'Conference',
-                            start: '2015-02-18',
-                            end: '2015-02-20'
-                        },
-                        {
-                            title: 'Party',
-                            start: '2015-02-29T20:00:00'
-                        },
-                        // areas where "Meeting" must be dropped
-                        {
-                            id: 'availableForMeeting',
-                            start: '2015-02-11T10:00:00',
-                            end: '2015-02-11T16:00:00',
-                            rendering: 'background'
-                        },
-                        {
-                            id: 'availableForMeeting',
-                            start: '2015-02-13T10:00:00',
-                            end: '2015-02-13T16:00:00',
-                            rendering: 'background'
-                        },
-                        // red areas where no events can be dropped
-                        {
-                            start: '2015-02-24',
-                            end: '2015-02-28',
-                            overlap: false,
-                            rendering: 'background',
-                            color: '#FF6656'
-                        },
-                        {
-                            start: '2015-02-06',
-                            end: '2015-02-08',
-                            overlap: true,
-                            rendering: 'background',
-                            color: '#FF6656'
-                        }
-                    ]
-                });
-                // end : Calendar==========
 
                 // start: Maps============
 
