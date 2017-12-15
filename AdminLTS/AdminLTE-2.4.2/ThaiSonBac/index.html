@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Thái Sơn Bắc - TSB</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -29,7 +29,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet"
-        href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -41,7 +41,10 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg">
+	  <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+	  <b>Thái Sơn Bắc</b>
+	  </span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -577,7 +580,6 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">DOANH THU TRONG 2 NĂM</h3>
-
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -585,11 +587,10 @@
                   <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-wrench"></i></button>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Cài Đặt Biểu Đồ</a></li>
+                    <li><a href="#">Cài Đặt Thông Tin</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">Trở Về</a></li>
                   </ul>
                 </div>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -599,13 +600,17 @@
             <div class="box-body">
               <div class="row">
                 <div class="col-md-8">
-                  <p class="text-center">
-                    <strong>Doanh Thu Năm 2016 - 2017</strong>
-                  </p>
-
+                  <div class="col-sm-offset-3">
+					<div style="width: 13px; height: 13px; background-color: rgb(138,184,220); display: inline-block;"></div>
+                    <strong>Doanh Thu Năm 2016</strong>
+					<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgb(161,227,194); display: inline-block;"></div>
+					<strong>Doanh Thu Năm 2017</strong>
+                  </div>
+				  
                   <div class="chart">
                     <!-- Sales Chart Canvas -->
                     <canvas id="salesChart" style="height: 180px;"></canvas>
+					<small>Đơn vị :<em>Tỷ VNĐ</em></small>
                   </div>
                   <!-- /.chart-responsive -->
                 </div>
@@ -617,7 +622,7 @@
 
                   <div class="progress-group">
                     <span class="progress-text">Tổng lượng hàng bán ra</span>
-                    <span class="progress-number"><b>160</b>/200</span>
+                    <span class="progress-number"><b>1600</b>/2000</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
@@ -626,28 +631,28 @@
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">Tổng doanh thu</span>
-                    <span class="progress-number"><b>310</b>/400</span>
+                    <span class="progress-number"><b>10,076,475,213 </b>/11,000,000,000</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-red" style="width: 91.6%"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">Lượng khách mới</span>
-                    <span class="progress-number"><b>480</b>/800</span>
+                    <span class="progress-number"><b>2</b>/5</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-green" style="width: 40%"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">Feedback tốt</span>
-                    <span class="progress-number"><b>250</b>/500</span>
+                    <span class="progress-number"><b>90</b>/100</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-yellow" style="width: 90%"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
@@ -662,7 +667,7 @@
                 <div class="col-sm-4 col-xs-6">
                   <div class="description-block border-right">
                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                    <h5 class="description-header">10,521,482,916</h5>
+                    <h5 class="description-header">10,076,475,213</h5>
                     <span class="description-text">TỔNG DOANH THU</span>
                   </div>
                   <!-- /.description-block -->
@@ -670,8 +675,8 @@
                 <!-- /.col -->
                 <div class="col-sm-4 col-xs-6">
                   <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                    <h5 class="description-header">75,839,561</h5>
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 30%</span>
+                    <h5 class="description-header">1600</h5>
                     <span class="description-text">TỔNG SẢN PHẨM BÁN RA</span>
                   </div>
                   <!-- /.description-block -->
@@ -679,9 +684,9 @@
                 <!-- /.col -->
                 <div class="col-sm-4 col-xs-6">
                   <div class="description-block">
-                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                    <h5 class="description-header">1200</h5>
-                    <span class="description-text">GOAL COMPLETIONS</span>
+                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 20%</span>
+                    <h5 class="description-header">2</h5>
+                    <span class="description-text">Lượng khách mới</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -700,58 +705,39 @@
       <div class="row">
         <!-- Left col -->
         <div class="col-md-8">
-          <!-- MAP & BOX PANE -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">TOP 5 MÃ HÀNG BÁN CHẠY NHẤT (thay bằng bar chart ) </h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="row">
-                <div class="col-md-9 col-sm-8">
-                  <div class="pad">
-                    <!-- Map will be created here -->
-                    <div id="world-map-markers" style="height: 325px;"></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-4">
-                  <div class="pad box-pane-right bg-green" style="min-height: 280px">
-                    <div class="description-block margin-bottom">
-                      <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
-                      <h5 class="description-header">8390</h5>
-                      <span class="description-text">Visits</span>
-                    </div>
-                    <!-- /.description-block -->
-                    <div class="description-block margin-bottom">
-                      <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                      <h5 class="description-header">30%</h5>
-                      <span class="description-text">Referrals</span>
-                    </div>
-                    <!-- /.description-block -->
-                    <div class="description-block">
-                      <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                      <h5 class="description-header">70%</h5>
-                      <span class="description-text">Organic</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
+			<div class="box box-success">
+				<div class="box-header with-border">
+					<h3 class="box-title">TOP 5 SẢN PHẨM BÁN CHẠY NHẤT</h3>
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body">
+				  <div class="chart">
+					<canvas id="barChart" style="height:230px"></canvas>
+				  </div>
+					<div class="col-sm-offset-1">
+						<div style="width: 13px; height: 13px; background-color: rgba(210, 214, 222, 1); display: inline-block;"></div>
+						<strong>EBS 54c	15A - 30mA</strong>
+						<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(0,166,90,0.9); display: inline-block;"></div>
+						<strong>AN-06D3-06H - 630A</strong>
+						<div  class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(60,141,188,0.9); display: inline-block;"></div>
+						<strong>RKN-b 1P+N - 30mA/40A</strong>
+					</div>
+					
+					<div class="col-sm-offset-1">
+						<div style="width: 13px; height: 13px; background-color: rgba(228, 21, 21, 0.9); display: inline-block;"></div>
+						<strong>BKS-A 10kA 4P - 220V</strong>
+						<div class="col-sm-offset-1" style="margin-left: 42px; width: 13px; height: 13px; background-color: rgba(231, 231, 8, 0.84); display: inline-block;"></div>
+						<strong>MC-9a - 380V</strong>
+					</div>
+				</div>
             <!-- /.box-body -->
-          </div>
+			</div>	
           <!-- /.box -->
           <div class="row">
-		              <div class="col-md-12">
+		      <div class="col-md-12">
               <!-- USERS LIST -->
               <div class="box box-danger">
                 <div class="box-header with-border">
@@ -825,168 +811,61 @@
           </div>
           <!-- /.row -->
 
-          <!-- TABLE: LATEST ORDERS -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">ĐƠN HÀNG GẦN ĐÂY ( cho nó to full width luôn</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Lô số</th>
-                    <th>Ảnh đại diện</th>
-                    <th>Khách hàng</th>
-                    <th>Tổng tiền</th>
-					<th> Trạng Thái</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td><a href="../pages/examples/invoice.html">OR9842</a></td>
-					<td>ảnh</td>
-                    <td>Call of Duty IV</td>
-					                <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                    <td><span class="label label-success">Đơn mới</span></td>
-					
-                  </tr>
-                  <tr>
-                    <td><a href="../pages/examples/invoice.html">OR1848</a></td>
-					<td>ảnh</td>
-                    <td>Samsung Smart TV</td>
-					                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                    <td><span class="label label-warning">Đơn mới</span></td>
-
-			
-                  </tr>
-                  <tr>
-                    <td><a href="../pages/examples/invoice.html">OR7429</a></td>
-					<td>ảnh</td>
-                    <td>iPhone 6 Plus</td>
-					                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                    <td><span class="label label-danger"> Đã huỷ</span></td>
-
-                  </tr>
-                  <tr>
-                    <td><a href="../pages/examples/invoice.html">OR7429</a></td>
-					<td>ảnh</td>
-                    <td>Samsung Smart TV</td>
-					                   <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                    <td><span class="label label-info"> In progress</span></td>
- 
-                  </tr>
-                  <tr>
-                    <td><a href="../pages/examples/invoice.html">OR1848</a></td>
-					<td>ảnh</td>
-                    <td>Samsung Smart TV</td>
-					                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                    <td><span class="label label-warning"> In progress</span></td>
-
-                  </tr>
-    
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <a href="../javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
         </div>
         <!-- /.col -->
 
         <div class="col-md-4">
           <!-- Info Boxes Style 2 -->
-          <div class="info-box bg-yellow">
-            <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Categoty 1 ( Để theo category không để tên )</span>
+              <span class="info-box-text">FTU: loại không chỉnh dòng</span>
               <span class="info-box-number">390</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 50%"></div>
               </div>
               <span class="progress-description">
-                    50% Increase in 30 Days
-                  </span>
+                    Tăng 50% Trong 30 Ngày
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
           <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+            <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Categoty 2 </span>
-              <span class="info-box-number">92,050</span>
+              <span class="info-box-text">ATU: loại chỉnh dòng cắt (nhiệt)</span>
+              <span class="info-box-number">1100</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 20%"></div>
               </div>
               <span class="progress-description">
-                    20% Increase in 30 Days
-                  </span>
+                   Tăng 20% Trong 30 Ngày
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
           <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+            <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-down"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Categoty 3 </span>
+              <span class="info-box-text">Chỉnh dòng Metasol + BS </span>
               <span class="info-box-number">114,381</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>
               </div>
               <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
+					Giảm 50% Trong 30 Ngày
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box -->
-          <div class="info-box bg-aqua">
-            <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Categoty 4 </span>
-              <span class="info-box-number">163,921</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 40%"></div>
-              </div>
-              <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
 
           <!-- PRODUCT LIST -->
 
@@ -1197,6 +1076,97 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+		<div class="row">
+			<div class="col-md-12">
+			<!-- TABLE: LATEST ORDERS -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">ĐƠN HÀNG GẦN ĐÂY</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Lô số</th>
+                    <th>Ảnh đại diện</th>
+                    <th>Khách hàng</th>
+                    <th>Tổng tiền</th>
+					<th> Trạng Thái</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><a href="../pages/examples/invoice.html">OR9842</a></td>
+					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/fpt.jpg" alt="Photo"></td>
+                    <td>FPT</td>
+					<td>
+                      3,482,332,556
+                    </td>
+                    <td><span class="label label-success">Đơn mới</span></td>
+					
+                  </tr>
+                  <tr>
+                    <td><a href="../pages/examples/invoice.html">OR1848</a></td>
+					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/fpt.jpg" alt="Photo"></td>
+                    <td>FPT</td>
+					<td>
+                      482,332,556
+                    </td>
+                    <td><span class="label label-success">Đơn mới</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="../pages/examples/invoice.html">OR7429</a></td>
+					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
+                    <td>Viettel</td>
+					<td>
+                      836,364,374
+                    </td>
+                    <td><span class="label label-danger"> Đã huỷ</span></td>
+
+                  </tr>
+                  <tr>
+                    <td><a href="../pages/examples/invoice.html">OR7429</a></td>
+					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
+                    <td>Viettel</td>
+					<td>
+                      2,075,465,154
+                    </td>
+                    <td><span class="label label-warning"> In progress</span></td>
+ 
+                  </tr>
+                  <tr>
+                    <td><a href="../pages/examples/invoice.html">OR1848</a></td>
+					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/amazon.png" alt="Photo"></td>
+                    <td>AMAZON</td>
+					<td>
+                      1,076,475,213
+                    </td>
+                    <td><span class="label label-warning"> In progress</span></td>
+
+                  </tr>
+    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <a href="../javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+			</div>
+		</div>
       </div>
       <!-- /.row -->
     </section>
@@ -1425,7 +1395,7 @@
 <!-- ChartJS -->
 <script src="../bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../dist/js/pages/dashboard2.js"></script>
+<script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 </body>
