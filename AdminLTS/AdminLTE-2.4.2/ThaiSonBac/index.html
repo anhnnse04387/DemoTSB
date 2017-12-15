@@ -331,45 +331,55 @@
 		
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Lập phiếu xuất hàng</span>
-          </a>
-        </li>
-		
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-file-text"></i>
-            <span>Phiếu Đang Xử Lý</span>
+            <i class="fa fa-bar-chart"></i> <span>Phiếu Xuất Hàng</span>
             <span class="pull-right-container">
-              <span class="label label-primary pull-right">2</span>
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="../pages/tables/simple.html"><i class="fa fa-edit"></i> Lập phiếu xuất hàng</a></li>
+            <li>
+				<a href="#">
+					<i class="fa fa-file-text"></i>
+					<span>Phiếu Đang Xử Lý</span>
+					<span class="pull-right-container">
+						<span class="label label-primary pull-right">2</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-list-alt"></i>
+					<span>Phiếu Đã Xuất</span>
+					<span class="pull-right-container">
+						<span class="label label-primary bg-green">1</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Phiếu Đang Chờ</span>
+					<span class="pull-right-container">
+						<span class="label pull-right bg-green">new</span>
+						<span class="label pull-right bg-red">2</span>
+					</span>
+				</a>
+			</li>
+          </ul>
         </li>
 		
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-list-alt"></i>
-            <span>Phiếu Đã Xuất</span>
+            <i class="fa fa-folder"></i> <span>Kho</span>
             <span class="pull-right-container">
-              <span class="label label-primary bg-green">1</span>
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Phiếu Đang Chờ</span>
-            <span class="pull-right-container">
-              <span class="label pull-right bg-green">new</span>
-			  <span class="label pull-right bg-red">2</span>
-            </span>
-          </a>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>Hàng Trong Kho</span>
-          </a>
+          <ul class="treeview-menu">
+            <li><a href="../pages/tables/simple.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
+            <li><a href="../pages/tables/data.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
+          </ul>
         </li>
 		
 		<li class="treeview">
@@ -387,53 +397,95 @@
 		
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-truck"></i> <span>Thông tin xe giao</span>
+            <i class="fa fa-truck"></i> <span>Giao Hàng</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../pages/tables/simple.html"><i class="fa fa-hand-o-right"></i> Lái Xe</a></li>
-            <li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Xe</a></li>
-			<li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Định Vị Xe</a></li>
+            <li><a href="../pages/tables/simple.html"><i class="fa fa-hand-o-right"></i> Thông Tin Lái Xe</a></li>
+            <li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Thông Tin Xe Hàng</a></li>
+			<li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Định Vị Xe Hàng</a></li>
           </ul>
         </li>
-		
+			
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-bar-chart"></i> <span>Báo Cáo Doanh Thu</span>
+            <i class="fa fa-pencil-square"></i> <span>Báo Cáo</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../pages/tables/simple.html"><i class="fa fa-hand-o-right"></i> Doanh Thu Số Ngày</a></li>
-            <li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Doanh Thu Số Tháng</a></li>
-			<li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Doanh Thu Số Năm</a></li>
-			<li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Báo Cáo Công Việc</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-line-chart"></i> Doanh Thu
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Ngày</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
+              </ul>
+            </li>
+			
+			<li class="treeview">
+              <a href="#"><i class="fa fa-line-chart"></i> Công Nợ Khách Hàng
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-hand-o-right"></i> Công Nợ Theo Tuần</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Công Nợ Theo Tháng</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Công Nợ Theo Năm</a></li>
+              </ul>
+            </li>
+			
+			<li class="treeview">
+              <a href="#"><i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-hand-o-right"></i> Công Nợ Theo Tuần</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Công Nợ Theo Tháng</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i> Công Nợ Theo Năm</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
 		
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-users"></i> <span>Danh Sách Nhân Viên</span>
-          </a>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Cài Đặt Tài Khoản</span>
+            <i class="fa fa-database"></i> <span>Quản Trị</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../pages/tables/simple.html"><i class="fa fa-user-plus"></i> Thêm Tài Khoản</a></li>
-            <li><a href="../pages/tables/data.html"><i class="fa fa-edit"></i> Cập Nhập User</a></li>
-			<li><a href="../pages/tables/data.html"><i class="fa fa-child"></i> Phân Quyền Menu</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
+            </li>
+			
+			<li class="treeview">
+              <a href="#"><i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+				<li><a href="../pages/tables/simple.html"><i class="fa fa-user-plus"></i> Thêm Tài Khoản</a></li>
+				<li><a href="../pages/tables/data.html"><i class="fa fa-edit"></i> Cập Nhập User</a></li>
+				<li><a href="../pages/tables/data.html"><i class="fa fa-child"></i> Phân Quyền Menu</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
-      </ul>
+    </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
