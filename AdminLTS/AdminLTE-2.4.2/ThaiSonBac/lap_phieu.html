@@ -25,6 +25,9 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
+            #mainTable {
+                background-color: palegoldenrod;
+            }
             #mainTable thead tr th {
                 vertical-align: middle !important;
                 text-align: center;
@@ -52,7 +55,10 @@
                 width: 200px;
             }
             .customTable .col4{
-                width: 100px;
+                width: 130px;
+            }
+            .noDisplay {
+                display: none !important;
             }
             .noBorder {
                 border: none !important;
@@ -535,18 +541,18 @@
                                 </li>
                             </ul>
                         </li>
-						
-						<li class="treeview">
-							<a href="#">
-								<i class="fa fa-cubes"></i> <span>Tài Nguyên</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="workflow.html"><i class="fa fa-paper-plane"></i> Luồng Xử Lí</a></li>
-							</ul>
-						</li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cubes"></i> <span>Tài Nguyên</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="workflow.html"><i class="fa fa-paper-plane"></i> Luồng Xử Lí</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -593,7 +599,7 @@
                                     <td class="col4"><input type="text" class="form-control noBorder editable" 
                                                             value="O1349" disabled id="billId">
                                     </td>
-                                    <td><a href="#" class="btn btn-primary a-btn-slide-text" style="">
+                                    <td><a href="#" class="btn btn-primary a-btn-slide-text" onclick="editBillId(); return false;" id="editBillId">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong>Edit</strong></span>            
                                         </a>
@@ -608,7 +614,7 @@
                                                value="18/12/2017" disabled id="dayout">
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text">
+                                        <a href="#" class="btn btn-primary a-btn-slide-text" id="editDayout" onclick="editDayout(); return false;">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong>Edit</strong></span>            
                                         </a>
@@ -623,7 +629,7 @@
                                                value="18/11/2017" disabled id="dayfrom">
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text">
+                                        <a href="#" class="btn btn-primary a-btn-slide-text" id="editDayfrom" onclick="editDayfrom(); return false;">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong>Edit</strong></span>            
                                         </a>
@@ -633,11 +639,17 @@
                                     <td><b>Mã số thuế</b></td>
                                     <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
                                     <td><b>Trạng thái</b></td>
-                                    <td><input type="text" class="form-control noBorder editable"
-                                               value="Draft" disabled id="status">
+                                    <td>
+                                        <select class="form-control editable" disabled id="status">
+                                            <option>BẢN NHÁP</option>
+                                            <option>CHỜ XỬ LÝ</option>
+                                            <option>HỦY</option>
+                                            <option>HOÀN THÀNH</option>
+                                            <option>TỪ CHỐI</option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text">
+                                        <a href="#" class="btn btn-primary a-btn-slide-text noDisplay" id="editStatus" onclick="editStatus(); return false;">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             <span><strong>Edit</strong></span>            
                                         </a>
@@ -675,7 +687,8 @@
                                         <td>15A</td>
                                         <td><input type="text" class="form-control" id="cai_1" style="text-align: right;"
                                                    onkeyup="configSp('1'); return false;"/></td>
-                                        <td><input type="text" class="form-control" id="thung_1" title="20 cái/1" style="text-align: right;"></td>
+                                        <td><input type="text" class="form-control" id="thung_1" 
+                                                   title="20 cái/1" style="text-align: right;" onkeyup="configThung('1'); return false;"/></td>
                                         <td><output id="dongia_1">590000</output></td>
                                         <td><output id="tien_chua_ck_1"></output></td>
                                         <td><input type="text" class="form-control" id="ck1" style="text-align: right;"
@@ -688,7 +701,8 @@
                                         <td>1000A</td>
                                         <td><input type="text" class="form-control" id="cai_2" style="text-align: right;"
                                                    onkeyup="configSp('2'); return false;"/></td>
-                                        <td><input type="text" class="form-control" id="thung_2" style="text-align: right;" title="13 cái/1"></td>
+                                        <td><input type="text" class="form-control" id="thung_2" 
+                                                   style="text-align: right;" title="13 cái/1" onkeyup="configThung('2'); return false;"/></td>
                                         <td><output id="dongia_2">45000000</output></td>
                                         <td><output id="tien_chua_ck_2"></output></td>
                                         <td><input type="text" class="form-control" id="ck2" style="text-align: right;"
@@ -709,17 +723,17 @@
                         <!-- /.col -->
                         <div class="col-xs-10">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" style="background-color: palegoldenrod;">
                                     <tr>
                                         <td style="width: 190px;"><b>Cộng:</b></td>
                                         <td style="width: 70px; text-align: right;"><output id="cai"></output></td>
                                         <td style="width: 70px; text-align: right;"><output id="thung"></output></td>
                                         <td style="text-align: right;"><output id="tien_chua_ck"></output></td>
                                     </tr>
-                                    <tr>
-                                        <td><b>Chiết khấu (%)</b></td>
+                                    <tr style="background-color: #f9f9f9;">
+                                        <td style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
                                         <td colspan="2">
-                                            <input type="text" class="form-control" id="ck" style="text-align: right;"
+                                            <input type="text" class="form-control" id="ck" style="text-align: right; float: right; width: 55px;"
                                                    onkeyup="configCkAll(); return false;"/>
                                         </td>
                                         <td style="text-align: right;"><output id="tien_ck"></output></td>
@@ -730,7 +744,7 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background-color: #f9f9f9;">
                                         <td><b>Tổng cộng:</b></td>
                                         <td></td>
                                         <td></td>
@@ -746,14 +760,14 @@
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-xs-12">
-                            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> In</a>
-                            <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Lập phiếu
+                            <a href="invoice-print.html" target="_blank" class="btn btn-default noDisplay" id="print" onclick="openNewTab(); return false;"><i class="fa fa-print"></i> In</a>
+                            <button type="button" class="btn btn-success pull-right" onclick="create(); return false;" id="btnCreate"><i class="fa fa-credit-card"></i> Lập phiếu
                             </button>
                             <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
                                 <i class="fa fa-download"></i> Lưu bản nháp
                             </button>
-                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-                                <i class="fa fa-download"></i> Xem trước
+                            <button type="button" class="btn btn-info pull-right" style="margin-right: 5px;" onclick="openNewTab(); return false;">
+                                <i class="fa fa-file-pdf-o"></i> Xem trước
                             </button>
                         </div>
                     </div>

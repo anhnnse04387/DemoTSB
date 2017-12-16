@@ -4,6 +4,46 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+function openNewTab() {
+    var win = window.open('dist/Preview.pdf', '_blank');
+    win.focus();
+}
+
+function create() {
+    $('#print').removeClass('noDisplay');
+    $('#editStatus').removeClass('noDisplay');
+}
+
+function editStatus() {
+    $('#status').removeClass('editable');
+    $('#editStatus').addClass('noDisplay');
+    $('#status').prop('disabled', false);
+}
+
+function editBillId() {
+    $('#billId').removeClass('noBorder');
+    $('#billId').removeClass('editable');
+    $('#editBillId').addClass('noDisplay');
+    $('#billId').prop('disabled', false);
+
+}
+
+function editDayout() {
+    $('#dayout').removeClass('noBorder');
+    $('#dayout').removeClass('editable');
+    $('#editDayout').addClass('noDisplay');
+    $('#dayout').prop('disabled', false);
+
+}
+
+function editDayfrom() {
+    $('#dayfrom').removeClass('noBorder');
+    $('#dayfrom').removeClass('editable');
+    $('#editDayfrom').addClass('noDisplay');
+    $('#dayfrom').prop('disabled', false);
+
+}
+
 function configCkAll() {
     var ckTong = 0;
     var tien_ck = 0;
@@ -42,7 +82,18 @@ function configCk(stt) {
 }
 
 function configThung(stt) {
-
+    var thung = 0;
+    if (parseInt(document.getElementById("thung_" + stt).value) > 0) {
+        thung = parseInt(document.getElementById("thung_" + stt).value);
+    }
+    if (thung > 0) {
+        if (stt === '1') {
+            document.getElementById("cai_" + stt).value = thung * 20;
+        } else {
+            document.getElementById("cai_" + stt).value = thung * 13;
+        }
+        configSp(stt);
+    }
 }
 
 function configSp(stt) {
@@ -77,12 +128,12 @@ function configSp(stt) {
 
 function lookup() {
     if ($("#donVi").val() === '1') {
-        document.getElementById("AddressDeliver").value = "P9 H5 TT Nguyen Cong Tru, Ha Noi";
-        document.getElementById("AddressContact").value = "9781284/ 9762331/ 097";
+        document.getElementById("AddressDeliver").value = "Chu Sang - Nguyen Cong Tru, HN";
+        document.getElementById("AddressContact").value = "P9 H5 TT Nguyen Cong Tru, Ha Noi";
         document.getElementById("TaxCode").value = "0101788080";
     } else if ($("#donVi").val() === '2') {
         document.getElementById("AddressDeliver").value = "368, Tran Khat Chan, Ha Noi";
-        document.getElementById("AddressContact").value = "462780702";
+        document.getElementById("AddressContact").value = "9, 3.5 Gamuda Gardens, Ha Noi";
         document.getElementById("TaxCode").value = "0104879265";
     }
 }
