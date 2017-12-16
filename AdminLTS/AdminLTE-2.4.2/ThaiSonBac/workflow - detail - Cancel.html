@@ -506,6 +506,18 @@
             </li>
           </ul>
         </li>
+		
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-cubes"></i> <span>Tài Nguyên</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="workflow.html"><i class="fa fa-paper-plane"></i> Luồng Xử Lí</a></li>
+          </ul>
+        </li>
     </ul>
     </section>
     <!-- /.sidebar -->
@@ -515,9 +527,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>THÁNG NÀY </h1>
+      <h1>OR7429 </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Chi Tiết Đơn Hàng</a></li>
       </ol>
     </section>
 
@@ -554,8 +566,8 @@
 		
 		<!-- Báo Lại số lượng thực tế -->
 		<linearGradient x1="0%" xmlns:xlink="http://www.w3.org/1999/xlink" y1="0%" x2="0%" y2="100%" xlink:type="simple" xlink:actuate="onLoad" id="id:E7FC3:4" xlink:show="other">
-			<stop stop-opacity="0.3" stop-color="#b6d991" offset="0%"/>
-			<stop stop-opacity="0.3" stop-color="#82b749" offset="100%"/>
+			<stop stop-opacity="1.0" stop-color="#b6d991" offset="0%"/>
+			<stop stop-opacity="1.0" stop-color="#82b749" offset="100%"/>
 		</linearGradient>
 
 		<!-- Lưu thông tin cho đơn hàng,thời gian chờ, trừ số lượng hàng trong kho -->
@@ -596,8 +608,8 @@
 
 		<!-- Hủy/ Từ chối phiếu -->
 		<linearGradient x1="0%" xmlns:xlink="http://www.w3.org/1999/xlink" y1="0%" x2="0%" y2="100%" xlink:type="simple" xlink:actuate="onLoad" id="id:E7FC3:11" xlink:show="other">
-			<stop stop-opacity="0.3" stop-color="#fadcec" offset="0%"/>
-			<stop stop-opacity="0.3" stop-color="#d57ba8" offset="100%"/>
+			<stop stop-opacity="1.0" stop-color="#fadcec" offset="0%"/>
+			<stop stop-opacity="1.0" stop-color="#d57ba8" offset="100%"/>
 		</linearGradient>
 
 		<!-- Giao hàng -->
@@ -639,25 +651,30 @@
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:14" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
 			<path fill="#000000" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#000000"/>
 		</marker>
-
+		
+		<!-- Kiểm hàng trong kho -> Kiểm tra hàng xuất ngay hay hàng đặt chờ xuất -->
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:15" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
 			<path fill="#e8e9ea" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#e8e9ea"/>
 		</marker>
-
+		
+		<!-- Kiểm hàng trong kho -> Báo Lại Số Lượng Thực Tế -->
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:16" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
-			<path fill="#e8e9ea" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#e8e9ea"/>
+			<path fill="#000000" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#000000"/>
 		</marker>
 
+		<!-- Kiểm tra hàng xuất ngay hay hàng đặt chờ xuất -> Lưu thông tin cho đơn hàng,thời gian chờ, trừ số lượng hàng trong kho -->
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:17" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
 		<path fill="#e8e9ea" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#e8e9ea"/>
 		</marker>
 
+		<!-- Báo lại số lượng thực tế -> Lập phiếu xuất hàng -->
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:18" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
-			<path fill="#e8e9ea" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#e8e9ea"/>
+			<path fill="#000000" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#000000"/>
 		</marker>
 
+		<!-- Lập phiếu xuất hàng -> Hủy/ Từ chối phiếu -->
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:19" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
-			<path fill="#e8e9ea" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#e8e9ea"/>
+			<path fill="#000000" d="M7.0 3.5 L14.0 7.0 L7.0 10.5z" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round" stroke="#000000"/>
 		</marker>
 
 		<marker refX="14.0" refY="7.0" markerUnits="userSpaceOnUse" orient="auto" id="id:E7FC3:20" markerHeight="14.0" viewBox="0 0 14.0 14.0" preserveAspectRatio="xMidYMid meet" markerWidth="14.0" overflow="visible">
@@ -771,11 +788,12 @@
 		</g>
 
 		<g transform="translate(810.0 259.0)">
-			<path fill="url(#id:E7FC3:4)" d="M162.00000286102295 66.00000262260437 L0.0 66.00000262260437 L0.0 0.0 L162.00000286102295 0.0 L162.00000286102295 66.00000262260437 L162.00000286102295 66.00000262260437z" stroke-width="0.3" style="fill-rule: evenodd;" stroke-linejoin="round" stroke="#638933"/>
+			<path fill="url(#id:E7FC3:4)" d="M162.00000286102295 66.00000262260437 L0.0 66.00000262260437 L0.0 0.0 L162.00000286102295 0.0 L162.00000286102295 66.00000262260437 L162.00000286102295 66.00000262260437z" stroke-width="1.0" style="fill-rule: evenodd;" stroke-linejoin="round" stroke="#638933"/>
 			<foreignObject height="56px" width="152px" transform="translate(5.0 5.0)">
-				<div style="width:100%;height:100%;text-align:center;box-sizing:border-box;padding:2px;line-height:1px;" xmlns="http://www.w3.org/1999/xhtml">
+				<div style="width:100%;height:100%;text-align:center;box-sizing:border-box;padding:2px;line-height:1px;" xmlns="http://www.w3.org/1999/xhtml"
+				id="example3" style="max-width:100%;" title="Người Phụ Trách" data-container="body" data-toggle="popover" data-content="Nguyễn Mạnh Cường" data-placement="bottom" data-trigger="hover">
 						<div style="width:148px;height:52px;display:table-cell;vertical-align:middle;display:flex;word-wrap:break-word;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;"><div style="max-width:100%;">
-							<span class="notDoneProgress" style="font-family:Arial;white-space:pre-wrap;font-size:14px;font-weight:normal;line-height:14px;">Báo lại số lượng thực tế</span>
+							<span class="passProgress" style="font-family:Arial;white-space:pre-wrap;font-size:14px;font-weight:normal;line-height:14px;">Báo lại số lượng thực tế</span>
 						</div>
 					</div>
 				</div>
@@ -858,12 +876,12 @@
 		</g>
 
 		<g transform="translate(224.0 138.0)">
-		<path fill="url(#id:E7FC3:11)" d="M162.00000286102295 59.00000262260437 Q162.00000286102295 66.00000262260437 155.00000286102295 66.00000262260437 L7.0 66.00000262260437 Q0.0 66.00000262260437 0.0 59.00000262260437 L0.0 7.0 Q0.0 0.0 7.0 0.0 L155.00000286102295 0.0 Q162.00000286102295 0.0 162.00000286102295 7.0 L162.00000286102295 59.00000262260437 L162.00000286102295 59.00000262260437z" stroke-width="0.3" style="fill-rule: evenodd;" stroke-linejoin="round" stroke="#cc6699"/>
+		<path fill="url(#id:E7FC3:11)" d="M162.00000286102295 59.00000262260437 Q162.00000286102295 66.00000262260437 155.00000286102295 66.00000262260437 L7.0 66.00000262260437 Q0.0 66.00000262260437 0.0 59.00000262260437 L0.0 7.0 Q0.0 0.0 7.0 0.0 L155.00000286102295 0.0 Q162.00000286102295 0.0 162.00000286102295 7.0 L162.00000286102295 59.00000262260437 L162.00000286102295 59.00000262260437z" stroke-width="1.0" style="fill-rule: evenodd;" stroke-linejoin="round" stroke="#cc6699"/>
 		<foreignObject height="56px" width="152px" transform="translate(5.0 5.0)">
 			<div style="width:100%;height:100%;text-align:center;box-sizing:border-box;padding:2px;line-height:1px;" xmlns="http://www.w3.org/1999/xhtml">
 				<div style="width:148px;height:52px;display:table-cell;vertical-align:middle;display:flex;word-wrap:break-word;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;">
 					<div style="max-width:100%;">
-						<span class="notDoneProgress" style="font-family:Arial;white-space:pre-wrap;font-size:14px;font-weight:normal;line-height:14px;">Hủy/ Từ chối phiếu</span>
+						<span class="passProgress" style="font-family:Arial;white-space:pre-wrap;font-size:14px;font-weight:normal;line-height:14px;">Hủy/ Từ chối phiếu</span>
 					</div>
 				</div>
 			</div>
@@ -972,12 +990,12 @@
 				<div style="width:100%;height:100%;text-align:center;box-sizing:border-box;padding:2px;line-height:1px;" xmlns="http://www.w3.org/1999/xhtml">
 					<div style="width:146px;height:36px;display:table-cell;vertical-align:top;display:flex;word-wrap:break-word;-webkit-align-items:flex-begin;align-items:flex-begin;-webkit-justify-content:center;justify-content:center;">
 						<div style="max-width:100%;">
-							<span class="notDoneProgress" style="font-family:Arial;white-space:pre-wrap;font-size:12px;font-weight:normal;line-height:12px;">Không đủ hàng</span>
+							<span class="passProgress" style="font-family:Arial;white-space:pre-wrap;font-size:12px;font-weight:normal;line-height:12px;">Không đủ hàng</span>
 						</div>
 					</div>
 				</div>
 			</foreignObject>
-			<path fill="none" marker-end="url(#id:E7FC3:16)" d="M687.9999977021382 292.0 L810.0 292.0000013113022" stroke-width="1.0" stroke-linejoin="round" stroke="#e8e9ea"/>
+			<path fill="none" marker-end="url(#id:E7FC3:16)" d="M687.9999977021382 292.0 L810.0 292.0000013113022" stroke-width="1.0" stroke-linejoin="round" stroke="#000000"/>
 		</g>
 
 		<!--// Kiểm tra hàng xuất ngay hay hàng đặt chờ xuất -> Lưu thông tin cho đơn hàng,thời gian chờ, trừ số lượng hàng trong kho -->
@@ -996,12 +1014,12 @@
 
 		<!--// Báo lại số lượng thực tế -> Lập phiếu xuất hàng -->
 		<g>
-			<path fill="none" marker-end="url(#id:E7FC3:18)" d="M891.0000014305115 259.0 L891.0000014305115 181.00000131130219 Q891.0000014305115 171.00000131130219 881.0000014305115 171.00000131130219 L685.000002861023 171.00000131130219" stroke-width="1.0" stroke-linejoin="round" stroke="#e8e9ea"/>
+			<path fill="none" marker-end="url(#id:E7FC3:18)" d="M891.0000014305115 259.0 L891.0000014305115 181.00000131130219 Q891.0000014305115 171.00000131130219 881.0000014305115 171.00000131130219 L685.000002861023 171.00000131130219" stroke-width="1.0" stroke-linejoin="round" stroke="#000000"/>
 		</g>
 		
 		<!--// Lập phiếu xuất hàng -> Hủy/ Từ Chối Phiếu -->
 		<g>
-			<path fill="none" marker-end="url(#id:E7FC3:19)" d="M523.0 171.00000131130219 L386.00000286102295 171.00000131130219" stroke-width="1.0" stroke-linejoin="round" stroke="#e8e9ea"/>
+			<path fill="none" marker-end="url(#id:E7FC3:19)" d="M523.0 171.00000131130219 L386.00000286102295 171.00000131130219" stroke-width="1.0" stroke-linejoin="round" stroke="#000000"/>
 		</g>
 		
 		<!--Kiểm tra hàng xuất ngay hay hàng đặt chờ xuất -> Lập phiếu xuất kho -->
@@ -1342,6 +1360,9 @@ $(function(){
 
 $(function(){
     $('#example2').popover(ops)
+});
+$(function(){
+    $('#example3').popover(ops)
 });
 </script>
 </body>
