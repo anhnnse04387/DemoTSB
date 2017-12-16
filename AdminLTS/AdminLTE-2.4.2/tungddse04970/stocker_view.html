@@ -146,7 +146,7 @@
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
-              
+
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
@@ -473,18 +473,22 @@
 
                             <div class="container-fluid">
                                 <div class="box-body">
-								<div class="row">
-<div class="form-group col-lg-12"> <center><h2>Đơn hàng lô số: 80326</h2> </center></div>
-								</div>
                                     <div class="row">
-										<div class="form-group col-lg-2">
+                                        <div class="form-group col-lg-12">
+                                            <center>
+                                                <h2>Đơn hàng lô số: 80326</h2>
+                                            </center>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-2">
 
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="inputdefault">Đơn vị</label>
                                             <p>CÔNG TY THHH THÁI SƠN BẮC</p>
                                         </div>
-										 <div class="form-group col-lg-1">
+                                        <div class="form-group col-lg-1">
 
                                         </div>
                                         <div class="form-group col-lg-5">
@@ -493,14 +497,14 @@
                                         </div>
                                     </div>
                                     <div class="row">
-									<div class="form-group col-lg-2">
+                                        <div class="form-group col-lg-2">
 
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="inputdefault">Địa chỉ xuất HD</label>
                                             <p>CÔNG TY THHH THÁI SƠN BẮC</p>
                                         </div>
-										 <div class="form-group col-lg-1">
+                                        <div class="form-group col-lg-1">
 
                                         </div>
                                         <div class="form-group col-lg-3">
@@ -515,7 +519,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-									<div class="form-group col-lg-2">
+                                        <div class="form-group col-lg-2">
 
                                         </div>
                                         <div class="form-group col-lg-10">
@@ -540,7 +544,7 @@
                                                 <td>ABN 53c</td>
                                                 <td>10</td>
                                                 <td>
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" class="checky">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -548,7 +552,7 @@
                                                 <td>ABN 203c</td>
                                                 <td>20</td>
                                                 <td>
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" class="checky">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -556,7 +560,7 @@
                                                 <td>BAB 193a</td>
                                                 <td>23</td>
                                                 <td>
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" class="checky">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -564,7 +568,7 @@
                                                 <td>FAT 501g</td>
                                                 <td>7</td>
                                                 <td>
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" class="checky">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -572,7 +576,7 @@
                                                 <td>NOT 131l</td>
                                                 <td>15</td>
                                                 <td>
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" class="checky">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -580,7 +584,7 @@
                                                 <td>SDO 123d</td>
                                                 <td>9</td>
                                                 <td>
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" class="checky">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -602,7 +606,7 @@
                                         <button class="btn btn-danger btn-block" data-record-id="54" data-record-title="Something cool" data-toggle="modal" data-target="#confirm-delete">Hủy</button>
                                     </div>
                                     <div class="col-lg-2 pull-right">
-                                        <a href="deliver_view.html" class="btn btn-facebook btn-block">Tiếp tục</a>
+                                        <a href="deliver_view.html"class="btn btn-facebook btn-block disabled" id="btn_continue">Tiếp tục</a>
                                     </div>
                                     <div class="col-lg-2 pull-right">
                                         <a href="stocker_notification.html" class="btn btn-warning btn-block">Quay trở lại</a>
@@ -863,6 +867,16 @@
                 var data = $(e.relatedTarget).data();
                 $('.title', this).text(data.recordTitle);
                 $('.btn-ok', this).data('recordId', data.recordId);
+            });
+        </script>
+        <script>
+            var isAllChecked = false;
+            $('.checky').on('click',function(){
+                if($('.checky:checked').length!=6){
+                    $('#btn_continue').addClass('disabled');
+                }else{
+                    $('#btn_continue').removeClass('disabled');
+                }
             });
         </script>
 </body>
