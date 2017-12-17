@@ -4,6 +4,38 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+function autoFillCustomer() {
+    if ($("#donVi").val() === '1') {
+        document.getElementById("debt").value = "10298157979";
+        document.getElementById("TaxCode").value = "0101788080";
+    } else if ($("#donVi").val() === '2') {
+        document.getElementById("debt").value = "11011055360";
+        document.getElementById("TaxCode").value = "0104879265";
+    }
+}
+
+function autoFillProvider() {
+    if ($("#donVi").val() === '1') {
+        document.getElementById("debt").value = "26262716484";
+        document.getElementById("TaxCode").value = "";
+    } else if ($("#donVi").val() === '2') {
+        document.getElementById("debt").value = "24305440452";
+        document.getElementById("TaxCode").value = "";
+    }
+}
+
+function debt() {
+    var addDebt = 0;
+    var pay = 0;
+    if (parseInt(document.getElementById("addDebt").value) > 0) {
+        addDebt = parseFloat(document.getElementById("addDebt").value);
+    }
+    if (parseInt(document.getElementById("pay").value) > 0) {
+        pay = parseFloat(document.getElementById("pay").value);
+    }
+    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value.replace(',', '')) + addDebt - pay;
+}
+
 function openNewTab() {
     var win = window.open('dist/Preview.pdf', '_blank');
     win.focus();
@@ -12,6 +44,9 @@ function openNewTab() {
 function create() {
     $('#print').removeClass('noDisplay');
     $('#editStatus').removeClass('noDisplay');
+    $('#saveDraft').addClass('noDisplay');
+    $('#preview').addClass('noDisplay');
+    swal("Successfully", "You created an order with id - O1349", "success");
 }
 
 function editStatus() {
@@ -47,8 +82,13 @@ function editDayfrom() {
 function configCkAll() {
     var ckTong = 0;
     var tien_ck = 0;
+    var vat = 0;
+    var tien_vat = 0;
     if (parseFloat(document.getElementById("ck").value) > 1) {
         ckTong = parseFloat(document.getElementById("ck").value);
+    }
+    if (parseFloat(document.getElementById("vat").value) > 1) {
+        vat = parseFloat(document.getElementById("vat").value);
     }
     var tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val())) +
             ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val()));
@@ -57,7 +97,12 @@ function configCkAll() {
         tien_ck = tien_chua_ck * ckTong / 100;
     }
     document.getElementById("tien_ck").value = tien_ck;
-    document.getElementById("tien_da_ck").value = tien_chua_ck - tien_ck;
+    document.getElementById("con_lai").value = tien_chua_ck - tien_ck;
+    if (vat > 0) {
+        tien_vat = (tien_chua_ck - tien_ck) * vat / 100;
+    }
+    document.getElementById("tien_vat").value = tien_vat;
+    document.getElementById("tien_da_ck").value = tien_chua_ck - tien_ck + tien_vat;
 }
 
 function configCk(stt) {

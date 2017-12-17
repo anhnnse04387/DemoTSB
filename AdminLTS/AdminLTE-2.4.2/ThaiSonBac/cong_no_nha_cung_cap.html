@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TSB | Lập phiếu</title>
+        <title>TSB | Công nợ nhà cung cấp</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -25,17 +25,6 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
-            #mainTable {
-                background-color: palegoldenrod;
-            }
-            #mainTable thead tr th {
-                vertical-align: middle !important;
-                text-align: center;
-            }
-            #mainTable tbody td:nth-child(6),#mainTable tbody td:nth-child(7),
-            #mainTable tbody td:nth-child(9) {
-                text-align: right;
-            }
             .customTable tr{
                 height: 60px;
             }
@@ -50,34 +39,6 @@
             }
             .customTable .col2{
                 width: 450px;
-            }
-            .customTable .col3{
-                width: 200px;
-            }
-            .customTable .col4{
-                width: 130px;
-            }
-            .noDisplay {
-                display: none !important;
-            }
-            .noBorder {
-                border: none !important;
-            }
-            .editable {
-                background-color: white !important;
-            }
-            .btn:hover {
-                -webkit-transform: scale(1.1);
-                -moz-transform: scale(1.1);
-                -o-transform: scale(1.1);
-            }
-            .btn {
-                -webkit-transform: scale(0.8);
-                -moz-transform: scale(0.8);
-                -o-transform: scale(0.8);
-                -webkit-transition-duration: 0.5s;
-                -moz-transition-duration: 0.5s;
-                -o-transition-duration: 0.5s;
             }
         </style>
         <!-- Google Font -->
@@ -563,12 +524,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        <p style="margin-left: 9px;">Phiếu xuất hàng</p>
+                        <p style="margin-left: 9px;">Công Nợ Nhà Cung Cấp</p>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-                        <li><a href="#">Phiếu Xuất Hàng</a></li>
-                        <li class="active">Lập phiếu</li>
+                        <li><a href="#">Công nợ</a></li>
+                        <li class="active">Công nợ nhà cung cấp</li>
                     </ol>
                 </section>
 
@@ -588,72 +549,20 @@
                         <div class="col-sm-12 invoice-col">
                             <table style="border: none;" class="customTable">
                                 <tr>
-                                    <td class="col1"><b>Đơn vị</b></td>
-                                    <td class="col2"><select class="form-control" onchange="lookup(); return false;" id="donVi">
+                                    <td class="col1"><b>Tên:</b></td>
+                                    <td class="col2"><select class="form-control" onchange="autoFillProvider(); return false;" id="donVi">
                                             <option></option>
-                                            <option value="1">Công ty Sáng Hà</option>
-                                            <option value="2">Công ty Invico - Sắn</option>
+                                            <option value="1">HĐ T08-3</option>
+                                            <option value="2">HĐ T09-1</option>
                                         </select></td>
-                                    <td class="col3"><b>Lô số</b>
-                                    </td>
-                                    <td class="col4"><input type="text" class="form-control noBorder editable" 
-                                                            value="O1349" disabled id="billId">
-                                    </td>
-                                    <td><a href="#" class="btn btn-primary a-btn-slide-text" onclick="editBillId(); return false;" id="editBillId">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
-                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><b>Địa chỉ giao hàng</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="AddressDeliver"></td>
-                                    <td><b>Xuất ngày</b></td>
-                                    <td>
-                                        <input type="text" class="form-control noBorder editable" 
-                                               value="18/12/2017" disabled id="dayout">
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text" id="editDayout" onclick="editDayout(); return false;">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b>Địa chỉ xuất HĐ</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="AddressContact"></td>
-                                    <td><b>Mức giá áp dụng từ ngày</b></td>
-                                    <td>
-                                        <input type="text" class="form-control noBorder editable"
-                                               value="18/11/2017" disabled id="dayfrom">
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text" id="editDayfrom" onclick="editDayfrom(); return false;">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b>Mã số thuế</b></td>
+                                    <td><b>MST:</b></td>
                                     <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
-                                    <td><b>Trạng thái</b></td>
-                                    <td>
-                                        <select class="form-control editable" disabled id="status">
-                                            <option>BẢN NHÁP</option>
-                                            <option>CHỜ XỬ LÝ</option>
-                                            <option>HỦY</option>
-                                            <option>HOÀN THÀNH</option>
-                                            <option>TỪ CHỐI</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text noDisplay" id="editStatus" onclick="editStatus(); return false;">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
-                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Công nợ hiện tại:</b></td>
+                                    <td class="col2"><input type="text" class="form-control" id="debt"></td>
                                 </tr>
                             </table>
 
@@ -663,100 +572,20 @@
 
                     <!-- Table row -->
                     <div class="row" style="margin-top: 30px;">
-                        <div class="col-xs-12 table-responsive">
-                            <table class="table table-striped" id="mainTable">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2" style="width: 30px;">STT</th>
-                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
-                                        <th colspan="2">Số lượng</th>
-                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
-                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
-                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
-                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
-                                    </tr>
-                                    <tr>
-                                        <th style="width: 70px;">Cái</th>
-                                        <th style="width: 70px;">Thùng</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>ABN 52c</td>
-                                        <td>15A</td>
-                                        <td><input type="text" class="form-control" id="cai_1" style="text-align: right;"
-                                                   onkeyup="configSp('1'); return false;"/></td>
-                                        <td><input type="text" class="form-control" id="thung_1" 
-                                                   title="20 cái/1" style="text-align: right;" onkeyup="configThung('1'); return false;"/></td>
-                                        <td><output id="dongia_1">590000</output></td>
-                                        <td><output id="tien_chua_ck_1"></output></td>
-                                        <td><input type="text" class="form-control" id="ck1" style="text-align: right;"
-                                                   onkeyup="configCk('1'); return false;"/></td>
-                                        <td><output id="tien_da_ck_1"></output></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>TS1000N AG6 3P</td>
-                                        <td>1000A</td>
-                                        <td><input type="text" class="form-control" id="cai_2" style="text-align: right;"
-                                                   onkeyup="configSp('2'); return false;"/></td>
-                                        <td><input type="text" class="form-control" id="thung_2" 
-                                                   style="text-align: right;" title="13 cái/1" onkeyup="configThung('2'); return false;"/></td>
-                                        <td><output id="dongia_2">45000000</output></td>
-                                        <td><output id="tien_chua_ck_2"></output></td>
-                                        <td><input type="text" class="form-control" id="ck2" style="text-align: right;"
-                                                   onkeyup="configCk('2'); return false;"/></td>
-                                        <td><output id="tien_da_ck_2"></output></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><b>Cộng</b></td>
-                                        <td style="text-align: right;"><output id="cai"></output></td>
-                                        <td style="text-align: right;"><output id="thung"></output></td>
-                                        <td></td><td></td><td></td>
-                                        <td style="text-align: right;"><output id="tien_chua_ck"></output></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
-                                        <td></td>
-                                        <td><input type="text" class="form-control" id="ck" style="text-align: right; float: right;"
-                                                   onkeyup="configCkAll(); return false;"/></td>
-                                        <td></td><td></td><td></td>
-                                        <td style="text-align: right;"><output id="tien_ck"></output></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><b>Còn lại</b></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td><td></td><td></td>
-                                        <td style="text-align: right;"><output id="con_lai"></output></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td style="vertical-align: middle;"><b>VAT (%)</b></td>
-                                        <td></td>
-                                        <td><input type="text" class="form-control" id="vat" style="text-align: right; float: right;"
-                                                   onkeyup="configCkAll(); return false;"/></td>
-                                        <td></td><td></td><td></td>
-                                        <td style="text-align: right;"><output id="tien_vat"></output></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><b>Cộng:</b></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td><td></td><td></td>
-                                        <td style="text-align: right;"><output id="tien_da_ck"></output></td>
-                                    </tr>
-                                </tbody>
+                        <div class="col-sm-12 table-responsive">
+                            <table class="customTable">
+                                <tr>
+                                    <td class="col1"><b>Thêm công nợ:</b></td>
+                                    <td class="col2"><input type="text" class="form-control" id="addDebt" onkeyup="debt(); return false;"></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Thanh toán:</b></td>
+                                    <td class="col2"><input type="text" class="form-control" id="pay" onkeyup="debt(); return false;"></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Tổng công nợ:</b></td>
+                                    <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                </tr>
                             </table>
                         </div>
                         <!-- /.col -->
@@ -764,16 +593,13 @@
                     <!-- /.row -->
 
                     <!-- this row will not appear when printing -->
-                    <div class="row no-print">
+                    <div class="row no-print" style="margin-top: 40px;">
                         <div class="col-xs-12">
-                            <a href="invoice-print.html" target="_blank" class="btn btn-default noDisplay" id="print" onclick="openNewTab(); return false;"><i class="fa fa-print"></i> In</a>
-                            <button type="button" class="btn btn-success pull-right" onclick="create(); return false;" id="btnCreate"><i class="fa fa-credit-card"></i> Lập phiếu
+                            <button type="button" class="btn btn-warning" style="margin-left: 400px;">
+                                <i class="fa fa-sign-out"></i> Huỷ
                             </button>
-                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;" id="saveDraft">
-                                <i class="fa fa-download"></i> Lưu bản nháp
-                            </button>
-                            <button type="button" class="btn btn-info pull-right" style="margin-right: 5px;" id="preview" onclick="openNewTab(); return false;">
-                                <i class="fa fa-file-pdf-o"></i> Xem trước
+                            <button type="button" class="btn btn-success" style="margin-left: 50px;">
+                                <i class="fa fa-plus"></i> Thêm
                             </button>
                         </div>
                     </div>
@@ -996,6 +822,5 @@
         <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
-        <script src="dist/js/sweetalert2.all.js"></script>
     </body>
 </html>
