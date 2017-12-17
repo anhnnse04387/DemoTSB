@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -541,8 +543,8 @@
               <div class="row">
                 <div class="col-md-12">
 				
-				  <div class="col-md-offset-3" style="display: inline-flex;">
-					<label style="padding-right: 10px; padding-top: 7px;">Từ Tháng: </label>
+				  <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
+					<label style="padding-right: 10px; padding-top: 7px;">Từ Năm: </label>
 					<div class="input-group date col-md-4">
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
@@ -554,7 +556,7 @@
 				  
                   <div class="chart">
                     <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px;"></canvas>
+                    <canvas id="salesChart" style="height: 400px;"></canvas>
 					<small>Đơn vị :<em>Tỷ VNĐ</em></small>
                   </div>
                   <!-- /.chart-responsive -->
@@ -567,8 +569,7 @@
             <div class="box-footer">
               <div class="row">
                 <div class="col-sm-4 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
+                  <div class="description-block border-right" style="margin-top: 27px;">
                     <h5 class="description-header">5,306,475,213</h5>
                     <span class="description-text">TỔNG CÔNG NỢ</span>
                   </div>
@@ -585,8 +586,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 col-xs-6">
-                  <div class="description-block">
-                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 20%</span>
+                  <div class="description-block" style="margin-top: 27px;">
                     <h5 class="description-header">806,475,213</h5>
                     <span class="description-text">ĐƯỢC THANH TOÁN</span>
                   </div>
@@ -604,7 +604,71 @@
 	  
 	  <div class="row">
 		<div class="col-md-12">
-		
+			<div class="box">
+                <div class="box-header">
+                    <h3 class="text-center">TOP 5 KHÁCH HÀNG CÔNG NỢ LỚN NHẤT</h3>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>TÊN</th>
+                                <th>ẢNH ĐẠI DIỆN</th>
+                                <th>CÔNG NỢ HIỆN TẠI</th>
+                                <th>ĐÃ THANH TOÁN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><a href="customer_detail.html">Công ty HPH</a></td>
+                                <td>
+                                    <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                </td>
+                                <td>806,475,213</td>
+                                <td>406,625,213</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><a href="customer_detail.html">Công ty Phú An</a></td>
+                                <td>
+                                    <img src="dist/img/amazon.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+                                <td>606,475,213</td>
+                                <td>206,625,213</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><a href="customer_detail.html">Công ty Invico - Sắn</a></td>
+                                <td>
+                                    <img src="dist/img/viettel.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+                                <td>1,806,475,213</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><a href="customer_detail.html">Công ty 2B - Anh Tuấn</a></td>
+                                <td>
+                                    <img src="dist/img/2b.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+                                <td>506,475,213</td>
+                                <td>306,625,213</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><a href="customer_detail.html">Công ty Tương Lai</a></td>
+                                <td>
+                                    <img src="dist/img/amazon.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+                                <td>2,406,475,213</td>
+                                <td>306,625,213</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>			
 		</div>
 	  </div>
 
@@ -833,6 +897,9 @@
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
 <script src="../bower_components/Chart.js/Chart.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- bootstrap datepicker -->
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -921,7 +988,17 @@ $("#datepicker").datepicker( {
     minViewMode: "years",
 	autoclose: true
 });
-
+$(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+        'paging': true,
+        'lengthChange': false,
+        'searching': false,
+        'ordering': true,
+        'info': true,
+        'autoWidth': false
+    })
+})
 </script>
 </body>
 </html>
