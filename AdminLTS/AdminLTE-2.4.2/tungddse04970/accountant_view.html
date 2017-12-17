@@ -34,6 +34,11 @@
             font-weight: bold;
             background-color: #544d61;
         }
+
+        textarea {
+            resize: vertical;
+            resize: horizontal;
+        }
     </style>
 </head>
 
@@ -141,7 +146,7 @@
                                     <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>Nguyễn Mạnh Cường
-													<small>Kế toán</small>
+                                        <small>Kế toán</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -444,7 +449,7 @@
             <section class="content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div>
+                        <div class="container">
                             <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -456,32 +461,36 @@
                                             <label>Bạn thực sự muốn hủy đơn hàng?</label>
                                             <br/>
                                             <p>Lý do</p>
-                                            <textarea name="" id="" cols="90" rows="10"></textarea>
+                                            <textarea id="" style="width: 100%" rows="10"></textarea>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                            <button type="button" class="btn btn-danger btn-ok">Hủy</button>
+                                            <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
+                                            <a href="accountant_notification.html" type="button" class="btn btn-danger btn-ok">Hủy</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <br/>
                         </div>
+                        <br/>
                         <div class="box">
                             <div class="container-fluid">
                                 <div class="box-body">
-								<div class="row">
-<div class="form-group col-lg-12"> <center><h2>Đơn hàng lô số: 80326</h2> </center></div>
-								</div>
                                     <div class="row">
-										<div class="form-group col-lg-2">
+                                        <div class="form-group col-lg-12">
+                                            <center>
+                                                <h2>Đơn hàng lô số: 80326</h2>
+                                            </center>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-2">
 
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="inputdefault">Đơn vị</label>
                                             <p>CÔNG TY THHH THÁI SƠN BẮC</p>
                                         </div>
-										 <div class="form-group col-lg-1">
+                                        <div class="form-group col-lg-1">
 
                                         </div>
                                         <div class="form-group col-lg-5">
@@ -490,37 +499,39 @@
                                         </div>
                                     </div>
                                     <div class="row">
-									<div class="form-group col-lg-2">
+                                        <div class="form-group col-lg-2">
 
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="inputdefault">Địa chỉ xuất HD</label>
                                             <p>CÔNG TY THHH THÁI SƠN BẮC</p>
                                         </div>
-										 <div class="form-group col-lg-1"></div>
-                                       <div class="form-group col-lg-5">
-									   <label for="inputdefault">Tình Trạng Đơn</label>
-									   <p><i>XEM</i></p>
-									   </div>
+                                        <div class="form-group col-lg-1"></div>
+                                        <div class="form-group col-lg-5">
+                                            <label for="inputdefault">Tình Trạng Đơn</label>
+                                            <p>
+                                                <i>XEM</i>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="row">
-									<div class="form-group col-lg-2"></div>
+                                        <div class="form-group col-lg-2"></div>
                                         <div class="form-group col-lg-4">
                                             <label for="inputdefault">Địa chỉ giao hàng</label>
                                             <p>CÔNG TY THHH THÁI SƠN NAM</p>
                                         </div>
-										<div class="form-group col-lg-1"></div>
-										 <div class="form-group col-lg-3">
+                                        <div class="form-group col-lg-1"></div>
+                                        <div class="form-group col-lg-3">
                                             <label>Trạng thái</label>
                                             <select class="form-control">
                                                 <option>BẢN NHÁP</option>
-                                                <option>CHỜ XỬ LÝ</option>
-                                                <option>HỦY</option>
+                                                <option>ĐANG XỬ LÝ</option>
+                                                <option>ĐÃ HỦY</option>
                                                 <option>HOÀN THÀNH</option>
-                                                <option>REJECT</option>
+                                                <option>TỪ CHỐI</option>
                                             </select>
                                         </div>
-										
+
                                     </div>
                                 </div>
                                 <div class="box-body">
@@ -627,7 +638,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2">VAT</td>
-												<td colspan="6">10%</td>
+                                                <td colspan="6">10%</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">Tổng cộng</td>
@@ -640,7 +651,7 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-<div style="height:150px"></div>
+                                    <div style="height:150px"></div>
                                     <div class="container-fluid" align="center">
                                         <div class="row" style="font-weight: bold;">
                                             <div class="col-lg-3">
@@ -923,6 +934,7 @@
         <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../dist/js/demo.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- page script -->
         <script>
             $(function () {
@@ -953,6 +965,7 @@
                 $('.title', this).text(data.recordTitle);
                 $('.btn-ok', this).data('recordId', data.recordId);
             });
+            $('textarea').autoWidth();
         </script>
 </body>
 
