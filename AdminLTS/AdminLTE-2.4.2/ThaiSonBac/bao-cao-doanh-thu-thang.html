@@ -15,12 +15,13 @@
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -439,7 +440,7 @@
                 <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Ngày</a></li>
 				<li><a href="bao-cao-doanh-thu-tuan.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
 				<li><a href="bao-cao-doanh-thu-thang.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
-				<li><a href="bao-cao-doanh-thu-thang.html"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
+				<li><a href="bao-cao-doanh-thu-nam.html"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
               </ul>
             </li>
 			
@@ -521,157 +522,43 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>THÁNG NÀY </h1>
+      <h1>BÁO CÁO DOANH THEO THÁNG </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Báo cáo doanh thu</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Info boxes -->
-      <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="glyphicon glyphicon-tags"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">ĐƠN HÀNG</span>
-              <span class="info-box-number">125</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-signal"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">DOANH THU</span>
-              <span class="info-box-number">18,241,527 VND</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">TỔNG SẢN PHẨM 
-			  <p/>BÁN RA</span>
-              <span class="info-box-number">760</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">KHÁCH MỚI</span>
-              <span class="info-box-number">9 </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
       <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">DOANH THU TRONG 2 NĂM</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-wrench"></i></button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Cài Đặt Biểu Đồ</a></li>
-                    <li><a href="#">Cài Đặt Thông Tin</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Trở Về</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              <h3 class="box-title">BÁO CÁO DOANH THU</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
-                  <div class="col-sm-offset-3">
-					<div style="width: 13px; height: 13px; background-color: rgb(138,184,220); display: inline-block;"></div>
-                    <strong>Doanh Thu Năm 2016</strong>
-					<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgb(161,227,194); display: inline-block;"></div>
-					<strong>Doanh Thu Năm 2017</strong>
-                  </div>
-				  
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px;"></canvas>
-					<small>Đơn vị :<em>Tỷ VNĐ</em></small>
-                  </div>
+                <div class="col-md-12">
+				
+				  <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px">
+					<label style="padding-right: 10px; padding-top: 7px;">Tháng: </label>
+					<div class="input-group date col-md-4">
+						<div class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</div>
+						<input type="text" class="form-control pull-right" id="datepicker" value="10/2017">
+					</div>
+				  </div>	
+                  
+				      <div class="box-body">
+              <div class="chart">
+                <canvas id="barChart" style="height:230px"></canvas>
+				<small>Đơn vị :<em>Tỷ VNĐ</em></small>
+              </div>
+            </div>
+                  
                   <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>PHẦN TRĂM CHỈ TIÊU HOÀN THÀNH</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Tổng lượng hàng bán ra</span>
-                    <span class="progress-number"><b>1600</b>/2000</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Tổng doanh thu</span>
-                    <span class="progress-number"><b>10,076,475,213 </b>/11,000,000,000</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 91.6%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Lượng khách mới</span>
-                    <span class="progress-number"><b>2</b>/5</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 40%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Feedback tốt</span>
-                    <span class="progress-number"><b>90</b>/100</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 90%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
                 </div>
                 <!-- /.col -->
               </div>
@@ -681,31 +568,29 @@
             <div class="box-footer">
               <div class="row">
                 <div class="col-sm-4 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                    <h5 class="description-header">10,076,475,213</h5>
+                  <div class="description-block border-right" style="margin-top: 27px;">
+                    <h5 class="description-header">345,678,905,678 VNĐ</h5>
                     <span class="description-text">TỔNG DOANH THU</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
+				 <div class="col-sm-4 col-xs-6">
+                  <div class="description-block" style="margin-top: 27px;">
+                    <h5 class="description-header">34,567,890,234 VNĐ </h5>
+                    <span class="description-text">DOANH THU TRONG TUẦN</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
                 <div class="col-sm-4 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 30%</span>
-                    <h5 class="description-header">1600</h5>
-                    <span class="description-text">TỔNG SẢN PHẨM BÁN RA</span>
+                  <div class="description-block border-right" style="margin-top: 27px;">
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 25%<br></span>
+                    <span class="description-text">SO VỚI TUẦN TRƯỚC</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
-                <div class="col-sm-4 col-xs-6">
-                  <div class="description-block">
-                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 20%</span>
-                    <h5 class="description-header">2</h5>
-                    <span class="description-text">Lượng khách mới</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
+               
               </div>
               <!-- /.row -->
             </div>
@@ -715,476 +600,7 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
 
-      <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->
-        <div class="col-md-8">
-			<div class="box box-success">
-				<div class="box-header with-border">
-					<h3 class="box-title">TOP 5 SẢN PHẨM BÁN CHẠY NHẤT</h3>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					</div>
-				</div>
-				<div class="box-body">
-				  <div class="chart">
-					<canvas id="barChart" style="height:230px"></canvas>
-				  </div>
-					<div class="col-sm-offset-1">
-						<div style="width: 13px; height: 13px; background-color: rgba(210, 214, 222, 1); display: inline-block;"></div>
-						<strong>EBS 54c	15A - 30mA</strong>
-						<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(0,166,90,0.9); display: inline-block;"></div>
-						<strong>AN-06D3-06H - 630A</strong>
-						<div  class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(60,141,188,0.9); display: inline-block;"></div>
-						<strong>RKN-b 1P+N - 30mA/40A</strong>
-					</div>
-					
-					<div class="col-sm-offset-1">
-						<div style="width: 13px; height: 13px; background-color: rgba(228, 21, 21, 0.9); display: inline-block;"></div>
-						<strong>BKS-A 10kA 4P - 220V</strong>
-						<div class="col-sm-offset-1" style="margin-left: 42px; width: 13px; height: 13px; background-color: rgba(231, 231, 8, 0.84); display: inline-block;"></div>
-						<strong>MC-9a - 380V</strong>
-					</div>
-				</div>
-            <!-- /.box-body -->
-			</div>	
-          <!-- /.box -->
-          <div class="row">
-		      <div class="col-md-12">
-              <!-- USERS LIST -->
-              <div class="box box-danger">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Danh sách online</h3>
-
-                  <div class="box-tools pull-right">
-                    <span class="label label-danger">10 người đang online</span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
-                    <li>
-                      <img src="../dist/img/user1-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Hùng</a>
-                      <span class="users-list-date">Today</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user8-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Cường</a>
-                      <span class="users-list-date">Yesterday</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user7-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Hạnh</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user6-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Lan Anh</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user2-160x160.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Tùng</a>
-                      <span class="users-list-date">13 Jan</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user5-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Nam Anh</a>
-                      <span class="users-list-date">14 Jan</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user4-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Thưởng</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                    <li>
-                      <img src="../dist/img/user3-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Hoa</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                  </ul>
-                  <!-- /.users-list -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="../javascript:void(0)" class="uppercase">Xem tất cả</a>
-                </div>
-                <!-- /.box-footer -->
-              </div>
-              <!--/.box -->
-            </div>
-
-
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-4">
-          <!-- Info Boxes Style 2 -->
-          <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">FTU: loại không chỉnh dòng</span>
-              <span class="info-box-number">390</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 50%"></div>
-              </div>
-              <span class="progress-description">
-                    Tăng 50% Trong 30 Ngày
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-          <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">ATU: loại chỉnh dòng cắt (nhiệt)</span>
-              <span class="info-box-number">1100</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
-              </div>
-              <span class="progress-description">
-                   Tăng 20% Trong 30 Ngày
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-          <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-down"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Chỉnh dòng Metasol + BS </span>
-              <span class="info-box-number">114,381</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-              </div>
-              <span class="progress-description">
-					Giảm 50% Trong 30 Ngày
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-
-          <!-- PRODUCT LIST -->
-
-            <div>
-              <!-- DIRECT CHAT -->
-              <div class="box box-warning direct-chat direct-chat-warning">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Hùng</h3>
-
-                  <div class="box-tools pull-right">
-                    <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts"
-                            data-widget="chat-pane-toggle">
-                      <i class="fa fa-comments"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages">
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left">Hùng</span>
-                        <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Lô hàng 67819 em xử lý chưa
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right">Hoa</span>
-                        <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Chưa anh ạ, em đang xử lý mấy lô hàng trước nó
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left">Hùng</span>
-                        <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Ưu tiên xử lý gấp lô hàng đó ngay cho anh nhé
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right">Hoa</span>
-                        <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        OK anh
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                  </div>
-                  <!--/.direct-chat-messages-->
-
-                  <!-- Contacts are loaded here -->
-                  <div class="direct-chat-contacts">
-                    <ul class="contacts-list">
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Count Dracula
-                                  <small class="contacts-list-date pull-right">2/28/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">How have you been? I was...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="../dist/img/user7-128x128.jpg" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Sarah Doe
-                                  <small class="contacts-list-date pull-right">2/23/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">I will be waiting for...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="../dist/img/user3-128x128.jpg" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Nadia Jolie
-                                  <small class="contacts-list-date pull-right">2/20/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">I'll call you back at...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="../dist/img/user5-128x128.jpg" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Nora S. Vans
-                                  <small class="contacts-list-date pull-right">2/10/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">Where is your new...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="../dist/img/user6-128x128.jpg" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  John K.
-                                  <small class="contacts-list-date pull-right">1/27/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">Can I take a look at...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="../dist/img/user8-128x128.jpg" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Kenneth M.
-                                  <small class="contacts-list-date pull-right">1/4/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">Never mind I found...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                    </ul>
-                    <!-- /.contatcts-list -->
-                  </div>
-                  <!-- /.direct-chat-pane -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                  <form action="#" method="post">
-                    <div class="input-group">
-                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                      <span class="input-group-btn">
-                            <button type="button" class="btn btn-warning btn-flat">Send</button>
-                          </span>
-                    </div>
-                  </form>
-                </div>
-                <!-- /.box-footer-->
-              </div>
-              <!--/.direct-chat -->
-            </div>
-            <!-- /.col -->
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-		<div class="row">
-			<div class="col-md-12">
-			<!-- TABLE: LATEST ORDERS -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">ĐƠN HÀNG GẦN ĐÂY</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Lô số</th>
-                    <th>Ảnh đại diện</th>
-                    <th>Khách hàng</th>
-                    <th>Tổng tiền</th>
-					<th> Trạng Thái</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td><a href="accountant_view.html">OR9842</a></td>
-					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/hph.jpg" alt="Photo"></td>
-                    <td>Công ty HPH</td>
-					<td>
-                      3,482,332,556
-                    </td>
-                    <td><a href="workflow - detail - In Progress.html"><span class="label label-success">Đơn mới</span></a></td>
-					
-                  </tr>
-                  <tr>
-                    <td><a href="accountant_view.html">OR1848</a></td>
-					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/hph.jpg" alt="Photo"></td>
-                    <td>Công ty HPH</td>
-					<td>
-                      482,332,556
-                    </td>
-                    <td><a href="workflow - detail - In Progress.html"><span class="label label-success">Đơn mới</span></a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="accountant_view.html">OR7429</a></td>
-					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
-                    <td>Công ty Hoàng Nhật</td>
-					<td>
-                      836,364,374
-                    </td>
-                    <td><a href="workflow - detail - Cancel.html"><span class="label label-danger"> Đã huỷ</span></a></td>
-
-                  </tr>
-                  <tr>
-                    <td><a href="accountant_view.html">OR7429</a></td>
-					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
-                    <td>Công ty Hoàng Nhật</td>
-					<td>
-                      2,075,465,154
-                    </td>
-                    <td><a href="workflow - detail - In Progress.html"><span class="label label-warning"> In progress</span></a></td>
- 
-                  </tr>
-                  <tr>
-                    <td><a href="accountant_view.html">OR1848</a></td>
-					<td><img class="img-responsive" width="80px" height="80px" src="dist/img/amazon.png" alt="Photo"></td>
-                    <td>Thiết bị điện BẢO LỘC</td>
-					<td>
-                      1,076,475,213
-                    </td>
-                    <td><a href="workflow - detail - In Progress.html"><span class="label label-warning"> In progress</span></a></td>
-
-                  </tr>
-    
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <a href="../javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-			</div>
-		</div>
-      </div>
-      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
@@ -1410,9 +826,85 @@
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
 <script src="../bower_components/Chart.js/Chart.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+
+
+<script>
+  // -----------------------
+  // - MONTHLY SALES CHART -
+  // -----------------------
+
+  // Get context with jQuery - using jQuery's .get() method.
+var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = {
+	 labels  : ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(210, 214, 222, 1)',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [65, 59, 80, 81]
+        }
+      ]
+	}
+    barChartData.datasets[0].fillColor   = '#00a65a'
+    barChartData.datasets[0].strokeColor = '#00a65a'
+    barChartData.datasets[0].pointColor  = '#00a65a'
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions.datasetFill = false
+    barChart.Bar(barChartData, barChartOptions);
+
+	
+  // ---------------------------
+  // - END MONTHLY SALES CHART -
+  // ---------------------------
+</script>
+
+<script>
+$("#datepicker").datepicker( {
+    format: "mm/yyyy",
+    startView: "year", 
+    minViewMode: "year",
+	autoclose: true
+});
+
+</script>
 </body>
 </html>

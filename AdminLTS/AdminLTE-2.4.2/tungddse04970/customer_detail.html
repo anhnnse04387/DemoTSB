@@ -517,55 +517,63 @@
                     <div class="col-lg-12">
                         <div class="box">
                             <div class="box-header">
-                                <img src="dist/img/hph.jpg" class="form-control" style="height: 256px; width: 256px; margin: auto" />
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4"></div>
+                                        <p class="col-lg-4">
+                                            <img src="dist/img/hph.jpg" class="form-control" style="height: 80px; width: 100px; display:inline" />
+                                            <span style="font-weight: bold; font-size: 40px; padding-left: 10px;">Công ty HPH</span>
+                                        </p>
+                                        <div class="col-lg-4"></div>
+                                    </div>
+                                </div>
+
+
                             </div>
                             <br/>
-                            <div class="box-body" style="padding-left:100px; font-size: 22px; padding-left: 30px;">
+                            <div class="box-body" style="padding-left:20%; font-size: 22px;">
                                 <div class="row center-block">
-                                    <div class="form-group col-lg-4">
-                                        <label for="inputdefault">Tên khách hàng:</label>
-                                        <span>Công ty NPH</span>
-                                    </div>
-                                    <div class="form-group col-lg-4">
+
+                                    <div class="form-group col-lg-6">
                                         <label for="inputdefault">Mã khách hàng:</label>
                                         <span>NPH</span>
                                     </div>
-                                    <div class="form-group col-lg-4">
+                                    <div class="form-group col-lg-6">
                                         <label for="inputdefault">Xếp hạng:</label>
                                         <span style="color:blue;">KHÁCH MỚI</span>
                                     </div>
 
                                 </div>
                                 <div class="row center-block">
-                                    <div class="form-group col-lg-4">
-                                        <label for="inputdefault">Ngày tạo:</label>
-                                        <span>20-12-2017</span>
-                                    </div>
-
-                                    <div class="form-group col-lg-4">
-                                        <label for="inputdefault">Mã số thuế:</label>
-                                        <span>65144</span>
-                                    </div>
-                                    <div class="form-group col-lg-4">
-                                        <label for="inputdefault">SĐT:</label>
-                                        <span>0912509752</span>
-                                    </div>
-                                </div>
-                                <div class="row center-block">
                                     <div class="form-group col-lg-6">
                                         <label for="inputdefault">Địa chỉ: </label>
                                         <span>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>
                                     </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="inputdefault">Mã số thuế:</label>
+                                        <span>65144</span>
+                                    </div>
+
+                                </div>
+                                <div class="row center-block">
+                                    <div class="form-group col-lg-6">
+                                        <label for="inputdefault">SĐT:</label>
+                                        <span>0912509752</span>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="inputdefault">Ngày tạo:</label>
+                                        <span>20-12-2017</span>
+                                    </div>
+
                                 </div>
                                 <br/>
                             </div>
                             <hr>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-2"></div>
+                                    <div class="col-lg-8">
                                         <h2 style="font-weight: bold; text-align: center;">Doanh thu 6 tháng gần nhất</h2>
-                                        <br>
-                                        <br>
                                         <div class="app">
                                             {{ message }}
                                             <line-chart></line-chart>
@@ -583,18 +591,26 @@
                                             <label class="col-lg-4" style="color:#ff3300">50.000.000 đ</label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <h2 style="font-weight: bold; text-align: center;">CÁC MẶT HÀNG MUA NHIỀU NHẤT</h2>
-                                        <br>
-                                        <br>
-                                        <canvas id="doughnut-chart" width="800" height="450"></canvas>
-                                    </div>
-
+                                    <div class="col-lg-2"></div>
                                 </div>
                                 <br>
                                 <br>
                                 <br>
+                                <div class="row">
+                                    <div class="col-lg-2">
+
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h2 style="font-weight: bold; text-align: center;">CÁC MẶT HÀNG MUA NHIỀU NHẤT</h2>
+                                        <canvas id="doughnut-chart" width="800" height="450"></canvas>
+                                    </div>
+                                    <div class="col-lg-2">
+
+                                    </div>
+                                </div>
                                 <br>
+                                <br>
+                                <hr>
                                 <h2 style="text-align: center; font-weight: bold">TOP 5 ĐƠN HÀNG GẦN NHẤT</h2>
                                 <table class="table table-bordered table-striped">
                                     <thead>
@@ -614,58 +630,58 @@
                                                 <a href="#">32487</a>
                                             </td>
                                             <td>
-                                                <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                                <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td>20-12-2017</td>
+                                            <td>22-12-2017</td>
                                             <td>20.000.000</td>
                                             <td style="color:#142bff">Đang xử lí</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>
-                                                <a href="#">32487</a>
+                                                <a href="#">32427</a>
                                             </td>
                                             <td>
-                                                <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                                <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td>20-12-2017</td>
-                                            <td>20.000.000</td>
+                                            <td>21-12-2017</td>
+                                            <td>30.000.000</td>
                                             <td style="color:#142bff">Đang xử lí</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>
-                                                <a href="#">32487</a>
+                                                <a href="#">36547</a>
                                             </td>
                                             <td>
-                                                <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                                <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td>20-12-2017</td>
-                                            <td>20.000.000</td>
+                                            <td>19-12-2017</td>
+                                            <td>50.000.000</td>
                                             <td style="color:#142bff">Đang xử lí</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
                                             <td>
-                                                <a href="#">32487</a>
+                                                <a href="#">32587</a>
                                             </td>
                                             <td>
-                                                <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                                <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td>20-12-2017</td>
+                                            <td>18-12-2017</td>
                                             <td>20.000.000</td>
                                             <td style="color:#142bff">Đang xử lí</td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
                                             <td>
-                                                <a href="#">32487</a>
+                                                <a href="#">62487</a>
                                             </td>
                                             <td>
-                                                <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                                <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td>20-12-2017</td>
-                                            <td>20.000.000</td>
+                                            <td>01-12-2017</td>
+                                            <td>70.000.000</td>
                                             <td style="color:#142bff">Đang xử lí</td>
                                         </tr>
                                     </tbody>
@@ -678,15 +694,19 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-2">
                             <a href="customer_list.html" class="btn btn-warning btn-block">QUAY LẠI</a>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
                             <a href="" class="btn btn-google btn-block">CHỈNH SỬA</a>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
                             <a href="" class="btn btn-facebook btn-block">XEM CHI TIẾT CÔNG NỢ</a>
                         </div>
+                        <div class="col-lg-2"></div>
                     </div>
                 </div>
                 <br>

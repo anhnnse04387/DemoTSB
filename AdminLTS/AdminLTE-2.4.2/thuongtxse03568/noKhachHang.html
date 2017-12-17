@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Data Tables</title>
+     <title>TSB | Dashboard</title>
+  <title>Thái Sơn Bắc - TSB</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -20,15 +21,25 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
           th {
+            color: white;
+            background-color: #f88457;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+        }
 
-                text-align:center;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: #99ff99;
-            }   
-		.highlight{
-			font-weight:bold;
-			text-align:right;
-		}
+        td {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        tfoot {
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #544d61;
+        }
 		.right{
 			text-align:right;
 		}
@@ -435,10 +446,9 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Ngày</a></li>
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
+                       <li><a href="../ThaiSonBac/bao-cao-doanh-thu-tuan.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
+				<li><a href="../ThaiSonBac/bao-cao-doanh-thu-thang.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
+				<li><a href="../ThaiSonBac/bao-cao-doanh-thu-thang.html"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
                       </ul>
                     </li>
                     
@@ -637,7 +647,7 @@
                                     </tbody>
 
 									 <tfoot>
-                <tr style="background-color: bisque;text-align:right;font-weight:bold">
+                <tr style="text-align:right;font-weight:bold">
                     <td colspan="2"><b>Sub_total</b></td>
                     <td>42,032,345,452 </td>
                     <td>52,351 </td>
@@ -647,7 +657,7 @@
                     <td>13,722,158,074 </td>
                     <td class="highlight">52,356,466,850 </td>
                 </tr>
-                <tr style="background-color: aquamarine ;text-align:right;font-weight:bold">
+                <tr style="text-align:right;font-weight:bold">
                     <td colspan="2"><b>TOTAL</b></td>
                     <td>42,032,345,452 </td>
                     <td>52,351 </td>

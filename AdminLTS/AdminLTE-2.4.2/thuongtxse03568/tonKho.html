@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Data Tables</title>
+     <title>TSB | Dashboard</title>
+	<title>Thái Sơn Bắc - TSB</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -19,14 +20,26 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-        td{
-                white-space: nowrap;
-                overflow: hidden;
-				text-overflow: ellipsis;
-            }
-		th{
-			font-size:13px;
-		}
+        th {
+            color: white;
+            background-color: #f88457;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        tfoot {
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #544d61;
+        }
 		.highlight{
 			font-weight:bold;
 			text-align:right;
@@ -515,20 +528,20 @@
                                     <thead>
                                         <tr>
                 <tr>
-                                        <th rowspan="2" style="width: 1%;background-color: #9999ff"></th>
-                                        <th rowspan="2" colspan="2" style="width: 12%;background-color: #9999ff">Description</th>
-                                        <th rowspan="2" style="width: 3%;background-color: #ffff66">Kho</th>
-                                        <th rowspan="2" style="width: 3%;background-color: aquamarine">Tổng tồn</th>
-                                        <th style="width: 2%;background-color: #99ff99">CIF</th>
-                                        <th colspan="4" style="width: 12%;background-color: #9999ff">Giá vốn</th>
+                                        <th rowspan="2" style="width: 1%"></th>
+                                        <th rowspan="2" colspan="2" style="width: 12%">Description</th>
+                                        <th rowspan="2" style="width: 3%">Kho</th>
+                                        <th rowspan="2" style="width: 3%">Tổng tồn</th>
+                                        <th style="width: 2%">CIF</th>
+                                        <th colspan="4" style="width: 12%">Giá vốn</th>
                                     </tr>
                                     <tr>
 
-                                        <th style="background-color: #99ff99">USD</th>
-                                        <th style="text-align: left;background-color: #ffff66">Trước VAT (USD)</th>
-                                        <th style="background-color: #9999ff">Sau VAT (USD)</th>
-                                        <th style="text-align: left;background-color: #ffff66">Trước VAT (VND)</th>
-                                        <th style="background-color: #9999ff">Sau VAT (VND)</th>
+                                        <th>USD</th>
+                                        <th style="text-align: left">Trước VAT (USD)</th>
+                                        <th>Sau VAT (USD)</th>
+                                        <th style="text-align: left;">Trước VAT (VND)</th>
+                                        <th >Sau VAT (VND)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -606,7 +619,7 @@
                                     </tbody>
 
 									 <tfoot>
-                 <tr style="background-color: #ff6666;font-weight: bold">
+                 <tr >
                                         <td></td>
                                         <td style="text-align: left;border-right: none">Grand Total</td>
                                         <td style="border-left: none"></td>
