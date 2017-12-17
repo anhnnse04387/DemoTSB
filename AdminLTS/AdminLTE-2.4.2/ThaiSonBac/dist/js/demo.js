@@ -4,6 +4,16 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+function redirect() {
+    if ($("#page").val() === '1') {
+        var win = window.open('cong_no_khach_hang.html', '_blank');
+        win.focus();
+    } else {
+        var win = window.open('cong_no_nha_cung_cap.html', '_blank');
+        win.focus();
+    }
+}
+
 function autoFillCustomer() {
     if ($("#donVi").val() === '1') {
         document.getElementById("debt").value = "10298157979";

@@ -29,13 +29,10 @@
                 height: 60px;
             }
             .customTable .col2 select{
-                width: 250px;
-            }
-            .customTable .col2 input{
-                width: 250px;
+                width: 200px;
             }
             .customTable .col1{
-                width: 200px;
+                width: 100px;
             }
             .customTable .col2{
                 width: 450px;
@@ -400,8 +397,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../thuongtxse03568/price.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
-                                <li><a href="../thuongtxse03568/tonKho.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
+                                <li><a href="../pages/tables/simple.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
+                                <li><a href="../pages/tables/data.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
                             </ul>
                         </li>
 
@@ -413,9 +410,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử Lý Công Nợ</a></li>
-                                <li><a href="../thuongtxse03568/noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
-                                <li><a href="../thuongtxse03568/noCungCap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
+                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo Công Nợ</a></li>
+                                <li><a href="cong_no_khach_hang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
+                                <li><a href="cong_no_nha_cung_cap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
                             </ul>
                         </li>
 
@@ -449,9 +446,9 @@
                                     </a>
                                     <ul class="treeview-menu">
                                         <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Ngày</a></li>
-                                        <li><a href="bao-cao-doanh-thu-tuan.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
-                                        <li><a href="bao-cao-doanh-thu-thang.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
-                                        <li><a href="bao-cao-doanh-thu-thang.html"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
+                                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
+                                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
+                                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
                                     </ul>
                                 </li>
 
@@ -494,9 +491,7 @@
                                 <li class="treeview">
                                     <a href="#"><i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
                                 </li>
-                                <li class="treeview">
-                                    <a href="#"><i class="fa fa-users"></i> Danh Sách Khách Hàng</a>
-                                </li>
+
                                 <li class="treeview">
                                     <a href="#"><i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
                                         <span class="pull-right-container">
@@ -514,7 +509,7 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-cubes"></i> <span>Hướng dẫn</span>
+                                <i class="fa fa-cubes"></i> <span>Tài Nguyên</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -523,7 +518,6 @@
                                 <li><a href="workflow.html"><i class="fa fa-paper-plane"></i> Luồng Xử Lí</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -557,59 +551,26 @@
                     <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-12 invoice-col">
-                            <table style="border: none; margin-left: 250px;" class="customTable">
+                            <table style="border: none; margin-left: 300px;" class="customTable">
                                 <tr>
-                                    <td class="col1"><b>Tên:</b></td>
-                                    <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
+                                    <td class="col1"><b>Công nợ:</b></td>
+                                    <td class="col2"><select class="form-control" id="page">
                                             <option></option>
-                                            <option value="1">Công ty Sáng Hà</option>
-                                            <option value="2">Công ty Invico - Sắn</option>
+                                            <option value="1">Khách hàng</option>
+                                            <option value="2">Nhà cung cấp</option>
                                         </select></td>
                                 </tr>
-                                <tr>
-                                    <td><b>MST:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Công nợ hiện tại:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="debt"></td>
-                                </tr>
                             </table>
 
                         </div>
-                    </div>
-                    <!-- /.row -->
-
-                    <!-- Table row -->
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col-sm-12 table-responsive">
-                            <table class="customTable" style="margin-left: 250px;">
-                                <tr>
-                                    <td class="col1"><b>Thêm công nợ:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="addDebt" onkeyup="debt(); return false;"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Thanh toán:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="pay" onkeyup="debt(); return false;"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Tổng công nợ:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!-- /.col -->
                     </div>
                     <!-- /.row -->
 
                     <!-- this row will not appear when printing -->
-                    <div class="row no-print" style="margin-top: 40px;">
+                    <div class="row no-print" style="margin-top: 20px;">
                         <div class="col-xs-12">
-                            <button type="button" class="btn btn-warning" style="margin-left: 400px;">
-                                <i class="fa fa-sign-out"></i> Huỷ
-                            </button>
-                            <button type="button" class="btn btn-success" style="margin-left: 50px;">
-                                <i class="fa fa-plus"></i> Xử lý
+                            <button type="button" class="btn btn-warning" onclick="redirect(); return false;" style="margin-left: 425px;">
+                                <i class="fa fa-sign-out"></i> Chọn
                             </button>
                         </div>
                     </div>
