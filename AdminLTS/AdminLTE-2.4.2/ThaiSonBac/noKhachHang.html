@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TSB | Công nợ khách hàng</title>
+        <title>TSB | Dashboard</title>
+        <title>Thái Sơn Bắc - TSB</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -12,61 +14,58 @@
         <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-        <!-- Theme style -->
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-             folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
-            .customTable tr{
-                height: 60px;
+            th {
+                color: white;
+                background-color: #f88457;
+                font-weight: bold;
+                font-size: 15px;
+                text-align: center;
             }
-            .customTable .col2 select{
-                width: 250px;
+
+            td {
+                text-align: center;
+                font-size: 14px;
             }
-            .customTable .col2 input{
-                width: 250px;
+
+            tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
             }
-            .customTable .col1{
-                width: 200px;
-            }
-            .customTable .col2{
-                width: 450px;
+            .right{
+                text-align:right;
             }
         </style>
-        <!-- Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
             <header class="main-header">
-
                 <!-- Logo -->
                 <a href="index.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>A</b>LT</span>
+                    <span class="logo-mini">
+                        <b>A</b>LT</span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
-                        <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-                        <b>Thái Sơn Bắc</b>
-                    </span>
+                        <b>Thai Son Bac</b>DMS</span>
                 </a>
 
-                <!-- Header Navbar: style can be found in header.less -->
+
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
-                    <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <!-- Messages: style can be found in dropdown.less-->
@@ -314,7 +313,6 @@
                             </li>
                         </ul>
                     </div>
-
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -528,110 +526,204 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-
-            <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        <p style="margin-left: 9px;">Công Nợ Khách Hàng</p>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-                        <li><a href="#">Công nợ</a></li>
-                        <li class="active">Công nợ khách hàng</li>
-                    </ol>
-                </section>
-
-                <!-- Main content -->
-                <section class="invoice">
-                    <!-- title row -->
+                <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Thai Son Bac, Inc.
-                            </h2>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- info row -->
-                    <div class="row invoice-info">
-                        <div class="col-sm-12 invoice-col">
-                            <table style="border: none; margin-left: 250px;" class="customTable">
-                                <tr>
-                                    <td class="col1"><b>Tên:</b></td>
-                                    <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
-                                            <option></option>
-                                            <option value="1">Công ty Sáng Hà</option>
-                                            <option value="2">Công ty Invico - Sắn</option>
-                                        </select></td>
-                                </tr>
-                                <tr>
-                                    <td><b>MST:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Công nợ hiện tại:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="debt"></td>
-                                </tr>
-                            </table>
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">BẢNG THEO DÕI CÔNG NỢ CỦA KHÁCH HÀNG NGÀY 11-NOV-17</h3>
+                                </div>
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1%">STT</th>
+                                                <th style="width: 12%">KHÁCH HÀNG</th>
+                                                <th style="width: 7%">NỢ CŨ</th>
+                                                <th style="width: 7%">SL (cái)</th>
+                                                <th style="width: 7%">TIỀN HÀNG</th>
+                                                <th style="width: 7%">VAT</th>
+                                                <th style="width: 7%">TỔNG CỘNG</th>
+                                                <th style="width: 7%">THANH TOÁN</th>
+                                                <th style="width: 7%">CÒN NỢ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><a href="khachhang.html">Công ty Phú An</a></td>
+                                                <td class="right">2,435,117,579</td>
+                                                <td class="right">2,482</td>
+                                                <td class="right">663,849,900</td>
+                                                <td class="right">53,219,600 </td>
+                                                <td class="highlight">717,069,500 </td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">3,152,187,079 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><a href="khachhang.html">Công ty Invico - Sắn</a></td>
+                                                <td class="right">8,108,871,560 </td>
+                                                <td class="right">13315</td>
+                                                <td class="right">6,550,708,240 </td>
+                                                <td class="right">533,475,560 </td>
+                                                <td class="highlight">7,084,183,800 </td>
+                                                <td class="right">4,182,000,000 </td>
+                                                <td class="highlight">11,011,055,360 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td><a href="khachhang.html">Công ty Sáng Hà</a></td>
+                                                <td class="right">9,541,737,019 </td>
+                                                <td class="right">8994</td>
+                                                <td class="right">3,594,056,020 </td>
+                                                <td class="right">285,934,780 </td>
+                                                <td class="highlight"> 3,879,990,800 </td>
+                                                <td class="right">3,123,569,840 </td>
+                                                <td class="highlight">10,298,157,979 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td><a href="khachhang.html">Công ty 2B -Anh Tuấn</a></td>
+                                                <td class="right">5,685,087,734 </td>
+                                                <td class="right">5520</td>
+                                                <td class="right">1,748,616,300 </td>
+                                                <td class="right">142,290,900 </td>
+                                                <td class="highlight">1,890,907,200 </td>
+                                                <td class="right">714,000,000 </td>
+                                                <td class="highlight">6,861,994,934 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td><a href="khachhang.html">Công ty Vạn Xuân</a></td>
+                                                <td class="right">5,594,767,835 </td>
+                                                <td class="right">6305</td>
+                                                <td class="right">2,354,106,550 </td>
+                                                <td class="right">187,012,450 </td>
+                                                <td class="highlight">2,541,119,000 </td>
+                                                <td class="right">1,836,000,000 </td>
+                                                <td class="highlight">6,299,886,835</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td><a href="khachhang.html">Công ty Tương Lai</a></td>
+                                                <td class="right">5,896,900,945 </td>
+                                                <td class="right">475</td>
+                                                <td class="right">4,064,267,180 </td>
+                                                <td class="right">328,764,120 </td>
+                                                <td class="highlight">4,393,031,300 </td>
+                                                <td class="right">2,723,400,000  </td>
+                                                <td class="highlight">7,566,532,245</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td><a href="khachhang.html">Công ty Bảo Lộc ( Hải Phòng)</a></td>
+                                                <td class="right">(1,245,612)</td>
+                                                <td class="right">0</td>
+                                                <td class="right">0</td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">0</td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">(1,245,612)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td><a href="khachhang.html">Công ty HPH</a></td>
+                                                <td class="right">902,013,105 </td>
+                                                <td class="right">310</td>
+                                                <td class="right">164,856,000 </td>
+                                                <td class="right">12,734,000 </td>
+                                                <td class="highlight">177,590,000 </td>
+                                                <td class="right">204,000,000</td>
+                                                <td class="highlight">875,603,105 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td><a href="khachhang.html"><b></b>Phòng Kinh doanh</a></td>
+                                                <td class="right">3,869,094,774 </td>
+                                                <td class="right">5502</td>
+                                                <td class="right">2,917,498,770 </td>
+                                                <td class="right">286,237,102 </td>
+                                                <td class="highlight">3,203,735,872 </td>
+                                                <td class="right">939,188,234 </td>
+                                                <td class="highlight">6,133,642,412 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td><a href="khachhang.html"><b></b>Thái Sơn Nam</a></td>
+                                                <td class="right">513</td>
+                                                <td class="right">1448</td>
+                                                <td class="right">144,229,125 </td>
+                                                <td class="right">14,422,875 </td>
+                                                <td class="highlight">158,652,000 </td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">158,652,513 </td>
+                                            </tr>
+                                        </tbody>
 
-                        </div>
-                    </div>
-                    <!-- /.row -->
-
-                    <!-- Table row -->
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col-sm-12 table-responsive">
-                            <table class="customTable" style="margin-left: 250px;">
-                                <tr>
-                                    <td class="col1"><b>Thêm công nợ:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="addDebt" onkeyup="debt(); return false;"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Thanh toán:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="pay" onkeyup="debt(); return false;"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Tổng công nợ:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-
-                    <!-- this row will not appear when printing -->
-                    <div class="row no-print" style="margin-top: 40px;">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-warning" style="margin-left: 400px;">
-                                <i class="fa fa-sign-out"></i> Huỷ
-                            </button>
-                            <button type="button" class="btn btn-success" style="margin-left: 50px;">
-                                <i class="fa fa-plus"></i> Xử lý
-                            </button>
+                                        <tfoot>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>Sub_total</b></td>
+                                                <td>42,032,345,452 </td>
+                                                <td>52,351 </td>
+                                                <td>22,202,188,085 </td>
+                                                <td>1,844,091,387 </td>
+                                                <td class="highlight">24,046,279,472 </td>
+                                                <td>13,722,158,074 </td>
+                                                <td class="highlight">52,356,466,850 </td>
+                                            </tr>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>TOTAL</b></td>
+                                                <td>42,032,345,452 </td>
+                                                <td>52,351 </td>
+                                                <td>22,202,188,085 </td>
+                                                <td>1,844,091,387 </td>
+                                                <td>24,046,279,472 </td>
+                                                <td>13,722,158,074 </td>
+                                                <td>52,356,466,850 </td>
+                                            </tr>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>10/11/2017</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>DOANH SỐ</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
-                <!-- /.content -->
-                <div class="clearfix"></div>
             </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer no-print">
-                <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.4.0
-                </div>
-                <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-                reserved.
-            </footer>
-
-            <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
                 <!-- Create the tabs -->
                 <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                    <li>
+                        <a href="#control-sidebar-home-tab" data-toggle="tab">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#control-sidebar-settings-tab" data-toggle="tab">
+                            <i class="fa fa-gears"></i>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -806,7 +898,9 @@
                             <div class="form-group">
                                 <label class="control-sidebar-subheading">
                                     Delete chat history
-                                    <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                                    <a href="javascript:void(0)" class="text-red pull-right">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
                                 </label>
                             </div>
                             <!-- /.form-group -->
@@ -817,7 +911,7 @@
             </aside>
             <!-- /.control-sidebar -->
             <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
+           immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
@@ -826,11 +920,31 @@
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
+        <script src="../dist/js/demo.js"></script>
+        <!-- page script -->
+        <script>
+            $(function () {
+                $('#example1').DataTable()
+                $('#example2').DataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false
+                })
+            })
+        </script>
     </body>
+
 </html>
