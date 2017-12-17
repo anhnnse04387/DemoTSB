@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>TSB | Dashboard</title>
-  <title>Thái Sơn Bắc - TSB</title>
+     <title>TSB | Dashboard</title>
+	<title>Thái Sơn Bắc - TSB</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-	  th {
+        th {
             color: white;
             background-color: #f88457;
             font-weight: bold;
@@ -47,7 +47,6 @@
 		.right{
 			text-align:right;
 		}
-		
     </style>
 </head>
 
@@ -61,8 +60,8 @@
                 <span class="logo-mini">
                     <b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
-                	  <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="../ThaiSonBac/dist/img/Logo TSB - Final.png" alt="Photo">
-	  <b>Thái Sơn Bắc</b>
+                <span class="logo-lg">
+                    <b>Thai Son Bac</b>DMS</span>
             </a>
 
 
@@ -404,7 +403,7 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="../thuongtxse03568/price.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
-                    <li><a href="../pages/tables/data.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
+                    <li><a href="../thuongtxse03568/tonKho.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
                   </ul>
                 </li>
                 
@@ -416,9 +415,9 @@
                     </span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="../pages/tables/simple.html"><i class="fa fa-hand-o-right"></i> Tạo Công Nợ</a></li>
-                    <li><a href="../pages/tables/simple.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
-                    <li><a href="../pages/tables/data.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
+                  <li><a href="../pages/tables/simple.html"><i class="fa fa-hand-o-right"></i> Tạo Công Nợ</a></li>
+            <li><a href="../thuongtxse03568/noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
+            <li><a href="../thuongtxse03568/noCungCap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
                   </ul>
                 </li>
                 
@@ -452,9 +451,9 @@
                       </a>
                       <ul class="treeview-menu">
                         <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Ngày</a></li>
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
-                        <li><a href="#"><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
+                        <li><a href="../ThaiSonBac/bao-cao-doanh-thu-tuan.html"><i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a></li>
+                        <li><a href="../ThaiSonBac/bao-cao-doanh-thu-thang.html""><i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a></li>
+                        <li><a href="../ThaiSonBac/bao-cao-doanh-thu-nam.html""><i class="fa fa-hand-o-right"></i> Doanh Số Năm</a></li>
                       </ul>
                     </li>
                     
@@ -522,163 +521,116 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">Tên khách hàng : ĐẠI LÝ PHÚ AN</h3>
+                                <h3 class="box-title">TỒN KHO</h3>
                             </div>
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-										<th style="width:2%">NGÀY</th>
-                                        <th style="width:5%">LÔ SỐ</th>
-                                        <th style="width:5%">SÔ HĐ</th>
-                                        <th style="width:5%">SỐ LƯỢNG</th>
-                                        <th style="width:3%">DIỄN GIẢI</th>
-                                        <th style="width:5%">TIỀN HÀNG</th>
-                                        <th style="width:5%">VAT</th>
-                                        <th style="width:5%">TỔNG CỘNG</th>
-                                        <th style="width:5%">THANH TOÁN</th>
-                                        <th style="width:5%">DƯ NỢ</th>
-                                        <th style="width:5%">GHI CHÚ</th>
-                                        </tr>
+                <tr>
+                                        <th rowspan="2" style="width: 1%">STT</th>
+                                        <th rowspan="2" colspan="2" style="width: 12%">Description</th>
+                                        <th rowspan="2" style="width: 3%">Kho</th>
+                                        <th rowspan="2" style="width: 3%">Tổng tồn</th>
+                                        <th style="width: 2%">CIF</th>
+                                        <th colspan="4" style="width: 12%">Giá vốn</th>
+                                    </tr>
+                                    <tr>
+
+                                        <th>USD</th>
+                                        <th style="text-align: left">Trước VAT (USD)</th>
+                                        <th>Sau VAT (USD)</th>
+                                        <th style="text-align: left;">Trước VAT (VND)</th>
+                                        <th >Sau VAT (VND)</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                       <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Số dư đầu</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="highlight"></td>
-                                        <td></td>
-                                        <td class="highlight">2,435,117,579 </td>
-                                        <td></td>
+               <tr>
+                                        <td style="text-align: left"> 1</td>
+                                        <td style="border-right: none;text-align: right">ABS 52c</td>
+                                        <td style="border-left: none !important;text-align: right">15A</td>
+                                        <td>20</td>
+                                        <td>20</td>
+                                        <td>243</td>
+                                        <td>282</td>
+                                        <td>310</td>
+                                        <td>6,450,000</td>
+                                        <td>7,000,000</td>
                                     </tr>
                                     <tr>
-                                        <td>01/11/2017</td>
-                                        <td>1</td>
-                                        <td>2347</td>
-                                        <td>122</td>
+                                        <td style="text-align: left">2</td>
+                                        <td style="border-right: none !important;text-align: right">ABS 52c</td>
+                                        <td style="border-left: none !important;text-align: right">20A</td>
+                                        <td>16</td>
+                                        <td>16</td>
+                                        <td>194</td>
+                                        <td>226</td>
+                                        <td>248</td>
+                                        <td>5,152,500</td>
+                                        <td>5,650,000</td>                                         
+                                    <tr style="background-color: #ccffcc;font-weight: bold">
                                         <td></td>
-                                        <td> 10,894,400 </td>
-                                        <td> 837,600 </td>
-                                        <td class="highlight">11,732,000 </td>
-                                        <td></td>
-                                        <td class="highlight">2,446,849,579 </td>
-                                        <td>Nợ 32Kgrd 20A= 8c (Đã HĐ)</td>
+                                        <td style="text-align: left;border-right: none">MCCB Total</td>
+                                        <td style="border-left: none"></td>
+                                        <td>36</td>
+                                        <td>36</td>
+                                        <td>437</td>
+                                        <td>508</td>
+                                        <td>558</td>
+                                        <td>11,602,500</td>
+                                        <td>12,650,000</td>
                                     </tr>
                                     <tr>
-                                        <td>02/11/2017</td>
-                                        <td>2</td>
-                                        <td>2360</td>
-                                        <td>45</td>
-                                        <td></td>
-                                        <td> 18,437,200 </td>
-                                        <td> 1,512,800 </td>
-                                        <td class="highlight">19,950,000 </td>
-                                        <td></td>
-                                        <td class="highlight">2,466,799,579 </td>
-                                        <td></td>
-                                    </tr>
+                                        <td style="text-align: left">3</td>
+                                        <td style="border-right: none !important;text-align: right">Thanh cái</td>
+                                        <td style="border-left: none !important;text-align: right">For TS 630</td>
+                                        <td>20</td>
+                                        <td>20</td>
+                                        <td>194</td>
+                                        <td>226</td>
+                                        <td>248</td>
+                                        <td>8,000,000</td>
+                                        <td>8,500,000</td>
+                                    </tr>    
                                     <tr>
-                                        <td>03/11/2017</td>
+                                        <td style="text-align: left">4</td>
+                                        <td style="border-right: none !important;text-align: right">Thanh cái</td>
+                                        <td style="border-left: none !important;text-align: right">For TS 630</td>
+                                        <td>20</td>
+                                        <td>20</td>
+                                        <td>194</td>
+                                        <td>226</td>
+                                        <td>248</td>
+                                        <td>8,000,000</td>
+                                        <td>8,500,000</td>
+                                    </tr>    
+                                    <tr style="background-color: #ccffcc;font-weight: bold">
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Bù tiền nhầm giá TS TS100H FTU 63A lô số 9 ngày 12/10</td>
-                                        <td> (147,000)</td>
-                                        <td></td>
-                                        <td class="highlight">(147,000)</td>
-                                        <td></td>
-                                        <td class="highlight">2,466,652,579 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>03/11/2017</td>
-                                        <td>3</td>
-                                        <td>2366</td>
-                                        <td>1474</td>
-                                        <td></td>
-                                        <td> 263,612,000 </td>
-                                        <td> 21,508,500 </td>
-                                        <td class="highlight">285,120,500 </td>
-                                        <td></td>
-                                        <td class="highlight">2,751,773,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>04/11/2017</td>
-                                        <td>4</td>
-                                        <td>2366</td>
-                                        <td>22</td>
-                                        <td></td>
-                                        <td> 13,300,000 </td>
-                                        <td></td>
-                                        <td class="highlight">13,300,000 </td>
-                                        <td></td>
-                                        <td class="highlight">2,765,073,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>07/11/2017</td>
-                                        <td>5</td>
-                                        <td>2402</td>
-                                        <td>611</td>
-                                        <td></td>
-                                        <td> 288,711,300 </td>
-                                        <td> 23,810,700 </td>
-                                        <td class="highlight">312,522,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,077,595,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>08/11/2017</td>
-                                        <td>6</td>
-                                        <td>2432</td>
-                                        <td>156</td>
-                                        <td></td>
-                                        <td> 36,559,000 </td>
-                                        <td> 2,928,000 </td>
-                                        <td class="highlight">39,487,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,117,082,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>09/11/2017</td>
-                                        <td>7</td>
-                                        <td>2456</td>
-                                        <td>1</td>
-                                        <td></td>
-                                        <td> 4,305,000 </td>
-                                        <td></td>
-                                        <td class="highlight">4,305,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,121,387,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>09/11/2017</td>
-                                        <td>8</td>
-                                        <td>2456</td>
-                                        <td>51</td>
-                                        <td></td>
-                                        <td> 28,178,000 </td>
-                                        <td> 2,622,000 </td>
-                                        <td class="highlight">30,800,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,152,187,079 </td>
-                                        <td></td>
+                                        <td style="text-align: left;border-right: none">Phụ kiện MCCB Total:</td>
+                                        <td style="border-left: none"></td>
+                                        <td>36</td>
+                                        <td>36</td>
+                                        <td>437</td>
+                                        <td>508</td>
+                                        <td>558</td>
+                                        <td>11,602,500</td>
+                                        <td>12,650,000</td>
                                     </tr>
                                     </tbody>
 
 									 <tfoot>
-            <tr>
-                        <td colspan="4" style="padding-left: 3px;text-align: left">Grand Total</td>
-                        <td></td><td></td><td></td><td></td><td></td><<td></td><td></td>
-                    </tr>
+                 <tr >
+                                        <td></td>
+                                        <td style="text-align: left;border-right: none">Grand Total</td>
+                                        <td style="border-left: none"></td>
+                                        <td>1,336</td>
+                                        <td>2,436</td>
+                                        <td>437</td>
+                                        <td>1,508</td>
+                                        <td>6,558</td>
+                                        <td>51,602,500</td>
+                                        <td>52,650,000</td>
+                                    </tr>
 									</tfoot>
                                 </table>
                             </div>
