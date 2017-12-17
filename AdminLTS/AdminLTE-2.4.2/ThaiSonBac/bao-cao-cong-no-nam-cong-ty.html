@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -534,20 +536,20 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">CÔNG NỢ KHÁCH HÀNG</h3>
+              <h3 class="box-title">CÔNG NỢ CÔNG TY</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
 				
-				  <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px">
-					<label style="padding-right: 10px; padding-top: 7px;">Từ Tháng: </label>
+				  <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
+					<label style="padding-right: 10px; padding-top: 7px;">Từ Năm: </label>
 					<div class="input-group date col-md-4">
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input type="text" class="form-control pull-right" id="datepicker" value="12/2017">
+						<input type="text" class="form-control pull-right" id="datepicker" value="2017">
 					</div>
 				  </div>	
                   
@@ -578,7 +580,7 @@
                   <div class="description-block border-right">
                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 30%</span>
                     <h5 class="description-header">1,206,475,213</h5>
-                    <span class="description-text">CÔNG NỢ TĂNG TRONG THÁNG</span>
+                    <span class="description-text">CÔNG NỢ TĂNG TRONG NĂM</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -599,6 +601,82 @@
         </div>
         <!-- /.col -->
       </div>
+	  
+	  <div class="row">
+		<div class="col-md-12">
+			<div class="box">
+                <div class="box-header">
+                    <h3 class="text-center">TOP 5 KHÁCH HÀNG CÔNG NỢ LỚN NHẤT</h3>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>TÊN</th>
+                                <th>ẢNH ĐẠI DIỆN</th>
+                                <th>CÔNG NỢ CẢ NĂM</th>
+                                <th>ĐÃ THANH TOÁN</th>
+								<th>CÔNG NỢ HIỆN TẠI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><a href="customer_detail.html">Công ty HPH</a></td>
+                                <td>
+                                    <img src="dist/img/hph.jpg" style="height: 80px; width: 80px;" alt="">
+                                </td>
+								<td>1,213,100,426</td>
+                                <td>806,475,213</td>
+                                <td>406,625,213</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><a href="customer_detail.html">Công ty Phú An</a></td>
+                                <td>
+                                    <img src="dist/img/amazon.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+								<td>813,100,426</td>
+                                <td>606,475,213</td>
+                                <td>206,625,213</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><a href="customer_detail.html">Công ty Invico - Sắn</a></td>
+                                <td>
+                                    <img src="dist/img/viettel.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+								<td>1,806,475,213</td>
+                                <td>1,806,475,213</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><a href="customer_detail.html">Công ty 2B - Anh Tuấn</a></td>
+                                <td>
+                                    <img src="dist/img/2b.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+								<td>813,100,426</td>
+                                <td>506,475,213</td>
+                                <td>306,625,213</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><a href="customer_detail.html">Công ty Tương Lai</a></td>
+                                <td>
+                                    <img src="dist/img/amazon.png" style="height: 80px; width: 80px;" alt="">
+                                </td>
+								<td>2,713,100,426</td>
+                                <td>2,406,475,213</td>
+                                <td>306,625,213</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>			
+		</div>
+	  </div>
 
     </section>
     <!-- /.content -->
@@ -825,6 +903,9 @@
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
 <script src="../bower_components/Chart.js/Chart.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- bootstrap datepicker -->
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -844,7 +925,7 @@
   var salesChart       = new Chart(salesChartCanvas);
 
   var salesChartData = {
-    labels  : ['1/12 - 8/12', '9/12 - 15/12', '16/12 - 23/12', '24/12 - 31/12'],
+    labels  : ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12',],
     datasets: [
       {
         label               : 'Tuần 3 Tháng 12',
@@ -854,7 +935,7 @@
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        data                : [1,1.5,2.5,0.3]
+        data                : [1,1.5,2.5,0.3,2.5,1.5,0.2,0.3,0.5,0.7,1.9,2.2]
       }
     ]
   };
@@ -908,12 +989,22 @@
 
 <script>
 $("#datepicker").datepicker( {
-    format: "mm/yyyy",
-    startView: "year", 
-    minViewMode: "year",
+    format: " yyyy",
+    startView: "years", 
+    minViewMode: "years",
 	autoclose: true
 });
-
+$(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+        'paging': true,
+        'lengthChange': false,
+        'searching': false,
+        'ordering': true,
+        'info': true,
+        'autoWidth': false
+    })
+})
 </script>
 </body>
 </html>

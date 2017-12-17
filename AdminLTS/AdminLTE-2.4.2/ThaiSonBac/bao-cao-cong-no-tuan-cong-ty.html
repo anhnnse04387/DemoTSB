@@ -7,6 +7,8 @@
   <title>Thái Sơn Bắc - TSB</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css'>
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -22,6 +24,36 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <style>
+	.week-select .input-group-addon {
+	  cursor: pointer;
+	}
+
+	.datepicker table tr td.week{
+		background: #e9e9e9;
+	}
+
+	.datepicker table tr td.week-active,
+	.datepicker table tr td.week-active:hover,
+	.datepicker table tr td.week-active td.week,
+	.datepicker table tr td.week-active td.week:hover,
+	.datepicker table tr td.week-active td:hover{
+		background-color: #006dcc;
+		background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+		background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+		background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+		background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+		background-image: linear-gradient(top, #0088cc, #0044cc);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+		border-color: #0044cc #0044cc #002a80;
+		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		color: #fff;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	}
+  </style>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -522,7 +554,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>BÁO CÁO CÔNG NỢ THEO THÁNG </h1>
+      <h1>BÁO CÁO CÔNG NỢ THEO TUẦN </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Báo cáo công nợ</a></li>
       </ol>
@@ -534,20 +566,18 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">CÔNG NỢ KHÁCH HÀNG</h3>
+              <h1 class="box-title">CÔNG NỢ CÔNG TY</h1>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
 				
-				  <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px">
-					<label style="padding-right: 10px; padding-top: 7px;">Từ Tháng: </label>
-					<div class="input-group date col-md-4">
-						<div class="input-group-addon">
-							<i class="fa fa-calendar"></i>
-						</div>
-						<input type="text" class="form-control pull-right" id="datepicker" value="12/2017">
+				  <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
+					<label style="padding-right: 10px; padding-top: 7px;">Từ Ngày: </label>
+					<div class="input-group week-select col-md-4"> 
+						<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+						<input type="text" class="form-control" name="week">
 					</div>
 				  </div>	
                   
@@ -568,7 +598,7 @@
               <div class="row">
                 <div class="col-sm-4 col-xs-6">
                   <div class="description-block border-right" style="margin-top: 27px;">
-                    <h5 class="description-header">5,306,475,213</h5>
+                    <h5 class="description-header">4,206,475,213</h5>
                     <span class="description-text">TỔNG CÔNG NỢ</span>
                   </div>
                   <!-- /.description-block -->
@@ -578,7 +608,7 @@
                   <div class="description-block border-right">
                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 30%</span>
                     <h5 class="description-header">1,206,475,213</h5>
-                    <span class="description-text">CÔNG NỢ TĂNG TRONG THÁNG</span>
+                    <span class="description-text">CÔNG NỢ TĂNG TRONG TUẦN</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -832,6 +862,69 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 
+<script src='dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
+<script src='dist/js/pages/cong-no/moment.js'></script>
+
+<script>
+var applyStyle = function(e, cssClass){
+    var tr = e.parent('tr');
+    var index = e.index();
+    
+    e.addClass(cssClass);
+    var daysRemainingInWeek = 6 - index;
+    var carryOver = 6 - daysRemainingInWeek;
+    
+    for (var i=0; i<=daysRemainingInWeek; i++){
+        var pos = index + i;
+        tr.find('td:eq('+pos+')').addClass(cssClass);
+    }
+    
+    if (carryOver > 0) {
+        var nextTr = tr.next('tr');
+        for (var i=0; i<carryOver; i++){
+            nextTr.find('td:eq('+i+')').addClass(cssClass);
+        }
+    }
+};
+
+var highlightRange = function(e){
+    var input = e.currentTarget;
+
+    $('.week-active', '.datepicker-days').removeClass('week-active');
+    var thisDay = $('td.active.day', '.datepicker-days');
+    applyStyle(thisDay, 'week-active');
+
+    var date = new Date(e.date);
+    var start_date = moment(date);
+    var end_date = moment(date).add(6, 'days');
+    var friendly_string = start_date.format('DD-MM-YYYY') + ' tới ngày '
+        + end_date.format('DD-MM-YYYY');
+
+    $(input).val(friendly_string);
+};
+
+highlightRange({ currentTarget: document.getElementsByName('week')[0], date: new Date() });
+
+$('input[name=week]').datepicker( {
+    format: "mm-dd-yyyy",
+    autoclose: true,
+    orientation: 'top auto'
+}).on('show', function(e){
+    var td = $('td', '.datepicker-days');
+    td.mouseover(function(){
+        applyStyle($(this), 'week');
+    }).mouseout(function(){
+        $('.week', '.datepicker-days').removeClass('week');
+    });
+
+    highlightRange(e);
+}).on('hide', function(e){
+    highlightRange(e);
+    console.log($(this).val());
+});
+
+$('.input-group-addon', '.week-select').click(function(){ $('input[name=week]').datepicker('show'); });
+</script>
 
 <script>
   // -----------------------
@@ -844,7 +937,7 @@
   var salesChart       = new Chart(salesChartCanvas);
 
   var salesChartData = {
-    labels  : ['1/12 - 8/12', '9/12 - 15/12', '16/12 - 23/12', '24/12 - 31/12'],
+    labels  : ['18/12', '19/12', '20/12', '21/12', '22/12', '23/12', '24/12'],
     datasets: [
       {
         label               : 'Tuần 3 Tháng 12',
@@ -854,7 +947,7 @@
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        data                : [1,1.5,2.5,0.3]
+        data                : [0.5,0.5,1.5,0.3,0.2,0.3,0.9]
       }
     ]
   };
@@ -897,23 +990,13 @@
     // Boolean - whether to make the chart responsive to window resizing
     responsive              : true
   };
-  
+
   // Create the line chart
   salesChart.Line(salesChartData, salesChartOptions);
-	
+
   // ---------------------------
   // - END MONTHLY SALES CHART -
   // ---------------------------
-</script>
-
-<script>
-$("#datepicker").datepicker( {
-    format: "mm/yyyy",
-    startView: "year", 
-    minViewMode: "year",
-	autoclose: true
-});
-
 </script>
 </body>
 </html>
