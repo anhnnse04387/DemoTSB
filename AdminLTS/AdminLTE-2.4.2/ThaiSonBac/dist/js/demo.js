@@ -53,40 +53,9 @@ function openNewTab() {
 
 function create() {
     $('#print').removeClass('noDisplay');
-    $('#editStatus').removeClass('noDisplay');
     $('#saveDraft').addClass('noDisplay');
     $('#preview').addClass('noDisplay');
     swal("Successfully", "You created an order with id - O1349", "success");
-}
-
-function editStatus() {
-    $('#status').removeClass('editable');
-    $('#editStatus').addClass('noDisplay');
-    $('#status').prop('disabled', false);
-}
-
-function editBillId() {
-    $('#billId').removeClass('noBorder');
-    $('#billId').removeClass('editable');
-    $('#editBillId').addClass('noDisplay');
-    $('#billId').prop('disabled', false);
-
-}
-
-function editDayout() {
-    $('#dayout').removeClass('noBorder');
-    $('#dayout').removeClass('editable');
-    $('#editDayout').addClass('noDisplay');
-    $('#dayout').prop('disabled', false);
-
-}
-
-function editDayfrom() {
-    $('#dayfrom').removeClass('noBorder');
-    $('#dayfrom').removeClass('editable');
-    $('#editDayfrom').addClass('noDisplay');
-    $('#dayfrom').prop('disabled', false);
-
 }
 
 function configCkAll() {
