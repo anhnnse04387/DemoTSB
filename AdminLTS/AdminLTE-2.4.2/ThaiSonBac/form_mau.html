@@ -27,6 +27,13 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+  <style>
+	.custom-btn {
+		padding: 10px 5px;
+		min-width: 60px;
+		height: 40px;
+	}
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -360,27 +367,37 @@
             <!-- /.box-header -->
             <div class="box-body pad">
 			  <div>
-					<a class="btn btn-app">
-						<i class="fa fa-ban"></i> Hủy
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+						<i class="fa fa-ban text-red"></i>
 					</a>
-					<a class="btn btn-app">
-						<i class="fa fa-undo"></i> Quay Lại
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+						<i class="fa fa-arrow-circle-left text-blue"></i>
 					</a>
-					<a class="btn btn-app">
-						<i class="fa fa-edit"></i> Tạo Mới
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+						<i class="fa fa-edit text-black"></i>
 					</a>
-					<a class="btn btn-app">
-						<i class="fa fa-save"></i> Lưu
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+						<i class="fa fa-save text-black"></i>
 					</a>
-					<a class="btn btn-app">
-						<i class="fa fa-search"></i> Xem Trước
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+						<i class="fa fa-search text-light"></i>
 					</a>
-					<a class="btn btn-app">
-						<i class="fa fa-thumbs-o-up"></i> Xử Lý
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+						<i class="fa fa-check-circle text-green"></i>
 					</a>
-					<a class="btn btn-app">
-						<i class="fa fa-print"></i> In
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+						<i class="fa fa-print text-black"></i>
 					</a>
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+						<i class="fa fa-file-excel-o text-green"></i>
+					</a>
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+						<i class="fa fa-file-pdf-o text-red"></i>
+					</a>
+					<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+						<i class="fa fa-external-link text-black"></i>
+					</a>
+					
 			  </div>	
               <form>
                 <textarea class="textarea" placeholder="Place some text here"
@@ -610,5 +627,10 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 </body>
 </html>
