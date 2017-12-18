@@ -17,7 +17,6 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -26,11 +25,13 @@
         <![endif]-->
         <style>
             #mainTable {
-                background-color: palegoldenrod;
+                background-color: rgb(240, 240, 240);
             }
             #mainTable thead tr th {
                 vertical-align: middle !important;
                 text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
             }
             #mainTable tbody td:nth-child(6),#mainTable tbody td:nth-child(7),
             #mainTable tbody td:nth-child(9) {
@@ -49,39 +50,20 @@
                 width: 150px;
             }
             .customTable .col2{
-                width: 450px;
+                width: 350px;
             }
             .customTable .col3{
                 width: 200px;
             }
             .customTable .col4{
-                width: 130px;
+                width: 250px;
             }
             .noDisplay {
                 display: none !important;
             }
-            .noBorder {
-                border: none !important;
-            }
-            .editable {
-                background-color: white !important;
-            }
-            .btn:hover {
-                -webkit-transform: scale(1.1);
-                -moz-transform: scale(1.1);
-                -o-transform: scale(1.1);
-            }
-            .btn {
-                -webkit-transform: scale(0.8);
-                -moz-transform: scale(0.8);
-                -o-transform: scale(0.8);
-                -webkit-transition-duration: 0.5s;
-                -moz-transition-duration: 0.5s;
-                -o-transition-duration: 0.5s;
-            }
         </style>
         <!-- Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -572,9 +554,6 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        <p style="margin-left: 9px;">Phiếu xuất hàng</p>
-                    </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
                         <li><a href="#">Phiếu Xuất Hàng</a></li>
@@ -583,20 +562,18 @@
                 </section>
 
                 <!-- Main content -->
-                <section class="invoice">
+                <section class="invoice" style="margin-top: 35px;">
                     <!-- title row -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Thai Son Bac, Inc.
-                            </h2>
+                            <h2 class="page-header">Phiếu xuất hàng</h2>
                         </div>
                         <!-- /.col -->
                     </div>
                     <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-12 invoice-col">
-                            <table style="border: none;" class="customTable">
+                            <table style="border: none; margin-left: 36px;" class="customTable">
                                 <tr>
                                     <td class="col1"><b>Đơn vị</b></td>
                                     <td class="col2"><select class="form-control" onchange="lookup(); return false;" id="donVi">
@@ -606,13 +583,7 @@
                                         </select></td>
                                     <td class="col3"><b>Lô số</b>
                                     </td>
-                                    <td class="col4"><input type="text" class="form-control noBorder editable" 
-                                                            value="O1349" disabled id="billId">
-                                    </td>
-                                    <td><a href="#" class="btn btn-primary a-btn-slide-text" onclick="editBillId(); return false;" id="editBillId">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
+                                    <td class="col4"><input type="text" class="form-control" value="O1349">
                                     </td>
                                 </tr>
                                 <tr>
@@ -620,14 +591,7 @@
                                     <td class="col2"><input type="text" class="form-control" id="AddressDeliver"></td>
                                     <td><b>Xuất ngày</b></td>
                                     <td>
-                                        <input type="text" class="form-control noBorder editable" 
-                                               value="18/12/2017" disabled id="dayout">
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text" id="editDayout" onclick="editDayout(); return false;">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
+                                        <input type="text" class="form-control datepicker">
                                     </td>
                                 </tr>
                                 <tr>
@@ -635,14 +599,7 @@
                                     <td class="col2"><input type="text" class="form-control" id="AddressContact"></td>
                                     <td><b>Mức giá áp dụng từ ngày</b></td>
                                     <td>
-                                        <input type="text" class="form-control noBorder editable"
-                                               value="18/11/2017" disabled id="dayfrom">
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text" id="editDayfrom" onclick="editDayfrom(); return false;">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
+                                        <input type="text" class="form-control datepicker">
                                     </td>
                                 </tr>
                                 <tr>
@@ -650,19 +607,13 @@
                                     <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
                                     <td><b>Trạng thái</b></td>
                                     <td>
-                                        <select class="form-control editable" disabled id="status">
+                                        <select class="form-control">
                                             <option>BẢN NHÁP</option>
                                             <option>ĐANG XỬ LÝ</option>
                                             <option>ĐÃ HỦY</option>
                                             <option>HOÀN THÀNH</option>
                                             <option>TỪ CHỐI</option>
                                         </select>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary a-btn-slide-text noDisplay" id="editStatus" onclick="editStatus(); return false;">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            <span><strong>Edit</strong></span>            
-                                        </a>
                                     </td>
                                 </tr>
                             </table>
@@ -696,13 +647,16 @@
                                         <td>ABN 52c</td>
                                         <td>15A</td>
                                         <td><input type="text" class="form-control" id="cai_1" style="text-align: right;"
-                                                   onkeyup="configSp('1'); return false;"/></td>
+                                                   onkeyup="configSp('1');
+                                                           return false;"/></td>
                                         <td><input type="text" class="form-control" id="thung_1" 
-                                                   title="20 cái/1" style="text-align: right;" onkeyup="configThung('1'); return false;"/></td>
+                                                   title="20 cái/1" style="text-align: right;" onkeyup="configThung('1');
+                                                           return false;"/></td>
                                         <td><output id="dongia_1">590000</output></td>
                                         <td><output id="tien_chua_ck_1"></output></td>
                                         <td><input type="text" class="form-control" id="ck1" style="text-align: right;"
-                                                   onkeyup="configCk('1'); return false;"/></td>
+                                                   onkeyup="configCk('1');
+                                                           return false;"/></td>
                                         <td><output id="tien_da_ck_1"></output></td>
                                     </tr>
                                     <tr>
@@ -712,55 +666,55 @@
                                         <td><input type="text" class="form-control" id="cai_2" style="text-align: right;"
                                                    onkeyup="configSp('2'); return false;"/></td>
                                         <td><input type="text" class="form-control" id="thung_2" 
-                                                   style="text-align: right;" title="13 cái/1" onkeyup="configThung('2'); return false;"/></td>
+                                                   style="text-align: right;" title="13 cái/1" onkeyup="configThung('2');
+                                                           return false;"/></td>
                                         <td><output id="dongia_2">45000000</output></td>
                                         <td><output id="tien_chua_ck_2"></output></td>
                                         <td><input type="text" class="form-control" id="ck2" style="text-align: right;"
                                                    onkeyup="configCk('2'); return false;"/></td>
                                         <td><output id="tien_da_ck_2"></output></td>
                                     </tr>
-                                    <tr style="background-color: #87CEEB;">
+                                    <tr style="background-color: #3c8dbc;color: #fff;">
                                         <td></td>
-                                        <td></td>
-                                        <td><b>Cộng</b></td>
+                                        <td colspan="2"><b>Cộng</b></td>
                                         <td style="text-align: right;"><output id="cai"></output></td>
                                         <td style="text-align: right;"><output id="thung"></output></td>
                                         <td></td><td></td><td></td>
                                         <td style="text-align: right;"><output id="tien_chua_ck"></output></td>
                                     </tr>
-                                    <tr style="background-color: #87CEEB;">
+                                    <tr style="background-color: #3c8dbc;color: #fff;">
+                                        <td></td>
+                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
-                                        <td></td>
+                                        <td></td><td></td>
                                         <td><input type="text" class="form-control" id="ck" style="text-align: right; float: right;"
                                                    onkeyup="configCkAll(); return false;"/></td>
-                                        <td></td><td></td><td></td>
                                         <td style="text-align: right;"><output id="tien_ck"></output></td>
                                     </tr>
-                                    <tr style="background-color: #87CEEB;">
+                                    <tr style="background-color: #3c8dbc;color: #fff;">
                                         <td></td>
-                                        <td></td>
-                                        <td><b>Còn lại</b></td>
+                                        <td colspan="2"><b>Còn lại</b></td>
                                         <td></td>
                                         <td></td>
                                         <td></td><td></td><td></td>
                                         <td style="text-align: right;"><output id="con_lai"></output></td>
                                     </tr>
-                                    <tr style="background-color: #87CEEB;">
+                                    <tr style="background-color: #3c8dbc;color: #fff;">
+                                        <td></td>
+                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="vertical-align: middle;"><b>VAT (%)</b></td>
-                                        <td></td>
-                                        <td><input type="text" class="form-control" id="vat" style="text-align: right; float: right;"
-                                                   onkeyup="configCkAll(); return false;"/></td>
-                                        <td></td><td></td><td></td>
+                                        <td></td><td></td>
+                                        <td>
+                                            <input type="text" class="form-control" id="vat" style="text-align: right; float: right;"
+                                                   onkeyup="configCkAll(); return false;"/>
+                                        </td>
                                         <td style="text-align: right;"><output id="tien_vat"></output></td>
                                     </tr>
-                                    <tr style="background-color: #87CEEB;">
+                                    <tr style="background-color: #3c8dbc;color: #fff;">
                                         <td></td>
-                                        <td></td>
-                                        <td><b>Tổng cộng:</b></td>
+                                        <td colspan="2"><b>Tổng cộng:</b></td>
                                         <td></td>
                                         <td></td>
                                         <td></td><td></td><td></td>
@@ -774,15 +728,16 @@
                     <!-- /.row -->
 
                     <!-- this row will not appear when printing -->
-                    <div class="row no-print">
+                    <div class="row no-print" style="margin-top: 20px;">
                         <div class="col-xs-12">
                             <a href="invoice-print.html" target="_blank" class="btn btn-default noDisplay" id="print" onclick="openNewTab(); return false;"><i class="fa fa-print"></i> In</a>
                             <button type="button" class="btn btn-success pull-right" onclick="create(); return false;" id="btnCreate"><i class="fa fa-credit-card"></i> Lập phiếu
                             </button>
-                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;" id="saveDraft">
+                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 20px;" id="saveDraft">
                                 <i class="fa fa-download"></i> Lưu bản nháp
                             </button>
-                            <button type="button" class="btn btn-info pull-right" style="margin-right: 5px;" id="preview" onclick="openNewTab(); return false;">
+                            <button type="button" class="btn btn-info pull-right" style="margin-right: 20px;" id="preview" onclick="openNewTab();
+                                    return false;">
                                 <i class="fa fa-file-pdf-o"></i> Xem trước
                             </button>
                         </div>
@@ -1000,6 +955,15 @@
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="dist/js/bootstrap-datepicker.js"></script>
+        <script src="dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+                                $(document).ready(function () {
+                                    $('.datepicker').datepicker({
+                                        format: 'dd/mm/yyyy'
+                                    });
+                                });
+        </script>
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
