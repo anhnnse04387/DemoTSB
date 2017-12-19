@@ -14,6 +14,10 @@ function redirect() {
     }
 }
 
+function checkQtt() {
+    
+}
+
 function autoFillCustomer() {
     if ($("#donVi").val() === '1') {
         document.getElementById("debt").value = "10298157979";
@@ -55,7 +59,26 @@ function create() {
     $('#print').removeClass('noDisplay');
     $('#saveDraft').addClass('noDisplay');
     $('#preview').addClass('noDisplay');
-    swal("Successfully", "You created an order with id - O1349", "success");
+    swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+            if (result.value) {
+                swal({
+                    title: 'Successfully!',
+                    text: 'You created an order with id - O1349',
+                    imageUrl: 'dist/img/Noti.png',
+                    imageWidth: 400,
+                    imageHeight: 300,
+                    imageAlt: 'Custom image',
+                    animation: false
+                })
+            }
+        });
 }
 
 function configCkAll() {
