@@ -171,7 +171,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Tab Quản Lý</li>
-        <li>
+        <li class="menu-open">
           <a href="index.html">
             <i class="fa fa-dashboard"></i> <span>Trang Chủ</span>
           </a>
@@ -358,7 +358,7 @@
 
             <div class="info-box-content">
               <a href="#"><strong><span class="info-box-text">DOANH THU</span></strong></a>
-              <span class="info-box-number">1,241,527,000 VND</span>
+              <span class="info-box-number">60,527,000 VND</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -401,7 +401,7 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">CHỈ TIÊU HOÀN THÀNH</h3>
+				  <h3 class="box-title">CHỈ TIÊU HOÀN THÀNH TRONG THÁNG</h3>
 				  <div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 					</button>
@@ -412,7 +412,7 @@
 				<div class="col-md-12">
 					<div class="col-md-6">
 						<div class="progress-group">
-							<span class="progress-text">Tổng lượng hàng bán ra</span>
+							<span class="progress-text">Lượng hàng bán ra</span>
 							<span class="progress-number"><b>160</b>/200</span>
 
 							<div class="progress sm">
@@ -421,11 +421,11 @@
 						</div>
 						
 						<div class="progress-group">
-							<span class="progress-text">Tổng doanh thu</span>
-							<span class="progress-number"><b>1,241,527,000 </b>/1,500,000,000</span>
+							<span class="progress-text">Doanh thu</span>
+							<span class="progress-number"><b>60,527,000 </b>/70,000,000</span>
 
 							<div class="progress sm">
-								<div class="progress-bar progress-bar-red" style="width: 82.7%"></div>
+								<div class="progress-bar progress-bar-red" style="width: 86.4%"></div>
 							</div>
 						</div>
 					</div>
@@ -440,11 +440,11 @@
 						</div>
 						
 						<div class="progress-group">
-							<span class="progress-text">Feedback tốt</span>
-							<span class="progress-number"><b>90</b>/100</span>
+							<span class="progress-text">Số đơn hàng</span>
+							<span class="progress-number"><b>4</b>/5</span>
 
 							<div class="progress sm">
-							  <div class="progress-bar progress-bar-yellow" style="width: 90%"></div>
+							  <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
 							</div>
 						</div>
 					</div>
@@ -490,7 +490,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">DOANH THU TRONG 2 NĂM</h3>
+              <h3 class="box-title">SO SÁNH HAI TUẦN TỪ 18-31/12</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -510,13 +510,10 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
+
                 <div class="col-md-6">
-                  <div class="col-sm-offset-3">
-					<div style="width: 13px; height: 13px; background-color: rgb(138,184,220); display: inline-block;"></div>
-                    <strong>Doanh Thu Năm 2016</strong>
-					<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgb(161,227,194); display: inline-block;"></div>
-					<strong>Doanh Thu Năm 2017</strong>
-                  </div>
+				  <h4><strong>DOANH SỐ BÁN HÀNG</strong></h4>
+                  
 				  
                   <div class="chart">
                     <!-- Sales Chart Canvas -->
@@ -527,17 +524,11 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-md-6">
-					<div class="col-sm-offset-3">
-					<div style="width: 13px; height: 13px; background-color: rgb(138,184,220); display: inline-block;"></div>
-                    <strong>Doanh Thu Năm 2016</strong>
-					<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgb(161,227,194); display: inline-block;"></div>
-					<strong>Doanh Thu Năm 2017</strong>
-                  </div>
-				  
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="lineChart2" style="height: 300px;"></canvas>
-                  </div>
+					<h4><strong>SỐ ĐƠN HÀNG</strong></h4>				  
+					<div class="chart">
+						<!-- Sales Chart Canvas -->
+						<canvas id="lineChart2" style="height: 300px;"></canvas>
+					</div>
                   <!-- /.chart-responsive -->
                 </div>
                 <!-- /.col -->
@@ -545,6 +536,14 @@
               <!-- /.row -->
             </div>
             <!-- ./box-body -->
+			<div class="box-footer">
+			<div class="col-sm-offset-4">
+				<div style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+                <strong>Tuần Từ 18/12 - 24/12</strong>
+				<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+				<strong>Tuần Từ 25/12 - 31/12</strong>
+				</div>
+			</div>
           </div>
           <!-- /.box -->
         </div>
@@ -558,31 +557,27 @@
         <div class="col-md-8">
 			<div class="box box-success">
 				<div class="box-header with-border">
-					<h3 class="box-title">TOP 5 SẢN PHẨM BÁN CHẠY NHẤT</h3>
+					<h3 class="box-title">TOP 10 SẢN PHẨM BÁN CHẠY NHẤT</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 					</div>
 				</div>
 				<div class="box-body">
-				  <div class="chart">
-					<canvas id="barChart" style="height:400px"></canvas>
-				  </div>
-					<div class="col-sm-offset-1">
-						<div style="width: 13px; height: 13px; background-color: rgba(210, 214, 222, 1); display: inline-block;"></div>
-						<strong>EBS 54c	15A - 30mA</strong>
-						<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(0,166,90,0.9); display: inline-block;"></div>
-						<strong>AN-06D3-06H - 630A</strong>
-						<div  class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(60,141,188,0.9); display: inline-block;"></div>
-						<strong>RKN-b 1P+N - 30mA/40A</strong>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="chart">
+								<canvas id="barChart" style="height:400px"></canvas>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="chart">
+								<canvas id="barChart2" style="height:400px"></canvas>
+							</div>
+						</div>
 					</div>
-					
-					<div class="col-sm-offset-1">
-						<div style="width: 13px; height: 13px; background-color: rgba(228, 21, 21, 0.9); display: inline-block;"></div>
-						<strong>BKS-A 10kA 4P - 220V</strong>
-						<div class="col-sm-offset-1" style="margin-left: 42px; width: 13px; height: 13px; background-color: rgba(231, 231, 8, 0.84); display: inline-block;"></div>
-						<strong>MC-9a - 380V</strong>
-					</div>
+				  
 				</div>
             <!-- /.box-body -->
 			</div>	
@@ -783,7 +778,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="../https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -808,30 +803,55 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script>
+<script>	
   $(function () {
-      var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    var areaChartData = {
+      labels  : ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'],
       datasets: [
         {
           label               : 'Electronics',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
+          fillColor           : 'rgba(15,224,15,1)',
+          strokeColor         : 'rgba(15,224,15,1)',
+          pointColor          : 'rgba(15,224,15,1)',
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : [8, 9, 0, 0, 2, 3, 4]
         },
         {
           label               : 'Digital Goods',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
+          fillColor           : 'rgba(221, 41, 13, 1)',
+          strokeColor         : 'rgba(221, 41, 13, 1)',
+          pointColor          : 'rgba(221, 41, 13, 1)',
+          pointStrokeColor    : 'rgba(221, 41, 13, 1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+          data                : [7, 4, 5, 7, 0, 0, 0]
+        }
+      ]
+    }
+	var areaChartData2 = {
+      labels  : ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'],
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(15,224,15,1)',
+          strokeColor         : 'rgba(15,224,15,1)',
+          pointColor          : 'rgba(15,224,15,1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [1, 1, 0, 0, 2, 2, 1]
+        },
+        {
+          label               : 'Digital Goods',
+          fillColor           : 'rgba(221, 41, 13, 1)',
+          strokeColor         : 'rgba(221, 41, 13, 1)',
+          pointColor          : 'rgba(221, 41, 13, 1)',
+          pointStrokeColor    : 'rgba(221, 41, 13, 1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [2, 4, 3, 2, 0, 0, 0]
         }
       ]
     }
@@ -847,9 +867,9 @@
       //Boolean - Whether to show horizontal lines (except X axis)
       scaleShowHorizontalLines: true,
       //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
+      scaleShowVerticalLines  : false,
       //Boolean - Whether the line is curved between points
-      bezierCurve             : true,
+      bezierCurve             : false,
       //Number - Tension of the bezier curve between points
       bezierCurveTension      : 0.3,
       //Boolean - Whether to show a dot for each point
@@ -886,17 +906,48 @@
     var lineChart                = new Chart(lineChartCanvas)
     var lineChartOptions         = areaChartOptions
     lineChartOptions.datasetFill = false
-    lineChart.Line(areaChartData, lineChartOptions)
+    lineChart.Line(areaChartData2, lineChartOptions)
 	
 	//-------------
     //- BAR CHART -
     //-------------
+	
+	var barChartData = {
+      labels  : ['SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1'],
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(15,224,15,1)',
+          strokeColor         : 'rgba(15,224,15,1)',
+          pointColor          : 'rgba(15,224,15,1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [8, 9, 0, 0, 2, 3, 4, 2, 10, 1]
+        }
+      ]
+    }
+	
+	var barChartData2 = {
+      labels  : ['SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1', 'SP1'],
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(15,224,15,1)',
+          strokeColor         : 'rgba(15,224,15,1)',
+          pointColor          : 'rgba(15,224,15,1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [8, 9, 0, 0, 2, 3, 4, 2, 10, 1]
+        }
+      ]
+    }
+	
     var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
+	var barChartCanvas2                   = $('#barChart2').get(0).getContext('2d')
     var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartData
-    barChartData.datasets[1].fillColor   = '#00a65a'
-    barChartData.datasets[1].strokeColor = '#00a65a'
-    barChartData.datasets[1].pointColor  = '#00a65a'
+	var barChart2                         = new Chart(barChartCanvas2)
     var barChartOptions                  = {
       //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
       scaleBeginAtZero        : true,
@@ -918,15 +969,15 @@
       barValueSpacing         : 5,
       //Number - Spacing between data sets within X values
       barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
       //Boolean - whether to make the chart responsive
       responsive              : true,
       maintainAspectRatio     : true
+	  
     }
-
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
+	barChart2.Bar(barChartData2, barChartOptions)
+	
   })
 </script>
 </body>
