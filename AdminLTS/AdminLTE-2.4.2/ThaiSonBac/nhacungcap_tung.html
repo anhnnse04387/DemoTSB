@@ -16,56 +16,114 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
+        .box-body-custom-detail-custom {
+            font-size: 22px;
+        }
+
         th {
             color: white;
             background-color: #f88457;
             font-weight: bold;
             font-size: 18px;
+        }
+
+        th,
+        td {
             text-align: center;
         }
 
         td {
             font-size: 16px;
-            text-align: center;
         }
-        tr td:nth-child(3){
-            text-align: left;
+        /* helpers/align.css */
+
+        .align {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        tr td:nth-child(5){
-            text-align: right;
+        /* layout/base.css */
+
+         :root {
+            --bodyFontFamily: sans-serif;
+            --bodyLineHeight: 1.5;
         }
 
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--bodyFontFamily);
+            line-height: var(--bodyLineHeight);
+            margin: 0;
+            min-height: 100%;
+        }
+        /* modules/chart.css */
+
+         :root {
+            --chartMarginBottom: 1.5rem;
+
+            --chartAxisColor: #e6edf4;
+            --chartAxisFontSize: 0.625rem;
+            --chartAxisStrokeWidth: 0.125rem;
+
+            --chartLineColor: #4682b4;
+            --chartLineStrokeWidth: 0.125rem;
+        }
+
+        .chart {
+            margin-bottom: var(--chartMarginBottom);
+        }
+
+        .chart__axis {
+            font-size: var(--chartAxisFontSize);
+        }
+
+        .chart__axis path,
+        .chart__axis line {
+            fill: none;
+            stroke: var(--chartAxisColor);
+            stroke-width: var(--chartAxisStrokeWidth);
+        }
+
+        .chart__line {
+            fill: none;
+            stroke: var(--chartLineColor);
+            stroke-width: var(--chartLineStrokeWidth);
+        }
+        /* image.css */
+
+        svg {
+            height: auto;
+            max-width: 100%;
+            vertical-align: middle;
+        }
     </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
         <header class="main-header">
-            <!-- Logo -->
             <a href="index.html" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
                     <b>A</b>LT</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg">
+                <span class="logo-md">
                     <b>Admin</b>LTE</span>
             </a>
-
             <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
@@ -141,23 +199,32 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Nguyễn Mạnh Cường</span>
+                                <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Alexander Pierce</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- User image -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+                                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                     <p>
-                                        Nguyễn Mạnh Cường
-                                        <small>Kế toán</small>
+                                        Alexander Pierce - Web Developer
+                                        <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
-                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
+                                    </div>
+                                </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
@@ -169,12 +236,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar">
-                                <i class="fa fa-gears"></i>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -182,11 +243,11 @@
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
+            <section class="sidebar" style="height: auto;">
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>Nguyễn Mạnh Cường</p>
@@ -207,7 +268,7 @@
                 </form>
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu" data-widget="tree">
+                <ul class="sidebar-menu tree" data-widget="tree">
                     <li class="header">Tab Quản Lý</li>
                     <li>
                         <a href="index.html">
@@ -257,6 +318,21 @@
                                     </span>
                                 </a>
                             </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-cubes"></i>
+                                    <span>Hướng dẫn</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="workflow.html">
+                                            <i class="fa fa-hand-o-right"></i> Luồng Xử Lí</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
@@ -270,11 +346,11 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="../pages/tables/simple.html">
+                                <a href="price.html">
                                     <i class="fa fa-dollar"></i> Giá Hàng Hóa</a>
                             </li>
                             <li>
-                                <a href="../pages/tables/data.html">
+                                <a href="tonKho.html">
                                     <i class="fa fa-dropbox"></i> Hàng Tồn Kho</a>
                             </li>
                         </ul>
@@ -290,15 +366,15 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="../pages/tables/simple.html">
-                                    <i class="fa fa-hand-o-right"></i> Tạo Công Nợ</a>
+                                <a href="xu_ly_cong_no.html">
+                                    <i class="fa fa-hand-o-right"></i> Xử Lý Công Nợ</a>
                             </li>
                             <li>
-                                <a href="../pages/tables/simple.html">
+                                <a href="noKhachHang.html">
                                     <i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a>
                             </li>
                             <li>
-                                <a href="../pages/tables/data.html">
+                                <a href="noCungCap.html">
                                     <i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a>
                             </li>
                         </ul>
@@ -339,75 +415,17 @@
                         <ul class="treeview-menu">
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-line-chart"></i> Doanh Thu
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Doanh Số Ngày</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Doanh Số Tuần</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Doanh Số Tháng</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Doanh Số Năm</a>
-                                    </li>
-                                </ul>
+                                    <i class="fa fa-line-chart"></i> Doanh Thu</a>
                             </li>
 
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-line-chart"></i> Công Nợ Khách Hàng
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Công Nợ Theo Tuần</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Công Nợ Theo Tháng</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Công Nợ Theo Năm</a>
-                                    </li>
-                                </ul>
+                                    <i class="fa fa-line-chart"></i> Công Nợ Khách Hàng</a>
                             </li>
 
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Công Nợ Theo Tuần</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Công Nợ Theo Tháng</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-hand-o-right"></i> Công Nợ Theo Năm</a>
-                                    </li>
-                                </ul>
+                                    <i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp</a>
                             </li>
                         </ul>
                     </li>
@@ -425,7 +443,10 @@
                                 <a href="#">
                                     <i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
                             </li>
-
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> Danh Sách Khách Hàng</a>
+                            </li>
                             <li class="treeview">
                                 <a href="#">
                                     <i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
@@ -455,117 +476,394 @@
             <!-- /.sidebar -->
         </aside>
         <div class="content-wrapper">
-            <section class="content-header">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="index.html">
-                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
-                    </li>
-                    <li>
-                        <a href=""> Phiếu xuất hàng</a>
-                    </li>
-                    <li>
-                        <a href="">
-                            </i> Phiếu đang soạn</a>
-                    </li>
-                </ol>
-            </section>
-            <section class="content">
+            <section class="container-fluid">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-md-12">
                         <div class="box">
                             <div class="box-header">
-                                <h3>DANH SÁCH PHIẾU ĐANG SOẠN</h3>
+                                <div class="container">
+                                    <div style=" height : 50px;"></div>
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-1">
+                                            <img src="dist/img/tbd.jpg" class="form-control" style="height: 80px; width: 100px; display:inline" />
+                                        </div>
+                                        <p class="col-md-4">
+                                            <span style="font-weight: bold; font-size: 50px; padding-left: 20px;">HĐ T107-1</span>
+                                        </p>
+                                        <div class="col-md-4"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                            <div style=" height : 80px;"></div>
+                            <div class="box-body box-body-custom-detail-custom">
+                                <div class="row center-block">
+                                    <div class="form-group col-md-1"></div>
+                                    <div class="form-group col-md-2">
+                                        <i class="fa fa-codepen"></i>
+                                        <label for="inputdefault">Mã khách hàng:</label>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <span>KH_0905</span>
+                                    </div>
+                                    <div class="form-group col-md-1"></div>
+                                    <div class="form-group col-md-2">
+                                        <i class="fa fa-bank"></i>
+                                        <label for="inputdefault">Mã số thuế:</label>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <span>65144</span>
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row center-block">
+                                    <div class="form-group col-md-1"></div>
+                                    <div class="form-group col-md-2">
+                                        <i class="fa fa-address-book"></i>
+                                        <label for="inputdefault">Địa chỉ: </label>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <span>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="fa fa-briefcase"></i>
+                                        <label for="inputdefault">Ngày tạo:</label>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <span>20-12-2017</span>
+                                    </div>
+                                    <div class="form-group col-md-1"></div>
+                                </div>
+
+                                <div class="row center-block">
+                                    <div class="form-group col-md-1"></div>
+                                    <div class="form-group col-md-2">
+                                        <i class="fa fa-phone"></i>
+                                        <label for="inputdefault">SĐT:</label>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <span>0912509752</span>
+                                    </div>
+                                    <div class="form-group col-md-1"></div>
+                                    <div class="form-group col-md-2">
+
+                                    </div>
+                                    <div class="form-group col-md-2">
+
+                                    </div>
+                                    <div class="form-group col-md-1"></div>
+
+                                </div>
+                                <br/>
+                            </div>
+                            <hr>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 style="font-weight: bold;">Tình trạng nhập hàng 6 tháng gần nhất</h2>
+                                        <br>
+                                        <br>
+                                        <div class="app">
+                                            {{ message }}
+                                            <line-chart></line-chart>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="row" style="font-size:18px; text-align: center; color:#000000;">
+                                            <label class="col-md-4">Lần giao dịch</label>
+                                            <label class="col-md-4">Tổng giá trị các đơn hàng</label>
+                                            <label class="col-md-4">Còn nợ</label>
+                                        </div>
+                                        <div class="row" style="font-size:30px; text-align: center;">
+                                            <label class="col-md-4" style="color:#439c07">10 lần</label>
+                                            <label class="col-md-4">120 triệu đồng</label>
+                                            <label class="col-md-4" style="color:#ff3300">123 triệu đồng</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <h2 style="font-weight: bold">CÁC MẶT HÀNG CUNG CẤP</h2>
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>MÃ HÀNG</th>
+                                                    <th>DANH MỤC</th>
+                                                    <th>GIÁ TIỀN</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">EBS 204c</a>
+                                                    </td>
+                                                    <td>Máy phát điện</td>
+                                                    <td>34,500,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">AN-06D3-06H</a>
+                                                    </td>
+                                                    <td>Máy biến áp</td>
+                                                    <td>66,550,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">AN-06D4-06H</a>
+                                                    </td>
+                                                    <td>Máy biến áp</td>
+                                                    <td>72,100,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">AN-06D5-06H</a>
+                                                    </td>
+                                                    <td>Máy biến áp</td>
+                                                    <td>56,300,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">AN-06D6-06H</a>
+                                                    </td>
+                                                    <td>Máy biến áp</td>
+                                                    <td>36,000,000</td>
+                                                </tr>
+                                                <tr id="sec_box1" style="display: none;">
+                                                    <td>6</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">AN-013D-06H</a>
+                                                    </td>
+                                                    <td>Máy biến áp</td>
+                                                    <td>26,000,000</td>
+                                                </tr>
+                                                <tr id="sec_box2" style="display: none;">
+                                                    <td>7</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">BN-06D6-06H</a>
+                                                    </td>
+                                                    <td>Máy đồng bộ</td>
+                                                    <td>31,000,000</td>
+                                                </tr>
+                                                <tr id="sec_box3" style="display: none;">
+                                                    <td>8</td>
+                                                    <td>
+                                                        <a href="chi-tiet-san-pham.html">CN-06D6-06H</a>
+                                                    </td>
+                                                    <td>Máy chỉnh lưu điện</td>
+                                                    <td>6,000,000</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot></tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <span class="label label-default pull-right" id="attach_box">Xem tất cả</span>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <h2 style="font-weight: bold">TOP 10 ĐƠN NHẬP HÀNG GẦN NHẤT</h2>
+                                <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
                                             <th>LÔ SỐ</th>
-                                            <th>KHÁCH HÀNG</th>
+                                            <th>ẢNH ĐẠI DIỆN</th>
                                             <th>NGÀY</th>
                                             <th>TỔNG TIỀN</th>
                                             <th>TRẠNG THÁI</th>
-                                            <th>GHI CHÚ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
                                             <td>
-                                                <a href="accountant_view.html">01354</a>
+                                                <a href="accountant_view.html">32487</a>
                                             </td>
-                                            <td>Công ty Long Giang</td>
-                                            <td>20-12-2017</td>
-                                            <td>50,069,500</td>
                                             <td>
-                                                <span class="label label-info">Bản nháp</span>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td></td>
+                                            <td>22-12-2017</td>
+                                            <td>20.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>
-                                                <a href="accountant_view.html">01353</a>
+                                                <a href="accountant_view.html">32427</a>
                                             </td>
-                                            <td>Công ty HPH</td>
-                                            <td>20-12-2017</td>
-                                            <td>45,735,872</td>
                                             <td>
-                                                <span class="label label-info">Bản nháp</span>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td></td>
+                                            <td>21-12-2017</td>
+                                            <td>30.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>
-                                                <a href="accountant_view.html">01352</a>
+                                                <a href="accountant_view.html">36547</a>
                                             </td>
-                                            <td>Công ty Điện Lực</td>
-                                            <td>20-12-2017</td>
-                                            <td>34,735,872</td>
                                             <td>
-                                                <span class="label label-info">Bản nháp</span>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td></td>
+                                            <td>19-12-2017</td>
+                                            <td>50.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
                                             <td>
-                                                <a href="accountant_view.html">01351</a>
+                                                <a href="accountant_view.html">32587</a>
                                             </td>
-                                            <td>Công ty Xuân Trường</td>
-                                            <td>20-12-2017</td>
-                                            <td>54,990,800</td>
                                             <td>
-                                                <span class="label label-info">Bản nháp</span>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td></td>
+                                            <td>18-12-2017</td>
+                                            <td>20.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
                                             <td>
-                                                <a href="accountant_view.html">01350</a>
+                                                <a href="accountant_view.html">62487</a>
                                             </td>
-                                            <td>Công ty Sáng Hà</td>
-                                            <td>20-12-2017</td>
-                                            <td>17,890,000</td>
                                             <td>
-                                                <span class="label label-info">Bản nháp</span>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
                                             </td>
-                                            <td></td>
+                                            <td>01-12-2017</td>
+                                            <td>70.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
-
+                                        <tr>
+                                            <td>6</td>
+                                            <td>
+                                                <a href="accountant_view.html">61347</a>
+                                            </td>
+                                            <td>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
+                                            </td>
+                                            <td>20-11-2017</td>
+                                            <td>50.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>
+                                                <a href="accountant_view.html">61127</a>
+                                            </td>
+                                            <td>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
+                                            </td>
+                                            <td>19-11-2017</td>
+                                            <td>30.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>
+                                                <a href="accountant_view.html">31127</a>
+                                            </td>
+                                            <td>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
+                                            </td>
+                                            <td>18-11-2017</td>
+                                            <td>80.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>
+                                                <a href="accountant_view.html">21127</a>
+                                            </td>
+                                            <td>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
+                                            </td>
+                                            <td>17-11-2017</td>
+                                            <td>40.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>
+                                                <a href="accountant_view.html">21064</a>
+                                            </td>
+                                            <td>
+                                                <img src="dist/img/tbd.jpg" style="height: 40px; width: 40px;" alt="">
+                                            </td>
+                                            <td>16-11-2017</td>
+                                            <td>30.000.000</td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                     <tfoot></tfoot>
                                 </table>
                             </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2">
+                                    <a href="customer_list.html" class="btn btn-warning btn-block">QUAY LẠI</a>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2">
+                                    <a href="suanhacungcap_tung.html" class="btn btn-google btn-block">CHỈNH SỬA</a>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2">
+                                    <a href="" class="btn btn-facebook btn-block">XEM CHI TIẾT CÔNG NỢ</a>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <br>
+                            <br>
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
+                <div class="box-body">
+
+                </div>
+                <br>
             </section>
         </div>
+
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Create the tabs -->
             <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -783,9 +1081,9 @@
     <!-- FastClick -->
     <script src="../bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
+    <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script>
         $(function () {
@@ -799,6 +1097,45 @@
                 'autoWidth': false
             })
         })
+    </script>
+    <script src="dist/js/vue.min.js"></script>
+    <script src="dist/js/vue-chartjs.full.min.js"></script>
+    <script>
+        Vue.component('line-chart', {
+            extends: VueChartJs.Line,
+            mounted() {
+                this.renderChart({
+                    labels: ['06-2017', '07-2017', '08-2017', '09-2017', '10-2017', '11-2017',
+                        '12-2017'
+                    ],
+                    datasets: [{
+                        label: "Doanh thu",
+                        backgroundColor: '#6497b1',
+                        data: [40000, 39000, 10000, 40000, 39000, 80000, 40000]
+                    }]
+                }, {
+                    responsive: true,
+                    maintainAspectRatio: false
+                })
+            }
+
+        })
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                message: 'Tổng tiền(VNĐ)'
+            }
+        })
+    </script>
+    <script src="dist/js/Chart.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#attach_box").click(function () {
+                $("#sec_box1").show();
+                $("#sec_box2").show()
+                $("#sec_box3").show()
+            });
+        });
     </script>
 </body>
 

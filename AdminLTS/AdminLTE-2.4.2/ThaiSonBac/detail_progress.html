@@ -17,7 +17,6 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -27,14 +26,7 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
-
-        <style>
-            .custom-btn {
-                padding: 10px 5px;
-                min-width: 60px;
-                height: 40px;
-            }
-        </style>
+		<link rel="stylesheet" href="dist/css/pages/detail_progress.css">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -351,7 +343,7 @@
                         <div class="col-md-12">
                             <div class="box box-info">
                                 <div class="box-header">
-                                    <h3 class="box-title with-border">Form Mẫu</h3>
+                                    <h3 class="box-title with-border">LÔ HÀNG 82368</h3>
                                     <!-- tools box -->
                                     <div class="pull-right box-tools">
                                         <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
@@ -362,96 +354,157 @@
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
-                                    <div>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
-                                            <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                            <i class="fa fa-edit text-green"></i>
-                                        </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                            <i class="fa fa-save text-yellow"></i>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                            <i class="fa fa-close text-red"></i>
-                                        </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
-                                            <i class="fa fa-check-circle text-green"></i>
-                                        </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                            <i class="fa fa-eye text-black"></i>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
-                                            <i class="fa fa-print text-blue"></i>
-                                        </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                            <i class="fa fa-download text-purple"></i>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
-                                            <i class="fa fa-file-excel-o text-green"></i>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                            <i class="fa fa-file-pdf-o text-red"></i>
-                                        </a>
-                                        
+									<div class="row">
+										<div class="col-md-12">
+											<ul class="progressSteps">
+											  <li id="note" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
+											  <li id="bill" class="complete">Xuất Hóa Đơn</br><small>10:12 09/11/2017</small></li>
+											  <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+											  <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+											  <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 20px;">
+										<div class="col-md-12">
+											<div class="box box-solid">
+												<div class="box-header" style="border: 1px solid #f4f4f4;">
+												  <h3 class="box-title">Chi Tiết</h3>
+												</div>
+												<!-- /.box-header -->
+												<div class="col-md-4">
+													<div class="box-body" style="margin-top: 25px">
+														<h3><b>CÔNG TY PHÚ AN</b></h3><br/>
+														<h4><b>Số Điện Thoại :</b> 099999654</h4><br/>
+														<h4><b>Địa Chỉ :</b> 235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, quận 1, TPHCM</h4>
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div class="box-body">
+														<ul class="timeline">
 
-                                    </div>	
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <!-- Input addon -->
-                                                <div>
-                                                    <div class="box-body">
-														<div class="row">
-														<div class="col-md-4">
-															<label>Đơn vị</label>
-															<div class="input-group">
-																<span class="input-group-addon"><i class="fa fa-user"></i></span>
-																<input class="form-control" placeholder="Đơn vị">
+														<!-- timeline time label -->
+														<li class="time-label">
+															<span class="bg-red">
+																09/11/2015
+															</span>
+														</li>
+														<!-- /.timeline-label -->
+														
+														<!-- timeline item -->
+														<li>
+															<!-- timeline icon -->
+															<i class="fa fa-hand-o-right bg-blue"></i>
+															<div class="timeline-item">
+																<span class="time"><i class="fa fa-clock-o"></i> 17:30</span>
+																<h3 class="timeline-header">Đang giao hàng</h3>
+															</div>
+														</li>
+														<!-- END timeline item -->
+														
+														<!-- timeline item -->
+														<li>
+															<!-- timeline icon -->
+															<i class="fa fa-hand-o-right bg-blue"></i>
+															<div class="timeline-item">
+																<span class="time"><i class="fa fa-clock-o"></i> 16:01</span>
+																<h3 class="timeline-header">Đã xuất kho. Đang chờ giao hàng</h3>
+															</div>
+														</li>
+														<!-- END timeline item -->
+														
+														<!-- timeline item -->
+														<li>
+															<!-- timeline icon -->
+															<i class="fa fa-hand-o-right bg-blue"></i>
+															<div class="timeline-item">
+																<span class="time"><i class="fa fa-clock-o"></i> 10:12</span>
+																<h3 class="timeline-header">Đã xuất hoá đơn</h3>
+															</div>
+														</li>
+														<!-- END timeline item -->
+														
+														<!-- timeline item -->
+														<li>
+															<!-- timeline icon -->
+															<i class="fa fa-hand-o-right bg-blue"></i>
+															<div class="timeline-item">
+																<span class="time"><i class="fa fa-clock-o"></i> 09:15</span>
+																<h3 class="timeline-header">Đã lập đơn hàng</h3>
+															</div>
+														</li>
+														<!-- END timeline item -->
+														</ul>
+													</div>
+												</div>
+												<!-- /.box-body -->
+											</div>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 20px;">
+										<div class="col-md-12">
+											<div class="box box-solid">
+												<div class="box-header" style="border: 1px solid #f4f4f4;">
+												  <h3 class="box-title">THÔNG TIN VÂN CHUYỂN</h3>
+												</div>
+												<!-- /.box-header -->
+												<div class="col-md-12">
+													<div class="box-body">
+														<div class=row">
+															<div class="col-md-4">
+																<label>Công ty</label>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-user"></i></span>
+																	<input class="form-control" placeholder="Công ty vận tải Hải Vân" disabled>
+																</div>
+															</div>
+															<div class="col-md-4">
+																<label>Lái Xe</label>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-user"></i></span>
+																	<input class="form-control" placeholder="Nguyễn Văn A" disabled>
+																</div>
+															</div>
+															<div class="col-md-4">
+																<label>Số Điện Thoại</label>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-user"></i></span>
+																	<input class="form-control" placeholder="0123456789" disabled>
+																</div>
 															</div>
 														</div>
 														
-														<div class="col-md-4">
-															<label>Trạng Thái</label>
-															<div class="input-group">
-																<span class="input-group-addon"><i class="fa fa-hourglass"></i></span>
-																<select class="form-control" style="font-family: 'FontAwesome';">
-																	<option>Bản nháp</option>
-																	<option>Đã xuất phiếu</option>
-																	<option>Đã xuất hoá đơn</option>
-																	<option class="text-yellow">&#xf071; Đã xuất hoá đơn</option>
-																	<option>Đã xuất kho</option>
-																	<option class="text-yellow">&#xf071; Đã xuất kho</option>
-																	<option>Hoàn thành</option>
-																	<option>Đã huỷ</option>
-																	<option>Từ chối</option>
-																</select>
+														<div class=row">
+															<div class="col-md-4">
+																<label>BKS</label>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-user"></i></span>
+																	<input class="form-control" placeholder="Đây là cái gì vậy ?" disabled>
+																</div>
+															</div>
+															<div class="col-md-4">
+																<label>Thời gian nhận hàng</label>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-user"></i></span>
+																	<input class="form-control" placeholder="20/11/2017" disabled>
+																</div>
+															</div>
+															<div class="col-md-4">
+																<label>Thời gian giao hàng dự kiến</label>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-user"></i></span>
+																	<input class="form-control" placeholder="20/11/2017" disabled>
+																</div>
 															</div>
 														</div>
-														
-														<div class="col-md-4">
-															<label>Đơn vị</label>
-															<div class="input-group">
-																<span class="input-group-addon"><i class="fa fa-home"></i></span>
-																<input class="form-control" placeholder="Đơn vị">
-															</div>
-														</div>
-														</div>
-														<div class="row">
-														<div class="col-md-12">
-															<textarea class="textarea" placeholder="Place some text here"
-													  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px; margin-top: 20px;"></textarea>
-														</div>
-														</div>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </div>
-                                                <!-- /.box -->
-
-                                            </div>
-                                        </div>
-                                        
-                                    </form>
+													</div>
+												</div>
+												<div class="col-md-12">
+												</div>	
+										</div>
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -482,12 +535,5 @@
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
-
-        <script>
-            $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
-
     </body>
 </html>
