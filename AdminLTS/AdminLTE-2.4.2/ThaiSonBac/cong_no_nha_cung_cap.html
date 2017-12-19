@@ -13,7 +13,7 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -25,6 +25,11 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
+            .custom-btn {
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 40px;
+            }
             .customTable tr{
                 height: 60px;
             }
@@ -42,7 +47,7 @@
             }
         </style>
         <!-- Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -532,89 +537,90 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        <p style="margin-left: 9px;">Công Nợ Nhà Cung Cấp</p>
-                    </h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+                        <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
                         <li><a href="#">Công nợ</a></li>
+                        <li><a href="xu_ly_cong_no.html">Xử lý công nợ</a></li>
                         <li class="active">Công nợ nhà cung cấp</li>
                     </ol>
                 </section>
-
-                <!-- Main content -->
-                <section class="invoice">
-                    <!-- title row -->
+                <section class="content">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Thai Son Bac, Inc.
-                            </h2>
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title with-border">Công nợ nhà cung cấp</h3>
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                title="Collapse">
+                                            <i class="fa fa-minus"></i></button>
+                                    </div>
+                                    <!-- /. tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body pad">
+                                    <div>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="xu_ly_cong_no.html" title="Quay Lại" data-placement="bottom">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-red"></i>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                        </a>
+                                    </div>	
+                                    <form style="margin-top: 20px;">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table style="border: none; margin-left: 250px;" class="customTable">
+                                                    <tr>
+                                                        <td class="col1"><b>Tên:</b></td>
+                                                        <td class="col2"><select class="form-control" onchange="autoFillProvider(); return false;" id="donVi">
+                                                                <option></option>
+                                                                <option value="1">HĐ T08-3</option>
+                                                                <option value="2">HĐ T09-1</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>MST:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Công nợ hiện tại:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="debt"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 30px;">
+                                            <div class="col-sm-12 table-responsive">
+                                                <table class="customTable" style="margin-left: 250px;">
+                                                    <tr>
+                                                        <td class="col1"><b>Thêm công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="addDebt" onkeyup="addDebt(); return false;"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Thanh toán:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="pay" onkeyup="addDebt(); return false;"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Tổng công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.col -->
+                        <!-- /.col-->
                     </div>
-                    <!-- info row -->
-                    <div class="row invoice-info">
-                        <div class="col-sm-12 invoice-col">
-                            <table style="border: none; margin-left: 250px;" class="customTable">
-                                <tr>
-                                    <td class="col1"><b>Tên:</b></td>
-                                    <td class="col2"><select class="form-control" onchange="autoFillProvider(); return false;" id="donVi">
-                                            <option></option>
-                                            <option value="1">HĐ T08-3</option>
-                                            <option value="2">HĐ T09-1</option>
-                                        </select></td>
-                                </tr>
-                                <tr>
-                                    <td><b>MST:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Công nợ hiện tại:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="debt"></td>
-                                </tr>
-                            </table>
-
-                        </div>
-                    </div>
-                    <!-- /.row -->
-
-                    <!-- Table row -->
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col-sm-12 table-responsive">
-                            <table class="customTable" style="margin-left: 250px;">
-                                <tr>
-                                    <td class="col1"><b>Thêm công nợ:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="addDebt" onkeyup="debt(); return false;"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Thanh toán:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="pay" onkeyup="debt(); return false;"></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Tổng công nợ:</b></td>
-                                    <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-
-                    <!-- this row will not appear when printing -->
-                    <div class="row no-print" style="margin-top: 40px;">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-warning" style="margin-left: 400px;">
-                                <i class="fa fa-sign-out"></i> Huỷ
-                            </button>
-                            <button type="button" class="btn btn-success" style="margin-left: 50px;">
-                                <i class="fa fa-plus"></i> Xử lý
-                            </button>
-                        </div>
-                    </div>
+                    <!-- ./row -->
                 </section>
-                <!-- /.content -->
-                <div class="clearfix"></div>
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer no-print">
@@ -821,14 +827,14 @@
         </div>
         <!-- ./wrapper -->
 
-        <!-- jQuery 3 -->
+        <!-- jQuery 3 -->      
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
     </body>

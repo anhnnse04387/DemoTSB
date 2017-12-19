@@ -13,7 +13,7 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -25,6 +25,11 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
+            .custom-btn {
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 40px;
+            }
             .customTable tr{
                 height: 60px;
             }
@@ -39,7 +44,7 @@
             }
         </style>
         <!-- Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -534,52 +539,57 @@
                         <p style="margin-left: 9px;">Công Nợ Khách Hàng</p>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+                        <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
                         <li><a href="#">Công nợ</a></li>
                         <li class="active">Xử lý công nợ</li>
                     </ol>
                 </section>
-
-                <!-- Main content -->
-                <section class="invoice">
-                    <!-- title row -->
+                <section class="content">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Thai Son Bac, Inc.
-                            </h2>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- info row -->
-                    <div class="row invoice-info">
-                        <div class="col-sm-12 invoice-col">
-                            <table style="border: none; margin-left: 300px;" class="customTable">
-                                <tr>
-                                    <td class="col1"><b>Công nợ:</b></td>
-                                    <td class="col2"><select class="form-control" id="page">
-                                            <option></option>
-                                            <option value="1">Khách hàng</option>
-                                            <option value="2">Nhà cung cấp</option>
-                                        </select></td>
-                                </tr>
-                            </table>
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title with-border">Xử lý công nợ</h3>
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                title="Collapse">
+                                            <i class="fa fa-minus"></i></button>
+                                    </div>
+                                    <!-- /. tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body pad">
+                                    <div>                                       
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="redirect(); return false;"
+                                           title="Xử Lý" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                        </a>                                        
+                                    </div>	
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table style="border: none; margin-left: 300px;" class="customTable">
+                                                    <tr>
+                                                        <td class="col1"><b>Công nợ:</b></td>
+                                                        <td class="col2"><select class="form-control" id="page">
+                                                                <option></option>
+                                                                <option value="1">Khách hàng</option>
+                                                                <option value="2">Nhà cung cấp</option>
+                                                            </select></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
 
+                                    </form>
+                                </div>
+                            </div>
                         </div>
+                        <!-- /.col-->
                     </div>
-                    <!-- /.row -->
-
-                    <!-- this row will not appear when printing -->
-                    <div class="row no-print" style="margin-top: 20px;">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-warning" onclick="redirect(); return false;" style="margin-left: 425px;">
-                                <i class="fa fa-sign-out"></i> Chọn
-                            </button>
-                        </div>
-                    </div>
+                    <!-- ./row -->
                 </section>
-                <!-- /.content -->
-                <div class="clearfix"></div>
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer no-print">

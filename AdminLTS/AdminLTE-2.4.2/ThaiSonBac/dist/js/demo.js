@@ -4,6 +4,18 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+function addDebt() {
+    var addDebt = 0;
+    var pay = 0;
+    if (parseInt(document.getElementById("addDebt").value) > 0) {
+        addDebt = parseFloat(document.getElementById("addDebt").value);
+    }
+    if (parseInt(document.getElementById("pay").value) > 0) {
+        pay = parseFloat(document.getElementById("pay").value);
+    }
+    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value.replace(',', '')) + addDebt - pay;
+}
+
 function redirect() {
     if ($("#page").val() === '1') {
         var win = window.open('cong_no_khach_hang.html', '_blank');
@@ -12,10 +24,6 @@ function redirect() {
         var win = window.open('cong_no_nha_cung_cap.html', '_blank');
         win.focus();
     }
-}
-
-function checkQtt() {
-    
 }
 
 function autoFillCustomer() {
@@ -36,18 +44,6 @@ function autoFillProvider() {
         document.getElementById("debt").value = "24305440452";
         document.getElementById("TaxCode").value = "";
     }
-}
-
-function debt() {
-    var addDebt = 0;
-    var pay = 0;
-    if (parseInt(document.getElementById("addDebt").value) > 0) {
-        addDebt = parseFloat(document.getElementById("addDebt").value);
-    }
-    if (parseInt(document.getElementById("pay").value) > 0) {
-        pay = parseFloat(document.getElementById("pay").value);
-    }
-    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value.replace(',', '')) + addDebt - pay;
 }
 
 function openNewTab() {
