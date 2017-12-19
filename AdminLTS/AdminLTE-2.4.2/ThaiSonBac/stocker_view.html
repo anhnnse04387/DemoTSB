@@ -34,6 +34,14 @@
             font-weight: bold;
             background-color: #544d61;
         }
+
+        .accountant-view-box-body-custom {
+            font-size: 20px;
+        }
+
+        .a-custom-label {
+            color: white;
+        }
     </style>
 </head>
 
@@ -473,151 +481,156 @@
 
                             <div class="container-fluid">
                                 <div class="box-body">
-                                    <div class="row">
-                                        <div class="form-group col-lg-12">
-                                            <center>
-                                                <h2>Đơn hàng lô số: 80326</h2>
-                                            </center>
+                                    <div class="accountant-view-box-body-custom">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                    <h1>Đơn hàng lô số: 80326</h1>
+                                                </center>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-lg-2">
+                                        <br>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2">
+                                                <i class="fa fa-user-circle-o"></i>
+                                                <label>Đơn vị</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span>CÔNG TY LONG GIANG</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <i class="fa fa-bank"></i>
+                                                <label>Mã số thuế</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span>54366324</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2">
+                                                <i class="fa fa-user-circle"></i>
+                                                <label>Địa chỉ xuất hợp đồng</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span>CÔNG TY THHH THÁI SƠN BẮC</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                                <label>Trạng thái</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span class="label label-primary">
+                                                    <a href="detail_progress_tung.html" class="a-custom-label">Đã xuất hóa đơn</a>
+                                                </span>
+                                            </div>
+                                        </div>
 
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <label for="inputdefault">Đơn vị</label>
-                                            <p>CÔNG TY THHH THÁI SƠN BẮC</p>
-                                        </div>
-                                        <div class="form-group col-lg-1">
-
-                                        </div>
-                                        <div class="form-group col-lg-5">
-                                            <label for="inputdefault">Mã số thuế</label>
-                                            <p>4782356731</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-lg-2"></div>
-                                        <div class="form-group col-lg-4">
-                                            <label for="inputdefault">Địa chỉ xuất HD</label>
-                                            <p>CÔNG TY THHH THÁI SƠN BẮC</p>
-                                        </div>
-                                        <div class="form-group col-lg-1"></div>
-                                        <div class="form-group col-lg-5">
-                                            <label for="inputdefault">Tình Trạng Đơn</label>
-                                            <p>
-                                                <i>XEM</i>
-                                            </p>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2">
+                                                <i class="fa fa-address-book"></i>
+                                                <label>Địa chỉ giao hàng</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span>CÔNG TY LONG GIANG</span>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4"></div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-lg-2"></div>
-                                        <div class="form-group col-lg-4">
-                                            <label for="inputdefault">Địa chỉ giao hàng</label>
-                                            <p>CÔNG TY THHH THÁI SƠN NAM</p>
-                                        </div>
-                                        <div class="form-group col-lg-1"></div>
-                                        <div class="form-group col-lg-3">
-                                            <label>Trạng thái</label>
-                                            <select class="form-control">
-                                                <option>ĐANG XỬ LÝ</option>
-                                                <option>BẢN NHÁP</option>
-                                                <option>ĐÃ HỦY</option>
-                                                <option>HOÀN THÀNH</option>
-                                                <option>TỪ CHỐI</option>
-                                            </select>
-                                        </div>
+                                    <br><br>
+                                    <div class="box-body">
+                                        <table class="table table-bordered table-striped">
+                                            <thead style="text-align: center">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>TÊN HÀNG</th>
+                                                    <th>SỐ LƯỢNG</th>
+                                                    <th>ĐÃ ĐỦ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>ABN 53c</td>
+                                                    <td>10</td>
+                                                    <td>
+                                                        <input type="checkbox" class="checky">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>ABN 203c</td>
+                                                    <td>20</td>
+                                                    <td>
+                                                        <input type="checkbox" class="checky">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>BAB 193a</td>
+                                                    <td>23</td>
+                                                    <td>
+                                                        <input type="checkbox" class="checky">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>FAT 501g</td>
+                                                    <td>7</td>
+                                                    <td>
+                                                        <input type="checkbox" class="checky">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>NOT 131l</td>
+                                                    <td>15</td>
+                                                    <td>
+                                                        <input type="checkbox" class="checky">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>SDO 123d</td>
+                                                    <td>9</td>
+                                                    <td>
+                                                        <input type="checkbox" class="checky">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot></tfoot>
+                                        </table>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
                                     </div>
-                                </div>
-                                <div class="box-body">
-                                    <table class="table table-bordered table-striped">
-                                        <thead style="text-align: center">
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>TÊN HÀNG</th>
-                                                <th>SỐ LƯỢNG</th>
-                                                <th>ĐÃ ĐỦ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>ABN 53c</td>
-                                                <td>10</td>
-                                                <td>
-                                                    <input type="checkbox" class="checky">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>ABN 203c</td>
-                                                <td>20</td>
-                                                <td>
-                                                    <input type="checkbox" class="checky">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>BAB 193a</td>
-                                                <td>23</td>
-                                                <td>
-                                                    <input type="checkbox" class="checky">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>FAT 501g</td>
-                                                <td>7</td>
-                                                <td>
-                                                    <input type="checkbox" class="checky">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>NOT 131l</td>
-                                                <td>15</td>
-                                                <td>
-                                                    <input type="checkbox" class="checky">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>SDO 123d</td>
-                                                <td>9</td>
-                                                <td>
-                                                    <input type="checkbox" class="checky">
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot></tfoot>
-                                    </table>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box-body">
-                            <div class="row">
-                                <div>
-                                    <div class="col-lg-2 pull-right">
-                                        <button class="btn btn-danger btn-block" data-record-id="54" data-record-title="Something cool" data-toggle="modal" data-target="#confirm-delete">Hủy</button>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div>
+                                        <div class="col-lg-2 pull-right">
+                                            <button class="btn btn-danger btn-block" data-record-id="54" data-record-title="Something cool" data-toggle="modal" data-target="#confirm-delete">Hủy</button>
+                                        </div>
+                                        <div class="col-lg-2 pull-right">
+                                            <a href="deliver_view.html" class="btn btn-facebook btn-block disabled" id="btn_continue">Tiếp tục</a>
+                                        </div>
+                                        <div class="col-lg-2 pull-right">
+                                            <a href="stocker_notification.html" class="btn btn-warning btn-block">Quay trở lại</a>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-2 pull-right">
-                                        <a href="deliver_view.html" class="btn btn-facebook btn-block disabled" id="btn_continue">Tiếp tục</a>
-                                    </div>
-                                    <div class="col-lg-2 pull-right">
-                                        <a href="stocker_notification.html" class="btn btn-warning btn-block">Quay trở lại</a>
-                                    </div>
-                                </div>
 
+                                </div>
+                                <div class="row"></div>
                             </div>
-                            <div class="row"></div>
                         </div>
-                    </div>
 
             </section>
             </div>
@@ -821,65 +834,65 @@
             <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
-        </div>
-        <!-- ./wrapper -->
+            </div>
+            <!-- ./wrapper -->
 
-        <!-- jQuery 3 -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- DataTables -->
-        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
-        <!-- page script -->
-        <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
+            <!-- jQuery 3 -->
+            <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+            <!-- Bootstrap 3.3.7 -->
+            <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- DataTables -->
+            <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+            <!-- SlimScroll -->
+            <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+            <!-- FastClick -->
+            <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+            <!-- AdminLTE App -->
+            <script src="../dist/js/adminlte.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="../dist/js/demo.js"></script>
+            <!-- page script -->
+            <script>
+                $(function () {
+                    $('#example1').DataTable()
+                    $('#example2').DataTable({
+                        'paging': true,
+                        'lengthChange': false,
+                        'searching': false,
+                        'ordering': true,
+                        'info': true,
+                        'autoWidth': false
+                    })
                 })
-            })
-        </script>
-        <script>
-            $('#confirm-delete').on('click', '.btn-ok', function (e) {
-                var $modalDiv = $(e.delegateTarget);
-                var id = $(this).data('recordId');
-                // $.ajax({url: '/api/record/' + id, type: 'DELETE'})
-                // $.post('/api/record/' + id).then()
-                $modalDiv.addClass('loading');
-                setTimeout(function () {
-                    $modalDiv.modal('hide').removeClass('loading');
-                }, 1000)
-            });
-            $('#confirm-delete').on('show.bs.modal', function (e) {
-                var data = $(e.relatedTarget).data();
-                $('.title', this).text(data.recordTitle);
-                $('.btn-ok', this).data('recordId', data.recordId);
-            });
-        </script>
-        <script>
-            var isAllChecked = false;
-            $('.checky').on('click', function () {
-                if ($('.checky:checked').length != 6) {
-                    $('#btn_continue').addClass('disabled');
-                } else {
-                    $('#btn_continue').removeClass('disabled');
-                }
-            });
-        </script>
+            </script>
+            <script>
+                $('#confirm-delete').on('click', '.btn-ok', function (e) {
+                    var $modalDiv = $(e.delegateTarget);
+                    var id = $(this).data('recordId');
+                    // $.ajax({url: '/api/record/' + id, type: 'DELETE'})
+                    // $.post('/api/record/' + id).then()
+                    $modalDiv.addClass('loading');
+                    setTimeout(function () {
+                        $modalDiv.modal('hide').removeClass('loading');
+                    }, 1000)
+                });
+                $('#confirm-delete').on('show.bs.modal', function (e) {
+                    var data = $(e.relatedTarget).data();
+                    $('.title', this).text(data.recordTitle);
+                    $('.btn-ok', this).data('recordId', data.recordId);
+                });
+            </script>
+            <script>
+                var isAllChecked = false;
+                $('.checky').on('click', function () {
+                    if ($('.checky:checked').length != 6) {
+                        $('#btn_continue').addClass('disabled');
+                    } else {
+                        $('#btn_continue').removeClass('disabled');
+                    }
+                });
+            </script>
 </body>
 
 </html>

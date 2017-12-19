@@ -16,10 +16,10 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
         th {
@@ -27,45 +27,34 @@
             background-color: #f88457;
             font-weight: bold;
             font-size: 18px;
+        }
+
+        th,
+        td {
             text-align: center;
         }
 
         td {
             font-size: 16px;
-            text-align: center;
         }
-        tr td:nth-child(3){
-            text-align: left;
-        }
-        tr td:nth-child(5){
-            text-align: right;
-        }
-
     </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
         <header class="main-header">
-            <!-- Logo -->
             <a href="index.html" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
                     <b>A</b>LT</span>
-                <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
                     <b>Admin</b>LTE</span>
             </a>
-
             <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
@@ -141,23 +130,32 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Nguyễn Mạnh Cường</span>
+                                <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Alexander Pierce</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- User image -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+                                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                     <p>
-                                        Nguyễn Mạnh Cường
-                                        <small>Kế toán</small>
+                                        Alexander Pierce - Web Developer
+                                        <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
-                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
+                                    </div>
+                                </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
@@ -168,12 +166,6 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar">
-                                <i class="fa fa-gears"></i>
-                            </a>
                         </li>
                     </ul>
                 </div>
@@ -186,7 +178,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>Nguyễn Mạnh Cường</p>
@@ -455,117 +447,83 @@
             <!-- /.sidebar -->
         </aside>
         <div class="content-wrapper">
-            <section class="content-header">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="index.html">
-                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
-                    </li>
-                    <li>
-                        <a href=""> Phiếu xuất hàng</a>
-                    </li>
-                    <li>
-                        <a href="">
-                            </i> Phiếu đang soạn</a>
-                    </li>
-                </ol>
-            </section>
-            <section class="content">
+            <section class="container">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
                         <div class="box">
                             <div class="box-header">
-                                <h3>DANH SÁCH PHIẾU ĐANG SOẠN</h3>
+                                <h1 style="text-align: center; font-weight: 600;">HĐ T07-1</h1>
                             </div>
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>STT</th>
-                                            <th>LÔ SỐ</th>
-                                            <th>KHÁCH HÀNG</th>
-                                            <th>NGÀY</th>
-                                            <th>TỔNG TIỀN</th>
-                                            <th>TRẠNG THÁI</th>
-                                            <th>GHI CHÚ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <a href="accountant_view.html">01354</a>
-                                            </td>
-                                            <td>Công ty Long Giang</td>
-                                            <td>20-12-2017</td>
-                                            <td>50,069,500</td>
-                                            <td>
-                                                <span class="label label-info">Bản nháp</span>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <a href="accountant_view.html">01353</a>
-                                            </td>
-                                            <td>Công ty HPH</td>
-                                            <td>20-12-2017</td>
-                                            <td>45,735,872</td>
-                                            <td>
-                                                <span class="label label-info">Bản nháp</span>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>
-                                                <a href="accountant_view.html">01352</a>
-                                            </td>
-                                            <td>Công ty Điện Lực</td>
-                                            <td>20-12-2017</td>
-                                            <td>34,735,872</td>
-                                            <td>
-                                                <span class="label label-info">Bản nháp</span>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>
-                                                <a href="accountant_view.html">01351</a>
-                                            </td>
-                                            <td>Công ty Xuân Trường</td>
-                                            <td>20-12-2017</td>
-                                            <td>54,990,800</td>
-                                            <td>
-                                                <span class="label label-info">Bản nháp</span>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>
-                                                <a href="accountant_view.html">01350</a>
-                                            </td>
-                                            <td>Công ty Sáng Hà</td>
-                                            <td>20-12-2017</td>
-                                            <td>17,890,000</td>
-                                            <td>
-                                                <span class="label label-info">Bản nháp</span>
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                            <br/>
+                            <div class="box-body" style="padding-left:100px;">
+                                <div class="row center-block">
+								<div class="form-group col-lg-1"></div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="inputdefault">Tên khách hàng:</label>
+                                    </div>
+                                    <div class="form-group col-lg-5">
+                                        <input type="text" class="form-control" value="HĐ T07-1">
+                                    </div>
+                                </div>
+                                <div class="row center-block">
+								<div class="form-group col-lg-1"></div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="inputdefault">Ảnh đại diện:</label>
+                                    </div>
+                                    <div class="form-group col-lg-5">
+                                        <input type="file">
+                                    </div>
 
-                                    </tbody>
-                                    <tfoot></tfoot>
-                                </table>
+                                </div>
+                                <div class="row center-block">
+								<div class="form-group col-lg-1"></div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="inputdefault">Địa chỉ:</label>
+                                    </div>
+                                    <div class="form-group col-lg-5">
+                                        <textarea name="" id="" cols="50" rows="5">306 Trường Chinh, Hai Bà Trưng Hà Nội</textarea>
+                                    </div>
+                                </div>
+                                <div class="row center-block">
+								<div class="form-group col-lg-1"></div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="inputdefault">Số điện thoại:</label>
+                                    </div>
+                                    <div class="form-group col-lg-5">
+                                        <input type="text" class="form-control" value="0913509322">
+                                    </div>
+                                </div>
+                                <div class="row center-block">
+								<div class="form-group col-lg-1"></div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="inputdefault">Mã Số Thuế:</label>
+                                    </div>
+                                    <div class="form-group col-lg-5">
+                                        <input type="text" class="form-control" value="2349238">
+                                    </div>
+                                </div>
+                                <br/>
                             </div>
+						<div style="height : 50px"></div>
+                        <div class="row">
+						<div class="form-group col-lg-2"></div>
+						<div class="col-lg-1">
+                                <a href="nhacungcap_tung.html" class="btn btn-default btn-block" style="font-weight: bold">HỦY</a>
+                            </div>
+							<div class="form-group col-lg-5"></div>
+                            <div class="col-lg-1">
+                                <a href="nhacungcap_tung.html" class="btn btn-danger btn-block" style="font-weight: bold">SỬA</a>
+                            </div>
+						</div>
+						<div style="height : 100px"></div>
                         </div>
-                    </div>
+
+                    <div class="col-lg-1"></div>
                 </div>
             </section>
         </div>
+
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Create the tabs -->
             <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -783,9 +741,9 @@
     <!-- FastClick -->
     <script src="../bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
+    <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script>
         $(function () {
