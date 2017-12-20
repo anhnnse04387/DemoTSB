@@ -368,7 +368,7 @@
                             </a>
                         </li>
 
-                        <li class="treeview menu-open">
+                        <li class="active treeview menu-open">
                             <a href="#">
                                 <i class="fa fa-file-o"></i> <span>Phiếu Xuất Hàng</span>
                                 <span class="pull-right-container">
@@ -376,7 +376,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
+                                <li class="active"><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
                                 <li>
                                     <a href="phieudangsoan_tung.html">
                                         <i class="fa fa-file-text"></i>
@@ -525,7 +525,7 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-                        <li><a href="#">Phiếu Xuất Hàng</a></li>
+                        <li><a href="#">Phiếu xuất hàng</a></li>
                         <li class="active">Lập phiếu</li>
                     </ol>
                 </section>
@@ -590,7 +590,7 @@
                                                             <td class="col2"><input type="text" class="form-control" id="AddressDeliver"></td>
                                                             <td><i class="fa fa-calendar"></i><b> Xuất ngày</b></td>
                                                             <td class="col4">
-                                                                <input type="text" style="padding-left: 12px;" value="18/12/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
+                                                                <input type="text" id="dayout" style="padding-left: 12px;" onchange="checkQtt();" value="22/12/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
                                                                         $(this).addClass('textCursor');
                                                                         this.select();">
                                                             </td>
@@ -688,12 +688,18 @@
                                                                 <td style="vertical-align: middle;">ABS 32c</td>
                                                                 <td style="vertical-align: middle;">5A</td>
                                                                 <td>
-                                                                    <input type="text" class="form-control" id="qtt" style="text-align: right;" onkeyup="checkQtt();"/></td>
-                                                                <td><input type="text" class="form-control" title="20 cái/1"/></td>
-                                                                <td>630000</td>
-                                                                <td></td>
-                                                                <td><input type="text" class="form-control"/></td>
-                                                                <td></td>
+                                                                    <input type="text" class="form-control" id="cai_3" style="text-align: right;"
+                                                                           onkeyup="configSp('3');
+                                                                                   return false;"/></td>
+                                                                <td><input type="text" class="form-control" id="thung_3" 
+                                                                           style="text-align: right;" title="13 cái/1" onkeyup="configThung('3');
+                                                                                   return false;"/></td>
+                                                                    <td><output id="dongia_3">630000</output></td>
+                                                                <td><output id="tien_chua_ck_3"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck3" style="text-align: right;"
+                                                                           onkeyup="configCk('3');
+                                                                                   return false;"/></td>
+                                                                <td><output id="tien_da_ck_3"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>

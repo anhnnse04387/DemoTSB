@@ -5,12 +5,13 @@
  * This file is for demo purposes only.
  */
 function checkQtt() {
-    if(parseInt(document.getElementById('qtt').value) > 0) {
+    if(parseInt(document.getElementById('cai_3').value) > 5 && document.getElementById('dayout').value === '22/12/2017') {
         swal({
-            title: 'This product is out of stock!',
+            title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
-            animation: false,
-            customClass: 'animated tada'
+            timer: 2000,
+            showCancelButton: false,
+            showConfirmButton: false
         });
         $('#btnCreate').addClass('noDisplay');
     } else {
@@ -32,19 +33,19 @@ function addDebt() {
 
 function saveDraft() {
     swal({
-        title: 'Are you sure?',
+        title: '<img src="dist/img/messagePic.png"/>',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
+        confirmButtonText: '<i class="fa fa-check"></i>',
+        cancelButtonText: '<i class="fa fa-close"></i>'
     }).then((result) => {
             if (result.value) {
-                swal(
-                    'Successfully!',
-                    'You saved an order with id - O1349',
-                    'success'
-                )
+                swal({
+                    title: '<img src="dist/img/messagePic_2.png"/>',
+                    type: 'success'
+                })
             }
         });
 }
@@ -89,17 +90,17 @@ function create() {
     $('#saveDraft').addClass('noDisplay');
     $('#preview').addClass('noDisplay');
     swal({
-        title: 'Are you sure?',
+        title: '<img src="dist/img/messagePic.png"/>',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
+        confirmButtonText: '<i class="fa fa-check"></i>',
+        cancelButtonText: '<i class="fa fa-close"></i>'
     }).then((result) => {
             if (result.value) {
                 swal({
-                    title: 'Successfully!',
-                    text: 'You created an order with id - O1349',
+                    title: '<img src="dist/img/messagePic_1.png"/>',
                     imageUrl: 'dist/img/Noti.png',
                     imageWidth: 400,
                     imageHeight: 300,
@@ -122,7 +123,8 @@ function configCkAll() {
         vat = parseFloat(document.getElementById("vat").value);
     }
     var tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val())) +
-            ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val()));
+            ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val())) + 
+            ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val()));
     document.getElementById("tien_chua_ck").value = tien_chua_ck;
     if (ckTong > 0) {
         tien_ck = tien_chua_ck * ckTong / 100;
@@ -173,6 +175,7 @@ function configThung(stt) {
 }
 
 function configSp(stt) {
+    checkQtt();
     var cai = 0;
     if (parseInt(document.getElementById("cai_" + stt).value) > 0) {
         cai = parseInt(document.getElementById("cai_" + stt).value);
