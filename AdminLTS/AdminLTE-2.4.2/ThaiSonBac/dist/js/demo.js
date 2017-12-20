@@ -4,6 +4,20 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+function checkQtt() {
+    if(parseInt(document.getElementById('qtt').value) > 0) {
+        swal({
+            title: 'This product is out of stock!',
+            type: 'error',
+            animation: false,
+            customClass: 'animated tada'
+        });
+        $('#btnCreate').addClass('noDisplay');
+    } else {
+        $('#btnCreate').removeClass('noDisplay');
+    }
+}
+
 function addDebt() {
     var addDebt = 0;
     var pay = 0;
@@ -14,6 +28,25 @@ function addDebt() {
         pay = parseFloat(document.getElementById("pay").value);
     }
     document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value.replace(',', '')) + addDebt - pay;
+}
+
+function saveDraft() {
+    swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+            if (result.value) {
+                swal(
+                    'Successfully!',
+                    'You saved an order with id - O1349',
+                    'success'
+                )
+            }
+        });
 }
 
 function redirect() {
