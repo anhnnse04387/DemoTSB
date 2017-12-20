@@ -22,8 +22,14 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
         .box-body-custom-detail-custom {
-            font-size: 22px;
+            font-size: 20px;
         }
 
         th {
@@ -442,7 +448,7 @@
                                     <div class="form-group col-md-1"></div>
                                     <div class="form-group col-md-2">
                                         <i class="fa fa-codepen"></i>
-                                        <label for="inputdefault">Mã khách hàng:</label>
+                                        <label for="inputdefault">Mã KH:</label>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <span>KH_0905</span>
@@ -450,7 +456,7 @@
                                     <div class="form-group col-md-1"></div>
                                     <div class="form-group col-md-2">
                                         <i class="fa fa-diamond"></i>
-                                        <label for="inputdefault">Xếp hạng:</label>
+                                        <label for="inputdefault">Xếp Hạng:</label>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <span class="label label-primary">KHÁCH MỚI</span>
@@ -469,7 +475,7 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                         <i class="fa fa-bank"></i>
-                                        <label for="inputdefault">Mã số thuế:</label>
+                                        <label for="inputdefault">MST :</label>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <span>65144</span>
@@ -561,7 +567,9 @@
                                             </td>
                                             <td>22-12-2017</td>
                                             <td>20.000.000</td>
-                                            <td><span class="label label-primary">Đang xử lí</span></td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -573,7 +581,9 @@
                                             </td>
                                             <td>21-12-2017</td>
                                             <td>30.000.000</td>
-                                            <td><span class="label label-primary">Đang xử lí</span></td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
@@ -585,7 +595,9 @@
                                             </td>
                                             <td>19-12-2017</td>
                                             <td>50.000.000</td>
-                                            <td><span class="label label-primary">Đang xử lí</span></td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
@@ -597,7 +609,9 @@
                                             </td>
                                             <td>18-12-2017</td>
                                             <td>20.000.000</td>
-                                            <td><span class="label label-primary">Đang xử lí</span></td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
@@ -609,35 +623,33 @@
                                             </td>
                                             <td>01-12-2017</td>
                                             <td>70.000.000</td>
-                                            <td><span class="label label-primary">Đang xử lí</span></td>
+                                            <td>
+                                                <span class="label label-primary">Đang xử lí</span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <tfoot></tfoot>
                                 </table>
                             </div>
-                            <br><br><br><br>
-                            <div class="row">
-                                <div class="col-md-2"></div>
-                                <div class="col-md-2">
-                                    <a href="customer_list.html" class="btn btn-warning btn-block">QUAY LẠI</a>
-                                </div>
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2">
-                                    <a href="" class="btn btn-google btn-block">CHỈNH SỬA</a>
-                                </div>
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2">
-                                    <a href="" class="btn btn-facebook btn-block">XEM CHI TIẾT CÔNG NỢ</a>
-                                </div>
-                                <div class="col-md-2"></div>
+                            <div class="row" style="padding-left: 20px;">
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                    <i class="fa fa-arrow-circle-left text-blue"></i>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chỉnh sửa" data-placement="bottom">
+                                    <i class="fa fa-edit text-orange"></i>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                    <i class="fa fa-check-circle text-green"></i>
+                                </a>
                             </div>
-                            <br><br>
+                            <br>
+                            <br>
                         </div>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
                 <div class="box-body">
-                    
+
                 </div>
                 <br>
             </section>
