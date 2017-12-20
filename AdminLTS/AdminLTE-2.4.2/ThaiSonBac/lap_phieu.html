@@ -590,7 +590,7 @@
                                                             <td class="col2"><input type="text" class="form-control" id="AddressDeliver"></td>
                                                             <td><i class="fa fa-calendar"></i><b> Xuất ngày</b></td>
                                                             <td class="col4">
-                                                                <input type="text" value="18/12/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
+                                                                <input type="text" style="padding-left: 12px;" value="18/12/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
                                                                         $(this).addClass('textCursor');
                                                                         this.select();">
                                                             </td>
@@ -600,7 +600,7 @@
                                                             <td class="col2"><input type="text" class="form-control" id="AddressContact"></td>
                                                             <td><i class="fa fa-calendar"></i><b> Mức giá áp dụng từ ngày</b></td>
                                                             <td class="col4">
-                                                                <input type="text" value="18/11/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
+                                                                <input type="text" style="padding-left: 12px;" value="18/11/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
                                                                         $(this).addClass('textCursor');
                                                                         this.select();">
                                                             </td>
@@ -610,13 +610,16 @@
                                                             <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
                                                             <td><i class="fa fa-dot-circle-o"></i><b> Trạng thái</b></td>
                                                             <td class="col4">
-                                                                <select class="form-control pointerCursor" onclick="changeCursor(this);
-                                                                        return false;">
-                                                                    <option>BẢN NHÁP</option>
-                                                                    <option>ĐANG XỬ LÝ</option>
-                                                                    <option>ĐÃ HỦY</option>
-                                                                    <option>HOÀN THÀNH</option>
-                                                                    <option>TỪ CHỐI</option>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Bản nháp</option>
+                                                                    <option>Đã xuất phiếu</option>
+                                                                    <option>Đã xuất hoá đơn</option>
+                                                                    <option class="text-yellow">Đã xuất hoá đơn&#xf071;</option>
+                                                                    <option>Đã xuất kho</option>
+                                                                    <option class="text-yellow">Đã xuất kho&#xf071;</option>
+                                                                    <option>Hoàn thành</option>
+                                                                    <option>Đã huỷ</option>
+                                                                    <option>Từ chối</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -692,53 +695,53 @@
                                                                 <td><input type="text" class="form-control"/></td>
                                                                 <td></td>
                                                             </tr>
-                                                            <tr style="background-color: #3c8dbc;color: #fff; font-size: 18px;">
+                                                            <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="cai" style="color: #fff"></output></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="thung" style="color: #fff"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="cai" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="thung" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
                                                                 <td></td><td></td><td></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_chua_ck" style="color: #fff"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_chua_ck" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
                                                             </tr>
-                                                            <tr style="background-color: #3c8dbc;color: #fff; font-size: 18px;">
+                                                            <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td><td></td>
-                                                                <td><input type="text" class="form-control" id="ck" style="text-align: right; float: right;"
+                                                                <td><input type="text" class="form-control" id="ck" style="text-align: right; float: right; font-size: 18px; font-weight: bold;"
                                                                            onkeyup="configCkAll();
                                                                                    return false;"/></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_ck" style="color: #fff"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_ck" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
                                                             </tr>
-                                                            <tr style="background-color: #3c8dbc;color: #fff; font-size: 18px;">
+                                                            <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td><td></td><td></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="con_lai" style="color: #fff"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="con_lai" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
                                                             </tr>
-                                                            <tr style="background-color: #3c8dbc;color: #fff; font-size: 18px;">
+                                                            <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td><td></td>
                                                                 <td>
-                                                                    <input type="text" class="form-control" id="vat" style="text-align: right; float: right;"
+                                                                    <input type="text" class="form-control" id="vat" style="text-align: right; float: right;; font-size: 18px; font-weight: bold;"
                                                                            onkeyup="configCkAll();
                                                                                    return false;"/>
                                                                 </td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_vat" style="color: #fff"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_vat" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
                                                             </tr>
-                                                            <tr style="background-color: #3c8dbc;color: #fff; font-size: 18px;">
+                                                            <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td><td></td><td></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_da_ck" style="color: #fff"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_da_ck" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

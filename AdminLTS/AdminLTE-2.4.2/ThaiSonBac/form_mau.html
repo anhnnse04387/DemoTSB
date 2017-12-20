@@ -29,6 +29,19 @@
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
 
         <style>
+            #mainTable {
+                background-color: rgb(240, 240, 240);
+            }
+            #mainTable thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+            #mainTable tbody td:nth-child(6),#mainTable tbody td:nth-child(7),
+            #mainTable tbody td:nth-child(9) {
+                text-align: right;
+            }
             .custom-btn {
                 padding: 10px 5px;
                 min-width: 60px;
@@ -42,15 +55,15 @@
             <header class="main-header">
 
                 <!-- Logo -->
-    <a href="index-sales.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>T</b>SB</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">
-	  <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-	  <b>Thái Sơn Bắc</b>
-	  </span>
-    </a>
+                <a href="index-sales.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>T</b>SB</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">
+                        <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Thái Sơn Bắc</b>
+                    </span>
+                </a>
 
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -103,219 +116,219 @@
                                     <li class="footer"><a href="#">View all</a></li>
                                 </ul>
                             </li>
-                              <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nguyễn Nam Anh</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Nguyễn Nam Anh</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <p>Nguyễn Nam Anh<small>Kế toán</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+                                        <p>Nguyễn Nam Anh<small>Kế toán</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Profile</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Sign out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
 
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Nguyễn Nam Anh</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="Nam Anh">
-          <a href="index.html">
-            <i class="fa fa-dashboard"></i> <span>Trang Chủ</span>
-          </a>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-file-o"></i> <span>Phiếu Xuất Hàng</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
-            <li>
-				<a href="phieudangsoan_tung.html">
-					<i class="fa fa-file-text"></i>
-					<span>Phiếu Đang Soạn</span>
-					<span class="pull-right-container">
-						<span class="label label-primary pull-right">2</span>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="phieudaxuat_tung.html">
-					<i class="fa fa-list-alt"></i>
-					<span>Phiếu Đã Xuất</span>
-					<span class="pull-right-container">
-						<span class="label label-primary bg-green">1</span>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="phieuxuatsau_tung.html">
-					<i class="fa fa-files-o"></i>
-					<span>Phiếu Xuất Sau</span>
-					<span class="pull-right-container">
-						<span class="label pull-right bg-green">new</span>
-						<span class="label pull-right bg-red">2</span>
-					</span>
-				</a>
-			</li>
-			<li class="treeview">
-				<a href="#">
-					<i class="fa fa-cubes"></i> <span>Hướng dẫn</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="workflow.html"><i class="fa fa-hand-o-right"></i> Luồng Xử Lí</a></li>
-				</ul>
-			</li>
-          </ul>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i> <span>Kho</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="price.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
-            <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
-          </ul>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Công nợ</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-			<li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử Lý Công Nợ</a></li>
-            <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
-            <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
-          </ul>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-truck"></i> <span>Giao Hàng</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Lái Xe</a></li>
-            <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Xe Hàng</a></li>
-			<li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định Vị Xe Hàng</a></li>
-          </ul>
-        </li>
-			
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-pencil-square"></i> <span>Báo Cáo</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="treeview">
-              <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh Thu</a>
-            </li>
-			
-			<li class="treeview">
-              <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công Nợ Khách Hàng</a>
-            </li>
-			
-			<li class="treeview">
-              <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp</a>
-            </li>
-          </ul>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-database"></i> <span>Quản Trị</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="treeview">
-              <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
-            </li>
-			 <li class="treeview">
-              <a href="customer_list.html"><i class="fa fa-users"></i> Danh Sách Khách Hàng</a>
-            </li>
-			<li class="treeview">
-              <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhà Cung Cấp</a>
-            </li>
-			<li class="treeview">
-              <a href="toBeContinue_page.html"><i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-				<li><a href="toBeContinue_page.html"><i class="fa fa-user-plus"></i> Thêm Tài Khoản</a></li>
-				<li><a href="toBeContinue_page.html"><i class="fa fa-edit"></i> Cập Nhập User</a></li>
-				<li><a href="toBeContinue_page.html"><i class="fa fa-child"></i> Phân Quyền Menu</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>	
-    </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Nguyễn Nam Anh</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="Nam Anh">
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i> <span>Trang Chủ</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-o"></i> <span>Phiếu Xuất Hàng</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
+                                <li>
+                                    <a href="phieudangsoan_tung.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Phiếu Đang Soạn</span>
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary pull-right">2</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="phieudaxuat_tung.html">
+                                        <i class="fa fa-list-alt"></i>
+                                        <span>Phiếu Đã Xuất</span>
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary bg-green">1</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="phieuxuatsau_tung.html">
+                                        <i class="fa fa-files-o"></i>
+                                        <span>Phiếu Xuất Sau</span>
+                                        <span class="pull-right-container">
+                                            <span class="label pull-right bg-green">new</span>
+                                            <span class="label pull-right bg-red">2</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-cubes"></i> <span>Hướng dẫn</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="workflow.html"><i class="fa fa-hand-o-right"></i> Luồng Xử Lí</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-folder"></i> <span>Kho</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
+                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-table"></i> <span>Công nợ</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử Lý Công Nợ</a></li>
+                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
+                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-truck"></i> <span>Giao Hàng</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Lái Xe</a></li>
+                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Xe Hàng</a></li>
+                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định Vị Xe Hàng</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-pencil-square"></i> <span>Báo Cáo</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh Thu</a>
+                                </li>
+
+                                <li class="treeview">
+                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công Nợ Khách Hàng</a>
+                                </li>
+
+                                <li class="treeview">
+                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-database"></i> <span>Quản Trị</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh Sách Khách Hàng</a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhà Cung Cấp</a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="toBeContinue_page.html"><i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="toBeContinue_page.html"><i class="fa fa-user-plus"></i> Thêm Tài Khoản</a></li>
+                                        <li><a href="toBeContinue_page.html"><i class="fa fa-edit"></i> Cập Nhập User</a></li>
+                                        <li><a href="toBeContinue_page.html"><i class="fa fa-child"></i> Phân Quyền Menu</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>	
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -344,28 +357,28 @@
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
                                     <div>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
                                         </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
                                             <i class="fa fa-edit text-green"></i>
                                         </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom">
                                             <i class="fa fa-save text-yellow"></i>
                                         </a>
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
                                             <i class="fa fa-close text-red"></i>
                                         </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
                                             <i class="fa fa-check-circle text-green"></i>
                                         </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                             <i class="fa fa-eye text-black"></i>
                                         </a>
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
                                             <i class="fa fa-print text-blue"></i>
                                         </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
                                             <i class="fa fa-download text-purple"></i>
                                         </a>
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
@@ -381,47 +394,47 @@
                                                 <!-- Input addon -->
                                                 <div>
                                                     <div class="box-body">
-														<div class="row">
-														<div class="col-md-4">
-															<label>Đơn vị</label>
-															<div class="input-group">
-																<span class="input-group-addon"><i class="fa fa-user"></i></span>
-																<input class="form-control" placeholder="Đơn vị">
-															</div>
-														</div>
-														
-														<div class="col-md-4">
-															<label>Trạng Thái</label>
-															<div class="input-group">
-																<span class="input-group-addon"><i class="fa fa-hourglass"></i></span>
-																<select class="form-control" style="font-family: 'FontAwesome';">
-																	<option>Bản nháp</option>
-																	<option>Đã xuất phiếu</option>
-																	<option>Đã xuất hoá đơn</option>
-																	<option class="text-yellow">&#xf071; Đã xuất hoá đơn</option>
-																	<option>Đã xuất kho</option>
-																	<option class="text-yellow">&#xf071; Đã xuất kho</option>
-																	<option>Hoàn thành</option>
-																	<option>Đã huỷ</option>
-																	<option>Từ chối</option>
-																</select>
-															</div>
-														</div>
-														
-														<div class="col-md-4">
-															<label>Đơn vị</label>
-															<div class="input-group">
-																<span class="input-group-addon"><i class="fa fa-home"></i></span>
-																<input class="form-control" placeholder="Đơn vị">
-															</div>
-														</div>
-														</div>
-														<div class="row">
-														<div class="col-md-12">
-															<textarea class="textarea" placeholder="Place some text here"
-													  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px; margin-top: 20px;"></textarea>
-														</div>
-														</div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label>Đơn vị</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                    <input class="form-control" placeholder="Đơn vị">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Trạng Thái</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-hourglass"></i></span>
+                                                                    <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                        <option>Bản nháp</option>
+                                                                        <option>Đã xuất phiếu</option>
+                                                                        <option>Đã xuất hoá đơn</option>
+                                                                        <option class="text-yellow">Đã xuất hoá đơn&#xf071;</option>
+                                                                        <option>Đã xuất kho</option>
+                                                                        <option class="text-yellow">Đã xuất kho&#xf071;</option>
+                                                                        <option>Hoàn thành</option>
+                                                                        <option>Đã huỷ</option>
+                                                                        <option>Từ chối</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Đơn vị</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                                                    <input class="form-control" placeholder="Đơn vị">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <textarea class="textarea" placeholder="Place some text here"
+                                                                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px; margin-top: 20px;"></textarea>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <!-- /.box-body -->
                                                 </div>
@@ -429,13 +442,134 @@
 
                                             </div>
                                         </div>
-                                        
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-xs-12 table-responsive">
+                                                <fieldset>
+                                                    <legend><h4><b>Chi tiết đơn hàng</b></h4></legend>
+                                                    <table class="table table-striped" id="mainTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th rowspan="2" style="width: 30px;">STT</th>
+                                                                <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                                <th colspan="2">Số lượng</th>
+                                                                <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                                <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                                <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                                <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th style="width: 70px;">Cái</th>
+                                                                <th style="width: 70px;">Thùng</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">1</td>
+                                                                <td style="vertical-align: middle;">ABN 52c</td>
+                                                                <td style="vertical-align: middle;">15A</td>
+                                                                <td><input type="text" class="form-control" id="cai_1" style="text-align: right;"
+                                                                           onkeyup="configSp('1');
+                                                                                   return false;"/></td>
+                                                                <td><input type="text" class="form-control" id="thung_1" 
+                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('1');
+                                                                                   return false;"/></td>
+                                                                <td><output id="dongia_1">590000</output></td>
+                                                                <td><output id="tien_chua_ck_1"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck1" style="text-align: right;"
+                                                                           onkeyup="configCk('1');
+                                                                                   return false;"/></td>
+                                                                <td><output id="tien_da_ck_1"></output></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">2</td>
+                                                                <td style="vertical-align: middle;">TS1000N AG6 3P</td>
+                                                                <td style="vertical-align: middle;">1000A</td>
+                                                                <td><input type="text" class="form-control" id="cai_2" style="text-align: right;"
+                                                                           onkeyup="configSp('2');
+                                                                                   return false;"/></td>
+                                                                <td><input type="text" class="form-control" id="thung_2" 
+                                                                           style="text-align: right;" title="13 cái/1" onkeyup="configThung('2');
+                                                                                   return false;"/></td>
+                                                                <td><output id="dongia_2">45000000</output></td>
+                                                                <td><output id="tien_chua_ck_2"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck2" style="text-align: right;"
+                                                                           onkeyup="configCk('2');
+                                                                                   return false;"/></td>
+                                                                <td><output id="tien_da_ck_2"></output></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">3</td>
+                                                                <td style="vertical-align: middle;">ABS 32c</td>
+                                                                <td style="vertical-align: middle;">5A</td>
+                                                                <td>
+                                                                    <input type="text" class="form-control" id="qtt" style="text-align: right;" onkeyup="checkQtt();"/></td>
+                                                                <td><input type="text" class="form-control" title="20 cái/1"/></td>
+                                                                <td>630000</td>
+                                                                <td></td>
+                                                                <td><input type="text" class="form-control"/></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="cai" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="thung" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                                <td></td><td></td><td></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_chua_ck" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td>
+                                                                <td><input type="text" class="form-control" id="ck" style="text-align: right; float: right; font-size: 18px; font-weight: bold;"
+                                                                           onkeyup="configCkAll();
+                                                                                   return false;"/></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_ck" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td><td></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="con_lai" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td>
+                                                                <td>
+                                                                    <input type="text" class="form-control" id="vat" style="text-align: right; float: right;; font-size: 18px; font-weight: bold;"
+                                                                           onkeyup="configCkAll();
+                                                                                   return false;"/>
+                                                                </td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_vat" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td><td></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_da_ck" style="color: #fff; font-size: 18px; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </fieldset>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                         <!-- /.col-->
                     </div>
+
                     <!-- ./row -->
                 </section>
                 <!-- /.content -->
@@ -463,9 +597,9 @@
         <script src="dist/js/demo.js"></script>
 
         <script>
-            $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
+                                                                               $(document).ready(function () {
+                                                                                   $('[data-toggle="tooltip"]').tooltip();
+                                                                               });
         </script>
 
     </body>
