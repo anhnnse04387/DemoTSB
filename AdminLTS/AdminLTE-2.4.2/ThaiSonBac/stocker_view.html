@@ -6,20 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Thái Sơn Bắc - TSB</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+
     <style>
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
+        .accountant-view-box-body-custom {
+            font-size: 20px;
+        }
+
+        .a-custom-label {
+            color: white;
+        }
+
         th {
             color: white;
             background-color: #f88457;
             font-weight: bold;
             font-size: 18px;
-            text-align: inherit;
+            text-align: center;
         }
 
         td {
@@ -35,18 +64,16 @@
             background-color: #544d61;
         }
 
-        .accountant-view-box-body-custom {
-            font-size: 20px;
-        }
-
-        .a-custom-label {
-            color: white;
+        textarea {
+            resize: vertical;
+            resize: horizontal;
         }
     </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
+
         <header class="main-header">
     <a href="index-sales.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -62,75 +89,44 @@
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
+                <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">Bạn có 10 đơn hàng mới</li>
+                                <li class="header">You have 10 notifications</li>
                                 <li>
+                                    <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 1
-                                                <div class="pull-right">1 giờ trước</div>
+                                                <i class="fa fa-users text-aqua"></i> 5 new members joined today
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 2
-                                                <div class="pull-right">1 giờ trước</div>
+                                                <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause
+                                                design problems
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 3
-                                                <div class="pull-right">1 giờ trước</div>
+                                                <i class="fa fa-users text-red"></i> 5 new members joined
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 4
-                                                <div class="pull-right">1 giờ trước</div>
+                                                <i class="fa fa-shopping-cart text-green"></i> 25 sales made
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 5
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 6
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 7
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 8
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 9
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-green"></i> Đơn hàng 10
-                                                <div class="pull-right">1 giờ trước</div>
+                                                <i class="fa fa-user text-red"></i> You changed your username
                                             </a>
                                         </li>
                                     </ul>
@@ -140,6 +136,7 @@
                                 </li>
                             </ul>
                         </li>
+
                          <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -355,448 +352,269 @@
   </aside>
 
         <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="../ThaiSonBac/index.html">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div>
-                            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title" id="myModalLabel">Xác nhận xóa đơn hàng</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <label>Bạn thực sự muốn hủy đơn hàng?</label>
-                                            <br/>
-                                            <p>Lý do</p>
-                                            <textarea name="" id="" style="width: 100%" rows="10"></textarea>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
-                                            <a href="stocker_notification.html" type="button" class="btn btn-danger btn-ok">Hủy</a>
-                                        </div>
-                                    </div>
+                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">Xác nhận hủy đơn hàng</h4>
                                 </div>
-                            </div>
-                            <br/>
-                        </div>
-                        <div class="box">
-
-                            <div class="container-fluid">
-                                <div class="box-body">
-                                    <div class="accountant-view-box-body-custom">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <center>
-                                                    <h1>Đơn hàng lô số: 80326</h1>
-                                                </center>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-2">
-                                                <i class="fa fa-user-circle-o"></i>
-                                                <label>Đơn vị</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span>CÔNG TY LONG GIANG</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <i class="fa fa-bank"></i>
-                                                <label>Mã số thuế</label>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <span>54366324</span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-2">
-                                                <i class="fa fa-user-circle"></i>
-                                                <label>Địa chỉ xuất hợp đồng</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span>CÔNG TY THHH THÁI SƠN BẮC</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <i class="fa fa-dot-circle-o"></i>
-                                                <label>Trạng thái</label>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <span class="label label-primary">
-                                                    <a href="detail_progress_tung.html" class="a-custom-label">Đã xuất hóa đơn</a>
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-2">
-                                                <i class="fa fa-address-book"></i>
-                                                <label>Địa chỉ giao hàng</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span>CÔNG TY LONG GIANG</span>
-                                            </div>
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-4"></div>
-                                        </div>
-                                    </div>
-                                    <br><br>
-                                    <div class="box-body">
-                                        <table class="table table-bordered table-striped">
-                                            <thead style="text-align: center">
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>TÊN HÀNG</th>
-                                                    <th>SỐ LƯỢNG</th>
-                                                    <th>ĐÃ ĐỦ</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>ABN 53c</td>
-                                                    <td>10</td>
-                                                    <td>
-                                                        <input type="checkbox" class="checky">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>ABN 203c</td>
-                                                    <td>20</td>
-                                                    <td>
-                                                        <input type="checkbox" class="checky">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>BAB 193a</td>
-                                                    <td>23</td>
-                                                    <td>
-                                                        <input type="checkbox" class="checky">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>FAT 501g</td>
-                                                    <td>7</td>
-                                                    <td>
-                                                        <input type="checkbox" class="checky">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>NOT 131l</td>
-                                                    <td>15</td>
-                                                    <td>
-                                                        <input type="checkbox" class="checky">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>SDO 123d</td>
-                                                    <td>9</td>
-                                                    <td>
-                                                        <input type="checkbox" class="checky">
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot></tfoot>
-                                        </table>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                    </div>
+                                <div class="modal-body">
+                                    <label>Bạn thực sự muốn hủy đơn hàng?</label>
+                                    <br/>
+                                    <p>Lý do</p>
+                                    <textarea id="" style="width: 100%" rows="10"></textarea>
                                 </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div>
-                                        <div class="col-lg-2 pull-right">
-                                            <button class="btn btn-danger btn-block" data-record-id="54" data-record-title="Something cool" data-toggle="modal" data-target="#confirm-delete">Hủy</button>
-                                        </div>
-                                        <div class="col-lg-2 pull-right">
-                                            <a href="deliver_view.html" class="btn btn-facebook btn-block disabled" id="btn_continue">Tiếp tục</a>
-                                        </div>
-                                        <div class="col-lg-2 pull-right">
-                                            <a href="stocker_notification.html" class="btn btn-warning btn-block">Quay trở lại</a>
-                                        </div>
-                                    </div>
-
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
+                                    <a href="accountant_notification.html" type="button" class="btn btn-danger btn-ok">Hủy</a>
                                 </div>
-                                <div class="row"></div>
                             </div>
                         </div>
-
-            </section>
-            </div>
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Create the tabs -->
-                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                    <li>
-                        <a href="#control-sidebar-home-tab" data-toggle="tab">
-                            <i class="fa fa-home"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#control-sidebar-settings-tab" data-toggle="tab">
-                            <i class="fa fa-gears"></i>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Recent Activity</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                        <p>Will be 23 on April 24th</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                                        <p>New phone +1(800)555-1234</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                                        <p>nora@example.com</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                                        <p>Execution time 5 seconds</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Custom Template Design
-                                        <span class="label label-danger pull-right">70%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Update Resume
-                                        <span class="label label-success pull-right">95%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Laravel Integration
-                                        <span class="label label-warning pull-right">50%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Back End Framework
-                                        <span class="label label-primary pull-right">68%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
                     </div>
-                    <!-- /.tab-pane -->
-                    <!-- Stats tab content -->
-                    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                    <!-- /.tab-pane -->
-                    <!-- Settings tab content -->
-                    <div class="tab-pane" id="control-sidebar-settings-tab">
-                        <form method="post">
-                            <h3 class="control-sidebar-heading">General Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Report panel usage
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Some information about this general settings option
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Allow mail redirect
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Other sets of options are available
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Expose author name in posts
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Allow the user to show his name in blog posts
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Show me as online
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Turn off notifications
-                                    <input type="checkbox" class="pull-right">
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Delete chat history
-                                    <a href="javascript:void(0)" class="text-red pull-right">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-                        </form>
-                    </div>
-                    <!-- /.tab-pane -->
                 </div>
-            </aside>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-            </div>
-            <!-- ./wrapper -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1>ĐƠN HÀNG LÔ SỐ: 80326</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <i class="fa fa-user-circle-o"></i>
+                                            <label>Đơn vị</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span>CÔNG TY LONG GIANG</span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-bank"></i>
+                                            <label>MST</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span>54366324</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <i class="fa fa-user-circle"></i>
+                                            <label>Nơi xuất HĐ</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span>CÔNG TY THHH THÁI SƠN BẮC</span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <i class="fa fa-dot-circle-o"></i>
+                                            <label>Trạng thái</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span class="label label-primary">
+                                                <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <i class="fa fa-address-book"></i>
+                                            <label>Địa chỉ giao hàng</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span>CÔNG TY LONG GIANG</span>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                </div>
+                                <!-- tools box -->
+                                <div class="pull-right box-tools">
+                                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <!-- /. tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body pad">
+                                <div>
+                                    <a href="stocker_notification.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                    </a>
+                                    <a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-toggle="modal" data-target="#confirm-delete">
+                                        <i class="fa fa-close text-red"></i>
+                                    </a>
+                                    <a href="deliver_view.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <table class="table table-bordered table-striped">
+                                        <thead style="text-align: center">
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>TÊN HÀNG</th>
+                                                <th>SỐ LƯỢNG</th>
+                                                <th>ĐÃ ĐỦ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>ABN 53c</td>
+                                                <td>10</td>
+                                                <td>
+                                                    <input type="checkbox" class="checky">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>ABN 203c</td>
+                                                <td>20</td>
+                                                <td>
+                                                    <input type="checkbox" class="checky">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>BAB 193a</td>
+                                                <td>23</td>
+                                                <td>
+                                                    <input type="checkbox" class="checky">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>FAT 501g</td>
+                                                <td>7</td>
+                                                <td>
+                                                    <input type="checkbox" class="checky">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>NOT 131l</td>
+                                                <td>15</td>
+                                                <td>
+                                                    <input type="checkbox" class="checky">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>SDO 123d</td>
+                                                <td>9</td>
+                                                <td>
+                                                    <input type="checkbox" class="checky">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                    <div class="container-fluid" align="center">
+                                        <div class="row" style="font-weight: bold;">
+                                            <div class="col-md-3">
+                                                Bán hàng
+                                            </div>
 
-            <!-- jQuery 3 -->
-            <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-            <!-- Bootstrap 3.3.7 -->
-            <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- DataTables -->
-            <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-            <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-            <!-- SlimScroll -->
-            <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-            <!-- FastClick -->
-            <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-            <!-- AdminLTE App -->
-            <script src="../dist/js/adminlte.min.js"></script>
-            <!-- AdminLTE for demo purposes -->
-            <script src="../dist/js/demo.js"></script>
-            <!-- page script -->
-            <script>
-                $(function () {
-                    $('#example1').DataTable()
-                    $('#example2').DataTable({
-                        'paging': true,
-                        'lengthChange': false,
-                        'searching': false,
-                        'ordering': true,
-                        'info': true,
-                        'autoWidth': false
-                    })
-                })
-            </script>
-            <script>
-                $('#confirm-delete').on('click', '.btn-ok', function (e) {
-                    var $modalDiv = $(e.delegateTarget);
-                    var id = $(this).data('recordId');
-                    // $.ajax({url: '/api/record/' + id, type: 'DELETE'})
-                    // $.post('/api/record/' + id).then()
-                    $modalDiv.addClass('loading');
-                    setTimeout(function () {
-                        $modalDiv.modal('hide').removeClass('loading');
-                    }, 1000)
-                });
-                $('#confirm-delete').on('show.bs.modal', function (e) {
-                    var data = $(e.relatedTarget).data();
-                    $('.title', this).text(data.recordTitle);
-                    $('.btn-ok', this).data('recordId', data.recordId);
-                });
-            </script>
-            <script>
-                var isAllChecked = false;
-                $('.checky').on('click', function () {
-                    if ($('.checky:checked').length != 6) {
-                        $('#btn_continue').addClass('disabled');
-                    } else {
-                        $('#btn_continue').removeClass('disabled');
-                    }
-                });
-            </script>
+                                            <div class="col-md-3 center-block">
+                                                Thủ kho
+                                            </div>
+
+                                            <div class="col-md-3 center-block">
+                                                Người giao
+                                            </div>
+                                            <div class="col-md-3 center-block">
+                                                Khách hàng kí nhận
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                (Ký ghi rõ họ tên)
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                (Ký ghi rõ họ tên)
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                (Ký ghi rõ họ tên)
+                                            </div>
+                                            <div class="col-md-3">
+                                                (Ký ghi rõ họ tên)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="height:150px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                </div>
+                <!-- ./row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright &copy; 2014-2016
+                <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script>
+        $('#confirm-delete').on('click', '.btn-ok', function (e) {
+            var $modalDiv = $(e.delegateTarget);
+            var id = $(this).data('recordId');
+            // $.ajax({url: '/api/record/' + id, type: 'DELETE'})
+            // $.post('/api/record/' + id).then()
+            $modalDiv.addClass('loading');
+            setTimeout(function () {
+                $modalDiv.modal('hide').removeClass('loading');
+            }, 1000)
+        });
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            var data = $(e.relatedTarget).data();
+            $('.title', this).text(data.recordTitle);
+            $('.btn-ok', this).data('recordId', data.recordId);
+        });
+        $('textarea').autoWidth();
+    </script>
 </body>
 
 </html>
