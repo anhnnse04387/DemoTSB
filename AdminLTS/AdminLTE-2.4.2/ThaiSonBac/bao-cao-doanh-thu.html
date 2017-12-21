@@ -20,14 +20,14 @@
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
             .week-select .input-group-addon {
@@ -64,11 +64,77 @@
                 height: 40px;
             }
 			.button {
-    width: 50px;
-    height: 18px;
-    padding-right: 25px;
-    border: none;
+				width: 50px;
+				height: 18px;
+				padding-right: 25px;
+				border: none;
+			}
+			.chart {
+				position: static;
+				overflow: hidden;
+				width: 90%;
+				margin-left: 25px;
+			}
+			 #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+        tfoot {
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #544d61;
+        }
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+	width: 100%;
 }
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+
+}
+.active{
+	display:block;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+ 
+    border-top: none;
+}
+
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -520,8 +586,7 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>BÁO CÁO DOANH THU </h1></br>
+                <section class="content-header">              
                     <ol class="breadcrumb">
                         <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
                         <li><a href="#"><i class="fa fa-dashboard"></i> Doanh thu</a></li>
@@ -535,26 +600,29 @@
                         <div class="col-md-12">
                             <div class="box">
                                 <div class="box-header with-border">
-                                    <h1 class="box-title">Báo cáo doanh thu</h1>
-                                    <div class="pull-right box-tools">
-                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                                title="Collapse">
-                                            <i class="fa fa-minus"></i></button>
-                                    </div>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                    <h1 class="box-title">Báo cáo doanh thu</h1>                                
+                                   <div style="float:right">
+									 <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                         <i class="fa fa-eye text-black"></i>
                                     </a>
                                     <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
                                         <i class="fa fa-print text-blue"></i>
                                     </a>
+								   </div>
                                 </div>
-
+								
+							<!-- tab -->
+							<div class="tab" >
+										<button class="tablinks active" onclick="openCity(event, 'London')" style="width:50%">Doanh thu</button>
+										<button class="tablinks" onclick="openCity(event, 'Paris')" style="width:50%">Phần trăm đóng góp doanh thu</button>
+							</div>
                                 <!-- /.box-header -->
+							<div id="London" class="tabcontent" style="display:block">
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
 
-                                            <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
+                                            <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 60px;margin-top:20px">
                                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ: </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -604,20 +672,21 @@
                                 </div>
                                 <!-- /.box-footer -->
                             </div>
+						</div>
                             <!-- /.box -->
                         </div>
                         <!-- /.col -->
                     </div>
 
+					<div id="Paris"  class="tabcontent">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="text-center">PHẦN TRĂM DOANH THU TỪ CÁC NGÀNH HÀNG</h3>
+                                    <h3 class="text-center">PHẦN TRĂM ĐÓNG GÓP DOANH THU</h3>
                                 </div>
-                                <div class="box-body" style="float:left;width:40%">
-                                    <canvas id="pieChart" style="height:150px;float:left"></canvas>	
-
+                                <div class="box-body" style="float:left;width:40%">aaa
+                                    <canvas id="pieChart" style="height:250px;float:left"></canvas>	
                                 </div>
                                 <div class="box-body" style="float:right;width:60%">
                                     <table id="chuThich" style="padding-top:20px">
@@ -640,13 +709,15 @@
                                         <tr>
                                             <td><button style="background-color:#3c8dbc" class="button"></button></td>
                                             <td style="font-size:15px;padding-left:15px">Thanh cái dẫn điện LS Cable & System</td>
-                                        </tr>
-                                        <td><button style="background-color:#d2d6de" class="button"></button></td>
-                                        <td style="font-size:15px;padding-left:15px">Biến tần LS</td><td></td>
+                                        </tr>                                 
                                         <tr>
                                             <td><button style="background-color:#ffff00" class="button"></button></td>
                                             <td style="font-size:15px;padding-left:15px">Công tắc & Ổ cắm LS</td>
                                         </tr>
+										<tr>
+											<td><button style="background-color:#d2d6de" class="button"></button></td>
+											<td style="font-size:15px;padding-left:15px">Khác</td><td></td>
+										</tr>
                                     </table>
                                 </div>
                             </div>			
@@ -735,6 +806,7 @@
                             </div>
                         </div>
                     </div>
+					</div>
                 </section>
                 <!-- /.content -->
             </div>
@@ -950,7 +1022,7 @@
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="/js/adminlte.min.js"></script>
         <!-- Sparkline -->
         <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
         <!-- jvectormap  -->
@@ -972,7 +1044,7 @@
         <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
         <script src="../bower_components/Flot/jquery.flot.categories.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
+        <script src="dist/js/demo.js"></script>
         <!-- DataTables -->
         <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -980,6 +1052,21 @@
         <script src='dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
         <script src='dist/js/pages/cong-no/moment.js'></script>
 
+		<script>
+		function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+		}
+</script>
         <script>
 
 
