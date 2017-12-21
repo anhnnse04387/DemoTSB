@@ -20,14 +20,12 @@
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 		<!-- DataTables -->
         <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
             .week-select .input-group-addon {
@@ -62,6 +60,15 @@
                 padding: 10px 5px;
                 min-width: 60px;
                 height: 40px;
+            }
+			#example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
             }
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -514,12 +521,11 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>BÁO CÁO CÔNG NỢ NHÀ CUNG CẤP </h1></br>
+                <section class="content-header">            
                     <ol class="breadcrumb">
 						<li><a href="index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
 						 <li><a href="#"><i class="fa fa-dashboard"></i> Công nợ</a></li>
-                        <li><a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-dashboard"></i> Báo cáo công nợ</a></li>
+                        <li><a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-dashboard"></i> Báo cáo công nợ nhà cung cấp</a></li>
                     </ol>
                 </section>
 
@@ -529,18 +535,15 @@
                         <div class="col-md-12">
                             <div class="box">
                                 <div class="box-header with-border">
-                                    <h1 class="box-title">CÔNG NỢ NHÀ CUNG CẤP</h1>
-									 <div class="pull-right box-tools">
-                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                                title="Collapse">
-                                            <i class="fa fa-minus"></i></button>
-                                    </div>
-									<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                    <h1 class="box-title">BÁO CÁO CÔNG NỢ NHÀ CUNG CẤP</h1>
+									<div style="float:right">
+										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                             <i class="fa fa-eye text-black"></i>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+										</a>
+										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
                                             <i class="fa fa-print text-blue"></i>
-                                    </a>
+										</a>
+									</div>
                                 </div>
 								
                                 <!-- /.box-header -->
@@ -602,7 +605,7 @@
                                     <h3 class="text-center">TOP 10 NHÀ CUNG CẤP CÔNG NỢ LỚN NHẤT</h3>
                                 </div>
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
@@ -614,62 +617,62 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td><a href="customer_detail.html">Công ty HPH</a></td>
+                                                <td><a href="customer_detail.html">HĐ T07-1</a></td>
                                                 <td>Hải Phòng</td>
                                                 <td>406,625,213</td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td><a href="customer_detail.html">Công ty Phú An</a></td> 
+                                                <td><a href="customer_detail.html">HĐ T08-3</a></td> 
 												<td>Hà Nội</td>												
                                                 <td>206,625,213</td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td><a href="customer_detail.html">Công ty Invico - Sắn</a></td>
+                                                <td><a href="customer_detail.html">HĐ T08-7</a></td>
 												<td>Thạch Hòa,Thạch Thất,Hòa Lạc</td>
                                                 <td>1,806,475,213</td>
                                                 
                                             </tr>
                                             <tr>
                                                 <td>4</td>
-                                                <td><a href="customer_detail.html">Công ty 2B - Anh Tuấn</a></td>
+                                                <td><a href="customer_detail.html">HĐ T09-1</a></td>
 												<td>Phú Thọ</td>
                                                 <td>306,625,213</td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
-                                                <td><a href="customer_detail.html">Công ty Tương Lai</a></td>
+                                                <td><a href="customer_detail.html">HĐ T09-6</a></td>
 												<td>Thái Nguyên</td>
                                                 <td>306,625,213</td>
                                             </tr>
 											 <tr>
                                                 <td>6</td>
-                                                <td><a href="customer_detail.html">Công ty 2C - Tuấn Anh</a></td>
+                                                <td><a href="customer_detail.html">HĐ T10-1</a></td>
 												<td>Thái Nguyên</td>
                                                 <td>306,625,213</td>
                                             </tr>
 											 <tr>
                                                 <td>7</td>
-                                                <td><a href="customer_detail.html">Công ty Hà Phú</a></td>
+                                                <td><a href="customer_detail.html">HĐ T10-2</a></td>
 												<td>Tuyên Quang</td>
                                                 <td>400,625,213</td>
                                             </tr>
 											 <tr>
                                                 <td>8</td>
-                                                <td><a href="customer_detail.html">Công ty TNC</a></td>
+                                                <td><a href="customer_detail.html">HĐ T10-3</a></td>
 												<td>Hà Nội</td>
                                                 <td>306,625,213</td>
                                             </tr>
 											 <tr>
                                                 <td>9</td>
-                                                <td><a href="customer_detail.html">Công ty ABC</a></td>
+                                                <td><a href="customer_detail.html">Công ty TNC</a></td>
 												<td>Vĩnh Phúc</td>
                                                 <td>306,000,000</td>
                                             </tr>
 											 <tr>
                                                 <td>10</td>
-                                                <td><a href="customer_detail.html">Công ty DEF</a></td>
+                                                <td><a href="customer_detail.html">Thái Sơn Nam</a></td>
 												<td>Thái Nguyên</td>
                                                 <td>306,625,213</td>
                                             </tr>

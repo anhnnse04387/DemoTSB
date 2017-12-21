@@ -15,30 +15,27 @@
         <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
-             th {
-            color: white;
-            background-color: #f88457;
-            font-weight: bold;
-            font-size: 15px;
-            text-align: center;
-        }
+         #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
 
-        td {
-            text-align: center;
-            font-size: 14px;
-        }
-
-        tfoot {
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            background-color: #544d61;
-        }
+         tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
+            }
             .right{
                 text-align:right;
             }
@@ -359,12 +356,22 @@
   </aside>
 
             <div class="content-wrapper">
+			  <section class="content-header">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="../ThaiSonBac/index.html">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>						
+                    </li>
+					<li><a href="noCungCap.html"><i class="fa fa-dashboard"></i>Nợ cung cấp</a></li>
+					<li><a href="noChiTiet1.html"><i class="fa fa-dashboard"></i>Nợ chi tiết</a></li>
+                </ol>
+			 </section>
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Giá Hàng Hóa
+                                    <h3 class="box-title">Chi tiết nợ nhà cung cấp
                                     </h3>
                                 </div>
                                 <div class="box-body">
@@ -462,7 +469,7 @@
                                             </tr>
                                         </tbody>
                                         <tfoot>
-                                            <tr style="background-color:bisque">
+                                            <tr>
                                                 <td colspan="3" style="font-weight: bold;text-align: center">Total</td>
                                                 <td></td>
                                                 <td style="font-weight: bold">0</td>
@@ -695,10 +702,11 @@
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+		
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
+        <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
             $(function () {

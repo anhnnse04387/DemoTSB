@@ -15,21 +15,18 @@
         <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
-            th {
-                color: white;
-                background-color: #f88457;
-                font-weight: bold;
-                font-size: 15px;
-                text-align: center;
+           #example1 {
+                background-color: rgb(240, 240, 240);
             }
-
-            td {
+            #example1 thead tr th {
+                vertical-align: middle !important;
                 text-align: center;
-                font-size: 14px;
+                background-color: #3c8dbc;
+                color: #fff;
             }
 
             tfoot {
@@ -362,10 +359,19 @@
   </aside>
 
             <div class="content-wrapper">
+			  <section class="content-header">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="../ThaiSonBac/index.html">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>						
+                    </li>
+					<li><a href="price.html"><i class="fa fa-dashboard"></i>Giá Hàng Hóa</a></li>
+                </ol>
+			 </section>
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="box">
+                            <div class="box box-info">
                                 <div class="box-header">
                                     <h3 class="box-title">Giá Hàng Hóa
                                     </h3>
@@ -715,9 +721,9 @@
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
+        <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
             $(function () {
