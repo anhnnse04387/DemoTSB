@@ -626,21 +626,20 @@
                                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ: </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="01-01-2017">
+                                                    <input type="text" class="form-control" name="week" value="2016">
                                                 </div>
                                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến: </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="31-12-2017">
+                                                    <input type="text" class="form-control" name="week" value="2017">
                                                 </div>
                                             </div>	
 			
 
-                                            <div class="box-body">
-                                                <div class="chart">
-													<canvas id="barChart" style="height:230px"></canvas>
-													<small>Đơn vị :<em>Tỷ VNĐ</em></small>
-												</div>
+                                              <div class="chart">
+                                                <!-- Sales Chart Canvas -->
+                                                <canvas id="lineChart" style="height: 300px;"></canvas>
+                                                <small>Đơn vị :<em>Triệu VNĐ</em></small>
                                             </div>
 
 
@@ -685,8 +684,9 @@
                                 <div class="box-header">
                                     <h3 class="text-center">PHẦN TRĂM ĐÓNG GÓP DOANH THU</h3>
                                 </div>
-                                <div class="box-body" style="float:left;width:40%">aaa
-                                    <canvas id="pieChart" style="height:250px;float:left"></canvas>	
+                                <div class="box-body" style="float:left;width:40%">
+								<div class="chart">
+                                    <canvas id="pieChart" style="height:250px;float:left;display:block"></canvas>	</div>
                                 </div>
                                 <div class="box-body" style="float:right;width:60%">
                                     <table id="chuThich" style="padding-top:20px">
@@ -1022,7 +1022,7 @@
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="/js/adminlte.min.js"></script>
+        <script src="dist/js/adminlte.min.js"></script>
         <!-- Sparkline -->
         <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
         <!-- jvectormap  -->
@@ -1032,6 +1032,7 @@
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS -->
         <script src="../bower_components/Chart.js/Chart.js"></script>
+		<script src="dist/js/Chart.bundle.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -1072,7 +1073,7 @@
 
 
             $('input[name=week]').datepicker({
-                format: "dd-mm-yyyy",
+                format: "yyyy",
                 autoclose: true,
                 orientation: 'top auto'
             }).on('show', function (e) {
@@ -1093,58 +1094,65 @@
 
         <script>
 
-            //BAR CHART 
-	var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = 
-	{
-	  labels  : ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-      datasets: [
-        {
-          label               : 'Electronics',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40, 55, 70, 80, 90, 100]
-        }
-		]
-	}
-    barChartData.datasets[0].fillColor   = '#00a65a'
-    barChartData.datasets[0].strokeColor = '#00a65a'
-    barChartData.datasets[0].pointColor  = '#00a65a'
-    var barChartOptions                  = {
-      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-      scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
+    new Chart(document.getElementById("lineChart"), {
+		  type: 'line',
+		  data: {
+			labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+			datasets: [{ 
+				data: [86,114,20,106,88,150,500,2035,783,2478],
+				label: "Năm 2016",
+				borderColor: "#33FF33",
+				fill: false
+			  }, { 
+				data: [282,350,411,502,635,809,947,1402,3700,5267],
+				label: "Năm 2016",
+				borderColor: "#EE0000",
+				fill: false
+			  }
+			]
+		  },
+		  options: {
+			legend: { display: false },
+			title: {
+			  display: false,
+			},
+			elements: {
+				line: {
+					tension: 0, // disables bezier curves
+				}
+			}
+		  }
+		});
+		
+		new Chart(document.getElementById("lineChart2"), {
+		  type: 'line',
+		  data: {
+			labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+			datasets: [{ 
+				data: [86,114,20,106,88,150,500,2035,783,2478],
+				label: "Năm 2017",
+				borderColor: "#33FF33",
+				fill: false
+			  }, { 
+				data: [282,350,411,502,635,809,947,1402,3700,5267],
+				label: "Năm 2017",
+				borderColor: "#EE0000",
+				fill: false
+			  }
+			]
+		  },
+		  options: {
+			legend: { display: true },
+			title: {
+			  display: true,
+			},
+			elements: {
+				line: {
+					tension: 1, // disables bezier curves
+				}
+			}
+		  }
+		});
  
             //pie chart
             //- PIE CHART -
