@@ -5,7 +5,7 @@
  * This file is for demo purposes only.
  */
 function checkQtt() {
-    if(parseInt(document.getElementById('cai_3').value) > 5 && document.getElementById('dayout').value === '22/12/2017') {
+    if(parseInt(document.getElementById('cai_5').value) > 5 && document.getElementById('dayout').value === '22/12/2017') {
         swal({
             title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
@@ -28,7 +28,7 @@ function addDebt() {
     if (parseInt(document.getElementById("pay").value) > 0) {
         pay = parseFloat(document.getElementById("pay").value);
     }
-    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value.replace(',', '')) + addDebt - pay;
+    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value) + addDebt - pay;
 }
 
 function saveDraft() {
@@ -101,12 +101,13 @@ function create() {
             if (result.value) {
                 swal({
                     title: '<img src="dist/img/messagePic_1.png"/>',
-                    imageUrl: 'dist/img/Noti.png',
+                    imageUrl: 'dist/img/Noti.gif',
                     imageWidth: 400,
                     imageHeight: 300,
                     imageAlt: 'Custom image',
                     animation: false
                 })
+                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             }
         });
 }
@@ -124,7 +125,9 @@ function configCkAll() {
     }
     var tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val())) +
             ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val())) + 
-            ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val()));
+            ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val())) +
+            ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val())) +
+            ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val()));
     document.getElementById("tien_chua_ck").value = tien_chua_ck;
     if (ckTong > 0) {
         tien_ck = tien_chua_ck * ckTong / 100;
@@ -165,10 +168,10 @@ function configThung(stt) {
         thung = parseInt(document.getElementById("thung_" + stt).value);
     }
     if (thung > 0) {
-        if (stt === '1') {
-            document.getElementById("cai_" + stt).value = thung * 20;
+        if (stt === '5') {
+            document.getElementById("cai_" + stt).value = thung;
         } else {
-            document.getElementById("cai_" + stt).value = thung * 13;
+            document.getElementById("cai_" + stt).value = thung * 20;
         }
         configSp(stt);
     }
@@ -182,16 +185,22 @@ function configSp(stt) {
     }
     if (cai > 0) {
         configCk(stt);
-        if (stt === '1') {
-            document.getElementById("thung_" + stt).value = parseInt(cai / 20);
+        if (stt === '5') {
+            document.getElementById("thung_" + stt).value = cai;
         } else {
-            document.getElementById("thung_" + stt).value = parseInt(cai / 13);
+            document.getElementById("thung_" + stt).value = parseInt(cai / 20);
         }
 
         var tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
-                ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val()));
+                ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
+                ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
+                ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
+                ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val()));
         var tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
-                (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value));
+                (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
+                (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
+                (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
+                (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value));
         document.getElementById("thung").value = tong_thung;
         document.getElementById("cai").value = tong_cai;
     } else {
