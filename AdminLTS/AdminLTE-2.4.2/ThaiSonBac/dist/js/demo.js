@@ -19,7 +19,7 @@ function checkQtt() {
     }
 }
 
-function addDebt() {
+function checkOut() {
     var addDebt = 0;
     var pay = 0;
     if (parseInt(document.getElementById("addDebt").value) > 0) {
