@@ -16,7 +16,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
            folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -32,6 +32,32 @@
 
         td {
             font-size: 16px;
+            text-align: center;
+        }
+
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #example1 tbody td:nth-child(3){
+            text-align: left;
+        }
+
+        #example1 tbody td:nth-child(5){
+            text-align: right;
+        }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
         }
     </style>
 </head>
@@ -408,18 +434,32 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <ol class="breadcrumb">
-                    <li></li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class=""></i> Danh sách đơn hàng</a>
+                    </li>
                 </ol>
             </section>
+            <br>
             <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-header">
-                                <h3>DANH SÁCH ĐƠN HÀNG</h3>
+                <div class="box">
+                    <div class="box-header"> </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    <b>DANH SÁCH ĐƠN HÀNG</b>
+                                </h4>
                             </div>
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="example1" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
@@ -493,11 +533,10 @@
                                             <td>11-12-2017</td>
                                             <td>17,590,000</td>
                                             <td>
-                                                <span class="label label-danger">Canceled</span>
+                                                <span class="label label-danger">Đã hủy</span>
                                             </td>
                                             <td>Chốt TT T11</td>
                                         </tr>
-
                                     </tbody>
                                     <tfoot></tfoot>
                                 </table>

@@ -16,7 +16,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -34,7 +34,7 @@
 
         th {
             color: white;
-            background-color: #f88457;
+            background-color: #3c8dbc;
             font-weight: bold;
             font-size: 18px;
         }
@@ -46,6 +46,25 @@
 
         td {
             font-size: 16px;
+        }
+
+        #mainTable {
+            background-color: rgb(240, 240, 240);
+        }
+
+        #mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #mainTable tbody td:nth-child() {
+            text-align: left;
+        }
+
+        #mainTable tbody td:nth-child(5) {
+            text-align: right;
         }
         /* helpers/align.css */
 
@@ -480,6 +499,23 @@
             <!-- /.sidebar -->
         </aside>
         <div class="content-wrapper">
+            <section class="content-header">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class=""></i> Danh sách nhà cung cấp</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class=""></i> Thông tin chi tiết</a>
+                    </li>
+                </ol>
+            </section>
+            <br>
             <section class="content">
                 <div class="row">
                     <div class="col-md-3">
@@ -538,17 +574,15 @@
                                             <h2 class="text-center">
                                                 <strong>Doanh thu 6 tháng gần nhất</strong>
                                             </h2>
-                                            <div class="app">
-                                                {{ message }}
-                                                <line-chart></line-chart>
-                                            </div>
+                                            <canvas id="line-chart" width="800" height="450"></canvas>
                                         </div>
-                                        <div class="row" style="font-size:18px; text-align: center; color:#000000;">
+                                        <br>
+                                        <div class="row text-center" style="font-size:15px">
                                             <label class="col-md-4">Lần giao dịch</label>
                                             <label class="col-md-4">Tổng giá trị các đơn hàng</label>
                                             <label class="col-md-4">Còn nợ</label>
                                         </div>
-                                        <div class="row" style="font-size:30px; text-align: center;">
+                                        <div class="row text-center" style="font-size:20px">
                                             <label class="col-md-4" style="color:#439c07">10 lần</label>
                                             <label class="col-md-4">120 triệu đồng</label>
                                             <label class="col-md-4" style="color:#ff3300">23 triệu đồng</label>
@@ -560,9 +594,17 @@
                             <br>
                             <div class="container-fluid">
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>CÁC MẶT HÀNG CUNG CẤP</b>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
                                     <div class="col-md-10">
-                                        <h2 style="font-weight: bold">CÁC MẶT HÀNG CUNG CẤP</h2>
-                                        <table class="table table-bordered table-striped">
+
+                                        <table id="mainTable" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>STT</th>
@@ -646,10 +688,19 @@
                                         <span class="label label-primary pull-right" id="attach_box">Xem tất cả</span>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h2 style="font-weight: bold">TOP 10 ĐƠN NHẬP HÀNG GẦN NHẤT</h2>
-                                        <table class="table table-bordered table-striped">
+                                        <h4>
+                                            <b>TOP 10 ĐƠN NHẬP HÀNG GẦN NHẤT</b>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <table id="mainTable" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>STT</th>
@@ -808,7 +859,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <span class="label label-primary pull-right" id="attach_box"><a href="toBeContinue_page.html" style="color:white">Xem tất cả</a></span>
+                                        <span class="label label-primary pull-right" id="attach_box">
+                                            <a href="toBeContinue_page.html" style="color:white">Xem tất cả</a>
+                                        </span>
                                     </div>
                                 </div>
                                 <br>
@@ -1052,36 +1105,27 @@
             })
         })
     </script>
-    <script src="dist/js/vue.min.js"></script>
-    <script src="dist/js/vue-chartjs.full.min.js"></script>
-    <script>
-        Vue.component('line-chart', {
-            extends: VueChartJs.Line,
-            mounted() {
-                this.renderChart({
-                    labels: ['06-2017', '07-2017', '08-2017', '09-2017', '10-2017', '11-2017',
-                        '12-2017'
-                    ],
-                    datasets: [{
-                        label: "Doanh thu",
-                        backgroundColor: '#6497b1',
-                        data: [40000, 39000, 10000, 40000, 39000, 80000, 40000]
-                    }]
-                }, {
-                    responsive: true,
-                    maintainAspectRatio: false
-                })
-            }
-
-        })
-        var vm = new Vue({
-            el: '.app',
-            data: {
-                message: 'Tổng tiền(VNĐ)'
-            }
-        })
-    </script>
     <script src="dist/js/Chart.min.js"></script>
+    <script>
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: ['06-2017', '07-2017', '08-2017', '09-2017', '10-2017', '11-2017'],
+                datasets: [{
+                    data: [168, 170, 178, 190, 203, 276],
+                    label: "Doanh thu",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: ''
+                }
+            }
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#attach_box").click(function () {

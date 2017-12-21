@@ -17,7 +17,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -47,6 +47,27 @@
 
         td {
             font-size: 16px;
+        }
+
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #example1 tbody td:nth-child(2),
+        #example1 tbody td:nth-child(4) {
+            text-align: left;
+        }
+
+        #example1 tbody td:nth-child(),
+        #example1 tbody td:nth-child() {
+            text-align: right;
         }
     </style>
 </head>
@@ -418,7 +439,16 @@
 
         <div class="content-wrapper">
             <section class="content-header">
-
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class=""></i> Danh sách khách hàng</a>
+                    </li>
+                </ol>
             </section>
             <section class="content">
                 <div class="row">
@@ -433,177 +463,189 @@
                                         </a>
                                     </div>
                                 </div>
-                                <h1 style="text-align: center;">DANH SÁCH KHÁCH HÀNG</h1>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>DANH SÁCH KHÁCH HÀNG</b>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <hr>
                             </div>
                             <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>STT</th>
-                                            <th>TÊN</th>
-                                            <th>ẢNH ĐẠI DIỆN</th>
-                                            <th>ĐỊA CHỈ</th>
-                                            <th>RANK</th>
-                                            <th>NGÀY TẠO</th>
-                                            <th>THAY ĐỔI</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty HPH</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
-                                            </td>
-                                            <td>108 Nguyễn Trãi, Thanh Xuân Hà Nội</td>
-                                            <td>
-                                                <span class="label label-primary">KHÁCH MỚI</span>
-                                            </td>
-                                            <td>15-12-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty 2B -Anh Tuấn</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/viettel.png" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</td>
-                                            <td>
-                                                <span class="label label-primary">KHÁCH MỚI</span>
-                                            </td>
-                                            <td>11-12-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty Vạn Xuân</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/amazon.png" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>223 Láng, Hai Bà Trưng Hà Nội</td>
-                                            <td>
-                                                <span class="label label-success">KHÁCH QUEN</span>
-                                            </td>
-                                            <td>06-03-2015</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty TV-TK Điện lực HN-Chú Lợi</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/amazon.png" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>527 Ngô Quyền , Quận Bình Thạch, Hồ Chí Minh</td>
-                                            <td>
-                                                <span class="label label-danger">KHÁCH VIP</span>
-                                            </td>
-                                            <td>19-11-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty Vinh Thanh</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/logo_vinhthanh.png" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>527 Ngô Quyền , TP.Hải phong</td>
-                                            <td>
-                                                <span class="label label-primary">KHÁCH MỚI</span>
-                                            </td>
-                                            <td>19-11-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty TNHH Vinafo</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/logo_vinafo.gif" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>508 Trường Chinh , TP.Hà Nội</td>
-                                            <td>
-                                                <span class="label label-danger">KHÁCH VIP</span>
-                                            </td>
-                                            <td>30-11-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty TNHH GoldenGate</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/logo_goldengate.png" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>108 Trường Chinh , TP.Sơn La</td>
-                                            <td>
-                                                <span class="label label-primary">KHÁCH MỚI</span>
-                                            </td>
-                                            <td>20-11-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>
-                                                <a href="customer_detail.html">Công ty FPT SHOP</a>
-                                            </td>
-                                            <td>
-                                                <img src="dist/img/logo_fptshop.jpg" style="height: 40px; width:40px;" alt="">
-                                            </td>
-                                            <td>330 Yên Sơn , TP.Hòa Bình</td>
-                                            <td>
-                                                <span class="label label-primary">KHÁCH MỚI</span>
-                                            </td>
-                                            <td>19-10-2017</td>
-                                            <td>
-                                                <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                    <i class="fa fa-edit text-blue"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot></tfoot>
-                                </table>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="example1" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>TÊN</th>
+                                                    <th>ẢNH ĐẠI DIỆN</th>
+                                                    <th>ĐỊA CHỈ</th>
+                                                    <th>RANK</th>
+                                                    <th>NGÀY TẠO</th>
+                                                    <th>THAY ĐỔI</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty HPH</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/hph.jpg" style="height: 40px; width: 40px;" alt="">
+                                                    </td>
+                                                    <td>108 Nguyễn Trãi, Thanh Xuân Hà Nội</td>
+                                                    <td>
+                                                        <span class="label label-primary">KHÁCH MỚI</span>
+                                                    </td>
+                                                    <td>15-12-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty 2B -Anh Tuấn</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/viettel.png" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</td>
+                                                    <td>
+                                                        <span class="label label-primary">KHÁCH MỚI</span>
+                                                    </td>
+                                                    <td>11-12-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty Vạn Xuân</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/amazon.png" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>223 Láng, Hai Bà Trưng Hà Nội</td>
+                                                    <td>
+                                                        <span class="label label-success">KHÁCH QUEN</span>
+                                                    </td>
+                                                    <td>06-03-2015</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty TV-TK Điện lực HN-Chú Lợi</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/amazon.png" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>527 Ngô Quyền , Quận Bình Thạch, Hồ Chí Minh</td>
+                                                    <td>
+                                                        <span class="label label-danger">KHÁCH VIP</span>
+                                                    </td>
+                                                    <td>19-11-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty Vinh Thanh</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/logo_vinhthanh.png" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>527 Ngô Quyền , TP.Hải phong</td>
+                                                    <td>
+                                                        <span class="label label-primary">KHÁCH MỚI</span>
+                                                    </td>
+                                                    <td>19-11-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty TNHH Vinafo</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/logo_vinafo.gif" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>508 Trường Chinh , TP.Hà Nội</td>
+                                                    <td>
+                                                        <span class="label label-danger">KHÁCH VIP</span>
+                                                    </td>
+                                                    <td>30-11-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty TNHH GoldenGate</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/logo_goldengate.png" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>108 Trường Chinh , TP.Sơn La</td>
+                                                    <td>
+                                                        <span class="label label-primary">KHÁCH MỚI</span>
+                                                    </td>
+                                                    <td>20-11-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>
+                                                        <a href="customer_detail.html">Công ty FPT SHOP</a>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/logo_fptshop.jpg" style="height: 40px; width:40px;" alt="">
+                                                    </td>
+                                                    <td>330 Yên Sơn , TP.Hòa Bình</td>
+                                                    <td>
+                                                        <span class="label label-primary">KHÁCH MỚI</span>
+                                                    </td>
+                                                    <td>19-10-2017</td>
+                                                    <td>
+                                                        <a href="customer_update.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot></tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
                             </div>
                             <div style="height : 50px;"></div>
                         </div>
