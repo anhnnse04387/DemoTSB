@@ -1,470 +1,542 @@
 ﻿<!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Thái Sơn Bắc - TSB</title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-        <!-- DataTables -->
-        <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Thái Sơn Bắc - TSB</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
            folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
-        <style>
-            th {
-                color: white;
-                background-color: #f88457;
-                font-weight: bold;
-                font-size: 18px;
-                text-align: center;
-            }
-            td {
-                font-size: 16px;
-            }
-        </style>
-    </head>
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+    <style>
+        th {
+            color: white;
+            background-color:#3c8dbc;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+        }
 
-    <body class="hold-transition skin-blue sidebar-mini">
-        <div class="wrapper">
+        td {
+            font-size: 16px;
+        }
+    </style>
+</head>
 
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="index-sales.html" class="logo">
-                    <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>T</b>SB</span>
-                    <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg">
-                        <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-                        <b>Thái Sơn Bắc</b>
-                    </span>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="index-sales.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">
+                    <b>T</b>SB</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                    <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png"
+                        alt="Photo">
+                    <b>Thái Sơn Bắc</b>
+                </span>
+            </a>
+
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
                 </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">Bạn có 10 thông báo mới</li>
+                                <li>
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="accountant_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="stocker_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 2
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="accountant_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="stocker_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 4
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="accountant_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="stocker_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 6
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="accountant_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="stocker_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 8
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="accountant_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="stocker_view.html">
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 10
+                                                <div class="pull-right">1 giờ trước</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="footer">
+                                    <a href="#">View all</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Trần Anh Minh</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- Notifications: style can be found in dropdown.less -->
-                            <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">10</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">Bạn có 10 thông báo mới</li>
-                                    <li>
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="accountant_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="stocker_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 2
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="accountant_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="stocker_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 4
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="accountant_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="stocker_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 6
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="accountant_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="stocker_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 8
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="accountant_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="stocker_view.html">
-                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 10
-                                                    <div class="pull-right">1 giờ trước</div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="footer">
-                                        <a href="#">View all</a>
-                                    </li>
-                                </ul>
+                                    <p>
+                                        Trần Anh Minh
+                                        <small>Kế toán</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Hồ sơ</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Thoát</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Trần Anh Minh</p>
+                        <a href="#">
+                            <i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="menu-open">
+                        <a href="index-sales.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file-o"></i>
+                            <span>Phiếu xuất hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="lap_phieu.html">
+                                    <i class="fa fa-edit"></i> Lập phiếu</a>
                             </li>
-                            <!-- User Account: style can be found in dropdown.less -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Trần Anh Minh</span>
+                            <li>
+                                <a href="phieudangsoan_tung.html">
+                                    <i class="fa fa-file-text"></i>
+                                    <span>Phiếu đang soạn</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary pull-right">2</span>
+                                    </span>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-
-                                        <p>
-                                            Trần Anh Minh
-                                            <small>Kế toán</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Body -->
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Hồ sơ</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Thoát</a>
-                                        </div>
+                            </li>
+                            <li>
+                                <a href="phieudaxuat_tung.html">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span>Phiếu đã xuất</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary bg-green">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="phieuxuatsau_tung.html">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Phiếu xuất sau</span>
+                                    <span class="pull-right-container">
+                                        <span class="label pull-right bg-green">new</span>
+                                        <span class="label pull-right bg-red">2</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-cubes"></i>
+                                    <span>Hướng dẫn</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="workflow.html">
+                                            <i class="fa fa-hand-o-right"></i> Quỳ trình xử Lí</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
-                    </div>
-                </nav>
-            </header>
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p>Trần Anh Minh</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                    <i class="fa fa-search"></i>
-                                </button>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Kho</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
                             </span>
-                        </div>
-                    </form>
-                    <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="menu-open">
-                            <a href="index-sales.html">
-                                <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
-                            </a>
-                        </li>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="price.html">
+                                    <i class="fa fa-dollar"></i> Giá hàng hóa</a>
+                            </li>
+                            <li>
+                                <a href="tonKho.html">
+                                    <i class="fa fa-dropbox"></i> Hàng tồn kho</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu xuất hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
-                                <li>
-                                    <a href="phieudangsoan_tung.html">
-                                        <i class="fa fa-file-text"></i>
-                                        <span>Phiếu đang soạn</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary pull-right">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieudaxuat_tung.html">
-                                        <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary bg-green">1</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-files-o"></i>
-                                        <span>Phiếu xuất sau</span>
-                                        <span class="pull-right-container">
-                                            <span class="label pull-right bg-green">new</span>
-                                            <span class="label pull-right bg-red">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="#">
-                                        <i class="fa fa-cubes"></i> <span>Hướng dẫn</span>
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="workflow.html"><i class="fa fa-hand-o-right"></i> Quỳ trình xử Lí</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-table"></i>
+                            <span>Công nợ</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="xu_ly_cong_no.html">
+                                    <i class="fa fa-hand-o-right"></i> Xử lý công nợ</a>
+                            </li>
+                            <li>
+                                <a href="noKhachHang.html">
+                                    <i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="noCungCap.html">
+                                    <i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span>Giao hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin lái xe</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Định vị xe hàng</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Công nợ</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử lý công nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
-                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-pencil-square"></i>
+                            <span>Báo cáo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="bao-cao-doanh-thu.html">
+                                    <i class="fa fa-line-chart"></i> Doanh thu</a>
+                            </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
-                            </ul>
-                        </li>
+                            <li class="treeview">
+                                <a href="bao-cao-cong-no-khach-hang.html">
+                                    <i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
+                            </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
-                                </li>
+                            <li class="treeview">
+                                <a href="bao-cao-cong-no-cung-cap.html">
+                                    <i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                                <li class="treeview">
-                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
-                                </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-database"></i>
+                            <span>Quản trị</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-users"></i> Danh sách nhân viên</a>
+                            </li>
+                            <li class="treeview">
+                                <a href="customer_list.html">
+                                    <i class="fa fa-users"></i> Danh sách khách hàng</a>
+                            </li>
+                            <li class="treeview">
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
+                            </li>
+                            <li class="treeview">
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-line-chart"></i> Thiết lập nhân viên
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="toBeContinue_page.html">
+                                            <i class="fa fa-user-plus"></i> Thêm tài khoản</a>
+                                    </li>
+                                    <li>
+                                        <a href="toBeContinue_page.html">
+                                            <i class="fa fa-edit"></i> Cập nhập user</a>
+                                    </li>
+                                    <li>
+                                        <a href="toBeContinue_page.html">
+                                            <i class="fa fa-child"></i> Phân quyền menu</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3>DANH SÁCH ĐƠN HÀNG</h3>
+                            </div>
+                            <div class="box-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>LÔ SỐ</th>
+                                            <th>KHÁCH HÀNG</th>
+                                            <th>NGÀY</th>
+                                            <th>TỔNG TIỀN</th>
+                                            <th>TRẠNG THÁI</th>
+                                            <th>GHI CHÚ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <a href="accountant_view.html">01350</a>
+                                            </td>
+                                            <td>Công ty Phú An</td>
+                                            <td>20-12-2017</td>
+                                            <td>15,069,500</td>
+                                            <td>
+                                                <span class="label label-primary">Đơn mới</span>
+                                            </td>
+                                            <td>Chốt TT T9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>
+                                                <a href="accountant_view.html">01351</a>
+                                            </td>
+                                            <td>Công ty HPH</td>
+                                            <td>20-12-2017</td>
+                                            <td>82,735,872</td>
+                                            <td>
+                                                <span class="label label-primary">Đơn mới</span>
+                                            </td>
+                                            <td>Chốt TT T12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>
+                                                <a href="accountant_view.html">01352</a>
+                                            </td>
+                                            <td>Công ty HPH</td>
+                                            <td>19-12-2017</td>
+                                            <td>41,735,872</td>
+                                            <td>
+                                                <span class="label label-primary">Đơn mới</span>
+                                            </td>
+                                            <td>Chốt TT T12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>
+                                                <a href="accountant_view.html">01354</a>
+                                            </td>
+                                            <td>Công ty Invico - Sắn</td>
+                                            <td>18-12-2017</td>
+                                            <td>5,990,800</td>
+                                            <td>
+                                                <span class="label label-success">Đã xử lí</span>
+                                            </td>
+                                            <td>Chốt TT T10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>
+                                                <a href="accountant_view.html">01355</a>
+                                            </td>
+                                            <td>Công ty Sáng Hà</td>
+                                            <td>11-12-2017</td>
+                                            <td>17,590,000</td>
+                                            <td><span class="label label-danger">Canceled</span></td>
+                                            <td>Chốt TT T11</td>
+                                        </tr>
 
-                                <li class="treeview">
-                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-database"></i> <span>Quản trị</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhân viên</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-line-chart"></i> Thiết lập nhân viên
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-user-plus"></i> Thêm tài khoản</a></li>
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-edit"></i> Cập nhập user</a></li>
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-child"></i> Phân quyền menu</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>	
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
-            <div class="content-wrapper">
-                <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3>DANH SÁCH ĐƠN HÀNG</h3>
-                                </div>
-                                <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>LÔ SỐ</th>
-                                                <th>KHÁCH HÀNG</th>
-                                                <th>NGÀY</th>
-                                                <th>TỔNG TIỀN</th>
-                                                <th>TRẠNG THÁI</th>
-                                                <th>GHI CHÚ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><a href="accountant_view.html">01350</a></td>
-                                                <td>Công ty Phú An</td>
-                                                <td>20-12-2017</td>
-                                                <td>15,069,500</td>
-                                                <td style="color:blue;">
-                                                    Đơn mới</a>
-                                                </td>
-                                                <td>Chốt TT T9</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td><a href="accountant_view.html">01351</a></td>
-                                                <td>Công ty HPH</td>
-                                                <td>20-12-2017</td>
-                                                <td>82,735,872</td>
-                                                <td style="color:blue">Đơn mới</td>
-                                                <td>Chốt TT T12</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td><a href="accountant_view.html">01352</a></td>
-                                                <td>Công ty HPH</td>
-                                                <td>19-12-2017</td>
-                                                <td>41,735,872</td>
-                                                <td style="color:blue;">
-                                                    Đơn mới</a>
-                                                </td>
-                                                <td>Chốt TT T12</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td><a href="accountant_view.html">01354</a></td>
-                                                <td>Công ty Invico - Sắn</td>
-                                                <td>18-12-2017</td>
-                                                <td>5,990,800</td>
-                                                <td style="color:green">Đã xử lí</td>
-                                                <td>Chốt TT T10</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td><a href="accountant_view.html">01355</a></td>
-                                                <td>Công ty Sáng Hà</td>
-                                                <td>11-12-2017</td>
-                                                <td>17,590,000</td>
-                                                <td style="color:red">Canceled</td>
-                                                <td>Chốt TT T11</td>
-                                            </tr>
-
-                                        </tbody>
-                                        <tfoot></tfoot>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                    <tfoot></tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
-            <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+                </div>
+            </section>
         </div>
-        <!-- ./wrapper -->
+        <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
 
-        <!-- jQuery 3 -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- DataTables -->
-        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
-        <!-- page script -->
-        <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
+    <!-- jQuery 3 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
             })
-        </script>
-    </body>
+        })
+    </script>
+</body>
 
 </html>
