@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,13 +56,11 @@
             color: white;
             background-color: #3c8dbc;
             font-weight: bold;
-            font-size: 18px;
             text-align: center;
         }
 
         td {
             text-align: center;
-            font-size: 16px;
         }
 
         tfoot {
@@ -92,6 +90,18 @@
         #mainTable tbody td:nth-child(6),
         #mainTable tbody td:nth-child(7),
         #mainTable tbody td:nth-child(8) {
+            text-align: right;
+        }
+
+        #mainTable tfoot td:nth-child(2) {
+            text-align: left;
+        }
+
+        #mainTable tfoot td:nth-child(4),
+        #mainTable tfoot td:nth-child(5),
+        #mainTable tfoot td:nth-child(6),
+        #mainTable tfoot td:nth-child(7),
+        #mainTable tfoot td:nth-child(8) {
             text-align: right;
         }
 
@@ -730,8 +740,8 @@
                                                 <thead style="text-align: center;">
                                                     <tr>
                                                         <th rowspan="2">STT</th>
-                                                        <th rowspan="2">TÊN HÀNG</th>
-                                                        <th colspan="2">SỐ LƯỢNG</th>
+                                                        <th rowspan="2">Tên hàng</th>
+                                                        <th colspan="2">Số lượng</th>
                                                         <th rowspan="2">Đơn giá (VNĐ)</th>
                                                         <th rowspan="2">Thành tiền trước CK(VNĐ)</th>
                                                         <th rowspan="2">Chiết khấu</th>
@@ -796,7 +806,8 @@
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <td colspan="2">Cộng</td>
+                                                        <td></td>
+                                                        <td>Cộng</td>
                                                         <td>41</td>
                                                         <td>5</td>
                                                         <td>95861613</td>
@@ -805,11 +816,15 @@
                                                         <td>86275452</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">Chiết khấu</td>
-                                                        <td colspan="6">10%</td>
+                                                        <td></td>
+                                                        <td>Chiết khấu</td>
+                                                        <td colspan="4"></td>
+                                                        <td>10%</td>
+                                                        <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">Cộng</td>
+                                                        <td></td>
+                                                        <td>Cộng</td>
                                                         <td>41</td>
                                                         <td>5</td>
                                                         <td>95861613</td>
@@ -818,11 +833,15 @@
                                                         <td>86275452</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">VAT</td>
-                                                        <td colspan="6">10%</td>
+                                                        <td></td>
+                                                        <td>Chiết khấu</td>
+                                                        <td colspan="4"></td>
+                                                        <td>10%</td>
+                                                        <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">Tổng cộng</td>
+                                                        <td></td>
+                                                        <td>Tổng cộng</td>
                                                         <td>41</td>
                                                         <td>5</td>
                                                         <td>105447774</td>
