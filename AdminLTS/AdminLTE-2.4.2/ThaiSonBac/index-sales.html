@@ -890,8 +890,8 @@
 				datasets: [
 					{
 						label: "Số lượng: ",
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850","#c45850","#c45850","#c45850","#c45850"],
-						data: [2478,5267,734,784,433,433,433,433,433,433]
+						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","rgba(192,28,229,1)","rgba(113,150,64,1)","rgba(117,140,135,1","rgba(255,199,0,1)","rgba(0,0,0,1)"],
+						data: [72,68,64,59,40,38,32,25,18,14]
 					}
 				]
 			},
@@ -918,8 +918,8 @@
 				datasets: [
 					{
 						label: "Số lượng: ",
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850","#c45850","#c45850","#c45850","#c45850"],
-						data: [2478,5267,734,784,433,433,433,433,433,433]
+						backgroundColor: ["#3e95cd", "#c45850","#3cba9f","rgba(192,28,229,1)", "#e8c3b9","#8e5ea2","rgba(113,150,64,1)","rgba(0,0,0,1)","rgba(117,140,135,1","rgba(255,199,0,1)"],
+						data: [101,99,90,81,77,70,50,41,30,28]
 					}
 				]
 			},
@@ -942,45 +942,61 @@
 		new Chart(document.getElementById("lineChart"), {
 		  type: 'line',
 		  data: {
-			labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+			labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'],
 			datasets: [{ 
-				data: [86,114,20,106,88,150,500,2035,783,2478],
+				data: [1.2, 1.1, 2.2, 0.9, 0.3, 0.3, 1.1],
 				label: "Tuần từ 18 - 24/12",
 				borderColor: "#33FF33",
+				backgroundColor: "#33FF33",
 				fill: false
 			  }, { 
-				data: [282,350,411,502,635,809,947,1402,3700,5267],
+				data: [1.7, 4.3, 3.1, 1.5],
 				label: "Tuần từ 24 - 31/12",
 				borderColor: "#EE0000",
+				backgroundColor: "#EE0000",
 				fill: false
 			  }
 			]
 		  },
 		  options: {
-			legend: { display: false },
-			title: {
-			  display: false,
-			},
-			elements: {
-				line: {
-					tension: 0, // disables bezier curves
+				legend: { display: false },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+				elements: {
+					line: {
+						tension: 0, // disables bezier curves
+					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							stepSize: 1,
+							max: 5
+						}
+					}]
 				}
-			}
-		  }
+            }
 		});
 		
 		new Chart(document.getElementById("lineChart2"), {
 		  type: 'line',
 		  data: {
-			labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+			labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'],
 			datasets: [{ 
-				data: [86,114,20,106,88,150,500,2035,783,2478],
+				data: [1, 1, 2, 1, 2, 2, 1],
 				label: "Tuần từ 18 - 24/12",
 				backgroundColor: "#33FF33",
 				borderColor: "#33FF33",
 				fill: false
 			  }, { 
-				data: [282,350,411,502,635,809,947,1402,3700,5267],
+				data: [2, 4, 3, 2],
 				label: "Tuần từ 24 - 31/12",
 				backgroundColor: "#EE0000",
 				borderColor: "#EE0000",
@@ -1002,6 +1018,15 @@
 					line: {
 						tension: 0, // disables bezier curves
 					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							stepSize: 1,
+							max: 5
+						}
+					}]
 				}
             }
 		});
