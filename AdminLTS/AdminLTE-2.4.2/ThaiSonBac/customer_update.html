@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
+        .input-group {
+            padding-bottom: 10px;
+        }
+
         .custom-btn {
             padding: 10px 5px;
             min-width: 60px;
@@ -412,106 +416,113 @@
         </aside>
 
         <div class="content-wrapper">
-            <section class="container">
-                <div class="row">
-                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">Xác nhận sửa thông tin khách hàng mới</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <label>Bạn có muốn thay đổi thông tin khách hàng?</label>
-                                </div>
-                                <div class="modal-footer">
-                                    <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
-                                    <a href="customer_list.html" type="button" class="btn btn-danger btn-ok">Thay đổi</a>
+            <section class="content-header">
+                <ol class="breadcrumb">
+                    <li></li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa thông tin khách hàng mới</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>Bạn có muốn thay đổi thông tin khách hàng?</label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
+                                        <a href="customer_list.html" type="button" class="btn btn-danger btn-ok">Thay đổi</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10">
-                        <div class="box">
-                            <div class="row">
-                                <div class="col-md-9"></div>
-                                <div class="col-md-3">
-                                    <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" data-toggle="tooltip">
-                                        <i class="fa fa-close text-red"></i>
-                                    </a>
-                                    <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom" data-target="#confirm-delete">
-                                        <i class="fa fa-check-circle text-green"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="box-header">
-                                <h1 style="text-align: center; font-weight: 600;">SỬA THÔNG TIN KHÁCH HÀNG</h1>
-                            </div>
-                            <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                            <div class="box">
                                 <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <label>Đơn vị</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                            <input class="form-control" placeholder="Đơn vị" value="Công ty HPH">
-                                        </div>
+                                    <div class="col-md-9"></div>
+                                    <div class="col-md-3">
+                                        <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" data-toggle="tooltip">
+                                            <i class="fa fa-close text-red"></i>
+                                        </a>
+                                        <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom" data-target="#confirm-delete">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <label>Ảnh đại diện</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-image"></i>
-                                            </span>
-                                            <input class="form-control" placeholder="" type="file">
+                                <div class="box-header">
+                                    <h1 style="text-align: center; font-weight: 600;">SỬA THÔNG TIN KHÁCH HÀNG</h1>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <label>Đơn vị</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Đơn vị" value="Công ty HPH">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <label>Địa chỉ</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-address-book"></i>
-                                            </span>
-                                            <input class="form-control" placeholder="Địa chỉ" type="text" value="108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <label>Ảnh đại diện</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-image"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="" type="file">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <label>Số điện thoại</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-phone"></i>
-                                            </span>
-                                            <input class="form-control" placeholder="Số điện thoại" type="text" value="0912509752">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <label>Địa chỉ</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-address-book"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Địa chỉ" type="text" value="108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <label>MST</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-bank"></i>
-                                            </span>
-                                            <input class="form-control" placeholder="MST" type="text" value="34534593">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <label>Số điện thoại</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Số điện thoại" type="text" value="0912509752">
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <label>MST</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-bank"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="MST" type="text" value="34534593">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom : 100px"></div>
                                 </div>
-                                <div style="margin-bottom : 100px"></div>
                             </div>
                         </div>
                     </div>
