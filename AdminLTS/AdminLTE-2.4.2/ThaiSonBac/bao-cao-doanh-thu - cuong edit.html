@@ -1047,15 +1047,15 @@
                                         new Chart(document.getElementById("lineChart"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['Tháng 1' ,'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                                                 datasets: [{
-                                                        data: [1.2, 1.1, 5.2, 3, 3,6,7,2,3,3,7],
+                                                        data: [1.2, 1.1, 5.2, 3, 3, 6, 7, 2, 3, 3, 7],
                                                         label: "Tuần từ 18 - 24/12",
                                                         borderColor: "#33FF33",
                                                         backgroundColor: "#33FF33",
                                                         fill: false
                                                     }, {
-                                                        data: [1.7, 3.5, 2.5, 5, 2.3,3.5,6.5,6.5,1,1,5],
+                                                        data: [1.7, 3.5, 2.5, 5, 2.3, 3.5, 6.5, 6.5, 1, 1, 5],
                                                         label: "Tuần từ 11 - 17/12",
                                                         borderColor: "#EE0000",
                                                         backgroundColor: "#EE0000",
@@ -1091,56 +1091,56 @@
                                         });
 
                                         var config = {
-  type: 'doughnut',
-  data: {
-    datasets: [{
-      data: [700,500,400,600,300,50],
-      backgroundColor: ["#f56954","#00a65a","#f39c12","#00c0ef","#3c8dbc","#6bf442"],
-      label: 'Expenditures'
-    }],
-    labels: [
-      "Cáp viễn thông LS Cable & System",
-      "Thiết bị đóng cắt trung và hạ thế LS",
-      "Máy biến ap khô LS",
-      "Tủ trung LS",
-      "Thanh cái dẫn điện LS Cable & System",
-	  "Khác"
-    ]
-  },
-  options: {
-    responsive: true,
-    legend: {
-      position: 'right',
-    },
-    title: {
-      display: false,
-      text: 'Chart.js Doughnut Chart'
-    },
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    },
-    tooltips: {
-      callbacks: {
-        label: function(tooltipItem, data) {
-        	var dataset = data.datasets[tooltipItem.datasetIndex];
-			
-          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-            return previousValue + currentValue;
-          });
-		  var labelset = data.labels[tooltipItem.index];
-          var currentValue = dataset.data[tooltipItem.index];
-          var precentage = Math.floor(((currentValue/total) * 100)+0.5);         
-          return labelset + " " + precentage + "%" + " (" + currentValue + ")";
-        }
-      }
-    }
-  }
-};
+                                            type: 'doughnut',
+                                            data: {
+                                                datasets: [{
+                                                        data: [700, 500, 400, 600, 300, 50],
+                                                        backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#6bf442"],
+                                                        label: 'Expenditures'
+                                                    }],
+                                                labels: [
+                                                    "Cáp viễn thông LS Cable & System",
+                                                    "Thiết bị đóng cắt trung và hạ thế LS",
+                                                    "Máy biến ap khô LS",
+                                                    "Tủ trung LS",
+                                                    "Thanh cái dẫn điện LS Cable & System",
+                                                    "Khác"
+                                                ]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                legend: {
+                                                    position: 'right',
+                                                },
+                                                title: {
+                                                    display: false,
+                                                    text: 'Chart.js Doughnut Chart'
+                                                },
+                                                animation: {
+                                                    animateScale: true,
+                                                    animateRotate: true
+                                                },
+                                                tooltips: {
+                                                    callbacks: {
+                                                        label: function (tooltipItem, data) {
+                                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+
+                                                            var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                                                return previousValue + currentValue;
+                                                            });
+                                                            var labelset = data.labels[tooltipItem.index];
+                                                            var currentValue = dataset.data[tooltipItem.index];
+                                                            var precentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                                                            return labelset + " " + precentage + "%" + " (" + currentValue + ")";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        };
 
 
-var ctx = document.getElementById("pieChart").getContext("2d");
-window.myDoughnut = new Chart(ctx, config);
+                                        var ctx = document.getElementById("pieChart").getContext("2d");
+                                        window.myDoughnut = new Chart(ctx, config);
     </script>
     <script>
         $('input[name=week]').datepicker({
@@ -1177,18 +1177,18 @@ window.myDoughnut = new Chart(ctx, config);
             evt.currentTarget.className += " active";
         }
     </script>
-	<script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
             })
-        </script>
+        })
+    </script>
 </body>
 </html>
