@@ -69,7 +69,29 @@
     padding-right: 25px;
     border: none;
 }
+.chart {
+				position: static;
+				overflow: hidden;
+				width: 90%;
+				margin-left: 25px;
+			}
+			 #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
 
+        tfoot {
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #544d61;
+        }
      /* Style the tab */
 .tab {
     overflow: hidden;
@@ -111,6 +133,11 @@
  
     border-top: none;
 }
+    #myChart {
+      height: 100%;
+      width: 100%;
+    }
+	
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -122,6 +149,11 @@
         <!-- Google Font -->
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+			      <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+	  <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+  </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -348,24 +380,24 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Nguyễn Nam Anh</span>
+                                    <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Lã Mạnh Đạt</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                                        <p>Nguyễn Nam Anh<small>Kế toán</small>
+                                        <p>Lã Mạnh Đạt<small>Nhân viên bán hàng</small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Profile</a>
+                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Hồ sơ</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Thoát</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -382,11 +414,11 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Nguyễn Nam Anh</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                            <p>Lã Mạnh Đạt</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
                         </div>
                     </div>
                     <!-- search form -->
@@ -401,27 +433,27 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
+  <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="Nam Anh">
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i> <span>Trang Chủ</span>
+                        <li >
+                            <a href="index-sales.html">
+                                <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                             </a>
                         </li>
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu Xuất Hàng</span>
+                                <i class="fa fa-file-o"></i> <span>Phiếu xuất hàng</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
+                                <li class="active"><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
                                 <li>
                                     <a href="phieudangsoan_tung.html">
                                         <i class="fa fa-file-text"></i>
-                                        <span>Phiếu Đang Soạn</span>
+                                        <span>Phiếu đang soạn</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary pull-right">2</span>
                                         </span>
@@ -430,7 +462,7 @@
                                 <li>
                                     <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu Đã Xuất</span>
+                                        <span>Phiếu đã xuất</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
@@ -439,23 +471,17 @@
                                 <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-files-o"></i>
-                                        <span>Phiếu Xuất Sau</span>
+                                        <span>Phiếu xuất sau</span>
                                         <span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
                                     </a>
                                 </li>
-                                <li class="treeview">
-                                    <a href="#">
-                                        <i class="fa fa-cubes"></i> <span>Hướng dẫn</span>
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
+                                <li>
+                                    <a href="workflow.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
                                     </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="workflow.html"><i class="fa fa-hand-o-right"></i> Luồng Xử Lí</a></li>
-                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -468,8 +494,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
+                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
+                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
                             </ul>
                         </li>
 
@@ -481,67 +507,67 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử Lý Công Nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
-                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
+                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử lý công nợ</a></li>
+                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
+                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
                             </ul>
                         </li>
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao Hàng</span>
+                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Lái Xe</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Xe Hàng</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định Vị Xe Hàng</a></li>
+                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
+                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
+                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
                             </ul>
                         </li>
 
-                        <li class="treeview menu-open">
+                        <li class="treeview active menu-open">
                             <a href="#">
-                                <i class="fa fa-pencil-square"></i> <span>Báo Cáo</span>
+                                <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh Thu</a>
+                                <li>
+                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
                                 </li>
 
-                                <li class="treeview">
-                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công Nợ Khách Hàng</a>
+                                <li>
+                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
                                 </li>
 
-                                <li class="treeview">
-                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp</a>
+                                <li>
+                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-database"></i> <span>Quản Trị</span>
+                                <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
+                                <li>
+                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhân viên</a>
+                                </li>
+                                <li>
+                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
+                                </li>
+                                <li>
+                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
                                 </li>
                                 <li class="treeview">
-                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh Sách Khách Hàng</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhà Cung Cấp</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
+                                    <a href="#"><i class="fa fa-line-chart"></i> Thiết lập thông tin nhân viên
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
@@ -574,22 +600,21 @@
                 <!-- Main content -->
                 <section class="content">
 				<div class="box">
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row" style="padding : 10px;">
+                        <div class="col-md-5">
                                 <div class="box-header with-border">
                                     <h1 class="box-title">Báo cáo doanh thu</h1>
-                                    <div class="pull-right box-tools">
-                                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                                title="Collapse">
-                                            <i class="fa fa-minus"></i></button>
-                                    </div>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                </div> 
+						</div>	
+					<div class="col-md-5"></div>						
+                         <div class="col-md-2">           
+						 <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                         <i class="fa fa-eye text-black"></i>
                                     </a>
                                     <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
                                         <i class="fa fa-print text-blue"></i>
                                     </a>
-                                </div>
+                                
 								</div>
 								</div>
 							<div class="row">
@@ -615,7 +640,7 @@
 									<div class="tab">
 									<div class="row">
 										<div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Doanh thu</button></div>
-										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Phần trăm</button></div>
+										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Phần trăm ngành hàng</button></div>
 									</div>
 									</div>
 									
@@ -623,15 +648,16 @@
                                 <!-- /.box-header -->
 								<!-- bar chart -->
                                 <div id="Paris" class="tabcontent" style="display:block;">
-                                    <div class="row">
+                                    <div class="row" >
                                         <div class="col-md-12">
 			
 
                                             <div class="box-body">
                                                 <div class="chart">
-													<canvas id="barChart" style="height:230px"></canvas>
-													<small>Đơn vị :<em>Tỷ VNĐ</em></small>
-												</div>
+                                                <!-- Sales Chart Canvas -->
+                                                <canvas id="lineChart" style="height: 300px;"></canvas>
+                                                <small>Đơn vị :<em>Tỷ VNĐ</em></small>
+                                            </div>
                                             </div>
 
 
@@ -644,7 +670,7 @@
 								<!-- footer of bar chart -->
                                 <div class="box-footer">
                                     <div class="row">
-                                        <div class="col-sm-4 col-xs-6" style="margin-left:18%">
+                                        <div class="col-sm-4 col-xs-6" style="margin-left:18% ; height : 100px;">
                                             <div class="description-block border-right" style="margin-top: 27px;">
                                                 <h5 class="description-header"> 4,206,475,213VNĐ</h5>
                                                 <span class="description-text">DOANH THU</span>
@@ -653,7 +679,7 @@
                                         </div>
                                         <div class="col-sm-4 col-xs-6">
                                             <div class="description-block" style="margin-top: 27px;">
-                                                <h5 class="description-header">345,678,905,678 VNĐ</h5>
+                                                <h5 class="description-header">15,678,905,678 VNĐ</h5>
                                                 <span class="description-text">TỔNG DOANH THU CẢ NĂM</span>
                                             </div>
                                             <!-- /.description-block -->
@@ -672,41 +698,17 @@
                                 <div class="box-header">
                                     <h3 class="text-center">PHẦN TRĂM DOANH THU TỪ CÁC NGÀNH HÀNG</h3>
                                 </div>
-                                <div class="box-body" style="float:left;width:100%">
-                                   <!-- <canvas id="pieChart" style="height:150px;float:left"></canvas>	-->
-								  <div id="donutchart" style="height:150px;float:left"></div>
-
+                                <div class="box-body">
+								<div class="row">
+								<div class="col-md-2"></div>
+								 <div class="col-md-9"> 
+								 <div id="chartContainer" style="height: 400px;"></div>
+								 <!-- <canvas id="pieChart" style="height:250px;float:left;display:block"></canvas>-->
+								 </div>
+								  <div class="col-md-1"></div>
                                 </div>
-                                <div class="box-body" style="float:right;width:40%">
-                                    <table id="chuThich" style="padding-top:20px">
-                                        <tr>
-                                            <td><button style="background-color:red" class="button"></button></td>
-                                            <td style="font-size:15px;padding-left:15px">Cáp viễn thông LS Cable & System</td>
-                                        </tr>
-                                        <tr>
-                                            <td><button style="background-color:#00a65a" class="button"></button></td>
-                                            <td style="font-size:15px;padding-left:15px">Thiết bị đóng cắt trung và hạ thế LS</td>
-                                        </tr>
-                                        <tr>
-                                            <td><button style="background-color:#f39c12" class="button"></button></td>
-                                            <td style="font-size:15px;padding-left:15px">Máy biến áp khô LS</td>
-                                        </tr>
-                                        <tr>
-                                            <td><button style="background-color:#00c0ef" class="button"></button></td>
-                                            <td style="font-size:15px;padding-left:15px">Tủ trung LS</td>
-                                        </tr>
-                                        <tr>
-                                            <td><button style="background-color:#3c8dbc" class="button"></button></td>
-                                            <td style="font-size:15px;padding-left:15px">Thanh cái dẫn điện LS Cable & System</td>
-                                        </tr>
-                                        <td><button style="background-color:#d2d6de" class="button"></button></td>
-                                        <td style="font-size:15px;padding-left:15px">Biến tần LS</td><td></td>
-                                        <tr>
-                                            <td><button style="background-color:#ffff00" class="button"></button></td>
-                                            <td style="font-size:15px;padding-left:15px">Công tắc & Ổ cắm LS</td>
-                                        </tr>
-                                    </table>
-                                </div>
+								</div>
+							
                             </div>			
                         </div>
                     </div>
@@ -721,7 +723,7 @@
                                     <h3>CHI TIẾT DOANH THU</h3>
                                 </div>
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
+ <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
@@ -1012,7 +1014,7 @@
         <!-- FastClick -->
         <script src="../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="dist/js/adminlte.min.js"></script>
         <!-- Sparkline -->
         <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
         <!-- jvectormap  -->
@@ -1022,6 +1024,7 @@
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS -->
         <script src="../bower_components/Chart.js/Chart.js"></script>
+		<script src="dist/js/Chart.bundle.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -1034,52 +1037,50 @@
         <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
         <script src="../bower_components/Flot/jquery.flot.categories.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
+        <script src="dist/js/demo.js"></script>
         <!-- DataTables -->
         <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
         <script src='dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
         <script src='dist/js/pages/cong-no/moment.js'></script>
-		<!-- change donut chart -->
-<style>
-#chartdiv {
-	width		: 100%;
-	height		: 100%;
-}							
-</style>
-
-<!-- Resources -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/pie.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 
 <!-- Chart code -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+<script>
+window.onload = function () {
 
-        var options = {
-          title: 'My Daily Activities',
-          pieHole: 0.4,
-        };
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title:{
+		text: "",
+		horizontalAlign: "left"
+	},
+	data: [{
+		type: "doughnut",
+		startAngle: 60,
+		//innerRadius: 60,
+		indexLabelFontSize: 17,
+		indexLabel: "{label} - #percent%",
+		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+		dataPoints: [
+			{ y: 2.5, label: "Cáp viễn thông LS Cable & System" },
+			{ y: 1, label: "Máy biến ap khô LS" },
+			{ y: 0.2, label: "Tủ trung LS"},
+			
+			{ y: 1, label: "Biến tần LS"},
+			{ y: 4, label: "Công tắc & Ổ cắm LS"},
+			{ y: 3, label: "Thiết bị đóng cắt trung và hạ thế LS" },
+			{ y: 0.3, label: "Thanh cái dẫn điện LS Cable & System"},
+			
+			{ y: 0.1, label: "Khác"}
+		]
+	}]
+});
+chart.render();
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-    </script>
+}
+</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <!-- end change -->
 
         <script>
@@ -1106,65 +1107,58 @@
             });
         </script>
 
-        <script>
-
-            //BAR CHART 
-	var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = 
-	{
-	  labels  : ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-      datasets: [
-        {
-          label               : 'Electronics',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40, 55, 70, 80, 90, 100]
-        }
-		]
-	}
-    barChartData.datasets[0].fillColor   = '#00a65a'
-    barChartData.datasets[0].strokeColor = '#00a65a'
-    barChartData.datasets[0].pointColor  = '#00a65a'
-    var barChartOptions                  = {
-      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-      scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
- 
+       <script>
+    new Chart(document.getElementById("lineChart"), {
+		  type: 'line',
+		  data: {
+			labels: ['Tháng 1' ,'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+			datasets: [{ 
+				data: [1.2, 1.1, 5.2, 3, 3,6,7,2,3,3,7],
+				label: "Tuần từ 18 - 24/12",
+				borderColor: "#33FF33",
+				backgroundColor: "#33FF33",
+				fill: false
+			  }, { 
+				data: [1.7, 3.5, 2.5, 5, 2.3,3.5,6.5,6.5,1,1,5],
+				label: "Tuần từ 11 - 17/12",
+				borderColor: "#EE0000",
+				backgroundColor: "#EE0000",
+				fill: false
+			  }
+			]
+		  },
+		  options: {
+				legend: { display: false },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+				elements: {
+					line: {
+						tension: 0, // disables bezier curves
+					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							stepSize: 1,
+							max: 8
+						}
+					}]
+				}
+            }
+		});
+		
             //pie chart
             //- PIE CHART -
             //-------------
             // Get context with jQuery - using jQuery's .get() method.
+
             var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
             var pieChart = new Chart(pieChartCanvas)
             var PieData = [
@@ -1239,6 +1233,8 @@
             // You can switch between pie and douhnut using the method below.
             pieChart.Doughnut(PieData, pieOptions)
         </script>
+		
+		
         <script>
             $(function () {
                 $('#example1').DataTable()
@@ -1252,6 +1248,238 @@
                 })
             })
         </script>
+		 <script>
+    var myConfig = {
+      type: 'line',
+      title: {
+        text: 'Doanh thu trong năm 2016 và 2016'
+      },
+      subtitle: {
+        text: ''
+      },
+      plot: {
+        tooltip: {
+          visible: true,
+        },
+        cursor: 'hand'
+      },
+      crosshairX: {},
+      scaleX: {
+        markers: [],
+        offsetEnd: 75,
+        labels: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
+		color : 'green',
+      },
+      series: [{
+        values: [35, 42, 67, 89, 25, 34, 67],
+        text: 'Apple Sales'
+      }, {
+        values: [15, 42, 67, 89, 25, 34, 67].sort(),
+        text: 'Peach Sales'
+      }]
+    };
+
+    zingchart.render({
+      id: 'myChart',
+      data: myConfig,
+      height: '100%',
+      width: '100%'
+    });
+
+    /*
+     * define Marker class to construct
+     * markers on the fly easier.
+     */
+    function Marker(_index) {
+      return {
+        type: 'line',
+        lineColor: '#424242',
+        lineWidth: 1,
+        range: [_index],
+        flat: false,
+      }
+    }
+
+    /*
+     * define Label class to construct
+     * labels on the fly easier.
+     */
+    function Label(_text, _id, _offsetX, _offsetY) {
+      return {
+        id: _id,
+        text: _text,
+        angle: 0,
+        padding: '5 10 5 10',
+        wrapText: true,
+        textAlign: 'left',
+        backgroundColor: '#eeeeee',
+        offsetX: _offsetX,
+        offsetY: _offsetY ? _offsetY : 0,
+        cursor: 'pointer',
+        flat: false,
+        fontStyle: 'bold',
+        fontSize: 13,
+      }
+    }
+
+    // format the label text
+    function formatLabelText(_nodeindex, _scaleText) {
+      var plotInfo = null;
+      var nodeInfo;
+      var seriesText = '';
+      var labelString = isNaN(_scaleText) ? _scaleText + '<br>' : '';
+      var color = '';
+      var plotLength = zingchart.exec('myChart', 'getplotlength', {
+        graphid: 0
+      });
+
+      for (var i = 0; i < plotLength; i++) {
+        plotInfo = zingchart.exec('myChart', 'getobjectinfo', {
+          object: 'plot',
+          plotindex: i
+        });
+        nodeInfo = zingchart.exec('myChart', 'getobjectinfo', {
+          object: 'node',
+          plotindex: i,
+          nodeindex: _nodeindex
+        });
+        color = plotInfo.lineColor ? plotInfo.lineColor : plotInfo.backgroundColor1;
+        seriesText = plotInfo.text ? plotInfo.text : ('Series ' + (i + 1));
+   labelString += '<span style="color:' + color + '">' + seriesText + ':</span>' +
+          ' ' + nodeInfo.value + '<br>';
+      }
+
+      return labelString;
+    }
+
+    // global array for markers since you can only update the whole array
+    var markersArray = [];
+    var labelsArray = [];
+
+    // hash table for markers
+    var markerHashTable = {};
+    var labelsHashTable = {};
+
+    /*
+     * Register a graph click event and then render a chart with the markers
+     */
+    zingchart.bind('myChart', 'click', function(e) {
+      var xyInformation;
+      var nodeIndex;
+      var scaleText;
+      var xPos;
+      var yPos;
+
+      // make sure not a node click and click happend in plotarea
+      if (e.target != "node" && e.plotarea) {
+        xyInformation = zingchart.exec('myChart', 'getxyinfo', {
+          x: e.ev.clientX,
+          y: e.ev.clientY
+        });
+
+        // if anything is found, 0 corresponds to scale-x
+        if (xyInformation && xyInformation[0] && xyInformation[2]) {
+          nodeIndex = xyInformation[0].scalepos;
+          scaleText = xyInformation[0].scaletext;
+
+          console.log(xyInformation, nodeIndex, scaleText)
+            // check hash table. Add marker
+          if (!markerHashTable['nodeindex' + nodeIndex]) {
+            var nodeInfo = zingchart.exec('myChart', 'getobjectinfo', {
+              object: 'node',
+              nodeindex: nodeIndex,
+              plotindex: 0
+            });
+
+            var labelText = formatLabelText(nodeIndex, scaleText);
+            var labelId = 'label_' + nodeIndex;
+            // create a marker
+            var newMarker = new Marker(nodeIndex);
+            var newLabel = new Label(labelText, labelId, nodeInfo.x, nodeInfo.y);
+
+            markerHashTable['nodeindex' + nodeIndex] = true;
+            markersArray.push(newMarker);
+
+            labelsArray.push(newLabel);
+
+            // render the marker
+            myConfig.scaleX.markers = markersArray;
+            myConfig.labels = labelsArray;
+            zingchart.exec('myChart', 'setdata', {
+              data: myConfig
+            });
+          } else {
+            console.log('---marker already exists----')
+          }
+        }
+      }
+
+    });
+
+    /*
+     * Register a node_click event and then render a chart with the markers
+     */
+    zingchart.bind('myChart', 'node_click', function(e) {
+/*
+      // check hash table. Add marker
+      if (!markerHashTable['nodeindex' + e.nodeindex]) {
+        var labelText = formatLabelText(e.nodeindex, "");
+        var labelId = 'label_' + e.nodeindex;
+        // create a marker
+        var newMarker = new Marker(e.nodeindex, labelText, e.plotindex);
+        var newLabel = new Label(labelText, labelId, e.ev.layerX, e.ev.layerY);
+
+        markerHashTable['nodeindex' + e.nodeindex] = true;
+        markersArray.push(newMarker);
+
+        labelsArray.push(newLabel);
+
+        // render the marker
+        myConfig.scaleX.markers = markersArray;
+        myConfig.labels = labelsArray;
+        zingchart.exec('myChart', 'setdata', {
+          data: myConfig
+        });
+      } else {
+        console.log('---marker already exists----')
+      }*/
+    });
+
+    var labelMouseDown = false;
+    var labelId = null;
+    var previousYPosition = null;
+    /*
+     * bind mousedown event for dragging label
+     */
+    zingchart.bind('myChart', 'label_mousedown', function(e) {
+      labelMouseDown = true;
+      labelId = e.labelid;
+      zingchart.exec('myChart', 'hideguide');
+    });
+
+    zingchart.bind('myChart', 'mousemove', function(e) {
+      if (labelMouseDown && labelId) {
+        zingchart.exec('myChart', 'updateobject', {
+          type: 'label',
+          data: {
+            id: labelId,
+            offsetY: e.ev.layerY
+          }
+        });
+      }
+    });
+
+    zingchart.bind('myChart', 'mouseup', function(e) {
+      labelMouseDown = false;
+      labelId = null;
+      zingchart.exec('myChart', 'showguide');
+    });
+
+    zingchart.bind('myChart', 'doubleclick', function(e) {
+      console.log(e)
+    });
+  </script>
+
 		<script>
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
