@@ -63,19 +63,19 @@
                 min-width: 60px;
                 height: 40px;
             }
-			.button {
-    width: 50px;
-    height: 18px;
-    padding-right: 25px;
-    border: none;
-}
-.chart {
-				position: static;
-				overflow: hidden;
-				width: 90%;
-				margin-left: 25px;
-			}
-			 #example1 {
+            .button {
+                width: 50px;
+                height: 18px;
+                padding-right: 25px;
+                border: none;
+            }
+            .chart {
+                position: static;
+                overflow: hidden;
+                width: 90%;
+                margin-left: 25px;
+            }
+            #example1 {
                 background-color: rgb(240, 240, 240);
             }
             #example1 thead tr th {
@@ -85,59 +85,59 @@
                 color: #fff;
             }
 
-        tfoot {
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            background-color: #544d61;
-        }
-     /* Style the tab */
-.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
+            tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
+            }
+            /* Style the tab */
+            .tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+            }
 
-/* Style the buttons inside the tab */
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
+            /* Style the buttons inside the tab */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+                font-size: 17px;
 
-}
-.active{
-	display:block;
-}
+            }
+            .active{
+                display:block;
+            }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #ddd;
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
 
-}
+            }
 
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
-}
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
 
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
- 
-    border-top: none;
-}
-    #myChart {
-      height: 100%;
-      width: 100%;
-    }
-	
+            /* Style the tab content */
+            .tabcontent {
+                display: none;
+                padding: 6px 12px;
+
+                border-top: none;
+            }
+            #myChart {
+                height: 100%;
+                width: 100%;
+            }
+
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -149,11 +149,11 @@
         <!-- Google Font -->
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-			      <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-	  <script>
-    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-  </script>
+        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script>
+            zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+            ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -194,7 +194,7 @@
                                             <li><!-- start message -->
                                                 <a href="#">
                                                     <div class="pull-left">
-                                                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                                                     </div>
                                                     <h4>
                                                         Support Team
@@ -433,7 +433,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-  <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li >
                             <a href="index-sales.html">
@@ -535,7 +535,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li>
+                                <li class="active">
                                     <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
                                 </li>
 
@@ -599,75 +599,80 @@
 
                 <!-- Main content -->
                 <section class="content">
-				<div class="box">
-                    <div class="row" style="padding : 10px;">
-                        <div class="col-md-5">
+                    <div class="box">
+                        <div class="row" style="padding : 10px;">
+                            <div class="col-md-5">
                                 <div class="box-header with-border">
                                     <h1 class="box-title">Báo cáo doanh thu</h1>
                                 </div> 
-						</div>	
-					<div class="col-md-5"></div>						
-                         <div class="col-md-2">           
-						 <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-black"></i>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-blue"></i>
-                                    </a>
-                                
-								</div>
-								</div>
+                            </div>	
+                            <div class="col-md-5"></div>						
+                            <div class="col-md-2">           
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                    <i class="fa fa-eye text-black"></i>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                    <i class="fa fa-print text-blue"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
+                                    <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ: </label>
+                                    <div class="input-group week-select col-md-4"> 
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" class="form-control" name="week" value="01-01-2017">
+                                    </div>
+                                    <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến: </label>
+                                    <div class="input-group week-select col-md-4"> 
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" class="form-control" name="week" value="31-12-2017">
+                                    </div>
+                                </div>	
+                            </div>
+                        </div>
+                        <!-- div chung cho tab --> <div>
+
+                            <!-- divtab -->
+                            <div class="tab">
+                                <div class="row">
+                                    <div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Doanh thu</button></div>
+                                    <div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Phần trăm ngành hàng</button></div>
+                                </div>
+                            </div>
+
+                            <!-- end div tab -->
+                            <!-- /.box-header -->
+                            <!-- bar chart -->
+                            <div id="Paris" class="tabcontent" style="display:block;">
 							<div class="row">
-                                        <div class="col-md-12">
+							<div class="col-md-4"></div>
+                            <div class="col-md-4"> <h3>DOANH THU 2016 VÀ 2017</h3></div>
+							<div class="col-md-4"></div>
+							</div>
+                                <div class="row" >
+                                    <div class="col-md-12">
 
-                                            <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
-                                                <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ: </label>
-                                                <div class="input-group week-select col-md-4"> 
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="01-01-2017">
-                                                </div>
-                                                <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến: </label>
-                                                <div class="input-group week-select col-md-4"> 
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="31-12-2017">
-                                                </div>
-                                            </div>	
-											</div>
-											</div>
-<!-- div chung cho tab --> <div>
 
-<!-- divtab -->
-									<div class="tab">
-									<div class="row">
-										<div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Doanh thu</button></div>
-										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Phần trăm ngành hàng</button></div>
-									</div>
-									</div>
-									
-									<!-- end div tab -->
-                                <!-- /.box-header -->
-								<!-- bar chart -->
-                                <div id="Paris" class="tabcontent" style="display:block;">
-                                    <div class="row" >
-                                        <div class="col-md-12">
-			
-
-                                            <div class="box-body">
-                                                <div class="chart">
+                                        <div class="box-body">
+                                            <div class="chart">
                                                 <!-- Sales Chart Canvas -->
-                                                <canvas id="lineChart" style="height: 300px;"></canvas>
+                                                <canvas id="lineChart" style="height: 400px;"></canvas>
                                                 <small>Đơn vị :<em>Tỷ VNĐ</em></small>
                                             </div>
-                                            </div>
-
-
                                         </div>
-                                        <!-- /.col -->
+
+
                                     </div>
-                                    <!-- /.row -->
-								<!-- end chart -->
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                                <!-- end chart -->
                                 <!-- ./box-body -->
-								<!-- footer of bar chart -->
+                                <!-- footer of bar chart -->
                                 <div class="box-footer">
                                     <div class="row">
                                         <div class="col-sm-4 col-xs-6" style="margin-left:18% ; height : 100px;">
@@ -688,812 +693,507 @@
                                     </div>
                                     <!-- /.row -->
                                 </div>
-								<!-- end footer of bar chart -->
+                                <!-- end footer of bar chart -->
                                 <!-- /.box-footer -->
-</div> <!-- div của bar chart -->
-<!-- pie chart -->
-                    <div id="London" class="tabcontent">
-						<div class="row">
-                        <div class="col-md-12">
-                                <div class="box-header">
-                                    <h3 class="text-center">PHẦN TRĂM DOANH THU TỪ CÁC NGÀNH HÀNG</h3>
-                                </div>
-                                <div class="box-body">
-								<div class="row">
-								<div class="col-md-2"></div>
-								 <div class="col-md-9"> 
-								 <div id="chartContainer" style="height: 400px;"></div>
-								 <!-- <canvas id="pieChart" style="height:250px;float:left;display:block"></canvas>-->
-								 </div>
-								  <div class="col-md-1"></div>
-                                </div>
-								</div>
-							
-                            </div>			
-                        </div>
-                    </div>
-<!-- end pieChart -->
+                            </div> <!-- div của bar chart -->
+                            <!-- pie chart -->
+                            <div id="London" class="tabcontent">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box-header">
+                                            <h3 class="text-center">PHẦN TRĂM DOANH THU TỪ CÁC NGÀNH HÀNG</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-9"> 
+                                                    <canvas id="pieChart" style="height: 300px;"></canvas>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </div>
 
-</div> <!-- end div chung cho chart -->
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3>CHI TIẾT DOANH THU</h3>
+                                    </div>			
                                 </div>
-                                <div class="box-body">
- <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>MÃ HÀNG</th>
-                                                <th>DANH MỤC</th>
-                                                <th>SỐ LƯỢNG BÁN RA</th>
-                                                <th>GIÁ</th>
-                                                <th>DOANH THU</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="text-align: left">1</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-1</a></td>
-                                                <td>MCCB</td>
-                                                <td>1,000</td>
-                                                <td>2,500,000</td>
-                                                <td>25,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">2</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-2</a></td>
-                                                <td>MCCB</td>
-                                                <td>2,000</td>
-                                                <td>2,500,000</td>
-                                                <td>50,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">3</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-3</a></td>
-                                                <td>MCCB</td>
-                                                <td>4,000</td>
-                                                <td>2,500,000</td>
-                                                <td>100,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">4</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
-                                                <td>Phụ kiện MCCB</td>
-                                                <td>1,000</td>
-                                                <td>2,500,000</td>
-                                                <td>25,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">5</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
-                                                <td>Phụ kiện MCCB</td>
-                                                <td>10,000</td>
-                                                <td>5,000,000</td>
-                                                <td>500,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">6</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
-                                                <td>Phụ kiện MCCB</td>
-                                                <td>10,000</td>
-                                                <td>5,000,000</td>
-                                                <td>500,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">7</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
-                                                <td>Phụ kiện MCCB</td>
-                                                <td>10,000</td>
-                                                <td>5,000,000</td>
-                                                <td>500,000,000</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot></tfoot>
-                                    </table>
+                            </div>
+                            <!-- end pieChart -->
+
+                        </div> <!-- end div chung cho chart -->
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3>CHI TIẾT DOANH THU</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>MÃ HÀNG</th>
+                                                    <th>DANH MỤC</th>
+                                                    <th>SỐ LƯỢNG BÁN RA</th>
+                                                    <th>GIÁ</th>
+                                                    <th>DOANH THU</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align: left">1</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-1</a></td>
+                                                    <td>MCCB</td>
+                                                    <td>1,000</td>
+                                                    <td>2,500,000</td>
+                                                    <td>25,000,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">2</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-2</a></td>
+                                                    <td>MCCB</td>
+                                                    <td>2,000</td>
+                                                    <td>2,500,000</td>
+                                                    <td>50,000,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">3</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-3</a></td>
+                                                    <td>MCCB</td>
+                                                    <td>4,000</td>
+                                                    <td>2,500,000</td>
+                                                    <td>100,000,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">4</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
+                                                    <td>Phụ kiện MCCB</td>
+                                                    <td>1,000</td>
+                                                    <td>2,500,000</td>
+                                                    <td>25,000,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">5</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
+                                                    <td>Phụ kiện MCCB</td>
+                                                    <td>10,000</td>
+                                                    <td>5,000,000</td>
+                                                    <td>500,000,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">6</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
+                                                    <td>Phụ kiện MCCB</td>
+                                                    <td>10,000</td>
+                                                    <td>5,000,000</td>
+                                                    <td>500,000,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">7</td>
+                                                    <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
+                                                    <td>Phụ kiện MCCB</td>
+                                                    <td>10,000</td>
+                                                    <td>5,000,000</td>
+                                                    <td>500,000,000</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot></tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </section>
                 <!-- /.content -->
             </div>
-			</div>
-            <!-- /.content-wrapper -->
-
-            <footer class="main-footer">
-                <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.4.0
-                </div>
-                <strong>Copyright &copy; 2014-2016 <a href="../https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-                reserved.
-            </footer>
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Create the tabs -->
-                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <!-- Home tab content -->
-                    <div class="tab-pane" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Recent Activity</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                        <p>Will be 23 on April 24th</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                                        <p>New phone +1(800)555-1234</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                                        <p>nora@example.com</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                                        <p>Execution time 5 seconds</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Custom Template Design
-                                        <span class="label label-danger pull-right">70%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Update Resume
-                                        <span class="label label-success pull-right">95%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Laravel Integration
-                                        <span class="label label-warning pull-right">50%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Back End Framework
-                                        <span class="label label-primary pull-right">68%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                    </div>
-                    <!-- /.tab-pane -->
-
-                    <!-- Settings tab content -->
-                    <div class="tab-pane" id="control-sidebar-settings-tab">
-                        <form method="post">
-                            <h3 class="control-sidebar-heading">General Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Report panel usage
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Some information about this general settings option
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Allow mail redirect
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Other sets of options are available
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Expose author name in posts
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Allow the user to show his name in blog posts
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Show me as online
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Turn off notifications
-                                    <input type="checkbox" class="pull-right">
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Delete chat history
-                                    <a href="../javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-                        </form>
-                    </div>
-                    <!-- /.tab-pane -->
-                </div>
-            </aside>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-
         </div>
-        <!-- ./wrapper -->
+        <!-- /.content-wrapper -->
 
-        <!-- jQuery 3 -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- FastClick -->
-        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-        <!-- Sparkline -->
-        <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-        <!-- jvectormap  -->
-        <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <!-- SlimScroll -->
-        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <!-- ChartJS -->
-        <script src="../bower_components/Chart.js/Chart.js"></script>
-		<script src="dist/js/Chart.bundle.js"></script>
-        <!-- bootstrap datepicker -->
-        <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <!-- FLOT CHARTS -->
-        <script src="../bower_components/Flot/jquery.flot.js"></script>
-        <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-        <script src="../bower_components/Flot/jquery.flot.resize.js"></script>
-        <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-        <script src="../bower_components/Flot/jquery.flot.pie.js"></script>
-        <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-        <script src="../bower_components/Flot/jquery.flot.categories.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
-        <!-- DataTables -->
-        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright &copy; 2014-2016 <a href="../https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
+        </footer>
 
-        <script src='dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
-        <script src='dist/js/pages/cong-no/moment.js'></script>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Recent Activity</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-<!-- Chart code -->
-<script>
-window.onload = function () {
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title:{
-		text: "",
-		horizontalAlign: "left"
-	},
-	data: [{
-		type: "doughnut",
-		startAngle: 60,
-		//innerRadius: 60,
-		indexLabelFontSize: 17,
-		indexLabel: "{label} - #percent%",
-		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 2.5, label: "Cáp viễn thông LS Cable & System" },
-			{ y: 1, label: "Máy biến ap khô LS" },
-			{ y: 0.2, label: "Tủ trung LS"},
-			
-			{ y: 1, label: "Biến tần LS"},
-			{ y: 4, label: "Công tắc & Ổ cắm LS"},
-			{ y: 3, label: "Thiết bị đóng cắt trung và hạ thế LS" },
-			{ y: 0.3, label: "Thanh cái dẫn điện LS Cable & System"},
-			
-			{ y: 0.1, label: "Khác"}
-		]
-	}]
-});
-chart.render();
+                                    <p>Will be 23 on April 24th</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <i class="menu-icon fa fa-user bg-yellow"></i>
 
-}
-</script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<!-- end change -->
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
 
-        <script>
+                                    <p>New phone +1(800)555-1234</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                                    <p>nora@example.com</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                                    <p>Execution time 5 seconds</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Custom Template Design
+                                    <span class="label label-danger pull-right">70%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Update Resume
+                                    <span class="label label-success pull-right">95%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Laravel Integration
+                                    <span class="label label-warning pull-right">50%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Back End Framework
+                                    <span class="label label-primary pull-right">68%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                </div>
+                <!-- /.tab-pane -->
+
+                <!-- Settings tab content -->
+                <div class="tab-pane" id="control-sidebar-settings-tab">
+                    <form method="post">
+                        <h3 class="control-sidebar-heading">General Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Report panel usage
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Some information about this general settings option
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Allow mail redirect
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Other sets of options are available
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Expose author name in posts
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Allow the user to show his name in blog posts
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Show me as online
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Turn off notifications
+                                <input type="checkbox" class="pull-right">
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Delete chat history
+                                <a href="../javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+                    </form>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- Sparkline -->
+    <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- jvectormap  -->
+    <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- SlimScroll -->
+    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- ChartJS -->
+    <script src="dist/js/Chart.bundle.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- FLOT CHARTS -->
+    <script src="../bower_components/Flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="../bower_components/Flot/jquery.flot.resize.js"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="../bower_components/Flot/jquery.flot.pie.js"></script>
+    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+    <script src="../bower_components/Flot/jquery.flot.categories.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- DataTables -->
+    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <script src='dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
+    <script src='dist/js/pages/cong-no/moment.js'></script>
+
+    <script>
+                                        new Chart(document.getElementById("lineChart"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                datasets: [{
+                                                        data: [1.2, 1.1, 5.2, 3, 3, 6, 7, 2, 3, 3, 7],
+                                                        label: "Năm 2017",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [1.7, 3.5, 2.5, 5, 2.3, 3.5, 6.5, 6.5, 1, 1, 5,3],
+                                                        label: "Năm 2016",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 1,
+                                                                max: 8
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+
+                                        var config = {
+                                            type: 'doughnut',
+                                            data: {
+                                                datasets: [{
+                                                        data: [700, 500, 400, 600, 300, 50],
+                                                        backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#6bf442"],
+                                                        label: 'Expenditures'
+                                                    }],
+                                                labels: [
+                                                    "Cáp viễn thông LS Cable & System",
+                                                    "Thiết bị đóng cắt trung và hạ thế LS",
+                                                    "Máy biến ap khô LS",
+                                                    "Tủ trung LS",
+                                                    "Thanh cái dẫn điện LS Cable & System",
+                                                    "Khác"
+                                                ]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                legend: {
+                                                    position: 'right',
+                                                },
+                                                title: {
+                                                    display: false,
+                                                    text: 'Chart.js Doughnut Chart'
+                                                },
+                                                animation: {
+                                                    animateScale: true,
+                                                    animateRotate: true
+                                                },
+                                                tooltips: {
+                                                    callbacks: {
+                                                        label: function (tooltipItem, data) {
+                                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+
+                                                            var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                                                return previousValue + currentValue;
+                                                            });
+                                                            var labelset = data.labels[tooltipItem.index];
+                                                            var currentValue = dataset.data[tooltipItem.index];
+                                                            var precentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                                                            return labelset + " " + precentage + "%" + " (" + currentValue + ")";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        };
 
 
-
-            $('input[name=week]').datepicker({
-                format: "dd-mm-yyyy",
-                autoclose: true,
-                orientation: 'top auto'
-            }).on('show', function (e) {
-                var td = $('td', '.datepicker-days');
-                td.mouseover(function () {
-                }).mouseout(function () {
-                    $('.week', '.datepicker-days').removeClass('week');
-                });
-            }).on('hide', function (e) {
-
-                console.log($(this).val());
+                                        var ctx = document.getElementById("pieChart").getContext("2d");
+                                        window.myDoughnut = new Chart(ctx, config);
+    </script>
+    <script>
+        $('input[name=week]').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose: true,
+            orientation: 'top auto'
+        }).on('show', function (e) {
+            var td = $('td', '.datepicker-days');
+            td.mouseover(function () {
+            }).mouseout(function () {
+                $('.week', '.datepicker-days').removeClass('week');
             });
+        }).on('hide', function (e) {
 
-            $('.input-group-addon', '.week-select').click(function () {
-                $('input[name=week]').datepicker('show');
-            });
-        </script>
+            console.log($(this).val());
+        });
 
-       <script>
-    new Chart(document.getElementById("lineChart"), {
-		  type: 'line',
-		  data: {
-			labels: ['Tháng 1' ,'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-			datasets: [{ 
-				data: [1.2, 1.1, 5.2, 3, 3,6,7,2,3,3,7],
-				label: "Tuần từ 18 - 24/12",
-				borderColor: "#33FF33",
-				backgroundColor: "#33FF33",
-				fill: false
-			  }, { 
-				data: [1.7, 3.5, 2.5, 5, 2.3,3.5,6.5,6.5,1,1,5],
-				label: "Tuần từ 11 - 17/12",
-				borderColor: "#EE0000",
-				backgroundColor: "#EE0000",
-				fill: false
-			  }
-			]
-		  },
-		  options: {
-				legend: { display: false },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-				elements: {
-					line: {
-						tension: 0, // disables bezier curves
-					}
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							min: 0,
-							stepSize: 1,
-							max: 8
-						}
-					}]
-				}
+        $('.input-group-addon', '.week-select').click(function () {
+            $('input[name=week]').datepicker('show');
+        });
+    </script>
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-		});
-		
-            //pie chart
-            //- PIE CHART -
-            //-------------
-            // Get context with jQuery - using jQuery's .get() method.
-
-            var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-            var pieChart = new Chart(pieChartCanvas)
-            var PieData = [
-                {
-                    value: 700,
-                    color: '#f56954',
-                    highlight: '#f56954',
-                    label: 'Cáp viễn thông LS Cable & System'
-                },
-                {
-                    value: 500,
-                    color: '#00a65a',
-                    highlight: '#00a65a',
-                    label: 'Thiết bị đóng cắt trung và hạ thế LS'
-                },
-                {
-                    value: 400,
-                    color: '#f39c12',
-                    highlight: '#f39c12',
-                    label: 'Máy biến ap khô LS'
-                },
-                {
-                    value: 600,
-                    color: '#00c0ef',
-                    highlight: '#00c0ef',
-                    label: 'Tủ trung LS'
-                },
-                {
-                    value: 300,
-                    color: '#3c8dbc',
-                    highlight: '#3c8dbc',
-                    label: 'Thanh cái dẫn điện LS Cable & System'
-                },
-                {
-                    value: 100,
-                    color: '#d2d6de',
-                    highlight: '#d2d6de',
-                    label: 'Biến tần LS'
-                },
-                {
-                    value: 50,
-                    color: '#ffff00',
-                    highlight: '#ffff00',
-                    label: 'Công tắc & Ổ cắm LS'
-                }
-            ]
-            var pieOptions = {
-                //Boolean - Whether we should show a stroke on each segment
-                segmentShowStroke: true,
-                //String - The colour of each segment stroke
-                segmentStrokeColor: '#fff',
-                //Number - The width of each segment stroke
-                segmentStrokeWidth: 2,
-                //Number - The percentage of the chart that we cut out of the middle
-                percentageInnerCutout: 50, // This is 0 for Pie charts
-                //Number - Amount of animation steps
-                animationSteps: 100,
-                //String - Animation easing effect
-                animationEasing: 'easeOutBounce',
-                //Boolean - Whether we animate the rotation of the Doughnut
-                animateRotate: true,
-                //Boolean - Whether we animate scaling the Doughnut from the centre
-                animateScale: false,
-                //Boolean - whether to make the chart responsive to window resizing
-                responsive: true,
-                // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-                maintainAspectRatio: true,
-                //String - A legend template
-                legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            //Create pie or douhnut chart
-            // You can switch between pie and douhnut using the method below.
-            pieChart.Doughnut(PieData, pieOptions)
-        </script>
-		
-		
-        <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
-        </script>
-		 <script>
-    var myConfig = {
-      type: 'line',
-      title: {
-        text: 'Doanh thu trong năm 2016 và 2016'
-      },
-      subtitle: {
-        text: ''
-      },
-      plot: {
-        tooltip: {
-          visible: true,
-        },
-        cursor: 'hand'
-      },
-      crosshairX: {},
-      scaleX: {
-        markers: [],
-        offsetEnd: 75,
-        labels: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
-		color : 'green',
-      },
-      series: [{
-        values: [35, 42, 67, 89, 25, 34, 67],
-        text: 'Apple Sales'
-      }, {
-        values: [15, 42, 67, 89, 25, 34, 67].sort(),
-        text: 'Peach Sales'
-      }]
-    };
-
-    zingchart.render({
-      id: 'myChart',
-      data: myConfig,
-      height: '100%',
-      width: '100%'
-    });
-
-    /*
-     * define Marker class to construct
-     * markers on the fly easier.
-     */
-    function Marker(_index) {
-      return {
-        type: 'line',
-        lineColor: '#424242',
-        lineWidth: 1,
-        range: [_index],
-        flat: false,
-      }
-    }
-
-    /*
-     * define Label class to construct
-     * labels on the fly easier.
-     */
-    function Label(_text, _id, _offsetX, _offsetY) {
-      return {
-        id: _id,
-        text: _text,
-        angle: 0,
-        padding: '5 10 5 10',
-        wrapText: true,
-        textAlign: 'left',
-        backgroundColor: '#eeeeee',
-        offsetX: _offsetX,
-        offsetY: _offsetY ? _offsetY : 0,
-        cursor: 'pointer',
-        flat: false,
-        fontStyle: 'bold',
-        fontSize: 13,
-      }
-    }
-
-    // format the label text
-    function formatLabelText(_nodeindex, _scaleText) {
-      var plotInfo = null;
-      var nodeInfo;
-      var seriesText = '';
-      var labelString = isNaN(_scaleText) ? _scaleText + '<br>' : '';
-      var color = '';
-      var plotLength = zingchart.exec('myChart', 'getplotlength', {
-        graphid: 0
-      });
-
-      for (var i = 0; i < plotLength; i++) {
-        plotInfo = zingchart.exec('myChart', 'getobjectinfo', {
-          object: 'plot',
-          plotindex: i
-        });
-        nodeInfo = zingchart.exec('myChart', 'getobjectinfo', {
-          object: 'node',
-          plotindex: i,
-          nodeindex: _nodeindex
-        });
-        color = plotInfo.lineColor ? plotInfo.lineColor : plotInfo.backgroundColor1;
-        seriesText = plotInfo.text ? plotInfo.text : ('Series ' + (i + 1));
-   labelString += '<span style="color:' + color + '">' + seriesText + ':</span>' +
-          ' ' + nodeInfo.value + '<br>';
-      }
-
-      return labelString;
-    }
-
-    // global array for markers since you can only update the whole array
-    var markersArray = [];
-    var labelsArray = [];
-
-    // hash table for markers
-    var markerHashTable = {};
-    var labelsHashTable = {};
-
-    /*
-     * Register a graph click event and then render a chart with the markers
-     */
-    zingchart.bind('myChart', 'click', function(e) {
-      var xyInformation;
-      var nodeIndex;
-      var scaleText;
-      var xPos;
-      var yPos;
-
-      // make sure not a node click and click happend in plotarea
-      if (e.target != "node" && e.plotarea) {
-        xyInformation = zingchart.exec('myChart', 'getxyinfo', {
-          x: e.ev.clientX,
-          y: e.ev.clientY
-        });
-
-        // if anything is found, 0 corresponds to scale-x
-        if (xyInformation && xyInformation[0] && xyInformation[2]) {
-          nodeIndex = xyInformation[0].scalepos;
-          scaleText = xyInformation[0].scaletext;
-
-          console.log(xyInformation, nodeIndex, scaleText)
-            // check hash table. Add marker
-          if (!markerHashTable['nodeindex' + nodeIndex]) {
-            var nodeInfo = zingchart.exec('myChart', 'getobjectinfo', {
-              object: 'node',
-              nodeindex: nodeIndex,
-              plotindex: 0
-            });
-
-            var labelText = formatLabelText(nodeIndex, scaleText);
-            var labelId = 'label_' + nodeIndex;
-            // create a marker
-            var newMarker = new Marker(nodeIndex);
-            var newLabel = new Label(labelText, labelId, nodeInfo.x, nodeInfo.y);
-
-            markerHashTable['nodeindex' + nodeIndex] = true;
-            markersArray.push(newMarker);
-
-            labelsArray.push(newLabel);
-
-            // render the marker
-            myConfig.scaleX.markers = markersArray;
-            myConfig.labels = labelsArray;
-            zingchart.exec('myChart', 'setdata', {
-              data: myConfig
-            });
-          } else {
-            console.log('---marker already exists----')
-          }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
-      }
-
-    });
-
-    /*
-     * Register a node_click event and then render a chart with the markers
-     */
-    zingchart.bind('myChart', 'node_click', function(e) {
-/*
-      // check hash table. Add marker
-      if (!markerHashTable['nodeindex' + e.nodeindex]) {
-        var labelText = formatLabelText(e.nodeindex, "");
-        var labelId = 'label_' + e.nodeindex;
-        // create a marker
-        var newMarker = new Marker(e.nodeindex, labelText, e.plotindex);
-        var newLabel = new Label(labelText, labelId, e.ev.layerX, e.ev.layerY);
-
-        markerHashTable['nodeindex' + e.nodeindex] = true;
-        markersArray.push(newMarker);
-
-        labelsArray.push(newLabel);
-
-        // render the marker
-        myConfig.scaleX.markers = markersArray;
-        myConfig.labels = labelsArray;
-        zingchart.exec('myChart', 'setdata', {
-          data: myConfig
-        });
-      } else {
-        console.log('---marker already exists----')
-      }*/
-    });
-
-    var labelMouseDown = false;
-    var labelId = null;
-    var previousYPosition = null;
-    /*
-     * bind mousedown event for dragging label
-     */
-    zingchart.bind('myChart', 'label_mousedown', function(e) {
-      labelMouseDown = true;
-      labelId = e.labelid;
-      zingchart.exec('myChart', 'hideguide');
-    });
-
-    zingchart.bind('myChart', 'mousemove', function(e) {
-      if (labelMouseDown && labelId) {
-        zingchart.exec('myChart', 'updateobject', {
-          type: 'label',
-          data: {
-            id: labelId,
-            offsetY: e.ev.layerY
-          }
-        });
-      }
-    });
-
-    zingchart.bind('myChart', 'mouseup', function(e) {
-      labelMouseDown = false;
-      labelId = null;
-      zingchart.exec('myChart', 'showguide');
-    });
-
-    zingchart.bind('myChart', 'doubleclick', function(e) {
-      console.log(e)
-    });
-  </script>
-
-		<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-</script>
-    </body>
+    </script>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+</body>
 </html>
