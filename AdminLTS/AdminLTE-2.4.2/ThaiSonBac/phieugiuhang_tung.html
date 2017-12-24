@@ -25,6 +25,7 @@
         th {
             color: white;
             background-color: #3c8dbc;
+            font-weight: bold;
             text-align: center;
         }
 
@@ -32,7 +33,7 @@
             text-align: center;
         }
 
-        tr td:nth-child(3) {
+        tr td:nth-child(2) {
             text-align: left;
         }
 
@@ -77,6 +78,7 @@
                     <b>Thái Sơn Bắc</b>
                 </span>
             </a>
+
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -240,7 +242,7 @@
                                 <a href="lap_phieu.html">
                                     <i class="fa fa-edit"></i> Lập phiếu</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="phieudangsoan_tung.html">
                                     <i class="fa fa-file-text"></i>
                                     <span>Phiếu đang soạn</span>
@@ -258,7 +260,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="phieuxuatsau_tung.html">
                                     <i class="fa fa-files-o"></i>
                                     <span>Phiếu xuất sau</span>
@@ -420,6 +422,7 @@
             </section>
             <!-- /.sidebar -->
         </aside>
+
         <div class="content-wrapper">
             <section class="content-header">
                 <ol class="breadcrumb">
@@ -428,11 +431,11 @@
                             <i class="fa fa-dashboard"></i> Trang Chủ</a>
                     </li>
                     <li>
-                        <a href=""> Phiếu xuất hàng</a>
+                        <a href=""> Phiếu đã xuất</a>
                     </li>
                     <li>
                         <a href="">
-                            </i> Phiếu đang soạn</a>
+                            </i> Phiếu giữ hàng</a>
                     </li>
                 </ol>
             </section>
@@ -445,95 +448,90 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4>
-                                            <b>DANH SÁCH PHIẾU ĐANG SOẠN</b>
+                                            <b>DANH SÁCH PHIẾU XUẤT SAU</b>
                                         </h4>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table id="example1" class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Lô số</th>
-                                                    <th>Khách hàng</th>
-                                                    <th>Ngày</th>
-                                                    <th>Tổng tiền</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Ghi chú</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81268-1</a>
-                                                    </td>
-                                                    <td>Công ty Long Giang</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>50,069,500</td>
-                                                    <td>
-                                                        <span class="label label-info">Bản nháp</span>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81267-1</a>
-                                                    </td>
-                                                    <td>Công ty HPH</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>45,735,872</td>
-                                                    <td>
-                                                        <span class="label label-info">Bản nháp</span>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81266-2</a>
-                                                    </td>
-                                                    <td>Công ty Điện Lực</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>34,735,872</td>
-                                                    <td>
-                                                        <span class="label label-info">Bản nháp</span>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81265-2</a>
-                                                    </td>
-                                                    <td>Công ty Xuân Trường</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>54,990,800</td>
-                                                    <td>
-                                                        <span class="label label-info">Bản nháp</span>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81264-1</a>
-                                                    </td>
-                                                    <td>Công ty Sáng Hà</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>17,890,000</td>
-                                                    <td>
-                                                        <span class="label label-info">Bản nháp</span>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-
-                                            </tbody>
-                                            <tfoot></tfoot>
-                                        </table>
+                                            <table id="example1" class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Khách hàng</th>
+                                                            <th>Ngày</th>
+                                                            <th>Dự kiến giao</th>
+                                                            <th>Tổng tiền</th>
+                                                            <th>Trạng thái</th>
+                                                            <th>Ghi chú</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Công ty 2B</td>
+                                                            <td>20-12-2017</td>
+                                                            <td>30-12-2017</td>
+                                                            <td>152,123,500</td>
+                                                            <td>
+                                                                <span class="label label-success">Đã xuất phiếu
+                                                                    <span>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Công ty Vạn Xuân</td>
+                                                            <td>20-12-2017</td>
+                                                            <td>29-12-2017</td>
+                                                            <td>82,735,872</td>
+                                                            <td>
+                                                                <span class="label label-success">Đã xuất phiếu
+                                                                    <span>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Công ty Tương Lai</td>
+                                                            <td>19-12-2017</td>
+                                                            <td>28-12-2017</td>
+                                                            <td>412,735,872</td>
+                                                            <td>
+                                                                <span class="label label-success">Đã xuất phiếu
+                                                                    <span>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>Công ty Hoàng Nhật</td>
+                                                            <td>18-12-2017</td>
+                                                            <td>27-12-2017</td>
+                                                            <td>5,330,000</td>
+                                                            <td>
+                                                                <span class="label label-success">Đã xuất phiếu
+                                                                    <span>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5</td>
+                                                            <td>Công ty Long giang</td>
+                                                            <td>11-12-2017</td>
+                                                            <td>25-12-2017</td>
+                                                            <td>137,590,000</td>
+                                                            <td>
+                                                                <span class="label label-success">Đã xuất phiếu
+                                                                    <span>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                
+                                                    </tbody>
+                                                    <tfoot></tfoot>
+                                                </table>
                                     </div>
                                 </div>
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Data Tables</title>
     <title>Thái Sơn Bắc - TSB</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -22,23 +23,28 @@
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
+        .input-group {
+            padding-bottom: 10px;
+        }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
         th {
             color: white;
             background-color: #3c8dbc;
-            text-align: center;
+            font-weight: bold;
         }
 
+        th,
         td {
             text-align: center;
         }
 
-        tr td:nth-child(3) {
-            text-align: left;
-        }
-
-        tr td:nth-child(5) {
-            text-align: right;
-        }
+        td {}
 
         #example1 {
             background-color: rgb(240, 240, 240);
@@ -51,11 +57,14 @@
             color: #fff;
         }
 
-        #example1 tbody td:nth-child() {
+        #example1 tbody td:nth-child(3),
+        #example1 tbody td:nth-child(9),
+        #example1 tbody td:nth-child(10) {
             text-align: left;
         }
 
-        #example1 tbody td:nth-child() {
+        #example1 tbody td:nth-child(2),
+        #example1 tbody td:nth-child(4)  {
             text-align: right;
         }
     </style>
@@ -63,9 +72,7 @@
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
         <header class="main-header">
-            <!-- Logo -->
             <a href="index-sales.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
@@ -78,78 +85,64 @@
                 </span>
             </a>
             <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">Bạn có 10 thông báo mới</li>
+                                <li class="header">Bạn có 8 thông báo mới</li>
                                 <li>
                                     <ul class="menu">
                                         <li>
                                             <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81268 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 2
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81267 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81266 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 4
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81265 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81264 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 6
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81263 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81262 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 8
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 10
+                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81261 đang chờ xử lý
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
@@ -164,15 +157,15 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Nguyễn Mạnh Cường</span>
+                                <span class="hidden-xs">Nguyễn Nam Anh</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                                    <p>Nguyễn Mạnh Cường
-                                        <small>Nhân viên bán hàng</small>
+                                    <p>Nguyễn Nam Anh
+                                        <small>Kế toán</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -201,7 +194,7 @@
                         <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Nguyễn Mạnh Cường</p>
+                        <p>Nguyễn Nam Anh</p>
                         <a href="#">
                             <i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -227,7 +220,7 @@
                         </a>
                     </li>
 
-                    <li class="active treeview menu-open">
+                    <li class="treeview">
                         <a href="#">
                             <i class="fa fa-file-o"></i>
                             <span>Phiếu xuất hàng</span>
@@ -236,11 +229,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li>
+                            <li class="active">
                                 <a href="lap_phieu.html">
                                     <i class="fa fa-edit"></i> Lập phiếu</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="phieudangsoan_tung.html">
                                     <i class="fa fa-file-text"></i>
                                     <span>Phiếu đang soạn</span>
@@ -371,7 +364,7 @@
                         </ul>
                     </li>
 
-                    <li class="treeview">
+                    <li class="active treeview menu-open">
                         <a href="#">
                             <i class="fa fa-database"></i>
                             <span>Quản trị</span>
@@ -384,7 +377,7 @@
                                 <a href="toBeContinue_page.html">
                                     <i class="fa fa-users"></i> Danh sách nhân viên</a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="customer_list.html">
                                     <i class="fa fa-users"></i> Danh sách khách hàng</a>
                             </li>
@@ -420,19 +413,17 @@
             </section>
             <!-- /.sidebar -->
         </aside>
+
         <div class="content-wrapper">
             <section class="content-header">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">
+                        <a href="#">
                             <i class="fa fa-dashboard"></i> Trang Chủ</a>
                     </li>
                     <li>
-                        <a href=""> Phiếu xuất hàng</a>
-                    </li>
-                    <li>
-                        <a href="">
-                            </i> Phiếu đang soạn</a>
+                        <a href="#">
+                            <i class=""></i> Hàng chờ</a>
                     </li>
                 </ol>
             </section>
@@ -440,16 +431,17 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
-                            <div class="box-header"></div>
-                            <div class="box-body">
+                            <div class="box-header">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4>
-                                            <b>DANH SÁCH PHIẾU ĐANG SOẠN</b>
+                                            <b>DANH SÁCH HÀNG CHỜ</b>
                                         </h4>
                                     </div>
                                 </div>
                                 <hr>
+                            </div>
+                            <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <table id="example1" class="table table-striped">
@@ -457,80 +449,205 @@
                                                 <tr>
                                                     <th>STT</th>
                                                     <th>Lô số</th>
-                                                    <th>Khách hàng</th>
-                                                    <th>Ngày</th>
-                                                    <th>Tổng tiền</th>
-                                                    <th>Trạng thái</th>
+                                                    <th>Tên khách hàng</th>
+                                                    <th>Số hóa đơn</th>
+                                                    <th>Chuẩn bị hàng</th>
+                                                    <th>Lấy phiếu</th>
+                                                    <th>Lấy hóa đơn</th>
+                                                    <th>Giao hàng</th>
+                                                    <th>Lái xe</th>
+                                                    <th>Nhân viên giao</th>
                                                     <th>Ghi chú</th>
+                                                    <th>Thay đổi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81268-1</a>
-                                                    </td>
+                                                    <td>81269</td>
                                                     <td>Công ty Long Giang</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>50,069,500</td>
+                                                    <td>24329</td>
                                                     <td>
-                                                        <span class="label label-info">Bản nháp</span>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" style="font-family: 'FontAwesome';">
+                                                            <option>Biển số xe</option>
+                                                            <option>Xe máy</option>
+                                                            <option>Thuê xe</option>
+                                                            <option>Khách đến lấy</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Lê Duy Mạnh</td>
+                                                    <td>Lê Duy Mạnh</td>
+                                                    <td>Giao trước 15-12-2017</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
+                                                    <td>81268</td>
+                                                    <td>Công ty Phú An</td>
+                                                    <td>24328</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81267-1</a>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td>Công ty HPH</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>45,735,872</td>
                                                     <td>
-                                                        <span class="label label-info">Bản nháp</span>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" style="font-family: 'FontAwesome';">
+                                                            <option>Biển số xe</option>
+                                                            <option>Xe máy</option>
+                                                            <option>Thuê xe</option>
+                                                            <option>Khách đến lấy</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Nguyễn Văn Toàn</td>
+                                                    <td>Nguyễn Văn Toàn</td>
+                                                    <td> Giao trước 11-12-2017</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
+                                                    <td>81267</td>
+                                                    <td>Công ty Invico</td>
+                                                    <td>24327</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81266-2</a>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td>Công ty Điện Lực</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>34,735,872</td>
                                                     <td>
-                                                        <span class="label label-info">Bản nháp</span>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" style="font-family: 'FontAwesome';">
+                                                            <option>Biển số xe</option>
+                                                            <option>Xe máy</option>
+                                                            <option>Thuê xe</option>
+                                                            <option>Khách đến lấy</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Nguyễn Ngọc Hải</td>
+                                                    <td>Nguyễn Ngọc Hải</td>
+                                                    <td>Giao trước 06-03-2015</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
+                                                    <td>81266</td>
+                                                    <td>Công ty Sáng Hà</td>
+                                                    <td>24326</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81265-2</a>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td>Công ty Xuân Trường</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>54,990,800</td>
                                                     <td>
-                                                        <span class="label label-info">Bản nháp</span>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" style="font-family: 'FontAwesome';">
+                                                            <option>Biển số xe</option>
+                                                            <option>Xe máy</option>
+                                                            <option>Thuê xe</option>
+                                                            <option>Khách đến lấy</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Trần Minh Long</td>
+                                                    <td>Trần Minh Long</td>
+                                                    <td>Giao trước 19-11-2017</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>5</td>
+                                                    <td>81265</td>
+                                                    <td>Công ty Vạn Xuân</td>
+                                                    <td>24325</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81264-1</a>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td>Công ty Sáng Hà</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>17,890,000</td>
                                                     <td>
-                                                        <span class="label label-info">Bản nháp</span>
+                                                        <input type="checkbox">
                                                     </td>
-                                                    <td></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" style="font-family: 'FontAwesome';">
+                                                            <option>Biển số xe</option>
+                                                            <option>Xe máy</option>
+                                                            <option>Thuê xe</option>
+                                                            <option>Khách đến lấy</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Lê Duy Mạnh</td>
+                                                    <td>Lê Duy Mạnh</td>
+                                                    <td>Giao trước 19-11-2017</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
-
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>81264</td>
+                                                    <td>Công ty Tương Lai</td>
+                                                    <td>24324</td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" style="font-family: 'FontAwesome';">
+                                                            <option>Biển số xe</option>
+                                                            <option>Xe máy</option>
+                                                            <option>Thuê xe</option>
+                                                            <option>Khách đến lấy</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Nguyễn Ngọc Hải</td>
+                                                    <td>Nguyễn Ngọc Hải</td>
+                                                    <td>Giao trước 01-11-2017</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                             <tfoot></tfoot>
                                         </table>
@@ -538,11 +655,25 @@
                                 </div>
 
                             </div>
+                            <div style="height : 50px;"></div>
                         </div>
                     </div>
                 </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-5">
+
+                        </div>
+
+                        <div class="col-lg-5">
+
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
+
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Create the tabs -->
             <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -760,9 +891,9 @@
     <!-- FastClick -->
     <script src="../bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
+    <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script>
         $(function () {

@@ -87,8 +87,7 @@
             color: #fff;
         }
 
-        #mainTable tbody td:nth-child(),
-        #mainTable tbody td:nth-child() {
+        #mainTable tbody td:nth-child(2) {
             text-align: left;
         }
 
@@ -224,154 +223,205 @@
                     </div>
                 </form>
                 <!-- /.search form -->
-                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li >
-                            <a href="index-sales.html">
-                                <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
-                            </a>
-                        </li>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li>
+                        <a href="index-sales.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
 
-                        <li class="active treeview menu-open">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu xuất hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="active"><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
-                                <li>
-                                    <a href="phieudangsoan_tung.html">
-                                        <i class="fa fa-file-text"></i>
-                                        <span>Phiếu đang soạn</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary pull-right">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieudaxuat_tung.html">
-                                        <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary bg-green">1</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-files-o"></i>
-                                        <span>Phiếu xuất sau</span>
-                                        <span class="pull-right-container">
-                                            <span class="label pull-right bg-green">new</span>
-                                            <span class="label pull-right bg-red">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="workflow.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    <li class="active treeview menu-open">
+                        <a href="#">
+                            <i class="fa fa-file-o"></i>
+                            <span>Phiếu xuất hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="lap_phieu.html">
+                                    <i class="fa fa-edit"></i> Lập phiếu</a>
+                            </li>
+                            <li>
+                                <a href="phieudangsoan_tung.html">
+                                    <i class="fa fa-file-text"></i>
+                                    <span>Phiếu đang soạn</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary pull-right">2</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="phieudaxuat_tung.html">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span>Phiếu đã xuất</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary bg-green">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="phieuxuatsau_tung.html">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Phiếu xuất sau</span>
+                                    <span class="pull-right-container">
+                                        <span class="label pull-right bg-green">new</span>
+                                        <span class="label pull-right bg-red">2</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="workflow.html">
+                                    <i class="fa fa-hand-o-right"></i>
+                                    <span>Quy trình xử lý</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Kho</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="price.html">
+                                    <i class="fa fa-dollar"></i> Giá hàng hóa</a>
+                            </li>
+                            <li>
+                                <a href="tonKho.html">
+                                    <i class="fa fa-dropbox"></i> Hàng tồn kho</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Công nợ</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử lý công nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
-                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-table"></i>
+                            <span>Công nợ</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="xu_ly_cong_no.html">
+                                    <i class="fa fa-hand-o-right"></i> Xử lý công nợ</a>
+                            </li>
+                            <li>
+                                <a href="noKhachHang.html">
+                                    <i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="noCungCap.html">
+                                    <i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span>Giao hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin lái xe</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Định vị xe hàng</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
-                                </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-pencil-square"></i>
+                            <span>Báo cáo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="bao-cao-doanh-thu.html">
+                                    <i class="fa fa-line-chart"></i> Doanh thu</a>
+                            </li>
 
-                                <li>
-                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
-                                </li>
+                            <li>
+                                <a href="bao-cao-cong-no-khach-hang.html">
+                                    <i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
+                            </li>
 
-                                <li>
-                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
-                                </li>
-                            </ul>
-                        </li>
+                            <li>
+                                <a href="bao-cao-cong-no-cung-cap.html">
+                                    <i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-database"></i> <span>Quản trị</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhân viên</a>
-                                </li>
-                                <li>
-                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
-                                </li>
-                                <li>
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="#"><i class="fa fa-line-chart"></i> Thiết lập thông tin nhân viên
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-user-plus"></i> Thêm Tài Khoản</a></li>
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-edit"></i> Cập Nhập User</a></li>
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-child"></i> Phân Quyền Menu</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>	
-                    </ul>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-database"></i>
+                            <span>Quản trị</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-users"></i> Danh sách nhân viên</a>
+                            </li>
+                            <li>
+                                <a href="customer_list.html">
+                                    <i class="fa fa-users"></i> Danh sách khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-line-chart"></i> Thiết lập thông tin nhân viên
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="toBeContinue_page.html">
+                                            <i class="fa fa-user-plus"></i> Thêm Tài Khoản</a>
+                                    </li>
+                                    <li>
+                                        <a href="toBeContinue_page.html">
+                                            <i class="fa fa-edit"></i> Cập Nhập User</a>
+                                    </li>
+                                    <li>
+                                        <a href="toBeContinue_page.html">
+                                            <i class="fa fa-child"></i> Phân Quyền Menu</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -385,9 +435,9 @@
                             <i class="fa fa-dashboard"></i> Trang Chủ</a>
                     </li>
                     <li>
-                            <a href="#">
-                                <i class=""></i> Đơn hàng</a>
-                        </li>
+                        <a href="#">
+                            <i class=""></i> Đơn hàng</a>
+                    </li>
                 </ol>
             </section>
 
@@ -426,7 +476,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
-                                    <a href="deliver_view.html" type="button" class="btn btn-primary btn-ok">Xử lí</a>
+                                    <a href="deliver_view.html" type="button" class="btn btn-danger btn-ok">Xử lí</a>
                                 </div>
                             </div>
                         </div>
@@ -446,6 +496,9 @@
                                             <a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-toggle="modal" data-target="#confirm-delete">
                                                 <i class="fa fa-close text-red"></i>
                                             </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                                <i class="fa fa-print text-blue"></i>
+                                            </a>
                                             <a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom" data-target="#confirm-move">
                                                 <i class="fa fa-check-circle text-green"></i>
                                             </a>
@@ -454,7 +507,9 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h4><b>ĐƠN HÀNG LÔ SỐ: 80326</b></h4>
+                                            <h4>
+                                                <b>ĐƠN HÀNG LÔ SỐ: 81264</b>
+                                            </h4>
                                         </div>
                                     </div>
                                     <hr>
@@ -489,6 +544,26 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
+                                            <label>Địa chỉ giao hàng</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-address-book"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Số hóa đơn</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-handshake-o"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="24324" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <label>Trạng Thái</label>
                                             <div class="input-group">
                                                 <span class="label label-primary label-medium">
@@ -499,13 +574,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Địa chỉ giao hàng</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-address-book"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
-                                            </div>
+                                                <label>Loại</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                    <select class="form-control" style="font-family: 'FontAwesome';">
+                                                        <option>Hóa đơn</option>
+                                                        <option>Phiếu ghi</option>
+                                                    </select>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -520,49 +596,58 @@
                                             <table id="mainTable" class="table table-striped">
                                                 <thead style="text-align: center">
                                                     <tr>
-                                                        <th>STT</th>
-                                                        <th>Tên hàng</th>
-                                                        <th>Số lượng</th>
-                                                        <th>Đã đủ</th>
+                                                        <th rowspan="2">STT</th>
+                                                        <th rowspan="2">Tên hàng</th>
+                                                        <th colspan="2">Số lượng</th>
+                                                        <th rowspan="2">Đã đủ</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Cái</th>
+                                                        <th>Thùng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
                                                         <td>1</td>
-                                                        <td>ABN 53c</td>
-                                                        <td>10</td>
+                                                        <td>ABN 52c</td>
+                                                        <td>20</td>
+                                                        <td>1</td>
                                                         <td>
                                                             <input type="checkbox" class="checky">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
-                                                        <td>ABN 203c</td>
+                                                        <td>TS1000N AG6 3P</td>
                                                         <td>20</td>
+                                                        <td>1</td>
                                                         <td>
                                                             <input type="checkbox" class="checky">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
-                                                        <td>BAB 193a</td>
-                                                        <td>23</td>
+                                                        <td>ABS 32c</td>
+                                                        <td>20</td>
+                                                        <td>1</td>
                                                         <td>
                                                             <input type="checkbox" class="checky">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>4</td>
-                                                        <td>FAT 501g</td>
-                                                        <td>7</td>
+                                                        <td>ABH 53C</td>
+                                                        <td>20</td>
+                                                        <td>1</td>
                                                         <td>
                                                             <input type="checkbox" class="checky">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>5</td>
-                                                        <td>NOT 131l</td>
-                                                        <td>15</td>
+                                                        <td>ABE103-G</td>
+                                                        <td>20</td>
+                                                        <td>1</td>
                                                         <td>
                                                             <input type="checkbox" class="checky">
                                                         </td>
@@ -570,7 +655,8 @@
                                                     <tr>
                                                         <td>6</td>
                                                         <td>SDO 123d</td>
-                                                        <td>9</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
                                                         <td>
                                                             <input type="checkbox" class="checky">
                                                         </td>
@@ -581,39 +667,6 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row text-center" style="font-weight: bold;">
-                                        <div class="col-md-3">
-                                            Bán hàng
-                                        </div>
-
-                                        <div class="col-md-3 center-block">
-                                            Thủ kho
-                                        </div>
-
-                                        <div class="col-md-3 center-block">
-                                            Người giao
-                                        </div>
-                                        <div class="col-md-3 center-block">
-                                            Khách hàng kí nhận
-                                        </div>
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-md-3">
-                                            (Ký ghi rõ họ tên)
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            (Ký ghi rõ họ tên)
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            (Ký ghi rõ họ tên)
-                                        </div>
-                                        <div class="col-md-3">
-                                            (Ký ghi rõ họ tên)
-                                        </div>
-                                    </div>
-                                    <div style="height:100px"></div>
                                 </div>
                             </div>
                         </div>
