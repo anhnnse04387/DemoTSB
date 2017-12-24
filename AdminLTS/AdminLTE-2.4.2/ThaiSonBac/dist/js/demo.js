@@ -81,6 +81,15 @@ function autoFillProvider() {
     }
 }
 
+function editBill() {
+    var win = window.open('sua_phieu.html', '_blank');
+    win.focus();
+}
+
+function history() {
+    
+}
+
 function openNewTab() {
     var win = window.open('dist/Preview.pdf', '_blank');
     win.focus();

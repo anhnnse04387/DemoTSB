@@ -365,7 +365,7 @@
                     <ol class="breadcrumb">
                         <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
                         <li><a href="#">Phiếu xuất hàng</a></li>
-                        <li class="active">Lập phiếu</li>
+                        <li class="active">Sửa phiếu</li>
                     </ol>
                 </section>
 
@@ -380,13 +380,12 @@
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
                                     <div style="float: right; margin-right: 12px;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" 
-                                           data-placement="bottom" onclick="create(); return false;" id="btnCreate">
-                                            <i class="fa fa-check-circle text-green"></i>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" onclick="saveDraft(); return false;" 
-                                           data-placement="bottom" id="saveDraft">
-                                            <i class="fa fa-save text-yellow"></i>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" 
+                                           data-placement="bottom" onclick="editBill(); return false;">
+                                            <i class="fa fa-pencil-square text-green"></i>
                                         </a>
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" id="preview" onclick="openNewTab(); return false;" 
                                            title="Xem Trước" data-placement="bottom">
@@ -405,34 +404,34 @@
                                                     <table style="border: none; margin-left: 55px;" class="customTable">
                                                         <tr>
                                                             <td class="col1"><i class="fa fa-user-circle-o"></i><b> Đơn vị</b></td>
-                                                            <td class="col2"><select class="form-control" onchange="lookup(); return false;" id="donVi">
+                                                            <td class="col2"><select class="form-control" onchange="lookup(); return false;" id="donVi" disabled>
                                                                     <option></option>
-                                                                    <option value="1">Công ty Sáng Hà</option>
+                                                                    <option value="1" selected>Công ty Sáng Hà</option>
                                                                     <option value="2">Công ty Invico - Sắn</option>
                                                                 </select></td>
                                                             <td class="col3"><i class="fa fa-file"></i><b> Lô số</b>
                                                             </td>
                                                             <td class="col4"><input type="text" class="form-control pointerCursor" value="O1349-0" onclick="$(this).removeClass('pointerCursor');
                                                                     $(this).addClass('textCursor');
-                                                                    this.select();">
+                                                                    this.select();" disabled>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td><i class="fa fa-address-book"></i><b> Địa chỉ giao hàng</b></td>
-                                                            <td class="col2"><input type="text" class="form-control" id="AddressDeliver"></td>
+                                                            <td class="col2"><input type="text" class="form-control" id="AddressDeliver" disabled></td>
                                                             <td><i class="fa fa-calendar"></i><b> Xuất ngày</b></td>
                                                             <td class="col4">
-                                                                <input type="text" id="dayout" style="padding-left: 12px;" onchange="checkQtt();" value="22/12/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
+                                                                <input type="text" id="dayout" style="padding-left: 12px;" disabled onchange="checkQtt();" value="22/12/2017" class="form-control datepicker pointerCursor" onclick="$(this).removeClass('pointerCursor');
                                                                         $(this).addClass('textCursor');
                                                                         this.select();">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td><i class="fa fa-user-circle"></i><b> Địa chỉ xuất HĐ</b></td>
-                                                            <td class="col2"><input type="text" class="form-control" id="AddressContact"></td>
+                                                            <td class="col2"><input type="text" class="form-control" id="AddressContact" disabled></td>
                                                             <td><i class="fa fa-calendar"></i><b> Mức giá áp dụng từ ngày</b></td>
                                                             <td class="col4">
-                                                                <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;">
+                                                                <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;" disabled>
                                                                     <option>2016</option>
                                                                     <option>2017</option>
                                                                 </select>
@@ -440,10 +439,10 @@
                                                         </tr>
                                                         <tr>
                                                             <td><i class="fa fa-bank"></i><b> Mã số thuế</b></td>
-                                                            <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                            <td class="col2"><input type="text" class="form-control" id="TaxCode" disabled></td>
                                                             <td><i class="fa fa-dot-circle-o"></i><b> Trạng thái</b></td>
                                                             <td class="col4">
-                                                                <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;">
+                                                                <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;" disabled>
                                                                     <option>Bản nháp</option>
                                                                     <option>Đã xuất phiếu</option>
                                                                     <option>Kế toán đã xử lý</option>
@@ -458,7 +457,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="priority"/><b style="vertical-align: text-bottom;">Phiếu ưu tiên</b></td>
+                                                            <td><input type="checkbox" id="priority" disabled/><b style="vertical-align: text-bottom;">Phiếu ưu tiên</b></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
@@ -495,15 +494,15 @@
                                                                 <td style="vertical-align: middle;">15A</td>
                                                                 <td><input type="text" class="form-control" id="cai_1" style="text-align: right;"
                                                                            onkeyup="configSp('1');
-                                                                                   return false;"/></td>
+                                                                               return false;" value="1" disabled/></td>
                                                                 <td><input type="text" class="form-control" id="thung_1" 
                                                                            title="20 cái/1" style="text-align: right;" onkeyup="configThung('1');
-                                                                                   return false;"/></td>
-                                                                    <td><output id="dongia_1" class="number">590000</output></td>
+                                                                                   return false;" disabled/></td>
+                                                                <td><output id="dongia_1" class="number">590000</output></td>
                                                                 <td><output id="tien_chua_ck_1"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck1" style="text-align: right;"
                                                                            onkeyup="configCk('1');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="tien_da_ck_1"></output></td>
                                                             </tr>
                                                             <tr>
@@ -512,15 +511,15 @@
                                                                 <td style="vertical-align: middle;">1000A</td>
                                                                 <td><input type="text" class="form-control" id="cai_2" style="text-align: right;"
                                                                            onkeyup="configSp('2');
-                                                                                   return false;"/></td>
+                                                                                   return false;" value="1" disabled/></td>
                                                                 <td><input type="text" class="form-control" id="thung_2" 
                                                                            style="text-align: right;" title="20 cái/1" onkeyup="configThung('2');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="dongia_2">80807616</output></td>
                                                                 <td><output id="tien_chua_ck_2"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck2" style="text-align: right;"
                                                                            onkeyup="configCk('2');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="tien_da_ck_2"></output></td>
                                                             </tr>
                                                             <tr>
@@ -530,15 +529,15 @@
                                                                 <td>
                                                                     <input type="text" class="form-control" id="cai_3" style="text-align: right;"
                                                                            onkeyup="configSp('3');
-                                                                                   return false;"/></td>
+                                                                                   return false;" value="1" disabled/></td>
                                                                 <td><input type="text" class="form-control" id="thung_3" 
                                                                            style="text-align: right;" title="20 cái/1" onkeyup="configThung('3');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="dongia_3">630000</output></td>
                                                                 <td><output id="tien_chua_ck_3"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck3" style="text-align: right;"
                                                                            onkeyup="configCk('3');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="tien_da_ck_3"></output></td>
                                                             </tr>
                                                             <tr>
@@ -548,15 +547,15 @@
                                                                 <td>
                                                                     <input type="text" class="form-control" id="cai_4" style="text-align: right;"
                                                                            onkeyup="configSp('4');
-                                                                                   return false;"/></td>
+                                                                                   return false;" value="1" disabled/></td>
                                                                 <td><input type="text" class="form-control" id="thung_4" 
                                                                            style="text-align: right;" title="20 cái/1" onkeyup="configThung('4');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="dongia_4">630000</output></td>
                                                                 <td><output id="tien_chua_ck_4"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck4" style="text-align: right;"
                                                                            onkeyup="configCk('4');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="tien_da_ck_4"></output></td>
                                                             </tr>
                                                             <tr>
@@ -566,15 +565,15 @@
                                                                 <td>
                                                                     <input type="text" class="form-control" id="cai_5" style="text-align: right;"
                                                                            onkeyup="configSp('5');
-                                                                                   return false;"/></td>
+                                                                                   return false;" value="1" disabled/></td>
                                                                 <td><input type="text" class="form-control" id="thung_5" 
                                                                            style="text-align: right;" title="1 cái/1" onkeyup="configThung('5');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="dongia_5">630000</output></td>
                                                                 <td><output id="tien_chua_ck_5"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck5" style="text-align: right;"
                                                                            onkeyup="configCk('5');
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td><output id="tien_da_ck_5"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
@@ -593,7 +592,7 @@
                                                                 <td></td><td></td>
                                                                 <td><input type="text" class="form-control" id="ck" style="text-align: right; float: right; font-weight: bold;"
                                                                            onkeyup="configCkAll();
-                                                                                   return false;"/></td>
+                                                                                   return false;" disabled/></td>
                                                                 <td style="text-align: right; vertical-align: middle;"><output id="tien_ck" style="color: #fff; font-weight: bold;"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
@@ -613,7 +612,7 @@
                                                                 <td>
                                                                     <input type="text" class="form-control" id="vat" style="text-align: right; float: right;; font-weight: bold;"
                                                                            onkeyup="configCkAll();
-                                                                                   return false;"/>
+                                                                                   return false;" disabled/>
                                                                 </td>
                                                                 <td style="text-align: right; vertical-align: middle;"><output id="tien_vat" style="color: #fff; font-weight: bold;"></output></td>
                                                             </tr>
@@ -858,6 +857,9 @@
                                                                                    $('.datepicker').datepicker({
                                                                                        format: 'dd/mm/yyyy'
                                                                                    });
+                                                                                   lookup();
+                                                                                   configSp('1');configSp('2');configSp('3');
+                                                                                   configSp('4');configSp('5');
                                                                                    $('.number').autoNumeric('init', {vMin: '0', vMax: '9999999999999', aSep: ',', mDec: '0'});
                                                                                });
         </script>
