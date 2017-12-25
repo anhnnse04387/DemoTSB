@@ -27,6 +27,8 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+		<style>
+		a{color : black;}</style>
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -134,14 +136,14 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Lã Mạnh Đạt</span>
+                                    <span class="hidden-xs">Ngô Tùng Sơn</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
                                         <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                                        <p>Lã Mạnh Đạt<small>Nhân viên bán hàng</small>
+                                        <p>Ngô Tùng Sơn<small>Nhân viên kho</small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -170,7 +172,7 @@
                             <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Lã Mạnh Đạt</p>
+                            <p>Ngô Tùng Sơn</p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
                         </div>
                     </div>
@@ -186,9 +188,9 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
+  <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="menu-open">
+                        <li class="menu-open active">
                             <a href="index-sales.html">
                                 <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                             </a>
@@ -196,17 +198,17 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu xuất hàng</span>
+                                <i class="fa fa-file-o"></i> <span>Phiếu chờ xử lí</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="lap_phieu.html"><i class="fa fa-edit"></i> Bán Hàng</a></li>
+                                <li class=""><a href="lap_phieu.html"><i class="fa fa-edit"></i> Chuẩn bị hàng</a></li>
                                 <li>
                                     <a href="phieudangsoan_tung.html">
                                         <i class="fa fa-file-text"></i>
-                                        <span>Phiếu đang soạn</span>
+                                        <span>Chờ hóa đơn</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary pull-right">2</span>
                                         </span>
@@ -215,61 +217,31 @@
                                 <li>
                                     <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đã giao</span>
+                                        <span>Chờ phiếu</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-files-o"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
-                                            <span class="label pull-right bg-green">new</span>
-                                            <span class="label pull-right bg-red">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="phieudaxuat_tung.html">
-                                        <i class="fa fa-book"></i>
-                                        <span>Phiếu giữ hàng</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="workflow.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
-                                    </a>
-                                </li>
                             </ul>
+                        </li>
+						
+						<li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-clone"></i> <span>Phiếu chờ vận chuyển</span>
+                            </a>
+                        </li>
+						
+						<li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-text"></i> <span>Phiếu đã hoàn thành</span>
+                            </a>
                         </li>
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                                <i class="fa fa-folder"></i> <span>Hàng tồn kho</span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Công nợ</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
-                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
-                            </ul>
                         </li>
 
                         <li class="treeview">
@@ -286,44 +258,6 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
-                                </li>
-
-                                <li>
-                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
-                                </li>
-
-                                <li>
-                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-database"></i> <span>Quản trị</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
-                                </li>
-                                <li>
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
-                                </li>
-                            </ul>
-                        </li>	
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -383,7 +317,7 @@
 
                         <!-- fix for small devices only -->
                         <div class="clearfix visible-sm-block"></div>
-						<a href="toBeContinue_page.html">
+<a href="toBeContinue_page.html">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box">
 								
@@ -477,150 +411,6 @@
                             </div>
                         </div>
                     </div>
-					<!-- /.row -->
-					
-					<div class="row">
-                        <div class="col-md-12">
-                            <!-- TABLE: LATEST ORDERS -->
-                            <div class="box box-info">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">ĐƠN HÀNG GẦN ĐÂY</h3>
-
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <div class="table-responsive">
-                                        <table class="table no-margin">
-                                            <thead>
-                                                <tr>
-                                                    <th>Lô số</th>
-                                                    <th>Ảnh đại diện</th>
-                                                    <th>Khách hàng</th>
-                                                    <th>Tổng tiền</th>
-                                                    <th> Trạng Thái</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR9842</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/hph.jpg" alt="Photo"></td>
-                                                    <td>Công ty HPH</td>
-                                                    <td>
-                                                        2,332,556
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-success">Đơn mới</span></a></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR1848</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/hph.jpg" alt="Photo"></td>
-                                                    <td>Công ty HPH</td>
-                                                    <td>
-                                                        22,332,556
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-success">Đơn mới</span></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR7429</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
-                                                    <td>Công ty Hoàng Nhật</td>
-                                                    <td>
-                                                        6,364,374
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-danger"> Đã huỷ</span></a></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR7429</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
-                                                    <td>Công ty Hoàng Nhật</td>
-                                                    <td>
-                                                        25,465,154
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR1164</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/bl.jpg" alt="Photo"></td>
-                                                    <td>Thiết bị điện BẢO LỘC</td>
-                                                    <td>
-                                                        26,475,213
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR9894</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/amazon.png" alt="Photo"></td>
-                                                    <td>Công ty Long Giang - Chị Thơm</td>
-                                                    <td>
-                                                        6,471,213
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR1164</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/bl.jpg" alt="Photo"></td>
-                                                    <td>Thiết bị điện BẢO LỘC</td>
-                                                    <td>
-                                                        5,475,213
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR1156</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/t8.jpg" alt="Photo"></td>
-                                                    <td>ĐẠI LÝ SAO THÁNG TÁM -VẠN XUÂN</td>
-                                                    <td>
-                                                        10,475,213
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR1329</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/bl.jpg" alt="Photo"></td>
-                                                    <td>Thiết bị điện BẢO LỘC</td>
-                                                    <td>
-                                                        3,475,213
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="accountant_view.html">OR7429</a></td>
-                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
-                                                    <td>Công ty Hoàng Nhật</td>
-                                                    <td>
-                                                        15,465,154
-                                                    </td>
-                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
-                                                </tr>	
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer clearfix">
-                                    <a href="toBeContinue_page.html" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
-                                </div>
-                                <!-- /.box-footer -->
-                            </div>
-                            <!-- /.box -->
-                        </div>
-						<!-- /.col -->
-                    </div>
-					<!-- /.row -->
-					
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
@@ -674,9 +464,9 @@
                                 <!-- ./box-body -->
                                 <div class="box-footer">
                                     <div class="col-sm-offset-4">
-                                        <div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+                                        <div style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
                                         <strong>Tuần Từ 18/12 - 24/12</strong>
-										<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+                                        <div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
                                         <strong>Tuần Từ 11/12 - 17/12</strong>
                                     </div>
                                 </div>
@@ -847,6 +637,145 @@
                         <!-- /.box -->
                     </div>
                     <!-- /.col -->
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-md-12">
+                            <!-- TABLE: LATEST ORDERS -->
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">ĐƠN HÀNG GẦN ĐÂY</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>Lô số</th>
+                                                    <th>Ảnh đại diện</th>
+                                                    <th>Khách hàng</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th> Trạng Thái</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR9842</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/hph.jpg" alt="Photo"></td>
+                                                    <td>Công ty HPH</td>
+                                                    <td>
+                                                        2,332,556
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-success">Đơn mới</span></a></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR1848</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/hph.jpg" alt="Photo"></td>
+                                                    <td>Công ty HPH</td>
+                                                    <td>
+                                                        22,332,556
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-success">Đơn mới</span></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR7429</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
+                                                    <td>Công ty Hoàng Nhật</td>
+                                                    <td>
+                                                        6,364,374
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-danger"> Đã huỷ</span></a></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR7429</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
+                                                    <td>Công ty Hoàng Nhật</td>
+                                                    <td>
+                                                        25,465,154
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR1164</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/bl.jpg" alt="Photo"></td>
+                                                    <td>Thiết bị điện BẢO LỘC</td>
+                                                    <td>
+                                                        26,475,213
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR9894</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/amazon.png" alt="Photo"></td>
+                                                    <td>Công ty Long Giang - Chị Thơm</td>
+                                                    <td>
+                                                        6,471,213
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR1164</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/bl.jpg" alt="Photo"></td>
+                                                    <td>Thiết bị điện BẢO LỘC</td>
+                                                    <td>
+                                                        5,475,213
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR1156</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/t8.jpg" alt="Photo"></td>
+                                                    <td>ĐẠI LÝ SAO THÁNG TÁM -VẠN XUÂN</td>
+                                                    <td>
+                                                        10,475,213
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR1329</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/bl.jpg" alt="Photo"></td>
+                                                    <td>Thiết bị điện BẢO LỘC</td>
+                                                    <td>
+                                                        3,475,213
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="accountant_view.html">OR7429</a></td>
+                                                    <td><img class="img-responsive" width="80px" height="80px" src="dist/img/viettel.png" alt="Photo"></td>
+                                                    <td>Công ty Hoàng Nhật</td>
+                                                    <td>
+                                                        15,465,154
+                                                    </td>
+                                                    <td><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                </tr>	
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer clearfix">
+                                    <a href="toBeContinue_page.html" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+                                </div>
+                                <!-- /.box-footer -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
             </div>
             <!-- /.row -->
         </section>
@@ -951,7 +880,7 @@
 				backgroundColor: "#33FF33",
 				fill: false
 			  }, { 
-				data: [1.7, 3.5, 3.1, 1.5, 2.3, 2.2, 1],
+				data: [1.7, 3.5, 3.1, 1.5, 2.3],
 				label: "Tuần từ 11 - 17/12",
 				borderColor: "#EE0000",
 				backgroundColor: "#EE0000",
@@ -997,7 +926,7 @@
 				borderColor: "#33FF33",
 				fill: false
 			  }, { 
-				data: [2,4,3, 2,2,1,2],
+				data: [2, 4, 3, 2,2],
 				label: "Tuần từ 11 - 17/12",
 				backgroundColor: "#EE0000",
 				borderColor: "#EE0000",
