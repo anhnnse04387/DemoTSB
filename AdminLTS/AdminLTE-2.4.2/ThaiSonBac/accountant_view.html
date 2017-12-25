@@ -639,27 +639,46 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="confirm-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">Xác nhận in đơn hàng</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <label>Lựa chọn hình thức in?</label>
+                                    <span style="padding-left: 20px">
+                                        <select name="" id="">
+                                            <option value="">In có giá</option>
+                                            <option value="">In không giá</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
+                                    <a href="" type="button" class="btn btn-danger btn-ok">In đơn</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box box-info">
                             <div class="box-header">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-md-9"></div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-8"></div>
+                                        <div class="col-md-4">
                                             <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                                 <i class="fa fa-arrow-circle-left text-blue"></i>
                                             </a>
                                             <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                                 <i class="fa fa-eye text-black"></i>
                                             </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In có giá" data-placement="bottom">
+                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
                                                 <i class="fa fa-print text-blue"></i>
-                                            </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In không giá" data-placement="bottom">
-                                                <i class="fa fa-print text-red"></i>
                                             </a>
                                             <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom"
                                                 data-target="#confirm-process">
@@ -670,7 +689,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4>
-                                                <b>Đơn hàng lô số 81264</b>
+                                                <b>Đơn hàng lô số 81264-1</b>
                                             </h4>
                                             <hr>
                                         </div>
@@ -727,22 +746,22 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Trạng Thái</label>
-                                            <div class="input-group">
-                                                <span class="label label-primary label-medium">
-                                                    <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
                                             <label>VAT khách hàng (%)</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-bank"></i>
                                                 </span>
                                                 <input class="form-control" placeholder="VAT khách hàng">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Trạng Thái</label>
+                                            <div class="input-group">
+                                                <span class="label label-primary label-medium">
+                                                    <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -777,50 +796,50 @@
                                                         <td>ABN 52c</td>
                                                         <td>20</td>
                                                         <td>1</td>
-                                                        <td>2375000</td>
-                                                        <td>2375000</td>
+                                                        <td>2,375,000</td>
+                                                        <td>2,375,000</td>
                                                         <td>10%</td>
-                                                        <td>2137500</td>
+                                                        <td>2,137,500</td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
                                                         <td>TS1000N AG6 3P</td>
                                                         <td>20</td>
                                                         <td>1</td>
-                                                        <td>80807616</td>
-                                                        <td>80807616</td>
+                                                        <td>80,807,616</td>
+                                                        <td>80,807,616</td>
                                                         <td>10%</td>
-                                                        <td>72726854</td>
+                                                        <td>72,726,854</td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
                                                         <td>ABS 32c</td>
                                                         <td>20</td>
                                                         <td>1</td>
-                                                        <td>1859757</td>
-                                                        <td>1859757</td>
+                                                        <td>1,859,757</td>
+                                                        <td>1,859,757</td>
                                                         <td>10%</td>
-                                                        <td>1673781</td>
+                                                        <td>1,673,781</td>
                                                     </tr>
                                                     <tr>
                                                         <td>4</td>
                                                         <td>ABH 53C</td>
                                                         <td>20</td>
                                                         <td>1</td>
-                                                        <td>2375709</td>
-                                                        <td>2375709</td>
+                                                        <td>2,375,709</td>
+                                                        <td>2,375,709</td>
                                                         <td>10%</td>
-                                                        <td>2138138</td>
+                                                        <td>2,138,138</td>
                                                     </tr>
                                                     <tr>
                                                         <td>5</td>
                                                         <td>ABE103-G</td>
                                                         <td>1</td>
                                                         <td>1</td>
-                                                        <td>8443531</td>
-                                                        <td>8443531</td>
+                                                        <td>8,443,531</td>
+                                                        <td>8,443,531</td>
                                                         <td>10%</td>
-                                                        <td>7599178</td>
+                                                        <td>7,599,178</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
@@ -829,10 +848,10 @@
                                                         <td>Cộng</td>
                                                         <td>41</td>
                                                         <td>5</td>
-                                                        <td>95861613</td>
-                                                        <td>95861613</td>
-                                                        <td>9586161</td>
-                                                        <td>86275452</td>
+                                                        <td>95,861,613</td>
+                                                        <td>95,861,613</td>
+                                                        <td>9,586,161</td>
+                                                        <td>86,275,452</td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
@@ -846,10 +865,10 @@
                                                         <td>Cộng</td>
                                                         <td>41</td>
                                                         <td>5</td>
-                                                        <td>95861613</td>
-                                                        <td>95861613</td>
-                                                        <td>9586161</td>
-                                                        <td>86275452</td>
+                                                        <td>95,861,613</td>
+                                                        <td>95,861,613</td>
+                                                        <td>9,586161</td>
+                                                        <td>86,275,452</td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
@@ -863,16 +882,34 @@
                                                         <td>Tổng cộng</td>
                                                         <td>41</td>
                                                         <td>5</td>
-                                                        <td>105447774</td>
-                                                        <td>105447774</td>
-                                                        <td>9586161</td>
-                                                        <td>94902297</td>
+                                                        <td>105,447,774</td>
+                                                        <td>105,447,774</td>
+                                                        <td>9,586,161</td>
+                                                        <td>94,902,297</td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
                                     </div>
                                     <hr>
+                                    <div class="row">
+                                        <div class="col-md-8"></div>
+                                        <div class="col-md-4">
+                                            <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                                <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                                <i class="fa fa-eye text-black"></i>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                                <i class="fa fa-print text-blue"></i>
+                                            </a>
+                                            <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom"
+                                                data-target="#confirm-process">
+                                                <i class="fa fa-check-circle text-green"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
