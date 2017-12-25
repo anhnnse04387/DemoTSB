@@ -25,10 +25,8 @@ function checkOut() {
     if (parseInt(document.getElementById("addDebt").value) > 0) {
         addDebt = parseFloat(document.getElementById("addDebt").value);
     }
-    if (parseInt(document.getElementById("pay").value) > 0) {
-        pay = parseFloat(document.getElementById("pay").value);
-    }
-    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value) + addDebt - pay;
+   
+    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value) + addDebt;
 }
 
 function saveDraft() {
