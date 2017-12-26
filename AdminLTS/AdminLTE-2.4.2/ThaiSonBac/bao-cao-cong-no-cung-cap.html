@@ -565,11 +565,11 @@
                                             </div>	
 
 
-                                            <div class="chart">
+                                           <div class="chart">
                                                 <!-- Sales Chart Canvas -->
-                                                <canvas id="salesChart" style="height: 400px;"></canvas>
-                                                <small>Đơn vị :<em>Tỷ VNĐ</em></small>
-                                            </div>
+                                                <canvas id="lineChart" style="height: 300px;"></canvas>
+                                                <small>Đơn vị :<em>chục triệu VNĐ</em></small>
+											</div>
                                             <!-- /.chart-responsive -->
                                         </div>
                                         <!-- /.col -->
@@ -908,6 +908,7 @@
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS -->
         <script src="../bower_components/Chart.js/Chart.js"></script>
+		<script src="dist/js/Chart.bundle.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -946,76 +947,45 @@
         </script>
 
         <script>
-            // -----------------------
-            // - MONTHLY SALES CHART -
-            // -----------------------
-
-            // Get context with jQuery - using jQuery's .get() method.
-            var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
-            // This will get the first returned node in the jQuery collection.
-            var salesChart = new Chart(salesChartCanvas);
-
-            var salesChartData = {
-                labels: ['18/12', '19/12', '20/12', '21/12', '22/12', '23/12', '24/12'],
-                datasets: [
-                    {
-                        label: 'Tuần 3 Tháng 12',
-                        fillColor: "rgba(21,186,103,0.4)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(66,69,67,0.3)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [0.5, 0.5, 1.5, 0.3, 0.2, 0.3, 0.9]
-                    }
-                ]
-            };
-
-            var salesChartOptions = {
-                // Boolean - If we should show the scale at all
-                showScale: true,
-                // Boolean - Whether grid lines are shown across the chart
-                scaleShowGridLines: false,
-                // String - Colour of the grid lines
-                scaleGridLineColor: 'rgba(0,0,0,.05)',
-                // Number - Width of the grid lines
-                scaleGridLineWidth: 1,
-                // Boolean - Whether to show horizontal lines (except X axis)
-                scaleShowHorizontalLines: true,
-                // Boolean - Whether to show vertical lines (except Y axis)
-                scaleShowVerticalLines: true,
-                // Boolean - Whether the line is curved between points
-                bezierCurve: true,
-                // Number - Tension of the bezier curve between points
-                bezierCurveTension: 0.3,
-                // Boolean - Whether to show a dot for each point
-                pointDot: false,
-                // Number - Radius of each point dot in pixels
-                pointDotRadius: 4,
-                // Number - Pixel width of point dot stroke
-                pointDotStrokeWidth: 1,
-                // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-                pointHitDetectionRadius: 20,
-                // Boolean - Whether to show a stroke for datasets
-                datasetStroke: true,
-                // Number - Pixel width of dataset stroke
-                datasetStrokeWidth: 2,
-                // Boolean - Whether to fill the dataset with a color
-                datasetFill: true,
-                // String - A legend template
-                legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>',
-                // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-                maintainAspectRatio: true,
-                // Boolean - whether to make the chart responsive to window resizing
-                responsive: true
-            };
-
-            // Create the line chart
-            salesChart.Line(salesChartData, salesChartOptions);
-
-            // ---------------------------
-            // - END MONTHLY SALES CHART -
-            // ---------------------------
+          new Chart(document.getElementById("lineChart"), {
+		  type: 'line',
+		  data: {
+			labels: ['18/12', '20/12', '21/12', '23/12', '24/12'],
+			datasets: [{ 
+				data: [1.2, 4.2, 3, 3,2.1],
+				label: "Tuần từ 18 - 24/12",
+				borderColor: "#33FF33",
+				backgroundColor: "#33FF33",
+				fill: false
+			  }
+			]
+		  },
+		  options: {
+				legend: { display: false },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+				elements: {
+					line: {
+						tension: 0, // disables bezier curves
+					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							stepSize: 1,
+							max: 5
+						}
+					}]
+				}
+            }
+		});
         </script>
 		<script>
 			   $(function () {

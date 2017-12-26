@@ -52,16 +52,17 @@
             color: #fff;
         }
 
-        #example1 thead th:nth-child(2) {
-            padding-left: 30px;
-        }
-
+        #example1 tbody td:nth-child(2),
         #example1 tbody td:nth-child(7) {
             text-align: left;
         }
 
         #example1 tbody td:nth-child() {
             text-align: right;
+        }
+
+        .custom-span {
+            margin: 0 0 0 10px;
         }
     </style>
 </head>
@@ -463,11 +464,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Lô số
-                                                        <span>
-                                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                                        </span>
-                                                    </th>
+                                                    <th>Lô số</th>
                                                     <th>Khách hàng</th>
                                                     <th>Ngày</th>
                                                     <th>Tổng tiền</th>
@@ -479,7 +476,7 @@
                                                 <tr>
                                                     <td>1</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81265-1</a>
+                                                        <a href="accountant_view.html">81265-0</a>
                                                     </td>
                                                     <td>Công ty 2B</td>
                                                     <td>20-12-2017</td>
@@ -488,12 +485,15 @@
                                                         <span class="label label-success">Đã xuất phiếu
                                                             <span>
                                                     </td>
-                                                    <td>Mã ESB 404c thiếu 3 máy</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>
                                                         <a href="accountant_view.html">81264-1</a>
+                                                        <span class="custom-span">
+                                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                                        </span>
                                                     </td>
                                                     <td>Công ty Long Giang</td>
                                                     <td>20-12-2017</td>
@@ -502,12 +502,12 @@
                                                         <span class="label label-success">Đã xuất phiếu
                                                             <span>
                                                     </td>
-                                                    <td>Mã AS - 25E4-25H thiếu 1 máy</td>
+                                                    <td>Mã LGS-L-M-24-6 thiếu 3 máy</td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81263-2</a>
+                                                        <a href="accountant_view.html">81263-0</a>
                                                     </td>
                                                     <td>Công ty Tương Lai</td>
                                                     <td>19-12-2017</td>
@@ -516,12 +516,15 @@
                                                         <span class="label label-success">Đã xuất phiếu
                                                             <span>
                                                     </td>
-                                                    <td>Mã AS- 40F4-40H thiếu 5 máy</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81262-2</a>
+                                                        <a href="accountant_view.html">81262-1</a>
+                                                        <span class="custom-span">
+                                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                                        </span>
                                                     </td>
                                                     <td>Công ty Hoàng Nhật</td>
                                                     <td>18-12-2017</td>
@@ -535,7 +538,7 @@
                                                 <tr>
                                                     <td>5</td>
                                                     <td>
-                                                        <a href="accountant_view.html">81261-1</a>
+                                                        <a href="accountant_view.html">81261-0</a>
                                                     </td>
                                                     <td>Công ty Long giang</td>
                                                     <td>11-12-2017</td>
@@ -544,7 +547,7 @@
                                                         <span class="label label-success">Đã xuất phiếu
                                                             <span>
                                                     </td>
-                                                    <td>Mã LGS-L-M-24-6 thiếu 3 máy</td>
+                                                    <td></td>
                                                 </tr>
                                             </tbody>
                                             <tfoot></tfoot>
