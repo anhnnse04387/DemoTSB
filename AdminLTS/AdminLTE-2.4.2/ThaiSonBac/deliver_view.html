@@ -488,7 +488,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4>
-                                                <b>ĐƠN HÀNG LÔ SỐ: 81264</b>
+                                                <b>ĐƠN HÀNG LÔ SỐ: 81264-0</b>
                                             </h4>
                                         </div>
                                     </div>
@@ -524,16 +524,6 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Trạng Thái</label>
-                                            <div class="input-group">
-                                                <span class="label label-primary label-medium">
-                                                    <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
                                             <label>Địa chỉ giao hàng</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -543,26 +533,61 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Số hóa đơn</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-handshake-o"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="24324" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Trạng Thái</label>
+                                            <div class="input-group">
+                                                <span class="label label-primary label-medium">
+                                                    <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
                             <div class="box-body" style="margin-left: 20px;">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label>Lựa chọn giao hàng</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-hourglass"></i>
                                             </span>
                                             <select class="form-control" style="font-family: 'FontAwesome';">
-                                                <option>Biển số xe</option>
+                                                <option>Khách đến lấy</option>
+                                                <option>30A-342.21</option>
+                                                <option>29A-652.12</option>
+                                                <option>28A-113.121</option>
                                                 <option>Xe máy</option>
                                                 <option>Thuê xe</option>
-                                                <option>Khách đến lấy</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <label>Nhân viên giao hàng</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <select class="form-control" style="font-family: 'FontAwesome';">
+                                                <option>Lương Đức Chinh</option>
+                                                <option>Hà Văn Thanh</option>
+                                                <option>Vũ Xuân Trường</option>
+                                                <option>Nguyễn Văn Hậu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label>Lái xe</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -578,6 +603,21 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="row">
+                                    <div class="col-md-9"></div>
+                                    <div class="col-md-3">
+                                        <a href="stocker_view.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        </a>
+                                        <a href="stocker_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom"
+                                            data-target="#confirm-delete">
+                                            <i class="fa fa-remove text-red"></i>
+                                        </a>
+                                        <a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom" data-target="#confirm-move">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.col-->

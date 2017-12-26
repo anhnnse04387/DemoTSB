@@ -94,6 +94,10 @@
         #mainTable tbody td:nth-child() {
             text-align: right;
         }
+
+        .custom-span {
+            margin: 0 0 0 10px;
+        }
     </style>
 </head>
 
@@ -488,8 +492,8 @@
                             <div class="box-header">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-md-9"></div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-8"></div>
+                                        <div class="col-md-4">
                                             <a href="stocker_notification.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                                 <i class="fa fa-arrow-circle-left text-blue"></i>
                                             </a>
@@ -508,7 +512,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4>
-                                                <b>ĐƠN HÀNG LÔ SỐ: 81264</b>
+                                                <b>ĐƠN HÀNG LÔ SỐ: 81264-1</b>
                                             </h4>
                                         </div>
                                     </div>
@@ -563,7 +567,7 @@
                                                 <input class="form-control" placeholder="24324" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <label>Trạng Thái</label>
                                             <div class="input-group">
                                                 <span class="label label-primary label-medium">
@@ -573,15 +577,17 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                                <label>Loại</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                    <select class="form-control" style="font-family: 'FontAwesome';">
-                                                        <option>Hóa đơn</option>
-                                                        <option>Phiếu ghi</option>
-                                                    </select>
-                                                </div>
+                                        <div class="col-md-3">
+                                            <label>Đã lấy hóa đơn</label>
+                                            <span class="custom-span">
+                                                <input type="checkbox">
+                                            </span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Đã lấy phiếu</label>
+                                            <span class="custom-span">
+                                                <input type="checkbox">
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -667,6 +673,23 @@
                                         </div>
                                     </div>
                                     <hr>
+                                    <div class="row">
+                                        <div class="col-md-8"></div>
+                                        <div class="col-md-4">
+                                            <a href="stocker_notification.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                                <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            </a>
+                                            <a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-toggle="modal" data-target="#confirm-delete">
+                                                <i class="fa fa-close text-red"></i>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                                <i class="fa fa-print text-blue"></i>
+                                            </a>
+                                            <a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom" data-target="#confirm-move">
+                                                <i class="fa fa-check-circle text-green"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
