@@ -43,11 +43,10 @@ function checkQtt() {
 function checkOut() {
     var addDebt = 0;
     var pay = 0;
-    if (parseInt(document.getElementById("addDebt").value) > 0) {
-        addDebt = parseFloat(document.getElementById("addDebt").value);
-    }
-   
-    document.getElementById("totalDebt").value = parseInt(document.getElementById('debt').value) + addDebt;
+    if (parseInt(document.getElementById("addDebt").value.replace(new RegExp(',', 'g'), '')) > 0) {
+        addDebt = parseInt(document.getElementById("addDebt").value.replace(new RegExp(',', 'g'), ''));
+    } 
+    document.getElementById("totalDebt").value = (parseInt(document.getElementById('debt').value.replace(new RegExp(',', 'g'), '')) + addDebt).toLocaleString('en');
 }
 
 function saveDraft() {
@@ -82,26 +81,22 @@ function redirect() {
 
 function autoFillCustomer() {
     if ($("#donVi").val() === '1') {
-        document.getElementById("debt").value = "10298157979";
+        document.getElementById("debt").value = "10,298,157,979";
         document.getElementById("TaxCode").value = "0101788080";
     } else if ($("#donVi").val() === '2') {
-        document.getElementById("debt").value = "11011055360";
+        document.getElementById("debt").value = "11,011,055,360";
         document.getElementById("TaxCode").value = "0104879265";
     }
 }
 
 function autoFillProvider() {
     if ($("#donVi").val() === '1') {
-        document.getElementById("debt").value = "26262716484";
+        document.getElementById("debt").value = "26,262,716,484";
         document.getElementById("TaxCode").value = "";
     } else if ($("#donVi").val() === '2') {
-        document.getElementById("debt").value = "24305440452";
+        document.getElementById("debt").value = "24,305,440,452";
         document.getElementById("TaxCode").value = "";
     }
-}
-
-function history() {
-    
 }
 
 function openNewTab() {
@@ -149,25 +144,25 @@ function configCkAll(stt) {
         vat = parseFloat(document.getElementById("vat_" + stt).value);
     }
     if(stt === '1') {
-        tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val())) +
-            ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val())) + 
-            ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val())) +
-            ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val())) +
-            ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val()));
+        tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+            ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val().replace(new RegExp(',', 'g'), ''))) + 
+            ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val().replace(new RegExp(',', 'g'), ''))) +
+            ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val().replace(new RegExp(',', 'g'), ''))) +
+            ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val().replace(new RegExp(',', 'g'), '')));
     } else {
-        tien_chua_ck = $('#tien_da_ck_6').val() === '' ? 0 : parseInt($("#tien_da_ck_6").val());
+        tien_chua_ck = $('#tien_da_ck_6').val() === '' ? 0 : parseInt($("#tien_da_ck_6").val().replace(new RegExp(',', 'g'), ''));
     }
-    document.getElementById("tong_tien_chua_ck_" + stt).value = tien_chua_ck;
+    document.getElementById("tong_tien_chua_ck_" + stt).value = tien_chua_ck.toLocaleString('en');
     if (ckTong > 0) {
         tien_ck = tien_chua_ck * ckTong / 100;
     }
-    document.getElementById("tien_ck_" + stt).value = tien_ck;
-    document.getElementById("con_lai_" + stt).value = tien_chua_ck - tien_ck;
+    document.getElementById("tien_ck_" + stt).value = tien_ck.toLocaleString('en');
+    document.getElementById("con_lai_" + stt).value = (tien_chua_ck - tien_ck).toLocaleString('en');
     if (vat > 0) {
         tien_vat = (tien_chua_ck - tien_ck) * vat / 100;
     }
-    document.getElementById("tien_vat_" + stt).value = tien_vat;
-    document.getElementById("tong_tien_da_ck_" + stt).value = tien_chua_ck - tien_ck + tien_vat;
+    document.getElementById("tien_vat_" + stt).value = tien_vat.toLocaleString('en');
+    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');
 }
 
 function configCk(stt) {
@@ -181,11 +176,11 @@ function configCk(stt) {
     }
     if (cai > 0) {
         if (ck > 0) {
-            document.getElementById("tien_da_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val()) * (100 - ck) / 100;
-            document.getElementById("tien_chua_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
+            document.getElementById("tien_da_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), '')) * (100 - ck) / 100).toLocaleString('en');
+            document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
         } else {
-            document.getElementById("tien_da_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
-            document.getElementById("tien_chua_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
+            document.getElementById("tien_da_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
+            document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
         }
         if(stt != '6') {
             configCkAll('1');

@@ -515,7 +515,7 @@
                                                                 <td><input type="text" class="form-control" disabled id="thung_2" 
                                                                            style="text-align: right;" title="20 cái/1" onkeyup="configThung('2');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_2">80807616</output></td>
+                                                                <td><output id="dongia_2" class="number">80807616</output></td>
                                                                 <td><output id="tien_chua_ck_2"></output></td>
                                                                 <td><input type="text" class="form-control" disabled id="ck_2" style="text-align: right;"
                                                                            onkeyup="configCk('2');
@@ -533,7 +533,7 @@
                                                                 <td><input type="text" class="form-control" disabled id="thung_3" 
                                                                            style="text-align: right;" title="20 cái/1" onkeyup="configThung('3');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_3">1859757</output></td>
+                                                                <td><output id="dongia_3" class="number">1859757</output></td>
                                                                 <td><output id="tien_chua_ck_3"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck_3" disabled style="text-align: right;"
                                                                            onkeyup="configCk('3');
@@ -551,7 +551,7 @@
                                                                 <td><input type="text" class="form-control" id="thung_4" disabled 
                                                                            style="text-align: right;" title="20 cái/1" onkeyup="configThung('4');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_4">2375709</output></td>
+                                                                <td><output id="dongia_4" class="number">2375709</output></td>
                                                                 <td><output id="tien_chua_ck_4"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck_4" disabled style="text-align: right;"
                                                                            onkeyup="configCk('4');
@@ -569,7 +569,7 @@
                                                                 <td><input type="text" class="form-control" id="thung_5" disabled 
                                                                            style="text-align: right;" title="1 cái/1" onkeyup="configThung('5');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_5">8443531</output></td>
+                                                                <td><output id="dongia_5" class="number">8443531</output></td>
                                                                 <td><output id="tien_chua_ck_5"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck_5" disabled style="text-align: right;"
                                                                            onkeyup="configCk('5');
@@ -666,7 +666,7 @@
                                                                 <td><input type="text" class="form-control" id="thung_6" disabled 
                                                                            title="20 cái/1" style="text-align: right;" onkeyup="configThung('6');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_6" class="number">590000</output></td>
+                                                                <td><output id="dongia_6" class="number"></output></td>
                                                                 <td><output id="tien_chua_ck_6"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck_6" disabled style="text-align: right;"
                                                                            onkeyup="configCk('6');
@@ -966,33 +966,7 @@
                                                                                    configSp('1');configSp('2');configSp('3');
                                                                                    configSp('4');configSp('5');
                                                                                    deliveryQtt();
-                                                                                   $('.number').autoNumeric('init', {vMin: '0', vMax: '9999999999999', aSep: ',', mDec: '0'});
-                                                                                   $("#name_6").autocomplete({
-                                                                                       source: [
-                                                                                           "ActionScript",
-                                                                                           "AppleScript",
-                                                                                           "Asp",
-                                                                                           "BASIC",
-                                                                                           "C",
-                                                                                           "C++",
-                                                                                           "Clojure",
-                                                                                           "COBOL",
-                                                                                           "ColdFusion",
-                                                                                           "Erlang",
-                                                                                           "Fortran",
-                                                                                           "Groovy",
-                                                                                           "Haskell",
-                                                                                           "Java",
-                                                                                           "JavaScript",
-                                                                                           "Lisp",
-                                                                                           "Perl",
-                                                                                           "PHP",
-                                                                                           "Python",
-                                                                                           "Ruby",
-                                                                                           "Scala",
-                                                                                           "Scheme"
-                                                                                       ]
-                                                                                   });
+                                                                                   $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
                                                                                });
         </script>      
     </body>
