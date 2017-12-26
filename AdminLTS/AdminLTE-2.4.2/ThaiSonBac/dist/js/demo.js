@@ -4,14 +4,35 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+function deliveryQtt() {
+    if(document.getElementById('delivery').value === '1') {
+        $('#turn1').removeClass('noDisplay');
+    } else if(document.getElementById('delivery').value === '2') {
+        $('#turn1').removeClass('noDisplay');
+        $('#turn2').removeClass('noDisplay');
+    } else {
+        $('#turn1').addClass('noDisplay');
+        $('#turn2').addClass('noDisplay');
+    }
+}
+
 function checkQtt() {
-    if(parseInt(document.getElementById('cai_5').value) > 5 && document.getElementById('dayout').value === '22/12/2017') {
+    if(parseInt(document.getElementById('cai_5').value) > 5 && document.getElementById('dayout').value === '28/12/2017') {
         swal({
             title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
-            timer: 2000,
+            html: '<div style="margin-left: 327px;"><i class="fa fa-eye text-black"></i><a href="#"><img src="dist/img/xem.png"/></a></div>' 
+                  + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
+                  + '<thead>'
+                  + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th></tr>'
+                  + '</thead>'
+                  + '<tbody>'
+                  + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td></tr>'
+                  + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>13/01/2018</td></tr>'
+                  + '</tbody>'
+                  + '</table>',
             showCancelButton: false,
-            showConfirmButton: false
+            showConfirmButton: false,
         });
         $('#btnCreate').addClass('noDisplay');
     } else {
@@ -81,11 +102,6 @@ function autoFillProvider() {
     }
 }
 
-function editBill() {
-    var win = window.open('sua_phieu.html', '_blank');
-    win.focus();
-}
-
 function history() {
     
 }
@@ -122,40 +138,45 @@ function create() {
         });
 }
 
-function configCkAll() {
+function configCkAll(stt) {
     var ckTong = 0;
     var tien_ck = 0;
     var vat = 0;
     var tien_vat = 0;
-    if (parseFloat(document.getElementById("ck").value) > 1) {
-        ckTong = parseFloat(document.getElementById("ck").value);
+    var tien_chua_ck = 0;
+    if (parseFloat(document.getElementById("tong_ck_" + stt).value) > 1) {
+        ckTong = parseFloat(document.getElementById("tong_ck_" + stt).value);
     }
-    if (parseFloat(document.getElementById("vat").value) > 1) {
-        vat = parseFloat(document.getElementById("vat").value);
+    if (parseFloat(document.getElementById("vat_" + stt).value) > 1) {
+        vat = parseFloat(document.getElementById("vat_" + stt).value);
     }
-    var tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val())) +
+    if(stt === '1') {
+        tien_chua_ck = ($("#tien_da_ck_1").val() === '' ? 0 : parseInt($("#tien_da_ck_1").val())) +
             ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val())) + 
             ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val())) +
             ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val())) +
             ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val()));
-    document.getElementById("tien_chua_ck").value = tien_chua_ck;
+    } else {
+        tien_chua_ck = $('#tien_da_ck_6').val() === '' ? 0 : parseInt($("#tien_da_ck_6").val());
+    }
+    document.getElementById("tong_tien_chua_ck_" + stt).value = tien_chua_ck;
     if (ckTong > 0) {
         tien_ck = tien_chua_ck * ckTong / 100;
     }
-    document.getElementById("tien_ck").value = tien_ck;
-    document.getElementById("con_lai").value = tien_chua_ck - tien_ck;
+    document.getElementById("tien_ck_" + stt).value = tien_ck;
+    document.getElementById("con_lai_" + stt).value = tien_chua_ck - tien_ck;
     if (vat > 0) {
         tien_vat = (tien_chua_ck - tien_ck) * vat / 100;
     }
-    document.getElementById("tien_vat").value = tien_vat;
-    document.getElementById("tien_da_ck").value = tien_chua_ck - tien_ck + tien_vat;
+    document.getElementById("tien_vat_" + stt).value = tien_vat;
+    document.getElementById("tong_tien_da_ck_" + stt).value = tien_chua_ck - tien_ck + tien_vat;
 }
 
 function configCk(stt) {
     var ck = 0;
     var cai = 0;
-    if (parseFloat(document.getElementById("ck" + stt).value) > 0) {
-        ck = parseFloat(document.getElementById("ck" + stt).value);
+    if (parseFloat(document.getElementById("ck_" + stt).value) > 0) {
+        ck = parseFloat(document.getElementById("ck_" + stt).value);
     }
     if (parseInt(document.getElementById("cai_" + stt).value) > 0) {
         cai = parseInt(document.getElementById("cai_" + stt).value);
@@ -167,8 +188,7 @@ function configCk(stt) {
         } else {
             document.getElementById("tien_da_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
             document.getElementById("tien_chua_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
-        }
-        configCkAll();
+        }       
     }
 }
 
@@ -190,6 +210,8 @@ function configThung(stt) {
 function configSp(stt) {
     checkQtt();
     var cai = 0;
+    var tong_thung = 0;
+    var tong_cai = 0;
     if (parseInt(document.getElementById("cai_" + stt).value) > 0) {
         cai = parseInt(document.getElementById("cai_" + stt).value);
     }
@@ -200,27 +222,35 @@ function configSp(stt) {
         } else {
             document.getElementById("thung_" + stt).value = parseInt(cai / 20);
         }
-
-        var tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
+        if(stt != '6') {
+            tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
                 ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
                 ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
                 ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
                 ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val()));
-        var tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
+            tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
                 (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
                 (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
                 (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
                 (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value));
-        document.getElementById("thung").value = tong_thung;
-        document.getElementById("cai").value = tong_cai;
+            document.getElementById("tong_thung_1").value = tong_thung;
+            document.getElementById("tong_cai_1").value = tong_cai;
+        } else {
+            tong_thung = $("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val());
+            tong_cai = document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value);
+            document.getElementById("tong_thung_2").value = tong_thung;
+            document.getElementById("tong_cai_2").value = tong_cai;
+        }     
     } else {
         document.getElementById("thung_" + stt).value = 0;
-        document.getElementById("thung").value = 0;
-        document.getElementById("cai").value = 0;
         document.getElementById("tien_chua_ck_" + stt).value = 0;
         document.getElementById("tien_da_ck_" + stt).value = 0;
-        document.getElementById("tien_chua_ck").value = 0;
-        document.getElementById("tien_da_ck").value = 0;
+        document.getElementById("cai_" + stt).value = 0;
+    }
+    if(stt != '6') {
+        configCkAll('1');
+    } else {
+        configCkAll('2');
     }
 }
 
