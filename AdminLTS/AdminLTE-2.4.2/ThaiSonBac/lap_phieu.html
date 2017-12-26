@@ -19,6 +19,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/jquery-ui.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -667,7 +668,7 @@
                                                                 <td><input type="text" class="form-control" id="thung_6" 
                                                                            title="20 cái/1" style="text-align: right;" onkeyup="configThung('6');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_6" class="number">590000</output></td>
+                                                                <td><output id="dongia_6" class="number"></output></td>
                                                                 <td><output id="tien_chua_ck_6"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck_6" style="text-align: right;"
                                                                            onkeyup="configCk('6');
@@ -689,7 +690,7 @@
                                                                 <td></td>
                                                                 <td></td><td></td>
                                                                 <td><input type="text" class="form-control" id="tong_ck_2" style="text-align: right; float: right; font-weight: bold;"
-                                                                           onkeyup="configCkAll();
+                                                                           onkeyup="configCkAll('2');
                                                                                    return false;"/></td>
                                                                 <td style="text-align: right; vertical-align: middle;"><output id="tien_ck_2" style="color: #fff; font-weight: bold;"></output></td>
                                                             </tr>
@@ -709,7 +710,7 @@
                                                                 <td></td><td></td>
                                                                 <td>
                                                                     <input type="text" class="form-control" id="vat_2" style="text-align: right; float: right;; font-weight: bold;"
-                                                                           onkeyup="configCkAll();
+                                                                           onkeyup="configCkAll('2');
                                                                                    return false;"/>
                                                                 </td>
                                                                 <td style="text-align: right; vertical-align: middle;"><output id="tien_vat_2" style="color: #fff; font-weight: bold;"></output></td>
@@ -727,7 +728,8 @@
                                                 </fieldset>
                                             </div>
                                             <div style="float: right; margin-right: 27px; margin-top: 5px;">
-                                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" onclick="saveDraft(); return false;" 
+                                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" onclick="saveDraft();
+                                                        return false;" 
                                                    data-placement="bottom" id="saveDraft">
                                                     <i class="fa fa-save text-yellow"></i>
                                                 </a>
@@ -957,6 +959,40 @@
 
         <!-- jQuery 3 -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="dist/js/jquery-1.12.4.js"></script>
+        <script src="dist/js/jquery-ui.js"></script>
+        <script>
+                                                       $(function () {
+                                                           var availableTags = [
+                                                               "ABN 52c",
+                                                               "TS1000N AG6 3P",
+                                                               "ABS 32c",
+                                                               "ABH 53c",
+                                                               "ABE103-G"
+                                                           ];
+                                                           $("#name_6").autocomplete({
+                                                               source: availableTags,
+                                                               change: function () {
+                                                                   if ($('#name_6').val() === 'ABN 52c') {
+                                                                       document.getElementById('ampe').value = '15A';
+                                                                       document.getElementById('dongia_6').value = '590000';
+                                                                   } else if($('#name_6').val() === 'TS1000N AG6 3P') {
+                                                                       document.getElementById('ampe').value = '1000A';
+                                                                       document.getElementById('dongia_6').value = '80807616';
+                                                                   } else if($('#name_6').val() === 'ABS 32c') {
+                                                                       document.getElementById('ampe').value = '5A';
+                                                                       document.getElementById('dongia_6').value = '1859757';
+                                                                   } else if($('#name_6').val() === 'ABH 53c') {
+                                                                       document.getElementById('ampe').value = '30A';
+                                                                       document.getElementById('dongia_6').value = '2375709';
+                                                                   } else {
+                                                                       document.getElementById('ampe').value = '63A';
+                                                                       document.getElementById('dongia_6').value = '8443531';
+                                                                   }
+                                                               }
+                                                           });
+                                                       });
+        </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>       
@@ -974,32 +1010,6 @@
                                                                format: 'dd/mm/yyyy'
                                                            });
                                                            $('.number').autoNumeric('init', {vMin: '0', vMax: '9999999999999', aSep: ',', mDec: '0'});
-                                                           $("#name_6").autocomplete({
-                                                               source: [
-                                                                   "ActionScript",
-                                                                   "AppleScript",
-                                                                   "Asp",
-                                                                   "BASIC",
-                                                                   "C",
-                                                                   "C++",
-                                                                   "Clojure",
-                                                                   "COBOL",
-                                                                   "ColdFusion",
-                                                                   "Erlang",
-                                                                   "Fortran",
-                                                                   "Groovy",
-                                                                   "Haskell",
-                                                                   "Java",
-                                                                   "JavaScript",
-                                                                   "Lisp",
-                                                                   "Perl",
-                                                                   "PHP",
-                                                                   "Python",
-                                                                   "Ruby",
-                                                                   "Scala",
-                                                                   "Scheme"
-                                                               ]
-                                                           });
                                                        });
         </script>      
     </body>

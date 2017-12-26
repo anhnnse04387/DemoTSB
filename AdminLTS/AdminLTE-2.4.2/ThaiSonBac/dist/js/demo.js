@@ -186,7 +186,12 @@ function configCk(stt) {
         } else {
             document.getElementById("tien_da_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
             document.getElementById("tien_chua_ck_" + stt).value = cai * parseInt($("#dongia_" + stt).val());
-        }       
+        }
+        if(stt != '6') {
+            configCkAll('1');
+        } else {
+            configCkAll('2');
+        }
     }
 }
 
@@ -206,7 +211,6 @@ function configThung(stt) {
 }
 
 function configSp(stt) {
-    checkQtt();
     var cai = 0;
     var tong_thung = 0;
     var tong_cai = 0;
@@ -217,28 +221,10 @@ function configSp(stt) {
         configCk(stt);
         if (stt === '5') {
             document.getElementById("thung_" + stt).value = cai;
+            checkQtt();
         } else {
             document.getElementById("thung_" + stt).value = parseInt(cai / 20);
-        }
-        if(stt != '6') {
-            tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
-                ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
-                ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
-                ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
-                ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val()));
-            tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
-                (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
-                (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
-                (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
-                (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value));
-            document.getElementById("tong_thung_1").value = tong_thung;
-            document.getElementById("tong_cai_1").value = tong_cai;
-        } else {
-            tong_thung = $("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val());
-            tong_cai = document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value);
-            document.getElementById("tong_thung_2").value = tong_thung;
-            document.getElementById("tong_cai_2").value = tong_cai;
-        }     
+        }           
     } else {
         document.getElementById("thung_" + stt).value = 0;
         document.getElementById("tien_chua_ck_" + stt).value = 0;
@@ -246,8 +232,24 @@ function configSp(stt) {
         document.getElementById("cai_" + stt).value = 0;
     }
     if(stt != '6') {
-        configCkAll('1');
+        tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
+                ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
+                ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
+                ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
+                ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val()));
+        tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
+                (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
+                (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
+                (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
+                (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value));
+        document.getElementById("tong_thung_1").value = tong_thung;
+        document.getElementById("tong_cai_1").value = tong_cai;
+        configCkAll('1');  
     } else {
+        tong_thung = $("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val());
+        tong_cai = document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value);
+        document.getElementById("tong_thung_2").value = tong_thung;
+        document.getElementById("tong_cai_2").value = tong_cai;
         configCkAll('2');
     }
 }
