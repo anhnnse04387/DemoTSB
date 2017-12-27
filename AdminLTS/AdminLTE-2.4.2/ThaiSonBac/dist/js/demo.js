@@ -34,9 +34,9 @@ function checkQtt() {
             showCancelButton: false,
             showConfirmButton: false,
         });
-        $('#btnCreate').addClass('noDisplay');
+        $('.btnCreate').addClass('noDisplay');
     } else {
-        $('#btnCreate').removeClass('noDisplay');
+        $('.btnCreate').removeClass('noDisplay');
     }
 }
 
@@ -105,9 +105,6 @@ function openNewTab() {
 }
 
 function create() {
-    $('#print').removeClass('noDisplay');
-    $('#saveDraft').addClass('noDisplay');
-    $('#preview').addClass('noDisplay');
     swal({
         title: '<img src="dist/img/messagePic.png"/>',
         type: 'warning',
