@@ -331,7 +331,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã xuất</span>
@@ -341,7 +341,7 @@
                                         </span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
@@ -461,23 +461,53 @@
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
-                                    <div style="float: right; margin-right: 12px;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                    <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="sua_phieu_0.html">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" 
-                                           data-placement="bottom" onclick="create(); return false;" id="btnCreate">
+
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" onclick="saveDraft();">
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="sua_phieu_0">
+                                            <i class="fa fa-close text-red"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" onclick="create();">
                                             <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Chốt đơn</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" id="preview" onclick="openNewTab(); return false;" 
-                                           title="Xem Trước" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                            <i class="fa fa-exchange text-red"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" onclick="openNewTab();">
                                             <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem Trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn noDisplay" data-toggle="tooltip" title="In" data-placement="bottom" id="print"
-                                           onclick="openNewTab(); return false;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" onclick="openNewTab();">
                                             <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
                                         </a>
-                                    </div>	
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-purple"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                    </div>
                                     <form>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -523,13 +553,7 @@
                                                             <td><i class="fa fa-dot-circle-o"></i><b> Trạng thái</b></td>
                                                             <td class="col4">
                                                                 <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;">
-                                                                    <option>Bản nháp</option>
                                                                     <option>Đã xuất phiếu</option>
-                                                                    <option class="text-yellow">Kế toán đã xử lý&#xf071;</option>
-                                                                    <option class="text-yellow">Đã xuất hoá đơn&#xf071;</option>
-                                                                    <option>Đã xuất kho</option>
-                                                                    <option class="text-yellow">Đã xuất kho&#xf071;</option>
-                                                                    <option>Hoàn thành</option>
                                                                     <option>Đã huỷ</option>
                                                                     <option>Từ chối</option>
                                                                     <option>Đổi trả hàng</option>
@@ -666,7 +690,7 @@
                                                                                    return false;"/></td>
                                                                 <td><output id="tien_da_ck_5"></output></td>
                                                             </tr>
-															<tr>
+                                                            <tr>
                                                                 <td style="vertical-align: middle;">6</td>
                                                                 <td style="vertical-align: middle; width: 24.7%;"><input type="text" id="name_7" class="form-control"/></td>
                                                                 <td style="vertical-align: middle;"><output id="ampe_7"></output></td>
@@ -837,6 +861,53 @@
                                         <div id="sound"></div>
                                     </form>
                                 </div>
+                                <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="sua_phieu_0.html">
+                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        <span><strong>Quay Lại</strong></span>
+                                    </a>
+
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <i class="fa fa-edit text-green"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" onclick="saveDraft();">
+                                        <i class="fa fa-save text-yellow"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="sua_phieu_0">
+                                        <i class="fa fa-close text-red"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" onclick="create();">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                        <span><strong>Chốt đơn</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                        <i class="fa fa-exchange text-red"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" onclick="openNewTab();">
+                                        <i class="fa fa-eye text-black"></i>
+                                        <span><strong>Xem Trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" onclick="openNewTab();">
+                                        <i class="fa fa-print text-blue"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <i class="fa fa-download text-purple"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                        <i class="fa fa-file-excel-o text-green"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <i class="fa fa-file-pdf-o text-red"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -848,8 +919,8 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-    </footer>
+                <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+            </footer>
         </div>
         <!-- ./wrapper -->
 
@@ -858,57 +929,57 @@
         <script src="dist/js/jquery-1.12.4.js"></script>
         <script src="dist/js/jquery-ui.js"></script>
         <script>
-                                                                              $(function () {
-                                                           var availableTags = [
-                                                               "ABN 52c",
-                                                               "TS1000N AG6 3P",
-                                                               "ABS 32c",
-                                                               "ABH 53c",
-                                                               "ABE103-G"
-                                                           ];
-                                                           $("#name_6").autocomplete({
-                                                               source: availableTags,
-                                                               change: function () {
-                                                                   if ($('#name_6').val() === 'ABN 52c') {
-                                                                       document.getElementById('ampe').value = '15A';
-                                                                       document.getElementById('dongia_6').value = '590,000';
-                                                                   } else if($('#name_6').val() === 'TS1000N AG6 3P') {
-                                                                       document.getElementById('ampe').value = '1000A';
-                                                                       document.getElementById('dongia_6').value = '80,807,616';
-                                                                   } else if($('#name_6').val() === 'ABS 32c') {
-                                                                       document.getElementById('ampe').value = '5A';
-                                                                       document.getElementById('dongia_6').value = '1,859,757';
-                                                                   } else if($('#name_6').val() === 'ABH 53c') {
-                                                                       document.getElementById('ampe').value = '30A';
-                                                                       document.getElementById('dongia_6').value = '2,375,709';
-                                                                   } else {
-                                                                       document.getElementById('ampe').value = '63A';
-                                                                       document.getElementById('dongia_6').value = '8,443,531';
-                                                                   }
-                                                               }
-                                                           });
-														   $("#name_7").autocomplete({
-                                                               source: availableTags,
-                                                               change: function () {
-																   if ($('#name_7').val() === 'ABN 52c') {
-                                                                       document.getElementById('ampe_7').value = '15A';
-                                                                       document.getElementById('dongia_7').value = '590,000';
-                                                                   } else if($('#name_7').val() === 'TS1000N AG6 3P') {
-                                                                       document.getElementById('ampe_7').value = '1000A';
-                                                                       document.getElementById('dongia_7').value = '80,807,616';
-                                                                   } else if($('#name_7').val() === 'ABS 32c') {
-                                                                       document.getElementById('ampe_7').value = '5A';
-                                                                       document.getElementById('dongia_7').value = '1,859,757';
-                                                                   } else if($('#name_7').val() === 'ABH 53c') {
-                                                                       document.getElementById('ampe_7').value = '30A';
-                                                                       document.getElementById('dongia_7').value = '2,375,709';
-                                                                   } else {
-                                                                       document.getElementById('ampe_7').value = '63A';
-                                                                       document.getElementById('dongia_7').value = '8,443,531';
-                                                                   }
-                                                               }
-                                                           });
-                                                       });
+                                        $(function () {
+                                            var availableTags = [
+                                                "ABN 52c",
+                                                "TS1000N AG6 3P",
+                                                "ABS 32c",
+                                                "ABH 53c",
+                                                "ABE103-G"
+                                            ];
+                                            $("#name_6").autocomplete({
+                                                source: availableTags,
+                                                change: function () {
+                                                    if ($('#name_6').val() === 'ABN 52c') {
+                                                        document.getElementById('ampe').value = '15A';
+                                                        document.getElementById('dongia_6').value = '590,000';
+                                                    } else if ($('#name_6').val() === 'TS1000N AG6 3P') {
+                                                        document.getElementById('ampe').value = '1000A';
+                                                        document.getElementById('dongia_6').value = '80,807,616';
+                                                    } else if ($('#name_6').val() === 'ABS 32c') {
+                                                        document.getElementById('ampe').value = '5A';
+                                                        document.getElementById('dongia_6').value = '1,859,757';
+                                                    } else if ($('#name_6').val() === 'ABH 53c') {
+                                                        document.getElementById('ampe').value = '30A';
+                                                        document.getElementById('dongia_6').value = '2,375,709';
+                                                    } else {
+                                                        document.getElementById('ampe').value = '63A';
+                                                        document.getElementById('dongia_6').value = '8,443,531';
+                                                    }
+                                                }
+                                            });
+                                            $("#name_7").autocomplete({
+                                                source: availableTags,
+                                                change: function () {
+                                                    if ($('#name_7').val() === 'ABN 52c') {
+                                                        document.getElementById('ampe_7').value = '15A';
+                                                        document.getElementById('dongia_7').value = '590,000';
+                                                    } else if ($('#name_7').val() === 'TS1000N AG6 3P') {
+                                                        document.getElementById('ampe_7').value = '1000A';
+                                                        document.getElementById('dongia_7').value = '80,807,616';
+                                                    } else if ($('#name_7').val() === 'ABS 32c') {
+                                                        document.getElementById('ampe_7').value = '5A';
+                                                        document.getElementById('dongia_7').value = '1,859,757';
+                                                    } else if ($('#name_7').val() === 'ABH 53c') {
+                                                        document.getElementById('ampe_7').value = '30A';
+                                                        document.getElementById('dongia_7').value = '2,375,709';
+                                                    } else {
+                                                        document.getElementById('ampe_7').value = '63A';
+                                                        document.getElementById('dongia_7').value = '8,443,531';
+                                                    }
+                                                }
+                                            });
+                                        });
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -922,19 +993,19 @@
         <script src="dist/js/demo.js"></script>
         <script src="dist/js/sweetalert2.all.js"></script>
         <script>
-                                                                               $(document).ready(function () {
-                                                                                   $('.datepicker').datepicker({
-                                                                                       format: 'dd/mm/yyyy'
-                                                                                   });
-                                                                                   lookup();
-                                                                                   configSp('1');
-                                                                                   configSp('2');
-                                                                                   configSp('3');
-                                                                                   configSp('4');
-                                                                                   configSp('5');
-                                                                                   deliveryQtt();
-                                                                                   $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
-                                                                               });
+                                        $(document).ready(function () {
+                                            $('.datepicker').datepicker({
+                                                format: 'dd/mm/yyyy'
+                                            });
+                                            lookup();
+                                            configSp('1');
+                                            configSp('2');
+                                            configSp('3');
+                                            configSp('4');
+                                            configSp('5');
+                                            deliveryQtt();
+                                            $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+                                        });
         </script>      
     </body>
 </html>
