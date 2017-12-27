@@ -48,7 +48,7 @@
 
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
+				<!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
@@ -136,23 +136,23 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Trần Anh Minh</span>
+                                    <span class="hidden-xs">Ngô Tùng Sơn</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
                                         <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                                        <p>Trần Anh Minh<small>Kế Toán</small>
+                                        <p>Ngô Tùng Sơn<small>Nhân viên kho</small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                            <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Hồ sơ</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Thoát</a>
+                                            <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Thoát</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -172,7 +172,7 @@
                             <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Trần Anh Minh</p>
+                            <p>Ngô Tùng Sơn</p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
                         </div>
                     </div>
@@ -188,37 +188,70 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
+  <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
 
-                        <li class="">
-                            <a href="phieudangcho_tung.html">
-                                <i class="fa fa-file-o"></i> <span>Phiếu đang chờ</span>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-o"></i> <span>Phiếu chờ xử lí</span>
                                 <span class="pull-right-container">
-                                    <span class="label label-primary bg-green">2</span>
-									<span class="label label-primary bg-blue">new</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-						</li>
+                            <ul class="treeview-menu">
+                                <li class=""><a href="chohang_tung.html"><i class="fa fa-edit"></i> Chuẩn bị hàng</a></li>
+                                <li>
+                                    <a href="chohoadon_tung.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Chờ hóa đơn</span>
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary pull-right">2</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chophieu_tung.html">
+                                        <i class="fa fa-list-alt"></i>
+                                        <span>Chờ phiếu</span>
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary bg-green">1</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+						
+						<li class="">
+                            <a href="chovanchuyen_tung.html">
+                                <i class="fa fa-clone"></i> <span>Phiếu chờ vận chuyển</span>
+                            </a>
+                        </li>
+						
+						<li class="">
+                            <a href="hoanthanh_tung.html">
+                                <i class="fa fa-file-text"></i> <span>Phiếu đã hoàn thành</span>
+                            </a>
+                        </li>
 
-						<li class="">
-                            <a href="phieudaxuat_ketoan.html">
-                                <i class="fa fa-file-text"></i> <span>Phiếu đã xuất</span>
+                        <li class="">
+                            <a href="tonKho_Kho.html">
+                                <i class="fa fa-folder"></i> <span>Hàng tồn kho</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
                                 <span class="pull-right-container">
-                                    <span class="label label-primary bg-green">1</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-						</li>
-						
-						<li class="">
-                            <a href="price.html">
-                                <i class="fa fa-list-alt"></i> <span>Giá hàng hóa</span>
-                                <span class="pull-right-container">
-                                    <span class="label label-primary bg-green">1</span>
-                                </span>
-                            </a>
-						</li>
-						
+                            <ul class="treeview-menu">
+                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
+                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
+                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </section>
@@ -240,7 +273,7 @@
                     <h3>TỪ 18/12/2017 ĐẾN 24/12/2017</h3>
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-xs-12">
-						<a href="toBeContinue_page.html">
+						<a href="toBeContinue_page_Kho.html">
                             <div class="info-box">
 
 								<span class="info-box-icon bg-aqua"><i class="glyphicon glyphicon-tags"></i></span>
@@ -258,7 +291,7 @@
                             <!-- /.info-box -->
                         </div>
                         <!-- /.col -->
-						<a href="toBeContinue_page.html">
+						<a href="toBeContinue_page_Kho.html">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box">
 								
@@ -279,7 +312,7 @@
 
                         <!-- fix for small devices only -->
                         <div class="clearfix visible-sm-block"></div>
-<a href="toBeContinue_page.html">
+<a href="toBeContinue_page_Kho.html">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box">
 								
@@ -297,7 +330,7 @@
                         </div>
 						</a>
                         <!-- /.col -->
-						<a href="toBeContinue_page.html">
+						<a href="toBeContinue_page_Kho.html">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box">
 								
@@ -592,7 +625,7 @@
                             </div>
 							
 							<div>
-								<a href="toBeContinue_page.html"><button type="button" class="btn btn-block btn-default" style="width: 100px; margin-left: 240px;">Xem thêm 
+								<a href="toBeContinue_page_Kho.html"><button type="button" class="btn btn-block btn-default" style="width: 100px; margin-left: 240px;">Xem thêm 
 								<i class="fa fa-arrow-circle-right"></i></button> </a>
 							</div>
                         </div>
@@ -731,7 +764,7 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer clearfix">
-                                    <a href="toBeContinue_page.html" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+                                    <a href="toBeContinue_page_Kho.html" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
                                 </div>
                                 <!-- /.box-footer -->
                             </div>
@@ -746,8 +779,8 @@
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-    </footer>
+           <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+	</footer>
 
 
     <!-- jQuery 3 -->

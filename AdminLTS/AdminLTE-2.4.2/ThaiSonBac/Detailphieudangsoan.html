@@ -31,7 +31,11 @@
     <style>
         .label-medium {
             vertical-align: super;
-            font-size: small;
+            font-size: medium;
+        }
+
+        .input-group {
+            padding-bottom: 10px;
         }
 
         .custom-btn {
@@ -113,25 +117,25 @@
     <div class="wrapper">
         <header class="main-header">
 
-            <!-- Logo -->
-            <!-- Header Navbar: style can be found in header.less -->
-            <a href="index-sales.html" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">
-                    <b>T</b>SB</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg">
-                    <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png"
-                        alt="Photo">
-                    <b>Thái Sơn Bắc</b>
-                </span>
-            </a>
-            <nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
+                <!-- Logo -->
+                <a href="index-sales.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>T</b>SB</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">
+                        <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Thái Sơn Bắc</b>
+                    </span>
+                </a>
+
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
-                <div class="navbar-custom-menu">
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <!-- Notifications: style can be found in dropdown.less -->
                             <li class="dropdown notifications-menu">
@@ -210,7 +214,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- User Account: style can be found in dropdown.less -->
+                              <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -237,36 +241,37 @@
                             </li>
                         </ul>
                     </div>
-            </nav>
-        </header>
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
+
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
                             <p>Lã Mạnh Đạt</p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
                         </div>
-                </div>
-                <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
                     </div>
-                </form>
-                <!-- /.search form -->
-                <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu" data-widget="tree">
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
                                 <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
@@ -404,9 +409,9 @@
                             </ul>
                         </li>	
                     </ul>
-            </section>
-            <!-- /.sidebar -->
-        </aside>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -468,34 +473,35 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="box box-info container-fluid">
+                        <div class="box box-info">
                             <div class="box-header">
                                 <div class="container-fluid">
-                                    <div class="row box-header with-border">
-										<div class="col-md-6">
-											<h4><label>Đơn hàng lô số 80326-2</label></h4>
-											<div class="input-group">
-                                                <span class="label label-primary label-medium">
-                                                    <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                </span>
-                                            </div>
-										</div>
-                                        <div class="col-md-offset-2 col-md-4">
-                                            <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="modal" title="Quay Lại" data-placement="bottom">
+                                    <div class="row">
+                                        <div class="col-md-8"></div>
+                                        <div class="col-md-4">
+                                            <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                                 <i class="fa fa-arrow-circle-left text-blue"></i>
                                             </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                                 <i class="fa fa-eye text-black"></i>
                                             </a>
                                             <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
                                                 <i class="fa fa-print text-blue"></i>
                                             </a>
-                                            <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Chỉnh sửa" data-placement="bottom" data-target="#confirm-process">
-                                                <i class="fa fa-edit text-green"></i>
+                                            <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom"
+                                                data-target="#confirm-process">
+                                                <i class="fa fa-check-circle text-green"></i>
                                             </a>
                                         </div>
                                     </div>
-									
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>
+                                                <b>Đơn hàng lô số 81264-1</b>
+                                            </h4>
+                                            <hr>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Đơn vị</label>
@@ -506,10 +512,18 @@
                                                 <input class="form-control" placeholder="Công ty Long Giang" disabled>
                                             </div>
                                         </div>
-										
-                                        
-										
-										<div class="col-md-6">
+                                        <div class="col-md-6">
+                                            <label>MST</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-bank"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="54363678" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <label>Nơi xuất HĐ</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -518,11 +532,6 @@
                                                 <input class="form-control" placeholder="Công ty TNHH Thái Sơn Bắc" disabled>
                                             </div>
                                         </div>
-										
-                                    </div>
-									<!--\. col -->
-                                    <div class="row">
-                                        
                                         <div class="col-md-6">
                                             <label>Địa chỉ giao hàng</label>
                                             <div class="input-group">
@@ -532,17 +541,37 @@
                                                 <input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
                                             </div>
                                         </div>
-										
-										<div class="col-md-6">
-                                            <label>MST</label>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Số hóa đơn</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-handshake-o"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Số hóa đơn">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>VAT khách hàng (%)</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-bank"></i>
                                                 </span>
-                                                <input class="form-control" placeholder="54363678" disabled>
+                                                <input class="form-control" placeholder="VAT khách hàng">
                                             </div>
                                         </div>
-																			
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Trạng Thái</label>
+                                            <div class="input-group">
+                                                <span class="label label-info label-medium">Bản nháp
+                                                    <!-- <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a> -->
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- tools box -->
@@ -551,24 +580,9 @@
                             <!-- /.box-header -->
                             <div class="box-body pad">
                                 <div class="container-fluid">
-									<div class="box-header">
-										<div class="container-fluid">
-											<div class="row box-header with-border">
-												<h4><label style="margin-right: 10px;">Lịch sử chỉnh sửa</label></h4>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-									  <!-- Custom Tabs -->
-									  <div class="nav-tabs-custom col-md-12">
-										<ul class="nav nav-tabs">
-										  <li class="active"><a href="#tab_1" data-toggle="tab">24/12/2017</a></li>
-										  <li><a href="#tab_2" data-toggle="tab">22/12/2017</a></li>
-										  <li><a href="#tab_3" data-toggle="tab">20/12/2017</a></li>
-										</ul>
-										<div class="tab-content">
-										  <div class="tab-pane active" id="tab_1">
-											<table id="mainTable" class="table table-striped">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table id="mainTable" class="table table-striped">
                                                 <thead style="text-align: center;">
                                                     <tr>
                                                         <th rowspan="2">STT</th>
@@ -683,328 +697,24 @@
                                                     </tr>
                                                 </tfoot>
                                             </table>
-										  </div>
-										  <!-- /.tab-pane -->
-										  <div class="tab-pane" id="tab_2">
-										  
-											<div class="row">
-												<div class="col-md-4" style="margin-top: 23px;">
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-user-circle-o"></i>
-														</span>
-														<input class="form-control" placeholder="Lần giao số 1" disabled>
-													</div>
-												</div>
-												
-												<div class="col-md-4">
-													<label>Ngày giao</label>
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</span>
-														<input class="form-control" placeholder="18/12/2017" disabled>
-													</div>
-												</div>
-												
-												<div class="col-md-4">
-													<label>Số hóa đơn</label>
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-user-circle-o"></i>
-														</span>
-														<input class="form-control" placeholder="812234" disabled>
-													</div>
-												</div>
-												
-											</div>
-											<table id="mainTable" class="table table-striped">
-                                                <thead style="text-align: center;">
-                                                    <tr>
-                                                        <th rowspan="2">STT</th>
-                                                        <th rowspan="2">Tên hàng</th>
-                                                        <th colspan="2">Số lượng</th>
-                                                        <th rowspan="2">Đơn giá (VNĐ)</th>
-                                                        <th rowspan="2">Thành tiền trước CK(VNĐ)</th>
-                                                        <th rowspan="2">Chiết khấu</th>
-                                                        <th rowspan="2">Thành tiền sau CK(VNĐ)</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Cái</th>
-                                                        <th>Thùng</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>ABN 52c</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>2,375,000</td>
-                                                        <td>2,375,000</td>
-                                                        <td>10%</td>
-                                                        <td>2,137,500</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>TS1000N AG6 3P</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>80,807,616</td>
-                                                        <td>80,807,616</td>
-                                                        <td>10%</td>
-                                                        <td>72,726,854</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>ABS 32c</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>1,859,757</td>
-                                                        <td>1,859,757</td>
-                                                        <td>10%</td>
-                                                        <td>1,673,781</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>ABH 53C</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>2,375,709</td>
-                                                        <td>2,375,709</td>
-                                                        <td>10%</td>
-                                                        <td>2,138,138</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>ABE103-G</td>
-                                                        <td>1</td>
-                                                        <td>1</td>
-                                                        <td>8,443,531</td>
-                                                        <td>8,443,531</td>
-                                                        <td>10%</td>
-                                                        <td>7,599,178</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Cộng</td>
-                                                        <td>41</td>
-                                                        <td>5</td>
-                                                        <td>95,861,613</td>
-                                                        <td>95,861,613</td>
-                                                        <td>9,586,161</td>
-                                                        <td>86,275,452</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Chiết khấu</td>
-                                                        <td colspan="4"></td>
-                                                        <td>10%</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Cộng</td>
-                                                        <td>41</td>
-                                                        <td>5</td>
-                                                        <td>95,861,613</td>
-                                                        <td>95,861,613</td>
-                                                        <td>9,586161</td>
-                                                        <td>86,275,452</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>VAT</td>
-                                                        <td colspan="4"></td>
-                                                        <td>10%</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Tổng cộng</td>
-                                                        <td>41</td>
-                                                        <td>5</td>
-                                                        <td>105,447,774</td>
-                                                        <td>105,447,774</td>
-                                                        <td>9,586,161</td>
-                                                        <td>94,902,297</td>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-										  </div>
-										  <!-- /.tab-pane -->
-										  <div class="tab-pane" id="tab_3">
-											<div class="row">
-												<div class="col-md-4" style="margin-top: 23px;">
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-user-circle-o"></i>
-														</span>
-														<input class="form-control" placeholder="Lần giao số 2" disabled>
-													</div>
-												</div>
-												
-												<div class="col-md-4">
-													<label>Ngày giao</label>
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</span>
-														<input class="form-control" placeholder="26/12/2017" disabled>
-													</div>
-												</div>
-												
-												<div class="col-md-4">
-													<label>Số hóa đơn</label>
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-user-circle-o"></i>
-														</span>
-														<input class="form-control" placeholder="812354" disabled>
-													</div>
-												</div>
-												
-											</div>
-											<table id="mainTable" class="table table-striped">
-                                                <thead style="text-align: center;">
-                                                    <tr>
-                                                        <th rowspan="2">STT</th>
-                                                        <th rowspan="2">Tên hàng</th>
-                                                        <th colspan="2">Số lượng</th>
-                                                        <th rowspan="2">Đơn giá (VNĐ)</th>
-                                                        <th rowspan="2">Thành tiền trước CK(VNĐ)</th>
-                                                        <th rowspan="2">Chiết khấu</th>
-                                                        <th rowspan="2">Thành tiền sau CK(VNĐ)</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Cái</th>
-                                                        <th>Thùng</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>ABN 52c</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>2,375,000</td>
-                                                        <td>2,375,000</td>
-                                                        <td>10%</td>
-                                                        <td>2,137,500</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>TS1000N AG6 3P</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>80,807,616</td>
-                                                        <td>80,807,616</td>
-                                                        <td>10%</td>
-                                                        <td>72,726,854</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>ABS 32c</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>1,859,757</td>
-                                                        <td>1,859,757</td>
-                                                        <td>10%</td>
-                                                        <td>1,673,781</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>ABH 53C</td>
-                                                        <td>20</td>
-                                                        <td>1</td>
-                                                        <td>2,375,709</td>
-                                                        <td>2,375,709</td>
-                                                        <td>10%</td>
-                                                        <td>2,138,138</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>ABE103-G</td>
-                                                        <td>1</td>
-                                                        <td>1</td>
-                                                        <td>8,443,531</td>
-                                                        <td>8,443,531</td>
-                                                        <td>10%</td>
-                                                        <td>7,599,178</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Cộng</td>
-                                                        <td>41</td>
-                                                        <td>5</td>
-                                                        <td>95,861,613</td>
-                                                        <td>95,861,613</td>
-                                                        <td>9,586,161</td>
-                                                        <td>86,275,452</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Chiết khấu</td>
-                                                        <td colspan="4"></td>
-                                                        <td>10%</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Cộng</td>
-                                                        <td>41</td>
-                                                        <td>5</td>
-                                                        <td>95,861,613</td>
-                                                        <td>95,861,613</td>
-                                                        <td>9,586161</td>
-                                                        <td>86,275,452</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>VAT</td>
-                                                        <td colspan="4"></td>
-                                                        <td>10%</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Tổng cộng</td>
-                                                        <td>41</td>
-                                                        <td>5</td>
-                                                        <td>105,447,774</td>
-                                                        <td>105,447,774</td>
-                                                        <td>9,586,161</td>
-                                                        <td>94,902,297</td>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-										  </div>
-										  <!-- /.tab-pane -->
-										</div>
-										<!-- /.tab-content -->
-									  </div>
-									  <!-- nav-tabs-custom -->
-									</div>
-									<!-- /.col -->
+                                        </div>
+                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-md-8"></div>
                                         <div class="col-md-4">
-                                            <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="modal" title="Quay Lại" data-placement="bottom">
+                                            <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                                 <i class="fa fa-arrow-circle-left text-blue"></i>
                                             </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                                 <i class="fa fa-eye text-black"></i>
                                             </a>
                                             <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
                                                 <i class="fa fa-print text-blue"></i>
                                             </a>
-                                            <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Chỉnh sửa" data-placement="bottom"
+                                            <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom"
                                                 data-target="#confirm-process">
-                                                <i class="fa fa-edit text-green"></i>
+                                                <i class="fa fa-check-circle text-green"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -1020,8 +730,8 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-    </footer>
+            <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+        </footer>
     </div>
     <!-- ./wrapper -->
 
@@ -1040,6 +750,24 @@
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
+    </script>
+    <script>
+        $('#confirm-delete').on('click', '.btn-ok', function (e) {
+            var $modalDiv = $(e.delegateTarget);
+            var id = $(this).data('recordId');
+            // $.ajax({url: '/api/record/' + id, type: 'DELETE'})
+            // $.post('/api/record/' + id).then()
+            $modalDiv.addClass('loading');
+            setTimeout(function () {
+                $modalDiv.modal('hide').removeClass('loading');
+            }, 1000)
+        });
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            var data = $(e.relatedTarget).data();
+            $('.title', this).text(data.recordTitle);
+            $('.btn-ok', this).data('recordId', data.recordId);
+        });
+        $('textarea').autoWidth();
     </script>
 </body>
 

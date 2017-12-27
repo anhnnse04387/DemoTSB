@@ -21,7 +21,7 @@ function checkQtt() {
         swal({
             title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
-            html: '<div style="margin-left: 327px;"><i class="fa fa-eye text-black"></i><a href="#"><img src="dist/img/xem.png"/></a></div>' 
+            html: '<div style="margin-left: 327px;"><i class="fa fa-eye text-black"></i><a href="timeline.html"><img src="dist/img/xem.png"/></a></div>' 
                   + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
                   + '<thead>'
                   + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th></tr>'
@@ -145,7 +145,8 @@ function configCkAll(stt) {
             ($("#tien_da_ck_2").val() === '' ? 0 : parseInt($("#tien_da_ck_2").val().replace(new RegExp(',', 'g'), ''))) + 
             ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val().replace(new RegExp(',', 'g'), ''))) +
             ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val().replace(new RegExp(',', 'g'), ''))) +
-            ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val().replace(new RegExp(',', 'g'), '')));
+            ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val().replace(new RegExp(',', 'g'), ''))) +
+			($("#tien_da_ck_7").val() === '' ? 0 : parseInt($("#tien_da_ck_7").val().replace(new RegExp(',', 'g'), '')));
     } else {
         tien_chua_ck = $('#tien_da_ck_6').val() === '' ? 0 : parseInt($("#tien_da_ck_6").val().replace(new RegExp(',', 'g'), ''));
     }
@@ -228,12 +229,14 @@ function configSp(stt) {
                 ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
                 ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
                 ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
-                ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val()));
+                ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val())) +
+				($("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val()));
         tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
                 (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
                 (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
                 (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
-                (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value));
+                (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value)) +
+				(document.getElementById("cai_7").value === '' ? 0 : parseInt(document.getElementById("cai_7").value));
         document.getElementById("tong_thung_1").value = tong_thung;
         document.getElementById("tong_cai_1").value = tong_cai;
         configCkAll('1');  

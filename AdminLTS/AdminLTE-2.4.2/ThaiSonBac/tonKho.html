@@ -8,15 +8,15 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- DataTables -->
-        <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
             #example1 {
@@ -240,8 +240,8 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieuxuatsau_tung.html">
+                                                                <li>
+                                    <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã xuất</span>
                                         <span class="pull-right-container">
@@ -251,7 +251,7 @@
                                     </a>
                                 </li>
 								<li>
-                                    <a href="phieudaxuat_tung.html">
+                                    <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
                                     </a>
@@ -357,13 +357,23 @@
                                     <h3 class="box-title">TỒN KHO</h3>
                                 </div>
                                 <div class="box-body">
-                                    <table id="example1" style="width:90%;margin:0 auto" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <tr>
-                                                <th>STT</th>
-                                                <th>Mã hàng</th>
-                                                <th>Tổng tồn</th>
+                                                <th rowspan="2" style="width: 1%">STT</th>
+                                                <th rowspan="2" colspan="2" style="width: 12%">Description</th>
+                                                <th rowspan="2" style="width: 3%">Tổng tồn</th>
+                                                <th style="width: 2%">CIF</th>
+                                                <th colspan="4" style="width: 12%">Giá vốn</th>
+                                            </tr>
+                                            <tr>
+
+                                                <th>USD</th>
+                                                <th style="text-align: left">Trước VAT (USD)</th>
+                                                <th>Sau VAT (USD)</th>
+                                                <th style="text-align: left;">Trước VAT (VND)</th>
+                                                <th >Sau VAT (VND)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -452,7 +462,7 @@
                                                 <td class="right">8,500,000</td>
                                             </tr>    
                                             <tr>
-                                                <td style="text-align: center">7</td>
+                                                <td style="text-align: left">7</td>
                                                 <td style="border-right: none !important;text-align: right">Thanh cái</td>
                                                 <td style="border-left: none !important;text-align: right">For TS 630</td>
                                          

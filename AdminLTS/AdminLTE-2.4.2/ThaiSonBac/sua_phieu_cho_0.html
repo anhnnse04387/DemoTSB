@@ -7,18 +7,18 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="dist/css/animate.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="dist/css/jquery-ui.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -276,8 +276,8 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieuxuatsau_tung.html">
+                                                                <li>
+                                    <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã xuất</span>
                                         <span class="pull-right-container">
@@ -287,7 +287,7 @@
                                     </a>
                                 </li>
 								<li>
-                                    <a href="phieudaxuat_tung.html">
+                                    <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
                                     </a>
@@ -611,6 +611,23 @@
                                                                                    return false;"/></td>
                                                                 <td><output id="tien_da_ck_5"></output></td>
                                                             </tr>
+															<tr>
+                                                                <td style="vertical-align: middle;">6</td>
+                                                                <td style="vertical-align: middle; width: 24.7%;"><input type="text" id="name_7" class="form-control"/></td>
+                                                                <td style="vertical-align: middle;"><output id="ampe_7"></output></td>
+                                                                <td><input type="text" class="form-control" id="cai_7" style="text-align: right;"
+                                                                           onkeyup="configSp('7');
+                                                                                   return false;"/></td>
+                                                                <td><input type="text" class="form-control" id="thung_7" 
+                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('7');
+                                                                                   return false;"/></td>
+                                                                <td><output id="dongia_7"></output></td>
+                                                                <td><output id="tien_chua_ck_7"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck_7" style="text-align: right;"
+                                                                           onkeyup="configCk('7');
+                                                                                   return false;"/></td>
+                                                                <td><output id="tien_da_ck_7" class="number"></output></td>
+                                                            </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
@@ -786,36 +803,57 @@
         <script src="dist/js/jquery-1.12.4.js"></script>
         <script src="dist/js/jquery-ui.js"></script>
         <script>
-                                                                               $(function () {
-                                                                                   var availableTags = [
-                                                                                       "ABN 52c",
-                                                                                       "TS1000N AG6 3P",
-                                                                                       "ABS 32c",
-                                                                                       "ABH 53c",
-                                                                                       "ABE103-G"
-                                                                                   ];
-                                                                                   $("#name_6").autocomplete({
-                                                                                       source: availableTags,
-                                                                                       change: function () {
-                                                                                           if ($('#name_6').val() === 'ABN 52c') {
-                                                                                               document.getElementById('ampe').value = '15A';
-                                                                                               document.getElementById('dongia_6').value = '590,000';
-                                                                                           } else if ($('#name_6').val() === 'TS1000N AG6 3P') {
-                                                                                               document.getElementById('ampe').value = '1000A';
-                                                                                               document.getElementById('dongia_6').value = '80,807,616';
-                                                                                           } else if ($('#name_6').val() === 'ABS 32c') {
-                                                                                               document.getElementById('ampe').value = '5A';
-                                                                                               document.getElementById('dongia_6').value = '1,859,757';
-                                                                                           } else if ($('#name_6').val() === 'ABH 53c') {
-                                                                                               document.getElementById('ampe').value = '30A';
-                                                                                               document.getElementById('dongia_6').value = '2,375,709';
-                                                                                           } else {
-                                                                                               document.getElementById('ampe').value = '63A';
-                                                                                               document.getElementById('dongia_6').value = '8,443,531';
-                                                                                           }
-                                                                                       }
-                                                                                   });
-                                                                               });
+                                                                              $(function () {
+                                                           var availableTags = [
+                                                               "ABN 52c",
+                                                               "TS1000N AG6 3P",
+                                                               "ABS 32c",
+                                                               "ABH 53c",
+                                                               "ABE103-G"
+                                                           ];
+                                                           $("#name_6").autocomplete({
+                                                               source: availableTags,
+                                                               change: function () {
+                                                                   if ($('#name_6').val() === 'ABN 52c') {
+                                                                       document.getElementById('ampe').value = '15A';
+                                                                       document.getElementById('dongia_6').value = '590,000';
+                                                                   } else if($('#name_6').val() === 'TS1000N AG6 3P') {
+                                                                       document.getElementById('ampe').value = '1000A';
+                                                                       document.getElementById('dongia_6').value = '80,807,616';
+                                                                   } else if($('#name_6').val() === 'ABS 32c') {
+                                                                       document.getElementById('ampe').value = '5A';
+                                                                       document.getElementById('dongia_6').value = '1,859,757';
+                                                                   } else if($('#name_6').val() === 'ABH 53c') {
+                                                                       document.getElementById('ampe').value = '30A';
+                                                                       document.getElementById('dongia_6').value = '2,375,709';
+                                                                   } else {
+                                                                       document.getElementById('ampe').value = '63A';
+                                                                       document.getElementById('dongia_6').value = '8,443,531';
+                                                                   }
+                                                               }
+                                                           });
+														   $("#name_7").autocomplete({
+                                                               source: availableTags,
+                                                               change: function () {
+																   if ($('#name_7').val() === 'ABN 52c') {
+                                                                       document.getElementById('ampe_7').value = '15A';
+                                                                       document.getElementById('dongia_7').value = '590,000';
+                                                                   } else if($('#name_7').val() === 'TS1000N AG6 3P') {
+                                                                       document.getElementById('ampe_7').value = '1000A';
+                                                                       document.getElementById('dongia_7').value = '80,807,616';
+                                                                   } else if($('#name_7').val() === 'ABS 32c') {
+                                                                       document.getElementById('ampe_7').value = '5A';
+                                                                       document.getElementById('dongia_7').value = '1,859,757';
+                                                                   } else if($('#name_7').val() === 'ABH 53c') {
+                                                                       document.getElementById('ampe_7').value = '30A';
+                                                                       document.getElementById('dongia_7').value = '2,375,709';
+                                                                   } else {
+                                                                       document.getElementById('ampe_7').value = '63A';
+                                                                       document.getElementById('dongia_7').value = '8,443,531';
+                                                                   }
+                                                               }
+                                                           });
+                                                       });
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
