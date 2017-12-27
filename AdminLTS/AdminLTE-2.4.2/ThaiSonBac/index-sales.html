@@ -715,13 +715,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="chart" style="height:500px">
-                                                <canvas id="barChart" style="height:490px"></canvas>
+                                                <canvas id="barChart" style="height:95%"></canvas>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="chart" style="height:500px">
-                                                <canvas id="barChart2" style="height:490px"></canvas>
+                                                <canvas id="barChart2" style="height:95%"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -861,6 +861,14 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+	<script>
+		window.onresize = function () {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(function () {
+        location.reload();
+    }, 0);
+};
+	</script>
 	<script>
 		new Chart(document.getElementById("barChart"), {
 			type: 'bar',
