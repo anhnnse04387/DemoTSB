@@ -37,11 +37,53 @@
                 width: 200px;
             }
             .customTable .col1{
-                width: 100px;
+                width: 150px;
             }
             .customTable .col2{
-                width: 450px;
+               width: 280px;
+			   padding-left: 80px;
             }
+			    /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+
+}
+.active{
+	display:block;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+ 
+    border-top: none;
+}
         </style>
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
@@ -362,28 +404,37 @@
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-12">
+						<div class="col-md-12">
                             <div class="box box-info">
                                 <div class="box-header">
                                     <h3 class="box-title with-border">Xử lý công nợ</h3>
                                 </div>
+								<!--tab-->
+								<div class="tab">
+									<div class="row">
+										<div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Công nợ khách hàng</button></div>
+										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Công nợ nhà cung cấp</button></div>
+									</div>
+								</div>
+								<!--end tab-->
                                 <!-- /.box-header -->
+							<div id="Paris" class="tabcontent" style="display:block;">
                                 <div class="box-body pad">
                                     <div class="box-header with-border" style="background-color: #fcf9f9;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
                                             <span><strong>Quay Lại</strong></span>
                                         </a>
 
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
                                             <i class="fa fa-edit text-green"></i>
                                             <span><strong>Tạo Mới</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
                                             <i class="fa fa-save text-yellow"></i>
                                             <span><strong>Lưu</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="index-sales.html">
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
@@ -391,54 +442,143 @@
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Chốt đơn</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
                                             <i class="fa fa-exchange text-red"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
                                             <i class="fa fa-eye text-black"></i>
                                             <span><strong>Xem Trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
                                             <i class="fa fa-print text-blue"></i>
                                             <span><strong>In</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
                                             <i class="fa fa-download text-purple"></i>
                                             <span><strong>Import Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
                                             <i class="fa fa-file-excel-o text-green"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
                                             <i class="fa fa-file-pdf-o text-red"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
                                     </div>	
-                                    <form>
+                                    <form style="margin-top: 20px;">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <table style="border: none; margin-left: 300px;" class="customTable">
+                                                <table style="border: none; margin-left: 250px;" class="customTable">
                                                     <tr>
-                                                        <td class="col1"><b>Công nợ:</b></td>
-                                                        <td class="col2"><select class="form-control" id="page">
+                                                        <td class="col1"><i class="fa fa-user-circle-o"></i><b> Tên:</b></td>
+                                                        <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
                                                                 <option></option>
-                                                                <option value="1">Khách hàng</option>
-                                                                <option value="2">Nhà cung cấp</option>
+                                                                <option value="1">Công ty Sáng Hà</option>
+                                                                <option value="2">Công ty Invico - Sắn</option>
                                                             </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-bank"></i><b> MST:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-circle"></i><b> Công nợ đầu kỳ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="debt"></td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
+                                        <div class="row" style="margin-top: 30px;">
+                                            <div class="col-sm-12 table-responsive">
+                                                <table class="customTable" style="margin-left: 250px;">
+                                                    <tr>
+                                                        <td class="col1"><i class="fa fa-plus-square"></i><b> Thêm công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control number" id="addDebt" onkeyup="checkOut();"></td>
+                                                    </tr>
 
+                                                    <tr>
+                                                        <td><i class="fa fa-check-square"></i><b> Tổng công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
                                     </form>
                                 </div>
+							</div>
+							
                             </div>
                         </div>
                         <!-- /.col-->
-                    </div>
-                    <!-- ./row -->
+						
+                     </div>
+                        <!-- /row 1-->
+                   
+			
+					<div class="row">
+						<div class="col-md-12">
+                            <div class="box box-info">
+                                <!-- /.box-header -->
+							<div id="London" class="tabcontent">
+                                <div class="box-body pad">
+                                    <div style="float: right; margin-right: 12px;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="xu_ly_cong_no.html" title="Quay Lại" data-placement="bottom">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        </a>                       
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="noKhachHang.html" title="Xử Lý" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                        </a>
+                                    </div>	
+                                    <form style="margin-top: 20px;">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table style="border: none; margin-left: 250px;" class="customTable">
+                                                    <tr>
+                                                        <td class="col1"><i class="fa fa-user-circle-o"></i><b> Tên:</b></td>
+                                                        <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
+                                                                <option></option>
+                                                                <option value="1">Công ty Sáng Hà</option>
+                                                                <option value="2">Công ty Invico - Sắn</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-bank"></i><b> MST:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-circle"></i><b> Công nợ đầu kỳ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="debt"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 30px;">
+                                            <div class="col-sm-12 table-responsive">
+                                                <table class="customTable" style="margin-left: 250px;">
+                                                    <tr>
+                                                        <td class="col1"><i class="fa fa-plus-square"></i><b> Thêm công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control number" id="addDebt" onkeyup="checkOut();"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td><i class="fa fa-check-square"></i><b> Tổng công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </form>
+                                    <div style="height : 50px;"></div>
+									</div>
+								</div>
+                            </div>
+                        </div>
+                        <!-- /.col-->		
+                     </div>
                 </section>
             </div>
             <!-- /.content-wrapper -->
@@ -458,5 +598,20 @@
         <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+		<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
     </body>
 </html>

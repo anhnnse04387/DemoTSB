@@ -16,8 +16,7 @@
         <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <!-- Select2 -->
         <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
-        <!-- iCheck for checkboxes and radio inputs -->
-        <link rel="stylesheet" href="../plugins/iCheck/all.css">
+        
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -622,19 +621,19 @@
                                                                     <td>
                                                                         <div class="form-group">
                                                                             <label>
-                                                                                <input type="checkbox" class="flat-red" checked>
+                                                                                <input type="checkbox"  checked>
                                                                                 A
                                                                             </label>
                                                                             <label class="custom-chk">
-                                                                                <input type="checkbox" class="flat-red">
+                                                                                <input type="checkbox" >
                                                                                 B
                                                                             </label>
                                                                             <label class="custom-chk">
-                                                                                <input type="checkbox" class="flat-red">
+                                                                                <input type="checkbox" >
                                                                                 C
                                                                             </label>
                                                                             <label class="custom-chk">
-                                                                                <input type="checkbox" class="flat-red">
+                                                                                <input type="checkbox" >
                                                                                 D
                                                                             </label>
                                                                         </div>
@@ -696,7 +695,7 @@
         <!-- Select2 -->
         <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
         <!-- iCheck 1.0.1 -->
-        <script src="../plugins/iCheck/icheck.min.js"></script>
+        
 
 
         <script>
@@ -714,21 +713,7 @@
             });
             //Initialize Select2 Elements
             $('.select2').select2();
-            //iCheck for checkbox and radio inputs
-            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass: 'iradio_minimal-blue'
-            });
-            //Red color scheme for iCheck
-            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-                checkboxClass: 'icheckbox_minimal-red',
-                radioClass: 'iradio_minimal-red'
-            });
-            //Flat red color scheme for iCheck
-            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
-            });
+           
         </script>
 
     </body>

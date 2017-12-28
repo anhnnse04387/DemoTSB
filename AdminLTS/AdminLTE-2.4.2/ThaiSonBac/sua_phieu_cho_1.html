@@ -30,8 +30,8 @@
             .switch {
                 position: relative;
                 display: inline-block;
-                width: 60px;
-                height: 34px;
+                width: 40px;
+                height: 24px;
             }
 
             .switch input {display:none;}
@@ -51,8 +51,8 @@
             .slider:before {
                 position: absolute;
                 content: "";
-                height: 26px;
-                width: 26px;
+                height: 16px;
+                width: 16px;
                 left: 4px;
                 bottom: 4px;
                 background-color: white;
@@ -69,9 +69,9 @@
             }
 
             input:checked + .slider:before {
-                -webkit-transform: translateX(26px);
-                -ms-transform: translateX(26px);
-                transform: translateX(26px);
+                -webkit-transform: translateX(16px);
+                -ms-transform: translateX(16px);
+                transform: translateX(16px);
             }
 
             /* Rounded sliders */
@@ -467,7 +467,7 @@
                                             <span><strong>Quay Lại</strong></span>
                                         </a>
 
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
                                             <i class="fa fa-edit text-green"></i>
                                             <span><strong>Tạo Mới</strong></span>
                                         </a>
@@ -483,7 +483,7 @@
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Chốt đơn</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
                                             <i class="fa fa-exchange text-red"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
@@ -495,15 +495,15 @@
                                             <i class="fa fa-print text-blue"></i>
                                             <span><strong>In</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
                                             <i class="fa fa-download text-purple"></i>
                                             <span><strong>Import Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" disabled data-placement="bottom">
                                             <i class="fa fa-file-excel-o text-green"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" disabled data-placement="bottom">
                                             <i class="fa fa-file-pdf-o text-red"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
@@ -533,7 +533,7 @@
                                                             <td class="col2"><input type="text" class="form-control" id="AddressDeliver"></td>
                                                             <td><i class="fa fa-truck"></i><b> Số đợt giao</b></td>
                                                             <td class="col4">
-                                                                <input type="text" id="delivery" value="2" style="padding-left: 12px;" onkeyup="deliveryQtt();" class="form-control">
+                                                                <input type="number" id="delivery" min="0" step="1" value="2" style="padding-left: 12px;" onkeyup="deliveryQtt();" class="form-control">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -561,8 +561,11 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="priority"/><b style="vertical-align: text-bottom;">Phiếu ưu tiên</b></td>
-                                                            <td></td>
+                                                            <td><b>Phiếu ưu tiên</b></td>
+                                                            <td><label class="switch" style="margin-top: 10px;">
+                                                                    <input type="checkbox">
+                                                                    <span class="slider round"></span>
+                                                                </label></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -867,7 +870,7 @@
                                         <span><strong>Quay Lại</strong></span>
                                     </a>
 
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
                                         <i class="fa fa-edit text-green"></i>
                                         <span><strong>Tạo Mới</strong></span>
                                     </a>
@@ -883,7 +886,7 @@
                                         <i class="fa fa-check-circle text-green"></i>
                                         <span><strong>Chốt đơn</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
                                         <i class="fa fa-exchange text-red"></i>
                                         <span><strong>Đổi trả</strong></span>
                                     </a>
@@ -895,15 +898,15 @@
                                         <i class="fa fa-print text-blue"></i>
                                         <span><strong>In</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
                                         <i class="fa fa-download text-purple"></i>
                                         <span><strong>Import Excel</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" disabled data-placement="bottom">
                                         <i class="fa fa-file-excel-o text-green"></i>
                                         <span><strong>Tải xuống</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" disabled data-placement="bottom">
                                         <i class="fa fa-file-pdf-o text-red"></i>
                                         <span><strong>Tải xuống</strong></span>
                                     </a>
