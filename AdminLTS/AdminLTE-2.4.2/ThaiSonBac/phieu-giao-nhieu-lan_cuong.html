@@ -530,18 +530,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="box-header with-border">
-                                        <div class="col-md-12 no-padding" style="margin-left: -30px;">
-                                            <ul class="progressSteps">	
-                                                <li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
-                                                <li id="bill" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh" class="complete">Xuất Hóa Đơn</br><small>10:12 09/11/2017</small></li>
-                                                <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
-                                                <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
-                                                <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
-                                            </ul>
-                                            <span class="pull-right" style="margin-right: 50px;"><a href="detail_progress.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
-                                        </div>
-                                    </div>        
+  
 
                                     <div class="row box-body">
                                         <div class="col-md-4">
@@ -613,7 +602,7 @@
                                 <div class="box-header">
                                     <div class="container-fluid">
                                         <div class="row box-header with-border">
-                                            <h4><label style="margin-left: 14px;">Chờ giao</label></h4>
+                                            <h4><label style="margin-left: 14px;">Tổng đơn hàng</label></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -750,18 +739,35 @@
                                             <!-- Custom Tabs -->
                                             <div class="nav-tabs-custom col-md-12">
                                                 <ul class="nav nav-tabs">
-                                                    <li class="active"><a href="#tab_1" data-toggle="tab">Giao đợt 1</a></li>
-                                                    <li><a href="#tab_2" data-toggle="tab">Giao đợt 2</a></li>
+                                                    <li class="active"><a href="#tab_1" data-toggle="tab">18-12-2017</a></li>
+                                                    <li><a href="#tab_2" data-toggle="tab">22-12-2017</a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div class="tab-pane active" id="tab_1">
+													<!-- progess -->
+													<div class="row">
+													    <div class="box-header with-border">
+															<div class="col-md-12 no-padding" style="margin-left: -30px;">
+																<ul class="progressSteps">	
+																	<li id="note" title= "Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 18-12-2017</small></li>
+																	<li id="bill" title= "Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh" class="complete">Xuất Hóa Đơn</br><small>10:12 18-12-2017</small></li>
+																	<li id="warehouse"title= "Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Ngô Tùng Sơn" class="complete">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+																	<li id="deliver" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Nguyễn Mạnh Cường" class="complete">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+																	<li id="finish" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Xuấn Thưởng" class="complete">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+																</ul>
+																<span class="pull-right" style="margin-right: 50px;"><a href="detail_progress.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
+															</div>
+														</div>
+													</div>
+													<!-- end progess --> 
                                                         <div class="row">
-                                                            <div class="col-md-4" style="margin-top: 25px;">
+                                                            <div class="col-md-4" >
+															<label>Ngày xuất</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
-                                                                    <input class="form-control" placeholder="Lần giao số 1" disabled>
+                                                                    <input class="form-control" placeholder="18-12-2017" disabled>
                                                                 </div>
                                                             </div>
 
@@ -772,15 +778,6 @@
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
                                                                     <input class="form-control" placeholder="812234" disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Trạng thái</label>
-                                                                <div class="input-group" style="margin-top: 5px;">
-                                                                    <span class="label label-primary label-medium">
-                                                                        <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -902,14 +899,30 @@
                                                     </div>
                                                     <!-- /.tab-pane -->
                                                     <div class="tab-pane" id="tab_2">
-
+													<!-- progess -->
+													<div class="row">
+													    <div class="box-header with-border">
+															<div class="col-md-12 no-padding" style="margin-left: -30px;">
+																<ul class="progressSteps">	
+																	<li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 21-12-2017</small></li>
+																	<li id="bill" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh" class="complete">Xuất Hóa Đơn</br><small>10:12 21-12-2017</small></li>
+																	<li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+																	<li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+																	<li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+																</ul>
+																<span class="pull-right" style="margin-right: 50px;"><a href="detail_progress.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
+															</div>
+														</div>
+													</div>
+													<!-- end progess --> 
                                                         <div class="row">
-                                                            <div class="col-md-4" style="margin-top: 25px;">
+                                                            <div class="col-md-4" ">
+															<label>Ngày xuất</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
-                                                                    <input class="form-control" placeholder="Lần giao số 2" disabled>
+                                                                    <input class="form-control" placeholder="22-12-2017" disabled>
                                                                 </div>
                                                             </div>
 
@@ -920,15 +933,6 @@
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
                                                                     <input class="form-control" placeholder="812354" disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Trạng thái</label>
-                                                                <div class="input-group" style="margin-top: 5px;">
-                                                                    <span class="label label-primary label-medium">
-                                                                        <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                                    </span>
                                                                 </div>
                                                             </div>
 
@@ -962,26 +966,6 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>2</td>
-                                                                    <td>TS1000N AG6 3P</td>
-                                                                    <td>20</td>
-                                                                    <td>1</td>
-                                                                    <td>80,807,616</td>
-                                                                    <td>80,807,616</td>
-                                                                    <td>10%</td>
-                                                                    <td>72,726,854</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>ABS 32c</td>
-                                                                    <td>20</td>
-                                                                    <td>1</td>
-                                                                    <td>1,859,757</td>
-                                                                    <td>1,859,757</td>
-                                                                    <td>10%</td>
-                                                                    <td>1,673,781</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>4</td>
                                                                     <td>ABH 53C</td>
                                                                     <td>20</td>
                                                                     <td>1</td>
@@ -991,7 +975,7 @@
                                                                     <td>2,138,138</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>5</td>
+                                                                    <td>3</td>
                                                                     <td>ABE103-G</td>
                                                                     <td>1</td>
                                                                     <td>1</td>
@@ -999,7 +983,7 @@
                                                                     <td>8,443,531</td>
                                                                     <td>10%</td>
                                                                     <td>7,599,178</td>
-                                                                </tr>
+																</tr>
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
