@@ -136,6 +136,7 @@
         </style>
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+        <link rel="stylesheet" href="dist/css/pages/detail_progress.css">
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -455,7 +456,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-info">
-                                <div class="box-header" style="text-align: center;">
+                                <div class="box-header" style="text-align: center;margin-top: 30px;">
                                     <h3 class="box-title with-border"><b style="font-size: 25px;">Phiếu xuất hàng</b></h3>
                                 </div>
                                 <!-- /.box-header -->
@@ -506,7 +507,21 @@
                                             <i class="fa fa-eye text-black"></i>
                                             <span><strong>Xem lịch sử</strong></span>
                                         </a>
-                                    </div>	
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="progressSteps">	
+                                                    <li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
+                                                    <li id="bill" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh">Xuất Hóa Đơn</br><small>Chưa hoàn thành</small></li>
+                                                    <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+                                                    <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+                                                    <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+                                                </ul>
+                                                <span class="pull-right"><small><a href="detail_progress.html">Xem chi tiết</a></small></span>
+                                            </div>
+                                        </div>
+                                    </div> 
                                     <form>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -691,6 +706,23 @@
                                                                            onkeyup="configCk('5');
                                                                                    return false;"/></td>
                                                                 <td><output id="tien_da_ck_5"></output></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">6</td>
+                                                                <td style="vertical-align: middle; width: 24.7%;"><input type="text" id="name_7" class="form-control" disabled/></td>
+                                                                <td style="vertical-align: middle;"><output id="ampe_7"></output></td>
+                                                                <td><input type="text" class="form-control" id="cai_7" style="text-align: right;"
+                                                                           onkeyup="configSp('7');
+                                                                                   return false;" disabled/></td>
+                                                                <td><input type="text" class="form-control" id="thung_7" 
+                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('7');
+                                                                                   return false;" disabled/></td>
+                                                                <td><output id="dongia_7"></output></td>
+                                                                <td><output id="tien_chua_ck_7"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck_7" style="text-align: right;"
+                                                                           onkeyup="configCk('7');
+                                                                                   return false;" disabled/></td>
+                                                                <td><output id="tien_da_ck_7" class="number"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
@@ -923,6 +955,8 @@
         <script src="dist/js/sweetalert2.all.js"></script>
         <script>
                                                                                $(document).ready(function () {
+                                                                                   $('[data-toggle="tooltip"]').tooltip();
+                                                                                   $('[data-toggle="popover"]').popover();
                                                                                    $('.datepicker').datepicker({
                                                                                        format: 'dd/mm/yyyy'
                                                                                    });
