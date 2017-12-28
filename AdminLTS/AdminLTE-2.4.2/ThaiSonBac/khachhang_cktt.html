@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Thái Sơn Bắc - TSB</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <style>
-	  #example1 {
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <style>
+            #example1 {
                 background-color: rgb(240, 240, 240);
             }
             #example1 thead tr th {
@@ -29,59 +29,63 @@
                 color: #fff;
             }
 
-        tfoot {
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            background-color: #544d61;
-        }
-		.highlight{
-			font-weight:bold;
-			text-align:right;
-		}
-		.right{
-			text-align:right;
-		}
-		.custom-btn {
-			padding: 10px 5px;
-			min-width: 60px;
-			height: 40px;
-		}
-		#btnThanhToan:hover{
-			color:black !important;
-		}
-		.modal-header {
-			padding: 15px;
-			border-bottom: 1px solid #e5e5e5;
-			background-color: aliceblue;
-		}
-    </style>
-</head>
+            tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
+            }
+            .highlight{
+                font-weight:bold;
+                text-align:right;
+            }
+            .right{
+                text-align:right;
+            }
+            .custom-btn {
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 40px;
+            }
+            #btnThanhToan:hover{
+                color:black !important;
+            }
+            .modal-header {
+                padding: 15px;
+                border-bottom: 1px solid #e5e5e5;
+                background-color: aliceblue;
+            }
+            .custom-btn {
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 50px;
+            }
+        </style>
+    </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini fixed">
-    <div class="wrapper">
-
-        <header class="main-header">
-            <!-- Logo -->
-     <a href="index-sales.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>T</b>SB</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">
-	  <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-	  <b>Thái Sơn Bắc</b>
-	  </span>
-    </a>
-
-
-            <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+    <body class="hold-transition skin-blue-light sidebar-mini fixed">
+        <div class="wrapper">
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="index-sales.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>T</b>SB</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">
+                        <img style="display: inline-block; width:50px; height:50px;" class="img-responsive"  src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Thái Sơn Bắc</b>
+                    </span>
                 </a>
-                <div class="navbar-custom-menu">
-                 <ul class="nav navbar-nav">
+
+
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
                             <!-- Messages: style can be found in dropdown.less-->
                             <li class="dropdown notifications-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -159,63 +163,63 @@
                                     </li>
                                 </ul>
                             </li>
-                             <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Lã Mạnh Đạt</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Lã Mạnh Đạt</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                <p>Lã Mạnh Đạt<small>Nhân viên bán hàng</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Hồ sơ</a>
-                </div>
-                <div class="pull-right">
-                  <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Thoát</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+                                        <p>Lã Mạnh Đạt<small>Nhân viên bán hàng</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Thoát</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
 
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Lã Mạnh Đạt</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-       <!-- sidebar menu: : style can be found in sidebar.less -->
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Lã Mạnh Đạt</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -250,7 +254,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã xuất</span>
@@ -260,7 +264,7 @@
                                         </span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
@@ -354,276 +358,366 @@
                             </ul>
                         </li>	
                     </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
 
-        <div class="content-wrapper">
-		 <section class="content-header">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="ThaiSonBac/index.html">
-                            <i class="fa fa-dashboard"></i> Trang Chủ</a>						
-                    </li>
-					<li><a href="noKhachHang.html"><i class="fa fa-dashboard"></i>Nợ khách hàng</a></li>
-					<li><a href="khachhang.html"><i class="fa fa-dashboard"></i>Chi tiết nợ khách hàng</a></li>
-                </ol>
-			 </section>
-            <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Tên khách hàng : ĐẠI LÝ PHÚ AN</h3>							
-                            </div>
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-										<th style="width:2%">NGÀY</th>
-                                        <th style="width:5%">LÔ SỐ</th>
-                                        <th style="width:5%">SÔ HĐ</th>
-                                        <th style="width:5%">SỐ LƯỢNG</th>
-                                        <th style="width:3%">DIỄN GIẢI</th>
-                                        <th style="width:5%">TIỀN HÀNG</th>
-                                        <th style="width:5%">VAT</th>
-                                        <th style="width:5%">TỔNG CỘNG</th>
-                                        <th style="width:5%">THANH TOÁN</th>
-                                        <th style="width:5%">DƯ NỢ</th>
-                                        <th style="width:5%">GHI CHÚ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Số dư đầu</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="highlight"></td>
-                                        <td></td>
-                                        <td class="highlight">2,435,117,579 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/11/2017</td>
-                                        <td>1</td>
-                                        <td>2347</td>
-                                        <td>122</td>
-                                        <td></td>
-                                        <td> 10,894,400 </td>
-                                        <td> 837,600 </td>
-                                        <td class="highlight">11,732,000 </td>
-                                        <td></td>
-                                        <td class="highlight">2,446,849,579 </td>
-                                        <td>Nợ 32Kgrd 20A= 8c (Đã HĐ)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>02/11/2017</td>
-                                        <td>2</td>
-                                        <td>2360</td>
-                                        <td>45</td>
-                                        <td></td>
-                                        <td> 18,437,200 </td>
-                                        <td> 1,512,800 </td>
-                                        <td class="highlight">19,950,000 </td>
-                                        <td></td>
-                                        <td class="highlight">2,466,799,579 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>03/11/2017</td>
-                                        <td>3</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Bù tiền nhầm giá TS TS100H FTU 63A lô số 9 ngày 12/10</td>
-                                        <td> (147,000)</td>
-                                        <td></td>
-                                        <td class="highlight">(147,000)</td>
-                                        <td></td>
-                                        <td class="highlight">2,466,652,579 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>03/11/2017</td>
-                                        <td>4</td>
-                                        <td>2366</td>
-                                        <td>1474</td>
-                                        <td></td>
-                                        <td> 263,612,000 </td>
-                                        <td> 21,508,500 </td>
-                                        <td class="highlight">285,120,500 </td>
-                                        <td></td>
-                                        <td class="highlight">2,751,773,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>04/11/2017</td>
-                                        <td>5</td>
-                                        <td>2366</td>
-                                        <td>22</td>
-                                        <td></td>
-                                        <td> 13,300,000 </td>
-                                        <td></td>
-                                        <td class="highlight">13,300,000 </td>
-                                        <td></td>
-                                        <td class="highlight">2,765,073,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>07/11/2017</td>
-                                        <td>6</td>
-                                        <td>2402</td>
-                                        <td>611</td>
-                                        <td></td>
-                                        <td> 288,711,300 </td>
-                                        <td> 23,810,700 </td>
-                                        <td class="highlight">312,522,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,077,595,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>08/11/2017</td>
-                                        <td>7</td>
-                                        <td>2432</td>
-                                        <td>156</td>
-                                        <td></td>
-                                        <td> 36,559,000 </td>
-                                        <td> 2,928,000 </td>
-                                        <td class="highlight">39,487,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,117,082,079 </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>09/11/2017</td>
-                                        <td>8</td>
-                                        <td>2456</td>
-                                        <td>1</td>
-                                        <td></td>
-                                        <td> 4,305,000 </td>
-                                        <td></td>
-                                        <td class="highlight">4,305,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,121,387,079 </td>
-                                        <td></td>
-                                    </tr>
-									 <tr>
-                                        <td>09/11/2017</td>
-                                        <td>9</td>
-                                        <td>2456</td>
-                                        <td>1</td>
-                                        <td></td>
-                                        <td> 4,305,000 </td>
-                                        <td></td>
-                                        <td class="highlight">4,305,000 </td>
-                                        <td></td>
-                                        <td class="highlight">3,121,387,079 </td>
-                                        <td></td>
-                                    </tr>
-									<script>
-										window.onload = function what(){
-											var n =  new Date();
-											var y = n.getFullYear();
-											var m = n.getMonth() + 1;
-											var d = n.getDate();
-											var date = d + "/" + m + "/" + y;
-											document.getElementById("date").innerHTML = date;
-											document.getElementById("date1").innerHTML = date;
-											 $(function () {
-												$('#example1').DataTable()
-												$('#example2').DataTable({
-												'paging': true,
-												'lengthChange': false,
-												'searching': false,
-												'ordering': true,
-												'info': true,
-												'autoWidth': false
-													})
-											})
-										}
-									</script>
-                                    <tr style="background-color:yellow">
-                                        <td id="date"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Trả tiền hàng</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="highlight"></td>
-                                        <td style="text-align:right">1,760,000,000</td>
-                                        <td class="highlight">1,361,187,079</td>
-                                        <td></td>
-                                    </tr> 
-									<tr style="background-color:yellow">
-                                        <td id="date1"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>CKTT</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="highlight"></td>
-                                        <td style="text-align:right">43,000,000</td>
-                                        <td class="highlight">1,318,387,079</td>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="ThaiSonBac/index.html">
+                                <i class="fa fa-dashboard"></i> Trang Chủ</a>						
+                        </li>
+                        <li><a href="noKhachHang.html"><i class="fa fa-dashboard"></i>Nợ khách hàng</a></li>
+                        <li><a href="khachhang.html"><i class="fa fa-dashboard"></i>Chi tiết nợ khách hàng</a></li>
+                    </ol>
+                </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-info container-fluid">
+                                <div class="box-header with-border">
+                                    <h3 class="text-center"><strong>Tên khách hàng : ĐẠI LÝ PHÚ AN</strong></h3>
+                                    <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                        <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="modal" title="Quay Lại" data-placement="bottom">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay lại</strong></span>
+                                        </a>
 
-									 <tfoot>
-            <tr>
-                        <td colspan="3">TOTAL</td>
-                                        <td>2,482</td>
-                                        <td></td>
-                                        <td>663,849,900 </td>
-                                        <td>53,219,600 </td>
-                                        <td class="right">717,069,500 </td>
-                                        <td>0</td>
-                                        <td class="right">1,833,800,000</td>
-                                        <td></td>
-                    </tr>
-									</tfoot>
-                                </table>
-								<div style="float:right;">
-									
-					</div>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-red"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Thanh Toán</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                            <i class="fa fa-exchange text-red"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-purple"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                    </div>
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:2%">NGÀY</th>
+                                                <th style="width:5%">LÔ SỐ</th>
+                                                <th style="width:5%">SÔ HĐ</th>
+                                                <th style="width:5%">SỐ LƯỢNG</th>
+                                                <th style="width:3%">DIỄN GIẢI</th>
+                                                <th style="width:5%">TIỀN HÀNG</th>
+                                                <th style="width:5%">VAT</th>
+                                                <th style="width:5%">TỔNG CỘNG</th>
+                                                <th style="width:5%">THANH TOÁN</th>
+                                                <th style="width:5%">DƯ NỢ</th>
+                                                <th style="width:5%">GHI CHÚ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Số dư đầu</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="highlight"></td>
+                                                <td></td>
+                                                <td class="highlight">2,435,117,579 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>01/11/2017</td>
+                                                <td>1</td>
+                                                <td>2347</td>
+                                                <td>122</td>
+                                                <td></td>
+                                                <td> 10,894,400 </td>
+                                                <td> 837,600 </td>
+                                                <td class="highlight">11,732,000 </td>
+                                                <td></td>
+                                                <td class="highlight">2,446,849,579 </td>
+                                                <td>Nợ 32Kgrd 20A= 8c (Đã HĐ)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>02/11/2017</td>
+                                                <td>2</td>
+                                                <td>2360</td>
+                                                <td>45</td>
+                                                <td></td>
+                                                <td> 18,437,200 </td>
+                                                <td> 1,512,800 </td>
+                                                <td class="highlight">19,950,000 </td>
+                                                <td></td>
+                                                <td class="highlight">2,466,799,579 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03/11/2017</td>
+                                                <td>3</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Bù tiền nhầm giá TS TS100H FTU 63A lô số 9 ngày 12/10</td>
+                                                <td> (147,000)</td>
+                                                <td></td>
+                                                <td class="highlight">(147,000)</td>
+                                                <td></td>
+                                                <td class="highlight">2,466,652,579 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03/11/2017</td>
+                                                <td>4</td>
+                                                <td>2366</td>
+                                                <td>1474</td>
+                                                <td></td>
+                                                <td> 263,612,000 </td>
+                                                <td> 21,508,500 </td>
+                                                <td class="highlight">285,120,500 </td>
+                                                <td></td>
+                                                <td class="highlight">2,751,773,079 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>04/11/2017</td>
+                                                <td>5</td>
+                                                <td>2366</td>
+                                                <td>22</td>
+                                                <td></td>
+                                                <td> 13,300,000 </td>
+                                                <td></td>
+                                                <td class="highlight">13,300,000 </td>
+                                                <td></td>
+                                                <td class="highlight">2,765,073,079 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>07/11/2017</td>
+                                                <td>6</td>
+                                                <td>2402</td>
+                                                <td>611</td>
+                                                <td></td>
+                                                <td> 288,711,300 </td>
+                                                <td> 23,810,700 </td>
+                                                <td class="highlight">312,522,000 </td>
+                                                <td></td>
+                                                <td class="highlight">3,077,595,079 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>08/11/2017</td>
+                                                <td>7</td>
+                                                <td>2432</td>
+                                                <td>156</td>
+                                                <td></td>
+                                                <td> 36,559,000 </td>
+                                                <td> 2,928,000 </td>
+                                                <td class="highlight">39,487,000 </td>
+                                                <td></td>
+                                                <td class="highlight">3,117,082,079 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>09/11/2017</td>
+                                                <td>8</td>
+                                                <td>2456</td>
+                                                <td>1</td>
+                                                <td></td>
+                                                <td> 4,305,000 </td>
+                                                <td></td>
+                                                <td class="highlight">4,305,000 </td>
+                                                <td></td>
+                                                <td class="highlight">3,121,387,079 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>09/11/2017</td>
+                                                <td>9</td>
+                                                <td>2456</td>
+                                                <td>1</td>
+                                                <td></td>
+                                                <td> 4,305,000 </td>
+                                                <td></td>
+                                                <td class="highlight">4,305,000 </td>
+                                                <td></td>
+                                                <td class="highlight">3,121,387,079 </td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr style="background-color:yellow">
+                                                <td id="date"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Trả tiền hàng</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="highlight"></td>
+                                                <td style="text-align:right">1,760,000,000</td>
+                                                <td class="highlight">1,361,187,079</td>
+                                                <td></td>
+                                            </tr> 
+                                            <tr style="background-color:yellow">
+                                                <td id="date1"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>CKTT</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="highlight"></td>
+                                                <td style="text-align:right">43,000,000</td>
+                                                <td class="highlight">1,318,387,079</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3">TOTAL</td>
+                                                <td>2,482</td>
+                                                <td></td>
+                                                <td>663,849,900 </td>
+                                                <td>53,219,600 </td>
+                                                <td class="right">717,069,500 </td>
+                                                <td>0</td>
+                                                <td class="right">1,833,800,000</td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div style="float:right;">
+
+                                    </div>
+                                </div>
+                                    <div class="box-footer with-border" style="background-color: #fcf9f9;">
+                                        <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="modal" title="Quay Lại" data-placement="bottom">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay lại</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-red"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Thanh Toán</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                            <i class="fa fa-exchange text-red"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-purple"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                    </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-					
-            </section>
+                    </div>        
+                </section>
+            </div>
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+            </footer>
         </div>
-		  <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-    </footer>
-    </div>
-    <!-- ./wrapper -->
+        <!-- ./wrapper -->
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
-    <!-- page script -->
-    <script>
-       
-    </script>
-</body>
+        <!-- jQuery 3 -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+        <!-- page script -->
+        <script>
+            window.onload = function what() {
+                var n = new Date();
+                var y = n.getFullYear();
+                var m = n.getMonth() + 1;
+                var d = n.getDate();
+                var date = d + "/" + m + "/" + y;
+                document.getElementById("date").innerHTML = date;
+                document.getElementById("date1").innerHTML = date;
+                $(function () {
+                    $('#example1').DataTable()
+                    $('#example2').DataTable({
+                        'paging': true,
+                        'lengthChange': false,
+                        'searching': false,
+                        'ordering': true,
+                        'info': true,
+                        'autoWidth': false
+                    })
+                })
+            }
+        </script>
+    </body>
 
 </html>
