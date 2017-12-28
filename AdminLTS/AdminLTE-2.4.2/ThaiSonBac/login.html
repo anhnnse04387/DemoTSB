@@ -63,7 +63,7 @@
                 box-sizing: border-box;
                 font-size: 14px;
             }
-            .form button {
+            .form input[type="button"]  {
                 font-family: "Roboto", sans-serif;
                 text-transform: uppercase;
                 outline: 0;
@@ -94,13 +94,13 @@
                 <form class="login-form">
                     <div class="inner-addon left-addon">
                         <i class="glyphicon glyphicon-user"></i>
-                        <input type="text" style="padding-left: 40px;" class="customInput" placeholder="Tài khoản"/>
+                        <input type="text" id="username" style="padding-left: 40px;" class="customInput" placeholder="Tài khoản"/>
                     </div>
                     <div class="inner-addon left-addon">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="text" style="padding-left: 41px;" class="customInput" placeholder="Mật khẩu"/>
+                        <input type="password" id="password" style="padding-left: 41px;" class="customInput" placeholder="Mật khẩu"/>
                     </div>
-                    <button>đăng nhập</button>
+                    <input type="button" onclick="location.href = 'index-sales.html';" value="đăng nhập"/>
                 </form>
             </div>
             <!-- /.login-box-body -->
@@ -113,14 +113,5 @@
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- iCheck -->
         <script src="../plugins/iCheck/icheck.min.js"></script>
-        <script>
-            $(function () {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
-            });
-        </script>
     </body>
 </html>
