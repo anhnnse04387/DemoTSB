@@ -7,6 +7,7 @@
 function deliveryQtt() {
     if(document.getElementById('delivery').value === '1') {
         $('#turn1').removeClass('noDisplay');
+        $('#turn2').addClass('noDisplay');
     } else if(document.getElementById('delivery').value === '2') {
         $('#turn1').removeClass('noDisplay');
         $('#turn2').removeClass('noDisplay');
@@ -47,6 +48,15 @@ function checkOut() {
         addDebt = parseInt(document.getElementById("addDebt").value.replace(new RegExp(',', 'g'), ''));
     } 
     document.getElementById("totalDebt").value = (parseInt(document.getElementById('debt').value.replace(new RegExp(',', 'g'), '')) + addDebt).toLocaleString('en');
+}
+
+function checkOutProvider() {
+    var addDebt = 0;
+    var pay = 0;
+    if (parseInt(document.getElementById("addDebtP").value.replace(new RegExp(',', 'g'), '')) > 0) {
+        addDebt = parseInt(document.getElementById("addDebtP").value.replace(new RegExp(',', 'g'), ''));
+    } 
+    document.getElementById("totalDebtP").value = (parseInt(document.getElementById('debtP').value.replace(new RegExp(',', 'g'), '')) + addDebt).toLocaleString('en');
 }
 
 function saveDraft() {
@@ -90,12 +100,12 @@ function autoFillCustomer() {
 }
 
 function autoFillProvider() {
-    if ($("#donVi").val() === '1') {
-        document.getElementById("debt").value = "26,262,716,484";
-        document.getElementById("TaxCode").value = "";
-    } else if ($("#donVi").val() === '2') {
-        document.getElementById("debt").value = "24,305,440,452";
-        document.getElementById("TaxCode").value = "";
+    if ($("#donViP").val() === '1') {
+        document.getElementById("debtP").value = "26,262,716,484";
+        document.getElementById("TaxCodeP").value = "";
+    } else if ($("#donViP").val() === '2') {
+        document.getElementById("debtP").value = "24,305,440,452";
+        document.getElementById("TaxCodeP").value = "";
     }
 }
 
