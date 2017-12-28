@@ -84,6 +84,27 @@
  
     border-top: none;
 }
+			.modal-header {
+                padding: 15px;
+                border-bottom: 1px solid #e5e5e5;
+                background-color: aliceblue;
+            }
+			.modal-body {
+				position: relative;
+				padding: 15px;
+				background-color: white;
+			}
+			.modal-footer {
+				border-top-color: #f4f4f4;
+				background-color: white;
+			}
+			.btn-default {
+				background-color: #f4f4f4;
+				color: #444;
+				border-color: #ddd;
+				/* margin: 0 auto; */
+				margin-right: 20px;
+			}
         </style>
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
@@ -409,18 +430,7 @@
                                 <div class="box-header">
                                     <h3 class="box-title with-border">Xử lý công nợ</h3>
                                 </div>
-								<!--tab-->
-								<div class="tab">
-									<div class="row">
-										<div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Công nợ khách hàng</button></div>
-										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Công nợ nhà cung cấp</button></div>
-									</div>
-								</div>
-								<!--end tab-->
-                                <!-- /.box-header -->
-							<div id="Paris" class="tabcontent" style="display:block;">
-                                <div class="box-body pad">
-                                    <div class="box-header with-border" style="background-color: #fcf9f9;">
+								<div class="box-header with-border" style="background-color: #fcf9f9;">
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
                                             <span><strong>Quay Lại</strong></span>
@@ -438,7 +448,7 @@
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" onclick="redirect();">
+                                        <a class="btn btn-app custom-btn" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Chốt đơn</strong></span>
                                         </a>
@@ -467,6 +477,18 @@
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
                                     </div>	
+								<!--tab-->
+								<div class="tab">
+									<div class="row">
+										<div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Công nợ khách hàng</button></div>
+										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Công nợ nhà cung cấp</button></div>
+									</div>
+								</div>
+								<!--end tab-->
+                                <!-- /.box-header -->
+							<div id="Paris" class="tabcontent" style="display:block;">
+                                <div class="box-body pad">
+                                    
                                     <form style="margin-top: 20px;">
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -518,20 +540,12 @@
                         <!-- /row 1-->
                    
 			
-					<div class="row">
+					<div id="London" class="tabcontent row">
 						<div class="col-md-12">
-                            <div class="box box-info">
+                            <div class="box box-info" style="border-top:none">
                                 <!-- /.box-header -->
-							<div id="London" class="tabcontent">
-                                <div class="box-body pad">
-                                    <div style="float: right; margin-right: 12px;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="xu_ly_cong_no.html" title="Quay Lại" data-placement="bottom">
-                                            <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        </a>                       
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="noKhachHang.html" title="Xử Lý" data-placement="bottom">
-                                            <i class="fa fa-check-circle text-green"></i>
-                                        </a>
-                                    </div>	
+							<div>
+                                <div class="box-body pad">                              
                                     <form style="margin-top: 20px;">
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -579,6 +593,45 @@
                         </div>
                         <!-- /.col-->		
                      </div>
+					  <!--popup confirm-->
+                    <div class="modal fade" id="popupConfirm" role="dialog">
+                        <div class="modal-dialog" style="width:250px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận chốt đơn</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Bạn có muốn chốt đơn không?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <div style="margin:0 auto;">
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="directionPage();return false;">OK</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+									</div>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+							<!--code chuyen page-->
+							<script>
+								function directionPage(){
+									var isDisplay = $('#Paris:visible').length;
+									if(isDisplay === 0){
+										window.location.href='noCungCap.html';
+									}else{								
+										window.location.href='noKhachHang.html';
+									}
+								}
+							</script>
+                        </div>
+                    </div>
+					<!--popup Confirm 2-->
                 </section>
             </div>
             <!-- /.content-wrapper -->
