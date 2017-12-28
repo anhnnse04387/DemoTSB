@@ -14,10 +14,9 @@
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-		<!-- Select2 -->
-		<link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
-		<!-- iCheck for checkboxes and radio inputs -->
-		<link rel="stylesheet" href="../plugins/iCheck/all.css">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+        
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -333,272 +332,6 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p>Nguyễn Nam Anh</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                    <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="Nam Anh">
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i> <span>Trang Chủ</span>
-                            </a>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu Xuất Hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập phiếu</a></li>
-                                <li>
-                                    <a href="phieudangsoan_tung.html">
-                                        <i class="fa fa-file-text"></i>
-                                        <span>Phiếu Đang Soạn</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary pull-right">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieudaxuat_tung.html">
-                                        <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu Đã Xuất</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary bg-green">1</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-files-o"></i>
-                                        <span>Phiếu Xuất Sau</span>
-                                        <span class="pull-right-container">
-                                            <span class="label pull-right bg-green">new</span>
-                                            <span class="label pull-right bg-red">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="#">
-                                        <i class="fa fa-cubes"></i> <span>Hướng dẫn</span>
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="workflow.html"><i class="fa fa-hand-o-right"></i> Luồng Xử Lí</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá Hàng Hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng Tồn Kho</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Công nợ</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Xử Lý Công Nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công Nợ Khách Hàng</a></li>
-                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công Nợ Nhà Cung Cấp</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao Hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Lái Xe</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông Tin Xe Hàng</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định Vị Xe Hàng</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-pencil-square"></i> <span>Báo Cáo</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh Thu</a>
-                                </li>
-
-                                <li class="treeview">
-                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công Nợ Khách Hàng</a>
-                                </li>
-
-                                <li class="treeview">
-                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công Nợ Nhà Cung Cấp</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-database"></i> <span>Quản Trị</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhân Viên</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh Sách Khách Hàng</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh Sách Nhà Cung Cấp</a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="toBeContinue_page.html"><i class="fa fa-line-chart"></i> Thiết Lập Thông Tin Nhân Viên
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-user-plus"></i> Thêm Tài Khoản</a></li>
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-edit"></i> Cập Nhập User</a></li>
-                                        <li><a href="toBeContinue_page.html"><i class="fa fa-child"></i> Phân Quyền Menu</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>	
-                    </ul>
-<<<<<<< HEAD
-                </li>	
-            </ul>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <ol class="breadcrumb">
-                <li><a href="../ThaiSonBac/index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-            </ol>
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title with-border">Form Mẫu</h3>
-                            <!-- tools box -->
-                            <div class="pull-right box-tools">
-                                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                        title="Collapse">
-                                    <i class="fa fa-minus"></i></button>
-                            </div>
-                            <!-- /. tools -->
-                        </div>
-						
-                        <!-- /.box-header -->
-                        <div >
-                            <div class="box-header with-border" style="background-color: #fcf9f9;">
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
-                                    <i class="fa fa-arrow-circle-left text-blue"></i>
-									<span><strong>Quay Lại</strong></span>
-                                </a>
-								
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                    <i class="fa fa-edit text-green"></i>
-									<span><strong>Tạo Mới</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                    <i class="fa fa-save text-yellow"></i>
-									<span><strong>Lưu</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                    <i class="fa fa-close text-red"></i>
-									<span><strong>Hủy</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
-                                    <i class="fa fa-check-circle text-green"></i>
-									<span><strong>Xử Lý</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                    <i class="fa fa-eye text-black"></i>
-									<span><strong>Xem Trước</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
-                                    <i class="fa fa-print text-blue"></i>
-									<span><strong>In</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                    <i class="fa fa-download text-purple"></i>
-									<span><strong>Import Excel</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
-                                    <i class="fa fa-file-excel-o text-green"></i>
-									<span><strong>Tải xuống</strong></span>
-                                </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                    <i class="fa fa-file-pdf-o text-red"></i>
-									<span><strong>Tải xuống</strong></span>
-                                </a>
-                            </div>	
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <!-- Input addon -->
-                                        <div>
-                                            <div class="box-body">
-=======
-                </section>
-                <!-- /.sidebar -->
-            </aside>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -615,7 +348,7 @@
                         <!-- main-col -->
                         <div class="col-md-12">
                             <!-- main-box -->
-                            <div class="box box-primary">
+                            <div class="box box-primary container-fluid">
                                 <div class="box-header with-border">
                                     <h3 class="box-title with-border">Form Mẫu</h3>
                                     <!-- tools box -->
@@ -637,7 +370,7 @@
                                             <span><strong>Quay Lại</strong></span>
                                         </a>
 
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" >
                                             <i class="fa fa-edit text-green"></i>
                                             <span><strong>Tạo Mới</strong></span>
                                         </a>
@@ -653,7 +386,7 @@
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Chốt đơn</strong></span>
                                         </a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
                                             <i class="fa fa-exchange text-red"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
@@ -673,7 +406,7 @@
                                             <i class="fa fa-file-excel-o text-green"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
                                             <i class="fa fa-file-pdf-o text-red"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
@@ -682,7 +415,6 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <!-- Input addon -->
->>>>>>> e0f13a61b4c22a7b09a527056836e40096985d59
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>Đơn vị</label>
@@ -703,7 +435,7 @@
                                                                 <option class="text-yellow">Kế toán đã xử lý&#xf071;</option>
                                                                 <option>Đã xuất kho</option>
                                                                 <option class="text-yellow">Đã xuất kho&#xf071;</option>
-																<option>Đang giao hàng </option>
+                                                                <option>Đang giao hàng </option>
                                                                 <option>Hoàn thành</option>
                                                                 <option>Đã huỷ</option>
                                                                 <option>Từ chối</option>
@@ -806,11 +538,11 @@
                                                 </table>
                                             </fieldset>		
                                         </div>
-                                        
+
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="box">
-                                                    <div class="box-header with-border">
+                                                    <div class="box-header">
                                                         <h3 class="box-title">Mục tìm kiếm</h3>
                                                     </div>
                                                     <!-- /.box-header -->
@@ -889,19 +621,19 @@
                                                                     <td>
                                                                         <div class="form-group">
                                                                             <label>
-                                                                                <input type="checkbox" class="flat-red" checked>
+                                                                                <input type="checkbox"  checked>
                                                                                 A
                                                                             </label>
                                                                             <label class="custom-chk">
-                                                                                <input type="checkbox" class="flat-red">
+                                                                                <input type="checkbox" >
                                                                                 B
                                                                             </label>
                                                                             <label class="custom-chk">
-                                                                                <input type="checkbox" class="flat-red">
+                                                                                <input type="checkbox" >
                                                                                 C
                                                                             </label>
                                                                             <label class="custom-chk">
-                                                                                <input type="checkbox" class="flat-red">
+                                                                                <input type="checkbox" >
                                                                                 D
                                                                             </label>
                                                                         </div>
@@ -960,43 +692,29 @@
         <script src="dist/js/demo.js"></script>
         <!-- bootstrap datepicker -->
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-	<!-- Select2 -->
-	<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-	<!-- iCheck 1.0.1 -->
-<script src="../plugins/iCheck/icheck.min.js"></script>
+        <!-- Select2 -->
+        <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+        <!-- iCheck 1.0.1 -->
+        
 
 
         <script>
-            $(document).ready(function () {
-                 $('[data-toggle="tooltip"]').tooltip();
-            });
+                                                                           $(document).ready(function () {
+                                                                               $('[data-toggle="tooltip"]').tooltip();
+                                                                           });
         </script>
         <!-- Page script -->
-		<script>
-		  $(function () {
-			  //Date picker
-			$('#datepicker').datepicker({
-			  autoclose: true
-			});
-		  });
-		  //Initialize Select2 Elements
-			$('.select2').select2();
-                        //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    });
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    });
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    });
-	</script>
-		
+        <script>
+            $(function () {
+                //Date picker
+                $('#datepicker').datepicker({
+                    autoclose: true
+                });
+            });
+            //Initialize Select2 Elements
+            $('.select2').select2();
+           
+        </script>
+
     </body>
 </html>

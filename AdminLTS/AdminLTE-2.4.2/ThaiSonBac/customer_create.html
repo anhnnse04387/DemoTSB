@@ -39,7 +39,11 @@
             text-align: center;
         }
 
-        td {}
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 50px;
+        }
     </style>
 </head>
 
@@ -65,8 +69,8 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">10</span>
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="header">Bạn có 10 thông báo mới</li>
@@ -141,28 +145,29 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Lã Mạnh Đạt</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Lã Mạnh Đạt</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                                        <p>Lã Mạnh Đạt<small>Nhân viên bán hàng</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Hồ sơ</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Thoát</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    <p>Lã Mạnh Đạt
+                                        <small>Nhân viên bán hàng</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="toBeContinue_page.html" class="btn btn-default btn-flat">Thoát</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -179,8 +184,9 @@
                         <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                            <p>Lã Mạnh Đạt</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
+                        <p>Lã Mạnh Đạt</p>
+                        <a href="#">
+                            <i class="fa fa-circle text-success"></i> Trực tuyến</a>
                     </div>
                 </div>
                 <!-- search form -->
@@ -196,144 +202,184 @@
                 </form>
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="menu-open">
-                            <a href="index-sales.html">
-                                <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
-                            </a>
-                        </li>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="menu-open">
+                        <a href="index-sales.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Bán Hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="lap_phieu.html"><i class="fa fa-edit"></i> Lập Phiếu</a></li>
-                                <li>
-                                    <a href="phieudangsoan_tung.html">
-                                        <i class="fa fa-file-text"></i>
-                                        <span>Phiếu đang soạn</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary pull-right">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="phieu_dang_giao.html">
-                                        <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary bg-green">1</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                                                <li>
-                                    <a href="phieudaxuat_tung.html">
-                                        <i class="fa fa-files-o"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
-                                            <span class="label pull-right bg-green">new</span>
-                                            <span class="label pull-right bg-red">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-								<li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-book"></i>
-                                        <span>Phiếu giữ hàng</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="workflow.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file-o"></i>
+                            <span>Bán Hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="lap_phieu.html">
+                                    <i class="fa fa-edit"></i> Lập Phiếu</a>
+                            </li>
+                            <li>
+                                <a href="phieudangsoan_tung.html">
+                                    <i class="fa fa-file-text"></i>
+                                    <span>Phiếu đang soạn</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary pull-right">2</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="phieu_dang_giao.html">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span>Phiếu đang giao</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary bg-green">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="phieudaxuat_tung.html">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Phiếu đã xuất</span>
+                                    <span class="pull-right-container">
+                                        <span class="label pull-right bg-green">new</span>
+                                        <span class="label pull-right bg-red">2</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="phieuxuatsau_tung.html">
+                                    <i class="fa fa-book"></i>
+                                    <span>Phiếu giữ hàng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="workflow.html">
+                                    <i class="fa fa-hand-o-right"></i>
+                                    <span>Quy trình xử lý</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="price.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Kho</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="price.html">
+                                    <i class="fa fa-dollar"></i> Giá hàng hóa</a>
+                            </li>
+                            <li>
+                                <a href="tonKho.html">
+                                    <i class="fa fa-dropbox"></i> Hàng tồn kho</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Công nợ</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
-                                <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-table"></i>
+                            <span>Công nợ</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="xu_ly_cong_no.html">
+                                    <i class="fa fa-hand-o-right"></i> Tạo công nợ</a>
+                            </li>
+                            <li>
+                                <a href="noKhachHang.html">
+                                    <i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="noCungCap.html">
+                                    <i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
-                                <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
-                            </ul>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span>Giao hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin lái xe</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-hand-o-right"></i> Định vị xe hàng</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
-                                </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-pencil-square"></i>
+                            <span>Báo cáo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="bao-cao-doanh-thu.html">
+                                    <i class="fa fa-line-chart"></i> Doanh thu</a>
+                            </li>
 
-                                <li>
-                                    <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
-                                </li>
+                            <li>
+                                <a href="bao-cao-cong-no-khach-hang.html">
+                                    <i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
+                            </li>
 
-                                <li>
-                                    <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
-                                </li>
-                            </ul>
-                        </li>
+                            <li>
+                                <a href="bao-cao-cong-no-cung-cap.html">
+                                    <i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-database"></i> <span>Quản trị</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
-                                </li>
-                                <li>
-                                    <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
-                                </li>
-                            </ul>
-                        </li>	
-                    </ul>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-database"></i>
+                            <span>Quản trị</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="customer_list.html">
+                                    <i class="fa fa-users"></i> Danh sách khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page.html">
+                                    <i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -379,14 +425,79 @@
                             <div class="box">
                                 <div class="box-header">
                                     <div class="row">
-                                        <div class="col-md-10"></div>
-                                        <div class="col-md-2">
-                                            <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" data-toggle="tooltip">
-                                                <i class="fa fa-close text-red"></i>
-                                            </a>
-                                            <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="modal" title="Xử Lý" data-placement="bottom" data-target="#confirm-delete">
-                                                <i class="fa fa-check-circle text-green"></i>
-                                            </a>
+                                        <div class="pull-right">
+                                            <div class="col-md-12">
+                                                <div class="box-header with-border">
+                                                    <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                                        <span>
+                                                            <strong>Quay Lại</strong>
+                                                        </span>
+                                                    </a>
+
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
+                                                        <i class="fa fa-edit text-green"></i>
+                                                        <span>
+                                                            <strong>Tạo Mới</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                                        <i class="fa fa-save text-yellow"></i>
+                                                        <span>
+                                                            <strong>Lưu</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" disabled>
+                                                        <i class="fa fa-close text-red"></i>
+                                                        <span>
+                                                            <strong>Hủy</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Tạo mới" data-placement="bottom" data-target=
+                                                    "#confirm-delete">
+                                                        <i class="fa fa-check-circle text-green"></i>
+                                                        <span>
+                                                            <strong>Tạo mới</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                                        <i class="fa fa-exchange text-red"></i>
+                                                        <span>
+                                                            <strong>Đổi trả</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                                        <i class="fa fa-eye text-black"></i>
+                                                        <span>
+                                                            <strong>Xem Trước</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                                        <i class="fa fa-print text-blue"></i>
+                                                        <span>
+                                                            <strong>In</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                                        <i class="fa fa-download text-purple"></i>
+                                                        <span>
+                                                            <strong>Import Excel</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                                        <i class="fa fa-file-excel-o text-green"></i>
+                                                        <span>
+                                                            <strong>Tải xuống</strong>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled disabled>
+                                                        <i class="fa fa-file-pdf-o text-red"></i>
+                                                        <span>
+                                                            <strong>Tải xuống</strong>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <h1 style="text-align: center; font-weight: 600;">TẠO KHÁCH HÀNG MỚI</h1>
@@ -464,8 +575,9 @@
         </div>
         <!-- ./wrapper -->
         <footer class="main-footer">
-			<strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-		</footer>
+            <strong>Copyright &copy; 2017
+                <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+        </footer>
         <!-- jQuery 3 -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->

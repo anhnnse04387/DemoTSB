@@ -28,7 +28,7 @@
             .custom-btn {
                 padding: 10px 5px;
                 min-width: 60px;
-                height: 40px;
+                height: 50px;
             }
             .customTable tr{
                 height: 60px;
@@ -37,11 +37,74 @@
                 width: 200px;
             }
             .customTable .col1{
-                width: 100px;
+                width: 150px;
             }
             .customTable .col2{
-                width: 450px;
+               width: 280px;
+			   padding-left: 80px;
             }
+			    /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+
+}
+.active{
+	display:block;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+ 
+    border-top: none;
+}
+			.modal-header {
+                padding: 15px;
+                border-bottom: 1px solid #e5e5e5;
+                background-color: aliceblue;
+            }
+			.modal-body {
+				position: relative;
+				padding: 15px;
+				background-color: white;
+			}
+			.modal-footer {
+				border-top-color: #f4f4f4;
+				background-color: white;
+			}
+			.btn-default {
+				background-color: #f4f4f4;
+				color: #444;
+				border-color: #ddd;
+				/* margin: 0 auto; */
+				margin-right: 20px;
+			}
         </style>
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
@@ -204,7 +267,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-                     <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -239,7 +302,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã xuất</span>
@@ -249,7 +312,7 @@
                                         </span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
@@ -362,49 +425,219 @@
                 </section>
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-12">
+						<div class="col-md-12">
                             <div class="box box-info">
                                 <div class="box-header">
                                     <h3 class="box-title with-border">Xử lý công nợ</h3>
                                 </div>
-                                <!-- /.box-header -->
-                                <div class="box-body pad">
-                                    <div style="float: right; margin-right: 12px;">                                       
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="redirect(); return false;"
-                                           title="Chọn" data-placement="bottom">
+								<div class="box-header with-border" style="background-color: #fcf9f9;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="index-sales.html">
+                                            <i class="fa fa-close text-red"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
                                             <i class="fa fa-check-circle text-green"></i>
-                                        </a>                                        
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                            <i class="fa fa-exchange text-red"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                            <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-download text-purple"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
                                     </div>	
-                                    <form>
+								<!--tab-->
+								<div class="tab">
+									<div class="row">
+										<div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Công nợ khách hàng</button></div>
+										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Công nợ nhà cung cấp</button></div>
+									</div>
+								</div>
+								<!--end tab-->
+                                <!-- /.box-header -->
+							<div id="Paris" class="tabcontent" style="display:block;">
+                                <div class="box-body pad">
+                                    
+                                    <form style="margin-top: 20px;">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <table style="border: none; margin-left: 300px;" class="customTable">
+                                                <table style="border: none; margin-left: 250px;" class="customTable">
                                                     <tr>
-                                                        <td class="col1"><b>Công nợ:</b></td>
-                                                        <td class="col2"><select class="form-control" id="page">
+                                                        <td class="col1"><i class="fa fa-user-circle-o"></i><b> Tên:</b></td>
+                                                        <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
                                                                 <option></option>
-                                                                <option value="1">Khách hàng</option>
-                                                                <option value="2">Nhà cung cấp</option>
+                                                                <option value="1">Công ty Sáng Hà</option>
+                                                                <option value="2">Công ty Invico - Sắn</option>
                                                             </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-bank"></i><b> MST:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-circle"></i><b> Công nợ đầu kỳ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="debt"></td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
+                                        <div class="row" style="margin-top: 30px;">
+                                            <div class="col-sm-12 table-responsive">
+                                                <table class="customTable" style="margin-left: 250px;">
+                                                    <tr>
+                                                        <td class="col1"><i class="fa fa-plus-square"></i><b> Thêm công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control number" id="addDebt" onkeyup="checkOut();"></td>
+                                                    </tr>
 
+                                                    <tr>
+                                                        <td><i class="fa fa-check-square"></i><b> Tổng công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
                                     </form>
-									<div style="height : 20px;"></div>
                                 </div>
+							</div>
+							
                             </div>
                         </div>
                         <!-- /.col-->
+						
+                     </div>
+                        <!-- /row 1-->
+                   
+			
+					<div id="London" class="tabcontent row">
+						<div class="col-md-12">
+                            <div class="box box-info" style="border-top:none">
+                                <!-- /.box-header -->
+							<div>
+                                <div class="box-body pad">                              
+                                    <form style="margin-top: 20px;">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table style="border: none; margin-left: 250px;" class="customTable">
+                                                    <tr>
+                                                        <td class="col1"><i class="fa fa-user-circle-o"></i><b> Tên:</b></td>
+                                                        <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
+                                                                <option></option>
+                                                                <option value="1">Công ty Sáng Hà</option>
+                                                                <option value="2">Công ty Invico - Sắn</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-bank"></i><b> MST:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-circle"></i><b> Công nợ đầu kỳ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="debt"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 30px;">
+                                            <div class="col-sm-12 table-responsive">
+                                                <table class="customTable" style="margin-left: 250px;">
+                                                    <tr>
+                                                        <td class="col1"><i class="fa fa-plus-square"></i><b> Thêm công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control number" id="addDebt" onkeyup="checkOut();"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td><i class="fa fa-check-square"></i><b> Tổng công nợ:</b></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </form>
+                                    <div style="height : 50px;"></div>
+									</div>
+								</div>
+                            </div>
+                        </div>
+                        <!-- /.col-->		
+                     </div>
+					  <!--popup confirm-->
+                    <div class="modal fade" id="popupConfirm" role="dialog">
+                        <div class="modal-dialog" style="width:250px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận chốt đơn</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Bạn có muốn chốt đơn không?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <div style="margin:0 auto;">
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="directionPage();return false;">OK</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+									</div>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+							<!--code chuyen page-->
+							<script>
+								function directionPage(){
+									var isDisplay = $('#Paris:visible').length;
+									if(isDisplay === 0){
+										window.location.href='noCungCap.html';
+									}else{								
+										window.location.href='noKhachHang.html';
+									}
+								}
+							</script>
+                        </div>
                     </div>
-                    <!-- ./row -->
+					<!--popup Confirm 2-->
                 </section>
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-    </footer>
+                <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+            </footer>
         </div>
         <!-- ./wrapper -->
 
@@ -418,5 +651,20 @@
         <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+		<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
     </body>
 </html>

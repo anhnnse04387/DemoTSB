@@ -26,10 +26,65 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 40px;
+                height: 24px;
+            }
+
+            .switch input {display:none;}
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            input:checked + .slider {
+                background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(16px);
+                -ms-transform: translateX(16px);
+                transform: translateX(16px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
             .custom-btn {
                 padding: 10px 5px;
                 min-width: 60px;
-                height: 40px;
+                height: 50px;
             }
             .mainTable {
                 background-color: rgb(240, 240, 240);
@@ -81,6 +136,7 @@
         </style>
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+        <link rel="stylesheet" href="dist/css/pages/detail_progress.css">
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -275,7 +331,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieudaxuat_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã xuất</span>
@@ -285,7 +341,7 @@
                                         </span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
@@ -400,20 +456,72 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-info">
-                                <div class="box-header" style="text-align: center;">
+                                <div class="box-header" style="text-align: center;margin-top: 30px;">
                                     <h3 class="box-title with-border"><b style="font-size: 25px;">Phiếu xuất hàng</b></h3>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
-                                    <div style="float: right; margin-right: 12px;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="#">
+                                    <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" 
-                                           data-placement="bottom" href="sua_phieu_cho_0.html">
-                                            <i class="fa fa-pencil-square text-green"></i>
+
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
                                         </a>
-                                    </div>	
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-red"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" href="sua_phieu_cho_0.html">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                            <i class="fa fa-exchange text-red"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                            <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-download text-purple"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="progressSteps">	
+                                                    <li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
+                                                    <li id="bill" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh">Xuất Hóa Đơn</br><small>Chưa hoàn thành</small></li>
+                                                    <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+                                                    <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+                                                    <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+                                                </ul>
+                                                <span class="pull-right"><small><a href="detail_progress.html">Xem chi tiết</a></small></span>
+                                            </div>
+                                        </div>
+                                    </div> 
                                     <form>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -459,13 +567,7 @@
                                                             <td><i class="fa fa-dot-circle-o"></i><b> Trạng thái</b></td>
                                                             <td class="col4">
                                                                 <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;" disabled>
-                                                                    <option>Bản nháp</option>
                                                                     <option>Đã xuất phiếu</option>
-                                                                    <option class="text-yellow">Kế toán đã xử lý&#xf071;</option>
-                                                                    <option class="text-yellow">Đã xuất hoá đơn&#xf071;</option>
-                                                                    <option>Đã xuất kho</option>
-                                                                    <option class="text-yellow">Đã xuất kho&#xf071;</option>
-                                                                    <option>Hoàn thành</option>
                                                                     <option>Đã huỷ</option>
                                                                     <option>Từ chối</option>
                                                                     <option>Đổi trả hàng</option>
@@ -473,8 +575,11 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="priority" disabled/><b style="vertical-align: text-bottom;">Phiếu ưu tiên</b></td>
-                                                            <td></td>
+                                                            <td><b>Phiếu ưu tiên</b></td>
+                                                            <td><label class="switch" style="margin-top: 10px;">
+                                                                    <input type="checkbox" disabled>
+                                                                    <span class="slider round"></span>
+                                                                </label></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -601,6 +706,23 @@
                                                                            onkeyup="configCk('5');
                                                                                    return false;"/></td>
                                                                 <td><output id="tien_da_ck_5"></output></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">6</td>
+                                                                <td style="vertical-align: middle; width: 24.7%;"><input type="text" id="name_7" class="form-control" disabled/></td>
+                                                                <td style="vertical-align: middle;"><output id="ampe_7"></output></td>
+                                                                <td><input type="text" class="form-control" id="cai_7" style="text-align: right;"
+                                                                           onkeyup="configSp('7');
+                                                                                   return false;" disabled/></td>
+                                                                <td><input type="text" class="form-control" id="thung_7" 
+                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('7');
+                                                                                   return false;" disabled/></td>
+                                                                <td><output id="dongia_7"></output></td>
+                                                                <td><output id="tien_chua_ck_7"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck_7" style="text-align: right;"
+                                                                           onkeyup="configCk('7');
+                                                                                   return false;" disabled/></td>
+                                                                <td><output id="tien_da_ck_7" class="number"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
@@ -756,6 +878,53 @@
                                         <div id="sound"></div>
                                     </form>
                                 </div>
+                                <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
+                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        <span><strong>Quay Lại</strong></span>
+                                    </a>
+
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
+                                        <i class="fa fa-edit text-green"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                        <i class="fa fa-save text-yellow"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                        <i class="fa fa-close text-red"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" href="sua_phieu_cho_0.html">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                        <span><strong>Chốt đơn</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                        <i class="fa fa-exchange text-red"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                        <i class="fa fa-eye text-black"></i>
+                                        <span><strong>Xem Trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                        <i class="fa fa-print text-blue"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                        <i class="fa fa-download text-purple"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                        <i class="fa fa-file-excel-o text-green"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                        <i class="fa fa-file-pdf-o text-red"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -767,8 +936,8 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-    </footer>
+                <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+            </footer>
         </div>
         <!-- ./wrapper -->
 
@@ -787,13 +956,18 @@
         <script src="dist/js/sweetalert2.all.js"></script>
         <script>
                                                                                $(document).ready(function () {
+                                                                                   $('[data-toggle="tooltip"]').tooltip();
+                                                                                   $('[data-toggle="popover"]').popover();
                                                                                    $('.datepicker').datepicker({
                                                                                        format: 'dd/mm/yyyy'
                                                                                    });
-                                                                                   lookup();
-                                                                                   configSp('1');configSp('2');configSp('3');
-                                                                                   configSp('4');configSp('5');
                                                                                    deliveryQtt();
+                                                                                   lookup();
+                                                                                   configSp('1');
+                                                                                   configSp('2');
+                                                                                   configSp('3');
+                                                                                   configSp('4');
+                                                                                   configSp('5');
                                                                                    $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
                                                                                });
         </script>      
