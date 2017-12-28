@@ -27,7 +27,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
     <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="../plugins/iCheck/all.css">
+    
 
     <style>
         .custom-btn {
@@ -496,7 +496,7 @@
                                                     <th>Trạng thái</th>
                                                     <th>Ngày giao</th>
                                                     <th>Ghi chú</th>
-                                                    <th>Thay đổi</th>
+                                                    <th>Sửa</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -511,7 +511,7 @@
                                                         <input type="checkbox"  disabled checked>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox"  disabled >
                                                     </td>
                                                     <td>
                                                         <span class="label label-success">Kế toán đã xử lý</span>
@@ -531,7 +531,7 @@
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px" checked />
                                                                     </label>
                                                                     <div></div>
                                                                 </div>
@@ -631,7 +631,7 @@
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
@@ -709,13 +709,13 @@
                                                     <td>Công ty Invico</td>
                                                     <td>24327</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled checked>
+                                                        <input type="checkbox"  disabled >
                                                     </td>
                                                     <td>
                                                         <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-success">Kế toán đã xử lý</span>
+                                                       <span class="label label-primary">Đã xuất phiếu</span>
                                                     </td>
                                                     <td></td>
                                                     <td>Giao trước 06-03-2015</td>
@@ -911,13 +911,13 @@
                                                     <td>Công ty Vạn Xuân</td>
                                                     <td>24325</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled checked>
+                                                        <input type="checkbox"  disabled >
                                                     </td>
                                                     <td>
                                                         <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-success">Kế toán đã xử lý</span>
+                                                        <span class="label label-primary">Đã xuất phiếu</span>
                                                     </td>
                                                     <td></td>
                                                     <td>Giao trước 19-11-2017</td>
@@ -1159,7 +1159,7 @@
     <!-- Select2 -->
     <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
     <!-- iCheck 1.0.1 -->
-    <script src="../plugins/iCheck/icheck.min.js"></script>
+    
     <script>
         $(function () {
             $('#example1').DataTable()
@@ -1229,21 +1229,7 @@
         });
         //Initialize Select2 Elements
         $('.select2').select2();
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass: 'iradio_flat-green'
-        });
+        
     </script>
 </body>
 
