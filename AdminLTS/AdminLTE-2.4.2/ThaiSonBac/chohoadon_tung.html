@@ -21,6 +21,14 @@
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    
+
     <style>
         .custom-btn {
             padding: 10px 5px;
@@ -45,23 +53,23 @@
             color: #fff;
         }
 
+        #example1 tbody td:nth-child(4),
         #example1 tbody td:nth-child(5),
-        #example1 tbody td:nth-child(6) {
+        #example1 tbody td:nth-child(6),
+        #example1 tbody td:nth-child(7) {
             text-align: center;
         }
 
-        #example1 tbody td:nth-child(2),
-        #example1 tbody td:nth-child(3),
-        #example1 tbody td:nth-child(10) {
-            text-align: left;
-        }
-
-        #example1 tbody td:nth-child(4) {
+        #example1 tbody td:nth-child() {
             text-align: right;
         }
 
         .custom-btn {
             margin-left: 10px;
+        }
+
+        .custom-chk {
+            padding-left: 15px;
         }
     </style>
 </head>
@@ -152,28 +160,29 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Ngô Tùng Sơn</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Ngô Tùng Sơn</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                                        <p>Ngô Tùng Sơn<small>Nhân viên kho</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Hồ sơ</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Thoát</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    <p>Ngô Tùng Sơn
+                                        <small>Nhân viên kho</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Thoát</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -191,7 +200,8 @@
                     </div>
                     <div class="pull-left info">
                         <p>Ngô Tùng Sơn</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
+                        <a href="#">
+                            <i class="fa fa-circle text-success"></i> Trực tuyến</a>
                     </div>
                 </div>
                 <!-- search form -->
@@ -209,69 +219,86 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu chờ xử lí</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="chohang_tung.html"><i class="fa fa-edit"></i> Chuẩn bị hàng</a></li>
-                                <li>
-                                    <a href="chohoadon_tung.html">
-                                        <i class="fa fa-file-text"></i>
-                                        <span>Chờ hóa đơn</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary pull-right">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="chophieu_tung.html">
-                                        <i class="fa fa-list-alt"></i>
-                                        <span>Chờ phiếu</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary bg-green">1</span>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-						
-						<li class="">
-                            <a href="chovanchuyen_tung.html">
-                                <i class="fa fa-clone"></i> <span>Phiếu chờ vận chuyển</span>
-                            </a>
-                        </li>
-						
-						<li class="">
-                            <a href="hoanthanh_tung.html">
-                                <i class="fa fa-file-text"></i> <span>Phiếu đã hoàn thành</span>
-                            </a>
-                        </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file-o"></i>
+                            <span>Phiếu chờ xử lí</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="">
+                                <a href="chohang_tung.html">
+                                    <i class="fa fa-edit"></i> Chuẩn bị hàng</a>
+                            </li>
+                            <li>
+                                <a href="chohoadon_tung.html">
+                                    <i class="fa fa-file-text"></i>
+                                    <span>Chờ hóa đơn</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary pull-right">2</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chophieu_tung.html">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span>Chờ phiếu</span>
+                                    <span class="pull-right-container">
+                                        <span class="label label-primary bg-green">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="">
-                            <a href="tonKho_Kho.html">
-                                <i class="fa fa-folder"></i> <span>Hàng tồn kho</span>
-                            </a>
-                        </li>
+                    <li class="">
+                        <a href="chovanchuyen_tung.html">
+                            <i class="fa fa-clone"></i>
+                            <span>Phiếu chờ vận chuyển</span>
+                        </a>
+                    </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
-                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
-                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
-                            </ul>
-                        </li>
+                    <li class="">
+                        <a href="hoanthanh_tung.html">
+                            <i class="fa fa-file-text"></i>
+                            <span>Phiếu đã hoàn thành</span>
+                        </a>
+                    </li>
 
-                    </ul>
+                    <li class="">
+                        <a href="tonKho_Kho.html">
+                            <i class="fa fa-folder"></i>
+                            <span>Hàng tồn kho</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span>Giao hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="toBeContinue_page_Kho.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin lái xe</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page_Kho.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page_Kho.html">
+                                    <i class="fa fa-hand-o-right"></i> Định vị xe hàng</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -298,6 +325,8 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header">
+                            </div>
+                            <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4>
@@ -305,9 +334,154 @@
                                         </h4>
                                     </div>
                                 </div>
-                                <hr>
-                            </div>
-                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Mục tìm kiếm</h3>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Mục tìm kiếm</th>
+                                                            <th width="35%">Thông tin tìm kiếm</th>
+                                                            <th>Mục tìm kiếm</th>
+                                                            <th width="35%">Thông tin tìm kiếm</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lô số</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Tên...">
+                                                                </div>
+                                                            </td>
+                                                            <td>Tên khách hàng</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Tên...">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Số hóa đơn</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Tên...">
+                                                                </div>
+                                                            </td>
+                                                            <td>Ngày giao</td>
+                                                            <td>
+                                                                <div class="input-group date">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-calendar"></i>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" id="datepicker">
+                                                                </div>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lựa chọn giao</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-hourglass"></i>
+                                                                    </span>
+                                                                    <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                        <option>Khách đến lấy</option>
+                                                                        <option>30A-342.21</option>
+                                                                        <option>29A-652.12</option>
+                                                                        <option>28A-113.121</option>
+                                                                        <option>Xe máy</option>
+                                                                        <option>Thuê xe</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td>Nhân viên giao</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                        <option>Lương Đức Chinh</option>
+                                                                        <option>Hà Văn Thanh</option>
+                                                                        <option>Vũ Xuân Trường</option>
+                                                                        <option>Nguyễn Văn Hậu</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lái xe</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                        <option>Nguyễn Ngọc Hải</option>
+                                                                        <option>Nguyễn Văn Toàn</option>
+                                                                        <option>Lê Duy Mạnh</option>
+                                                                        <option>Trần Minh Long</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td>Trạng thái</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-hourglass"></i>
+                                                                    </span>
+                                                                    <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                        <option>Kế toán đã xử lý</option>
+                                                                        <option class="text-yellow">Kế toán đã xử lý&#xf071;</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Kiểm tra
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group">
+                                                                    <label>
+                                                                        Đã lấy phiếu
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                    <label class="custom-chk">
+                                                                        Đã lấy hóa đơn
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- /.box-body -->
+                                            <div class="box-footer clearfix">
+                                                <div class="pagination pagination-sm no-margin pull-right">
+                                                    <button type="button" class="btn btn-block btn-primary">Tìm kiếm
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <table id="example1" class="table table-striped">
@@ -319,54 +493,30 @@
                                                     <th>Số hóa đơn</th>
                                                     <th>Lấy phiếu</th>
                                                     <th>Lấy hóa đơn</th>
-                                                    <th>Giao hàng</th>
-                                                    <th>Lái xe</th>
-                                                    <th>Nhân viên giao</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Ngày giao</th>
                                                     <th>Ghi chú</th>
-                                                    <th>Thay đổi</th>
+                                                    <th>Sửa</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td><a href="stocker_view.html">81269-0</a></td>
+                                                    <td>
+                                                        <a href="stocker_view.html">81269-0</a>
+                                                    </td>
                                                     <td>Công ty Long Giang</td>
                                                     <td>24329</td>
                                                     <td>
-                                                        <input type="checkbox" disabled checked>
+                                                        <input type="checkbox"  disabled checked>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" disabled>
+                                                        <input type="checkbox"  disabled >
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>28A-113.121</option>
-                                                            <option>Khách đến lấy</option>
-                                                            <option>30A-342.21</option>
-                                                            <option>29A-652.12</option>
-                                                            <option>Xe máy</option>
-                                                            <option>Thuê xe</option>
-                                                        </select>
+                                                        <span class="label label-success">Kế toán đã xử lý</span>
                                                     </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Lương Đức Chinh</option>
-                                                            <option>Hà Văn Thanh</option>
-                                                            <option>Vũ Xuân Trường</option>
-                                                            <option>Nguyễn Văn Hậu</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Nguyễn Ngọc Hải</option>
-                                                            <option>Nguyễn Văn Toàn</option>
-                                                            <option>Lê Duy Mạnh</option>
-                                                            <option>Trần Minh Long</option>
-                                                        </select>
-                                                    </td>
+                                                    <td></td>
                                                     <td>Giao trước 15-12-2017</td>
                                                     <td>
                                                         <a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -375,20 +525,20 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row1">
-                                                    <td colspan="11">
+                                                    <td colspan="10">
                                                         <div class="container-fluid">
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox" style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px" checked />
                                                                     </label>
                                                                     <div></div>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
                                                                         Đã lấy hóa đơn
-                                                                        <input type="checkbox" style="margin-left: 40px">
+                                                                        <input type="checkbox"  style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -452,44 +602,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td><a href="stocker_view.html">81268-0</a></td>
+                                                    <td>
+                                                        <a href="stocker_view.html">81268-0</a>
+                                                    </td>
                                                     <td>Công ty Phú An</td>
                                                     <td>24328</td>
                                                     <td>
-                                                        <input type="checkbox" disabled checked>
+                                                        <input type="checkbox"  disabled checked>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" disabled>
+                                                        <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>30A-342.21</option>
-                                                            <option>Khách đến lấy</option>
-                                                            <option>29A-652.12</option>
-                                                            <option>28A-113.121</option>
-                                                            <option>Xe máy</option>
-                                                            <option>Thuê xe</option>
-                                                        </select>
+                                                        <span class="label label-success">Kế toán đã xử lý</span>
                                                     </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Vũ Xuân Trường</option>
-                                                            <option>Lương Đức Chinh</option>
-                                                            <option>Hà Văn Thanh</option>
-                                                            <option>Nguyễn Văn Hậu</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Lê Duy Mạnh</option>
-                                                            <option>Nguyễn Ngọc Hải</option>
-                                                            <option>Nguyễn Văn Toàn</option>
-                                                            <option>Trần Minh Long</option>
-                                                        </select>
-                                                    </td>
+                                                    <td></td>
                                                     <td> Giao trước 11-12-2017</td>
                                                     <td>
                                                         <a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -498,13 +625,13 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row2">
-                                                    <td colspan="11">
+                                                    <td colspan="10">
                                                         <div class="container-fluid">
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox" style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
@@ -512,7 +639,7 @@
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
                                                                         Đã lấy hóa đơn
-                                                                        <input type="checkbox" style="margin-left: 40px">
+                                                                        <input type="checkbox"  style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -576,45 +703,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
-                                                    <td><a href="stocker_view.html">81267-0</a></td>
+                                                    <td>
+                                                        <a href="stocker_view.html">81267-0</a>
+                                                    </td>
                                                     <td>Công ty Invico</td>
                                                     <td>24327</td>
                                                     <td>
-                                                        <input type="checkbox" disabled checked>
+                                                        <input type="checkbox"  disabled >
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" disabled>
+                                                        <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>29A-652.12</option>
-                                                            <option>Khách đến lấy</option>
-                                                            <option>30A-342.21</option>
-                                                            <option>28A-113.121</option>
-                                                            <option>Xe máy</option>
-                                                            <option>Thuê xe</option>
-                                                        </select>
+                                                       <span class="label label-primary">Đã xuất phiếu</span>
                                                     </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Lương Đức Chinh</option>
-                                                            <option>Hà Văn Thanh</option>
-                                                            <option>Vũ Xuân Trường</option>
-                                                            <option>Nguyễn Văn Hậu</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Trần Minh Long</option>
-                                                            <option>Nguyễn Ngọc Hải</option>
-                                                            <option>Nguyễn Văn Toàn</option>
-                                                            <option>Lê Duy Mạnh</option>
-
-                                                        </select>
-                                                    </td>
+                                                    <td></td>
                                                     <td>Giao trước 06-03-2015</td>
                                                     <td>
                                                         <a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -623,13 +726,13 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row3">
-                                                    <td colspan="11">
+                                                    <td colspan="10">
                                                         <div class="container-fluid">
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox" style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px" checked>
                                                                     </label>
                                                                     <div></div>
 
@@ -637,7 +740,7 @@
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
                                                                         Đã lấy hóa đơn
-                                                                        <input type="checkbox" style="margin-left: 40px">
+                                                                        <input type="checkbox"  style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -701,44 +804,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
-                                                    <td><a href="stocker_view.html">81266-0</a></td>
+                                                    <td>
+                                                        <a href="stocker_view.html">81266-0</a>
+                                                    </td>
                                                     <td>Công ty Sáng Hà</td>
                                                     <td>24326</td>
                                                     <td>
-                                                        <input type="checkbox" disabled checked>
+                                                        <input type="checkbox"  disabled checked>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" disabled>
+                                                        <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Khách đến lấy</option>
-                                                            <option>30A-342.21</option>
-                                                            <option>29A-652.12</option>
-                                                            <option>28A-113.121</option>
-                                                            <option>Xe máy</option>
-                                                            <option>Thuê xe</option>
-                                                        </select>
+                                                        <span class="label label-success">Kế toán đã xử lý</span>
                                                     </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Lương Đức Chinh</option>
-                                                            <option>Hà Văn Thanh</option>
-                                                            <option>Vũ Xuân Trường</option>
-                                                            <option>Nguyễn Văn Hậu</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Nguyễn Ngọc Hải</option>
-                                                            <option>Nguyễn Văn Toàn</option>
-                                                            <option>Lê Duy Mạnh</option>
-                                                            <option>Trần Minh Long</option>
-                                                        </select>
-                                                    </td>
+                                                    <td></td>
                                                     <td>Giao trước 19-11-2017</td>
                                                     <td>
                                                         <a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -747,13 +827,13 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row4">
-                                                    <td colspan="11">
+                                                    <td colspan="10">
                                                         <div class="container-fluid">
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox" style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px" checked>
                                                                     </label>
                                                                     <div></div>
 
@@ -761,7 +841,7 @@
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
                                                                         Đã lấy hóa đơn
-                                                                        <input type="checkbox" style="margin-left: 40px">
+                                                                        <input type="checkbox"  style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -825,44 +905,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td>5</td>
-                                                    <td><a href="stocker_view.html">81265-1</a></td>
+                                                    <td>
+                                                        <a href="stocker_view.html">81265-1</a>
+                                                    </td>
                                                     <td>Công ty Vạn Xuân</td>
                                                     <td>24325</td>
                                                     <td>
-                                                        <input type="checkbox" disabled checked>
+                                                        <input type="checkbox"  disabled >
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" disabled>
+                                                        <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Xe máy</option>
-                                                            <option>Khách đến lấy</option>
-                                                            <option>30A-342.21</option>
-                                                            <option>29A-652.12</option>
-                                                            <option>28A-113.121</option>
-                                                            <option>Thuê xe</option>
-                                                        </select>
+                                                        <span class="label label-primary">Đã xuất phiếu</span>
                                                     </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Nguyễn Văn Hậu</option>
-                                                            <option>Lương Đức Chinh</option>
-                                                            <option>Hà Văn Thanh</option>
-                                                            <option>Vũ Xuân Trường</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Nguyễn Ngọc Hải</option>
-                                                            <option>Nguyễn Văn Toàn</option>
-                                                            <option>Lê Duy Mạnh</option>
-                                                            <option>Trần Minh Long</option>
-                                                        </select>
-                                                    </td>
+                                                    <td></td>
                                                     <td>Giao trước 19-11-2017</td>
                                                     <td>
                                                         <a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -871,13 +928,13 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row5">
-                                                    <td colspan="11">
+                                                    <td colspan="10">
                                                         <div class="container-fluid">
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox" style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px" checked>
                                                                     </label>
                                                                     <div></div>
 
@@ -885,7 +942,7 @@
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
                                                                         Đã lấy hóa đơn
-                                                                        <input type="checkbox" style="margin-left: 40px">
+                                                                        <input type="checkbox"  style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -949,44 +1006,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td>6</td>
-                                                    <td><a href="stocker_view.html">8126-1</a></td>
+                                                    <td>
+                                                        <a href="stocker_view.html">8126-1</a>
+                                                    </td>
                                                     <td>Công ty Tương Lai</td>
                                                     <td>24324</td>
                                                     <td>
-                                                        <input type="checkbox" disabled checked>
+                                                        <input type="checkbox"  disabled checked>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" disabled>
+                                                        <input type="checkbox"  disabled>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Khách đến lấy</option>
-                                                            <option>30A-342.21</option>
-                                                            <option>29A-652.12</option>
-                                                            <option>28A-113.121</option>
-                                                            <option>Xe máy</option>
-                                                            <option>Thuê xe</option>
-                                                        </select>
+                                                        <span class="label label-success">Kế toán đã xử lý</span>
                                                     </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Lương Đức Chinh</option>
-                                                            <option>Hà Văn Thanh</option>
-                                                            <option>Vũ Xuân Trường</option>
-                                                            <option>Nguyễn Văn Hậu</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control" style="font-family: 'FontAwesome';" disabled>
-                                                            <option></option>
-                                                            <option>Nguyễn Ngọc Hải</option>
-                                                            <option>Nguyễn Văn Toàn</option>
-                                                            <option>Lê Duy Mạnh</option>
-                                                            <option>Trần Minh Long</option>
-                                                        </select>
-                                                    </td>
+                                                    <td></td>
                                                     <td>Giao trước 01-11-2017</td>
                                                     <td>
                                                         <a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -995,13 +1029,13 @@
                                                     </td>
                                                 </tr>
                                                 <tr id="row6">
-                                                    <td colspan="11">
+                                                    <td colspan="10">
                                                         <div class="container-fluid">
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
                                                                         Đã lấy phiếu
-                                                                        <input type="checkbox" style="margin-left: 55px" checked>
+                                                                        <input type="checkbox"  style="margin-left: 55px" checked>
                                                                     </label>
                                                                     <div></div>
 
@@ -1009,7 +1043,7 @@
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
                                                                         Đã lấy hóa đơn
-                                                                        <input type="checkbox" style="margin-left: 40px">
+                                                                        <input type="checkbox"  style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -1098,9 +1132,10 @@
         </div>
     </div>
     <!-- ./wrapper -->
-	<footer class="main-footer">
-           <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-	</footer>
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2017
+            <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+    </footer>
 
     <!-- jQuery 3 -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -1118,6 +1153,13 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
+
+    <!-- bootstrap datepicker -->
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Select2 -->
+    <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    
     <script>
         $(function () {
             $('#example1').DataTable()
@@ -1177,6 +1219,17 @@
         $('#noti').click(function () {
             $('#noti_span').hide();
         });
+    </script>
+    <script>
+        $(function () {
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+        });
+        //Initialize Select2 Elements
+        $('.select2').select2();
+        
     </script>
 </body>
 
