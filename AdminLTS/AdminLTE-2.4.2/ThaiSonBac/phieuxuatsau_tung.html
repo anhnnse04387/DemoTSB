@@ -1,173 +1,173 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Thái Sơn Bắc - TSB</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
-    <style>
-        th {
-            color: white;
-            background-color: #3c8dbc;
-            font-weight: bold;
-            text-align: center;
-        }
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Thái Sơn Bắc - TSB</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+        <style>
+            th {
+                color: white;
+                background-color: #3c8dbc;
+                font-weight: bold;
+                text-align: center;
+            }
 
-        td {
-            text-align: center;
-        }
+            td {
+                text-align: center;
+            }
 
-        tr td:nth-child(3) {
-            text-align: left;
-        }
+            tr td:nth-child(3) {
+                text-align: left;
+            }
 
-        tr td:nth-child(5) {
-            text-align: right;
-        }
+            tr td:nth-child(5) {
+                text-align: right;
+            }
 
-        #example1 {
-            background-color: rgb(240, 240, 240);
-        }
+            #example1 {
+                background-color: rgb(240, 240, 240);
+            }
 
-        #example1 thead tr th {
-            vertical-align: middle !important;
-            text-align: center;
-            background-color: #3c8dbc;
-            color: #fff;
-        }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
 
-        #example1 tbody td:nth-child(2),
-        #example1 tbody td:nth-child(7) {
-            text-align: left;
-        }
+            #example1 tbody td:nth-child(2),
+            #example1 tbody td:nth-child(7) {
+                text-align: left;
+            }
 
-        #example1 tbody td:nth-child() {
-            text-align: right;
-        }
+            #example1 tbody td:nth-child() {
+                text-align: right;
+            }
 
-        .custom-span {
-            margin: 0 0 0 10px;
-        }
-    </style>
-</head>
+            .custom-span {
+                margin: 0 0 0 10px;
+            }
+        </style>
+    </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini fixed">
-    <div class="wrapper">
+    <body class="hold-transition skin-blue-light sidebar-mini fixed">
+        <div class="wrapper">
 
-        <header class="main-header">
-            <!-- Logo -->
-            <a href="index-sales.html" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">
-                    <b>T</b>SB</span>
-                <!-- logo for regular state and mobile devices -->
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="index-sales.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini">
+                        <b>T</b>SB</span>
+                    <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
                         <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
                         <b>Bán hàng</b>
                         <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
-            </a>
-
-            <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
                 </a>
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <!-- Notifications: style can be found in dropdown.less -->
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">Bạn có 10 thông báo mới</li>
-                                <li>
-                                    <ul class="menu">
-                                        <li>
-                                            <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 2
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 4
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 6
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 8
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="accountant_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocker_view.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 10
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <a href="#">Xem tất cả</a>
-                                </li>
-                            </ul>
-                        </li>
-                       <!-- User Account: style can be found in dropdown.less -->
+
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">Bạn có 10 thông báo mới</li>
+                                    <li>
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="accountant_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="stocker_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 2
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="accountant_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="stocker_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 4
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="accountant_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="stocker_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 6
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="accountant_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="stocker_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 8
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="accountant_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="stocker_view.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 10
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">Xem tất cả</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -223,7 +223,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -258,17 +258,17 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã hoàn thành</span>
                                     </a>
                                 </li>
-								<li class="active">
+                                <li class="active">
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
-										<span class="pull-right-container">
+                                        <span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
@@ -365,286 +365,283 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-        <div class="content-wrapper">
-            <section class="content-header">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="index.html">
-                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
-                    </li>
-                    <li>
-                        <a href=""> Đơn hàng</a>
-                    </li>
-                    <li>
-                        <a href="">
-                            </i> Phiếu giữ hàng</a>
-                    </li>
-                </ol>
-            </section>
-            <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-header"></div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4>
-                                            <b>DANH SÁCH PHIẾU GIỮ HÀNG</b>
-                                        </h4>
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                        </li>
+                        <li>
+                            <a href=""> Đơn hàng</a>
+                        </li>
+                        <li>
+                            <a href="">
+                                </i> Phiếu giữ hàng</a>
+                        </li>
+                    </ol>
+                </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header"></div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>
+                                                <b>DANH SÁCH PHIẾU GIỮ HÀNG</b>
+                                            </h4>
+                                        </div>	
                                     </div>
-									 <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="box">
-                                                    <div class="box-header">
-                                                        <h3 class="box-title">Tìm kiếm theo</h3>
-                                                    </div>
-                                                    <!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>Lô số</td>
-                                                                    <td>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Tên...">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>Khách</td>
-                                                                    <td>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Khách...">
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Ngày </td>
-                                                                    <td>
-                                                                        <div class="input-group date">
-                                                                            <div class="input-group-addon">
-                                                                                <i class="fa fa-calendar"></i>
-                                                                            </div>
-                                                                            <input type="text" class="form-control" id="datepicker">
-                                                                        </div> 
-                                                                    </td>
-                                                                    <td>Tổng tiền</td>
-                                                                    
-                                                                     <td>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Tổng tiền...">
-                                                                        </div>
-                                                                    </td>
-                                                                    
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Trạng thái</td>
-                                                                    <td>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
-                                                                            <select class="form-control">
-																				<option>Bản nháp</option>
-																				<option>Phiếu đang giao</option>
-																			</select>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        Loại phiếu
-                                                                    </td>
-                                                                    <td>
-                                                                          <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
-                                                                            <select class="form-control">
-																				<option>Giao một lần</option>
-																				<option>Giao nhiều lần</option>
-																			</select>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                    <div class="box-footer clearfix">
-                                                        <div class="pagination pagination-sm no-margin pull-right">
-                                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
-                                                        </div>
-                                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Tìm kiếm theo</h3>
                                                 </div>
-                                            </div>
-                                        </div>
-                                                    <!-- /.box-body -->
-                                                    <div class="box-footer clearfix">
-                                                        <div class="pagination pagination-sm no-margin pull-right">
-                                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table id="example1" class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Lô số</th>
-                                                    <th>Khách hàng</th>
-                                                    <th>Ngày</th>
-                                                    <th>Tổng tiền</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Ghi chú</th>
-                                                    <th>Số đợt giao</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81265-0</a>
-                                                    </td>
-                                                    <td>Công ty 2B</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>152,123,500</td>
-                                                    <td>
-                                                        <span class="label label-warning">Chưa xuất phiếu
-                                                            <span>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>1</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81264-1</a>
-                                                        <span class="custom-span">
-                                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                                        </span>
-                                                    </td>
-                                                    <td>Công ty Long Giang</td>
-                                                    <td>20-12-2017</td>
-                                                    <td>49,135,872</td>
-                                                    <td>
-                                                        <span class="label label-warning">Chưa xuất phiếu
-                                                            <span>
-                                                    </td>
-                                                    <td>Mã LGS-L-M-24-6 thiếu 3 máy</td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81263-0</a>
-                                                    </td>
-                                                    <td>Công ty Tương Lai</td>
-                                                    <td>19-12-2017</td>
-                                                    <td>412,735,872</td>
-                                                    <td>
-                                                        <span class="label label-warning">Chưa xuất phiếu
-                                                            <span>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>1</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81262-1</a>
-                                                        <span class="custom-span">
-                                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                                        </span>
-                                                    </td>
-                                                    <td>Công ty Hoàng Nhật</td>
-                                                    <td>18-12-2017</td>
-                                                    <td>5,330,000</td>
-                                                    <td>
-                                                        <span class="label label-warning">Chưa xuất phiếu
-                                                            <span>
-                                                    </td>
-                                                    <td>Mã AH-16D3-16H thiếu 2 máy</td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>
-                                                        <a href="accountant_view.html">81261-0</a>
-                                                    </td>
-                                                    <td>Công ty Long giang</td>
-                                                    <td>11-12-2017</td>
-                                                    <td>137,590,000</td>
-                                                    <td>
-                                                        <span class="label label-warning">Chưa xuất phiếu
-                                                            <span>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>1</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot></tfoot>
-                                        </table>
-                                    </div>
-                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Lô số</td>
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                                        <input type="text" class="form-control" placeholder="Tên...">
+                                                                    </div>
+                                                                </td>
+                                                                <td>Khách</td>
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                        <input type="text" class="form-control" placeholder="Khách...">
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Ngày </td>
+                                                                <td>
+                                                                    <div class="input-group date">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                        </div>
+                                                                        <input type="text" class="form-control" id="datepicker">
+                                                                    </div> 
+                                                                </td>
+                                                                <td>Tổng tiền</td>
 
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                        <input type="text" class="form-control" placeholder="Tổng tiền...">
+                                                                    </div>
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Trạng thái</td>
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                                        <select class="form-control">
+                                                                            <option>Bản nháp</option>
+                                                                            <option>Phiếu đang giao</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    Loại phiếu
+                                                                </td>
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                                        <select class="form-control">
+                                                                            <option>Giao một lần</option>
+                                                                            <option>Giao nhiều lần</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer clearfix">
+                                                    <div class="pagination pagination-sm no-margin pull-right">
+                                                        <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-body -->                                        
+                                        </div>
+                                        <!--col--> 
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <!-- ./wrapper -->
-	   <footer class="main-footer">
-           <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-	</footer>
+						</div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="example1" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Lô số</th>
+                                            <th>Khách hàng</th>
+                                            <th>Ngày</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái</th>
+                                            <th>Ghi chú</th>
+                                            <th>Số đợt giao</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <a href="accountant_view.html">81265-0</a>
+                                            </td>
+                                            <td>Công ty 2B</td>
+                                            <td>20-12-2017</td>
+                                            <td>152,123,500</td>
+                                            <td>
+                                                <span class="label label-warning">Chưa xuất phiếu
+                                                    <span>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>1</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>
+                                                                <a href="accountant_view.html">81264-1</a>
+                                                                <span class="custom-span">
+                                                                    <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                                                </span>
+                                                            </td>
+                                                            <td>Công ty Long Giang</td>
+                                                            <td>20-12-2017</td>
+                                                            <td>49,135,872</td>
+                                                            <td>
+                                                                <span class="label label-warning">Chưa xuất phiếu
+                                                                    <span>
+                                                                        </td>
+                                                                        <td>Mã LGS-L-M-24-6 thiếu 3 máy</td>
+                                                                        <td>2</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>3</td>
+                                                                            <td>
+                                                                                <a href="accountant_view.html">81263-0</a>
+                                                                            </td>
+                                                                            <td>Công ty Tương Lai</td>
+                                                                            <td>19-12-2017</td>
+                                                                            <td>412,735,872</td>
+                                                                            <td>
+                                                                                <span class="label label-warning">Chưa xuất phiếu
+                                                                                    <span>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td>1</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>4</td>
+                                                                                            <td>
+                                                                                                <a href="accountant_view.html">81262-1</a>
+                                                                                                <span class="custom-span">
+                                                                                                    <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                                                                                </span>
+                                                                                            </td>
+                                                                                            <td>Công ty Hoàng Nhật</td>
+                                                                                            <td>18-12-2017</td>
+                                                                                            <td>5,330,000</td>
+                                                                                            <td>
+                                                                                                <span class="label label-warning">Chưa xuất phiếu
+                                                                                                    <span>
+                                                                                                        </td>
+                                                                                                        <td>Mã AH-16D3-16H thiếu 2 máy</td>
+                                                                                                        <td>2</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>5</td>
+                                                                                                            <td>
+                                                                                                                <a href="accountant_view.html">81261-0</a>
+                                                                                                            </td>
+                                                                                                            <td>Công ty Long giang</td>
+                                                                                                            <td>11-12-2017</td>
+                                                                                                            <td>137,590,000</td>
+                                                                                                            <td>
+                                                                                                                <span class="label label-warning">Chưa xuất phiếu
+                                                                                                                    <span>
+                                                                                                                        </td>
+                                                                                                                        <td></td>
+                                                                                                                        <td>1</td>
+                                                                                                                        </tr>
+                                                                                                                        </tbody>
+                                                                                                                        <tfoot></tfoot>
+                                                                                                                        </table>
+                                                                                                                        </div>
+                                                                                                                        </div>
 
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
-    <!-- page script -->
-	<!-- bootstrap datepicker -->
-    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <!-- Select2 -->
-    <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-    <!-- iCheck 1.0.1 -->
-    <script>
-        $(function () {
-            $('#example1').DataTable()
-            $('#example2').DataTable({
-                'paging': true,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': true,
-                'info': true,
-                'autoWidth': false
-            })
-        })
-    </script>
-	 <script>
-            $(function () {
-                //Date picker
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-            //Initialize Select2 Elements
-            $('.select2').select2();
-           
-    </script>
-</body>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        </section>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        <!-- ./wrapper -->
+                                                                                                                        <footer class="main-footer">
+                                                                                                                            <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+                                                                                                                        </footer>
 
-</html>
+                                                                                                                        <!-- jQuery 3 -->
+                                                                                                                        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+                                                                                                                        <!-- Bootstrap 3.3.7 -->
+                                                                                                                        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+                                                                                                                        <!-- DataTables -->
+                                                                                                                        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+                                                                                                                        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+                                                                                                                        <!-- SlimScroll -->
+                                                                                                                        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+                                                                                                                        <!-- FastClick -->
+                                                                                                                        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+                                                                                                                        <!-- AdminLTE App -->
+                                                                                                                        <script src="dist/js/adminlte.min.js"></script>
+                                                                                                                        <!-- AdminLTE for demo purposes -->
+                                                                                                                        <script src="dist/js/demo.js"></script>
+                                                                                                                        <!-- page script -->
+                                                                                                                        <!-- bootstrap datepicker -->
+                                                                                                                        <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                                                                                                                        <!-- Select2 -->
+                                                                                                                        <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+                                                                                                                        <!-- iCheck 1.0.1 -->
+                                                                                                                        <script>
+                                                                                                                            $(function () {
+                                                                                                                                $('#example1').DataTable()
+                                                                                                                                $('#example2').DataTable({
+                                                                                                                                    'paging': true,
+                                                                                                                                    'lengthChange': false,
+                                                                                                                                    'searching': false,
+                                                                                                                                    'ordering': true,
+                                                                                                                                    'info': true,
+                                                                                                                                    'autoWidth': false
+                                                                                                                                })
+                                                                                                                            })
+                                                                                                                        </script>
+                                                                                                                        <script>
+                                                                                                                            $(function () {
+                                                                                                                                //Date picker
+                                                                                                                                $('#datepicker').datepicker({
+                                                                                                                                    autoclose: true
+                                                                                                                                });
+                                                                                                                            });
+                                                                                                                            //Initialize Select2 Elements
+                                                                                                                            $('.select2').select2();
+
+                                                                                                                        </script>
+                                                                                                                        </body>
+
+                                                                                                                        </html>
