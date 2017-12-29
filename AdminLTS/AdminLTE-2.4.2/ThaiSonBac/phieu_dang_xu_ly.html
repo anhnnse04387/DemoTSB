@@ -22,34 +22,51 @@
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
-        .custom-btn {
-            padding: 10px 5px;
-            min-width: 60px;
-            height: 40px;
-        }
-
         th {
             color: white;
-            background-color: #f88457;
+            background-color: #3c8dbc;
             font-weight: bold;
+            text-align: center;
         }
 
-        th,
         td {
             text-align: center;
         }
 
-        .custom-btn {
-            padding: 10px 5px;
-            min-width: 60px;
-            height: 50px;
+        tr td:nth-child(3) {
+            text-align: left;
+        }
+
+        tr td:nth-child(5) {
+            text-align: right;
+        }
+
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #example1 tbody td:nth-child() {
+            text-align: left;
+        }
+
+        #example1 tbody td:nth-child() {
+            text-align: right;
         }
     </style>
 </head>
 
 <body class="hold-transition skin-blue-light sidebar-mini fixed">
     <div class="wrapper">
+
         <header class="main-header">
+            <!-- Logo -->
             <a href="index-sales.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
@@ -61,77 +78,79 @@
                         <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
             </a>
+
             <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                        <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">10</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="header">Bạn có 10 thông báo mới</li>
                                 <li>
                                     <ul class="menu">
                                         <li>
-                                            <a href="accountant_view.html">
+                                            <a href="phieu-giao-nhieu-lan_cuong.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="stocker_view.html">
+                                            <a href="phieu-giao-mot-lan.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 2
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="accountant_view.html">
+                                            <a href="phieu-giao-nhieu-lan_cuong.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="stocker_view.html">
+                                            <a href="phieu-giao-mot-lan.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 4
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="accountant_view.html">
+                                            <a href="phieu-giao-nhieu-lan_cuong.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="stocker_view.html">
+                                            <a href="phieu-giao-mot-lan.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 6
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="accountant_view.html">
+                                            <a href="phieu-giao-nhieu-lan_cuong.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="stocker_view.html">
+                                            <a href="phieu-giao-mot-lan.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 8
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="accountant_view.html">
+                                            <a href="phieu-giao-nhieu-lan_cuong.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="stocker_view.html">
+                                            <a href="phieu-giao-mot-lan.html">
                                                 <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 10
                                                 <div class="pull-right">1 giờ trước</div>
                                             </a>
@@ -139,11 +158,11 @@
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <a href="#">Xem tất cả</a>
+                                    <a href="#">View all</a>
                                 </li>
                             </ul>
                         </li>
-                        <!-- User Account: style can be found in dropdown.less -->
+                     <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -207,7 +226,7 @@
                             </a>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
                                 <span class="pull-right-container">
@@ -225,7 +244,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
                                         <span>Phiếu đang xử lý</span>
@@ -321,7 +340,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview menu-open active">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -329,7 +348,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active">
+                                <li>
                                     <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
                                 </li>
                                 <li>
@@ -341,229 +360,257 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
+
         <div class="content-wrapper">
             <section class="content-header">
                 <ol class="breadcrumb">
                     <li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> Trang Chủ</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class=""></i> Tạo khách hàng mới</a>
-                        </li>
+                        <a href="index.html">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href=""> Phiếu xuất hàng</a>
+                    </li>
+                    <li>
+                        <a href="">
+                            </i> Phiếu đang xử lý</a>
                     </li>
                 </ol>
             </section>
             <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Xác nhận tạo khách hàng mới</h4>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header"></div>
+                            <div class="box-body">
+							<div class="row">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>DANH SÁCH PHIẾU ĐANG XỬ LÝ</b>
+                                        </h4>
                                     </div>
-                                    <div class="modal-body">
-                                        <label>Bạn có muốn tạo khách hàng mới?</label>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
-                                        <a href="customer_list.html" type="button" class="btn btn-danger btn-ok">Tạo</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <div class="row">
-                                        <div class="pull-right">
+									<div class="row">
                                             <div class="col-md-12">
-                                                <div class="box-header with-border">
-                                                    <a href="customer_list.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
-                                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                                        <span>
-                                                            <strong>Quay Lại</strong>
-                                                        </span>
-                                                    </a>
-
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
-                                                        <i class="fa fa-edit text-green"></i>
-                                                        <span>
-                                                            <strong>Tạo Mới</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
-                                                        <i class="fa fa-save text-yellow"></i>
-                                                        <span>
-                                                            <strong>Lưu</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" disabled>
-                                                        <i class="fa fa-close text-red"></i>
-                                                        <span>
-                                                            <strong>Hủy</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Tạo mới" data-placement="bottom" data-target=
-                                                    "#confirm-delete">
-                                                        <i class="fa fa-check-circle text-green"></i>
-                                                        <span>
-                                                            <strong>Tạo mới</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
-                                                        <i class="fa fa-exchange text-red"></i>
-                                                        <span>
-                                                            <strong>Đổi trả</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
-                                                        <i class="fa fa-eye text-black"></i>
-                                                        <span>
-                                                            <strong>Xem Trước</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
-                                                        <i class="fa fa-print text-blue"></i>
-                                                        <span>
-                                                            <strong>In</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
-                                                        <i class="fa fa-download text-purple"></i>
-                                                        <span>
-                                                            <strong>Import Excel</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
-                                                        <i class="fa fa-file-excel-o text-green"></i>
-                                                        <span>
-                                                            <strong>Tải xuống</strong>
-                                                        </span>
-                                                    </a>
-                                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled disabled>
-                                                        <i class="fa fa-file-pdf-o text-red"></i>
-                                                        <span>
-                                                            <strong>Tải xuống</strong>
-                                                        </span>
-                                                    </a>
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                                    </div>
+                                                    <!-- /.box-header -->
+                                           <div class="box-body">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Lô số</td>
+                                                                    <td>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Tên...">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Khách</td>
+                                                                    <td>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Khách...">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Ngày </td>
+                                                                    <td>
+                                                                        <div class="input-group date">
+                                                                            <div class="input-group-addon">
+                                                                                <i class="fa fa-calendar"></i>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" id="datepicker">
+                                                                        </div> 
+                                                                    </td>
+                                                                    <td>Tổng tiền</td>
+                                                                    
+                                                                     <td>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Tổng tiền...">
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Trạng thái</td>
+                                                                    <td>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                                            <select class="form-control">
+																				<option>Bản nháp</option>
+																				<option>Phiếu đang giao</option>
+																			</select>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        Loại phiếu
+                                                                    </td>
+                                                                    <td>
+                                                                          <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                                            <select class="form-control">
+																				<option>Giao một lần</option>
+																				<option>Giao nhiều lần</option>
+																			</select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                    <div class="box-footer clearfix">
+                                                        <div class="pagination pagination-sm no-margin pull-right">
+                                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <h1 style="text-align: center; font-weight: 600;">TẠO KHÁCH HÀNG MỚI</h1>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="example1" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Lô số</th>
+                                                    <th>Khách hàng</th>
+                                                    <th>Ngày</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Ghi chú</th>
+                                                    <th>Số đợt giao</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a href="phieu-giao-mot-lan.html">81266-1</a>
+                                                    </td>
+                                                    <td>Công ty Phú An</td>
+                                                    <td>20-12-2017</td>
+                                                    <td>15,069,500</td>
+                                                    <td>
+                                                        <span class="label label-primary">Đã xuất phiếu
+                                                            </span>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a href="phieu-giao-nhieu-lan_cuong.html">81265-0</a>
+                                                    </td>
+                                                    <td>Công ty HPH</td>
+                                                    <td>17-11-2017</td>
+                                                    <td>82,735,872</td>
+                                                    <td>
+                                                        <span class="label label-primary">Kế toán đã xử lý
+                                                            </span>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>
+                                                        <a href="phieu-giao-mot-lan.html">81264-0</a>
+                                                    </td>
+                                                    <td>Công ty HPH</td>
+                                                    <td>16-09-2017</td>
+                                                    <td>41,735,872</td>
+                                                    <td>
+                                                        <span class="label label-success">Đang giao hàng
+                                                            </span>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>
+                                                        <a href="phieu-giao-nhieu-lan_cuong.html">81263-0</a>
+                                                    </td>
+                                                    <td>Công ty Invico - Sắn</td>
+                                                    <td>16-08-2017</td>
+                                                    <td>5,990,800</td>
+                                                    <td>
+                                                        <span class="label label-primary">Đã xuất kho
+                                                            </span>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>
+                                                        <a href="phieu-giao-mot-lan.html">81262-0</a>
+                                                    </td>
+                                                    <td>Công ty Sáng Hà</td>
+                                                    <td>15-08-2017</td>
+                                                    <td>20,590,000</td>
+                                                    <td>
+                                                        <span class="label label-success">Đang giao hàng
+                                                            </span>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>1</td>
+                                                </tr>
 
+                                            </tbody>
+                                            <tfoot></tfoot>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-8">
-                                            <label>Đơn vị</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-user"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="Đơn vị">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-8">
-                                            <label>Ảnh đại diện</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-image"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="" type="file">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-8">
-                                            <label>Địa chỉ</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-address-book"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="Địa chỉ" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-8">
-                                            <label>Số điện thoại</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-phone"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="Số điện thoại" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-8">
-                                            <label>MST</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-bank"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="MST" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="margin-bottom : 100px"></div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-
             </section>
         </div>
-        <!-- ./wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2017
-                <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-        </footer>
-        <!-- jQuery 3 -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- DataTables -->
-        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
-        <!-- page script -->
-        <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
+    </div>
+    <!-- ./wrapper -->
+	   <footer class="main-footer">
+           <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+	</footer>
+
+    <!-- jQuery 3 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
             })
-        </script>
+        })
+    </script>
 </body>
 
 </html>
