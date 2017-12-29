@@ -61,6 +61,15 @@
                 min-width: 60px;
                 height: 50px;
             }
+			.modal-body {
+				position: relative;
+				padding: 15px;
+				background-color: white;
+			}
+			.modal-footer {
+				border-top-color: #f4f4f4;
+				background-color: white;
+			}
         </style>
     </head>
 
@@ -248,9 +257,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieu_dang_giao.html">
+                                    <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
+                                        <span>Phiếu đang xử lý</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
@@ -275,6 +284,11 @@
                                 <li>
                                     <a href="workflow.html">
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
+                                    </a>
+                                </li>
+																 <li>
+                                    <a href="timeline_master.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
                                     </a>
                                 </li>
                             </ul>
@@ -398,7 +412,7 @@
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Thanh Toán</strong></span>
                                         </a>
@@ -624,7 +638,7 @@
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                       <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Thanh Toán</strong></span>
                                         </a>
@@ -657,6 +671,59 @@
                             </div>
                         </div>
                     </div>
+					<!-- Modal -->
+                    <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <!-- Modal content-->
+                        <div class="modal-dialog">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"><b>Thanh Toán</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <table style="margin-left:20%;height:100px">
+                                    <tr>
+                                        <td><i class="fa fa-money"><b>  Thanh toán: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-yelp"><b>  CKTT: </b></td>
+                                        <td style="padding-left:15px"><input type="checkbox" value="true" id="ckttCheckbox"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" style="color:white;background-color:#32CD32" class="btn btn-default" data-toggle="modal" data-target="#popupConfirm">Thanh toán</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--popup confirm-->
+                    <div class="modal fade" id="popupConfirm" role="dialog">
+                        <div class="modal-dialog" style="width:200px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận thanh toán</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Bạn có muốn thanh toán?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+                        </div>
+                    </div>			
                 </section>
             </div>
             <!-- ./content-wrapper -->
@@ -703,6 +770,16 @@
                 })
 
             }
+        </script>
+		        <script>
+            $('#btnThanhToan').click(function () {
+                var isChecked = $('#ckttCheckbox').prop("checked");
+                if (isChecked === true) {
+                    window.location.href = "khachhang_cktt.html";
+                } else {
+                    window.location.href = "khachhang_khong_cktt.html";
+                }
+            });
         </script>
     </body>
 
