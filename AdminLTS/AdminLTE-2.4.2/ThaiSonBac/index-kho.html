@@ -27,8 +27,8 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
     <!-- iCheck for checkboxes and radio inputs -->
-    
-    
+
+
     <style>
         .custom-btn {
             padding: 10px 5px;
@@ -82,11 +82,20 @@
                 <span class="logo-mini">
                     <b>T</b>SB</span>
                 <!-- logo for regular state and mobile devices -->
-                     <span class="logo-lg">
-                       <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png">
-                        <b style="margin-left: 5px;">Kho</b>
-                        <span style="position: absolute; margin-top: 15px; margin-left: -38px; font-size: x-small;"><small>Phân hệ</small></span>
+<<<<<<< HEAD
+                     <span class="logo-lg" style="margin-left: -15px;">
+                        <img style="width:50px; height:50px;" class="img-responsive pull-left" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b style="margin-right: 35px;">Hàng hóa</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -125px; font-size: x-small;"><small>Phân hệ</small></span>
+=======
+                <span class="logo-lg">
+                    <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png">
+                    <b style="margin-left: 5px;">Kho</b>
+                    <span style="position: absolute; margin-top: 15px; margin-left: -38px; font-size: x-small;">
+                        <small>Phân hệ</small>
+>>>>>>> 08ce87f4c8d489e636bc044699324411d5193cc9
                     </span>
+                </span>
             </a>
             <nav class="navbar navbar-static-top">
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -217,85 +226,103 @@
                 </form>
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu" data-widget="tree">
-						<li class="treeview menu-open active">
-                            <a href="#"><i class="fa fa-file-o"></i> Đơn hàng
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-							<ul class="treeview-menu ">
-								<li class="treeview menu-open active">
-									<a href="#">
-										<i class="fa fa-file-o"></i> <span>Phiếu chờ xử lí</span>
-										<span class="pull-right-container">
-											<i class="fa fa-angle-left pull-right"></i>
-										</span>
-									</a>
-									<ul class="treeview-menu">
-										<li class="active"><a href="index-kho.html"><i class="fa fa-edit"></i> Chuẩn bị hàng</a></li>
-										<li>
-											<a href="chohoadon_tung.html">
-												<i class="fa fa-file-text"></i>
-												<span>Chờ hóa đơn</span>
-												<span class="pull-right-container">
-													<span class="label label-primary pull-right">2</span>
-												</span>
-											</a>
-										</li>
-										<li>
-											<a href="chophieu_tung.html">
-												<i class="fa fa-list-alt"></i>
-												<span>Chờ phiếu</span>
-												<span class="pull-right-container">
-													<span class="label label-primary bg-green">1</span>
-												</span>
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="">
-									<a href="chovanchuyen_tung.html">
-										<i class="fa fa-clone"></i> <span>Phiếu chờ vận chuyển</span>
-									</a>
-								</li>
-								<li class="">
-									<a href="hoanthanh_tung.html">
-										<i class="fa fa-file-text"></i> <span>Phiếu đã hoàn thành</span>
-									</a>
-								</li>
-							</ul>
-						</li>
-                        
-						
-						
-						
-						
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="treeview menu-open active">
+                        <a href="#">
+                            <i class="fa fa-file-o"></i> Đơn hàng
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu ">
+                            <li class="treeview menu-open active">
+                                <a href="#">
+                                    <i class="fa fa-file-o"></i>
+                                    <span>Phiếu chờ xử lí</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="active">
+                                        <a href="index-kho.html">
+                                            <i class="fa fa-edit"></i> Chuẩn bị hàng</a>
+                                    </li>
+                                    <li>
+                                        <a href="chohoadon_tung.html">
+                                            <i class="fa fa-file-text"></i>
+                                            <span>Chờ hóa đơn</span>
+                                            <span class="pull-right-container">
+                                                <span class="label label-primary pull-right">2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="chophieu_tung.html">
+                                            <i class="fa fa-list-alt"></i>
+                                            <span>Chờ phiếu</span>
+                                            <span class="pull-right-container">
+                                                <span class="label label-primary bg-green">1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a href="chovanchuyen_tung.html">
+                                    <i class="fa fa-clone"></i>
+                                    <span>Phiếu chờ vận chuyển</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="hoanthanh_tung.html">
+                                    <i class="fa fa-file-text"></i>
+                                    <span>Phiếu đã hoàn thành</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="">
-                            <a href="tonKho_Kho.html">
-                                <i class="fa fa-folder"></i> <span>Hàng tồn kho</span>
-                            </a>
-                        </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
-                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
-                                <li><a href="toBeContinue_page_Kho.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
-                            </ul>
-                        </li>
 
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+
+
+
+                    <li class="">
+                        <a href="tonKho_Kho.html">
+                            <i class="fa fa-folder"></i>
+                            <span>Hàng tồn kho</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span>Giao hàng</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="toBeContinue_page_Kho.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin lái xe</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page_Kho.html">
+                                    <i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a>
+                            </li>
+                            <li>
+                                <a href="toBeContinue_page_Kho.html">
+                                    <i class="fa fa-hand-o-right"></i> Định vị xe hàng</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
 
 
         <div class="content-wrapper">
@@ -333,18 +360,12 @@
                                     <div class="col-md-12">
                                         <div class="box">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">Mục tìm kiếm</h3>
+                                                <h3 class="box-title">Tìm kiếm theo</h3>
                                             </div>
                                             <!-- /.box-header -->
                                             <div class="box-body">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr>
-                                                            <th>Mục tìm kiếm</th>
-                                                            <th width="35%">Thông tin tìm kiếm</th>
-                                                            <th>Mục tìm kiếm</th>
-                                                            <th width="35%">Thông tin tìm kiếm</th>
-                                                        </tr>
                                                         <tr>
                                                             <td>Lô số</td>
                                                             <td>
@@ -453,12 +474,12 @@
                                                             <td>
                                                                 <div class="form-group">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  checked>
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" checked>
                                                                     </label>
                                                                     <label class="custom-chk">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox" >
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox">
                                                                     </label>
                                                                 </div>
                                                             </td>
@@ -486,8 +507,8 @@
                                                     <th>Lô số</th>
                                                     <th>Tên khách hàng</th>
                                                     <th>Số hóa đơn</th>
-                                                    <th>Lấy phiếu</th>
-                                                    <th>Lấy hóa đơn</th>
+                                                    <th>Nhận phiếu</th>
+                                                    <th>Nhận hóa đơn</th>
                                                     <th>Trạng Thái</th>
                                                     <th>Ngày giao</th>
                                                     <th>Ghi chú</th>
@@ -497,14 +518,14 @@
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>81269-0</td>
+                                                    <td><a href="stocker_view.html">81269-0</a></td>
                                                     <td>Công ty Long Giang</td>
                                                     <td>24329</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
                                                         <span class="label label-success">Kế toán đã xử lý</span>
@@ -523,15 +544,15 @@
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px">
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox"  style="margin-left: 40px">
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox" style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -581,13 +602,17 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="col-md-2">
                                                                     <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Hoàn thành</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -595,14 +620,14 @@
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td>81268-0</td>
+                                                    <td><a href="stocker_view.html">81268-0</a></td>
                                                     <td>Công ty Phú An</td>
                                                     <td>24328</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
                                                         <span class="label label-success">Kế toán đã xử lí</span>
@@ -621,16 +646,16 @@
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px">
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox"  style="margin-left: 40px">
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox" style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -680,13 +705,17 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="col-md-2">
                                                                     <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-warning btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Hoàn thành</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -694,14 +723,14 @@
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
-                                                    <td>81267-1</td>
+                                                    <td><a href="stocker_view.html">81267-1</a></td>
                                                     <td>Công ty Invico</td>
                                                     <td>24327</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
                                                         <span class="label label-success">Kế toán đã xử lí</span>
@@ -720,16 +749,16 @@
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px">
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox"  style="margin-left: 40px">
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox" style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -779,13 +808,17 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="col-md-2">
                                                                     <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-warning btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Hoàn thành</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -793,17 +826,17 @@
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
-                                                    <td>81266-1</td>
+                                                    <td><a href="stocker_view.html">81266-1</a></td>
                                                     <td>Công ty Sáng Hà</td>
                                                     <td>24326</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-primary">Đã xuất phiếu</span>
+                                                        <span class="label label-primary"> xuất phiếu</span>
                                                     </td>
                                                     <td></td>
                                                     <td>Giao trước 19-11-2017</td>
@@ -819,16 +852,16 @@
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px">
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox"  style="margin-left: 40px">
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox" style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -878,13 +911,17 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="col-md-2">
                                                                     <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-warning btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Hoàn thành</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -892,17 +929,17 @@
                                                 </tr>
                                                 <tr>
                                                     <td>5</td>
-                                                    <td>81265-1</td>
+                                                    <td><a href="stocker_view.html">81265-1</a></td>
                                                     <td>Công ty Vạn Xuân</td>
                                                     <td>24325</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <span class="label label-primary">Đã xuất phiếu</span>
+                                                        <span class="label label-primary"> xuất phiếu</span>
                                                     </td>
                                                     <td></td>
                                                     <td>Giao trước 19-11-2017</td>
@@ -918,16 +955,16 @@
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px">
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox"  style="margin-left: 40px">
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox" style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -977,13 +1014,17 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="col-md-2">
                                                                     <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-warning btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Hoàn thành</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -991,14 +1032,14 @@
                                                 </tr>
                                                 <tr>
                                                     <td>6</td>
-                                                    <td>81264-1</td>
+                                                    <td><a href="stocker_view.html">81264-1</a></td>
                                                     <td>Công ty Tương Lai</td>
                                                     <td>24324</td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox"  disabled>
+                                                        <input type="checkbox" disabled>
                                                     </td>
                                                     <td>
                                                         <span class="label label-success">Kế toán đã xử lý</span>
@@ -1017,16 +1058,16 @@
                                                             <div class="row">
                                                                 <div class="col-md-2">
                                                                     <label>
-                                                                        Đã lấy phiếu
-                                                                        <input type="checkbox"  style="margin-left: 55px">
+                                                                         Nhận phiếu
+                                                                        <input type="checkbox" style="margin-left: 55px">
                                                                     </label>
                                                                     <div></div>
 
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="custom-label">
-                                                                        Đã lấy hóa đơn
-                                                                        <input type="checkbox"  style="margin-left: 40px">
+                                                                         Nhận hóa đơn
+                                                                        <input type="checkbox" style="margin-left: 40px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -1076,13 +1117,17 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br>
                                                             <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="col-md-2">
                                                                     <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-warning btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Sửa</a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="hoanthanh_tung.html" class="btn btn-danger btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Hoàn thành</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1247,7 +1292,7 @@
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Report panel usage
-                                <input type="checkbox"  class="pull-right">
+                                <input type="checkbox" class="pull-right">
                             </label>
 
                             <p>
@@ -1259,7 +1304,7 @@
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Allow mail redirect
-                                <input type="checkbox"  class="pull-right">
+                                <input type="checkbox" class="pull-right">
                             </label>
 
                             <p>
@@ -1271,7 +1316,7 @@
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Expose author name in posts
-                                <input type="checkbox"  class="pull-right">
+                                <input type="checkbox" class="pull-right">
                             </label>
 
                             <p>
@@ -1285,7 +1330,7 @@
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Show me as online
-                                <input type="checkbox"  class="pull-right">
+                                <input type="checkbox" class="pull-right">
                             </label>
                         </div>
                         <!-- /.form-group -->
@@ -1293,7 +1338,7 @@
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Turn off notifications
-                                <input type="checkbox"  class="pull-right">
+                                <input type="checkbox" class="pull-right">
                             </label>
                         </div>
                         <!-- /.form-group -->
@@ -1342,7 +1387,7 @@
     <!-- Select2 -->
     <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
     <!-- iCheck 1.0.1 -->
-    
+
     <!-- page script -->
     <script>
         $(function () {
