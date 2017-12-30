@@ -294,9 +294,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieu_dang_giao.html">
+                                    <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
+                                        <span>Phiếu đang xử lý</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
@@ -323,6 +323,11 @@
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
                                     </a>
                                 </li>
+																 <li>
+                                    <a href="timeline_master.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -339,7 +344,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>Công nợ</span>
                                 <span class="pull-right-container">
@@ -347,7 +352,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
+                                <li class="active"><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
                                 <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
                                 <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
                             </ul>
@@ -552,7 +557,7 @@
                                                 <table style="border: none; margin-left: 250px;" class="customTable">
                                                     <tr>
                                                         <td class="col1"><i class="fa fa-user-circle-o"></i><b> Tên:</b></td>
-                                                        <td class="col2"><select class="form-control" onchange="autoFillCustomer(); return false;" id="donVi">
+                                                        <td class="col2"><select class="form-control" onchange="autoFillProvider();" id="donViP">
                                                                 <option></option>
                                                                 <option value="1">Công ty Sáng Hà</option>
                                                                 <option value="2">Công ty Invico - Sắn</option>
@@ -560,11 +565,11 @@
                                                     </tr>
                                                     <tr>
                                                         <td><i class="fa fa-bank"></i><b> MST:</b></td>
-                                                        <td class="col2"><input type="text" class="form-control" id="TaxCode"></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="TaxCodeP"></td>
                                                     </tr>
                                                     <tr>
                                                         <td><i class="fa fa-circle"></i><b> Công nợ đầu kỳ:</b></td>
-                                                        <td class="col2"><input type="text" class="form-control" id="debt"></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="debtP"></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -574,12 +579,12 @@
                                                 <table class="customTable" style="margin-left: 250px;">
                                                     <tr>
                                                         <td class="col1"><i class="fa fa-plus-square"></i><b> Thêm công nợ:</b></td>
-                                                        <td class="col2"><input type="text" class="form-control number" id="addDebt" onkeyup="checkOut();"></td>
+                                                        <td class="col2"><input type="text" class="form-control number" id="addDebtP" onkeyup="checkOutProvider();"></td>
                                                     </tr>
 
                                                     <tr>
                                                         <td><i class="fa fa-check-square"></i><b> Tổng công nợ:</b></td>
-                                                        <td class="col2"><input type="text" class="form-control" id="totalDebt" disabled style="background-color: white"></td>
+                                                        <td class="col2"><input type="text" class="form-control" id="totalDebtP" disabled style="background-color: white"></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -642,13 +647,13 @@
         <!-- ./wrapper -->
 
         <!-- jQuery 3 -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- FastClick -->
-        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
 		<script>

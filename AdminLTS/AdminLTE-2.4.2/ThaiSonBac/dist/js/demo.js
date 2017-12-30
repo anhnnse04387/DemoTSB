@@ -4,9 +4,12 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+var limit = 5;
+
 function deliveryQtt() {
     if(document.getElementById('delivery').value === '1') {
         $('#turn1').removeClass('noDisplay');
+        $('#turn2').addClass('noDisplay');
     } else if(document.getElementById('delivery').value === '2') {
         $('#turn1').removeClass('noDisplay');
         $('#turn2').removeClass('noDisplay');
@@ -14,25 +17,34 @@ function deliveryQtt() {
         $('#turn1').addClass('noDisplay');
         $('#turn2').addClass('noDisplay');
     }
+    lookup();
 }
 
 function checkQtt() {
-    if(parseInt(document.getElementById('cai_5').value) > 5 && document.getElementById('dayout').value === '28/12/2017') {
+    if(parseInt(document.getElementById('cai_5').value) > limit && document.getElementById('dayout').value === '13/01/2018') {
         swal({
             title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
-            html: '<div style="margin-left: 327px;"><i class="fa fa-eye text-black"></i><a href="timeline.html"><img src="dist/img/xem.png"/></a></div>' 
+            html: '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="dist/img/xem.png"/></a></div>' 
                   + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
                   + '<thead>'
-                  + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th></tr>'
+                  + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th><th style="background-color: white"><img src="dist/img/soluonglay.png"/></th></tr>'
                   + '</thead>'
                   + '<tbody>'
-                  + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td></tr>'
-                  + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>13/01/2018</td></tr>'
+                  + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl1"/></td></tr>'
+                  + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>03/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl2"/></td></tr>'    
                   + '</tbody>'
                   + '</table>',
-            showCancelButton: false,
-            showConfirmButton: false,
+            showCancelButton: true,
+            width: 550,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<i class="fa fa-check"></i>',
+            cancelButtonText: '<i class="fa fa-close"></i>',
+        }).then((result) => {
+            if (result.value) {
+                limit += parseInt(document.getElementById("sl1").value) + parseInt(document.getElementById("sl2").value);
+            }
         });
         $('.btnCreate').addClass('noDisplay');
     } else {
@@ -47,6 +59,15 @@ function checkOut() {
         addDebt = parseInt(document.getElementById("addDebt").value.replace(new RegExp(',', 'g'), ''));
     } 
     document.getElementById("totalDebt").value = (parseInt(document.getElementById('debt').value.replace(new RegExp(',', 'g'), '')) + addDebt).toLocaleString('en');
+}
+
+function checkOutProvider() {
+    var addDebt = 0;
+    var pay = 0;
+    if (parseInt(document.getElementById("addDebtP").value.replace(new RegExp(',', 'g'), '')) > 0) {
+        addDebt = parseInt(document.getElementById("addDebtP").value.replace(new RegExp(',', 'g'), ''));
+    } 
+    document.getElementById("totalDebtP").value = (parseInt(document.getElementById('debtP').value.replace(new RegExp(',', 'g'), '')) + addDebt).toLocaleString('en');
 }
 
 function saveDraft() {
@@ -90,13 +111,18 @@ function autoFillCustomer() {
 }
 
 function autoFillProvider() {
-    if ($("#donVi").val() === '1') {
-        document.getElementById("debt").value = "26,262,716,484";
-        document.getElementById("TaxCode").value = "";
-    } else if ($("#donVi").val() === '2') {
-        document.getElementById("debt").value = "24,305,440,452";
-        document.getElementById("TaxCode").value = "";
+    if ($("#donViP").val() === '1') {
+        document.getElementById("debtP").value = "26,262,716,484";
+        document.getElementById("TaxCodeP").value = "";
+    } else if ($("#donViP").val() === '2') {
+        document.getElementById("debtP").value = "24,305,440,452";
+        document.getElementById("TaxCodeP").value = "";
     }
+}
+
+function timeline() {
+    var win = window.open('timeline.html', '_blank');
+    win.focus();
 }
 
 function openNewTab() {
@@ -146,21 +172,43 @@ function configCkAll(stt) {
             ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val().replace(new RegExp(',', 'g'), ''))) +
             ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val().replace(new RegExp(',', 'g'), ''))) +
             ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val().replace(new RegExp(',', 'g'), ''))) +
-			($("#tien_da_ck_7").val() === '' ? 0 : parseInt($("#tien_da_ck_7").val().replace(new RegExp(',', 'g'), '')));
+			($("#tien_da_ck_6").val() === '' ? 0 : parseInt($("#tien_da_ck_6").val().replace(new RegExp(',', 'g'), '')));
     } else {
-        tien_chua_ck = $('#tien_da_ck_6').val() === '' ? 0 : parseInt($("#tien_da_ck_6").val().replace(new RegExp(',', 'g'), ''));
+        tien_chua_ck = $('#tien_da_ck_7').val() === '' ? 0 : parseInt($("#tien_da_ck_7").val().replace(new RegExp(',', 'g'), ''));
     }
     document.getElementById("tong_tien_chua_ck_" + stt).value = tien_chua_ck.toLocaleString('en');
     if (ckTong > 0) {
         tien_ck = tien_chua_ck * ckTong / 100;
+        document.getElementById("tong_ck_2").value = ckTong;
+    } else {
+        document.getElementById("tong_ck_2").value = 0;
     }
     document.getElementById("tien_ck_" + stt).value = tien_ck.toLocaleString('en');
     document.getElementById("con_lai_" + stt).value = (tien_chua_ck - tien_ck).toLocaleString('en');
     if (vat > 0) {
         tien_vat = (tien_chua_ck - tien_ck) * vat / 100;
+        document.getElementById("vat_2").value = vat;
+    } else {
+        document.getElementById("vat_2").value = 0;
     }
     document.getElementById("tien_vat_" + stt).value = tien_vat.toLocaleString('en');
-    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');
+    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');       
+    document.getElementById("tong_cai").value = ($("#tong_cai_1").val() === '' ? 0 : parseInt($("#tong_cai_1").val())) +
+                                                    ($("#tong_cai_2").val() === '' ? 0 : parseInt($("#tong_cai_2").val()));
+    document.getElementById("tong_thung").value = ($("#tong_thung_1").val() === '' ? 0 : parseInt($("#tong_thung_1").val())) +
+                                                    ($("#tong_thung_2").val() === '' ? 0 : parseInt($("#tong_thung_2").val()));
+    document.getElementById("tong_tien_chua_ck").value = (($("#tong_tien_chua_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+                ($("#tong_tien_chua_ck_2").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
+    document.getElementById("tien_ck").value = (($("#tien_ck_1").val() === '' ? 0 : parseInt($("#tien_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+                ($("#tien_ck_2").val() === '' ? 0 : parseInt($("#tien_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
+    document.getElementById("con_lai").value = (($("#con_lai_1").val() === '' ? 0 : parseInt($("#con_lai_1").val().replace(new RegExp(',', 'g'), ''))) +
+                ($("#con_lai_2").val() === '' ? 0 : parseInt($("#con_lai_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
+    document.getElementById("tien_vat").value = (($("#tien_vat_1").val() === '' ? 0 : parseInt($("#tien_vat_1").val().replace(new RegExp(',', 'g'), ''))) +
+                ($("#tien_vat_2").val() === '' ? 0 : parseInt($("#tien_vat_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
+    document.getElementById("tong_tien_da_ck").value = (($("#tong_tien_da_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+                ($("#tong_tien_da_ck_2").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
+    document.getElementById("tong_ck").value = $("#tong_ck_1").val() === '' ? 0 : parseInt($("#tong_ck_1").val());
+    document.getElementById("vat").value = $("#vat_1").val() === '' ? 0 : parseInt($("#vat_1").val());                                   
 }
 
 function configCk(stt) {
@@ -175,12 +223,16 @@ function configCk(stt) {
     if (cai > 0) {
         if (ck > 0) {
             document.getElementById("tien_da_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), '')) * (100 - ck) / 100).toLocaleString('en');
-            document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
+            document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');           
         } else {
             document.getElementById("tien_da_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
             document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
         }
-        if(stt != '6') {
+        if($("#delivery").val() === '2') {                
+            document.getElementById("tien_da_ck_" + (parseInt(stt) + 7)).value = document.getElementById("tien_da_ck_" + stt).value;
+            document.getElementById("tien_chua_ck_" + (parseInt(stt) + 7)).value = document.getElementById("tien_chua_ck_" + stt).value;
+        } 
+        if(stt != '7') {
             configCkAll('1');
         } else {
             configCkAll('2');
@@ -213,51 +265,87 @@ function configSp(stt) {
     if (cai > 0) {
         configCk(stt);
         if (stt === '5') {
-            document.getElementById("thung_" + stt).value = cai;
+            document.getElementById("thung_5").value = cai;
+            if($("#delivery").val() === '2') {
+                document.getElementById("thung_12").value = cai;
+                document.getElementById("cai_12").value = cai;
+            }            
             checkQtt();
         } else {
             document.getElementById("thung_" + stt).value = parseInt(cai / 20);
+            if($("#delivery").val() === '2') {
+                document.getElementById("thung_" + (parseInt(stt) + 7)).value = parseInt(cai / 20);
+                document.getElementById("cai_" + (parseInt(stt) + 7)).value = cai;
+            }              
         }           
     } else {
-        document.getElementById("thung_" + stt).value = 0;
-        document.getElementById("tien_chua_ck_" + stt).value = 0;
-        document.getElementById("tien_da_ck_" + stt).value = 0;
-        document.getElementById("cai_" + stt).value = 0;
+        document.getElementById("thung_" + stt).value = 0;        
+        document.getElementById("tien_chua_ck_" + stt).value = 0;        
+        document.getElementById("tien_da_ck_" + stt).value = 0;        
+        document.getElementById("cai_" + stt).value = 0;        
+        if($("#delivery").val() === '2') {
+            document.getElementById("thung_" + (parseInt(stt) + 7)).value = 0;
+            document.getElementById("tien_chua_ck_" + (parseInt(stt) + 7)).value = 0;
+            document.getElementById("tien_da_ck_" + (parseInt(stt) + 7)).value = 0;
+            document.getElementById("cai_" + (parseInt(stt) + 7)).value = 0;
+        }  
     }
-    if(stt != '6') {
+    if(stt != '7') {
         tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
                 ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
                 ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
                 ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
                 ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val())) +
-				($("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val()));
+				($("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val()));
         tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
                 (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
                 (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
                 (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
                 (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value)) +
-				(document.getElementById("cai_7").value === '' ? 0 : parseInt(document.getElementById("cai_7").value));
+				(document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value));
         document.getElementById("tong_thung_1").value = tong_thung;
         document.getElementById("tong_cai_1").value = tong_cai;
-        configCkAll('1');  
     } else {
-        tong_thung = $("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val());
-        tong_cai = document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value);
+        tong_thung = $("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val());
+        tong_cai = document.getElementById("cai_7").value === '' ? 0 : parseInt(document.getElementById("cai_7").value);
         document.getElementById("tong_thung_2").value = tong_thung;
         document.getElementById("tong_cai_2").value = tong_cai;
-        configCkAll('2');
     }
 }
 
 function lookup() {
+    var soCk = 14;
+    var i = 0;    
     if ($("#donVi").val() === '1') {
         document.getElementById("AddressDeliver").value = "Chu Sang - Nguyen Cong Tru, HN";
         document.getElementById("AddressContact").value = "P9 H5 TT Nguyen Cong Tru, Ha Noi";
         document.getElementById("TaxCode").value = "0101788080";
+        for(i = 0; i < soCk; i++) {
+            if($("#delivery").val() === '1' && i === 6) {
+                continue;        
+            }
+            document.getElementById("ck_" + (i+1)).value = "10";
+            if(i < 7) {
+                if($('#dongia_' + (i + 1)).val() !== '') {
+                    configSp('' + (i + 1));
+                }
+            }
+        }
     } else if ($("#donVi").val() === '2') {
         document.getElementById("AddressDeliver").value = "368, Tran Khat Chan, Ha Noi";
         document.getElementById("AddressContact").value = "9, 3.5 Gamuda Gardens, Ha Noi";
         document.getElementById("TaxCode").value = "0104879265";
+        for(i = 0; i < soCk; i++) {
+            if($("#delivery").val() === '1' && i === 6) {
+                continue;        
+            }
+            document.getElementById("ck_" + (i+1)).value = "20";
+            if(i < 7) {
+                if($('#dongia_' + (i + 1)).val() !== '') {
+                    configSp('' + (i + 1));
+                }
+            }
+        }
     }
 }
 

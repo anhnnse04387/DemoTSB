@@ -77,9 +77,9 @@
                         <b>T</b>SB</span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
-                        <img style="display: inline-block; width:50px; height:50px;" class="img-responsive"  src="dist/img/Logo TSB - Final.png"
-                             alt="Photo">
-                        <b>Thái Sơn Bắc</b>
+                        <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Bán hàng</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
                 </a>
                 <nav class="navbar navbar-static-top">
@@ -164,7 +164,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- User Account: style can be found in dropdown.less -->
+                           <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -220,7 +220,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
+					<!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -230,7 +230,7 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Bán Hàng</span>
+                                <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -247,33 +247,38 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieu_dang_giao.html">
+                                    <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
+                                        <span>Phiếu đang xử lý</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieudaxuat_tung.html">
+                                                                <li>
+                                    <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
+                                        <span>Phiếu đã hoàn thành</span>
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="phieuxuatsau_tung.html">
+                                        <i class="fa fa-book"></i>
+                                        <span>Phiếu giữ hàng</span>
+										<span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-book"></i>
-                                        <span>Phiếu giữ hàng</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="workflow.html">
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
+                                    </a>
+                                </li>
+																 <li>
+                                    <a href="timeline_master.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
                                     </a>
                                 </li>
                             </ul>
@@ -342,7 +347,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -350,7 +355,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li>
+                                <li  class="active">
                                     <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
                                 </li>
                                 <li>
@@ -392,9 +397,13 @@
                                         <span><strong>Quay lại</strong></span>
                                     </a>
 
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="window.location.href='customer_create.html'">
                                         <i class="fa fa-edit text-green"></i>
                                         <span><strong>Tạo Mới</strong></span>
+                                    </a>
+									<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="window.location.href='customer_update.html'">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                        <span><strong>Sửa</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
                                         <i class="fa fa-save text-yellow"></i>
@@ -434,50 +443,38 @@
                                     </a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12" style="margin-top: 10px;">
-                                        <div class="box">
-                                            <div class="box-header">
-                                                <h3 class="box-title">Mục tìm kiếm</h3>
-                                            </div>
-                                            <!-- /.box-header -->
-                                            <div class="box-body">
-                                                <table class="table">
-                                                    <tbody><tr>
-                                                            <th >Mục tìm kiếm</th>
-                                                            <th width="35%">Thông tin tìm kiếm</th>
-                                                            <th>Mục tìm kiếm</th>
-                                                            <th width="35%">Thông tin tìm kiếm</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tên khách hàng</td>
-                                                            <td>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                    <input type="text" class="form-control" placeholder="Tên...">
-                                                                </div>
-                                                            </td>
-                                                            <td>Rank</td>
-                                                            <td>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-addon">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </div>
-                                                                    <select class="form-control select2" multiple="multiple" data-placeholder="Hãy lựa chọn..." style="width: 100%">
-                                                                        <option>Khách mới</option>
-                                                                        <option>Khách quen</option>
-                                                                        <option>Khách VIP</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- /.box-body -->
-                                            <div class="box-footer clearfix">
-                                                <div class="pagination pagination-sm no-margin pull-right">
-                                                    <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
-                                                </div>
+                                    <div class="container-fluid" style="margin-top: 10px;">
+                                        <!-- /.box-header -->
+                                        <table class="table" style="margin: 0 auto;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 5%; padding-top: 15px;"><strong>Tên</strong></td>
+                                                    <td style="width: 45%">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                            <input type="text" class="form-control" placeholder="Tên...">
+                                                        </div>
+                                                    </td>
+                                                    <td  style="width: 5%; padding-top: 15px;"><strong>Rank</strong></td>
+                                                    <td  style="width: 45%">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                            <select class="form-control select2" multiple="multiple" data-placeholder="Hãy lựa chọn..." style="height: 24px;">
+                                                                <option>Khách mới</option>
+                                                                <option>Khách quen</option>
+                                                                <option>Khách VIP</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer clearfix">
+                                            <div class="pagination pagination-sm no-margin pull-right">
+                                                <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -663,9 +660,13 @@
                                         <span><strong>Quay lại</strong></span>
                                     </a>
 
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="window.location.href='customer_create.html'">
                                         <i class="fa fa-edit text-green"></i>
                                         <span><strong>Tạo Mới</strong></span>
+                                    </a>
+									<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="window.location.href='customer_update.html'">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                        <span><strong>Sửa</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
                                         <i class="fa fa-save text-yellow"></i>

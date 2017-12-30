@@ -126,9 +126,9 @@
                         <b>T</b>SB</span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
-                        <img style="display: inline-block; width:50px; height:50px" class="img-responsive"  src="dist/img/Logo TSB - Final.png"
-                             alt="Photo">
-                        <b>Thái Sơn Bắc</b>
+                        <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Bán hàng</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
                 </a>
                 <nav class="navbar navbar-static-top">
@@ -215,7 +215,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- User Account: style can be found in dropdown.less -->
+           <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -242,6 +242,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -260,7 +261,7 @@
                     </div>
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group" style="padding-bottom: 0px;">
+                        <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
                             <span class="input-group-btn">
                                 <button type="submit" name="search" id="search-btn" class="btn btn-flat">
@@ -270,7 +271,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
+					<!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -278,9 +279,9 @@
                             </a>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview menu-open active">
                             <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Bán Hàng</span>
+                                <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -296,34 +297,39 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieu_dang_giao.html">
+                                <li class="active">
+                                    <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
+                                        <span>Phiếu đang xử lý</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieudaxuat_tung.html">
+                                                                <li>
+                                    <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
+                                        <span>Phiếu đã hoàn thành</span>
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="phieuxuatsau_tung.html">
+                                        <i class="fa fa-book"></i>
+                                        <span>Phiếu giữ hàng</span>
+										<span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-book"></i>
-                                        <span>Phiếu giữ hàng</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="workflow.html">
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
+                                    </a>
+                                </li>
+																 <li>
+                                    <a href="timeline_master.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
                                     </a>
                                 </li>
                             </ul>
@@ -438,11 +444,11 @@
                                         <h4 class="modal-title" id="myModalLabel">Xác nhận xử lí đơn hàng</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <label>Bạn muốn xử lí đơn hàng?</label>
+                                        <label>Tạo đợt giao mới?</label>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                                        <input onclick="location.href = 'accountant_notification.html'" type="button" class="btn btn-danger btn-ok" value="Xử lý" />
+                                        <input onclick="location.href = 'lap_phieu.html'" type="button" class="btn btn-danger btn-ok" value="Xử lý" />
                                     </div>
                                 </div>
                             </div>
@@ -499,7 +505,7 @@
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Tạo đợt giao mới" data-placement="bottom" data-target="#confirm-process">
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Giao hàng</strong></span>
                                         </a>
@@ -529,18 +535,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="box-header with-border">
-                                        <div class="col-md-12 no-padding" style="margin-left: -30px;">
-                                            <ul class="progressSteps">	
-                                                <li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
-                                                <li id="bill" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh" class="complete">Xuất Hóa Đơn</br><small>10:12 09/11/2017</small></li>
-                                                <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
-                                                <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
-                                                <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
-                                            </ul>
-                                            <span class="pull-right" style="margin-right: 50px;"><a href="detail_progress.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
-                                        </div>
-                                    </div>        
+  
 
                                     <div class="row box-body">
                                         <div class="col-md-4">
@@ -612,7 +607,7 @@
                                 <div class="box-header">
                                     <div class="container-fluid">
                                         <div class="row box-header with-border">
-                                            <h4><label style="margin-left: 14px;">Chờ giao</label></h4>
+                                            <h4><label style="margin-left: 14px;">Đơn hàng còn lại</label></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -749,18 +744,165 @@
                                             <!-- Custom Tabs -->
                                             <div class="nav-tabs-custom col-md-12">
                                                 <ul class="nav nav-tabs">
-                                                    <li class="active"><a href="#tab_1" data-toggle="tab">Giao đợt 1</a></li>
-                                                    <li><a href="#tab_2" data-toggle="tab">Giao đợt 2</a></li>
+												<li class="active"> <a href="#tab_3" data-toggle="tab">Tổng đơn hàng</a></li>
+                                                    <li ><a href="#tab_1" data-toggle="tab">81264-1#1</a></li>
+                                                    <li><a href="#tab_2" data-toggle="tab">81264-1#2</a></li>
                                                 </ul>
                                                 <div class="tab-content">
-                                                    <div class="tab-pane active" id="tab_1">
+												<div class="tab-pane active" id="tab_3"> 
                                                         <div class="row">
-                                                            <div class="col-md-4" style="margin-top: 25px;">
+                                                            <div class="col-md-4" >
+															<label>Ngày tạo</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
-                                                                    <input class="form-control" placeholder="Lần giao số 1" disabled>
+                                                                    <input class="form-control" placeholder="18-12-2017" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <table id="mainTable" class="table table-striped">
+                                                            <thead style="text-align: center;">
+                                                                <tr>
+                                                                    <th rowspan="2">STT</th>
+                                                                    <th rowspan="2">Tên hàng</th>
+                                                                    <th colspan="2">Số lượng</th>
+                                                                    <th rowspan="2">Đơn giá (VNĐ)</th>
+                                                                    <th rowspan="2">Thành tiền trước CK(VNĐ)</th>
+                                                                    <th rowspan="2">Chiết khấu</th>
+                                                                    <th rowspan="2">Thành tiền sau CK(VNĐ)</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Cái</th>
+                                                                    <th>Thùng</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>ABN 52c</td>
+                                                                    <td>20</td>
+                                                                    <td>1</td>
+                                                                    <td>2,375,000</td>
+                                                                    <td>2,375,000</td>
+                                                                    <td>10%</td>
+                                                                    <td>2,137,500</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2</td>
+                                                                    <td>TS1000N AG6 3P</td>
+                                                                    <td>20</td>
+                                                                    <td>1</td>
+                                                                    <td>80,807,616</td>
+                                                                    <td>80,807,616</td>
+                                                                    <td>10%</td>
+                                                                    <td>72,726,854</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3</td>
+                                                                    <td>ABS 32c</td>
+                                                                    <td>20</td>
+                                                                    <td>1</td>
+                                                                    <td>1,859,757</td>
+                                                                    <td>1,859,757</td>
+                                                                    <td>10%</td>
+                                                                    <td>1,673,781</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4</td>
+                                                                    <td>ABH 53C</td>
+                                                                    <td>20</td>
+                                                                    <td>1</td>
+                                                                    <td>2,375,709</td>
+                                                                    <td>2,375,709</td>
+                                                                    <td>10%</td>
+                                                                    <td>2,138,138</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>5</td>
+                                                                    <td>ABE103-G</td>
+                                                                    <td>1</td>
+                                                                    <td>1</td>
+                                                                    <td>8,443,531</td>
+                                                                    <td>8,443,531</td>
+                                                                    <td>10%</td>
+                                                                    <td>7,599,178</td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Cộng</td>
+                                                                    <td>41</td>
+                                                                    <td>5</td>
+                                                                    <td>95,861,613</td>
+                                                                    <td>95,861,613</td>
+                                                                    <td>9,586,161</td>
+                                                                    <td>86,275,452</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Chiết khấu</td>
+                                                                    <td colspan="4"></td>
+                                                                    <td>10%</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Cộng</td>
+                                                                    <td>41</td>
+                                                                    <td>5</td>
+                                                                    <td>95,861,613</td>
+                                                                    <td>95,861,613</td>
+                                                                    <td>9,586161</td>
+                                                                    <td>86,275,452</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>VAT</td>
+                                                                    <td colspan="4"></td>
+                                                                    <td>10%</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Tổng cộng</td>
+                                                                    <td>41</td>
+                                                                    <td>5</td>
+                                                                    <td>105,447,774</td>
+                                                                    <td>105,447,774</td>
+                                                                    <td>9,586,161</td>
+                                                                    <td>94,902,297</td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                    <div class="tab-pane active" id="tab_1">
+													<!-- progess -->
+													<div class="row">
+													    <div class="box-header with-border">
+															<div class="col-md-12 no-padding" style="margin-left: -30px;">
+																<ul class="progressSteps">	
+																	<li id="note" title= "Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 18-12-2017</small></li>
+																	<li id="bill" title= "Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh" class="complete">Xuất Hóa Đơn</br><small>10:12 18-12-2017</small></li>
+																	<li id="warehouse"title= "Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Ngô Tùng Sơn" class="complete">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+																	<li id="deliver" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Nguyễn Mạnh Cường" class="complete">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+																	<li id="finish" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Xuấn Thưởng" class="complete">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+																</ul>
+																<span class="pull-right" style="margin-right: 50px;"><a href="detail_progress.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
+															</div>
+														</div>
+													</div>
+													<!-- end progess --> 
+                                                        <div class="row">
+                                                            <div class="col-md-4" >
+															<label>Ngày xuất</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user-circle-o"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="18-12-2017" disabled>
                                                                 </div>
                                                             </div>
 
@@ -771,15 +913,6 @@
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
                                                                     <input class="form-control" placeholder="812234" disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Trạng thái</label>
-                                                                <div class="input-group" style="margin-top: 5px;">
-                                                                    <span class="label label-primary label-medium">
-                                                                        <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -901,14 +1034,30 @@
                                                     </div>
                                                     <!-- /.tab-pane -->
                                                     <div class="tab-pane" id="tab_2">
-
+													<!-- progess -->
+													<div class="row">
+													    <div class="box-header with-border">
+															<div class="col-md-12 no-padding" style="margin-left: -30px;">
+																<ul class="progressSteps">	
+																	<li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 21-12-2017</small></li>
+																	<li id="bill" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Trần Anh Minh" class="complete">Xuất Hóa Đơn</br><small>10:12 21-12-2017</small></li>
+																	<li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+																	<li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+																	<li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+																</ul>
+																<span class="pull-right" style="margin-right: 50px;"><a href="detail_progress.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
+															</div>
+														</div>
+													</div>
+													<!-- end progess --> 
                                                         <div class="row">
-                                                            <div class="col-md-4" style="margin-top: 25px;">
+                                                            <div class="col-md-4" ">
+															<label>Ngày xuất</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
-                                                                    <input class="form-control" placeholder="Lần giao số 2" disabled>
+                                                                    <input class="form-control" placeholder="22-12-2017" disabled>
                                                                 </div>
                                                             </div>
 
@@ -919,15 +1068,6 @@
                                                                         <i class="fa fa-user-circle-o"></i>
                                                                     </span>
                                                                     <input class="form-control" placeholder="812354" disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Trạng thái</label>
-                                                                <div class="input-group" style="margin-top: 5px;">
-                                                                    <span class="label label-primary label-medium">
-                                                                        <a href="detail_progress.html" class="a-custom-label">Đã xuất phiếu</a>
-                                                                    </span>
                                                                 </div>
                                                             </div>
 
@@ -961,26 +1101,6 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>2</td>
-                                                                    <td>TS1000N AG6 3P</td>
-                                                                    <td>20</td>
-                                                                    <td>1</td>
-                                                                    <td>80,807,616</td>
-                                                                    <td>80,807,616</td>
-                                                                    <td>10%</td>
-                                                                    <td>72,726,854</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>ABS 32c</td>
-                                                                    <td>20</td>
-                                                                    <td>1</td>
-                                                                    <td>1,859,757</td>
-                                                                    <td>1,859,757</td>
-                                                                    <td>10%</td>
-                                                                    <td>1,673,781</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>4</td>
                                                                     <td>ABH 53C</td>
                                                                     <td>20</td>
                                                                     <td>1</td>
@@ -990,7 +1110,7 @@
                                                                     <td>2,138,138</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>5</td>
+                                                                    <td>3</td>
                                                                     <td>ABE103-G</td>
                                                                     <td>1</td>
                                                                     <td>1</td>
@@ -998,7 +1118,7 @@
                                                                     <td>8,443,531</td>
                                                                     <td>10%</td>
                                                                     <td>7,599,178</td>
-                                                                </tr>
+																</tr>
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>

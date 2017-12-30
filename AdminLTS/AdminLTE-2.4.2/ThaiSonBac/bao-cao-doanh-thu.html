@@ -164,8 +164,9 @@
                     <span class="logo-mini"><b>T</b>SB</span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
-                        <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-                        <b>Thái Sơn Bắc</b>
+                        <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Bán hàng</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
                 </a>
 
@@ -311,7 +312,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
+					<!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -321,7 +322,7 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Bán Hàng</span>
+                                <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -338,33 +339,38 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieu_dang_giao.html">
+                                    <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
+                                        <span>Phiếu đang xử lý</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
                                     </a>
                                 </li>
                                                                 <li>
-                                    <a href="phieudaxuat_tung.html">
+                                    <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
-                                            <span class="label pull-right bg-green">new</span>
-                                            <span class="label pull-right bg-red">2</span>
-                                        </span>
+                                        <span>Phiếu đã hoàn thành</span>
                                     </a>
                                 </li>
 								<li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
+										<span class="pull-right-container">
+                                            <span class="label pull-right bg-green">new</span>
+                                            <span class="label pull-right bg-red">2</span>
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="workflow.html">
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
+                                    </a>
+                                </li>
+																 <li>
+                                    <a href="timeline_master.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
                                     </a>
                                 </li>
                             </ul>
@@ -418,8 +424,8 @@
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li>
+                            <ul class="treeview-menu menu-open active">
+                                <li  class="active">
                                     <a href="bao-cao-doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
                                 </li>
 
@@ -457,35 +463,30 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>BÁO CÁO DOANH THU </h1></br>
-                    <ol class="breadcrumb">
-                        <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Doanh thu</a></li>
+				    <section class="content-header">
+                   
+                    <ol class="breadcrumb" style="float:left">
+						<li><a href="index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+						 <li><a href="#"><i class="fa fa-dashboard"></i> Báo cáo</a></li>
                         <li><a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-dashboard"></i> Báo cáo doanh thu</a></li>
                     </ol>
                 </section>
-
                 <!-- Main content -->
-                <section class="content">
+                <section class="content" style="margin-top: 15px">
                     <div class="box">
-                        <div class="row" style="padding : 10px;">
-                            <div class="col-md-5">
-                                <div class="box-header with-border">
+				<div class="row">
+                        <div class="col-md-12">
+						<div class="box-header with-border">
                                     <h1 class="box-title">Báo cáo doanh thu</h1>
-                                </div> 
-                            </div>	
-                            <div class="col-md-5"></div>						
-                            <div class="col-md-2">           
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+									<div style="float:right">
+									<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                     <i class="fa fa-eye text-black"></i>
                                 </a>
                                 <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
                                     <i class="fa fa-print text-blue"></i>
                                 </a>
-
-                            </div>
-                        </div>
+									</div>
+                        </div></div></div>
                         <div class="row">
                             <div class="col-md-12">
 
@@ -596,6 +597,7 @@
                                         <h3>CHI TIẾT DOANH THU</h3>
                                     </div>
                                     <div class="box-body">
+									<h4><i><a href="chi-tiet-doanh-thu.html">Xem chi tiết</a></i></h4>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
@@ -667,6 +669,8 @@
                                             </tbody>
                                             <tfoot></tfoot>
                                         </table>
+
+										
                                     </div>
                                 </div>
                             </div>

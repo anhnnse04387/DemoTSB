@@ -46,6 +46,11 @@
             .right{
                 text-align:center;
             }
+			.custom-btn {
+				padding: 10px 5px;
+				min-width: 60px;
+				height: 50px;
+			}
         </style>
     </head>
 
@@ -54,14 +59,15 @@
 
             <header class="main-header">
                 <!-- Logo -->
-    <a href="index-sales.html" class="logo">
+    <a href="index-kho.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>SB</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">
-	  <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-	  <b>Thái Sơn Bắc</b>
-	  </span>
+                                   <span class="logo-lg">
+                       <img style="display: inline-block" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png">
+                        <b style="margin-left: 5px;">Kho</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -38px; font-size: x-small;"><small>Phân hệ</small></span>
+                    </span>
     </a>
 
 
@@ -83,7 +89,7 @@
                                     <li>
                                         <ul class="menu">
                                             <li>
-                                                <a href="accountant_view.html">
+                                                <a href="stocker_view.html">
                                                     <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 1
                                                     <div class="pull-right">1 giờ trước</div>
                                                 </a>
@@ -95,7 +101,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="accountant_view.html">
+                                                <a href="stocker_view.html">
                                                     <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 3
                                                     <div class="pull-right">1 giờ trước</div>
                                                 </a>
@@ -107,7 +113,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="accountant_view.html">
+                                                <a href="stocker_view.html">
                                                     <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 5
                                                     <div class="pull-right">1 giờ trước</div>
                                                 </a>
@@ -119,7 +125,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="accountant_view.html">
+                                                <a href="stocker_view.html">
                                                     <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 7
                                                     <div class="pull-right">1 giờ trước</div>
                                                 </a>
@@ -131,7 +137,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="accountant_view.html">
+                                                <a href="stocker_view.html">
                                                     <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667 đang chờ xử lý 9
                                                     <div class="pull-right">1 giờ trước</div>
                                                 </a>
@@ -149,108 +155,121 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Ngô Tùng Sơn</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                       <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Ngô Tùng Sơn</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
-                <p>Ngô Tùng Sơn<small>Nhân viên kho</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                    <p>Ngô Tùng Sơn
+                                        <small>Nhân viên kho</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <div class="pull-right">
-                  <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Thoát</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
 
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Ngô Tùng Sơn</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Ngô Tùng Sơn</p>
+                        <a href="#">
+                            <i class="fa fa-circle text-success"></i> Trực tuyến</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group" style="padding-bottom: 0px;">
+                        <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                 <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Phiếu chờ xử lí</span>
+						<li class="treeview">
+                            <a href="#"><i class="fa fa-file-o"></i> Đơn hàng
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="chohang_tung.html"><i class="fa fa-edit"></i> Chuẩn bị hàng</a></li>
-                                <li>
-                                    <a href="chohoadon_tung.html">
-                                        <i class="fa fa-file-text"></i>
-                                        <span>Chờ hóa đơn</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary pull-right">2</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="chophieu_tung.html">
-                                        <i class="fa fa-list-alt"></i>
-                                        <span>Chờ phiếu</span>
-                                        <span class="pull-right-container">
-                                            <span class="label label-primary bg-green">1</span>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+							<ul class="treeview-menu">
+								<li class="treeview">
+									<a href="#">
+										<i class="fa fa-file-o"></i> <span>Phiếu chờ xử lí</span>
+										<span class="pull-right-container">
+											<i class="fa fa-angle-left pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li class=""><a href="index-kho.html"><i class="fa fa-edit"></i> Chuẩn bị hàng</a></li>
+										<li>
+											<a href="chohoadon_tung.html">
+												<i class="fa fa-file-text"></i>
+												<span>Chờ hóa đơn</span>
+												<span class="pull-right-container">
+													<span class="label label-primary pull-right">2</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="chophieu_tung.html">
+												<i class="fa fa-list-alt"></i>
+												<span>Chờ phiếu</span>
+												<span class="pull-right-container">
+													<span class="label label-primary bg-green">1</span>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="">
+									<a href="chovanchuyen_tung.html">
+										<i class="fa fa-clone"></i> <span>Phiếu chờ vận chuyển</span>
+									</a>
+								</li>
+								<li class="">
+									<a href="hoanthanh_tung.html">
+										<i class="fa fa-file-text"></i> <span>Phiếu đã hoàn thành</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+                        
 						
-						<li class="">
-                            <a href="chovanchuyen_tung.html">
-                                <i class="fa fa-clone"></i> <span>Phiếu chờ vận chuyển</span>
-                            </a>
-                        </li>
 						
-						<li class="">
-                            <a href="hoanthanh_tung.html">
-                                <i class="fa fa-file-text"></i> <span>Phiếu đã hoàn thành</span>
-                            </a>
-                        </li>
+						
+						
 
-                        <li class="">
+                        <li class="active">
                             <a href="tonKho_Kho.html">
                                 <i class="fa fa-folder"></i> <span>Hàng tồn kho</span>
                             </a>
@@ -271,10 +290,9 @@
                         </li>
 
                     </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-
+                </section>
+                <!-- /.sidebar -->
+            </aside>
             <div class="content-wrapper">
                 <section class="content">
                     <div class="row">
@@ -283,6 +301,68 @@
                                 <div class="box-header">
                                     <h3 class="box-title">TỒN KHO</h3>
                                 </div>
+								<div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Tìm kiếm theo</h3>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                             <td>Mã hàng</td>
+                                                           <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-file"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Mã hàng...">
+                                                                </div>
+                                                            </td>
+
+                                                            <td>Danh mục</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-sliders"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Danh mục...">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tổng tồn</td>
+                                                             <td>
+                                                                        <div class="col-sm-5 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Từ</span>
+                                                                                <input type="number" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Đến</span>
+                                                                                <input type="number" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                          
+                                                        </tr>
+                                                      
+                                                    </tbody>
+                                                </table>
+                                            </div>
+										</div>
+										 <!-- /.box-body -->
+                                            <div class="box-footer clearfix">
+                                                <div class="pagination pagination-sm no-margin pull-right">
+                                                    <button type="button" class="btn btn-block btn-primary">Tìm kiếm
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped" style="width:90%;margin:0 auto">
                                         <thead>
@@ -293,90 +373,1223 @@
 												<th style="width:10%">Danh mục</th>										
                                                 <th style="width:5%">Tổng tồn</th>
 												<th style="width:10%">Ghi chú</th>
+												<th style="width:3%">Thay đổi</th>
                                             </tr>
                                           
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td style="text-align: center"> 1</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">ABS 52c</a></td>   
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">ABS 52c</a></td>   
 												<td>MCCB</td>
                                                 <td class="right">20</td>
                                                 <td></td>
+												<td>
+													<a id="btn_row" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr>
+											<tr id="row">
+                                            <td colspan="10">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Loại</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>USD</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Trước VAT(USD)</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Sau VAT(USD)</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Trước VAT(VND)</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Sau VAT(VND)</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+											</tr>
                                             <tr>
                                                 <td style="text-align: center">2</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">ABS 52c</a></td>   
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">ABS 52c</a></td>   
 												<td>MCCB</td>												
                                                 <td class="right">16</td>   
-												<td></td>												
+												<td></td>
+												<td>
+													<a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
 											</tr>
-											  <tr>
+											<tr id="row1">
+    <td colspan="10">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Tên mã sản phẩm</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-codepen" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="" readonly>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Loại</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Tổng tồn</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>USD</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trước VAT(USD)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Sau VAT(USD)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trước VAT(VND)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Sau VAT(VND)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-1">
+                        <a href="" class="btn btn-default btn-block">Hủy</a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+											<tr>
                                                 <td style="text-align: center"> 3</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">ABS 52c</a></td>  
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">ABS 52c</a></td>  
 												<td>MCCB</td>	
                                                 <td class="right">20</td> 
 												<td></td>
+												<td>
+													<a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr>
+											<tr id="row2">
+    <td colspan="10">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Tên mã sản phẩm</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-codepen" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="" readonly>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Loại</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Tổng tồn</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>USD</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trước VAT(USD)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Sau VAT(USD)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trước VAT(VND)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Sau VAT(VND)</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-1">
+                        <a href="" class="btn btn-default btn-block">Hủy</a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
 											  <tr>
                                                 <td style="text-align: center"> 4</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">ABS 52c</a></td>    
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">ABS 52c</a></td>    
 												<td>MCCB</td>												
                                                 <td class="right">20</td>          
-												<td></td>												
+												<td></td>
+												<td>
+													<a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr>
-											  <tr>
+											<tr id="row3">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											 
+											 <tr>
                                                 <td style="text-align: center"> 5</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">ABS 52c</a></td>   
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">ABS 52c</a></td>   
 												<td>MCCB</td>												
                                                 <td class="right">20</td>    
 												<td></td>
+												<td>
+													<a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr>
-                                          
+                                          <tr id="row4">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
                                             <tr>
                                                 <td style="text-align: center">6</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">Thanh cái</a></td> 
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">Thanh cái</a></td> 
 
 												<td>Phụ kiện MCCB</td>		
                                                 <td class="right">20</td> 
 												<td></td>
-                                            </tr>    
+												<td>
+													<a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>   
+											<tr id="row5">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>											
                                             <tr>
                                                 <td style="text-align: center">7</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">Thanh cái</a></td>    
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">Thanh cái</a></td>    
 												<td>Phụ kiện MCCB</td>
                                                 <td class="right">20</td>                     
 												<td></td>
+												<td>
+													<a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr> 
+											<tr id="row6">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
 											<tr>
                                                 <td style="text-align: center">8</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">Insulation barrier</a></td>   
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">Insulation barrier</a></td>   
 												<td>Phụ kiện MCCB</td>
                                                 <td class="right">0</td>
 												<td></td>
-                                            </tr> 
+												<td>
+													<a id="btn_row7" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row7">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
 											<tr>
                                                 <td style="text-align: center">9</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">Insulation barrier</a></td>  
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">Insulation barrier</a></td>  
 												<td>Phụ kiện MCCB</td>
                                                 <td class="right">242</td>                   
 												<td></td>
+												<td>
+													<a id="btn_row8" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr> 
+											<tr id="row8">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
 											<tr>
                                                 <td style="text-align: center">10</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">Insulation barrier</a></td>  
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">Insulation barrier</a></td>  
 												<td>Phụ kiện MCCB</td>
                                                 <td class="right">20</td>          
 												<td></td>
+												<td>
+													<a id="btn_row9" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr> 
+											<tr id="row9">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
 											<tr>
                                                 <td style="text-align: center">11</td>
-                                                <td style="text-align: left"><a href="chi-tiet-san-pham.html">Insulation barrier</a></td>             
+                                                <td style="text-align: left"><a href="chi-tiet-san-pham_kho.html">Insulation barrier</a></td>             
 												<td>Phụ kiện MCCB</td>
                                                 <td class="right">20</td> 
-												<td></td>												
+												<td></td>	
+												<td>
+													<a id="btn_row10" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
                                             </tr> 											
-                                         
+                                         <tr id="row10">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-6">
+																<label>Tên mã sản phẩm</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<i class="fa fa-codepen" aria-hidden="true"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="" readonly>
+																	</div>
+															</div>
+													<div class="col-md-6">
+														<label>Loại</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-tasks" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+													</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Tổng tồn</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" >
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>USD</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="" readonly>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(USD)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-usd" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<label>Trước VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<label>Sau VAT(VND)</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="fa fa-money" aria-hidden="true"></i>
+																</span>
+																<input type="text" class="form-control" placeholder="">
+															</div>
+														</div>
+													</div>
+													<br>
+													<div class="row">
+														<div class="">
+															<div class="col-md-10"></div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-default btn-block">Hủy</a>
+															</div>
+															<div class="col-md-1">
+																<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirm-change">Sửa</a>
+															</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
                                         </tbody>
 
                                         <tfoot>
@@ -386,6 +1599,7 @@
                                                 <td></td>
                                                 <td class="right">2,436</td>
                                                <td></td>
+											   <td></td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -418,20 +1632,55 @@
         <script src="../dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-            $(document).ready(function(){
-				$(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
-			});
-        </script>
+		$('#row').hide();
+        $('#btn_row').click(function () {
+            $('#row').toggle();
+        })
+        $('#row1').hide();
+        $('#btn_row1').click(function () {
+            $('#row1').toggle();
+        })
+        $('#row2').hide();
+        $('#btn_row2').click(function () {
+            $('#row2').toggle();
+        })
+        $('#row3').hide();
+        $('#btn_row3').click(function () {
+            $('#row3').toggle();
+        })
+        $('#row4').hide();
+        $('#btn_row4').click(function () {
+            $('#row4').toggle();
+        })
+        $('#row5').hide();
+        $('#btn_row5').click(function () {
+            $('#row5').toggle();
+        })
+        $('#row6').hide();
+        $('#btn_row6').click(function () {
+            $('#row6').toggle();
+        })
+        $('#row7').hide();
+        $('#btn_row7').click(function () {
+            $('#row7').toggle();
+        })
+        $('#row8').hide();
+        $('#btn_row8').click(function () {
+            $('#row8').toggle();
+        })
+        $('#row9').hide();
+        $('#btn_row9').click(function () {
+            $('#row9').toggle();
+        })
+        $('#row10').hide();
+        $('#btn_row10').click(function () {
+            $('#row10').toggle();
+        })
+        $('#row11').hide();
+        $('#btn_row11').click(function () {
+            $('#row11').toggle();
+        })
+    </script>
     </body>
 
 </html>

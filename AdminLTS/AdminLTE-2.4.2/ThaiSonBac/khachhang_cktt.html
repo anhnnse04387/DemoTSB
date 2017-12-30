@@ -61,6 +61,15 @@
                 min-width: 60px;
                 height: 50px;
             }
+			.modal-body {
+				position: relative;
+				padding: 15px;
+				background-color: white;
+			}
+			.modal-footer {
+				border-top-color: #f4f4f4;
+				background-color: white;
+			}
         </style>
     </head>
 
@@ -73,8 +82,9 @@
                     <span class="logo-mini"><b>T</b>SB</span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
-                        <img style="display: inline-block; width:50px; height:50px;" class="img-responsive"  src="dist/img/Logo TSB - Final.png" alt="Photo">
-                        <b>Thái Sơn Bắc</b>
+                        <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b>Bán hàng</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
                 </a>
 
@@ -219,7 +229,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
+					<!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -229,7 +239,7 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file-o"></i> <span>Bán Hàng</span>
+                                <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -245,34 +255,39 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieu_dang_giao.html">
+                                  <li>
+                                    <a href="phieu_dang_xu_ly.html">
                                         <i class="fa fa-list-alt"></i>
-                                        <span>Phiếu đang giao</span>
+                                        <span>Phiếu đang xử lý</span>
                                         <span class="pull-right-container">
                                             <span class="label label-primary bg-green">1</span>
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="phieudaxuat_tung.html">
+                                                                <li>
+                                    <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
-                                        <span>Phiếu đã xuất</span>
-                                        <span class="pull-right-container">
+                                        <span>Phiếu đã hoàn thành</span>
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="phieuxuatsau_tung.html">
+                                        <i class="fa fa-book"></i>
+                                        <span>Phiếu giữ hàng</span>
+										<span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="phieuxuatsau_tung.html">
-                                        <i class="fa fa-book"></i>
-                                        <span>Phiếu giữ hàng</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="workflow.html">
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
+                                    </a>
+                                </li>
+																 <li>
+                                    <a href="timeline_master.html">
+                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
                                     </a>
                                 </li>
                             </ul>
@@ -291,7 +306,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>Công nợ</span>
                                 <span class="pull-right-container">
@@ -300,7 +315,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
-                                <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
+                                <li  class="active"><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
                                 <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
                             </ul>
                         </li>
@@ -397,7 +412,8 @@
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+										
+										<a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Thanh Toán</strong></span>
                                         </a>
@@ -588,6 +604,19 @@
                                                 <td class="highlight">1,361,187,079</td>
                                                 <td></td>
                                             </tr> 
+											 <tr style="background-color:yellow">
+                                                <td id="date2"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Trả tiền hàng</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="highlight"></td>
+                                                <td style="text-align:right">30,000,000</td>
+                                                <td class="highlight">1,331,187,079</td>
+                                                <td></td>
+                                            </tr> 
                                             <tr style="background-color:yellow">
                                                 <td id="date1"></td>
                                                 <td></td>
@@ -612,7 +641,7 @@
                                                 <td>53,219,600 </td>
                                                 <td class="right">717,069,500 </td>
                                                 <td>0</td>
-                                                <td class="right">1,833,800,000</td>
+                                                <td class="right">1,288,870,079</td>
                                                 <td></td>
                                             </tr>
                                         </tfoot>
@@ -639,7 +668,7 @@
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                       <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
                                             <i class="fa fa-check-circle text-green"></i>
                                             <span><strong>Thanh Toán</strong></span>
                                         </a>
@@ -671,7 +700,60 @@
                             </div>
                         </div>
                     </div>
-                    </div>        
+                    </div>  
+ <!-- Modal -->
+                    <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <!-- Modal content-->
+                        <div class="modal-dialog">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"><b>Thanh Toán</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <table style="margin-left:20%;height:100px">
+                                    <tr>
+                                        <td><i class="fa fa-money"><b>  Thanh toán: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-yelp"><b>  CKTT: </b></td>
+                                        <td style="padding-left:15px"><input type="checkbox" value="true" id="ckttCheckbox"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" style="color:white;background-color:#32CD32" class="btn btn-default" data-toggle="modal" data-target="#popupConfirm">Thanh toán</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--popup confirm-->
+                    <div class="modal fade" id="popupConfirm" role="dialog">
+                        <div class="modal-dialog" style="width:200px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận thanh toán</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Bạn có muốn thanh toán?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+                        </div>
+                    </div>					
                 </section>
             </div>
             <footer class="main-footer">
@@ -705,6 +787,7 @@
                 var date = d + "/" + m + "/" + y;
                 document.getElementById("date").innerHTML = date;
                 document.getElementById("date1").innerHTML = date;
+				document.getElementById("date2").innerHTML = date;
                 $(function () {
                     $('#example1').DataTable()
                     $('#example2').DataTable({
@@ -717,6 +800,16 @@
                     })
                 })
             }
+        </script>
+		 <script>
+            $('#btnThanhToan').click(function () {
+                var isChecked = $('#ckttCheckbox').prop("checked");
+                if (isChecked === true) {
+                    window.location.href = "khachhang_cktt.html";
+                } else {
+                    window.location.href = "khachhang_khong_cktt.html";
+                }
+            });
         </script>
     </body>
 
