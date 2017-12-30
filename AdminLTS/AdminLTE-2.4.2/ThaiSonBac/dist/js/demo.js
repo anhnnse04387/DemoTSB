@@ -4,48 +4,46 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+var limit = 5;
+
 function deliveryQtt() {
     if(document.getElementById('delivery').value === '1') {
         $('#turn1').removeClass('noDisplay');
         $('#turn2').addClass('noDisplay');
-        $('#turn').addClass('noDisplay');
     } else if(document.getElementById('delivery').value === '2') {
         $('#turn1').removeClass('noDisplay');
         $('#turn2').removeClass('noDisplay');
-        $('#turn').removeClass('noDisplay');
     } else {
         $('#turn1').addClass('noDisplay');
         $('#turn2').addClass('noDisplay');
-        $('#turn').addClass('noDisplay');
     }
     lookup();
 }
 
 function checkQtt() {
-    if(parseInt(document.getElementById('cai_5').value) > 5 && document.getElementById('dayout').value === '13/01/2018') {
+    if(parseInt(document.getElementById('cai_5').value) > limit && document.getElementById('dayout').value === '13/01/2018') {
         swal({
             title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
-            html: '<div style="margin-left: 327px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="dist/img/xem.png"/></a></div>' 
+            html: '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="dist/img/xem.png"/></a></div>' 
                   + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
                   + '<thead>'
-                  + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th></tr>'
+                  + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th><th style="background-color: white"><img src="dist/img/soluonglay.png"/></th></tr>'
                   + '</thead>'
                   + '<tbody>'
-                  + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td></tr>'
-                  + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>03/01/2018</td></tr>'
-                  + '<tr><td>O1349</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl"/></td><td>13/01/2018</td></tr>'
+                  + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl1"/></td></tr>'
+                  + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>03/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl2"/></td></tr>'    
                   + '</tbody>'
                   + '</table>',
             showCancelButton: true,
+            width: 550,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: '<i class="fa fa-check"></i>',
             cancelButtonText: '<i class="fa fa-close"></i>',
         }).then((result) => {
             if (result.value) {
-                document.getElementById("cai_5").value = document.getElementById("sl").value;
-                configSp("5");
+                limit += parseInt(document.getElementById("sl1").value) + parseInt(document.getElementById("sl2").value);
             }
         });
         $('.btnCreate').addClass('noDisplay');
@@ -194,25 +192,23 @@ function configCkAll(stt) {
         document.getElementById("vat_2").value = 0;
     }
     document.getElementById("tien_vat_" + stt).value = tien_vat.toLocaleString('en');
-    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');
-    if($("#delivery").val() === '2') {                
-        document.getElementById("tong_cai").value = ($("#tong_cai_1").val() === '' ? 0 : parseInt($("#tong_cai_1").val())) +
+    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');       
+    document.getElementById("tong_cai").value = ($("#tong_cai_1").val() === '' ? 0 : parseInt($("#tong_cai_1").val())) +
                                                     ($("#tong_cai_2").val() === '' ? 0 : parseInt($("#tong_cai_2").val()));
-        document.getElementById("tong_thung").value = ($("#tong_thung_1").val() === '' ? 0 : parseInt($("#tong_thung_1").val())) +
+    document.getElementById("tong_thung").value = ($("#tong_thung_1").val() === '' ? 0 : parseInt($("#tong_thung_1").val())) +
                                                     ($("#tong_thung_2").val() === '' ? 0 : parseInt($("#tong_thung_2").val()));
-        document.getElementById("tong_tien_chua_ck").value = (($("#tong_tien_chua_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+    document.getElementById("tong_tien_chua_ck").value = (($("#tong_tien_chua_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
                 ($("#tong_tien_chua_ck_2").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-        document.getElementById("tien_ck").value = (($("#tien_ck_1").val() === '' ? 0 : parseInt($("#tien_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+    document.getElementById("tien_ck").value = (($("#tien_ck_1").val() === '' ? 0 : parseInt($("#tien_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
                 ($("#tien_ck_2").val() === '' ? 0 : parseInt($("#tien_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-        document.getElementById("con_lai").value = (($("#con_lai_1").val() === '' ? 0 : parseInt($("#con_lai_1").val().replace(new RegExp(',', 'g'), ''))) +
+    document.getElementById("con_lai").value = (($("#con_lai_1").val() === '' ? 0 : parseInt($("#con_lai_1").val().replace(new RegExp(',', 'g'), ''))) +
                 ($("#con_lai_2").val() === '' ? 0 : parseInt($("#con_lai_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-        document.getElementById("tien_vat").value = (($("#tien_vat_1").val() === '' ? 0 : parseInt($("#tien_vat_1").val().replace(new RegExp(',', 'g'), ''))) +
+    document.getElementById("tien_vat").value = (($("#tien_vat_1").val() === '' ? 0 : parseInt($("#tien_vat_1").val().replace(new RegExp(',', 'g'), ''))) +
                 ($("#tien_vat_2").val() === '' ? 0 : parseInt($("#tien_vat_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-        document.getElementById("tong_tien_da_ck").value = (($("#tong_tien_da_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
+    document.getElementById("tong_tien_da_ck").value = (($("#tong_tien_da_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
                 ($("#tong_tien_da_ck_2").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-        document.getElementById("tong_ck").value = $("#tong_ck_1").val() === '' ? 0 : parseInt($("#tong_ck_1").val());
-        document.getElementById("vat").value = $("#vat_1").val() === '' ? 0 : parseInt($("#vat_1").val());                                  
-    } 
+    document.getElementById("tong_ck").value = $("#tong_ck_1").val() === '' ? 0 : parseInt($("#tong_ck_1").val());
+    document.getElementById("vat").value = $("#vat_1").val() === '' ? 0 : parseInt($("#vat_1").val());                                   
 }
 
 function configCk(stt) {
@@ -309,30 +305,30 @@ function configSp(stt) {
 				(document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value));
         document.getElementById("tong_thung_1").value = tong_thung;
         document.getElementById("tong_cai_1").value = tong_cai;
-        configCkAll('1');  
     } else {
         tong_thung = $("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val());
         tong_cai = document.getElementById("cai_7").value === '' ? 0 : parseInt(document.getElementById("cai_7").value);
         document.getElementById("tong_thung_2").value = tong_thung;
         document.getElementById("tong_cai_2").value = tong_cai;
-        configCkAll('2');
     }
 }
 
 function lookup() {
     var soCk = 14;
-    var i = 0;
-    if($("#delivery").val() === '1') {
-        soCk = 6;        
-    }
+    var i = 0;    
     if ($("#donVi").val() === '1') {
         document.getElementById("AddressDeliver").value = "Chu Sang - Nguyen Cong Tru, HN";
         document.getElementById("AddressContact").value = "P9 H5 TT Nguyen Cong Tru, Ha Noi";
         document.getElementById("TaxCode").value = "0101788080";
         for(i = 0; i < soCk; i++) {
+            if($("#delivery").val() === '1' && i === 6) {
+                continue;        
+            }
             document.getElementById("ck_" + (i+1)).value = "10";
             if(i < 7) {
-                configSp('' + (i + 1));
+                if($('#dongia_' + (i + 1)).val() !== '') {
+                    configSp('' + (i + 1));
+                }
             }
         }
     } else if ($("#donVi").val() === '2') {
@@ -340,9 +336,14 @@ function lookup() {
         document.getElementById("AddressContact").value = "9, 3.5 Gamuda Gardens, Ha Noi";
         document.getElementById("TaxCode").value = "0104879265";
         for(i = 0; i < soCk; i++) {
+            if($("#delivery").val() === '1' && i === 6) {
+                continue;        
+            }
             document.getElementById("ck_" + (i+1)).value = "20";
             if(i < 7) {
-                configSp('' + (i + 1));
+                if($('#dongia_' + (i + 1)).val() !== '') {
+                    configSp('' + (i + 1));
+                }
             }
         }
     }
