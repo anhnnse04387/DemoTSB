@@ -27,6 +27,22 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+        <style>
+            #scrollContainer p {
+                margin: 0;
+                line-height: 30px;
+                font-size: 20px;
+                color: white;
+            }
+            #scrollContainer {
+                height: 30px;
+                margin-top: 10px;
+                overflow: hidden;
+            }
+            #scrollBox {
+                position: relative;   
+            }
+        </style>
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -43,14 +59,17 @@
                         <b style="margin-right: 35px;">Phân phối</b>
                         <span style="position: absolute; margin-top: 15px; margin-left: -130px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
-                </a>
 
+                </a>
+                
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
+
                     </a>
+                    
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
@@ -158,7 +177,12 @@
                             </li>
                         </ul>
                     </div>
-
+                    <div id="scrollContainer" class="navbar-custom-menu pull-left" >
+                        <div id="scrollBox">    
+                            <p>Ngày 31/12/2017: Inbox để biết thêm chi tiết</p>
+                            <p>Ngày 05/01/2018: Hãy sử lý đơn hàng HD-83157-1</p>
+                        </div>
+                    </div>    
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -986,7 +1010,7 @@
                                     x: 22,
                                     y: 3
                                 }, {
-                                    x:31,
+                                    x: 31,
                                     y: 4
                                 }],
                             label: "Tháng 12",
@@ -1025,6 +1049,27 @@
                             }, ],
                     }
                 }
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                function scroll() {
+                    $("#scrollBox").hover(function () {
+                        $("#scrollBox").stop();
+                        window.clearInterval(scrollInterval);
+                    });
+                    var x = 0;
+                    var scrollInterval = setInterval(function () {
+                        $("#scrollBox").delay(2000).animate({top: "-=30"}, 1000);
+                        if (++x === 2) {
+                            window.clearInterval(scrollInterval);
+                            $("#scrollBox").delay(2000).animate({top: "0px"}, 1000);
+                            scroll();
+                        }
+                    });
+                }
+                ;
+                scroll();
             });
         </script>
     </body>
