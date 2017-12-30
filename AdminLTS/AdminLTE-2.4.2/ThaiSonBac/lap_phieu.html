@@ -473,7 +473,7 @@
                                                                 </select></td>
                                                             <td class="col3"><i class="fa fa-file"></i><b> Lô số</b><span style="color: red;">*</span>
                                                             </td>
-                                                            <td class="col4"><input type="text" class="form-control pointerCursor" value="O1349-0" onclick="$(this).removeClass('pointerCursor');
+                                                            <td class="col4"><input type="text" class="form-control pointerCursor" id="lo" value="O1349-0" onclick="$(this).removeClass('pointerCursor');
                                                                     $(this).addClass('textCursor');
                                                                     this.select();">
                                                             </td>
@@ -511,7 +511,7 @@
                                         <div class="row" style="margin-top: 10px;">
                                             <div class="col-xs-12 table-responsive">
                                                 <fieldset>
-                                                    <legend><h4><b>Tổng đơn hàng</b></h4></legend>                                        
+                                                    <legend><h4><b>Chi tiết đơn hàng</b></h4></legend>                                        
                                                     <table class="table table-striped mainTable">
                                                         <thead>
                                                             <tr>
@@ -533,247 +533,91 @@
                                                                 <td style="vertical-align: middle;">1</td>
                                                                 <td style="vertical-align: middle;">ABN 52c</td>
                                                                 <td style="vertical-align: middle;">15A</td>
-                                                                <td><output id="cai_8" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_8" title="20 cái/1" style="text-align: right;"></output></td>
-                                                                <td>590,000</td>
-                                                                <td><output id="tien_chua_ck_8" class="number"></output></td>
-                                                                <td><output id="ck_8" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_8" class="number"></output></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">2</td>
-                                                                <td style="vertical-align: middle;">TS1000N AG6 3P</td>
-                                                                <td style="vertical-align: middle;">1000A</td>
-                                                                <td><output id="cai_9" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_9" title="20 cái/1" style="text-align: right;"></output></td>
-                                                                <td>80,807,000</td>
-                                                                <td><output id="tien_chua_ck_9" class="number"></output></td>
-                                                                <td><output id="ck_9" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_9" class="number"></output></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">3</td>
-                                                                <td style="vertical-align: middle;">ABS 32c</td>
-                                                                <td style="vertical-align: middle;">5A</td>
-                                                                <td><output id="cai_10" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_10" title="20 cái/1" style="text-align: right;"></output></td>
-                                                                <td>1,859,000</td>
-                                                                <td><output id="tien_chua_ck_10" class="number"></output></td>
-                                                                <td><output id="ck_10" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_10" class="number"></output></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">4</td>
-                                                                <td style="vertical-align: middle;">ABH 53c</td>
-                                                                <td style="vertical-align: middle;">30A</td>
-                                                                <td><output id="cai_11" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_11" title="20 cái/1" style="text-align: right;"></output></td>
-                                                                <td>2,375,000</td>
-                                                                <td><output id="tien_chua_ck_11" class="number"></output></td>
-                                                                <td><output id="ck_11" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_11" class="number"></output></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">5</td>
-                                                                <td style="vertical-align: middle;">ABE103-G</td>
-                                                                <td style="vertical-align: middle;">63A</td>
-                                                                <td><output id="cai_12" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_12" title="1 cái/1" style="text-align: right;"></output></td>
-                                                                <td>8,443,000</td>
-                                                                <td><output id="tien_chua_ck_12" class="number"></output></td>
-                                                                <td><output id="ck_12" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_12" class="number"></output></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">6</td>
-                                                                <td style="vertical-align: middle;"><output id="name_13"></output></td>
-                                                                <td style="vertical-align: middle;"><output id="ampe_13"></output></td>
-                                                                <td><output id="cai_13" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_13" title="20 cái/1" style="text-align: right;"></output></td>
-                                                                <td><output id="dongia_13"></output></td>
-                                                                <td><output id="tien_chua_ck_13" class="number"></output></td>
-                                                                <td><output id="ck_13" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_13" class="number"></output></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">7</td>
-                                                                <td style="vertical-align: middle;"><output id="name_14"></output></td>
-                                                                <td style="vertical-align: middle;"><output id="ampe_14"></output></td>
-                                                                <td><output id="cai_14" style="text-align: right;"></output></td>
-                                                                <td><output id="thung_14" title="20 cái/1" style="text-align: right;"></output></td>
-                                                                <td><output id="dongia_14"></output></td>
-                                                                <td><output id="tien_chua_ck_14" class="number"></output></td>
-                                                                <td><output id="ck_14" style="text-align: right;"></output></td>
-                                                                <td><output id="tien_da_ck_14" class="number"></output></td>
-                                                            </tr>
-                                                            <tr style="background-color: #544d61;color: #fff;">
-                                                                <td></td>
-                                                                <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_cai" style="color: #fff; font-weight: bold;"></output></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_thung" style="color: #fff; font-weight: bold;"></output></td>
-                                                                <td></td><td></td><td></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_chua_ck" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                            </tr>
-                                                            <tr style="background-color: #544d61;color: #fff;">
-                                                                <td></td>
-                                                                <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td><td></td>
-                                                                <td><output id="tong_ck" style="color: #fff; font-weight: bold; text-align: right;"></output></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_ck" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                            </tr>
-                                                            <tr style="background-color: #544d61;color: #fff;">
-                                                                <td></td>
-                                                                <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td><td></td><td></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="con_lai" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                            </tr>
-                                                            <tr style="background-color: #544d61;color: #fff;">
-                                                                <td></td>
-                                                                <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td><td></td>
-                                                                <td>
-                                                                    <output id="vat" style="color: #fff; font-weight: bold; text-align: right;"></output>
-                                                                </td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_vat" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                            </tr>
-                                                            <tr style="background-color: #544d61;color: #fff;">
-                                                                <td></td>
-                                                                <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td><td></td><td></td>
-                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_da_ck" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </fieldset>
-                                                <fieldset id="turn1" class="noDisplay">
-                                                    <legend><h4><b>Giao hàng đợt 1</b></h4></legend>
-                                                    <table class="customTable" style="margin-left: 55px; margin-bottom: 15px;">
-                                                        <tr>
-                                                            <td class="col1">
-                                                                <i class="fa fa-calendar"></i><b> Xuất ngày</b><span style="color: red;">*</span>
-                                                            </td>
-                                                            <td class="col2">
-                                                                <input type="text" id="dayout" style="padding-left: 12px;" onchange="checkQtt();" value="13/01/2018" class="form-control datepicker pointerCursor">
-                                                            </td>
-                                                        </tr>
-                                                    </table>                                           
-                                                    <table class="table table-striped mainTable">
-                                                        <thead>
-                                                            <tr>
-                                                                <th rowspan="2" style="width: 30px;">STT</th>
-                                                                <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
-                                                                <th colspan="2">Số lượng</th>
-                                                                <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
-                                                                <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
-                                                                <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
-                                                                <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th style="width: 70px;">Cái</th>
-                                                                <th style="width: 70px;">Thùng</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="vertical-align: middle;">1</td>
-                                                                <td style="vertical-align: middle;">ABN 52c</td>
-                                                                <td style="vertical-align: middle;">15A</td>
-                                                                <td><input type="text" class="form-control" id="cai_1" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configSp('1');
-                                                                                   return false;"/></td>
-                                                                <td><input type="text" class="form-control" id="thung_1" 
-                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('1');
-                                                                                   return false;"/></td>
+                                                                                   return false;" id="cai_1"/></td>
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
+                                                                           onkeyup="configThung('1');
+                                                                                   return false;" id="thung_1" title="20 cái/1"/></td>
                                                                 <td><output id="dongia_1" class="number">590000</output></td>
                                                                 <td><output id="tien_chua_ck_1"></output></td>
-                                                                <td><input type="text" class="form-control" id="ck_1" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configCk('1');
-                                                                                   return false;"/></td>
-                                                                <td><output id="tien_da_ck_1" class="number"></output></td>
+                                                                                   return false;" id="ck_1"/></td>
+                                                                <td><output id="tien_da_ck_1"></output></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">2</td>
                                                                 <td style="vertical-align: middle;">TS1000N AG6 3P</td>
                                                                 <td style="vertical-align: middle;">1000A</td>
-                                                                <td><input type="text" class="form-control" id="cai_2" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configSp('2');
-                                                                                   return false;"/></td>
-                                                                <td><input type="text" class="form-control" id="thung_2" 
-                                                                           style="text-align: right;" title="20 cái/1" onkeyup="configThung('2');
-                                                                                   return false;"/></td>
+                                                                                   return false;" id="cai_2"/></td>
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
+                                                                           onkeyup="configThung('2');
+                                                                                   return false;" id="thung_2" title="20 cái/1"/></td>
                                                                 <td><output id="dongia_2" class="number">80807000</output></td>
                                                                 <td><output id="tien_chua_ck_2"></output></td>
-                                                                <td><input type="text" class="form-control" id="ck_2" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configCk('2');
-                                                                                   return false;"/></td>
-                                                                <td><output id="tien_da_ck_2" class="number"></output></td>
+                                                                                   return false;" id="ck_2"/></td>
+                                                                <td><output id="tien_da_ck_2"></output></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">3</td>
                                                                 <td style="vertical-align: middle;">ABS 32c</td>
                                                                 <td style="vertical-align: middle;">5A</td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="cai_3" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configSp('3');
-                                                                                   return false;"/></td>
-                                                                <td><input type="text" class="form-control" id="thung_3" 
-                                                                           style="text-align: right;" title="20 cái/1" onkeyup="configThung('3');
-                                                                                   return false;"/></td>
+                                                                                   return false;" id="cai_3"/></td>
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
+                                                                           onkeyup="configThung('3');
+                                                                                   return false;" id="thung_3" title="20 cái/1"/></td>
                                                                 <td><output id="dongia_3" class="number">1859000</output></td>
                                                                 <td><output id="tien_chua_ck_3"></output></td>
-                                                                <td><input type="text" class="form-control" id="ck_3" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configCk('3');
-                                                                                   return false;"/></td>
-                                                                <td><output id="tien_da_ck_3" class="number"></output></td>
+                                                                                   return false;" id="ck_3"/></td>
+                                                                <td><output id="tien_da_ck_3"></output></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">4</td>
                                                                 <td style="vertical-align: middle;">ABH 53c</td>
                                                                 <td style="vertical-align: middle;">30A</td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="cai_4" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configSp('4');
-                                                                                   return false;"/></td>
-                                                                <td><input type="text" class="form-control" id="thung_4" 
-                                                                           style="text-align: right;" title="20 cái/1" onkeyup="configThung('4');
-                                                                                   return false;"/></td>
+                                                                                   return false;" id="cai_4"/></td>
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
+                                                                           onkeyup="configThung('4');
+                                                                                   return false;" id="thung_4" title="20 cái/1"/></td>
                                                                 <td><output id="dongia_4" class="number">2375000</output></td>
                                                                 <td><output id="tien_chua_ck_4"></output></td>
-                                                                <td><input type="text" class="form-control" id="ck_4" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configCk('4');
-                                                                                   return false;"/></td>
-                                                                <td><output id="tien_da_ck_4" class="number"></output></td>
+                                                                                   return false;" id="ck_4"/></td>
+                                                                <td><output id="tien_da_ck_4"></output></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">5</td>
                                                                 <td style="vertical-align: middle;">ABE103-G</td>
                                                                 <td style="vertical-align: middle;">63A</td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="cai_5" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configSp('5');
-                                                                                   return false;"/></td>
-                                                                <td><input type="text" class="form-control" id="thung_5" 
-                                                                           style="text-align: right;" title="1 cái/1" onkeyup="configThung('5');
-                                                                                   return false;"/></td>
+                                                                                   return false;" id="cai_5"/></td>
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
+                                                                           onkeyup="configThung('5');
+                                                                                   return false;" id="thung_5" title="20 cái/1"/></td>
                                                                 <td><output id="dongia_5" class="number">8443000</output></td>
                                                                 <td><output id="tien_chua_ck_5"></output></td>
-                                                                <td><input type="text" class="form-control" id="ck_5" style="text-align: right;"
+                                                                <td><input type="text" class="form-control" style="text-align: right;"
                                                                            onkeyup="configCk('5');
-                                                                                   return false;"/></td>
-                                                                <td><output id="tien_da_ck_5" class="number"></output></td>
+                                                                                   return false;" id="ck_5"/></td>
+                                                                <td><output id="tien_da_ck_5"></output></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">6</td>
                                                                 <td style="vertical-align: middle; width: 24.7%;"><input type="text" class="form-control" id="name_6"/></td>
-                                                                <td style="vertical-align: middle;"><input type="text" class="form-control" id="ampe_6"/></td>
+                                                                <td style="vertical-align: middle;"><input type="text" class="form-control ampe"/></td>
                                                                 <td><input type="text" class="form-control" id="cai_6" style="text-align: right;"
                                                                            onkeyup="configSp('6');
                                                                                    return false;"/></td>
@@ -785,7 +629,7 @@
                                                                 <td><input type="text" class="form-control" id="ck_6" style="text-align: right;"
                                                                            onkeyup="configCk('6');
                                                                                    return false;"/></td>
-                                                                <td><output id="tien_da_ck_6" class="number"></output></td>
+                                                                <td><output id="tien_da_ck_6"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
@@ -821,7 +665,7 @@
                                                                 <td></td>
                                                                 <td></td><td></td>
                                                                 <td>
-                                                                    <input type="text" class="form-control" id="vat_1" style="text-align: right; float: right;; font-weight: bold;"
+                                                                    <input type="text" class="form-control" id="vat_1" style="text-align: right; float: right; font-weight: bold;"
                                                                            onkeyup="configCkAll('1');
                                                                                    return false;"/>
                                                                 </td>
@@ -838,18 +682,20 @@
                                                         </tbody>
                                                     </table>
                                                 </fieldset>
-                                                <fieldset id="turn2" class="noDisplay">
-                                                    <legend><h4><b>Giao hàng đợt 2</b></h4></legend>
+                                                <fieldset id="turn1" class="noDisplay">
+                                                    <legend><h4><b>Giao hàng đợt 1</b></h4></legend>
                                                     <table class="customTable" style="margin-left: 55px; margin-bottom: 15px;">
                                                         <tr>
                                                             <td class="col1">
                                                                 <i class="fa fa-calendar"></i><b> Xuất ngày</b><span style="color: red;">*</span>
                                                             </td>
                                                             <td class="col2">
-                                                                <input type="text" style="padding-left: 12px;" value="15/01/2018" class="form-control datepicker pointerCursor">
+                                                                <input type="text" style="padding-left: 12px;" value="13/01/2018" class="form-control datepicker pointerCursor">
                                                             </td>
+                                                            <td class="col3"><i class="fa fa-file"></i><b> Lô số</b></td>
+                                                            <td class="col4"><input class="form-control" disabled id="lo_1"/></td>
                                                         </tr>
-                                                    </table>    
+                                                    </table>                                           
                                                     <table class="table table-striped mainTable">
                                                         <thead>
                                                             <tr>
@@ -869,20 +715,37 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">1</td>
-                                                                <td style="vertical-align: middle; width: 24.7%;"><input type="text" class="form-control" id="name_7"/></td>
-                                                                <td style="vertical-align: middle;"><input type="text" class="form-control" id="ampe_7"/></td>
+                                                                <td style="vertical-align: middle;">ABE103-G</td>
+                                                                <td style="vertical-align: middle;">63A</td>
                                                                 <td><input type="text" class="form-control" id="cai_7" style="text-align: right;"
                                                                            onkeyup="configSp('7');
                                                                                    return false;"/></td>
                                                                 <td><input type="text" class="form-control" id="thung_7" 
                                                                            title="20 cái/1" style="text-align: right;" onkeyup="configThung('7');
                                                                                    return false;"/></td>
-                                                                <td><output id="dongia_7"></output></td>
+                                                                <td><output id="dongia_7" class="number">8443000</output></td>
                                                                 <td><output id="tien_chua_ck_7"></output></td>
                                                                 <td><input type="text" class="form-control" id="ck_7" style="text-align: right;"
                                                                            onkeyup="configCk('7');
                                                                                    return false;"/></td>
                                                                 <td><output id="tien_da_ck_7" class="number"></output></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">2</td>
+                                                                <td style="vertical-align: middle; width: 24.7%;"><input type="text" class="form-control" id="name_8"/></td>
+                                                                <td style="vertical-align: middle;"><input type="text" class="form-control ampe"/></td>
+                                                                <td><input type="text" class="form-control" id="cai_8" style="text-align: right;"
+                                                                           onkeyup="configSp('8');
+                                                                                   return false;"/></td>
+                                                                <td><input type="text" class="form-control" id="thung_8" 
+                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('8');
+                                                                                   return false;"/></td>
+                                                                <td><output id="dongia_8"></output></td>
+                                                                <td><output id="tien_chua_ck_8"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck_8" style="text-align: right;"
+                                                                           onkeyup="configCk('8');
+                                                                                   return false;"/></td>
+                                                                <td><output id="tien_da_ck_8" class="number"></output></td>
                                                             </tr>
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
@@ -918,7 +781,7 @@
                                                                 <td></td>
                                                                 <td></td><td></td>
                                                                 <td>
-                                                                    <input type="text" class="form-control" id="vat_2" style="text-align: right; float: right;; font-weight: bold;"
+                                                                    <input type="text" class="form-control" id="vat_2" style="text-align: right; float: right; font-weight: bold;"
                                                                            onkeyup="configCkAll('2');
                                                                                    return false;"/>
                                                                 </td>
@@ -931,6 +794,105 @@
                                                                 <td></td>
                                                                 <td></td><td></td><td></td>
                                                                 <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_da_ck_2" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </fieldset>
+                                                <fieldset id="turn2" class="noDisplay">
+                                                    <legend><h4><b>Giao hàng đợt 2</b></h4></legend>
+                                                    <table class="customTable" style="margin-left: 55px; margin-bottom: 15px;">
+                                                        <tr>
+                                                            <td class="col1">
+                                                                <i class="fa fa-calendar"></i><b> Xuất ngày</b><span style="color: red;">*</span>
+                                                            </td>
+                                                            <td class="col2">
+                                                                <input type="text" style="padding-left: 12px;" value="15/01/2018" class="form-control datepicker pointerCursor">
+                                                            </td>
+                                                            <td class="col3"><i class="fa fa-file"></i><b> Lô số</b></td>
+                                                            <td class="col4"><input class="form-control" disabled id="lo_2"/></td>
+                                                        </tr>
+                                                    </table>    
+                                                    <table class="table table-striped mainTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th rowspan="2" style="width: 30px;">STT</th>
+                                                                <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                                <th colspan="2">Số lượng</th>
+                                                                <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                                <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                                <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                                <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th style="width: 70px;">Cái</th>
+                                                                <th style="width: 70px;">Thùng</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">1</td>
+                                                                <td style="vertical-align: middle; width: 24.7%;"><input type="text" class="form-control" id="name_9"/></td>
+                                                                <td style="vertical-align: middle;"><input type="text" class="form-control ampe"/></td>
+                                                                <td><input type="text" class="form-control" id="cai_9" style="text-align: right;"
+                                                                           onkeyup="configSp('9');
+                                                                                   return false;"/></td>
+                                                                <td><input type="text" class="form-control" id="thung_9" 
+                                                                           title="20 cái/1" style="text-align: right;" onkeyup="configThung('9');
+                                                                                   return false;"/></td>
+                                                                <td><output id="dongia_9"></output></td>
+                                                                <td><output id="tien_chua_ck_9"></output></td>
+                                                                <td><input type="text" class="form-control" id="ck_9" style="text-align: right;"
+                                                                           onkeyup="configCk('9');
+                                                                                   return false;"/></td>
+                                                                <td><output id="tien_da_ck_9" class="number"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_cai_3" style="color: #fff; font-weight: bold;"></output></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_thung_3" style="color: #fff; font-weight: bold;"></output></td>
+                                                                <td></td><td></td><td></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_chua_ck_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td>
+                                                                <td><input type="text" class="form-control" id="tong_ck_3" style="text-align: right; float: right; font-weight: bold;"
+                                                                           onkeyup="configCkAll('3');
+                                                                                   return false;"/></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_ck_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td><td></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="con_lai_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td>
+                                                                <td>
+                                                                    <input type="text" class="form-control" id="vat_3" style="text-align: right; float: right;; font-weight: bold;"
+                                                                           onkeyup="configCkAll('3');
+                                                                                   return false;"/>
+                                                                </td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tien_vat_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                            </tr>
+                                                            <tr style="background-color: #544d61;color: #fff;">
+                                                                <td></td>
+                                                                <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td><td></td><td></td>
+                                                                <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_da_ck_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -1013,85 +975,66 @@
                                                 "ABN 52c",
                                                 "TS1000N AG6 3P",
                                                 "ABS 32c",
-                                                "ABH 53c"
+                                                "ABH 53c",
+                                                "ABE103-G"
                                             ];
                                             var ampe = [
                                                 "5A",
                                                 "15A",
                                                 "30A",
-                                                "63A"
+                                                "63A",
+                                                "1000A"
                                             ];
                                             $("#name_6").autocomplete({
                                                 source: availableTags,
                                                 change: function () {
                                                     if ($('#name_6').val() === 'ABN 52c') {
                                                         document.getElementById('dongia_6').value = '590,000';
-                                                        document.getElementById('name_13').value = 'ABN 52c';
-                                                        document.getElementById('dongia_13').value = '590,000';
                                                     } else if ($('#name_6').val() === 'TS1000N AG6 3P') {
                                                         document.getElementById('dongia_6').value = '80,807,000';
-                                                        document.getElementById('name_13').value = 'TS1000N AG6 3P';
-                                                        document.getElementById('dongia_13').value = '80,807,000';
                                                     } else if ($('#name_6').val() === 'ABS 32c') {
                                                         document.getElementById('dongia_6').value = '1,859,000';
-                                                        document.getElementById('name_13').value = 'ABS 32c';
-                                                        document.getElementById('dongia_13').value = '1,859,000';
                                                     } else if ($('#name_6').val() === 'ABH 53c') {
                                                         document.getElementById('dongia_6').value = '2,375,000';
-                                                        document.getElementById('name_13').value = 'ABH 53c';
-                                                        document.getElementById('dongia_13').value = '2,375,000';
+                                                    } else {
+                                                        document.getElementById('dongia_6').value = '8,443,000';
                                                     }
                                                 }
                                             });
-                                            $("#name_7").autocomplete({
+                                            $("#name_8").autocomplete({
                                                 source: availableTags,
                                                 change: function () {
-                                                    if ($('#name_7').val() === 'ABN 52c') {
-                                                        document.getElementById('dongia_7').value = '590,000';
-                                                        document.getElementById('name_14').value = 'ABN 52c';
-                                                        document.getElementById('dongia_14').value = '590,000';
-                                                    } else if ($('#name_7').val() === 'TS1000N AG6 3P') {
-                                                        document.getElementById('dongia_7').value = '80,807,000';
-                                                        document.getElementById('name_14').value = 'TS1000N AG6 3P';
-                                                        document.getElementById('dongia_14').value = '80,807,000';
-                                                    } else if ($('#name_7').val() === 'ABS 32c') {
-                                                        document.getElementById('dongia_7').value = '1,859,000';
-                                                        document.getElementById('name_14').value = 'TS1000N AG6 3P';
-                                                        document.getElementById('dongia_14').value = '80,807,000';
-                                                    } else if ($('#name_7').val() === 'ABH 53c') {
-                                                        document.getElementById('dongia_7').value = '2,375,000';
-                                                        document.getElementById('name_14').value = 'ABH 53c';
-                                                        document.getElementById('dongia_14').value = '2,375,000';
+                                                    if ($('#name_8').val() === 'ABN 52c') {
+                                                        document.getElementById('dongia_8').value = '590,000';
+                                                    } else if ($('#name_8').val() === 'TS1000N AG6 3P') {
+                                                        document.getElementById('dongia_8').value = '80,807,000';
+                                                    } else if ($('#name_8').val() === 'ABS 32c') {
+                                                        document.getElementById('dongia_8').value = '1,859,000';
+                                                    } else if ($('#name_8').val() === 'ABH 53c') {
+                                                        document.getElementById('dongia_8').value = '2,375,000';
+                                                    } else {
+                                                        document.getElementById('dongia_8').value = '8,443,000';
                                                     }
                                                 }
                                             });
-                                            $("#ampe_6").autocomplete({
-                                                source: ampe,
+                                            $("#name_9").autocomplete({
+                                                source: availableTags,
                                                 change: function () {
-                                                    if ($('#ampe_6').val() === '5A') {
-                                                        document.getElementById('ampe_13').value = '5A';
-                                                    } else if ($('#ampe_6').val() === '15A') {
-                                                        document.getElementById('ampe_13').value = '15A';
-                                                    } else if ($('#ampe_6').val() === '30A') {
-                                                        document.getElementById('ampe_13').value = '30A';
-                                                    } else if ($('#ampe_6').val() === '63A') {
-                                                        document.getElementById('ampe_13').value = '63A';
+                                                    if ($('#name_9').val() === 'ABN 52c') {
+                                                        document.getElementById('dongia_9').value = '590,000';
+                                                    } else if ($('#name_9').val() === 'TS1000N AG6 3P') {
+                                                        document.getElementById('dongia_9').value = '80,807,000';
+                                                    } else if ($('#name_9').val() === 'ABS 32c') {
+                                                        document.getElementById('dongia_9').value = '1,859,000';
+                                                    } else if ($('#name_9').val() === 'ABH 53c') {
+                                                        document.getElementById('dongia_9').value = '2,375,000';
+                                                    } else {
+                                                        document.getElementById('dongia_9').value = '8,443,000';
                                                     }
                                                 }
                                             });
-                                            $("#ampe_7").autocomplete({
-                                                source: ampe,
-                                                change: function () {
-                                                    if ($('#ampe_7').val() === '5A') {
-                                                        document.getElementById('ampe_14').value = '5A';
-                                                    } else if ($('#ampe_7').val() === '15A') {
-                                                        document.getElementById('ampe_14').value = '15A';
-                                                    } else if ($('#ampe_7').val() === '30A') {
-                                                        document.getElementById('ampe_14').value = '30A';
-                                                    } else if ($('#ampe_7').val() === '63A') {
-                                                        document.getElementById('ampe_14').value = '63A';
-                                                    }
-                                                }
+                                            $(".ampe").autocomplete({
+                                                source: ampe
                                             });
                                         });
         </script>

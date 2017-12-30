@@ -4,15 +4,15 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
-var limit = 5;
-
 function deliveryQtt() {
     if(document.getElementById('delivery').value === '1') {
-        $('#turn1').removeClass('noDisplay');
+        $('#turn1').addClass('noDisplay');
         $('#turn2').addClass('noDisplay');
     } else if(document.getElementById('delivery').value === '2') {
         $('#turn1').removeClass('noDisplay');
         $('#turn2').removeClass('noDisplay');
+        document.getElementById('lo_1').value = $('#lo').val() + '#1';
+        document.getElementById('lo_2').value = $('#lo').val() + '#2';
     } else {
         $('#turn1').addClass('noDisplay');
         $('#turn2').addClass('noDisplay');
@@ -21,7 +21,8 @@ function deliveryQtt() {
 }
 
 function checkQtt() {
-    if(parseInt(document.getElementById('cai_5').value) > limit && document.getElementById('dayout').value === '13/01/2018') {
+    if(parseInt(document.getElementById('cai_7').value) > parseInt(document.getElementById('cai_5').value)) {
+        document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
         swal({
             title: '<img src="dist/img/messagePic_3.png"/>',
             type: 'error',
@@ -46,9 +47,6 @@ function checkQtt() {
                 limit += parseInt(document.getElementById("sl1").value) + parseInt(document.getElementById("sl2").value);
             }
         });
-        $('.btnCreate').addClass('noDisplay');
-    } else {
-        $('.btnCreate').removeClass('noDisplay');
     }
 }
 
@@ -110,6 +108,22 @@ function autoFillCustomer() {
     }
 }
 
+function autofillKho() {
+    document.getElementById("address").value = "17F, Yonsei Jaedan Severance Bldg. 84-11, 5ga, Namdaemun-ro, Jung-gu, Seoul 100-753, Korea.";
+    document.getElementById("tax").value = "0310960722";
+    document.getElementById("phone").value = "82-2-2034-4919";
+}
+
+function nhaphang() {
+    var cai = 0;
+    if (parseInt($("#sl").val().replace(new RegExp(',', 'g'), '')) > 0) {
+        cai = parseInt($("#sl").val().replace(new RegExp(',', 'g'), ''));
+    }
+    document.getElementById('tong_so').value = $('#sl').val();
+    document.getElementById('tien').value = (cai * parseFloat($("#gia").val().replace('.', '')) / 100).toFixed(2);
+    document.getElementById('tong_tien').value = $('#tien').val();
+}
+
 function autoFillProvider() {
     if ($("#donViP").val() === '1') {
         document.getElementById("debtP").value = "26,262,716,484";
@@ -158,6 +172,8 @@ function configCkAll(stt) {
     var ckTong = 0;
     var tien_ck = 0;
     var vat = 0;
+    var tong_cai = 0;
+    var tong_thung = 0;
     var tien_vat = 0;
     var tien_chua_ck = 0;
     if (parseFloat(document.getElementById("tong_ck_" + stt).value) > 1) {
@@ -172,68 +188,68 @@ function configCkAll(stt) {
             ($("#tien_da_ck_3").val() === '' ? 0 : parseInt($("#tien_da_ck_3").val().replace(new RegExp(',', 'g'), ''))) +
             ($("#tien_da_ck_4").val() === '' ? 0 : parseInt($("#tien_da_ck_4").val().replace(new RegExp(',', 'g'), ''))) +
             ($("#tien_da_ck_5").val() === '' ? 0 : parseInt($("#tien_da_ck_5").val().replace(new RegExp(',', 'g'), ''))) +
-			($("#tien_da_ck_6").val() === '' ? 0 : parseInt($("#tien_da_ck_6").val().replace(new RegExp(',', 'g'), '')));
-    } else {
+            ($("#tien_da_ck_6").val() === '' ? 0 : parseInt($("#tien_da_ck_6").val().replace(new RegExp(',', 'g'), '')));
+        tong_cai = ($("#cai_1").val() === '' ? 0 : parseInt($("#cai_1").val())) +
+                   ($("#cai_2").val() === '' ? 0 : parseInt($("#cai_2").val())) +
+                   ($("#cai_3").val() === '' ? 0 : parseInt($("#cai_3").val())) +
+                   ($("#cai_4").val() === '' ? 0 : parseInt($("#cai_4").val())) +
+                   ($("#cai_5").val() === '' ? 0 : parseInt($("#cai_5").val())) +
+                   ($("#cai_6").val() === '' ? 0 : parseInt($("#cai_6").val()));
+        tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
+                     ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
+                     ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
+                     ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
+                     ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val())) +
+                     ($("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val()));
+    } else if(stt === '2') {
         tien_chua_ck = $('#tien_da_ck_7').val() === '' ? 0 : parseInt($("#tien_da_ck_7").val().replace(new RegExp(',', 'g'), ''));
+        tong_thung = $("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val());
+        tong_cai = $("#cai_7").val() === '' ? 0 : parseInt($("#cai_7").val());
+    } else {
+        tien_chua_ck = ($("#tien_da_ck_8").val() === '' ? 0 : parseInt($("#tien_da_ck_8").val().replace(new RegExp(',', 'g'), '')));
+        tong_thung = $("#thung_8").val() === '' ? 0 : parseInt($("#thung_8").val());
+        tong_cai = $("#cai_8").val() === '' ? 0 : parseInt($("#cai_8").val());
     }
+    document.getElementById("tong_cai_" + stt).value = tong_cai;
+    document.getElementById("tong_thung_" + stt).value = tong_thung;
     document.getElementById("tong_tien_chua_ck_" + stt).value = tien_chua_ck.toLocaleString('en');
     if (ckTong > 0) {
         tien_ck = tien_chua_ck * ckTong / 100;
-        document.getElementById("tong_ck_2").value = ckTong;
-    } else {
-        document.getElementById("tong_ck_2").value = 0;
     }
     document.getElementById("tien_ck_" + stt).value = tien_ck.toLocaleString('en');
     document.getElementById("con_lai_" + stt).value = (tien_chua_ck - tien_ck).toLocaleString('en');
     if (vat > 0) {
         tien_vat = (tien_chua_ck - tien_ck) * vat / 100;
-        document.getElementById("vat_2").value = vat;
-    } else {
-        document.getElementById("vat_2").value = 0;
     }
     document.getElementById("tien_vat_" + stt).value = tien_vat.toLocaleString('en');
-    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');       
-    document.getElementById("tong_cai").value = ($("#tong_cai_1").val() === '' ? 0 : parseInt($("#tong_cai_1").val())) +
-                                                    ($("#tong_cai_2").val() === '' ? 0 : parseInt($("#tong_cai_2").val()));
-    document.getElementById("tong_thung").value = ($("#tong_thung_1").val() === '' ? 0 : parseInt($("#tong_thung_1").val())) +
-                                                    ($("#tong_thung_2").val() === '' ? 0 : parseInt($("#tong_thung_2").val()));
-    document.getElementById("tong_tien_chua_ck").value = (($("#tong_tien_chua_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
-                ($("#tong_tien_chua_ck_2").val() === '' ? 0 : parseInt($("#tong_tien_chua_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-    document.getElementById("tien_ck").value = (($("#tien_ck_1").val() === '' ? 0 : parseInt($("#tien_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
-                ($("#tien_ck_2").val() === '' ? 0 : parseInt($("#tien_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-    document.getElementById("con_lai").value = (($("#con_lai_1").val() === '' ? 0 : parseInt($("#con_lai_1").val().replace(new RegExp(',', 'g'), ''))) +
-                ($("#con_lai_2").val() === '' ? 0 : parseInt($("#con_lai_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-    document.getElementById("tien_vat").value = (($("#tien_vat_1").val() === '' ? 0 : parseInt($("#tien_vat_1").val().replace(new RegExp(',', 'g'), ''))) +
-                ($("#tien_vat_2").val() === '' ? 0 : parseInt($("#tien_vat_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-    document.getElementById("tong_tien_da_ck").value = (($("#tong_tien_da_ck_1").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_1").val().replace(new RegExp(',', 'g'), ''))) +
-                ($("#tong_tien_da_ck_2").val() === '' ? 0 : parseInt($("#tong_tien_da_ck_2").val().replace(new RegExp(',', 'g'), '')))).toLocaleString('en');
-    document.getElementById("tong_ck").value = $("#tong_ck_1").val() === '' ? 0 : parseInt($("#tong_ck_1").val());
-    document.getElementById("vat").value = $("#vat_1").val() === '' ? 0 : parseInt($("#vat_1").val());                                   
+    document.getElementById("tong_tien_da_ck_" + stt).value = (tien_chua_ck - tien_ck + tien_vat).toLocaleString('en');                              
 }
 
 function configCk(stt) {
     var ck = 0;
     var cai = 0;
+    var dongia = 0;
     if (parseFloat(document.getElementById("ck_" + stt).value) > 0) {
         ck = parseFloat(document.getElementById("ck_" + stt).value);
     }
     if (parseInt(document.getElementById("cai_" + stt).value) > 0) {
         cai = parseInt(document.getElementById("cai_" + stt).value);
     }
+    if (parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), '')) > 0) {
+        dongia = parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''));
+    }
     if (cai > 0) {
         if (ck > 0) {
-            document.getElementById("tien_da_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), '')) * (100 - ck) / 100).toLocaleString('en');
-            document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');           
+            document.getElementById("tien_da_ck_" + stt).value = (cai * dongia * (100 - ck) / 100).toLocaleString('en');
+            document.getElementById("tien_chua_ck_" + stt).value = (cai * dongia).toLocaleString('en');           
         } else {
-            document.getElementById("tien_da_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
-            document.getElementById("tien_chua_ck_" + stt).value = (cai * parseInt($("#dongia_" + stt).val().replace(new RegExp(',', 'g'), ''))).toLocaleString('en');
+            document.getElementById("tien_da_ck_" + stt).value = (cai * dongia).toLocaleString('en');
+            document.getElementById("tien_chua_ck_" + stt).value = (cai * dongia).toLocaleString('en');
         }
-        if($("#delivery").val() === '2') {                
-            document.getElementById("tien_da_ck_" + (parseInt(stt) + 7)).value = document.getElementById("tien_da_ck_" + stt).value;
-            document.getElementById("tien_chua_ck_" + (parseInt(stt) + 7)).value = document.getElementById("tien_chua_ck_" + stt).value;
-        } 
-        if(stt != '7') {
+        if(parseInt(stt) < 7) {
             configCkAll('1');
+        } else if(parseInt(stt) === 9) {
+            configCkAll('3');
         } else {
             configCkAll('2');
         }
@@ -262,73 +278,41 @@ function configSp(stt) {
     if (parseInt(document.getElementById("cai_" + stt).value) > 0) {
         cai = parseInt(document.getElementById("cai_" + stt).value);
     }
-    if (cai > 0) {
+    if (cai > 0) {       
+        if (stt === '7') {
+            checkQtt();                       
+        }
+        document.getElementById("thung_" + stt).value = parseInt(cai / 20);
         configCk(stt);
-        if (stt === '5') {
-            document.getElementById("thung_5").value = cai;
-            if($("#delivery").val() === '2') {
-                document.getElementById("thung_12").value = cai;
-                document.getElementById("cai_12").value = cai;
-            }            
-            checkQtt();
-        } else {
-            document.getElementById("thung_" + stt).value = parseInt(cai / 20);
-            if($("#delivery").val() === '2') {
-                document.getElementById("thung_" + (parseInt(stt) + 7)).value = parseInt(cai / 20);
-                document.getElementById("cai_" + (parseInt(stt) + 7)).value = cai;
-            }              
-        }           
     } else {
         document.getElementById("thung_" + stt).value = 0;        
         document.getElementById("tien_chua_ck_" + stt).value = 0;        
         document.getElementById("tien_da_ck_" + stt).value = 0;        
-        document.getElementById("cai_" + stt).value = 0;        
-        if($("#delivery").val() === '2') {
-            document.getElementById("thung_" + (parseInt(stt) + 7)).value = 0;
-            document.getElementById("tien_chua_ck_" + (parseInt(stt) + 7)).value = 0;
-            document.getElementById("tien_da_ck_" + (parseInt(stt) + 7)).value = 0;
-            document.getElementById("cai_" + (parseInt(stt) + 7)).value = 0;
-        }  
-    }
-    if(stt != '7') {
-        tong_thung = ($("#thung_1").val() === '' ? 0 : parseInt($("#thung_1").val())) +
-                ($("#thung_2").val() === '' ? 0 : parseInt($("#thung_2").val())) +
-                ($("#thung_3").val() === '' ? 0 : parseInt($("#thung_3").val())) +
-                ($("#thung_4").val() === '' ? 0 : parseInt($("#thung_4").val())) +
-                ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val())) +
-				($("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val()));
-        tong_cai = (document.getElementById("cai_1").value === '' ? 0 : parseInt(document.getElementById("cai_1").value)) +
-                (document.getElementById("cai_2").value === '' ? 0 : parseInt(document.getElementById("cai_2").value)) +
-                (document.getElementById("cai_3").value === '' ? 0 : parseInt(document.getElementById("cai_3").value)) +
-                (document.getElementById("cai_4").value === '' ? 0 : parseInt(document.getElementById("cai_4").value)) +
-                (document.getElementById("cai_5").value === '' ? 0 : parseInt(document.getElementById("cai_5").value)) +
-				(document.getElementById("cai_6").value === '' ? 0 : parseInt(document.getElementById("cai_6").value));
-        document.getElementById("tong_thung_1").value = tong_thung;
-        document.getElementById("tong_cai_1").value = tong_cai;
-    } else {
-        tong_thung = $("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val());
-        tong_cai = document.getElementById("cai_7").value === '' ? 0 : parseInt(document.getElementById("cai_7").value);
-        document.getElementById("tong_thung_2").value = tong_thung;
-        document.getElementById("tong_cai_2").value = tong_cai;
+        document.getElementById("cai_" + stt).value = 0; 
+        if(parseInt(stt) < 7) {
+            configCkAll('1');
+        } else if(parseInt(stt) === 9) {
+            configCkAll('3');
+        } else {
+            configCkAll('2');
+        }
     }
 }
 
 function lookup() {
-    var soCk = 14;
-    var i = 0;    
+    var soCk = 6;
+    var i = 0;   
+    if($("#delivery").val() === '2') {
+        soCk = 9;        
+    }
     if ($("#donVi").val() === '1') {
         document.getElementById("AddressDeliver").value = "Chu Sang - Nguyen Cong Tru, HN";
         document.getElementById("AddressContact").value = "P9 H5 TT Nguyen Cong Tru, Ha Noi";
         document.getElementById("TaxCode").value = "0101788080";
         for(i = 0; i < soCk; i++) {
-            if($("#delivery").val() === '1' && i === 6) {
-                continue;        
-            }
             document.getElementById("ck_" + (i+1)).value = "10";
-            if(i < 7) {
-                if($('#dongia_' + (i + 1)).val() !== '') {
-                    configSp('' + (i + 1));
-                }
+            if($('#dongia_' + (i + 1)).val() !== '') {
+                configSp('' + (i + 1));
             }
         }
     } else if ($("#donVi").val() === '2') {
@@ -336,14 +320,9 @@ function lookup() {
         document.getElementById("AddressContact").value = "9, 3.5 Gamuda Gardens, Ha Noi";
         document.getElementById("TaxCode").value = "0104879265";
         for(i = 0; i < soCk; i++) {
-            if($("#delivery").val() === '1' && i === 6) {
-                continue;        
-            }
-            document.getElementById("ck_" + (i+1)).value = "20";
-            if(i < 7) {
-                if($('#dongia_' + (i + 1)).val() !== '') {
-                    configSp('' + (i + 1));
-                }
+            document.getElementById("ck_" + (i+1)).value = "10";
+            if($('#dongia_' + (i + 1)).val() !== '') {
+                configSp('' + (i + 1));
             }
         }
     }
