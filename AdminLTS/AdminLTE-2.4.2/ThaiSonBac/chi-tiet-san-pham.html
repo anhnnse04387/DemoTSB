@@ -19,20 +19,26 @@
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
     <style>
-	  th {
-            color: white;
-            background-color: #f88457;
-            font-weight: bold;
-            font-size: 15px;
-            text-align: center;
-        }
+	    #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
 
-        td {
-            text-align: left;
-            font-size: 14px;
-			padding : 5px;
-        }
-
+            tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
+            }
+		#example1 tr td{
+			text-align:center;
+		}
      /* Style the tab */
 .tab {
     overflow: hidden;
@@ -445,9 +451,71 @@
 										<div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Thông tin chi tiết</button></div>
 									</div>
 									</div>
+									
 								<!-- end row -->
 								<!-- row -->
-								
+								<div class="row">
+										<div class="col-xs-12">
+											<div class="box-body">
+												<table id="example1" class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th style="width:2%">STT</th>
+															<th style="width:5%">Lô Số</th>
+															<th style="width:5%">Ngày</th>
+															<th style="width:5%">Số Lượng</th>
+															<th style="width:7%">Tổng Tiền</th>
+														</tr>
+													</thead>
+													<tbody>																
+														<tr>
+															<td>1</td>
+															<td>801</td>
+															<td>10/12/2017</td>
+															<td style="text-align:right">10</td>
+															<td style="text-align:right">102,228,350</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>801</td>
+															<td>11/12/2017</td>
+															<td style="text-align:right">100</td>
+															<td style="text-align:right">1,022,283,500</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>802</td>
+															<td>11/12/2017</td>
+															<td style="text-align:right">5</td>
+															<td style="text-align:right">51,114,175</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>803</td>
+															<td>11/12/2017</td>
+															<td style="text-align:right">10</td>
+															<td style="text-align:right">102,228,350</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>804</td>
+															<td>12/12/2017</td>
+															<td style="text-align:right">20</td>
+															<td style="text-align:right">204,456,700</td>
+														</tr>
+														<tfoot>
+															<tr>
+																<td colspan="2" style="text-align:right">Total</td>
+																<td></td>
+																<td style="text-align:right">145</td>
+																<td style="text-align:right">1,482,311,075</td>
+															</tr>
+														</tfoot>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
 								<div id="Paris" class="tabcontent" style="display:block;">
 									<div style="margin-top:30px">
 										<b>Mô tả:</b>
