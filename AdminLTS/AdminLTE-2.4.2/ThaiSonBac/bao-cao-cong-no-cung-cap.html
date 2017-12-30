@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- jvectormap -->
         <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <!-- Select2 -->
@@ -62,10 +64,10 @@
                 min-width: 60px;
                 height: 50px;
             }
-            #example1 {
+            table {
                 background-color: rgb(240, 240, 240);
             }
-            #example1 thead tr th {
+            thead tr th {
                 vertical-align: middle !important;
                 text-align: center;
                 background-color: #3c8dbc;
@@ -487,37 +489,49 @@
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_1">
-                                                    <div class="chart box-body">
-                                                        <div class="form-group col-md-4 col-md-offset-4">
+                                                    <div class="chart row">
+                                                        <div class="form-group col-md-8 col-md-offset-2">
                                                             <label>Danh mục</label>
                                                             <select class="form-control select2" style="width: 100%;">
-                                                                <option selected="selected">Alabama</option>
-                                                                <option>Alaska</option>
-                                                                <option>California</option>
-                                                                <option>Delaware</option>
-                                                                <option>Tennessee</option>
-                                                                <option>Texas</option>
-                                                                <option>Washington</option>
+                                                                <option selected="selected">Tất cả</option>
+                                                                <option>CB - Aptomat</option>
+                                                                <option>Inverter: Biến tần</option>
+                                                                <option>Cáp thông tin</option>
+                                                                <option>Công tắc ổ cắm</option>
+                                                                <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
                                                             </select>
                                                         </div>
                                                         <!-- Sales Chart Canvas -->
-                                                        <canvas id="lineChart" style="height: 300px; width: 95%"></canvas>
-                                                        <small>Đơn vị :<em>chục triệu VNĐ</em></small>
+                                                        <canvas id="lineChart" style="height: 300px"></canvas>
+                                                        <small>Đơn vị :<em>triệu VNĐ</em></small>
                                                     </div>
                                                     <!-- /.chart-responsive -->
+                                                    <div class="box-footer">
+                                                        <div class="row">
+                                                            <div class="description-block">
+                                                                <h5 class="description-header">4,206,475,213</h5>
+                                                                <span class="description-text">TỔNG CÔNG NỢ</span>
+                                                            </div>
+                                                            <!-- /.description-block -->                                   
+                                                        </div>
+                                                        <!-- /.row -->
+                                                    </div>
+                                                    <!-- /.box-footer -->
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="progress-group">
-                                                                <span class="progress-text">Lượng hàng bán ra</span>
+                                                                <span class="progress-text">Số lần nhập</span>
                                                                 <span class="progress-number"><b>160</b>/200</span>
 
                                                                 <div class="progress sm">
                                                                     <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
                                                                 </div>
                                                             </div>
+                                                        </div>
 
+                                                        <div class="col-md-4">
                                                             <div class="progress-group">
-                                                                <span class="progress-text">Doanh thu</span>
+                                                                <span class="progress-text">Tổng tiền nhập</span>
                                                                 <span class="progress-number"><b>60,527,000 </b>/70,000,000</span>
 
                                                                 <div class="progress sm">
@@ -525,46 +539,329 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="progress-group">
-                                                                <span class="progress-text">Lượng khách mới</span>
+                                                                <span class="progress-text">Thanh toán</span>
                                                                 <span class="progress-number"><b>2</b>/5</span>
 
                                                                 <div class="progress sm">
                                                                     <div class="progress-bar progress-bar-green" style="width: 40%"></div>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <table id="example1" class="table table-bordered table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>STT</th>
+                                                                        <th>Danh mục</th>
+                                                                        <th>Số lượng</th>
+                                                                        <th>Tổng cộng</th>
+                                                                        <th>Thanh toán</th>
+                                                                        <th>Còn nợ</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>CB - Aptomat</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2</td>
+                                                                        <td>
+                                                                            Inverter: Biến tần
+                                                                        </td>
+                                                                        <td>262,620,000</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>262,620,000</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3</td>
+                                                                        <td>Cáp thông tina</td>
+                                                                        <td>626,200,000</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>626,200,000</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4</td>
+                                                                        <td>Công tắc ổ cắm</td>
+                                                                        <td>0</td>
+                                                                        <td>12,225,000</td>
+                                                                        <td>12,225,000</td>
+                                                                        <td>0</td>
 
-                                                            <div class="progress-group">
-                                                                <span class="progress-text">Số đơn hàng</span>
-                                                                <span class="progress-number"><b>4</b>/5</span>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>5</td>
+                                                                        <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
+                                                                        <td>(11,880,720)</td>
+                                                                        <td>343,325,046</td>
+                                                                        <td>635,655,486</td>
+                                                                        <td>0</td>
 
-                                                                <div class="progress sm">
-                                                                    <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                                                                </div>
-                                                            </div>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- /.tab-pane -->
                                                 <div class="tab-pane" id="tab_2">
-                                                    The European languages are members of the same family. Their separate existence is a myth.
-                                                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                                                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                                                    new common language would be desirable: one could refuse to pay expensive translators. To
-                                                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                                                    words. If several languages coalesce, the grammar of the resulting language is more simple
-                                                    and regular than that of the individual languages.
+                                                    <div class="chart row">
+                                                        <div class="form-group col-md-8 col-md-offset-2">
+                                                            <label>Danh mục</label>
+                                                            <select class="form-control select2" style="width: 100%;">
+                                                                <option selected="selected">Tất cả</option>
+                                                                <option>CB - Aptomat</option>
+                                                                <option>Inverter: Biến tần</option>
+                                                                <option>Cáp thông tin</option>
+                                                                <option>Công tắc ổ cắm</option>
+                                                                <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- Sales Chart Canvas -->
+                                                        <canvas id="lineChart2" style="height: 300px"></canvas>
+                                                        <small>Đơn vị :<em>triệu VNĐ</em></small>
+                                                    </div>
+                                                    <!-- /.chart-responsive -->
+                                                    <div class="box-footer">
+                                                        <div class="row">
+                                                            <div class="description-block">
+                                                                <h5 class="description-header">4,206,475,213</h5>
+                                                                <span class="description-text">TỔNG CÔNG NỢ</span>
+                                                            </div>
+                                                            <!-- /.description-block -->                                   
+                                                        </div>
+                                                        <!-- /.row -->
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Số lần nhập</span>
+                                                                <span class="progress-number"><b>160</b>/200</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Tổng tiền nhập</span>
+                                                                <span class="progress-number"><b>60,527,000 </b>/70,000,000</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-red" style="width: 86.4%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Thanh toán</span>
+                                                                <span class="progress-number"><b>2</b>/5</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-green" style="width: 40%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <table id="example2" class="table table-bordered table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>STT</th>
+                                                                        <th>Danh mục</th>
+                                                                        <th>Số lượng</th>
+                                                                        <th>Tổng cộng</th>
+                                                                        <th>Thanh toán</th>
+                                                                        <th>Còn nợ</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>CB - Aptomat</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2</td>
+                                                                        <td>
+                                                                            Inverter: Biến tần
+                                                                        </td>
+                                                                        <td>262,620,000</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>262,620,000</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3</td>
+                                                                        <td>Cáp thông tina</td>
+                                                                        <td>626,200,000</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>626,200,000</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4</td>
+                                                                        <td>Công tắc ổ cắm</td>
+                                                                        <td>0</td>
+                                                                        <td>12,225,000</td>
+                                                                        <td>12,225,000</td>
+                                                                        <td>0</td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>5</td>
+                                                                        <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
+                                                                        <td>(11,880,720)</td>
+                                                                        <td>343,325,046</td>
+                                                                        <td>635,655,486</td>
+                                                                        <td>0</td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- /.tab-pane -->
                                                 <div class="tab-pane" id="tab_3">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                                                    like Aldus PageMaker including versions of Lorem Ipsum.
+                                                    <div class="chart row">
+                                                        <div class="form-group col-md-8 col-md-offset-2">
+                                                            <label>Danh mục</label>
+                                                            <select class="form-control select2" style="width: 100%;">
+                                                                <option selected="selected">Tất cả</option>
+                                                                <option>CB - Aptomat</option>
+                                                                <option>Inverter: Biến tần</option>
+                                                                <option>Cáp thông tin</option>
+                                                                <option>Công tắc ổ cắm</option>
+                                                                <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- Sales Chart Canvas -->
+                                                        <canvas id="lineChart3" style="height: 300px"></canvas>
+                                                        <small>Đơn vị :<em>triệu VNĐ</em></small>
+                                                    </div>
+                                                    <!-- /.chart-responsive -->
+                                                    <div class="box-footer">
+                                                        <div class="row">
+                                                            <div class="description-block">
+                                                                <h5 class="description-header">4,206,475,213</h5>
+                                                                <span class="description-text">TỔNG CÔNG NỢ</span>
+                                                            </div>
+                                                            <!-- /.description-block -->                                   
+                                                        </div>
+                                                        <!-- /.row -->
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Số lần nhập</span>
+                                                                <span class="progress-number"><b>160</b>/200</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Tổng tiền nhập</span>
+                                                                <span class="progress-number"><b>60,527,000 </b>/70,000,000</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-red" style="width: 86.4%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Thanh toán</span>
+                                                                <span class="progress-number"><b>2</b>/5</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-green" style="width: 40%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <table id="example3" class="table table-bordered table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>STT</th>
+                                                                        <th>Danh mục</th>
+                                                                        <th>Số lượng</th>
+                                                                        <th>Tổng cộng</th>
+                                                                        <th>Thanh toán</th>
+                                                                        <th>Còn nợ</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>CB - Aptomat</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2</td>
+                                                                        <td>
+                                                                            Inverter: Biến tần
+                                                                        </td>
+                                                                        <td>262,620,000</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>262,620,000</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3</td>
+                                                                        <td>Cáp thông tina</td>
+                                                                        <td>626,200,000</td>
+                                                                        <td>0</td>
+                                                                        <td>0</td>
+                                                                        <td>626,200,000</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4</td>
+                                                                        <td>Công tắc ổ cắm</td>
+                                                                        <td>0</td>
+                                                                        <td>12,225,000</td>
+                                                                        <td>12,225,000</td>
+                                                                        <td>0</td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>5</td>
+                                                                        <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
+                                                                        <td>(11,880,720)</td>
+                                                                        <td>343,325,046</td>
+                                                                        <td>635,655,486</td>
+                                                                        <td>0</td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- /.tab-pane -->
                                             </div>
@@ -574,20 +871,7 @@
                                     </div>
                                 </div>
                                 <!-- ./box-body -->
-                                <div class="box-footer">
-                                    <div class="row">
 
-                                        <div class="description-block" style="margin-top: 27px;">
-                                            <h5 class="description-header">4,206,475,213</h5>
-                                            <span class="description-text">TỔNG CÔNG NỢ</span>
-                                        </div>
-                                        <!-- /.description-block -->
-
-                                        <!-- /.col -->                                     
-                                    </div>
-                                    <!-- /.row -->
-                                </div>
-                                <!-- /.box-footer -->
                             </div>
                             <!-- /.box -->
                         </div>
@@ -618,6 +902,9 @@
         <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
         <!-- SlimScroll -->
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- ChartJS -->
         <script src="../bower_components/Chart.js/Chart.js"></script>
         <script src="dist/js/Chart.bundle.js"></script>
@@ -658,47 +945,184 @@
                 $('input[name=week]').datepicker('show');
             });
         </script>
-
         <script>
-            new Chart(document.getElementById("lineChart"), {
+            $(function () {
+                $('#example1').DataTable();
+                $('#example2').DataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false
+                });
+                $('#example3').DataTable();
+            });
+        </script>
+        <script>
+            var timeFormat = 'MM/DD/YYYY HH:mm';
+            function newDate2(days) {
+                var date = new Date(days);
+                return date;
+            }
+            var color = Chart.helpers.color;
+            var config = {
                 type: 'line',
                 data: {
-                    labels: ['18/12', '20/12', '21/12', '23/12', '24/12'],
+                    labels: [// Date Objects
+                        newDate2('12/1/2017'),
+                        newDate2('12/5/2017'),
+                        newDate2('12/10/2017'),
+                        newDate2('12/15/2017'),
+                        newDate2('12/20/2017'),
+                        newDate2('12/25/2017'),
+                        newDate2('12/30/2017')
+                    ],
                     datasets: [{
-                            data: [1.2, 4.2, 3, 3, 2.1],
-                            label: "Tuần từ 18 - 24/12",
-                            borderColor: "#33FF33",
-                            backgroundColor: "#33FF33",
-                            fill: false
-                        }
-                    ]
+                            label: "CB - Aptomat",
+                            backgroundColor: '#00ed17',
+                            borderColor: '#00ed17',
+                            fill: false,
+                            data: [{
+                                    x: newDate2('12/1/2017'),
+                                    y: 1.5
+                                }, {
+                                    x: newDate2('12/6/2017'),
+                                    y: 4.2
+                                }, {
+                                    x: newDate2('12/12/2017'),
+                                    y: 3.1
+                                }, {
+                                    x: newDate2('12/31/2017'),
+                                    y: 4
+                                }]
+                        },
+                        {
+                            label: "Inverter: Biến tần",
+                            backgroundColor: '#ed000b',
+                            borderColor: '#ed000b',
+                            fill: false,
+                            data: [{
+                                    x: newDate2('12/1/2017'),
+                                    y: 3
+                                }, {
+                                    x: newDate2('12/4/2017'),
+                                    y: 5
+                                }, {
+                                    x: newDate2('12/8/2017'),
+                                    y: 2.2
+                                }, {
+                                    x: newDate2('12/12/2017'),
+                                    y: 2.5
+                                }, {
+                                    x: newDate2('12/31/2017'),
+                                    y: 2.9
+                                }]
+                        },
+                        {
+                            label: "Cáp thông tin",
+                            backgroundColor: '#4286f4',
+                            borderColor: '#4286f4',
+                            fill: false,
+                            data: [{
+                                    x: newDate2('12/1/2017'),
+                                    y: 1
+                                }, {
+                                    x: newDate2('12/15/2017'),
+                                    y: 4.1
+                                }, {
+                                    x: newDate2('12/22/2017'),
+                                    y: 4.3
+                                }, {
+                                    x: newDate2('12/26/2017'),
+                                    y: 2.8
+                                }, {
+                                    x: newDate2('12/31/2017'),
+                                    y: 2.4
+                                }]
+                        },
+                        {
+                            label: "Công tắc ổ cắm",
+                            backgroundColor: '#8f41f4',
+                            borderColor: '#8f41f4',
+                            fill: false,
+                            data: [{
+                                    x: newDate2('12/1/2017'),
+                                    y: 2.4
+                                }, {
+                                    x: newDate2('12/3/2017'),
+                                    y: 1.1
+                                }, {
+                                    x: newDate2('12/8/2017'),
+                                    y: 3.5
+                                }, {
+                                    x: newDate2('12/16/2017'),
+                                    y: 4.4
+                                }, {
+                                    x: newDate2('12/31/2017'),
+                                    y: 4.8
+                                }]
+                        },
+                        {
+                            label: "Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế",
+                            backgroundColor: '#daf200',
+                            borderColor: '#daf200',
+                            fill: false,
+                            data: [{
+                                    x: newDate2('12/1/2017'),
+                                    y: 2.9
+                                }, {
+                                    x: newDate2('12/3/2017'),
+                                    y: 1.1
+                                }, {
+                                    x: newDate2('12/24/2017'),
+                                    y: 0.5
+                                }, {
+                                    x: newDate2('12/30/2017'),
+                                    y: 3.6
+                                }, {
+                                    x: newDate2('12/31/2017'),
+                                    y: 1.9
+                                }]
+                        }]
                 },
                 options: {
-                    legend: {display: false},
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    hover: {
-                        mode: 'nearest',
-                        intersect: true
-                    },
                     elements: {
                         line: {
-                            tension: 0, // disables bezier curves
+                            tension: 0 // disables bezier curves
                         }
                     },
                     scales: {
-                        yAxes: [{
+                        xAxes: [{
+                                type: "time",
+                                time: {
+                                    format: timeFormat,
+                                    // round: 'day'
+                                    tooltipFormat: 'DD/MM',
+                                    displayFormats: {
+                                        'day': 'DD/MM'
+                                    }
+                                }
+                            }
+                        ], yAxes: [{
                                 ticks: {
                                     min: 0,
                                     stepSize: 1,
                                     max: 5
                                 }
-                            }]
+                            }],
                     }
                 }
-            });
+            };
+
+            window.onload = function () {
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var ctx2 = document.getElementById("lineChart2").getContext("2d");
+                var ctx3 = document.getElementById("lineChart3").getContext("2d");
+                window.myLine = new Chart(ctx, config);
+                window.myLine = new Chart(ctx2, config);
+                window.myLine = new Chart(ctx3, config);
+            };
         </script>
     </body>
 </html>
