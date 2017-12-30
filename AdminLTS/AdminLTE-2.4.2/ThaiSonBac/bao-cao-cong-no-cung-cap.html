@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TSB | Dashboard</title>
         <title>Thái Sơn Bắc - TSB</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -19,12 +18,14 @@
         <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-		<!-- DataTables -->
+        <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
@@ -56,12 +57,12 @@
                 color: #fff;
                 text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
             }
-			  .custom-btn {
+            .custom-btn {
                 padding: 10px 5px;
                 min-width: 60px;
-                height: 40px;
+                height: 50px;
             }
-			#example1 {
+            #example1 {
                 background-color: rgb(240, 240, 240);
             }
             #example1 thead tr th {
@@ -70,12 +71,12 @@
                 background-color: #3c8dbc;
                 color: #fff;
             }
-			.chart {
-				position: static;
-				overflow: hidden;
-				width: 80%;
-				margin-left: 10%;
-			}
+            .chart {
+                position: static;
+                overflow: hidden;
+                width: 80%;
+                margin-left: 10%;
+            }
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -89,21 +90,18 @@
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
-
             <header class="main-header">
-
                 <!-- Logo -->
-    <a href="index-sales.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>T</b>SB</span>
-      <!-- logo for regular state and mobile devices -->
+                <a href="index-sales.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>T</b>SB</span>
+                    <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg">
-                        <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <img style="display: inline-block; margin-top: -4px; width:50px; height:50px;" class="img-responsive" src="dist/img/Logo TSB - Final.png" alt="Photo">
                         <b>Bán hàng</b>
                         <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
-    </a>
-
+                </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
@@ -246,7 +244,7 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="menu-open">
                             <a href="index-sales.html">
@@ -281,17 +279,17 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã hoàn thành</span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
-										<span class="pull-right-container">
+                                        <span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
@@ -302,12 +300,12 @@
                                         <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="timeline_master.html">
                                         <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
                                     </a>
                                 </li>
-								
+
                             </ul>
                         </li>
 
@@ -399,8 +397,8 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">            
                     <ol class="breadcrumb">
-						<li><a href="index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-						 <li><a href="#"><i class="fa fa-dashboard"></i> Công nợ</a></li>
+                        <li><a href="index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Công nợ</a></li>
                         <li><a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-dashboard"></i> Báo cáo công nợ nhà cung cấp</a></li>
                     </ol>
                 </section>
@@ -409,59 +407,182 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="box">
+                            <div class="box container-fluid">
                                 <div class="box-header with-border">
-                                    <h1 class="box-title">BÁO CÁO CÔNG NỢ NHÀ CUNG CẤP</h1>
-									<div style="float:right">
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                            <i class="fa fa-eye text-black"></i>
-										</a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
-                                            <i class="fa fa-print text-blue"></i>
-										</a>
-									</div>
+                                    <div class="row text-center">
+                                        <h3><label>Công nợ nhà cung cấp</label></h3>
+                                    </div>
                                 </div>
-								
+                                <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                    <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="modal" title="Quay Lại" data-placement="bottom">
+                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        <span><strong>Quay lại</strong></span>
+                                    </a>
+
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <i class="fa fa-edit text-green"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                        <i class="fa fa-save text-yellow"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                        <i class="fa fa-close text-red"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                        <span><strong>Giao hàng</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                        <i class="fa fa-exchange text-red"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                        <i class="fa fa-eye text-black"></i>
+                                        <span><strong>Xem trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                        <i class="fa fa-print text-blue"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <i class="fa fa-download text-purple"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                        <i class="fa fa-file-excel-o text-green"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <i class="fa fa-file-pdf-o text-red"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                </div>
+
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
-                                        <div class="col-md-12">
-
-                                            <div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
-                                                <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ: </label>
-                                                <div class="input-group week-select col-md-4"> 
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="18-12-2017">
-                                                </div>
-												<label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến: </label>
-                                                <div class="input-group week-select col-md-4"> 
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="24-12-2017">
-                                                </div>
-                                            </div>	
-
-
-                                           <div class="chart">
-                                                <!-- Sales Chart Canvas -->
-                                                <canvas id="lineChart" style="height: 300px;"></canvas>
-                                                <small>Đơn vị :<em>chục triệu VNĐ</em></small>
-											</div>
-                                            <!-- /.chart-responsive -->
-                                        </div>
-                                        <!-- /.col -->
+                                        <div class="col-md-offset-2" style="display: inline-flex; margin-bottom: 20px;">
+                                            <label style="padding-left:15px;padding-right: 10px; padding-top: 10px;">Từ: </label>
+                                            <div class="input-group week-select col-md-4"> 
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" name="week" value="18-12-2017">
+                                            </div>
+                                            <label style="padding-left:15px;padding-right: 10px; padding-top: 10px;">Đến: </label>
+                                            <div class="input-group week-select col-md-4"> 
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" name="week" value="24-12-2017">
+                                            </div>
+                                        </div>	
                                     </div>
                                     <!-- /.row -->
+                                    <div class="row container-fluid">
+                                        <div class="nav-tabs-custom">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#tab_1" data-toggle="tab">Thái Sơn Nam</a></li>
+                                                <li><a href="#tab_2" data-toggle="tab">LS</a></li>
+                                                <li><a href="#tab_3" data-toggle="tab">Hàn Quốc</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab_1">
+                                                    <div class="chart box-body">
+                                                        <div class="form-group col-md-4 col-md-offset-4">
+                                                            <label>Catelogy</label>
+                                                            <select class="form-control select2" style="width: 100%;">
+                                                                <option selected="selected">Alabama</option>
+                                                                <option>Alaska</option>
+                                                                <option>California</option>
+                                                                <option>Delaware</option>
+                                                                <option>Tennessee</option>
+                                                                <option>Texas</option>
+                                                                <option>Washington</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- Sales Chart Canvas -->
+                                                        <canvas id="lineChart" style="height: 300px; width: 95%"></canvas>
+                                                        <small>Đơn vị :<em>chục triệu VNĐ</em></small>
+                                                    </div>
+                                                    <!-- /.chart-responsive -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Lượng hàng bán ra</span>
+                                                                <span class="progress-number"><b>160</b>/200</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Doanh thu</span>
+                                                                <span class="progress-number"><b>60,527,000 </b>/70,000,000</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-red" style="width: 86.4%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Lượng khách mới</span>
+                                                                <span class="progress-number"><b>2</b>/5</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-green" style="width: 40%"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="progress-group">
+                                                                <span class="progress-text">Số đơn hàng</span>
+                                                                <span class="progress-number"><b>4</b>/5</span>
+
+                                                                <div class="progress sm">
+                                                                    <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.tab-pane -->
+                                                <div class="tab-pane" id="tab_2">
+                                                    The European languages are members of the same family. Their separate existence is a myth.
+                                                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                                                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                                                    new common language would be desirable: one could refuse to pay expensive translators. To
+                                                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                                                    words. If several languages coalesce, the grammar of the resulting language is more simple
+                                                    and regular than that of the individual languages.
+                                                </div>
+                                                <!-- /.tab-pane -->
+                                                <div class="tab-pane" id="tab_3">
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                                                    like Aldus PageMaker including versions of Lorem Ipsum.
+                                                </div>
+                                                <!-- /.tab-pane -->
+                                            </div>
+                                            <!-- /.tab-content -->
+                                        </div>
+                                        <!-- nav-tabs-custom -->  
+                                    </div>
                                 </div>
                                 <!-- ./box-body -->
                                 <div class="box-footer">
                                     <div class="row">
-                                      
-                                            <div class="description-block" style="margin-top: 27px;">
-                                                <h5 class="description-header">4,206,475,213</h5>
-                                                <span class="description-text">TỔNG CÔNG NỢ</span>
-                                            </div>
-                                            <!-- /.description-block -->
-                                        
+
+                                        <div class="description-block" style="margin-top: 27px;">
+                                            <h5 class="description-header">4,206,475,213</h5>
+                                            <span class="description-text">TỔNG CÔNG NỢ</span>
+                                        </div>
+                                        <!-- /.description-block -->
+
                                         <!-- /.col -->                                     
                                     </div>
                                     <!-- /.row -->
@@ -471,94 +592,7 @@
                             <!-- /.box -->
                         </div>
                         <!-- /.col -->
-                    </div>
-					
-					
-					<div class="row">
-                        <div class="col-md-12">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="text-center">TOP 10 NHÀ CUNG CẤP CÔNG NỢ LỚN NHẤT</h3>
-                                </div>
-                                <div class="box-body">
-                                    <table id="example1" class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>TÊN</th>
-												<th>ĐỊA CHỈ</th>
-                                                <th>CÔNG NỢ HIỆN TẠI</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T07-1</a></td>
-                                                <td>Hải Phòng</td>
-                                                <td>406,625,213</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T08-3</a></td> 
-												<td>Hà Nội</td>												
-                                                <td>206,625,213</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T08-7</a></td>
-												<td>Thạch Hòa,Thạch Thất,Hòa Lạc</td>
-                                                <td>1,806,475,213</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T09-1</a></td>
-												<td>Phú Thọ</td>
-                                                <td>306,625,213</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T09-6</a></td>
-												<td>Thái Nguyên</td>
-                                                <td>306,625,213</td>
-                                            </tr>
-											 <tr>
-                                                <td>6</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T10-1</a></td>
-												<td>Thái Nguyên</td>
-                                                <td>306,625,213</td>
-                                            </tr>
-											 <tr>
-                                                <td>7</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T10-2</a></td>
-												<td>Tuyên Quang</td>
-                                                <td>400,625,213</td>
-                                            </tr>
-											 <tr>
-                                                <td>8</td>
-                                                <td><a href="nhacungcap_tung.html">HĐ T10-3</a></td>
-												<td>Hà Nội</td>
-                                                <td>306,625,213</td>
-                                            </tr>
-											 <tr>
-                                                <td>9</td>
-                                                <td><a href="nhacungcap_tung.html">Công ty TNC</a></td>
-												<td>Vĩnh Phúc</td>
-                                                <td>306,000,000</td>
-                                            </tr>
-											 <tr>
-                                                <td>10</td>
-                                                <td><a href="nhacungcap_tung.html">Thái Sơn Nam</a></td>
-												<td>Thái Nguyên</td>
-                                                <td>306,625,213</td>
-                                            </tr>
-                                        </tbody>
-									</table>
-                                </div>
-                            </div>			
-                        </div>
-                    </div>
-
+                    </div>                    
                 </section>
                 <!-- /.content -->
             </div>
@@ -566,203 +600,9 @@
 
             <footer class="main-footer">
                 <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-            </footer>
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Create the tabs -->
-                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <!-- Home tab content -->
-                    <div class="tab-pane" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Recent Activity</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                        <p>Will be 23 on April 24th</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                                        <p>New phone +1(800)555-1234</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                                        <p>nora@example.com</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                                        <p>Execution time 5 seconds</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Custom Template Design
-                                        <span class="label label-danger pull-right">70%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Update Resume
-                                        <span class="label label-success pull-right">95%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Laravel Integration
-                                        <span class="label label-warning pull-right">50%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Back End Framework
-                                        <span class="label label-primary pull-right">68%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                    </div>
-                    <!-- /.tab-pane -->
-
-                    <!-- Settings tab content -->
-                    <div class="tab-pane" id="control-sidebar-settings-tab">
-                        <form method="post">
-                            <h3 class="control-sidebar-heading">General Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Report panel usage
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Some information about this general settings option
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Allow mail redirect
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Other sets of options are available
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Expose author name in posts
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Allow the user to show his name in blog posts
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Show me as online
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Turn off notifications
-                                    <input type="checkbox" class="pull-right">
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Delete chat history
-                                    <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-                        </form>
-                    </div>
-                    <!-- /.tab-pane -->
-                </div>
-            </aside>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-
+            </footer>   
         </div>
         <!-- ./wrapper -->
-
         <!-- jQuery 3 -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
@@ -780,23 +620,24 @@
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS -->
         <script src="../bower_components/Chart.js/Chart.js"></script>
-		<script src="dist/js/Chart.bundle.js"></script>
+        <script src="dist/js/Chart.bundle.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <!-- Select2 -->
+        <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
         <!-- AdminLTE for demo purposes -->
         <script src="../dist/js/demo.js"></script>
-		 <!-- DataTables -->
-        <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
         <script src='dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
         <script src='dist/js/pages/cong-no/moment.js'></script>
 
         <script>
-            
-
+            $(function () {
+                //Initialize Select2 Elements
+                $('.select2').select2()
+            });
 
             $('input[name=week]').datepicker({
                 format: "dd-mm-yyyy",
@@ -809,7 +650,7 @@
                     $('.week', '.datepicker-days').removeClass('week');
                 });
             }).on('hide', function (e) {
-   
+
                 console.log($(this).val());
             });
 
@@ -819,58 +660,45 @@
         </script>
 
         <script>
-          new Chart(document.getElementById("lineChart"), {
-		  type: 'line',
-		  data: {
-			labels: ['18/12', '20/12', '21/12', '23/12', '24/12'],
-			datasets: [{ 
-				data: [1.2, 4.2, 3, 3,2.1],
-				label: "Tuần từ 18 - 24/12",
-				borderColor: "#33FF33",
-				backgroundColor: "#33FF33",
-				fill: false
-			  }
-			]
-		  },
-		  options: {
-				legend: { display: false },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
+            new Chart(document.getElementById("lineChart"), {
+                type: 'line',
+                data: {
+                    labels: ['18/12', '20/12', '21/12', '23/12', '24/12'],
+                    datasets: [{
+                            data: [1.2, 4.2, 3, 3, 2.1],
+                            label: "Tuần từ 18 - 24/12",
+                            borderColor: "#33FF33",
+                            backgroundColor: "#33FF33",
+                            fill: false
+                        }
+                    ]
                 },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-				elements: {
-					line: {
-						tension: 0, // disables bezier curves
-					}
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							min: 0,
-							stepSize: 1,
-							max: 5
-						}
-					}]
-				}
-            }
-		});
+                options: {
+                    legend: {display: false},
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    elements: {
+                        line: {
+                            tension: 0, // disables bezier curves
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    stepSize: 1,
+                                    max: 5
+                                }
+                            }]
+                    }
+                }
+            });
         </script>
-		<script>
-			   $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
-		</script>
     </body>
 </html>
