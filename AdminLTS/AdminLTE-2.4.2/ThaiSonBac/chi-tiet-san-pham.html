@@ -454,9 +454,22 @@
 									
 								<!-- end row -->
 								<!-- row -->
-								<div class="row">
-										<div class="col-xs-12">
-											<div class="box-body">
+								
+								<div id="Paris" class="tabcontent" style="display:block;">
+									<div style="margin-top:30px">
+										<b>Mô tả:</b>
+										<br/>
+										<h5>
+									- Kích thước nhỏ gọn, hiệu quả cao, dễ bảo trì	<br/>	<br/>				 
+									- Độ bền cơ học kém, đặc tính chống thấm, không cháy, thích hợp cho việc thay đổi tải như cấp điện ngầm	 <br/><br/>
+									- Lõi laser được sử dụng làm vật liệu cốt lõi và quá trình cuộn dây được cải thiện để tối ưu hóa sự mất mát tổng thể.<br/><br/>
+									</h5>
+									</div>
+									<div style="height:200px"></div>
+									<div class="box-header">
+												<h2>Danh sách đơn hàng đã đặt sản phẩm này</h2>
+											</div>
+									<div class="box-body">
 												<table id="example1" class="table table-bordered table-striped">
 													<thead>
 														<tr>
@@ -514,19 +527,6 @@
 													</tbody>
 												</table>
 											</div>
-										</div>
-									</div>
-								<div id="Paris" class="tabcontent" style="display:block;">
-									<div style="margin-top:30px">
-										<b>Mô tả:</b>
-										<br/>
-										<h5>
-									- Kích thước nhỏ gọn, hiệu quả cao, dễ bảo trì	<br/>	<br/>				 
-									- Độ bền cơ học kém, đặc tính chống thấm, không cháy, thích hợp cho việc thay đổi tải như cấp điện ngầm	 <br/><br/>
-									- Lõi laser được sử dụng làm vật liệu cốt lõi và quá trình cuộn dây được cải thiện để tối ưu hóa sự mất mát tổng thể.<br/><br/>
-									</h5>
-									</div>
-									<div style="height:200px"></div>
 								</div>
 								<div id="London" class="tabcontent" >
 									<table style="margin-top:40px">
@@ -551,32 +551,76 @@
 									</table>
 
 									<div style="height:200px"></div>
+									<div class="box-header">
+												<h2>Danh sách đơn hàng đã đặt sản phẩm này</h2>
+									</div>
+									<div class="box-body">
+											
+												<table id="example1" class="table table-bordered table-striped">
+													<thead>
+														<tr>
+															<th style="width:2%">STT</th>
+															<th style="width:5%">Lô Số</th>
+															<th style="width:5%">Ngày</th>
+															<th style="width:5%">Số Lượng</th>
+															<th style="width:7%">Tổng Tiền</th>
+														</tr>
+													</thead>
+													<tbody>																
+														<tr>
+															<td>1</td>
+															<td>801</td>
+															<td>10/12/2017</td>
+															<td style="text-align:right">10</td>
+															<td style="text-align:right">102,228,350</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>801</td>
+															<td>11/12/2017</td>
+															<td style="text-align:right">100</td>
+															<td style="text-align:right">1,022,283,500</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>802</td>
+															<td>11/12/2017</td>
+															<td style="text-align:right">5</td>
+															<td style="text-align:right">51,114,175</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>803</td>
+															<td>11/12/2017</td>
+															<td style="text-align:right">10</td>
+															<td style="text-align:right">102,228,350</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>804</td>
+															<td>12/12/2017</td>
+															<td style="text-align:right">20</td>
+															<td style="text-align:right">204,456,700</td>
+														</tr>
+														<tfoot>
+															<tr>
+																<td colspan="2" style="text-align:right">Total</td>
+																<td></td>
+																<td style="text-align:right">145</td>
+																<td style="text-align:right">1,482,311,075</td>
+															</tr>
+														</tfoot>
+													</tbody>
+												</table>
+											</div>
 								</div>
-								
-
-								<!-- end row -->
-							   </div>
-
-
-<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-</script>
                             </div>
                         </div>
                     </div>
                 </div>
+
+											
+
             </section>
         </div>
         <aside class="control-sidebar control-sidebar-dark">
@@ -815,6 +859,22 @@ function openCity(evt, cityName) {
             })
         })
     </script>
+	
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
 </body>
 
 </html>
