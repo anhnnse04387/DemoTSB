@@ -1111,7 +1111,9 @@
                                     </tr>
                                     <tr>
                                         <td><i class="fa fa-sliders"><b>  Nợ đầu kỳ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input type="text" class="form-control number" id = "noDauKy" onkeyup="calculate1()" />
+										</td>
                                     </tr>
 									 <tr>
                                         <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
@@ -1119,15 +1121,21 @@
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-handshake-o"><b>  Nhập trong kỳ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input type="text" id="nhapTrongKy" class="form-control number" onkeyup="calculate1()"/>
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-bars"><b>  Thanh toán: </b></td>
-                                       <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                       <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input type="text" class="form-control number" id="thanhToan" onkeyup="calculate1()" />
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input type="text" class="form-control number" id="conNo" readonly />
+										</td>
                                     </tr>
 									
                                 </table>
@@ -1270,6 +1278,14 @@
 				
 				var conNo = parseInt(nhap+noCu-thanhToan);
 				document.getElementById(""+id4+"").value = conNo;
+			}
+			function calculate1(){
+				var noDauKy = $('#noDauKy').val() === '' ? 0 : parseInt($('#noDauKy').val().replace(new RegExp(',', 'g'), ''));
+				var nhapTrongKy = $('#nhapTrongKy').val() === '' ? 0 : parseInt($('#nhapTrongKy').val().replace(new RegExp(',', 'g'), ''));
+				var thanhToan = $('#thanhToan').val() === '' ? 0 : parseInt($('#thanhToan').val().replace(new RegExp(',', 'g'), ''));
+				
+				var conNo = parseInt(noDauKy+nhapTrongKy-thanhToan);
+				$('#conNo').val(conNo);
 			}
         </script>
     </body>

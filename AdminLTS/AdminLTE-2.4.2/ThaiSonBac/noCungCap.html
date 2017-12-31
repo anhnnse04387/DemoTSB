@@ -1027,7 +1027,9 @@
                                     </tr>
                                     <tr>
                                         <td><i class="fa fa-sliders"><b>  Nợ đầu kỳ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input type="text" class="form-control number" id="noDauKy" onkeyup="calculate1()" />
+										</td>
                                     </tr>
 									 <tr>
                                         <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
@@ -1035,15 +1037,21 @@
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-handshake-o"><b>  Nhập trong kỳ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input id="nhapTrongKy" type="text" class="form-control number" onkeyup="calculate1()" />
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-bars"><b>  Thanh toán: </b></td>
-                                       <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                       <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input type="text" class="form-control number" id="thanhToan" onkeyup="calculate1() "/>
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input readonly type="text" id="conNo" class="form-control number" />
+										</td>
                                     </tr>
 									
                                 </table>
@@ -1072,7 +1080,7 @@
                                 </div>
                                 <div class="modal-footer" style="margin-right:15px">
                                     <div style="margin:0 auto;">
-										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='no-cung-cap-them-moi.html'">OK</button>
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='noCungCap1.html'">OK</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 									</div>
                                 </div>
@@ -1182,7 +1190,16 @@
 				
 				var conNo = parseInt(nhap+noCu-thanhToan);
 				document.getElementById(""+id4+"").value = conNo;
-			}
+			};
+			
+			function calculate1(){
+				var noDauKy = $('#noDauKy').val() === '' ? 0 : parseInt($('#noDauKy').val().replace(new RegExp(',', 'g'), ''));
+				var nhapTrongKy = $('#nhapTrongKy').val() === '' ? 0 : parseInt($('#nhapTrongKy').val().replace(new RegExp(',', 'g'), ''));
+				var thanhToan = $('#thanhToan').val() === '' ? 0 : parseInt($('#thanhToan').val().replace(new RegExp(',', 'g'), ''));
+				
+				var conNo = parseInt(noDauKy+nhapTrongKy-thanhToan);
+				$('#conNo').val(conNo);
+			}	
         </script>
     </body>
 

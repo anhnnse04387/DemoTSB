@@ -533,6 +533,12 @@
                                                 <canvas id="lineChart" style="height: 400px;"></canvas>
                                                 <small>Đơn vị :<em>Tỷ VNĐ</em></small>
                                             </div>
+											<div class="col-sm-offset-5">
+												<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+												<strong>Năm 2016</strong>
+												<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+												<strong>Năm 2017</strong>
+											</div>
                                         </div>
 
 
@@ -576,9 +582,12 @@
                                         <div class="box-body">
                                             <div class="row">
                                                 <div class="col-md-2"></div>
-                                                <div class="col-md-9"> 
-                                                    <canvas id="pieChart" style="height: 300px;"></canvas>
-                                                </div>
+                                                <div class="box-body">
+													<div id="donut-chart" style="height: 450px;width:800px;margin:0 auto"></div>
+												</div>
+												 <div class="box-footer">
+											
+												</div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
@@ -964,57 +973,7 @@
                                             }
                                         });
 
-                                        var config = {
-                                            type: 'doughnut',
-                                            data: {
-                                                datasets: [{
-                                                        data: [700, 500, 400, 600, 300, 50],
-                                                        backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#6bf442"],
-                                                        label: 'Expenditures'
-                                                    }],
-                                                labels: [
-                                                    "Cáp viễn thông LS Cable & System",
-                                                    "Thiết bị đóng cắt trung và hạ thế LS",
-                                                    "Máy biến ap khô LS",
-                                                    "Tủ trung LS",
-                                                    "Thanh cái dẫn điện LS Cable & System",
-                                                    "Khác"
-                                                ]
-                                            },
-                                            options: {
-                                                responsive: true,
-                                                legend: {
-                                                    position: 'right',
-                                                },
-                                                title: {
-                                                    display: false,
-                                                    text: 'Chart.js Doughnut Chart'
-                                                },
-                                                animation: {
-                                                    animateScale: true,
-                                                    animateRotate: true
-                                                },
-                                                tooltips: {
-                                                    callbacks: {
-                                                        label: function (tooltipItem, data) {
-                                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-
-                                                            var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
-                                                                return previousValue + currentValue;
-                                                            });
-                                                            var labelset = data.labels[tooltipItem.index];
-                                                            var currentValue = dataset.data[tooltipItem.index];
-                                                            var precentage = Math.floor(((currentValue / total) * 100) + 0.5);
-                                                            return labelset + " " + precentage + "%" + " (" + currentValue + ")";
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        };
-
-
-                                        var ctx = document.getElementById("pieChart").getContext("2d");
-                                        window.myDoughnut = new Chart(ctx, config);
+                                      
     </script>
     <script>
         $('input[name=week]').datepicker({
@@ -1062,7 +1021,53 @@
                 'info': true,
                 'autoWidth': false
             })
-        })
+        });
+		/*
+     * DONUT CHART
+     * -----------
+     */
+
+    var donutData = [
+      { label: 'CB - Aptomat', data: 30, color: 'grey' },
+      { label: 'Inverter', data: 20, color: '#0073b7' },
+      { label: 'Cáp thông tin', data: 10, color: '#00c0ef' },
+	  { label: 'Busway </br>- Thanh cái dẫn điện & MTR </br>- Máy biến áp & RMU </br>- Tủ trung thế', data: 30, color: 'red' },
+	  { label: 'Cáp thông tin', data: 10, color: 'green' }
+    ]
+    $.plot('#donut-chart', donutData, {
+      series: {
+        pie: {
+          show       : true,
+          radius     : 1,
+          innerRadius: 0.5,
+          label      : {
+            show     : true,
+            radius   : 2 / 3,
+            formatter: labelFormatter,
+            threshold: 0.1
+          }
+
+        }
+      },
+      legend: {
+        show: false
+      }
+    })
+    /*
+     * END DONUT CHART
+     */
+
+
+  /*
+   * Custom Label formatter
+   * ----------------------
+   */
+  function labelFormatter(label, series) {
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+      + label
+      + '<br>'
+      + Math.round(series.percent) + '%</div>'
+  }
     </script>
 </body>
 </html>
