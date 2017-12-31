@@ -4,6 +4,8 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+var limit = 5;
+
 function deliveryQtt() {
     if(document.getElementById('delivery').value === '1') {
         $('#turn1').addClass('noDisplay');
@@ -18,6 +20,36 @@ function deliveryQtt() {
         $('#turn2').addClass('noDisplay');
     }
     lookup();
+}
+
+function checkQttTong() {
+    if(parseInt(document.getElementById('cai_5').value) > limit) {
+        document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+        swal({
+            title: '<img src="dist/img/messagePic_4.png"/>',
+            type: 'error',
+            html: '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="dist/img/xem.png"/></a></div>' 
+                  + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
+                  + '<thead>'
+                  + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th><th style="background-color: white"><img src="dist/img/soluonglay.png"/></th></tr>'
+                  + '</thead>'
+                  + '<tbody>'
+                  + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl1"/></td></tr>'
+                  + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>03/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl2"/></td></tr>'    
+                  + '</tbody>'
+                  + '</table>',
+            showCancelButton: true,
+            width: 550,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<i class="fa fa-check"></i>',
+            cancelButtonText: '<i class="fa fa-close"></i>',
+        }).then((result) => {
+            if (result.value) {
+                limit += parseInt(document.getElementById("sl1").value) + parseInt(document.getElementById("sl2").value);
+            }
+        });
+    }
 }
 
 function checkQtt() {
@@ -285,7 +317,10 @@ function configSp(stt) {
     if (parseInt(document.getElementById("cai_" + stt).value) > 0) {
         cai = parseInt(document.getElementById("cai_" + stt).value);
     }
-    if (cai > 0) {       
+    if (cai > 0) {    
+        if (stt === '5') {
+            checkQttTong();
+        }
         if (stt === '7') {
             checkQtt();                       
         }
