@@ -1575,7 +1575,9 @@
                                     </tr>
                                     <tr>
                                         <td><i class="fa fa-sliders"><b>  Nợ cũ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="noCu" onkeyup="tinhTong()" type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input id="noCu" onkeyup="tinhTong1()" type="text" class="form-control number"/>
+										</td>
                                     </tr>
 									 <tr>
                                         <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
@@ -1583,11 +1585,15 @@
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-handshake-o"><b>  Tiền hàng: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="tienHang" onkeyup="tinhTong()" type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input id="tienHang" onkeyup="tinhTong1()" type="text" class="form-control number"/>
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-handshake-o"><b>  VAT: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input onkeyup="tinhTong()"  type="text"  id="vat" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input onkeyup="tinhTong1()"  type="text"  id="vat" class="form-control number"/>
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-bars"><b>  Tổng cộng: </b></td>
@@ -1595,11 +1601,15 @@
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-handshake-o"><b>  Thanh toán: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="thanhToan" onkeyup="tinhTong()" type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input id="thanhToan" onkeyup="tinhTong1()" type="text" class="form-control number"/>
+										</td>
                                     </tr>
 									<tr>
                                         <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="conNo" type="text" class="form-control number"/></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+											<input id="conNo" type="text" id="conNo" class="form-control number" readonly />
+										</td>
                                     </tr>
 									
                                 </table>
@@ -1743,7 +1753,7 @@
                     'autoWidth': false
                 })
             });
-			function tinhTong(){
+			function tinhTong1(){
 				var tienHang = $('#tienHang').val() === '' ? 0 : parseInt($('#tienHang').val().replace(new RegExp(',', 'g'), ''));
 				var vat =  $('#vat').val() === '' ? 0 : parseInt($('#vat').val().replace(new RegExp(',', 'g'), ''));
 				

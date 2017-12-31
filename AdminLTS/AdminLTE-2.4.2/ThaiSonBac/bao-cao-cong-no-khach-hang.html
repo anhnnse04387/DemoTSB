@@ -72,10 +72,13 @@
                 color: #fff;
             }
 			.chart {
-				position: static;
-				overflow: hidden;
-				width: 80%;
-				margin-left: 10%;
+                position: static;
+                overflow: hidden;
+                width: 95%;
+                margin-left: 10px;
+            }
+			.noDisplay{
+				display:none;
 			}
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -453,17 +456,52 @@
                                 <!-- ./box-body -->
                                 <div class="box-footer">
                                     <div class="row">
-											<div class="chart">
-                                                <!-- Sales Chart Canvas -->
-                                                <canvas id="lineChart" style="height: 300px;"></canvas>
-                                                <small>Đơn vị :<em>chục triệu VNĐ</em></small>
-											</div>
-                                            <div class="description-block" style="margin-top: 27px;">
-                                                <h5 class="description-header">4,206,475,213</h5>
-                                                <span class="description-text">TỔNG CÔNG NỢ</span>
-                                            </div>
-                                            <!-- /.description-block -->
-                                       
+												<div class="form-group col-md-8 col-md-offset-2">
+                                                           <div style="margin-left:25%">
+															 <label>Danh mục</label>
+                                                            <select id="dropbox" class="form-control select2" style="width: 50%;">
+                                                                <option selected="selected" value="1">Tất cả</option>
+                                                                <option>CB - Aptomat</option>
+                                                                <option>Inverter: Biến tần</option>
+                                                                <option>Cáp thông tin</option>
+                                                                <option>Công tắc ổ cắm</option>
+                                                                <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                            </select>
+														   </div>
+                                                        </div>
+													<div class="chart row" id="defaultChart">                
+                                                        <!-- Sales Chart Canvas -->
+                                                        <canvas id="lineChart" style="height: 407px;width:1000px"></canvas>
+                                                        <small>Đơn vị :<em>%</em></small>
+                                                    </div>
+													<div id="cbAptomatChart" class="noDisplay">
+														<div class="chart row">                                                  
+                                                        <!-- Sales Chart Canvas -->
+                                                        <canvas id="lineChart2" style="height: 407px;width:1000px"></canvas>
+                                                        <small>Đơn vị :<em>%</em></small>
+														</div>
+                                                    <!-- /.chart-responsive -->
+														
+													</div>
+													<div id="inventerChart" class="noDisplay">
+														<div class="chart row">                                                  
+                                                        <!-- Sales Chart Canvas -->
+                                                        <canvas id="lineChart3" style="height: 407px;width:1000px"></canvas>
+                                                        <small>Đơn vị :<em>%</em></small>
+														</div>
+                                                    <!-- /.chart-responsive -->
+														
+													</div>
+													<div class="box-footer">
+                                                        <div class="row">
+                                                            <div class="description-block">
+                                                                <h5 class="description-header">4,206,475,213</h5>
+                                                                <span class="description-text">TỔNG CÔNG NỢ</span>
+                                                            </div>
+                                                            <!-- /.description-block -->                                   
+                                                        </div>
+                                                        <!-- /.row -->
+														</div>
                                         <!-- /.col -->                                     
                                     </div>
                                     <!-- /.row -->
@@ -786,7 +824,8 @@
         <!-- bootstrap datepicker -->
         <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-
+		<!-- Select2 -->
+        <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../dist/js/demo.js"></script>
 		 <!-- DataTables -->
@@ -821,21 +860,49 @@
         </script>
 
         <script>
-           new Chart(document.getElementById("lineChart"), {
+          new Chart(document.getElementById("lineChart"), {
 		  type: 'line',
 		  data: {
-			labels: ['18/12', '21/12', '22/12', '24/12'],
+			labels: ['HPH', 'Phú An', 'Invico - Sắn', '2B - Anh Tuấn','Tương Lai','2C - Tuấn Anh','Hà Phú','TNC','ABC','DEF'],
 			datasets: [{ 
-				data: [1.2, 3, 5,2.1],
-				label: "Tuần từ 18 - 24/12",
+				data: [5, 10, 15,20,10,5,10,5,10,10],
+				label: "CB - Aptomat",
 				borderColor: "#33FF33",
 				backgroundColor: "#33FF33",
 				fill: false
-			  }
+			  },{
+			  	data: [10, 10, 5,10,5,10,20,15,10,5],
+				label: "Inverter-Biến Tần",
+				borderColor: "red",
+				backgroundColor: "red",
+				fill: false
+			 },
+			 {
+			  	data: [50,2,4,15,3,12,0,5,0,9],
+				label: "Cáp thông tin",
+				borderColor: "green",
+				backgroundColor: "green",
+				fill: false
+			 },
+			 {
+			  	data: [0,0,20,15,27,12,7,0,0,19],
+				label: "Công tắc ổ cắm",
+				borderColor: "purple",
+				backgroundColor: "purple",
+				fill: false
+			 },
+			 {
+			  	data: [7,3,20,15,27,9,7,0,10,14],
+				label: "Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế",
+				borderColor: "yellow",
+				backgroundColor: "yellow",
+				fill: false
+			 }
 			]
+			
 		  },
 		  options: {
-				legend: { display: false },
+				legend: { display: true },
                 tooltips: {
                     mode: 'index',
                     intersect: false,
@@ -853,8 +920,90 @@
 					yAxes: [{
 						ticks: {
 							min: 0,
-							stepSize: 1,
-							max: 5
+							stepSize: 15,
+							max: 50
+						}
+					}]
+				}
+            }
+		});
+		
+		
+		  new Chart(document.getElementById("lineChart2"), {
+		  type: 'line',
+		  data: {
+			labels: ['HPH', 'Phú An', 'Invico - Sắn', '2B - Anh Tuấn','Tương Lai','2C - Tuấn Anh','Hà Phú','TNC','ABC','DEF'],
+			datasets: [{ 
+				data: [5, 10, 15,20,10,5,10,5,10,10],
+				label: "CB - Aptomat",
+				borderColor: "#33FF33",
+				backgroundColor: "#33FF33",
+				fill: false
+			  }
+			]
+			
+		  },
+		  options: {
+				legend: { display: true },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+				elements: {
+					line: {
+						tension: 0, // disables bezier curves
+					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							stepSize: 15,
+							max: 50
+						}
+					}]
+				}
+            }
+		});
+		 new Chart(document.getElementById("lineChart3"), {
+		  type: 'line',
+		  data: {
+			labels: ['HPH', 'Phú An', 'Invico - Sắn', '2B - Anh Tuấn','Tương Lai','2C - Tuấn Anh','Hà Phú','TNC','ABC','DEF'],
+			datasets: [{ 
+				data: [10, 10, 5,10,5,10,20,15,10,5],
+				label: "Inverter-Biến Tần",
+				borderColor: "red",
+				backgroundColor: "red",
+				fill: false
+			  }
+			]
+			
+		  },
+		  options: {
+				legend: { display: true },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+				elements: {
+					line: {
+						tension: 0, // disables bezier curves
+					}
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							stepSize: 15,
+							max: 50
 						}
 					}]
 				}
@@ -872,7 +1021,23 @@
                     'info': true,
                     'autoWidth': false
                 })
-            })
+            });
+			$('#dropbox').change(function (){
+				var selected = $('#dropbox :selected').text();
+				if(selected === 'CB - Aptomat'){
+					$('#cbAptomatChart').removeClass("noDisplay");
+					$('#defaultChart').addClass("noDisplay");
+				}else if(selected === 'Inverter: Biến tần'){
+					$('#inventerChart').removeClass("noDisplay");
+					$('#cbAptomatChart').addClass("noDisplay");
+					$('#defaultChart').addClass("noDisplay");
+				}else {
+				
+					$('#defaultChart').removeClass("noDisplay");
+					$('#cbAptomatChart').addClass("noDisplay");
+					$('#inventerChart').addClass("noDisplay");
+				}
+			});
 		</script>
     </body>
 </html>
