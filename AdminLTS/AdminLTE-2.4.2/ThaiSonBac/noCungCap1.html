@@ -451,16 +451,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr style="background-color:yellow">
                                                 <td class="khachHang">1</td>
                                                 <td class="khachHang">
                                                     <a href="noChiTiet1.html">HD T07-1</a>
                                                 </td>
+                                                <td class="right">100,000,000</td>
                                                 <td class="right">0</td>
-                                                <td class="right">0</td>
-                                                <td class="right">0</td>
-                                                <td class="right">0</td>
-                                                <td class="right">0</td>
+                                                <td class="right">50,000,000</td>
+                                                <td class="right">20,000,000</td>
+                                                <td class="right">130,000,000</td>
 												<td>
 													<a id="btn_row1" href="#" class="btn btn-app custom-btn"   title="Sửa" data-placement="bottom">
 														<i class="fa fa-edit text-blue"></i>
@@ -560,7 +560,7 @@
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-usd" aria-hidden="true"></i>
                                                                 </span>
-                                                                <input value="262620000" id="noDauKy2" onkeyup="calculate('nhapTrongKy2','noDauKy2','thanhToan2','conNo2')" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                <input value="262,620,000" id="noDauKy2" onkeyup="calculate('nhapTrongKy1','noDauKy1','thanhToan1','conNo1')" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                             </div>
 															</div>
                                                         <div class="col-md-6">
@@ -598,7 +598,7 @@
 																	<span class="input-group-addon">
 																		<i class="fa fa-money" aria-hidden="true"></i>
 																	</span>
-																	<input value="262620000" id="conNo2" onkeyup="calculate('nhapTrongKy2','noDauKy2','thanhToan2','conNo2')" type="text" class="form-control number" placeholder="" readonly>
+																	<input value="262,620,000" id="conNo2" onkeyup="calculate('nhapTrongKy2','noDauKy2','thanhToan2','conNo2')" type="text" class="form-control number" placeholder="" readonly>
 																</div>
 															</div>
 														</div>
@@ -641,7 +641,7 @@
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-usd" aria-hidden="true"></i>
                                                                 </span>
-                                                                <input value="626200000" onkeyup="calculate('nhapTrongKy3','noDauKy3','thanhToan3','conNo3')" id="noDauKy3" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                <input value="626,200,000" onkeyup="calculate('nhapTrongKy3','noDauKy3','thanhToan3','conNo3')" id="noDauKy3" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                             </div>
 															</div>
                                                         <div class="col-md-6">
@@ -679,7 +679,7 @@
 																	<span class="input-group-addon">
 																		<i class="fa fa-money" aria-hidden="true"></i>
 																	</span>
-																	<input  value="626200000" id="conNo3" type="text" class="form-control number" placeholder="" readonly>
+																	<input  value="626,200,000" id="conNo3" type="text" class="form-control number" placeholder="" readonly>
 																</div>
 															</div>
 														</div>
@@ -1067,7 +1067,7 @@
                                 </div>
                                 <div class="modal-footer" style="margin-right:15px">
                                     <div style="margin:0 auto;">
-										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='no-cung-cap-them-moi.html'">OK</button>
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='noCungCap1.html'">OK</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 									</div>
                                 </div>
@@ -1133,7 +1133,7 @@
 				$('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
 			
 			});
-		$('#row1').hide();
+			 $('#row1').hide();
         $('#btn_row1').click(function () {
             $('#row1').toggle();
         })
