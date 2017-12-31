@@ -411,52 +411,54 @@
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
-                                    <div class="box-header with-border" style="background-color: #fcf9f9;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
-                                            <i class="fa fa-arrow-circle-left text-blue"></i>
-                                            <span><strong>Quay Lại</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
-                                            <i class="fa fa-edit text-green"></i>
-                                            <span><strong>Tạo Mới</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="saveDraft();" title="Lưu" data-placement="bottom">
-                                            <i class="fa fa-save text-yellow"></i>
-                                            <span><strong>Lưu</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="index-sales.html">
-                                            <i class="fa fa-close text-red"></i>
-                                            <span><strong>Hủy</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" disabled>
-                                            <i class="fa fa-check-circle text-green"></i>
-                                            <span><strong>Chốt đơn</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
-                                            <i class="fa fa-exchange text-red"></i>
-                                            <span><strong>Đổi trả</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
-                                            <i class="fa fa-eye text-black"></i>
-                                            <span><strong>Xem Trước</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
-                                            <i class="fa fa-print text-blue"></i>
-                                            <span><strong>In</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
-                                            <i class="fa fa-download text-purple"></i>
-                                            <span><strong>Import Excel</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
-                                            <i class="fa fa-file-excel-o text-green"></i>
-                                            <span><strong>Tải xuống</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
-                                            <i class="fa fa-file-pdf-o text-red"></i>
-                                            <span><strong>Tải xuống</strong></span>
-                                        </a>
-                                    </div>		
+                                    <div class="row">
+                                        <div class="box-header with-border pull-right">
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
+                                                <i class="fa fa-arrow-circle-left text-blue"></i>
+                                                <span><strong>Quay Lại</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
+                                                <i class="fa fa-edit text-green"></i>
+                                                <span><strong>Tạo Mới</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" disabled title="Lưu" data-placement="bottom">
+                                                <i class="fa fa-save text-yellow"></i>
+                                                <span><strong>Lưu</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="index-sales.html">
+                                                <i class="fa fa-close text-red"></i>
+                                                <span><strong>Hủy</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" onclick="nhapKhoThanhCong();">
+                                                <i class="fa fa-check-circle text-green"></i>
+                                                <span><strong>Chốt đơn</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                                <i class="fa fa-exchange text-red"></i>
+                                                <span><strong>Đổi trả</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                                <i class="fa fa-eye text-black"></i>
+                                                <span><strong>Xem Trước</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                                <i class="fa fa-print text-blue"></i>
+                                                <span><strong>In</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                                <i class="fa fa-download text-purple"></i>
+                                                <span><strong>Import Excel</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                                <i class="fa fa-file-excel-o text-green"></i>
+                                                <span><strong>Tải xuống</strong></span>
+                                            </a>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                                <i class="fa fa-file-pdf-o text-red"></i>
+                                                <span><strong>Tải xuống</strong></span>
+                                            </a>
+                                        </div>	
+                                    </div>
                                     <form>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -510,13 +512,103 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style="vertical-align: middle;">1</td>
+                                                                <td style="vertical-align: middle;">BS32c 15A 2P2E NO DIN RAIL EXP</td>
+                                                                <td style="vertical-align: middle;">0061001700</td>
+                                                                <td style="vertical-align: middle; text-align: right;">300</td>
+                                                                <td style="vertical-align: middle; text-align: right;">1.30</td>
+                                                                <td style="vertical-align: middle; text-align: right;">390.00</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">2</td>
+                                                                <td style="vertical-align: middle;">ABN62c 60A EXP</td>
+                                                                <td style="vertical-align: middle;">0128003300</td>
+                                                                <td style="vertical-align: middle; text-align: right;">100</td>
+                                                                <td style="vertical-align: middle; text-align: right;">11.76</td>
+                                                                <td style="vertical-align: middle; text-align: right;">1,176.00</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">3</td>
+                                                                <td style="vertical-align: middle;">ABN52c 15A EXP</td>
+                                                                <td style="vertical-align: middle;">0128002300</td>
+                                                                <td style="vertical-align: middle; text-align: right;">80</td>
+                                                                <td style="vertical-align: middle; text-align: right;">11.33</td>
+                                                                <td style="vertical-align: middle; text-align: right;">906.40</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">4</td>
+                                                                <td style="vertical-align: middle;">ABN102c 75A EXP</td>
+                                                                <td style="vertical-align: middle;">0130003300</td>
+                                                                <td style="vertical-align: middle; text-align: right;">100</td>
+                                                                <td style="vertical-align: middle; text-align: right;">12.86</td>
+                                                                <td style="vertical-align: middle; text-align: right;">1,286.00</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">5</td>
+                                                                <td style="vertical-align: middle;">ABN102c 100A EXP</td>
+                                                                <td style="vertical-align: middle;">0130003400</td>
+                                                                <td style="vertical-align: middle; text-align: right;">160</td>
+                                                                <td style="vertical-align: middle; text-align: right;">12.86</td>
+                                                                <td style="vertical-align: middle; text-align: right;">2,057.60</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">6</td>
+                                                                <td style="vertical-align: middle;">BS32c 20A 2P2E NO DIN RAIL EXP</td>
+                                                                <td style="vertical-align: middle;">0061001800	</td>
+                                                                <td style="vertical-align: middle; text-align: right;">2000</td>
+                                                                <td style="vertical-align: middle; text-align: right;">1.27</td>
+                                                                <td style="vertical-align: middle; text-align: right;">2,540.00</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">7</td>
+                                                                <td style="vertical-align: middle;">ABN62c 50A EXP</td>
+                                                                <td style="vertical-align: middle;">0128002700</td>
+                                                                <td style="vertical-align: middle; text-align: right;">300</td>
+                                                                <td style="vertical-align: middle; text-align: right;">11.33</td>
+                                                                <td style="vertical-align: middle; text-align: right;">3,399.00</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">8</td>
+                                                                <td style="vertical-align: middle;">ABN52c 20A EXP</td>
+                                                                <td style="vertical-align: middle;">0128002400	</td>
+                                                                <td style="vertical-align: middle; text-align: right;">300</td>
+                                                                <td style="vertical-align: middle; text-align: right;">11.33</td>
+                                                                <td style="vertical-align: middle; text-align: right;">3,399.00</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">9</td>
+                                                                <td style="vertical-align: middle;">ABN102c 125A EXP</td>
+                                                                <td style="vertical-align: middle;">0136001600</td>
+                                                                <td style="vertical-align: middle; text-align: right;">10</td>
+                                                                <td style="vertical-align: middle; text-align: right;">23.47</td>
+                                                                <td style="vertical-align: middle; text-align: right;">234.70</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">10</td>
+                                                                <td style="vertical-align: middle;">ABN102c 150A EXP</td>
+                                                                <td style="vertical-align: middle;">0136001700</td>
+                                                                <td style="vertical-align: middle; text-align: right;">20</td>
+                                                                <td style="vertical-align: middle; text-align: right;">23.47</td>
+                                                                <td style="vertical-align: middle; text-align: right;">469.40</td>
+                                                                <td style="vertical-align: middle;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="vertical-align: middle;">11</td>
                                                                 <td style="vertical-align: middle;"><input type="text" class="form-control" id="sp"/></td>
                                                                 <td><output id="code"></output></td>
                                                                 <td><input type="text" class="form-control number" id="sl" style="text-align: right;" onkeyup="nhaphang();"/></td>
                                                                 <td><output id="gia"></output></td>
                                                                 <td><output id="tien"></output></td>
                                                                 <td><input type="text" class="form-control"/></td>
-                                                            </tr>
+                                                            </tr>                                                            
                                                             <tr style="background-color: #544d61;color: #fff;">
                                                                 <td></td>
                                                                 <td style="vertical-align: middle;"><b>Tổng cộng</b></td>
@@ -534,53 +626,53 @@
                                         </div>
                                         <div id="sound"></div>
                                     </form>
-                                </div>
-                                <div class="box-header with-border" style="background-color: #fcf9f9;">
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay Lại</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
-                                        <i class="fa fa-edit text-green"></i>
-                                        <span><strong>Tạo Mới</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="saveDraft();" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-yellow"></i>
-                                        <span><strong>Lưu</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="index-sales.html">
-                                        <i class="fa fa-close text-red"></i>
-                                        <span><strong>Hủy</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom" disabled>
-                                        <i class="fa fa-check-circle text-green"></i>
-                                        <span><strong>Chốt đơn</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
-                                        <i class="fa fa-exchange text-red"></i>
-                                        <span><strong>Đổi trả</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
-                                        <i class="fa fa-eye text-black"></i>
-                                        <span><strong>Xem Trước</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
-                                        <i class="fa fa-print text-blue"></i>
-                                        <span><strong>In</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
-                                        <i class="fa fa-download text-purple"></i>
-                                        <span><strong>Import Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
-                                        <i class="fa fa-file-excel-o text-green"></i>
-                                        <span><strong>Tải xuống</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
-                                        <i class="fa fa-file-pdf-o text-red"></i>
-                                        <span><strong>Tải xuống</strong></span>
-                                    </a>
-                                </div>	
+                                    <div class="box-header with-border pull-right">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="index-sales.html">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" disabled>
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" disabled title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="index-sales.html">
+                                            <i class="fa fa-close text-red"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom"  onclick="nhapKhoThanhCong();">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                            <i class="fa fa-exchange text-red"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                            <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-download text-purple"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                    </div>
+                                </div>                                	
                             </div>                           
                         </div>
                         <!-- /.col-->
