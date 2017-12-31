@@ -177,12 +177,6 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="#" id="scrollContainer" class="navbar-custom-menu pull-left" data-toggle="modal" data-target="#noteModal">
-                        <div id="scrollBox">    
-                            <p>Ngày 31/12/2017: Inbox để biết thêm chi tiết</p>
-                            <p>Ngày 05/01/2018: Hãy sử lý đơn hàng HD-83157-1</p>
-                        </div>                       
-                    </a>
 
                 </nav>
             </header>
@@ -214,7 +208,7 @@
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="active">
+                        <li class="menu-open active">
                             <a href="index-sales.html">
                                 <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                             </a>
@@ -263,29 +257,26 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="workflow.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
-                                    </a>
-                                </li>
-                                <li>
+								 <li>
                                     <a href="timeline_master.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <span>Timeline</span>
                                     </a>
                                 </li>
+
                             </ul>
                         </li>
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
+                                <i class="fa fa-folder"></i> <span>Hàng hoá</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="price.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
-                                <li><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
+                                <li class=""><a href="tonKho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
                             </ul>
                         </li>
 
@@ -297,7 +288,6 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
                                 <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
                                 <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
                             </ul>
@@ -312,6 +302,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
+								<li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Nhân viên giao hàng</a></li>
                                 <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
                                 <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
                             </ul>
@@ -339,7 +330,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview ">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -347,18 +338,27 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li>
+                                <li class="">
                                     <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
                                 </li>
                                 <li>
                                     <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
                                 </li>
+								<li>
+                                    <a href="trang_setting.html"><i class="fa fa-users"></i> Cài đặt</a>
+                                </li>
                             </ul>
-                        </li>	
+                        </li>
+                        <li class="">
+                            <a href="workflow.html">
+                                <i class="fa fa-question-circle"></i> <span>Help</span>
+                            </a>
+                        </li>						
                     </ul>
                 </section>
                 <!-- /.sidebar -->
             </aside>
+
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
