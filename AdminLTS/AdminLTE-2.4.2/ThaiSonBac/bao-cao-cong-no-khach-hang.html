@@ -101,10 +101,10 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>SB</span>
       <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg">
-                        <img style="display: inline-block; margin-top: -4px;" class="img-responsive" width="50px" height="50px" src="dist/img/Logo TSB - Final.png" alt="Photo">
-                        <b>Bán hàng</b>
-                        <span style="position: absolute; margin-top: 15px; margin-left: -90px; font-size: x-small;"><small>Phân hệ</small></span>
+                    <span class="logo-lg" style="margin-left: -15px;">
+                        <img style="width:50px; height:50px;" class="img-responsive pull-left" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b style="margin-right: 35px;">Phân phối</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -130px; font-size: x-small;"><small>Phân hệ</small></span>
                     </span>
     </a>
 
@@ -194,7 +194,7 @@
                                     </li>
                                 </ul>
                             </li>
-                           <!-- User Account: style can be found in dropdown.less -->
+                         <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="../dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -250,9 +250,9 @@
                         </div>
                     </form>
                     <!-- /.search form -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="menu-open">
+                        <li >
                             <a href="index-sales.html">
                                 <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                             </a>
@@ -285,38 +285,35 @@
                                         </span>
                                     </a>
                                 </li>
-                                                                <li>
+                                <li>
                                     <a href="phieuhoanthanh_tung.html">
                                         <i class="fa fa-files-o"></i>
                                         <span>Phiếu đã hoàn thành</span>
                                     </a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phieuxuatsau_tung.html">
                                         <i class="fa fa-book"></i>
                                         <span>Phiếu giữ hàng</span>
-										<span class="pull-right-container">
+                                        <span class="pull-right-container">
                                             <span class="label pull-right bg-green">new</span>
                                             <span class="label pull-right bg-red">2</span>
                                         </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="workflow.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Quy trình xử lý</span>
-                                    </a>
-                                </li>
-																 <li>
+								 <li>
                                     <a href="timeline_master.html">
-                                        <i class="fa fa-hand-o-right"></i> <span>Timeline</span>
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <span>Timeline</span>
                                     </a>
                                 </li>
+
                             </ul>
                         </li>
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-folder"></i> <span>Kho</span>
+                                <i class="fa fa-folder"></i> <span>Hàng hoá</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -335,7 +332,6 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="xu_ly_cong_no.html"><i class="fa fa-hand-o-right"></i> Tạo công nợ</a></li>
                                 <li><a href="noKhachHang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
                                 <li><a href="noCungCap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
                             </ul>
@@ -350,12 +346,13 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
+								<li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Nhân viên giao hàng</a></li>
                                 <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
                                 <li><a href="toBeContinue_page.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
                             </ul>
                         </li>
 
-                        <li class="treeview active menu-open">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
                                 <span class="pull-right-container">
@@ -371,13 +368,13 @@
                                     <a href="bao-cao-cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
                                 </li>
 
-                                <li>
+                                <li >
                                     <a href="bao-cao-cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="treeview">
+                        <li class="treeview ">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -385,14 +382,22 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li>
+                                <li class="">
                                     <a href="customer_list.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
                                 </li>
                                 <li>
                                     <a href="toBeContinue_page.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
                                 </li>
+								<li>
+                                    <a href="trang_setting.html"><i class="fa fa-users"></i> Cài đặt</a>
+                                </li>
                             </ul>
-                        </li>	
+                        </li>
+                        <li class="">
+                            <a href="workflow.html">
+                                <i class="fa fa-question-circle"></i> <span>Help</span>
+                            </a>
+                        </li>						
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -417,14 +422,53 @@
                             <div class="box">
                                <div class="box-header with-border">
                                     <h1 class="box-title">BÁO CÁO CÔNG NỢ NHÀ KHÁCH HÀNG</h1>
-									<div style="float:right">
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                            <i class="fa fa-eye text-black"></i>
-										</a>
-										<a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
-                                            <i class="fa fa-print text-blue"></i>
-										</a>
-									</div>
+								   <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                    <a href="notification_details_accountant.html" class="btn btn-app custom-btn" data-toggle="modal" title="Quay Lại" data-placement="bottom">
+                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        <span><strong>Quay lại</strong></span>
+                                    </a>
+
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <i class="fa fa-edit text-grey"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                        <i class="fa fa-save text-grey"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                        <i class="fa fa-close text-grey"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
+                                        <i class="fa fa-check-circle text-grey"></i>
+                                        <span><strong>Giao hàng</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                        <i class="fa fa-exchange text-grey"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                        <i class="fa fa-eye text-black"></i>
+                                        <span><strong>Xem trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                        <i class="fa fa-print text-blue"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <i class="fa fa-download text-grey"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                        <i class="fa fa-file-excel-o text-grey"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <i class="fa fa-file-pdf-o text-grey"></i>
+                                        <span><strong>Tải xuống</strong></span>
+                                    </a>
+                                </div>
                                 </div>
 								
                                 <!-- /.box-header -->
