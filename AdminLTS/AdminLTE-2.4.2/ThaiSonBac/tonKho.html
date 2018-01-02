@@ -536,7 +536,7 @@
                                                 <th rowspan="2" style="width: 1%">STT</th>
                                                 <th rowspan="2" colspan="2" style="width: 12%">Description</th>
                                                 <th rowspan="2" style="width: 3%">Tổng tồn</th>
-                                                <th style="width: 2%">CIF</th>
+                                                <th style="width: 4%">CIF</th>
                                                 <th colspan="4" style="width: 12%">Giá vốn</th>
                                                 <th rowspan="2" style="width:3%">Thay đổi</th>
                                             </tr>
@@ -1341,7 +1341,7 @@
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-usd" aria-hidden="true"></i>
                                                                 </span>
-                                                                <input type="text" class="form-control" placeholder="">
+                                                                <input type="text" class="form-control" placeholder=""/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -1350,7 +1350,7 @@
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-usd" aria-hidden="true"></i>
                                                                 </span>
-                                                                <input type="text" class="form-control" placeholder="">
+                                                                <input type="text" class="form-control" placeholder=""/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1361,7 +1361,7 @@
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-money" aria-hidden="true"></i>
                                                                 </span>
-                                                                <input type="text" class="form-control" placeholder="">
+                                                                <input type="text" class="form-control" placeholder=""/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -1370,7 +1370,7 @@
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-money" aria-hidden="true"></i>
                                                                 </span>
-                                                                <input type="text" class="form-control" placeholder="">
+                                                                <input type="text" class="form-control" placeholder=""/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1402,6 +1402,38 @@
                                             <td class="right">12,650,000</td>
                                             <td></td>
                                         </tr>
+										 <tr>
+                                            <td style="text-align: left">12</td>
+                                            <td style="border-right: none !important;text-align: right">
+												<input style="text-align:right" type="text" class="form-control"/>
+											</td>
+                                            <td style="border-left: none !important;text-align: right">
+												<input style="text-align:right" type="text" class="form-control"/>
+											</td>
+                                            <td class="right">
+												<input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+											</td>
+                                            <td>
+												<input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+											</td>
+                                            <td class="right">
+												<input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+											</td>
+                                            <td class="right">
+												<input  onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+											</td>
+                                            <td class="right">
+												<input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+											</td>
+                                            <td class="right">
+												<input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+											</td>
+                                            <td>
+                                                <a id="btn_row12" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     </tbody>
 
                                     <tfoot>
@@ -1416,7 +1448,7 @@
                                             <td class="right">6,558</td>
                                             <td class="right">51,602,500</td>
                                             <td class="right">52,650,000</td>
-                                            <td></td>
+                                            
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -1614,7 +1646,7 @@
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
-       
+       <script src="dist/js/autoNumeric.min.js"></script>
         <!-- page script -->
  <script>
         $(document).ready(function () {
@@ -1628,7 +1660,9 @@
                     'info': true,
                     'autoWidth': false
                 })
-            })
+            });
+			
+			$('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
         });
     </script>
     <script>
