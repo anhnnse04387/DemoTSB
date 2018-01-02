@@ -165,6 +165,35 @@ function doi() {
     $('#doitra').removeClass('noDisplay');
 }
 
+function tongCai(stt) {
+    var tong_cai = 0;
+    if(parseInt(stt) <= 10) {
+        tong_cai = ($("#cai_1").val() === '' ? 0 : parseInt($("#cai_1").val())) +
+                   ($("#cai_2").val() === '' ? 0 : parseInt($("#cai_2").val())) +
+                   ($("#cai_3").val() === '' ? 0 : parseInt($("#cai_3").val())) +
+                   ($("#cai_4").val() === '' ? 0 : parseInt($("#cai_4").val())) +
+                   ($("#cai_5").val() === '' ? 0 : parseInt($("#cai_5").val())) +
+                   ($("#cai_6").val() === '' ? 0 : parseInt($("#cai_6").val())) +
+                   ($("#cai_7").val() === '' ? 0 : parseInt($("#cai_7").val())) +
+                   ($("#cai_8").val() === '' ? 0 : parseInt($("#cai_8").val())) +
+                   ($("#cai_9").val() === '' ? 0 : parseInt($("#cai_9").val())) +
+                   ($("#cai_10").val() === '' ? 0 : parseInt($("#cai_10").val()));
+        document.getElementById('tong_cai_1').value = (tong_cai).toLocaleString('en');
+    } else {
+        tong_cai = ($("#cai_11").val() === '' ? 0 : parseInt($("#cai_11").val())) +
+                   ($("#cai_12").val() === '' ? 0 : parseInt($("#cai_12").val())) +
+                   ($("#cai_13").val() === '' ? 0 : parseInt($("#cai_13").val())) +
+                   ($("#cai_14").val() === '' ? 0 : parseInt($("#cai_14").val())) +
+                   ($("#cai_15").val() === '' ? 0 : parseInt($("#cai_15").val())) +
+                   ($("#cai_16").val() === '' ? 0 : parseInt($("#cai_16").val())) +
+                   ($("#cai_17").val() === '' ? 0 : parseInt($("#cai_17").val())) +
+                   ($("#cai_18").val() === '' ? 0 : parseInt($("#cai_18").val())) +
+                   ($("#cai_19").val() === '' ? 0 : parseInt($("#cai_19").val())) +
+                   ($("#cai_20").val() === '' ? 0 : parseInt($("#cai_20").val()));
+        document.getElementById('tong_cai_2').value = (tong_cai).toLocaleString('en');
+    }
+}
+
 function changeStatus() {
     if($('#status').is(":checked")) {
         document.getElementById("address").value = '';
