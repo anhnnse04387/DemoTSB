@@ -573,7 +573,7 @@
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a href="chovanchuyen_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -658,7 +658,7 @@
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a href="chovanchuyen_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -743,7 +743,7 @@
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a href="chovanchuyen_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -827,7 +827,7 @@
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a href="chovanchuyen_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -911,7 +911,7 @@
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a href="chovanchuyen_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -996,7 +996,7 @@
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a href="chovanchuyen_tung.html" class="btn btn-danger btn-warning btn-block btn-block" data-toggle="tooltip" title="Sửa" data-placement="bottom">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1031,6 +1031,24 @@
             <strong>Copyright &copy; 2017
                 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
         </footer>
+        <!-- Modal -->
+        <div class="modal fade" id="confirmEdit" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Bạn có chắc chắn muốn xuất kho không ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="chovanchuyen_tung.html"><button type="button" class="btn btn-default">Đồng ý</button></a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
