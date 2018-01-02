@@ -152,16 +152,16 @@ function nhap() {
     document.getElementById("donVi").value = "LS Industrial Systems Co., Ltd.";
     document.getElementById("phone").value = "82-2-2034-4919";
     document.getElementById("day").value = "25/10/2017";
-    document.getElementById("requestDay").value = "25/10/2017";
+    document.getElementById("requestDay").value = "26/10/2017";
     $('#nhaphang').removeClass('noDisplay');
 }
 
 function doi() {
-    document.getElementById("address").value = "17F, Yonsei Jaedan Severance Bldg. 84-11, 5ga, Namdaemun-ro, Jung-gu, Seoul 100-753, Korea.";
-    document.getElementById("donVi").value = "LS Industrial Systems Co., Ltd.";
-    document.getElementById("phone").value = "82-2-2034-4919";
-    document.getElementById("day").value = "26/10/2017";
-    document.getElementById("requestDay").value = "26/10/2017";
+    document.getElementById("address").value = "P9 H5 TT Nguyen Cong Tru, Ha Noi";
+    document.getElementById("donVi").value = document.getElementById("temp").value;
+    document.getElementById("phone").value = "9781284/ 9762331/ 097";
+    document.getElementById("day").value = "13/01/2018";
+    document.getElementById("requestDay").value = "13/01/2018";
     $('#doitra').removeClass('noDisplay');
 }
 
