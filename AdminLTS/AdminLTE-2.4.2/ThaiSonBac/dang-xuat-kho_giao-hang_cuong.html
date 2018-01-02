@@ -21,10 +21,11 @@
            folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
-
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-
+        <!-- Select2 -->
+        <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+        <!-- iCheck for checkboxes and radio inputs -->
 
         <style>
             .custom-btn {
@@ -64,7 +65,6 @@
             .custom-btn {
                 margin-left: 10px;
             }
-
             .custom-chk {
                 padding-left: 15px;
             }
@@ -83,7 +83,7 @@
                         <img style="width:50px; height:50px;" class="img-responsive pull-left" src="dist/img/Logo TSB - Final.png" alt="Photo">
                         <b style="margin-right: 35px;">Giao hàng</b>
                         <span style="position: absolute; margin-top: 15px; margin-left: -130px; font-size: x-small;"><small>Phân hệ</small></span>
-                    </span>    
+                    </span>
                 </a>
                 <nav class="navbar navbar-static-top">
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -94,10 +94,10 @@
                             <li class="dropdown notifications-menu">
                                 <a id="noti" href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-bell-o"></i>
-                                    <span id="noti_span" class="label label-warning">10</span>
+                                    <span id="noti_span" class="label label-warning">8</span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="header">Bạn có 10 thông báo mới</li>
+                                    <li class="header">Bạn có 8 thông báo mới</li>
                                     <li>
                                         <ul class="menu">
                                             <li>
@@ -151,7 +151,7 @@
                                         </ul>
                                     </li>
                                     <li class="footer">
-                                        <a href="notification_details_stocker.html">Xem tất cả</a>
+                                        <a href="#">Xem tất cả</a>
                                     </li>
                                 </ul>
                             </li>
@@ -173,16 +173,17 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="toBeContinue_page_Kho_Kho.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                            <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Hồ sơ</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="toBeContinue_page_Kho_Kho.html" class="btn btn-default btn-flat">Thoát</a>
+                                            <a href="toBeContinue_page_Kho.html" class="btn btn-default btn-flat">Thoát</a>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
+
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -232,20 +233,18 @@
                 <!-- /.sidebar -->
             </aside>
 
+
             <div class="content-wrapper">
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li>
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                            <a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class=""></i> Phiếu chờ xử lí</a>
+                            <a href="#"><i class=""></i> Phiếu chờ xử lí</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class=""></i> Chờ hàng</a>
+                            <a href="#"><i class=""></i> Chờ vận chuyển</a>
                         </li>
                     </ol>
                 </section>
@@ -253,11 +252,12 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
+                                <div class="box-header"></div>
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4>
-                                                <b>DANH SÁCH HÀNG CHỜ</b>
+                                                <b>DANH SÁCH HÀNG ĐANG XUẤT KHO</b>
                                             </h4>
                                         </div>
                                     </div>
@@ -307,9 +307,10 @@
                                                                         <div class="input-group-addon">
                                                                             <i class="fa fa-calendar"></i>
                                                                         </div>
-                                                                        <input type="text" class="form-control" id="datepicker" placeholder="01/02/2018">
+                                                                        <input type="text" class="form-control" id="datepicker">
                                                                     </div>
                                                                 </td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Lựa chọn giao</td>
@@ -365,9 +366,19 @@
                                                                             <i class="fa fa-hourglass"></i>
                                                                         </span>
                                                                         <select class="form-control" style="font-family: 'FontAwesome';">
-                                                                            <option>Kế toán đã xử lý</option>
-                                                                            <option class="text-yellow">Kế toán đã xử lý&#xf071;</option>
+                                                                            <option>Đã xuất kho</option>
+                                                                            <option class="text-yellow">Đã xuất kho&#xf071;</option>
                                                                         </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Kiểm tra
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;">Đã nhận đơn từ kế toán</label>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -394,8 +405,8 @@
                                                         <th>Lô số</th>
                                                         <th>Tên khách hàng</th>
                                                         <th>Số hóa đơn</th>
-                                                        <th>Nhận đơn từ kế toán</th>
-                                                        <th>Trạng Thái</th>
+                                                        <th>Đã nhận đơn từ kế toán</th>
+                                                        <th>Trạng thái</th>
                                                         <th>Ngày giao</th>
                                                         <th>Ghi chú</th>
                                                         <th>Sửa</th>
@@ -404,14 +415,16 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>1</td>
-                                                        <td><a href="stocker_view.html">81269-0</a></td>
+                                                        <td>
+                                                            <a href="stocker_view.html">81269-0</a>
+                                                        </td>
                                                         <td>Công ty Long Giang</td>
                                                         <td>24329</td>
                                                         <td>
-                                                            <input type="checkbox">
+                                                            <input type="checkbox"  disabled />
                                                         </td>
                                                         <td>
-                                                            <span class="label label-success">Kế toán đã xử lý</span>
+                                                            <span class="label label-success">Đã xuất kho</span>
                                                         </td>
                                                         <td></td>
                                                         <td>Giao trước 15-12-2017</td>
@@ -470,13 +483,19 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <br>
+                                                                </br>
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px">Đã nhận đơn từ kế toán</label>
+                                                                    </div>
+                                                                </div>
+                                                                </br>
                                                                 <div class="row">
                                                                     <div class="col-md-2 col-md-offset-8">
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Xuất kho" data-target="#confirmSend">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -484,17 +503,19 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
-                                                        <td><a href="stocker_view.html">81268-0</a></td>
+                                                        <td>
+                                                            <a href="stocker_view.html">81268-0</a>
+                                                        </td>
                                                         <td>Công ty Phú An</td>
                                                         <td>24328</td>
                                                         <td>
-                                                            <input type="checkbox">
+                                                            <input type="checkbox"  disabled>
                                                         </td>
                                                         <td>
-                                                            <span class="label label-success">Kế toán đã xử lí</span>
+                                                            <span class="label label-success">Đã xuất kho</span>
                                                         </td>
                                                         <td></td>
-                                                        <td>Giao trước 11-12-2017</td>
+                                                        <td> Giao trước 11-12-2017</td>
                                                         <td>
                                                             <a id="btn_row2" href="javascript:void(0);" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
@@ -552,11 +573,17 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px">Đã nhận đơn từ kế toán</label>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
                                                                     <div class="col-md-2 col-md-offset-8">
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Xuất kho" data-target="#confirmSend">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -564,17 +591,19 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
-                                                        <td><a href="stocker_view.html">81267-1</a></td>
+                                                        <td>
+                                                            <a href="stocker_view.html">81267-0</a>
+                                                        </td>
                                                         <td>Công ty Invico</td>
                                                         <td>24327</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox"  disabled>
                                                         </td>
                                                         <td>
-                                                            <span class="label label-success">Kế toán đã xử lí</span>
+                                                            <span class="label label-warning">Đã xuất kho</span>
                                                         </td>
                                                         <td></td>
-                                                        <td>Giao trước 19-11-2017</td>
+                                                        <td>Giao trước 06-03-2015</td>
                                                         <td>
                                                             <a id="btn_row3" href="javascript:void(0);" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
@@ -632,11 +661,17 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="row">
-                                                                    <div class="col-md-2 col-md-offset-8">>
+                                                                    <div class="col-md-4">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px">Đã nhận đơn từ kế toán</label>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="col-md-2 col-md-offset-8">
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Xuất kho" data-target="#confirmSend">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -644,14 +679,16 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4</td>
-                                                        <td><a href="stocker_view.html">81266-1</a></td>
-                                                        <td>Công ty Sáng Hà</td>
-                                                        <td>24326</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <a href="stocker_view.html">81266-0</a>
+                                                        </td>
+                                                        <td>Công ty Sáng Hà</td>
+                                                        <td>24326</td>>
+                                                        <td>
+                                                            <input type="checkbox"  disabled/>
                                                         </td>
                                                         <td>
-                                                            <span class="label label-primary"> xuất phiếu</span>
+                                                            <span class="label label-success">Đã xuất kho</span>
                                                         </td>
                                                         <td></td>
                                                         <td>Giao trước 19-11-2017</td>
@@ -712,11 +749,16 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px">Đã nhận đơn từ kế toán</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
                                                                     <div class="col-md-2 col-md-offset-8">
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Xuất kho" data-target="#confirmSend">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -724,14 +766,16 @@
                                                     </tr>
                                                     <tr>
                                                         <td>5</td>
-                                                        <td><a href="stocker_view.html">81265-1</a></td>
+                                                        <td>
+                                                            <a href="stocker_view.html">81265-1</a>
+                                                        </td>
                                                         <td>Công ty Vạn Xuân</td>
                                                         <td>24325</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox"  disabled />
                                                         </td>
                                                         <td>
-                                                            <span class="label label-primary"> xuất phiếu</span>
+                                                            <span class="label label-warning">Đã xuất kho</span>
                                                         </td>
                                                         <td></td>
                                                         <td>Giao trước 19-11-2017</td>
@@ -792,11 +836,16 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px">Đã nhận đơn từ kế toán</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
                                                                     <div class="col-md-2 col-md-offset-8">
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Xuất kho" data-target="#confirmSend">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -804,14 +853,16 @@
                                                     </tr>
                                                     <tr>
                                                         <td>6</td>
-                                                        <td><a href="stocker_view.html">81264-1</a></td>
+                                                        <td>
+                                                            <a href="stocker_view.html">81264-1</a>
+                                                        </td>
                                                         <td>Công ty Tương Lai</td>
                                                         <td>24324</td>
                                                         <td>
-                                                            <input type="checkbox">
+                                                            <input type="checkbox"  disabled />
                                                         </td>
                                                         <td>
-                                                            <span class="label label-success">Kế toán đã xử lý</span>
+                                                            <span class="label label-success">Đã xuất kho</span>
                                                         </td>
                                                         <td></td>
                                                         <td>Giao trước 01-11-2017</td>
@@ -871,12 +922,18 @@
                                                                     </div>
                                                                 </div>
                                                                 <br>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px">Đã nhận đơn từ kế toán</label>
+                                                                    </div>
+                                                                </div>
                                                                 <div class="row">
                                                                     <div class="col-md-2 col-md-offset-8">
                                                                         <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Xuất kho" data-target="#confirmSend">Xuất kho</a>
+                                                                        <a class="btn btn-danger btn-warning btn-block btn-block" data-toggle="modal" title="Sửa" data-target="#confirmEdit">Sửa</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -886,10 +943,23 @@
                                             </table>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-5">
+
+                            </div>
+
+                            <div class="col-lg-5">
+
+                            </div>
+                        </div>
+                    </div>
+
                 </section>
             </div>
         </div>
@@ -898,9 +968,8 @@
             <strong>Copyright &copy; 2017
                 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
         </footer>
-
         <!-- Modal -->
-        <div class="modal fade" id="confirmSend" role="dialog">
+        <div class="modal fade" id="confirmEdit" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
@@ -932,24 +1001,28 @@
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+        <!-- page script -->
+
         <!-- bootstrap datepicker -->
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <!-- Select2 -->
+        <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+        <!-- iCheck 1.0.1 -->
 
-        <!-- page script -->
         <script>
             /*
-             $(function () {
-             $('#example1').DataTable();
-             $('#example2').DataTable({
-             'paging': true,
-             'lengthChange': false,
-             'searching': false,
-             'ordering': true,
-             'info': true,
-             'autoWidth': false
-             });
-             });
-             */
+            $(function () {
+                $('#example1').DataTable()
+                $('#example2').DataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false
+                })
+            })
+            */
         </script>
         <script>
             $('#row1').hide();
@@ -958,7 +1031,6 @@
             $('#row4').hide();
             $('#row5').hide();
             $('#row6').hide();
-
             $('#btn_row1').click(function () {
                 $('#row1').toggle();
             });
@@ -1006,6 +1078,9 @@
                     autoclose: true
                 });
             });
+            //Initialize Select2 Elements
+            $('.select2').select2();
+
         </script>
     </body>
 
