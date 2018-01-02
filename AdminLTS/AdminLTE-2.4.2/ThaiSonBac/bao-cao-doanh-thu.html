@@ -554,15 +554,46 @@
                             <!-- divtab -->
                             <div class="tab">
                                 <div class="row">
-                                    <div class="col-xs-6"><button class="tablinks active" onclick="openCity(event, 'Paris')" style="width:100%">Doanh thu</button></div>
-                                    <div class="col-xs-6"><button class="tablinks" onclick="openCity(event, 'London')" style="width:100%">Phần trăm ngành hàng</button></div>
+									<div><button class="tablinks active" onclick="openCity(event, 'doanhSo')">Doanh số</button></div>
+                                    <div><button class="tablinks" onclick="openCity(event, 'doanhThu')" >Doanh thu</button></div>
+                                    <div><button class="tablinks" onclick="openCity(event, 'phanTram')" >Phần trăm ngành hàng</button></div>
+									
                                 </div>
                             </div>
 
                             <!-- end div tab -->
                             <!-- /.box-header -->
+							
                             <!-- bar chart -->
-                            <div id="Paris" class="tabcontent" style="display:block;">
+							<div id="doanhSo"  class="tabcontent" style="display:block;">
+								<div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box-header">
+                                            <h3 class="text-center">DOANH SỐ NĂM 2016</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="box-body">
+													<canvas id="lineChart2" style="height: 350px;width:800px;margin:0 auto"></canvas>
+													 <small>Đơn vị :<em> chục triêụ VNĐ</em></small>
+												</div>
+												
+												<div class="col-sm-offset-5">
+												<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+												<strong>Tổng nhập</strong>
+												<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+												<strong>Tổng xuất</strong>
+											</div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>			
+                                </div>							
+							</div>
+							
+                            <div id="doanhThu" class="tabcontent" >
 							<div class="row">
 							<div class="col-md-4"></div>
                             <div class="col-md-4"> <h3>DOANH THU 2016 VÀ 2017</h3></div>
@@ -575,8 +606,8 @@
                                         <div class="box-body">
                                             <div class="chart">
                                                 <!-- Sales Chart Canvas -->
-                                                <canvas id="lineChart" style="height: 400px;"></canvas>
-                                                <small>Đơn vị :<em>Tỷ VNĐ</em></small>
+                                                <canvas id="lineChart" style="height: 500px;"></canvas>
+                                                <small>Đơn vị :<em> Tỷ VNĐ</em></small>
                                             </div>
 											<div class="col-sm-offset-5">
 												<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
@@ -618,7 +649,7 @@
                                 <!-- /.box-footer -->
                             </div> <!-- div của bar chart -->
                             <!-- pie chart -->
-                            <div id="London" class="tabcontent">
+                            <div id="phanTram" class="tabcontent">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="box-header">
@@ -696,9 +727,9 @@
                                             <td>2,500,000</td>
                                             <td style="text-align:right">100,000,000</td>
                                         </tr>
-										<tr style="background-color:green;color:white;font-weight:bold">
+										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Total</td>
+											<td class="noBorder" style="text-align:center">Tổng</td>
 											<td></td>
 											<td style="text-align:right">7,000</td>
 											<td style="text-align:right">7,500,000</td>
@@ -728,9 +759,9 @@
                                             <td style="text-align:right">5,000,000</td>
                                             <td style="text-align:right">500,000,000</td>
                                         </tr>
-										<tr style="background-color:green;color:white;font-weight:bold">
+										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Total</td>
+											<td class="noBorder" style="text-align:center">Tổng</td>
 											<td></td>
 											<td style="text-align:right">11,000</td>
 											<td>525,000,000</td>
@@ -760,9 +791,9 @@
                                             <td>5,000,000</td>
                                             <td style="text-align:right">500,000,000</td>
                                         </tr>
-										<tr style="background-color:green;color:white;font-weight:bold">
+										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Total</td>
+											<td class="noBorder" style="text-align:center">Tổng</td>
 											<td></td>
 											<td style="text-align:right">20,000</td>
 											<td>10,000,000</td>
@@ -784,9 +815,9 @@
                                             <td>500,000</td>
                                             <td style="text-align:right">5,000,000</td>
                                         </tr>
-										<tr style="background-color:green;color:white;font-weight:bold">
+										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Total</td>
+											<td class="noBorder" style="text-align:center">Tổng</td>
 											<td></td>
 											<td style="text-align:right">10</td>
 											<td>500,000</td>
@@ -816,9 +847,9 @@
                                             <td>500,000</td>
                                             <td style="text-align:right">5,000,000</td>
                                         </tr>
-										<tr style="background-color:green;color:white;font-weight:bold">
+										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Total</td>
+											<td class="noBorder" style="text-align:center">Tổng</td>
 											<td></td>
 											<td style="text-align:right">20</td>
 											<td>1,000,000</td>
@@ -828,7 +859,7 @@
                                     <tfoot>
 										<tr>
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Grand Total</td>
+											<td class="noBorder" style="text-align:center">Tổng Cộng</td>
 											<td></td>
 											<td style="text-align:right">31,030</td>
 											<td style="text-align:right">544,000,000</td>
@@ -1133,6 +1164,53 @@
 
                                       
     </script>
+	<script>
+		    new Chart(document.getElementById("lineChart2"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                datasets: [{
+                                                        data: [1.2, 1.5, 3.2, 3.7, 4, 4.6, 5, 5.4, 6, 7, 8.5,8.7],
+                                                        label: "Năm 2016 : Tổng xuất",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+                                                        label: "Năm 2016 : Tổng nhập",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 1,
+                                                                max: 15
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+	</script>
     <script>
         $('input[name=week]').datepicker({
             format: "dd-mm-yyyy",
@@ -1184,6 +1262,7 @@
     ]
     $.plot('#donut-chart', donutData, {
       series: {
+	  
         pie: {
           show       : true,
           radius     : 1,
@@ -1194,15 +1273,26 @@
             formatter: labelFormatter,
             threshold: 0.1
           }
-		  tooltips: {
-		show: true
-		}
+		
 
         }
       },
+	   grid: {
+        hoverable: true
+	  },
+	  
       legend: {
         show: false
+      },
+	  tooltips: {
+    	callbacks: {
+      	label: function(tooltipItem) {
+        console.log(tooltipItem)
+        	return tooltipItem.yLabel;
+        }
       }
+    }
+	  
 	    
     })
     /*
@@ -1215,7 +1305,7 @@
    * ----------------------
    */
   function labelFormatter(label, series) {
-    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 200;">'
       + label
       + '<br>'
       + Math.round(series.percent) + '%</div>'
