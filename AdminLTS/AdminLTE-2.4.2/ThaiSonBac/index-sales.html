@@ -377,9 +377,8 @@
                 <!-- Main content -->
                 <section class="content">
                     <!-- Info boxes -->
-                    <h3>THÁNG 12</h3>
-                    <h3 style="color:rgb(0, 137, 209);">TỪ 18/12/2017 ĐẾN 24/12/2017</h3>
-                    <div class="row">
+                    <h3><b>THÁNG 12/2017</b></h3>
+                    <div class="row dm">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <a href="toBeContinue_page.html">
                                 <div class="info-box">
@@ -515,7 +514,7 @@
                                                     <td class="text-right">460</td>
                                                     <td class="text-right">5</td>
                                                     <td class="text-right">25,465,154</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>
 
                                                 <tr>
@@ -524,7 +523,7 @@
                                                     <td class="text-right">560</td>
                                                     <td class="text-right">7</td>
                                                     <td class="text-right">26,475,213</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>
 
                                                 <tr>
@@ -533,7 +532,7 @@
                                                     <td class="text-right">660</td>
                                                     <td class="text-right">5</td>
                                                     <td class="text-right">6,471,213</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>
 
                                                 <tr>
@@ -542,7 +541,7 @@
                                                     <td class="text-right">860</td>
                                                     <td class="text-right">8</td>
                                                     <td class="text-right">5,475,213</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>
 
                                                 <tr>
@@ -551,7 +550,7 @@
                                                     <td class="text-right">860</td>
                                                     <td class="text-right">9</td>
                                                     <td class="text-right">10,475,213</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>
 
                                                 <tr>
@@ -560,7 +559,7 @@
                                                     <td class="text-right">460</td>
                                                     <td class="text-right">5</td>
                                                     <td class="text-right">3,475,213</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>
 
                                                 <tr>
@@ -569,7 +568,7 @@
                                                     <td class="text-right">330</td>
                                                     <td class="text-right">3</td>
                                                     <td class="text-right">15,465,154</td>
-                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-warning"> Đang xử lý</span></a></td>
+                                                    <td class="text-center"><a href="detail_progress.html"><span class="label label-primary"> Đang xử lý</span></a></td>
                                                 </tr>	
                                             </tbody>
                                         </table>
@@ -904,94 +903,158 @@
 
             new Chart(document.getElementById("lineChart"), {
                 type: 'line',
-				data: {
-					labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                data: {
                     datasets: [{
-                    data: [2.1, 1.1, 5.2, 3],
-                    label: "Tháng 12",
-                    borderColor: "#33FF33",
-                    backgroundColor: "#33FF33",
-                                                        fill: false
-                                                    }, {
-                                                        data: [1.7, 3.5, 2.5, 5],
-                                                        label: "Tháng 1",
-                                                        borderColor: "#EE0000",
-                                                        backgroundColor: "#EE0000",
-                                                        fill: false
-                                                    }
-                                                ]
-                                            },
-                                            options: {
-                                                legend: {display: false},
-                                                tooltips: {
-                                                    mode: 'index',
-                                                    intersect: false,
-                                                },
-                                                hover: {
-                                                    mode: 'nearest',
-                                                    intersect: true
-                                                },
-                                                elements: {
-                                                    line: {
-                                                        tension: 0, // disables bezier curves
-                                                    }
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                            ticks: {
-                                                                min: 0,
-                                                                stepSize: 2,
-                                                                max: 8
-                                                            }
-                                                        }]
-                                                }
-                                            }
+                            data: [{
+                                    x: 1,
+                                    y: 3
+                                },
+                                {
+                                    x: 7,
+                                    y: 1.1
+                                },
+                                {
+                                    x: 15,
+                                    y: 3.5
+                                }, {
+                                    x: 20,
+                                    y: 2.5
+                                }, {
+                                    x: 28,
+                                    y: 4.1
+                                }],
+                            label: "Tháng 1",
+                            borderColor: "#33FF33",
+                            backgroundColor: "#33FF33",
+                            fill: false
+                        }, {
+                            data: [{
+                                    x: 1,
+                                    y: 1.5
+                                }, {
+                                    x: 18,
+                                    y: 3.2
+                                }, {
+                                    x: 22,
+                                    y: 3.4
+                                }, {
+                                    x: 31,
+                                    y: 3
+                                }],
+                            label: "Tháng 12",
+                            borderColor: "#EE0000",
+                            backgroundColor: "#EE0000",
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    legend: {display: false},
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    elements: {
+                        line: {
+                            tension: 0, // disables bezier curves
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    stepSize: 1,
+                                    max: 5
+                                }
+                            }],
+                        xAxes: [{
+                                type: "linear",
+                                ticks: {
+                                    min: 1,
+                                    stepSize: 5,
+                                    max: 31
+                                }
+                            }, ],
+                    }
+                }
             });
 
             new Chart(document.getElementById("lineChart2"), {
                 type: 'line',
                 data: {
-                                                labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
-                                                datasets: [{
-                                                        data: [1.2, 2.5, 5.2, 3],
-                                                        label: "Tháng 12",
-                                                        borderColor: "#33FF33",
-                                                        backgroundColor: "#33FF33",
-                                                        fill: false
-                                                    }, {
-                                                        data: [2.3, 6.5, 1.4, 4, 5,3],
-                                                        label: "Tháng 1",
-                                                        borderColor: "#EE0000",
-                                                        backgroundColor: "#EE0000",
-                                                        fill: false
-                                                    }
-                                                ]
-                                            },
-                                            options: {
-                                                legend: {display: false},
-                                                tooltips: {
-                                                    mode: 'index',
-                                                    intersect: false,
-                                                },
-                                                hover: {
-                                                    mode: 'nearest',
-                                                    intersect: true
-                                                },
-                                                elements: {
-                                                    line: {
-                                                        tension: 0, // disables bezier curves
-                                                    }
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                            ticks: {
-                                                                min: 0,
-                                                                stepSize: 1,
-                                                                max: 8
-                                                            }
-                                                        }]
-                                                }
-                                            }
+                    datasets: [{
+                            data: [{
+                                    x: 1,
+                                    y: 3
+                                },
+                                {
+                                    x: 7,
+                                    y: 1
+                                },
+                                {
+                                    x: 15,
+                                    y: 3
+                                }, {
+                                    x: 20,
+                                    y: 2
+                                }, {
+                                    x: 28,
+                                    y: 4
+                                }],
+                            label: "Tháng 1",
+                            borderColor: "#33FF33",
+                            backgroundColor: "#33FF33",
+                            fill: false
+                        }, {
+                            data: [{
+                                    x: 1,
+                                    y: 1
+                                }, {
+                                    x: 18,
+                                    y: 3
+                                }, {
+                                    x: 22,
+                                    y: 3
+                                }, {
+                                    x: 31,
+                                    y: 4
+                                }],
+                            label: "Tháng 12",
+                            borderColor: "#EE0000",
+                            backgroundColor: "#EE0000",
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    legend: {display: false},
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    elements: {
+                        line: {
+                            tension: 0, // disables bezier curves
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    stepSize: 1,
+                                    max: 5
+                                }
+                            }],
+                        xAxes: [{
+                                type: "linear",
+                                ticks: {
+                                    min: 1,
+                                    stepSize: 5,
+                                    max: 31
+                                }
+                            }, ],
+                    }
+                }
             });
         </script>
         <script>
