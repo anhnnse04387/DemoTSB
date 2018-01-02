@@ -340,7 +340,7 @@
                             <a href="workflow.html">
                                 <i class="fa fa-question-circle"></i> <span>Help</span>
                             </a>
-                        </li>						
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -350,7 +350,7 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li><a href="index-sales.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-                        <li><a href="timeline.html"> Timeline</a></li>
+                        <li><a href="timeline.html"> Lịch giao hàng</a></li>
                     </ol>
                 </section>
                 <!-- Main content -->
@@ -359,7 +359,7 @@
                       <div class="col-md-12">
                           <div class="box">
                               <div class="box-header with-border">
-                                  <h3 class="box-title">TIMELINE</h3>
+                                  <h3 class="box-title">LỊCH GIAO HÀNG</h3>
                                   <div class="box-tools pull-right">
                                       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                       </button>
@@ -369,17 +369,17 @@
                               <div class="box-body">
                                   <div class="col-md-12">
                                         <form class="row form-inline">
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="form-group" style="margin-right: 16px;">
-                                                    <label for="fromDate">From</label>
+                                                    <label for="fromDate">Từ ngày </label>
                                                     <input type="date" class="form-control" id="fromDate" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="toDate">To</label>
+                                                    <label for="toDate">Đến ngày </label>
                                                     <input type="date" class="form-control" id="toDate" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group" style="float: right;">
                                                     <input type="text" class="form-control" id="search" placeholder="Tìm kiếm" />
                                                 </div>
@@ -415,41 +415,89 @@
         <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/vi.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
         <script>
             // DOM element where the Timeline will be attached
             var timeline = document.getElementById('timeline');
 
             var groups = new vis.DataSet([
-              { id: 0, content: 'Order 1' },
-              { id: 1, content: 'Order 2' },
-              { id: 2, content: 'Order 3' },
-              { id: 3, content: 'Order 4' },
+              { id: 0, content: 'Lô số 1' },
+              { id: 1, content: 'Lô số 2' },
+              { id: 2, content: 'Lô số 3' },
+              { id: 3, content: 'Lô số 4' },
+              { id: 4, content: 'Lô số 5' },
+              { id: 5, content: 'Lô số 6' },
+              { id: 6, content: 'Lô số 7' },
+              { id: 7, content: 'Lô số 8' },
+              { id: 8, content: 'Lô số 9' },
+              { id: 9, content: 'Lô số 10' }
             ]);
 
             // create a dataset with items
             var items = new vis.DataSet([
-              {id: 0, group: 0, content: 'Tạo đơn', start: new Date(2018, 0, 01)},
-              {id: 1, group: 0, content: 'Giao hàng', start: new Date(2018, 0, 03)},
-              {id: 2, group: 1, content: 'Tạo đơn', start: new Date(2018, 0, 02)},
-              {id: 3, group: 1, content: 'Giao hàng', start: new Date(2018, 0, 03)},
-              {id: 4, group: 2, content: 'Tạo đơn', start: new Date(2018, 0, 01)},
-              {id: 5, group: 2, content: 'Giao hàng', start: new Date(2018, 0, 04)},
-              {id: 6, group: 3, content: 'Tạo đơn', start: new Date(2018, 0, 03)},
-              {id: 7, group: 3, content: 'Giao hàng', start: new Date(2018, 0, 07)},
-              {id: 8, group: 4, content: 'Tạo đơn', start: new Date(2018, 0, 03)},
-              {id: 9, group: 4, content: 'Giao hàng', start: new Date(2018, 0, 04)}
+              {id: 0, group: 0, content: 'Tạo đơn', start: new Date(2018, 0, 01),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 1, group: 0, content: 'Giao hàng', start: new Date(2018, 0, 03),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 2, group: 1, content: 'Tạo đơn', start: new Date(2018, 0, 02),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 3, group: 1, content: 'Giao hàng', start: new Date(2018, 0, 03),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 4, group: 2, content: 'Tạo đơn', start: new Date(2018, 0, 01),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 5, group: 2, content: 'Giao hàng', start: new Date(2018, 0, 04),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 6, group: 3, content: 'Tạo đơn', start: new Date(2018, 0, 03),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 7, group: 3, content: 'Giao hàng', start: new Date(2018, 0, 07),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 8, group: 4, content: 'Tạo đơn', start: new Date(2018, 0, 03),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 9, group: 4, content: 'Giao hàng', start: new Date(2018, 0, 04),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 10, group: 5, content: 'Tạo đơn', start: new Date(2018, 0, 03),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 11, group: 5, content: 'Giao hàng', start: new Date(2018, 0, 05),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 12, group: 6, content: 'Tạo đơn', start: new Date(2018, 0, 01),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 13, group: 6, content: 'Giao hàng', start: new Date(2018, 0, 06),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 14, group: 7, content: 'Tạo đơn', start: new Date(2018, 0, 01),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 15, group: 7, content: 'Giao hàng', start: new Date(2018, 0, 05),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 16, group: 8, content: 'Tạo đơn', start: new Date(2018, 0, 02),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 17, group: 8, content: 'Giao hàng', start: new Date(2018, 0, 06),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 18, group: 9, content: 'Tạo đơn', start: new Date(2018, 0, 01),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 19, group: 9, content: 'Giao hàng', start: new Date(2018, 0, 07),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 20, group: 10, content: 'Tạo đơn', start: new Date(2018, 0, 02),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"},
+              {id: 21, group: 10, content: 'Giao hàng', start: new Date(2018, 0, 07),
+                title: "<small>Ngày: 01/01/2017, nhân viên: hoadx</small>"}
             ]);
 
             // Configuration for the Timeline
             var options = {
-              stack: true,
-              horizontalScroll: true,
-              maxHeight: 400,
               margin: {
                 item: 10, // minimal margin between items
                 axis: 5   // minimal margin between items and the axis
-              }
+              },
+              moveable: false,
+              locales: {
+                // create a new locale (text strings should be replaced with localized strings)
+                vi_VN: {
+                  current: 'current',
+                  time: 'time',
+                }
+              },
+              locale: 'vi_VN'
             };
 
             // Create a Timeline
