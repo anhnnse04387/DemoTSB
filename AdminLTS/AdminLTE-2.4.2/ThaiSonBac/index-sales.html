@@ -904,158 +904,94 @@
 
             new Chart(document.getElementById("lineChart"), {
                 type: 'line',
-                data: {
+				data: {
+					labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
                     datasets: [{
-                            data: [{
-                                    x: 1,
-                                    y: 3
-                                },
-                                {
-                                    x: 7,
-                                    y: 1.1
-                                },
-                                {
-                                    x: 15,
-                                    y: 3.5
-                                }, {
-                                    x: 20,
-                                    y: 2.5
-                                }, {
-                                    x: 28,
-                                    y: 4.1
-                                }],
-                            label: "Tháng 1",
-                            borderColor: "#33FF33",
-                            backgroundColor: "#33FF33",
-                            fill: false
-                        }, {
-                            data: [{
-                                    x: 1,
-                                    y: 1.5
-                                }, {
-                                    x: 18,
-                                    y: 3.2
-                                }, {
-                                    x: 22,
-                                    y: 3.4
-                                }, {
-                                    x: 31,
-                                    y: 3
-                                }],
-                            label: "Tháng 12",
-                            borderColor: "#EE0000",
-                            backgroundColor: "#EE0000",
-                            fill: false
-                        }
-                    ]
-                },
-                options: {
-                    legend: {display: false},
-                    hover: {
-                        mode: 'nearest',
-                        intersect: true
-                    },
-                    elements: {
-                        line: {
-                            tension: 0, // disables bezier curves
-                        }
-                    },
-                    scales: {
-                        yAxes: [{
-                                ticks: {
-                                    min: 0,
-                                    stepSize: 1,
-                                    max: 5
-                                }
-                            }],
-                        xAxes: [{
-                                type: "linear",
-                                ticks: {
-                                    min: 1,
-                                    stepSize: 5,
-                                    max: 31
-                                }
-                            }, ],
-                    }
-                }
+                    data: [2.1, 1.1, 5.2, 3],
+                    label: "Tháng 12",
+                    borderColor: "#33FF33",
+                    backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [1.7, 3.5, 2.5, 5],
+                                                        label: "Tháng 1",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 2,
+                                                                max: 8
+                                                            }
+                                                        }]
+                                                }
+                                            }
             });
 
             new Chart(document.getElementById("lineChart2"), {
                 type: 'line',
                 data: {
-                    datasets: [{
-                            data: [{
-                                    x: 1,
-                                    y: 3
-                                },
-                                {
-                                    x: 7,
-                                    y: 1
-                                },
-                                {
-                                    x: 15,
-                                    y: 3
-                                }, {
-                                    x: 20,
-                                    y: 2
-                                }, {
-                                    x: 28,
-                                    y: 4
-                                }],
-                            label: "Tháng 1",
-                            borderColor: "#33FF33",
-                            backgroundColor: "#33FF33",
-                            fill: false
-                        }, {
-                            data: [{
-                                    x: 1,
-                                    y: 1
-                                }, {
-                                    x: 18,
-                                    y: 3
-                                }, {
-                                    x: 22,
-                                    y: 3
-                                }, {
-                                    x: 31,
-                                    y: 4
-                                }],
-                            label: "Tháng 12",
-                            borderColor: "#EE0000",
-                            backgroundColor: "#EE0000",
-                            fill: false
-                        }
-                    ]
-                },
-                options: {
-                    legend: {display: false},
-                    hover: {
-                        mode: 'nearest',
-                        intersect: true
-                    },
-                    elements: {
-                        line: {
-                            tension: 0, // disables bezier curves
-                        }
-                    },
-                    scales: {
-                        yAxes: [{
-                                ticks: {
-                                    min: 0,
-                                    stepSize: 1,
-                                    max: 5
-                                }
-                            }],
-                        xAxes: [{
-                                type: "linear",
-                                ticks: {
-                                    min: 1,
-                                    stepSize: 5,
-                                    max: 31
-                                }
-                            }, ],
-                    }
-                }
+                                                labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                                                datasets: [{
+                                                        data: [1.2, 2.5, 5.2, 3],
+                                                        label: "Tháng 12",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [2.3, 6.5, 1.4, 4, 5,3],
+                                                        label: "Tháng 1",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 1,
+                                                                max: 8
+                                                            }
+                                                        }]
+                                                }
+                                            }
             });
         </script>
         <script>
