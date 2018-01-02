@@ -147,20 +147,48 @@ function autoFillCustomer() {
     }
 }
 
-function autofillKho() {
+function nhap() {
     document.getElementById("address").value = "17F, Yonsei Jaedan Severance Bldg. 84-11, 5ga, Namdaemun-ro, Jung-gu, Seoul 100-753, Korea.";
-    document.getElementById("tax").value = "0310960722";
+    document.getElementById("donVi").value = "LS Industrial Systems Co., Ltd.";
     document.getElementById("phone").value = "82-2-2034-4919";
+    document.getElementById("day").value = "25/10/2017";
+    document.getElementById("requestDay").value = "25/10/2017";
+    $('#nhaphang').removeClass('noDisplay');
 }
 
-function nhaphang() {
-    var cai = 0;
-    if (parseInt($("#sl").val().replace(new RegExp(',', 'g'), '')) > 0) {
-        cai = parseInt($("#sl").val().replace(new RegExp(',', 'g'), ''));
+function doi() {
+    document.getElementById("address").value = "17F, Yonsei Jaedan Severance Bldg. 84-11, 5ga, Namdaemun-ro, Jung-gu, Seoul 100-753, Korea.";
+    document.getElementById("donVi").value = "LS Industrial Systems Co., Ltd.";
+    document.getElementById("phone").value = "82-2-2034-4919";
+    document.getElementById("day").value = "26/10/2017";
+    document.getElementById("requestDay").value = "26/10/2017";
+    $('#doitra').removeClass('noDisplay');
+}
+
+function changeStatus() {
+    if($('#status').is(":checked")) {
+        document.getElementById("address").value = '';
+        document.getElementById("donVi").value = '';
+        document.getElementById("phone").value = '';
+        document.getElementById("day").value = '';
+        document.getElementById("requestDay").value = '';
+        $('#nameLo').addClass('noDisplay');
+        $('#namePi').removeClass('noDisplay');
+        $('#doitra').addClass('noDisplay');
+        $('#piNo').removeClass('noDisplay');
+        $('#loso').addClass('noDisplay');
+    } else {
+        document.getElementById("address").value = '';
+        document.getElementById("donVi").value = '';
+        document.getElementById("phone").value = '';
+        document.getElementById("day").value = '';
+        document.getElementById("requestDay").value = '';
+        $('#namePi').addClass('noDisplay');
+        $('#nameLo').removeClass('noDisplay');
+        $('#nhaphang').addClass('noDisplay');
+        $('#piNo').addClass('noDisplay');
+        $('#loso').removeClass('noDisplay');
     }
-    document.getElementById('tong_so').value = (cai + 3370).toLocaleString('en');
-    document.getElementById('tien').value = ((cai * parseFloat($("#gia").val().replace('.', '')) / 100)).toFixed(2);
-    document.getElementById('tong_tien').value = ((cai * parseFloat($("#gia").val().replace('.', '')) / 100) + 15858.1).toFixed(2);
 }
 
 function autoFillProvider() {
