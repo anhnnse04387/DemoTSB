@@ -989,85 +989,66 @@
                                                 "ABN 52c",
                                                 "TS1000N AG6 3P",
                                                 "ABS 32c",
-                                                "ABH 53c"
+                                                "ABH 53c",
+                                                "ABE103-G"
                                             ];
                                             var ampe = [
                                                 "5A",
                                                 "15A",
                                                 "30A",
-                                                "63A"
+                                                "63A",
+                                                "1000A"
                                             ];
                                             $("#name_6").autocomplete({
                                                 source: availableTags,
                                                 change: function () {
                                                     if ($('#name_6').val() === 'ABN 52c') {
                                                         document.getElementById('dongia_6').value = '590,000';
-                                                        document.getElementById('name_13').value = 'ABN 52c';
-                                                        document.getElementById('dongia_13').value = '590,000';
                                                     } else if ($('#name_6').val() === 'TS1000N AG6 3P') {
                                                         document.getElementById('dongia_6').value = '80,807,000';
-                                                        document.getElementById('name_13').value = 'TS1000N AG6 3P';
-                                                        document.getElementById('dongia_13').value = '80,807,000';
                                                     } else if ($('#name_6').val() === 'ABS 32c') {
                                                         document.getElementById('dongia_6').value = '1,859,000';
-                                                        document.getElementById('name_13').value = 'ABS 32c';
-                                                        document.getElementById('dongia_13').value = '1,859,000';
                                                     } else if ($('#name_6').val() === 'ABH 53c') {
                                                         document.getElementById('dongia_6').value = '2,375,000';
-                                                        document.getElementById('name_13').value = 'ABH 53c';
-                                                        document.getElementById('dongia_13').value = '2,375,000';
+                                                    } else {
+                                                        document.getElementById('dongia_6').value = '8,443,000';
                                                     }
                                                 }
                                             });
-                                            $("#name_7").autocomplete({
+                                            $("#name_8").autocomplete({
                                                 source: availableTags,
                                                 change: function () {
-                                                    if ($('#name_7').val() === 'ABN 52c') {
-                                                        document.getElementById('dongia_7').value = '590,000';
-                                                        document.getElementById('name_14').value = 'ABN 52c';
-                                                        document.getElementById('dongia_14').value = '590,000';
-                                                    } else if ($('#name_7').val() === 'TS1000N AG6 3P') {
-                                                        document.getElementById('dongia_7').value = '80,807,000';
-                                                        document.getElementById('name_14').value = 'TS1000N AG6 3P';
-                                                        document.getElementById('dongia_14').value = '80,807,000';
-                                                    } else if ($('#name_7').val() === 'ABS 32c') {
-                                                        document.getElementById('dongia_7').value = '1,859,000';
-                                                        document.getElementById('name_14').value = 'TS1000N AG6 3P';
-                                                        document.getElementById('dongia_14').value = '80,807,000';
-                                                    } else if ($('#name_7').val() === 'ABH 53c') {
-                                                        document.getElementById('dongia_7').value = '2,375,000';
-                                                        document.getElementById('name_14').value = 'ABH 53c';
-                                                        document.getElementById('dongia_14').value = '2,375,000';
+                                                    if ($('#name_8').val() === 'ABN 52c') {
+                                                        document.getElementById('dongia_8').value = '590,000';
+                                                    } else if ($('#name_8').val() === 'TS1000N AG6 3P') {
+                                                        document.getElementById('dongia_8').value = '80,807,000';
+                                                    } else if ($('#name_8').val() === 'ABS 32c') {
+                                                        document.getElementById('dongia_8').value = '1,859,000';
+                                                    } else if ($('#name_8').val() === 'ABH 53c') {
+                                                        document.getElementById('dongia_8').value = '2,375,000';
+                                                    } else {
+                                                        document.getElementById('dongia_8').value = '8,443,000';
                                                     }
                                                 }
                                             });
-                                            $("#ampe_6").autocomplete({
-                                                source: ampe,
+                                            $("#name_9").autocomplete({
+                                                source: availableTags,
                                                 change: function () {
-                                                    if ($('#ampe_6').val() === '5A') {
-                                                        document.getElementById('ampe_13').value = '5A';
-                                                    } else if ($('#ampe_6').val() === '15A') {
-                                                        document.getElementById('ampe_13').value = '15A';
-                                                    } else if ($('#ampe_6').val() === '30A') {
-                                                        document.getElementById('ampe_13').value = '30A';
-                                                    } else if ($('#ampe_6').val() === '63A') {
-                                                        document.getElementById('ampe_13').value = '63A';
+                                                    if ($('#name_9').val() === 'ABN 52c') {
+                                                        document.getElementById('dongia_9').value = '590,000';
+                                                    } else if ($('#name_9').val() === 'TS1000N AG6 3P') {
+                                                        document.getElementById('dongia_9').value = '80,807,000';
+                                                    } else if ($('#name_9').val() === 'ABS 32c') {
+                                                        document.getElementById('dongia_9').value = '1,859,000';
+                                                    } else if ($('#name_9').val() === 'ABH 53c') {
+                                                        document.getElementById('dongia_9').value = '2,375,000';
+                                                    } else {
+                                                        document.getElementById('dongia_9').value = '8,443,000';
                                                     }
                                                 }
                                             });
-                                            $("#ampe_7").autocomplete({
-                                                source: ampe,
-                                                change: function () {
-                                                    if ($('#ampe_7').val() === '5A') {
-                                                        document.getElementById('ampe_14').value = '5A';
-                                                    } else if ($('#ampe_7').val() === '15A') {
-                                                        document.getElementById('ampe_14').value = '15A';
-                                                    } else if ($('#ampe_7').val() === '30A') {
-                                                        document.getElementById('ampe_14').value = '30A';
-                                                    } else if ($('#ampe_7').val() === '63A') {
-                                                        document.getElementById('ampe_14').value = '63A';
-                                                    }
-                                                }
+                                            $(".ampe").autocomplete({
+                                                source: ampe
                                             });
                                         });
         </script>
