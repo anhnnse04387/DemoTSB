@@ -298,13 +298,16 @@ function configCkAll(stt) {
                      ($("#thung_5").val() === '' ? 0 : parseInt($("#thung_5").val())) +
                      ($("#thung_6").val() === '' ? 0 : parseInt($("#thung_6").val()));
     } else if(stt === '2') {
-        tien_chua_ck = $('#tien_da_ck_7').val() === '' ? 0 : parseInt($("#tien_da_ck_7").val().replace(new RegExp(',', 'g'), ''));
-        tong_thung = $("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val());
-        tong_cai = $("#cai_7").val() === '' ? 0 : parseInt($("#cai_7").val());
+        tien_chua_ck = ($('#tien_da_ck_7').val() === '' ? 0 : parseInt($("#tien_da_ck_7").val().replace(new RegExp(',', 'g'), ''))) +
+                       ($("#tien_da_ck_8").val() === '' ? 0 : parseInt($("#tien_da_ck_8").val().replace(new RegExp(',', 'g'), '')));
+        tong_thung = ($("#thung_7").val() === '' ? 0 : parseInt($("#thung_7").val())) +
+                     ($("#thung_8").val() === '' ? 0 : parseInt($("#thung_8").val()));
+        tong_cai = ($("#cai_7").val() === '' ? 0 : parseInt($("#cai_7").val())) + 
+                   ($("#cai_8").val() === '' ? 0 : parseInt($("#cai_8").val()));
     } else {
-        tien_chua_ck = ($("#tien_da_ck_8").val() === '' ? 0 : parseInt($("#tien_da_ck_8").val().replace(new RegExp(',', 'g'), '')));
-        tong_thung = $("#thung_8").val() === '' ? 0 : parseInt($("#thung_8").val());
-        tong_cai = $("#cai_8").val() === '' ? 0 : parseInt($("#cai_8").val());
+        tien_chua_ck = ($("#tien_da_ck_9").val() === '' ? 0 : parseInt($("#tien_da_ck_9").val().replace(new RegExp(',', 'g'), '')));
+        tong_thung = $("#thung_9").val() === '' ? 0 : parseInt($("#thung_9").val());
+        tong_cai = $("#cai_9").val() === '' ? 0 : parseInt($("#cai_9").val());
     }
     document.getElementById("tong_cai_" + stt).value = tong_cai;
     document.getElementById("tong_thung_" + stt).value = tong_thung;

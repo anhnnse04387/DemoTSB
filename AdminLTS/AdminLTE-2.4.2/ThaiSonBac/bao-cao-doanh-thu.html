@@ -139,6 +139,9 @@
 			.noBorder{
 				border-right-style:hidden !important;
 			}
+			.noneDisplay{
+				display:none;
+			}
         </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -154,6 +157,30 @@
             zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
             ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
         </script>
+		<!--js cho donut chart -->
+			<script type="text/javascript" src="dist/js/loader.js"></script>
+			<script type="text/javascript">
+			google.charts.load("current", {packages:["corechart"]});
+			google.charts.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+				['Category', 'Percentage'],
+				['CB - Aptomat',     700],
+				['Inventer - Biến tần', 400],
+				['Cáp thông tin',  200],
+				['Công tắc ổ cắm', 500],
+				['Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế', 600]
+			]);
+
+        var options = {
+          pieHole: 0.5,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+		<!--end-->
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -510,14 +537,15 @@
                             <div class="nav nav-tabs">
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a href="#doanhSo" data-toggle="tab" aria-expanded="true">Doanh số</a>
+                                        <a href="#doanhThuTuan" data-toggle="tab" aria-expanded="true">Doanh thu tuần</a>
                                     </li>
                                     <li class="">
-                                        <a href="#doanhThu" data-toggle="tab" aria-expanded="false">Doanh thu</a>
-                                    </li>						
-									 <li class="">
-                                        <a href="#phanTram" data-toggle="tab" aria-expanded="false">Phần trăm ngành hàng</a>
-                                    </li>
+                                        <a href="#doanhThuThang" data-toggle="tab" aria-expanded="false">Doanh thu tháng</a>
+                                    </li>	
+									<li class="">
+                                        <a href="#doanhThuNam" data-toggle="tab" aria-expanded="false">Doanh thu năm</a>
+                                    </li>										
+									
                                 </ul>
                             </div>
 
@@ -525,40 +553,63 @@
                             <!-- /.box-header -->
 							
                             <!-- bar chart -->
-						<div class="tab-content">
-							<div id="doanhSo"  class="active tab-pane">
+							<div class="tab-content">
+							<div id="doanhThuTuan"  class="active tab-pane">
 								<div class="row">
                                     <div class="col-md-12">
 									<div class="box-header">
-                                            <h3 class="text-center">DOANH SỐ NĂM 2017</h3>
+                                            <h3 class="text-center">DOANH THU TUẦN</h3>
                                         </div>
 									<div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
                                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ ngày:  </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="1-12">
+                                                    <input id="startDate" type="text" class="form-control" name="week" value="1-12" onchange="autoSelectDate()" />
                                                 </div>
 												<label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến ngày: </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="31-12">
+                                                    <input id="endDate" type="text" class="form-control" name="week" value="7-12" readonly />
                                                 </div>
 									</div>	
                                         
                                         <div class="box-body">
                                             <div class="row">
+													<div style="margin-left:26%">
+														<label>Danh mục</label>
+                                                        <select id="dropbox" class="form-control select2" style="width: 40%;">
+                                                            <option selected="selected" value="1">Tổng các danh mục</option>
+                                                            <option value="2">CB - Aptomat</option>
+                                                            <option value="3">Inverter: Biến tần</option>
+                                                            <option value="4">Cáp thông tin</option>
+                                                            <option>Công tắc ổ cắm</option>
+                                                            <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                        </select>
+													</div>
                                                 <div class="col-md-2"></div>
                                                 <div class="box-body">
-													<canvas id="lineChart2" style="height: 350px;width:800px;margin:0 auto"></canvas>
-													 <small>Đơn vị :<em> chục triêụ VNĐ</em></small>
+													<div id="defaultChart">
+														<canvas id="lineChart1" style="height: 350px;width:800px;margin:0 auto"></canvas>
+														<small>Đơn vị :<em> chục triêụ VNĐ</em></small>
+													</div>
+													<div class="noneDisplay" id="cbAptomatChart">
+														<canvas  id="lineChart2" style="height: 350px;width:800px;margin:0 auto"></canvas>
+														<small>Đơn vị :<em> chục triêụ VNĐ</em></small>
+													</div>
+													<div class="noneDisplay" id="inventerChart">
+														<canvas  id="lineChart3" style="height: 350px;width:800px;margin:0 auto"></canvas>
+														<small>Đơn vị :<em> chục triêụ VNĐ</em></small>
+													</div>
 												</div>
 												
 												<div class="col-sm-offset-5">
-												<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
-												<strong>Tổng nhập</strong>
-												<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
-												<strong>Tổng xuất</strong>
-											</div>
+													<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+													<strong>Nhập vốn</strong>
+													<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+													<strong>Xuất vốn</strong>
+													<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: yellow; display: inline-block;"></div>
+													<strong>Bán cho khách</strong>
+												</div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
@@ -566,40 +617,145 @@
                                     </div>			
                                 </div>							
 							</div>
-							 <div id="doanhThu" class="tab-pane" >
+							
+							<div id="doanhThuThang"  class="tab-pane">
+								<div class="row">
+                                    <div class="col-md-12">
+									<div class="box-header">
+                                            <h3 class="text-center">DOANH THU THÁNG</h3>
+                                        </div>
+									<div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
+                                                <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Tháng:  </label>
+												<select class="form-control" style="width:100px">
+													<option> 1 </option>
+													<option> 2 </option>
+													<option> 3 </option>
+													<option> 4 </option>
+													<option> 5 </option>
+													<option> 6 </option>
+													<option> 7 </option>
+													<option> 8 </option>
+													<option> 9 </option>
+													<option> 10 </option>
+													<option> 11 </option>
+													<option selected> 12 </option>
+												</select>
+                                              
+												<label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Năm: </label>
+                                                <select class="form-control" >
+													<option>2014</option>
+													<option>2015</option>
+													<option>2016</option>
+													<option selected>2017</option>
+													<option>2018</option>
+												</select>
+									</div>	
+                                        
+                                        <div class="box-body">
+                                            <div class="row">
+													<div style="margin-left:26%">
+														<label>Danh mục</label>
+                                                        <select id="dropbox1" class="form-control select2" style="width: 40%;">
+                                                            <option selected="selected" value="1">Tổng các danh mục</option>
+                                                            <option value="2">CB - Aptomat</option>
+                                                            <option value="3">Inverter: Biến tần</option>
+                                                            <option value="4">Cáp thông tin</option>
+                                                            <option>Công tắc ổ cắm</option>
+                                                            <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                        </select>
+													</div>
+                                                <div class="col-md-2"></div>
+                                                <div class="box-body">
+													<div id="defaultChart1">
+														<canvas id="lineChartThang1" style="height: 350px;width:800px;margin:0 auto"></canvas>
+														<small>Đơn vị :<em> trăm triêụ VNĐ</em></small>
+													</div>
+													<div class="noneDisplay" id="cbAptomatChart1">
+														<canvas  id="lineChartThang2" style="height: 350px;width:800px;margin:0 auto"></canvas>
+														<small>Đơn vị :<em> trăm triêụ VNĐ</em></small>
+													</div>
+													<div class="noneDisplay" id="inventerChart1">
+														<canvas  id="lineChartThang3" style="height: 350px;width:800px;margin:0 auto"></canvas>
+														<small>Đơn vị :<em> trăm triêụ VNĐ</em></small>
+													</div>
+												</div>
+												
+												<div class="col-sm-offset-5">
+													<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+													<strong>Nhập vốn</strong>
+													<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+													<strong>Xuất vốn</strong>
+													<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: yellow; display: inline-block;"></div>
+													<strong>Bán cho khách</strong>
+												</div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>			
+                                </div>							
+							</div>
+							
+							<div id="doanhThuNam" class="tab-pane" >
 							<div class="row">
 							<div class="col-md-4"></div>
-                            <div class="col-md-4"> <h3>DOANH THU 2016 VÀ 2017</h3></div>
+                            <div class="col-md-4"> <h3>DOANH THU NĂM</h3></div>
 							<div class="col-md-4"></div>
 							</div>
-							<div class="col-md-offset-3" style="display: inline-flex; margin-bottom: 70px;">
-                                                <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ ngày:  </label>
-                                                <div class="input-group week-select col-md-4"> 
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="1-1">
-                                                </div>
-												<label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến ngày: </label>
-                                                <div class="input-group week-select col-md-4"> 
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="week" value="31-12">
-                                                </div>
+							<div class="col-md-offset-3" style="margin-bottom: 70px;">
+                                           
+                                              
+												<label style="padding-right: 10px; padding-top: 7px;">Năm: </label>
+                                                <select class="form-control" style="width:100px">
+													<option>2014</option>
+													<option>2015</option>
+													<option>2016</option>
+													<option selected>2017</option>
+													<option>2018</option>
+												</select>
 									</div>	
+											 
+											<div style="margin-left:25%">
+														<label>Danh mục</label>
+                                                        <select id="dropbox3" class="form-control select2" style="width: 40%;">
+                                                            <option selected="selected" value="1">Tổng các danh mục</option>
+                                                            <option value="2">CB - Aptomat</option>
+                                                            <option value="3">Inverter: Biến tần</option>
+                                                            <option value="4">Cáp thông tin</option>
+                                                            <option>Công tắc ổ cắm</option>
+                                                            <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                        </select>
+													</div>
+													
+											
                                 <div class="row" >
                                     <div class="col-md-12">
 
 
                                         <div class="box-body">
-                                            <div class="chart">
+                                            <div class="chart" id="defaultChart3">
                                                 <!-- Sales Chart Canvas -->
-                                                <canvas id="lineChart" style="height: 500px;"></canvas>
+                                                <canvas id="lineChartNam1" style="height: 500px;"></canvas>
                                                 <small>Đơn vị :<em> Tỷ VNĐ</em></small>
                                             </div>
-											<div class="col-sm-offset-5">
-												<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
-												<strong>Năm 2016</strong>
-												<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
-												<strong>Năm 2017</strong>
-											</div>
+											<div class="chart noneDisplay" id="cbAptomatChart3">
+                                                <!-- Sales Chart Canvas -->
+                                                <canvas id="lineChartNam2" style="height: 500px;"></canvas>
+                                                <small>Đơn vị :<em> Tỷ VNĐ</em></small>
+                                            </div>
+											<div class="chart noneDisplay" id="inventerChart3">
+                                                <!-- Sales Chart Canvas -->
+                                                <canvas id="lineChartNam3" style="height: 500px;"></canvas>
+                                                <small>Đơn vị :<em> Tỷ VNĐ</em></small>
+                                            </div>
+												<div class="col-sm-offset-5">
+													<div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
+													<strong>Nhập vốn</strong>
+													<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
+													<strong>Xuất vốn</strong>
+													<div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: yellow; display: inline-block;"></div>
+													<strong>Bán cho khách</strong>
+												</div>
                                         </div>
 
 
@@ -646,42 +802,30 @@
                                                     <input type="text" class="form-control" name="week" value="24-12-2017">
                                                 </div>
                                 </div>	
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="box-header">
-                                            <h3 class="text-center">PHẦN TRĂM DOANH THU TỪ CÁC NGÀNH HÀNG</h3>
-                                        </div>
-                                        <div class="box-body">
-                                            <div class="row">
-                                                <div class="col-md-2"></div>
-                                                <div class="box-body">
-													<div id="donut-chart" style="height: 450px;width:800px;margin:0 auto"></div>
-												</div>
-												 <div class="box-footer">
-											
-												</div>
-                                                <div class="col-md-1"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>			
-                                </div>
+                               
                             </div>
 						</div>
 						
-						<!-- div của bar chart -->
-                            <!-- pie chart -->
-					
-                            <!-- end pieChart -->
-
+						
                         </div> 
 						
 					</div>	
 						<!-- end div chung cho chart -->
-
-                        <div class="row">
+						
+						<div class="row">
                             <div class="col-xs-12">
                                 <div class="box">
+								 <div class="box-header">
+                                        <h3>Phần trăm doanh thu ngành hàng</h3>
+                                    </div>
+								<div id="donutchart" style="width: 900px; height: 500px;margin:0 auto"></div>
+								</div>
+							</div>
+						</div>
+						
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">								
                                     <div class="box-header">
                                         <h3>CHI TIẾT DOANH THU</h3>
                                     </div>
@@ -691,183 +835,63 @@
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>MÃ HÀNG</th>
                                             <th>DANH MỤC</th>
-                                            <th>SỐ LƯỢNG BÁN RA</th>
-                                            <th>GIÁ</th>
-                                            <th>DOANH THU</th>
+                                            <th>NHẬP VỐN</th>
+                                            <th>XUẤT VỐN</th>
+                                            <th>BÁN CHO KHÁCH</th>
+                                            <th>LỢI NHUẬN</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-										<tr style="background-color:yellow">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">CB - Aptomat</td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td></td>
-										</tr>
-                                        <tr>
-                                            <td style="text-align: left">1</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-1</a></td>
-                                            <td>CB - Aptomat</td>
-                                            <td style="text-align:right">1,000</td>
-                                            <td>2,500,000</td>
-                                            <td style="text-align:right">25,000,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: left">2</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-2</a></td>
-                                            <td>CB - Aptomat</td>
-                                            <td style="text-align:right">2,000</td>
-                                            <td>2,500,000</td>
-                                            <td style="text-align:right">50,000,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: left">3</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> UA-3</a></td>
-                                            <td>CB - Aptomat</td>
-                                            <td style="text-align:right">4,000</td>
-                                            <td>2,500,000</td>
-                                            <td style="text-align:right">100,000,000</td>
-                                        </tr>
-										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Tổng</td>
-											<td></td>
-											<td style="text-align:right">7,000</td>
-											<td style="text-align:right">7,500,000</td>
-											<td style="text-align:right">175,000,000</td>
-										</tr>
-										<tr style="background-color:yellow">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center"> Inverter-Biến tần</td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td></td>
-										</tr>
-                                        <tr>
-                                            <td style="text-align: left">4</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
-                                            <td>Inverter-Biến tần</td>
-                                            <td style="text-align:right">1,000</td>
-                                            <td>2,500,000</td>
-                                            <td style="text-align:right">25,000,000</td>
-                                        </tr>
-                                        <tr>
-                                             <td style="text-align: left">5</td>
-                                                <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html"> ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
-                                            <td>Inverter-Biến tần</td>
-                                            <td style="text-align:right">10,000</td>
-                                            <td style="text-align:right">5,000,000</td>
-                                            <td style="text-align:right">500,000,000</td>
-                                        </tr>
-										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Tổng</td>
-											<td></td>
-											<td style="text-align:right">11,000</td>
-											<td>525,000,000</td>
-											<td style="text-align:right">175,000,000</td>
-										</tr>
-										<tr style="background-color:yellow">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Cáp thông tin</td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td></td>
-										</tr>
-										 <tr>
-                                            <td style="text-align: left">6</td>
-                                            <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">LLFL (3LL1F) type, Indoor type (IP31), 24kV, 21kA/3s, Manual Operation</a></td>
-                                            <td>Cáp thông tin</td>
-                                            <td style="text-align:right">10,000</td>
-                                            <td>5,000,000</td>
-                                            <td style="text-align:right">500,000,000</td>
-                                        </tr>
-										 <tr>
-                                            <td style="text-align: left">7</td>
-                                            <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">LFL (2L1F) type, Indoor type (IP31), 24kV, 21kA/3s, Manual Operation </a></td>
-                                            <td>Cáp thông tin</td>
-                                            <td style="text-align:right">10,000</td>
-                                            <td>5,000,000</td>
-                                            <td style="text-align:right">500,000,000</td>
-                                        </tr>
-										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Tổng</td>
-											<td></td>
-											<td style="text-align:right">20,000</td>
-											<td>10,000,000</td>
-											<td style="text-align:right">1,000,000,000</td>
-										</tr>
-										<tr style="background-color:yellow">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Công tắc ổ cắm</td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td></td>
+										<tr>
+											<td style="text-align:center">1</td>
+											<td style="text-align:left">CB-Aptomat</td>
+											<td style="text-align:right">2,780,194,928</td>
+											<td style="text-align:right">4,701,058,266</td>
+											<td style="text-align:right">5,906,230,000</td>
+											<td style="text-align:right">1,205,171,734</td>
 										</tr>
 										<tr>
-                                            <td style="text-align: left">8</td>
-                                            <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">CT COIL</a></td>
-                                            <td>Công tắc ổ cắm</td>
-                                            <td style="text-align:right">10</td>
-                                            <td>500,000</td>
-                                            <td style="text-align:right">5,000,000</td>
-                                        </tr>
-										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Tổng</td>
-											<td></td>
-											<td style="text-align:right">10</td>
-											<td>500,000</td>
-											<td style="text-align:right">1,000,000</td>
-										</tr>
-										<tr style="background-color:yellow">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td class="noBorder"></td>
-											<td></td>
+											<td style="text-align:center">2</td>
+											<td style="text-align:left">Inventer-Biến tần</td>
+											<td style="text-align:right">5,345,194,562</td>
+											<td style="text-align:right">4,561,398,000</td>
+											<td style="text-align:right">5,000,000,000</td>
+											<td style="text-align:right">438,602,000</td>
 										</tr>
 										<tr>
-                                            <td style="text-align: left">9</td>
-                                            <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">EBN 404c-350A 100/200/500mA</a></td>
-                                            <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
-                                            <td style="text-align:right">10</td>
-                                            <td>500,000</td>
-                                            <td style="text-align:right">5,000,000</td>
-                                        </tr>
+											<td style="text-align:center">3</td>
+											<td style="text-align:left">Cáp thông tin</td>
+											<td style="text-align:right">2,780,194,928</td>
+											<td style="text-align:right">1,700,000,000</td>
+											<td style="text-align:right">2,500,000,000</td>
+											<td style="text-align:right">800,000,000</td>
+										</tr>
 										<tr>
-                                            <td style="text-align: left">10</td>
-                                            <td style="border-right: none;text-align:left"><a href="chi-tiet-san-pham.html">EBN 404c-400A 100/200/500mA</a></td>
-                                            <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
-                                            <td style="text-align:right">10</td>
-                                            <td>500,000</td>
-                                            <td style="text-align:right">5,000,000</td>
-                                        </tr>
-										<tr style="background-color:#00b3b3;color:white;font-weight:bold">
-											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Tổng</td>
-											<td></td>
-											<td style="text-align:right">20</td>
-											<td>1,000,000</td>
-											<td style="text-align:right">10,000,000</td>
+											<td style="text-align:center">4</td>
+											<td style="text-align:left">Công tắc ổ cắm</td>
+											<td style="text-align:right">4,561,398,000</td>
+											<td style="text-align:right">5,345,194,562</td>
+											<td style="text-align:right">6,906,230,000</td>
+											<td style="text-align:right">1,561,035,438</td>
+										</tr>
+										<tr>
+											<td style="text-align:center">5</td>
+											<td style="text-align:left">Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
+											<td style="text-align:right">2,780,194,238</td>
+											<td style="text-align:right">3,000,000,000</td>
+											<td style="text-align:right">4,906,230,000</td>
+											<td style="text-align:right">1,906,230,000</td>
 										</tr>
                                     </tbody>
                                     <tfoot>
 										<tr>
 											<td class="noBorder"></td>
-											<td class="noBorder" style="text-align:center">Tổng Cộng</td>
-											<td></td>
-											<td style="text-align:right">31,030</td>
-											<td style="text-align:right">544,000,000</td>
-											<td style="text-align:right">1,361,000,000</td>
+											<td style="text-align:center">Tổng cộng</td>
+											<td style="text-align:right">16,931,521,672</td>
+											<td style="text-align:right">19,234,567,787</td>
+											<td style="text-align:right">24,245,331,342</td>
+											<td style="text-align:right">4,231,316,000</td>
 										</tr>
 									</tfoot>
                                 </table>
@@ -1120,21 +1144,264 @@
     <script src='dist/js/pages/cong-no/moment.js'></script>
 
     <script>
-                                        new Chart(document.getElementById("lineChart"), {
+					<!--Danh mục doanh thu năm all-->
+                                        new Chart(document.getElementById("lineChartNam1"), {
                                             type: 'line',
                                             data: {
                                                 labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                                                 datasets: [{
-                                                        data: [1.2, 1.1, 5.2, 3, 3, 6, 7, 2, 3, 3, 7],
-                                                        label: "Năm 2017",
+                                                        data: [12, 15, 15.2, 13, 17, 10, 7, 9, 13, 15, 17,14],
+                                                        label: "Xuất vốn",
                                                         borderColor: "#33FF33",
                                                         backgroundColor: "#33FF33",
                                                         fill: false
                                                     }, {
-                                                        data: [1.7, 3.5, 2.5, 5, 2.3, 3.5, 6.5, 6.5, 1, 1, 5,3],
-                                                        label: "Năm 2016",
+                                                        data: [17, 13.5, 12.5, 15, 12.3,13.5, 16.5, 10, 11, 17, 15,17],
+                                                        label: "Nhập vốn",
                                                         borderColor: "#EE0000",
                                                         backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }, 
+													{
+                                                        data: [12, 15, 12.5, 16, 14.3, 10.5, 12.5, 18.5, 14, 11, 15,13.1],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 2,
+                                                                max: 20
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+							<!--end-->
+							
+							
+					<!--Danh mục doanh thu năm CB-Aptomat-->
+                                        new Chart(document.getElementById("lineChartNam2"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                datasets: [{
+                                                        data: [3, 1.1, 5, 7, 2, 6, 9, 7.8, 8, 3, 7,10],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [14 ,3.5, 2.5, 3, 3, 3.5, 6.5, 6.5, 1, 1, 5,3],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }, 
+													{
+                                                        data: [2, 5, 2.5, 6, 4.3, 3.5, 6.5, 8.5, 4, 1, 5,4],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 2,
+                                                                max: 20
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+							<!--end-->
+							
+							<!--Danh mục doanh thu năm Inverter-->
+                                        new Chart(document.getElementById("lineChartNam3"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                                datasets: [{
+                                                        data: [16, 11, 2, 13, 4, 6, 7, 2, 3, 3, 7,13],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [17, 3.5, 2.5, 5, 2.3, 3.5, 6.5, 6.5, 10, 9.1, 5,3],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }, 
+													{
+                                                        data: [5.6, 9, 2.5, 6, 4.3, 3.5, 6.5, 8.5, 4, 1, 5,4],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 2,
+                                                                max: 20
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+							<!--end-->
+                                      
+    </script>
+	<script>
+		function autoSelectDate(){
+			var startDate = $('#startDate').val();
+		};
+		<!--Danh mục doanh thu tuần-->
+		$('#dropbox').change(function (){
+				var selected = $('#dropbox :selected').text();
+				if(selected === 'CB - Aptomat'){
+					$('#cbAptomatChart').removeClass("noneDisplay");
+					$('#defaultChart').addClass("noneDisplay");
+					$('#inventerChart').addClass("noneDisplay");
+				}else if(selected === 'Inverter: Biến tần'){
+					$('#inventerChart').removeClass("noneDisplay");
+					$('#cbAptomatChart').addClass("noneDisplay");
+					$('#defaultChart').addClass("noneDisplay");
+				}else {
+				
+					$('#defaultChart').removeClass("noneDisplay");
+					$('#cbAptomatChart').addClass("noneDisplay");
+					$('#inventerChart').addClass("noneDisplay");
+				}
+			});
+		<!--end-->
+		
+		<!--Danh mục doanh thu tháng-->
+			$('#dropbox1').change(function (){
+				var selected = $('#dropbox1 :selected').text();
+				if(selected === 'CB - Aptomat'){
+					$('#cbAptomatChart1').removeClass("noneDisplay");
+					$('#defaultChart1').addClass("noneDisplay");
+					$('#inventerChart1').addClass("noneDisplay");
+				}else if(selected === 'Inverter: Biến tần'){
+					$('#inventerChart1').removeClass("noneDisplay");
+					$('#cbAptomatChart1').addClass("noneDisplay");
+					$('#defaultChart1').addClass("noneDisplay");
+				}else {
+				
+					$('#defaultChart1').removeClass("noneDisplay");
+					$('#cbAptomatChart1').addClass("noneDisplay");
+					$('#inventerChart1').addClass("noneDisplay");
+				}
+			});
+		<!--end-->
+		
+		<!--Danh mục doanh thu năm-->
+			$('#dropbox3').change(function (){
+				var selected = $('#dropbox3 :selected').text();
+				if(selected === 'CB - Aptomat'){
+					$('#cbAptomatChart3').removeClass("noneDisplay");
+					$('#defaultChart3').addClass("noneDisplay");
+					$('#inventerChart3').addClass("noneDisplay");
+				}else if(selected === 'Inverter: Biến tần'){
+					$('#inventerChart3').removeClass("noneDisplay");
+					$('#cbAptomatChart3').addClass("noneDisplay");
+					$('#defaultChart3').addClass("noneDisplay");
+				}else {
+				
+					$('#defaultChart3').removeClass("noneDisplay");
+					$('#cbAptomatChart3').addClass("noneDisplay");
+					$('#inventerChart3').addClass("noneDisplay");
+				}
+			});
+		<!--end-->
+	</script>
+	<script>
+	<!--Chart doanh thu tháng all-->
+			new Chart(document.getElementById("lineChartThang1"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['01/12', '06/12', '11/12', '16/12', '21/12', '26/12', '31/12'],
+                                                datasets: [{
+                                                        data: [12, 15, 32, 37, 40, 46, 28],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [14, 16, 42, 25, 37, 42, 31],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+													, {
+                                                        data: [32, 32, 25, 41, 34.5, 25, 16],
+                                                        label: "Bán cho khách",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
                                                         fill: false
                                                     }
                                                 ]
@@ -1158,32 +1425,149 @@
                                                     yAxes: [{
                                                             ticks: {
                                                                 min: 0,
-                                                                stepSize: 1,
-                                                                max: 8
+                                                                stepSize: 5,
+                                                                max: 50
                                                             }
                                                         }]
                                                 }
                                             }
                                         });
-
-                                      
-    </script>
-	<script>
-		    new Chart(document.getElementById("lineChart2"), {
+									<!--end-->
+									
+						<!--Chart doanh thu tháng của CB-Aptomat-->
+			new Chart(document.getElementById("lineChartThang2"), {
                                             type: 'line',
                                             data: {
                                                 labels: ['01/12', '06/12', '11/12', '16/12', '21/12', '26/12', '31/12'],
                                                 datasets: [{
-                                                        data: [1.2, 1.5, 3.2, 3.7, 4, 4.6, 8],
-                                                        label: "Năm 2016 : Tổng xuất",
+                                                        data: [22, 25, 12, 37, 24, 16, 28],
+                                                        label: "Xuất vốn",
                                                         borderColor: "#33FF33",
                                                         backgroundColor: "#33FF33",
                                                         fill: false
                                                     }, {
-                                                        data: [6, 6, 6, 6, 6, 6, 6],
-                                                        label: "Năm 2016 : Tổng nhập",
+                                                        data: [25, 23, 12, 32, 23, 15, 31],
+                                                        label: "Nhập vốn",
                                                         borderColor: "#EE0000",
                                                         backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+													, {
+                                                        data: [32, 32, 25, 41, 34.5, 25, 16],
+                                                        label: "Bán cho khách",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 5,
+                                                                max: 50
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+									<!--end-->
+
+									<!--Chart doanh thu tháng của Inverter-->
+			new Chart(document.getElementById("lineChartThang3"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['01/12', '06/12', '11/12', '16/12', '21/12', '26/12', '31/12'],
+                                                datasets: [{
+                                                        data: [21, 25, 14, 37, 34, 16, 28],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [14, 16, 42, 25, 37, 42, 31],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+													, {
+                                                        data: [23, 32, 15, 41, 34.5, 15, 26],
+                                                        label: "Bán cho khách",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 5,
+                                                                max: 50
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+									<!--end-->
+									
+									
+			<!--Chart doanh thu tuần của CB - Aptomat-->						
+		    new Chart(document.getElementById("lineChart2"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12', '07/12'],
+                                                datasets: [{
+                                                        data: [1.2, 1.5, 3.2, 3.7, 4, 4.6, 8],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [4, 6, 4.2, 5, 7, 4.2, 3.1],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+													, {
+                                                        data: [3.5, 6, 2.5, 4, 4.5, 5, 6],
+                                                        label: "Bán cho khách",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
                                                         fill: false
                                                     }
                                                 ]
@@ -1214,6 +1598,116 @@
                                                 }
                                             }
                                         });
+										<!--end-->
+						<!--Chart doanh thu tuần của Inverter-->	
+					    new Chart(document.getElementById("lineChart3"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12', '07/12'],
+                                                datasets: [{
+                                                        data: [2.1, 5.1, 2.3, 7.3, 4, 6.4, 8],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [4, 6, 2.5, 5.2, 6.5, 2.4, 1.5],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+													, {
+                                                        data: [5.3, 6, 2.5, 4.1, 5.4, 5, 6],
+                                                        label: "Bán cho khách",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 1,
+                                                                max: 15
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+								<!--end-->
+								
+			<!--Chart doanh thu tuần all-->						
+			new Chart(document.getElementById("lineChart1"), {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12', '07/12'],
+                                                datasets: [{
+                                                        data: [20, 15, 30.5, 15.6, 35, 10.5, 34.1],
+                                                        label: "Xuất vốn",
+                                                        borderColor: "#33FF33",
+                                                        backgroundColor: "#33FF33",
+                                                        fill: false
+                                                    }, {
+                                                        data: [19.5, 16, 32.5, 10, 36, 12, 30],
+                                                        label: "Nhập vốn",
+                                                        borderColor: "#EE0000",
+                                                        backgroundColor: "#EE0000",
+                                                        fill: false
+                                                    }
+													, {
+                                                        data: [25, 36, 20.3, 40, 38.2, 25.7, 23.7],
+                                                        label: "Bán cho khách",
+                                                        borderColor: "yellow",
+                                                        backgroundColor: "yellow",
+                                                        fill: false
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                legend: {display: false},
+                                                tooltips: {
+                                                    mode: 'index',
+                                                    intersect: false,
+                                                },
+                                                hover: {
+                                                    mode: 'nearest',
+                                                    intersect: true
+                                                },
+                                                elements: {
+                                                    line: {
+                                                        tension: 0, // disables bezier curves
+                                                    }
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                            ticks: {
+                                                                min: 0,
+                                                                stepSize: 5,
+                                                                max: 50
+                                                            }
+                                                        }]
+                                                }
+                                            }
+                                        });
+										<!--end-->
 	</script>
     <script>
         $('input[name=week]').datepicker({
@@ -1236,70 +1730,5 @@
         });
     </script>
    
-    <script>
-       
-		/*
-     * DONUT CHART
-     * -----------
-     */
-
-    var donutData = [
-      { label: 'CB - Aptomat', data: 30, color: 'grey' },
-      { label: 'Inverter', data: 20, color: '#0073b7' },
-      { label: 'Cáp thông tin', data: 10, color: '#00c0ef' },
-	  { label: 'Busway </br>- Thanh cái dẫn điện & MTR </br>- Máy biến áp & RMU </br>- Tủ trung thế', data: 30, color: 'red' },
-	  { label: 'Cáp thông tin', data: 10, color: 'green' }
-    ]
-    $.plot('#donut-chart', donutData, {
-      series: {
-	  
-        pie: {
-          show       : true,
-          radius     : 1,
-          innerRadius: 0.5,
-          label      : {
-            show     : true,
-            radius   : 2 / 3,
-            formatter: labelFormatter,
-            threshold: 0.1
-          }
-		
-
-        }
-      },
-	   grid: {
-        hoverable: true
-	  },
-	  
-      legend: {
-        show: false
-      },
-	  tooltips: {
-    	callbacks: {
-      	label: function(tooltipItem) {
-        console.log(tooltipItem)
-        	return tooltipItem.yLabel;
-        }
-      }
-    }
-	  
-	    
-    })
-    /*
-     * END DONUT CHART
-     */
-
-
-  /*
-   * Custom Label formatter
-   * ----------------------
-   */
-  function labelFormatter(label, series) {
-    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 200;">'
-      + label
-      + '<br>'
-      + Math.round(series.percent) + '%</div>'
-  }
-    </script>
 </body>
 </html>
