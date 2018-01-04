@@ -564,12 +564,12 @@
                                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ ngày:  </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input id="startDate" type="text" class="form-control" name="week" value="1-12" onchange="autoSelectDate()" />
+                                                    <input id="startDate" type="text" class="form-control" name="week" value="01-01-2018" onchange="autoSelectDate()" />
                                                 </div>
 												<label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến ngày: </label>
                                                 <div class="input-group week-select col-md-4"> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input id="endDate" type="text" class="form-control" name="week" value="7-12" readonly />
+                                                    <input id="endDate" type="text" class="form-control" name="week" value="07-01-2018" readonly />
                                                 </div>
 									</div>	
                                         
@@ -1383,7 +1383,7 @@
 			new Chart(document.getElementById("lineChartThang1"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['01/12', '06/12', '11/12', '16/12', '21/12', '26/12', '31/12'],
+                                                labels: ['01/01', '06/01', '11/01', '16/01', '21/01', '26/01', '31/01'],
                                                 datasets: [{
                                                         data: [12, 15, 32, 37, 40, 46, 28],
                                                         label: "Xuất vốn",
@@ -1438,7 +1438,7 @@
 			new Chart(document.getElementById("lineChartThang2"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['01/12', '06/12', '11/12', '16/12', '21/12', '26/12', '31/12'],
+                                                labels: ['01/01', '06/01', '11/01', '16/01', '21/01', '26/01', '31/01'],
                                                 datasets: [{
                                                         data: [22, 25, 12, 37, 24, 16, 28],
                                                         label: "Xuất vốn",
@@ -1493,7 +1493,7 @@
 			new Chart(document.getElementById("lineChartThang3"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['01/12', '06/12', '11/12', '16/12', '21/12', '26/12', '31/12'],
+                                                labels: ['01/01', '06/01', '11/01', '16/01', '21/01', '26/01', '31/01'],
                                                 datasets: [{
                                                         data: [21, 25, 14, 37, 34, 16, 28],
                                                         label: "Xuất vốn",
@@ -1549,22 +1549,22 @@
 		    new Chart(document.getElementById("lineChart2"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12', '07/12'],
+                                                labels: ['01/01', '02/01', '03/01', '04/01', '05/01', '06/01', '07/01'],
                                                 datasets: [{
-                                                        data: [1.2, 1.5, 3.2, 3.7, 4, 4.6, 8],
+                                                        data: [3,  4, 4.2, 5],
                                                         label: "Xuất vốn",
                                                         borderColor: "#33FF33",
                                                         backgroundColor: "#33FF33",
                                                         fill: false
                                                     }, {
-                                                        data: [4, 6, 4.2, 5, 7, 4.2, 3.1],
+                                                        data: [1.2,1.5, 3.2, 3.7],
                                                         label: "Nhập vốn",
                                                         borderColor: "#EE0000",
                                                         backgroundColor: "#EE0000",
                                                         fill: false
                                                     }
 													, {
-                                                        data: [3.5, 6, 2.5, 4, 4.5, 5, 6],
+                                                        data: [3.5, 6, 4.5, 5.7],
                                                         label: "Bán cho khách",
                                                         borderColor: "yellow",
                                                         backgroundColor: "yellow",
@@ -1603,22 +1603,22 @@
 					    new Chart(document.getElementById("lineChart3"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12', '07/12'],
+                                                labels: ['01/01', '02/01', '03/01', '04/01', '05/01', '06/01', '07/01'],
                                                 datasets: [{
-                                                        data: [2.1, 5.1, 2.3, 7.3, 4, 6.4, 8],
+                                                        data: [3.4, 1.5, 4, 7.3],
                                                         label: "Xuất vốn",
                                                         borderColor: "#33FF33",
                                                         backgroundColor: "#33FF33",
                                                         fill: false
                                                     }, {
-                                                        data: [4, 6, 2.5, 5.2, 6.5, 2.4, 1.5],
+                                                        data: [3.2, 1.2, 2.5, 5.2],
                                                         label: "Nhập vốn",
                                                         borderColor: "#EE0000",
                                                         backgroundColor: "#EE0000",
                                                         fill: false
                                                     }
 													, {
-                                                        data: [5.3, 6, 2.5, 4.1, 5.4, 5, 6],
+                                                        data: [5.3, 6, 5, 7.6],
                                                         label: "Bán cho khách",
                                                         borderColor: "yellow",
                                                         backgroundColor: "yellow",
@@ -1658,22 +1658,22 @@
 			new Chart(document.getElementById("lineChart1"), {
                                             type: 'line',
                                             data: {
-                                                labels: ['01/12', '02/12', '03/12', '04/12', '05/12', '06/12', '07/12'],
+                                                labels: ['01/01', '02/01', '03/01', '04/01', '05/01', '06/01', '07/01'],
                                                 datasets: [{
-                                                        data: [20, 15, 30.5, 15.6, 35, 10.5, 34.1],
+                                                        data: [20, 15, 30.5, 15.6],
                                                         label: "Xuất vốn",
                                                         borderColor: "#33FF33",
                                                         backgroundColor: "#33FF33",
                                                         fill: false
                                                     }, {
-                                                        data: [19.5, 16, 32.5, 10, 36, 12, 30],
+                                                        data: [19.5, 16, 32.5, 10],
                                                         label: "Nhập vốn",
                                                         borderColor: "#EE0000",
                                                         backgroundColor: "#EE0000",
                                                         fill: false
                                                     }
 													, {
-                                                        data: [25, 36, 20.3, 40, 38.2, 25.7, 23.7],
+                                                        data: [25, 20, 34.3, 20],
                                                         label: "Bán cho khách",
                                                         borderColor: "yellow",
                                                         backgroundColor: "yellow",
