@@ -517,7 +517,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
+                                                            <tr id="1">
                                                                 <td class="text-right">1</td>
                                                                 <td>BS32c 15A 2P2E NO DIN RAIL EXP</td>
                                                                 <td class="text-right">0061001700</td>
@@ -562,13 +562,22 @@
                                                                 <td>906.40</td>
                                                                 <td></td>
                                                             </tr>
-                                                            <tr class="text-right">
+                                                            <tr class="text-right" id="row6">
                                                                 <td>6</td>
                                                                 <td class="text-left">Auxiliary switch: AX for TD, TS100~800</td>
                                                                 <td>83011171701</td>
                                                                 <td>5</td>
                                                                 <td>5.26</td>
                                                                 <td>26.30</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="text-right" id="row7">
+                                                                <td>7</td>
+                                                                <td class="text-left"><input type="text"/></td>
+                                                                <td></td>
+                                                                <td><input type="text"/></td>
+                                                                <td></td>
+                                                                <td></td>
                                                                 <td></td>
                                                             </tr>
 
@@ -762,18 +771,29 @@
         <script>
                                         $('#mainTable').Tabledit({
                                             eventType: 'dblclick',
-                                            editButton: true,
+                                            editButton: false,
                                             deleteButton: false,
                                             columns: {
                                                 identifier: [0, 'id'],
-                                                editable: [[1, 'col1'], [3, 'col3']]
+                                                editable: [[1, 'col1'], [3, 'col3'], [6, 'col6']]
                                                         //editable: [[1, ''], [3, 'color', '{"1": "Red", "2": "Green", "3": "Blue"}']]
                                             }
                                         });
                                         $("#addRow").click(function () {
-                                            $("#mainTable > tbody").append("<tr><td></td><td colspan=\"6\">row content</td></tr>");
+                                            var tableditTableName = '#mainTable';  // Identifier of table
+                                            var newID = parseInt($(tableditTableName + " tbody tr:last").attr("id")) +1;
+                                            var clone = $("table tbody tr:last").clone();
+                                            $(".tabledit-span", clone).text("");
+                                            $(".tabledit-input", clone).val("");
+                                            $("#mainTable > tbody").append(clone);
+                                            //clone.prependTo("tbody tr:last");
+                                            
+                                            $(tableditTableName + " tbody tr:last").attr("id", newID);
+                                            $(tableditTableName + " tbody tr:last td .tabledit-span.tabledit-identifier").text(newID);
+                                            $(tableditTableName + " tbody tr:last td .tabledit-input.tabledit-identifier").val(newID);
+                                            $(tableditTableName + " tbody tr:last .tabledit-view-mode:first .tabledit-span").trigger("dblclick");
                                         });
-                                        
+
         </script>
         <!-- Lookup function -->
         <script>
