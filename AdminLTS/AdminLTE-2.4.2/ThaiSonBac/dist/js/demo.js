@@ -161,6 +161,7 @@ function purchase() {
     document.getElementById('address').value = '17F, Yonsei Jaedan Severance Bldg. 84-11, 5ga, Namdaemun-ro, Jung-gu, Seoul 100-753, Korea.';
     document.getElementById('phone').value = '82-2-2034-4919';
     document.getElementById('email').value = 'lgindust@emirates.net.ae';
+    document.getElementById('payment').value = 'L/C 90 days';
 }
 
 function nhaphang() {
