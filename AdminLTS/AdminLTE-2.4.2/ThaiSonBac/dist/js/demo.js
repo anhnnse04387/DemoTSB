@@ -103,6 +103,26 @@ function saveDraft() {
         });
 }
 
+function send() {
+    swal({
+        title: '<img src="dist/img/messagePic.png"/>',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<i class="fa fa-check"></i>',
+        cancelButtonText: '<i class="fa fa-close"></i>'
+    }).then((result) => {
+            if (result.value) {
+                swal({
+                    title: '<img src="dist/img/messagePic_5.png"/>',
+                    type: 'success'
+                })
+                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            }
+        });
+}
+
 function nhapKhoThanhCong() {
     swal({
         title: '<img src="dist/img/messagePic.png"/>',
@@ -135,6 +155,22 @@ function redirect() {
         var win = window.open('cong_no_nha_cung_cap.html', '_blank');
         win.focus();
     }
+}
+
+function purchase() {
+    document.getElementById('address').value = '17F, Yonsei Jaedan Severance Bldg. 84-11, 5ga, Namdaemun-ro, Jung-gu, Seoul 100-753, Korea.';
+    document.getElementById('phone').value = '82-2-2034-4919';
+    document.getElementById('email').value = 'lgindust@emirates.net.ae';
+}
+
+function nhaphang() {
+    var cai = 0;
+    if (parseInt($("#sl").val().replace(new RegExp(',', 'g'), '')) > 0) {
+        cai = parseInt($("#sl").val().replace(new RegExp(',', 'g'), ''));
+    }
+    document.getElementById('tong_so').value = (cai + 3370).toLocaleString('en');
+    document.getElementById('tien').value = ((cai * parseFloat($("#gia").val().replace('.', '')) / 100)).toFixed(2);
+    document.getElementById('tong_tien').value = ((cai * parseFloat($("#gia").val().replace('.', '')) / 100) + 15858.1).toFixed(2);
 }
 
 function autoFillCustomer() {
@@ -237,6 +273,11 @@ function timeline() {
 
 function openNewTab() {
     var win = window.open('dist/Preview.pdf', '_blank');
+    win.focus();
+}
+
+function poPreview() {
+    var win = window.open('dist/Po_Preview.pdf', '_blank');
     win.focus();
 }
 
