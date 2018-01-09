@@ -268,7 +268,7 @@ function autoFillProvider() {
 }
 
 function timeline() {
-    var win = window.open('timeline.html', '_blank');
+    var win = window.open('phanphoi_donhang_lich-giao-hang-ma-hang.html', '_blank');
     win.focus();
 }
 
