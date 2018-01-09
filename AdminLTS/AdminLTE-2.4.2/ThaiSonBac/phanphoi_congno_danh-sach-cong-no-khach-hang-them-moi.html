@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Thái Sơn Bắc - TSB</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <style>
+            #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
+            }
+            .right{
+                text-align:right;
+            }
+			.khachHang{
+				text-align:left;
+			}
+			.modal-header {
+                padding: 15px;
+                border-bottom: 1px solid #e5e5e5;
+                background-color: aliceblue;
+            }
+			.modal-body {
+				position: relative;
+				padding: 15px;
+				background-color: white;
+			}
+			.modal-footer {
+				border-top-color: #f4f4f4;
+				background-color: white;
+			}
+			.custom-btn {
+				padding: 10px 5px;
+				min-width: 60px;
+				height: 50px;
+			}
+        </style>
+    </head>
+
+    <body class="hold-transition skin-blue-light sidebar-mini fixed">
+        <div class="wrapper">
+
+            <header class="main-header">
+                <!-- Logo -->
+    <a href="phanphoi_index.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>SB</span>
+      <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg" style="margin-left: -15px;">
+                        <img style="width:50px; height:50px;" class="img-responsive pull-left" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                        <b style="margin-right: 35px;">Phân phối</b>
+                        <span style="position: absolute; margin-top: 15px; margin-left: -130px; font-size: x-small;"><small>Phân hệ</small></span>
+                    </span>
+    </a>
+
+
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                             <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">5</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">Bạn có 5 thông báo mới</li>
+                                    <li>
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81264-1#1 đã hoàn thành
+                                                    <div class="pull-right">1 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="phanphoi_donhang_danh-sach-phieu-giu-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89665-0 đang chờ xử lý
+                                                    <div class="pull-right">8 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="sua_phieu_0.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89659-0 đang chờ xử lý <p/> đổi trả
+                                                    <div class="pull-right">55 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89664-0 đang chờ xử lý 
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81264-1#2 đang xử lý
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">Xem tất cả</a>
+                                    </li>
+                                </ul>
+                            </li>
+              <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Lã Mạnh Đạt</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+
+                                        <p>Lã Mạnh Đạt<small>Nhân viên bán hàng</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="phanphoi_toBeContinue.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="phanphoi_toBeContinue.html" class="btn btn-default btn-flat">Thoát</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Lã Mạnh Đạt</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li >
+                            <a href="phanphoi_index.html">
+                                <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="phanphoi_donhang_lap-phieu.html"><i class="fa fa-edit"></i> Lập Phiếu</a></li>
+                                <li>
+                                    <a href="phanphoi_donhang_danh-sach-phieu-dang-soan.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Phiếu đang soạn</span>
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary pull-right">2</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html">
+                                        <i class="fa fa-list-alt"></i>
+                                        <span>Phiếu đang xử lý</span>
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary bg-green">1</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="phieuhanghoa_donhang_danh-sach-hoan-thanh.html">
+                                        <i class="fa fa-files-o"></i>
+                                        <span>Phiếu đã hoàn thành</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="phanphoi_donhang_danh-sach-phieu-giu-hang.html">
+                                        <i class="fa fa-book"></i>
+                                        <span>Phiếu giữ hàng</span>
+                                        <span class="pull-right-container">
+                                            <span class="label pull-right bg-green">new</span>
+                                            <span class="label pull-right bg-red">2</span>
+                                        </span>
+                                    </a>
+                                </li>
+								 <li>
+                                    <a href="phanphoi_donhang_lich-giao-hang-tong.html">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <span>Lịch giao hàng</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-folder"></i> <span>Hàng hoá</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="phanphoi_hanghoa_gia-hang-hoa.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
+                                <li><a href="phanphoi_hanghoa_ton-kho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
+								<li class="treeview">
+								  <a href="#"><i class="fa fa-hand-o-right"></i> Yêu cầu nhập
+									<span class="pull-right-container">
+									  <i class="fa fa-angle-left pull-right"></i>
+									</span>
+								  </a>
+								  <ul class="treeview-menu">
+									<li><a href="phanphoi_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
+									<li><a href="phanphoi_toBeContinue.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
+								  </ul>
+								</li>
+								<li class="treeview">
+								  <a href="#"><i class="fa fa-hand-o-right"></i> Nhập hàng
+									<span class="pull-right-container">
+									  <i class="fa fa-angle-left pull-right"></i>
+									</span>
+								  </a>
+								  <ul class="treeview-menu">
+									<li><a href="phanphoi_hanghoa_tao-dot-nhap-kho.html"><i class="fa fa-edit"></i> Tạo đợt nhập mới</a></li>
+									<li><a href="phanphoi_hanghoa_lich-su-nhap-hang.html"><i class="fa fa-table"></i> Lịch sử nhập hàng</a></li>
+								  </ul>
+								</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview menu-open active">
+                            <a href="#">
+                                <i class="fa fa-table"></i> <span>Công nợ</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="active"><a href="nophanphoi_congno_chi-tiet-no-khach-hang.html"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
+                                <li class=""><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
+								<li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Nhân viên giao hàng</a></li>
+                                <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
+                                <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview ">
+                            <a href="#">
+                                <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="phanphoi_baocao_doanh-thu.html"><i class="fa fa-line-chart"></i> Doanh thu</a>
+                                </li>
+
+                                <li>
+                                    <a href="phanphoi_baocao_cong-no-khach-hang.html"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
+                                </li>
+
+                                <li class="">
+                                    <a href="phanphoi_baocao_cong-no-cung-cap.html"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview ">
+                            <a href="#">
+                                <i class="fa fa-database"></i> <span>Quản trị</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="">
+                                    <a href="phanphoi_khachhang_danh-sach-khach-hang.html"><i class="fa fa-users"></i> Danh sách khách hàng</a>
+                                </li>
+                                <li>
+                                    <a href="phanphoi_toBeContinue.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
+                                </li>
+								<li>
+                                    <a href="phanphoi_cai-dat.html"><i class="fa fa-users"></i> Cài đặt</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="phanphoi_quy-trinh-xu-ly.html">
+                                <i class="fa fa-question-circle"></i> <span>Help</span>
+                            </a>
+                        </li>						
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <div class="content-wrapper">
+			 <section class="content-header">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="ThaiSonBac/phanphoi_index.html">
+                            <i class="fa fa-dashboard"></i> Trang Chủ</a>						
+                    </li>
+					<li><a href="nophanphoi_congno_chi-tiet-no-khach-hang.html"><i class="fa fa-dashboard"></i>Nợ khách hàng</a></li>
+                </ol>
+			 </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">BẢNG THEO DÕI CÔNG NỢ CỦA KHÁCH HÀNG NGÀY 11-NOV-17</h3>
+                                </div>
+<div class="box-header with-border" style="background-color: #fcf9f9;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                            <i class="fa fa-save text-grey"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html" disabled>
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom" disabled>
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                            <i class="fa fa-eye text-grey"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                            <i class="fa fa-print text-grey"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+										
+										<a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                            <i class="fa fa-plus text-red"></i>
+											 <span><strong>Tạo mới</strong></span>
+                                        </a>
+							
+                                    </div>
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1%">STT</th>
+                                                <th style="width: 12%">KHÁCH HÀNG</th>
+                                                <th style="width: 7%">NỢ CŨ</th>
+                                                <th style="width: 7%">SL (cái)</th>
+                                                <th style="width: 7%">TIỀN HÀNG</th>
+                                                <th style="width: 7%">VAT</th>
+                                                <th style="width: 7%">TỔNG CỘNG</th>
+                                                <th style="width: 7%">THANH TOÁN</th>
+                                                <th style="width: 7%">CÒN NỢ</th>
+												<th style="width: 5%">THAY ĐỔI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty Phú An</a></td>
+                                                <td class="right">2,435,117,579</td>
+                                                <td class="right">2,482</td>
+                                                <td class="right">663,849,900</td>
+                                                <td class="right">53,219,600 </td>
+                                                <td class="highlight">717,069,500 </td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">3,152,187,079 </td>
+												<td>
+													<a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row1">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" value="2482	" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+															</div>
+                                                        <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" value="2435117579" id="noCu1" class="form-control number"placeholder="" onkeyup="tinhTong('tienHang1','noCu1','vat1','thanhToan1','tongCong1','conNo1')"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+													<div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang1" class="form-control number"placeholder="" onkeyup="tinhTong('tienHang1','noCu1','vat1','thanhToan1','tongCong1','conNo1')" value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat1" class="form-control number" placeholder=""  onkeyup="tinhTong('tienHang1','noCu1','vat1','thanhToan1','tongCong1','conNo1')" value="53219600" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+															</div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input value="717069500" type="text" id="tongCong1" class="form-control number" placeholder="" readonly />
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan1" onkeyup="tinhTong('tienHang1','noCu1','vat1','thanhToan1','tongCong1','conNo1')" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input value="3152187079" type="text" id="conNo1" class="form-control number" placeholder="" readonly />
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty Invico - Sắn</a></td>
+                                                <td class="right">8,108,871,560 </td>
+                                                <td class="right">13,315</td>
+                                                <td class="right">6,550,708,240 </td>
+                                                <td class="right">533,475,560 </td>
+                                                <td class="highlight">7,084,183,800 </td>
+                                                <td class="right">4,182,000,000 </td>
+                                                <td class="highlight">11,011,055,360 </td>
+												<td>
+													<a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row2">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="13315" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+															</div>
+															  <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="noCu2" class="form-control number"placeholder=""  onkeyup="tinhTong('tienHang2','noCu2','vat2','thanhToan2','tongCong2','conNo2')"   value="8108871560" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    <div class="row">
+													<div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang2"  onkeyup="tinhTong('tienHang2','noCu2','vat2','thanhToan2','tongCong2','conNo2')"  class="form-control number"placeholder=""  value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat2" class="form-control number"  onkeyup="tinhTong('tienHang2','noCu2','vat2','thanhToan2','tongCong2','conNo2')"  placeholder=""  value="533475560" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+															
+															</div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text" id="tongCong2" class="form-control number" placeholder="" readonly  value="7084183800"/>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan2"  onkeyup="tinhTong('tienHang2','noCu2','vat2','thanhToan2','tongCong2','conNo2')"  class="form-control number" placeholder=""  value="4182000000" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text" id="conNo2" class="form-control number" placeholder="" readonly  value="11011055360"/>
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty Sáng Hà</a></td>
+                                                <td class="right">9,541,737,019 </td>
+                                                <td class="right">8,994</td>
+                                                <td class="right">3,594,056,020 </td>
+                                                <td class="right">285,934,780 </td>
+                                                <td class="highlight"> 3,879,990,800 </td>
+                                                <td class="right">3,123,569,840 </td>
+                                                <td class="highlight">10,298,157,979 </td>
+												<td>
+													<a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row3">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="8994" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+															</div>
+															  <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="noCu3"  onkeyup="tinhTong('tienHang3','noCu3','vat3','thanhToan3','tongCong3','conNo3')"  class="form-control number"placeholder=""  value="9541737019" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat3"  onkeyup="tinhTong('tienHang3','noCu3','vat3','thanhToan3','tongCong3','conNo3')"  class="form-control number" placeholder=""  value="285934780" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                            </div>
+															</div>
+															  <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang3"  onkeyup="tinhTong('tienHang3','noCu3','vat3','thanhToan3','tongCong3','conNo3')"  class="form-control number"placeholder=""  value="3594056020" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text" id="tongCong3" class="form-control number" placeholder="" readonly  value="3879990800"/>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  onkeyup="tinhTong('tienHang3','noCu3','vat3','thanhToan3','tongCong3','conNo3')"  id="thanhToan3" class="form-control number" placeholder=""  value="3123569840" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text" id="conNo3" class="form-control number" placeholder="" readonly  value="10298157979"/>
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty 2B -Anh Tuấn</a></td>
+                                                <td class="right">5,685,087,734 </td>
+                                                <td class="right">5,520</td>
+                                                <td class="right">1,748,616,300 </td>
+                                                <td class="right">142,290,900 </td>
+                                                <td class="highlight">1,890,907,200 </td>
+                                                <td class="right">714,000,000 </td>
+                                                <td class="highlight">6,861,994,934 </td>
+												<td>
+													<a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row4">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+														  <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="noCu4" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat4" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															  <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang4" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong4" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan1" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo4" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty Vạn Xuân</a></td>
+                                                <td class="right">5,594,767,835 </td>
+                                                <td class="right">6,305</td>
+                                                <td class="right">2,354,106,550 </td>
+                                                <td class="right">187,012,450 </td>
+                                                <td class="highlight">2,541,119,000 </td>
+                                                <td class="right">1,836,000,000 </td>
+                                                <td class="highlight">6,299,886,835</td>
+												<td>
+													<a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row5">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															  <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="noCu5" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat5" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															 <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang5" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong5" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan5" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo5" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty Tương Lai</a></td>
+                                                <td class="right">5,896,900,945 </td>
+                                                <td class="right">475</td>
+                                                <td class="right">4,064,267,180 </td>
+                                                <td class="right">328,764,120 </td>
+                                                <td class="highlight">4,393,031,300 </td>
+                                                <td class="right">2,723,400,000  </td>
+                                                <td class="highlight">7,566,532,245</td>
+												<td>
+													<a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row6">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+													  <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="noCu6" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat6" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															 <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang5" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong6" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan6" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo6" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty Bảo Lộc ( Hải Phòng)</a></td>
+                                                <td class="right">(1,245,612)</td>
+                                                <td class="right">0</td>
+                                                <td class="right">0</td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">0</td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">(1,245,612)</td>
+												<td>
+													<a id="btn_row7" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row7">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															  <div class="col-md-6">
+                                                            <label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="noCu7" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat7" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong7" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															 <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang7" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan7" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo7" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Công ty HPH</a></td>
+                                                <td class="right">902,013,105 </td>
+                                                <td class="right">310</td>
+                                                <td class="right">164,856,000 </td>
+                                                <td class="right">12,734,000 </td>
+                                                <td class="highlight">177,590,000 </td>
+                                                <td class="right">204,000,000</td>
+                                                <td class="highlight">875,603,105 </td>
+												<td>
+													<a id="btn_row8" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row8">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                        <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang8" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat8" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong8" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan8" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo8" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html"><b></b>Phòng Kinh doanh</a></td>
+                                                <td class="right">3,869,094,774 </td>
+                                                <td class="right">5,502</td>
+                                                <td class="right">2,917,498,770 </td>
+                                                <td class="right">286,237,102 </td>
+                                                <td class="highlight">3,203,735,872 </td>
+                                                <td class="right">939,188,234 </td>
+                                                <td class="highlight">6,133,642,412 </td>
+												<td>
+													<a id="btn_row9" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row9">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                        <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang9" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat9" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong9" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan9" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo9" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html"><b></b>Thái Sơn Nam</a></td>
+                                                <td class="right">513</td>
+                                                <td class="right">1,448</td>
+                                                <td class="right">144,229,125 </td>
+                                                <td class="right">14,422,875 </td>
+                                                <td class="highlight">158,652,000 </td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">158,652,513 </td>
+												<td>
+													<a id="btn_row10" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+														<tr id="row10">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                        <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang10" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                       <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat10" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                    </div>
+                                                    <div class="row">
+                                                       
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong10" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan10" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo10" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											 <tr style="background-color:yellow">
+                                                <td>11</td>
+                                                <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html"><b></b>Công ty TNC</a></td>
+                                                <td class="right">200</td>
+                                                <td class="right">1,448</td>
+                                                <td class="right">144,229,125 </td>
+                                                <td class="right">14,422,875 </td>
+                                                <td class="highlight">158,652,000 </td>
+                                                <td class="right">0</td>
+                                                <td class="highlight">158,652,513 </td>
+												<td>
+													<a id="btn_row11" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+														<tr id="row11">
+												<td colspan="10">
+													<div class="container-fluid">
+													<div class="row">
+															<div class="col-md-6">
+																<label>Nợ cũ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                        <div class="col-md-6">
+                                                            <label>Tiền hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="tienHang11" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													<div class="row">
+															<div class="col-md-6">
+																<label>Số lượng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                       <div class="col-md-6">
+                                                            <label>VAT</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" id="vat11" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            </div>
+															</div>
+                                                    </div>
+                                                    <div class="row">
+                                                       
+															<div class="col-md-6">
+																<label>Tổng cộng</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="tongCong11" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Thanh toán</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<input type="text"  id="thanhToan11" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Còn nợ</label>
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-money" aria-hidden="true"></i>
+																	</span>
+																	<output type="text" id="conNo11" class="form-control number" placeholder="" readonly  value="0">
+																</div>
+															</div>
+													</div>
+														<br></br>
+														<div class="row">
+															<div class="">
+																<div class="col-md-10"></div>
+																<div class="col-md-1">
+																	<a href="" class="btn btn-default btn-block">Hủy</a>
+																</div>
+																<div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>Sub_total</b></td>
+                                                <td>42,032,345,452 </td>
+                                                <td>52,351 </td>
+                                                <td>22,202,188,085 </td>
+                                                <td>1,844,091,387 </td>
+                                                <td class="highlight">24,046,279,472 </td>
+                                                <td>13,722,158,074 </td>
+                                                <td class="highlight">52,356,466,850 </td>
+												<td></td>
+                                            </tr>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>TOTAL</b></td>
+                                                <td>42,032,345,452 </td>
+                                                <td>52,351 </td>
+                                                <td>22,202,188,085 </td>
+                                                <td>1,844,091,387 </td>
+                                                <td>24,046,279,472 </td>
+                                                <td>13,722,158,074 </td>
+                                                <td>52,356,466,850 </td>
+												<td></td>
+                                            </tr>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>10/11/2017</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+												 <td></td>
+                                            </tr>
+                                            <tr style="text-align:right;font-weight:bold">
+                                                <td colspan="2"><b>DOANH SỐ</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+												 <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+<div class="box-header with-border" style="background-color: #fcf9f9;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                            <i class="fa fa-save text-grey"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html" disabled>
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom" disabled>
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                            <i class="fa fa-eye text-grey"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                            <i class="fa fa-print text-grey"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                            <span><strong>Tải xuống</strong></span>
+                                        </a>
+										
+										<a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                            <i class="fa fa-plus text-red"></i>
+											 <span><strong>Tạo mới</strong></span>
+                                        </a>
+							
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					 <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <!-- Modal content-->
+                        <div class="modal-dialog">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"><b>Thêm công nợ mới</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <table style="margin-left:20%;height:400px">
+                                    <tr>
+                                        <td><i class="fa fa-file"><b>  Khách hàng: </b></td>
+                                        <td style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-sliders"><b>  Nợ cũ: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="noCu" onkeyup="tinhTong1()" type="text" class="form-control number"/></td>
+                                    </tr>
+									 <tr>
+                                        <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                                    </tr>
+									<tr>
+                                        <td><i class="fa fa-handshake-o"><b>  Tiền hàng: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="tienHang" onkeyup="tinhTong1()" type="text" class="form-control number"/></td>
+                                    </tr>
+									<tr>
+                                        <td><i class="fa fa-handshake-o"><b>  VAT: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input onkeyup="tinhTong1()"  type="text"  id="vat" class="form-control number"/></td>
+                                    </tr>
+									<tr>
+                                        <td><i class="fa fa-bars"><b>  Tổng cộng: </b></td>
+                                       <td  style="padding-left:15px;width:250px"><input id="tongCong" type="text" class="form-control number" readonly /></td>
+                                    </tr>
+									<tr>
+                                        <td><i class="fa fa-handshake-o"><b>  Thanh toán: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="thanhToan" onkeyup="tinhTong1()" type="text" class="form-control number"/></td>
+                                    </tr>
+									<tr>
+                                        <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="conNo" type="text" class="form-control number" readonly /></td>
+                                    </tr>
+									
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" style="color:white;background-color:#32CD32" class="btn btn-default"  data-toggle="modal" data-target="#popupConfirm1">Lưu</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+					 <div class="modal fade" id="popupConfirm" role="dialog">
+                        <div class="modal-dialog" style="width:250px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận sửa thông tin</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Lưu thông tin đã sửa?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <div style="margin:0 auto;">
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='phanphoi_congno_danh-sach-cong-no-khach-hang-sua.html'">OK</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+									</div>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+							
+                        </div>
+                    </div>
+					 <div class="modal fade" id="popupConfirm1" role="dialog">
+                        <div class="modal-dialog" style="width:250px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận thêm mới</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Tạo công nợ mới ?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <div style="margin:0 auto;">
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='phanphoi_congno_danh-sach-cong-phanphoi_congno_danh-sach-cong-no-khach-hang-them-moi.html'">OK</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+									</div>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+							
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- ./wrapper -->
+		<footer class="main-footer">
+        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+    </footer>
+        <!-- jQuery 3 -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+		<script src="dist/js/autoNumeric.min.js"></script>
+        <!-- page script -->
+        <script>
+		$('#row1').hide();
+        $('#btn_row1').click(function () {
+            $('#row1').toggle();
+        })
+        $('#row2').hide();
+        $('#btn_row2').click(function () {
+            $('#row2').toggle();
+        })
+        $('#row3').hide();
+        $('#btn_row3').click(function () {
+            $('#row3').toggle();
+        })
+        $('#row4').hide();
+        $('#btn_row4').click(function () {
+            $('#row4').toggle();
+        })
+        $('#row5').hide();
+        $('#btn_row5').click(function () {
+            $('#row5').toggle();
+        })
+        $('#row6').hide();
+        $('#btn_row6').click(function () {
+            $('#row6').toggle();
+        })
+		  $('#row7').hide();
+		 $('#btn_row7').click(function () {
+            $('#row7').toggle();
+        })
+		  $('#row8').hide();
+		 $('#btn_row8').click(function () {
+            $('#row8').toggle();
+        })
+		  $('#row9').hide();
+		 $('#btn_row9').click(function () {
+            $('#row9').toggle();
+        })
+		  $('#row10').hide();
+		 $('#btn_row10').click(function () {
+            $('#row10').toggle();
+        }) 
+		$('#row11').hide();
+		 $('#btn_row11').click(function () {
+            $('#row11').toggle();
+        })
+			window.onload = function(){
+					$('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+			};
+            $(function () {
+                $('#example1').DataTable()
+                $('#example2').DataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false
+                })
+            });
+			function tinhTong1(){
+				var tienHang = $('#tienHang').val() === '' ? 0 : parseInt($('#tienHang').val().replace(new RegExp(',', 'g'), ''));
+				var vat =  $('#vat').val() === '' ? 0 : parseInt($('#vat').val().replace(new RegExp(',', 'g'), ''));
+				
+				document.getElementById('tongCong').value = parseInt(tienHang + vat);
+				
+				var noCu = $('#noCu').val() === '' ? 0 : parseInt($('#noCu').val().replace(new RegExp(',','g'),''));
+				var thanhToan = $('#thanhToan').val() === '' ? 0 : parseInt($('#thanhToan').val().replace(new RegExp(',','g'),''));
+				var tongCong = $('#tongCong').val() === '' ? 0 : parseInt($('#tongCong').val().replace(new RegExp(',','g'),''));
+				
+				var conNo = parseInt(noCu+tongCong-thanhToan);
+					document.getElementById('conNo').value = conNo;
+				};
+				$('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+			
+			function tinhTong(id1,id2,id3,id4,id5,id6,id7){
+				var tienHang = $("#"+id1+"").val() ==='' ? 0 : parseInt($("#"+id1+"").val().replace(new RegExp(',','g'),''));
+				var noCu = $("#"+id2+"").val() ==='' ? 0 : parseInt($("#"+id2+"").val().replace(new RegExp(',','g'),''));
+				var vat = $("#"+id3+"").val() ==='' ? 0 : parseInt($("#"+id3+"").val().replace(new RegExp(',','g'),''));
+				var thanhToan = $("#"+id4+"").val() ==='' ? 0 : parseInt($("#"+id4+"").val().replace(new RegExp(',','g'),''));
+				var tongCong = $("#"+id5+"").val() ==='' ? 0 : parseInt($("#"+id5+"").val().replace(new RegExp(',','g'),''));
+				
+				var tongCong1 = parseInt(tienHang + vat);
+				$("#"+id5+"").val(tongCong1);
+				
+				var conNo = parseInt(noCu + tongCong1 - thanhToan);
+				$("#"+id6+"").val(conNo);
+			}
+        </script>
+    </body>
+
+</html>

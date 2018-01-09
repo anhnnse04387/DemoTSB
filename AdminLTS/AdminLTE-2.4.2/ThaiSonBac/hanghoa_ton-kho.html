@@ -1,0 +1,1040 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Thái Sơn Bắc - TSB</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <style>
+            #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            tfoot {
+                color: white;
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                background-color: #544d61;
+            }
+            .highlight{
+                font-weight:bold;
+                text-align:right;
+            }
+			.left{
+				text-align:left;
+			}
+            .right{
+                text-align:center;
+            }
+			.custom-btn {
+				padding: 10px 5px;
+				min-width: 60px;
+				height: 50px;
+			}
+			.modal-header {
+                padding: 15px;
+                border-bottom: 1px solid #e5e5e5;
+                background-color: aliceblue;
+            }
+			.modal-body {
+				position: relative;
+				padding: 15px;
+				background-color: white;
+			}
+			.modal-footer {
+				border-top-color: #f4f4f4;
+				background-color: white;
+			}
+        </style>
+    </head>
+
+    <body class="hold-transition skin-blue-light sidebar-mini fixed">
+        <div class="wrapper">
+
+            <header class="main-header">
+                <!-- Logo -->
+    <a href="hanghoa_index.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>SB</span>
+      <!-- logo for regular state and mobile devices -->
+                   <span class="logo-lg" style="margin-left: -15px;">
+                    <img style="width:50px; height:50px;" class="img-responsive pull-left" src="dist/img/Logo TSB - Final.png" alt="Photo">
+                    <b style="margin-right: 35px;">Hàng hóa</b>
+                <span style="position: absolute; margin-top: 15px; margin-left: -125px; font-size: x-small;"><small>Phân hệ</small></span>
+    </a>
+
+
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">10</span>
+                                </a>
+                               <ul class="dropdown-menu">
+                                    <li class="header">Bạn có 10 thông báo mới</li>
+                                    <li>
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81268 đang chờ xử lý
+                                                    <div class="pull-right">3 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81267 đang chờ xử lý
+                                                    <div class="pull-right">15 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81266 đang chờ xử lý
+                                                    <div class="pull-right">26 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81265 đang chờ xử lý
+                                                    <div class="pull-right">48 phút trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81264 đang chờ xử lý
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81263 đang chờ xử lý
+                                                    <div class="pull-right">1 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81262 đang chờ xử lý
+                                                    <div class="pull-right">2 giờ trước</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="hanghoa_donhang_chi-tiet-don-hang.html">
+                                                    <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 81261 đang chờ xử lý
+                                                    <div class="pull-right">2 giờ trước</div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="hanghoa_thong-bao.html">Xem tất cả</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Ngô Tùng Sơn</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+
+                                        <p>Ngô Tùng Sơn
+                                            <small>Nhân viên kho</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="hanghoa_toBeContinue.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="hanghoa_toBeContinue.html" class="btn btn-default btn-flat">Thoát</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Ngô Tùng Sơn</p>
+                            <a href="#">
+                                <i class="fa fa-circle text-success"></i> Trực tuyến</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-o"></i> Đơn hàng
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu ">	
+                                 <li class="">
+                                    <a href="hanghoa_index.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Chờ xuất kho</span>
+                                    </a>
+                                </li>								
+                                <li class="">
+                                    <a href="hanghoa_donhang_danh-sach-da-chuan-bi-hang.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Đã chuẩn bị hàng</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="hanghoa_donhang_danh-sach-dang-giao-hang.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Đang giao hàng</span>
+                                    </a>
+                                </li>
+								 <li class="">
+                                    <a href="hanghoa_donhang_danh-sach-doi-tra.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Đổi trả</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="hanghoa_donhang_danh-sach-hoan-thanh.html">
+                                        <i class="fa fa-file-text"></i>
+                                        <span>Hoàn thành</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-truck"></i> <span>Giao hàng</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="hanghoa_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li><li><a href="hanghoa_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Nhân viên giao hàng</a></li>
+                                <li><a href="hanghoa_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
+                                <li><a href="hanghoa_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
+                            </ul>
+                        </li>
+					<li class="active">
+                            <a href="hanghoa_ton-kho.html">
+                                <i class="fa fa-archive"></i> <span>Hàng tồn kho</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <div class="content-wrapper">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">TỒN KHO</h3>
+                                </div>
+								<div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Tìm kiếm theo</h3>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                             <td>Mã hàng</td>
+                                                           <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-file"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Mã hàng...">
+                                                                </div>
+                                                            </td>
+
+                                                            <td>Danh mục</td>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-sliders"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Danh mục...">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tổng tồn</td>
+                                                             <td>
+                                                                        <div class="col-sm-5 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Từ</span>
+                                                                                <input type="number" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Đến</span>
+                                                                                <input type="number" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                          
+                                                        </tr>
+                                                      
+                                                    </tbody>
+                                                </table>
+                                            </div>
+										</div>
+										 <!-- /.box-body -->
+                                            <div class="box-footer clearfix">
+                                                <div class="pagination pagination-sm no-margin pull-right">
+                                                    <button type="button" class="btn btn-block btn-primary">Tìm kiếm
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped" style="width:90%;margin:0 auto">
+                                        <thead>
+                                            <tr>
+                                            <tr>
+                                                <th style="width:2%">STT</th>
+                                                <th style="width:12%">Mã hàng</th>
+												<th style="width:10%">Danh mục</th>										
+                                                <th style="width:5%">Tổng tồn</th>
+												<th style="width:10%">Ghi chú</th>
+												<th style="width:3%">Thay đổi</th>
+                                            </tr>
+                                          
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align: center"> 1</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>   
+												<td>MCCB</td>
+                                                <td class="right">20</td>
+                                                <td></td>
+												<td>
+													<a id="btn_row" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row">
+                                            <td colspan="10">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" value="ABS 52c" readonly placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+											</tr>
+                                            <tr>
+                                                <td style="text-align: center">2</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>   
+												<td>MCCB</td>												
+                                                <td class="right">16</td>   
+												<td></td>
+												<td>
+													<a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+											</tr>
+											<tr id="row1">
+												<td colspan="10">
+													<div class="container-fluid">
+														<div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" value="ABS 52c" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        </div>
+    </td>
+</tr>
+											<tr>
+                                                <td style="text-align: center"> 3</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>  
+												<td>MCCB</td>	
+                                                <td class="right">20</td> 
+												<td></td>
+												<td>
+													<a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row2">
+    <td colspan="10">
+        <div class="container-fluid">
+            <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" readonly value="ABS 52c" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        </div>
+    </td>
+</tr>
+											  <tr>
+                                                <td style="text-align: center"> 4</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>    
+												<td>MCCB</td>												
+                                                <td class="right">20</td>          
+												<td></td>
+												<td>
+													<a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row3">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" value="ABS 52c" placeholder="" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>
+											 
+											 <tr>
+                                                <td style="text-align: center"> 5</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>   
+												<td>MCCB</td>												
+                                                <td class="right">20</td>    
+												<td></td>
+												<td>
+													<a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+                                          <tr id="row4">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" readonly value="ABS 52c">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>
+                                            <tr>
+                                                <td style="text-align: center">6</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td> 
+
+												<td>Phụ kiện MCCB</td>		
+                                                <td class="right">20</td> 
+												<td></td>
+												<td>
+													<a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom"/>
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>   
+											<tr id="row5">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" readonly value="Thanh cái" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>											
+                                            <tr>
+                                                <td style="text-align: center">7</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>    
+												<td>Phụ kiện MCCB</td>
+                                                <td class="right">20</td>                     
+												<td></td>
+												<td>
+													<a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr> 
+											<tr id="row6">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" value="Thanh cái" readonly />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+                                                <td style="text-align: center">8</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>   
+												<td>Phụ kiện MCCB</td>
+                                                <td class="right">0</td>
+												<td></td>
+												<td>
+													<a id="btn_row7" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr>
+											<tr id="row7">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" value="Insulation barrier" readonly
+																/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+                                                <td style="text-align: center">9</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>  
+												<td>Phụ kiện MCCB</td>
+                                                <td class="right">242</td>                   
+												<td></td>
+												<td>
+													<a id="btn_row8" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr> 
+											<tr id="row8">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" value="Insulation barrier" readonly placeholder=""/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+                                                <td style="text-align: center">10</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>  
+												<td>Phụ kiện MCCB</td>
+                                                <td class="right">20</td>          
+												<td></td>
+												<td>
+													<a id="btn_row9" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr> 
+											<tr id="row9">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" readonly value="Insulation barrier"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+                                                <td style="text-align: center">11</td>
+                                                <td style="text-align: left"><a href="hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>             
+												<td>Phụ kiện MCCB</td>
+                                                <td class="right">20</td> 
+												<td></td>	
+												<td>
+													<a id="btn_row10" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+														<i class="fa fa-edit text-blue"></i>
+													</a>
+												</td>
+                                            </tr> 											
+                                         <tr id="row10">
+												<td colspan="10">
+													<div class="container-fluid">
+														 <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Tên mã sản phẩm</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" value="Insulation barrier" readonly />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <label>Tổng tồn</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="text" class="form-control" placeholder="" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+														</div>
+												
+												</td>
+											</tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr >
+                                                <td></td>
+                                                <td style="text-align: left;border-right: none">Grand Total</td>
+                                                <td></td>
+                                                <td class="right">2,436</td>
+                                               <td></td>
+											   <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					 <div class="modal fade" id="popupConfirm" role="dialog">
+                        <div class="modal-dialog" style="width:250px;height:150px">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Xác nhận sửa thông tin</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>Lưu thông tin đã sửa?</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer" style="margin-right:15px">
+                                    <div style="margin:0 auto;">
+										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='hanghoa_ton-kho-sua.html'">OK</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+									</div>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+							
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- ./wrapper -->
+			<footer class="main-footer">
+        <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+    </footer>
+
+        <!-- jQuery 3 -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+        <!-- page script -->
+        <script>
+		$('#row').hide();
+        $('#btn_row').click(function () {
+            $('#row').toggle();
+        })
+        $('#row1').hide();
+        $('#btn_row1').click(function () {
+            $('#row1').toggle();
+        })
+        $('#row2').hide();
+        $('#btn_row2').click(function () {
+            $('#row2').toggle();
+        })
+        $('#row3').hide();
+        $('#btn_row3').click(function () {
+            $('#row3').toggle();
+        })
+        $('#row4').hide();
+        $('#btn_row4').click(function () {
+            $('#row4').toggle();
+        })
+        $('#row5').hide();
+        $('#btn_row5').click(function () {
+            $('#row5').toggle();
+        })
+        $('#row6').hide();
+        $('#btn_row6').click(function () {
+            $('#row6').toggle();
+        })
+        $('#row7').hide();
+        $('#btn_row7').click(function () {
+            $('#row7').toggle();
+        })
+        $('#row8').hide();
+        $('#btn_row8').click(function () {
+            $('#row8').toggle();
+        })
+        $('#row9').hide();
+        $('#btn_row9').click(function () {
+            $('#row9').toggle();
+        })
+        $('#row10').hide();
+        $('#btn_row10').click(function () {
+            $('#row10').toggle();
+        })
+        $('#row11').hide();
+        $('#btn_row11').click(function () {
+            $('#row11').toggle();
+        })
+    </script>
+    </body>
+
+</html>
