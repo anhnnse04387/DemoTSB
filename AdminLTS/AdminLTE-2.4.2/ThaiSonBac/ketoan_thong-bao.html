@@ -350,7 +350,12 @@
     <!-- page script -->
     <script>
         $(function () {
-            $('#example1').DataTable()
+            $('#example1').DataTable({
+                'searching': false,
+                'language': {
+                    'url': 'http://cdn.datatables.net/plug-ins/1.10.16/i18n/Vietnamese.json'
+                }
+            })
             $('#example2').DataTable({
                 'paging': true,
                 'lengthChange': false,
