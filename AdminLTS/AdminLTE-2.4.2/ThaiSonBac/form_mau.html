@@ -395,7 +395,7 @@
                         <!-- main-col -->
                         <div class="col-md-12">
                             <!-- main-box -->
-                            <div class="box box-primary container-fluid">
+                            <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <h3 class="box-title with-border">Form Mẫu</h3>
                                     <!-- tools box -->
@@ -408,10 +408,7 @@
                                     
                                 </div>
                                 <!-- /.box-header -->
-                                
-                                <!-- box-body -->
-                                <div class="box-body">
-                                    <div class="box-header with-border" style="background-color: #fcf9f9;">
+                                <div class="box-header with-border" style="background-color: #fcf9f9;">
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
                                             <span><strong>Quay Lại</strong></span>
@@ -454,10 +451,13 @@
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <i class="fa fa-file-pdf-o text-gray"></i>
                                             <span><strong>Tải xuống</strong></span>
                                         </a>
-                                    </div>	
+                                    </div>
+                                <!-- box-body -->
+                                <div class="box-body container-fluid">
+                                    	
                                     <form>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -513,7 +513,7 @@
                                                 <legend><b>Bảng mẫu</b></legend>
                                                 <table id="example1" class="table table-bordered table-striped">
                                                     <thead>
-                                                        <tr style="background-color: #3c8dbc;">
+                                                        <tr style="background-color: #3c8dbc;color: white;">
                                                             <th>Rendering engine</th>
                                                             <th>Browser</th>
                                                             <th>Platform(s)</th>
@@ -763,9 +763,8 @@
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
-                                                        <tr style="background-color: #544d61;">
-                                                            <th>Rendering engine</th>
-                                                            <th>Browser</th>
+                                                        <tr style="background-color: #544d61; color: white;">
+                                                            <th colspan="2">Tổng</th>
                                                             <th>Platform(s)</th>
                                                             <th>Engine version</th>
                                                             <th>CSS grade</th>
@@ -777,26 +776,20 @@
                                         <!-- /.row table -->
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h4 class="box-title">Mục tìm kiếm</h4>
+                                                <h4 class="box-title">Tìm kiếm theo...</h4>
                                                 <!-- /.box-header -->
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <th style="padding-left: 0px;">Mục tìm kiếm</th>
-                                                            <th width="35%">Thông tin tìm kiếm</th>
-                                                            <th>Mục tìm kiếm</th>
-                                                            <th width="35%">Thông tin tìm kiếm</th>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="padding-left: 0px;">Tên</td>
-                                                            <td>
+                                                            <td width="35%">
                                                                 <div class="input-group" >
                                                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                                                     <input type="text" class="form-control" placeholder="Tên...">
                                                                 </div>
                                                             </td>
                                                             <td>Tên</td>
-                                                            <td>
+                                                            <td width="35%">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                                                     <input type="text" class="form-control" placeholder="Tên...">
@@ -806,12 +799,18 @@
                                                         <tr>
                                                             <td style="padding-left: 0px;">Ngày sinh</td>
                                                             <td>
-                                                                <div class="input-group date">
-                                                                    <div class="input-group-addon">
-                                                                        <i class="fa fa-calendar"></i>
+                                                                <div class="col-sm-5 no-padding">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">Từ</span>
+                                                                        <input type="text" class="form-control" id="datepicker">
                                                                     </div>
-                                                                    <input type="text" class="form-control" id="datepicker">
-                                                                </div> 
+                                                                </div>
+                                                                <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">Đến</span>
+                                                                        <input type="text" class="form-control" id="datepicker2">
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                             <td>Sản Phẩm</td>
                                                             <td>
@@ -936,6 +935,9 @@
             $(function () {
                 //Date picker
                 $('#datepicker').datepicker({
+                    autoclose: true
+                });
+                $('#datepicker2').datepicker({
                     autoclose: true
                 });
             });
