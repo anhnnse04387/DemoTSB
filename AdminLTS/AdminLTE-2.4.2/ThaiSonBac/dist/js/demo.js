@@ -83,70 +83,6 @@ function checkOutProvider() {
     document.getElementById("totalDebtP").value = (parseInt(document.getElementById('debtP').value.replace(new RegExp(',', 'g'), '')) + addDebt).toLocaleString('en');
 }
 
-function saveDraft() {
-    swal({
-        title: '<img src="dist/img/messagePic.png"/>',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fa fa-check"></i>',
-        cancelButtonText: '<i class="fa fa-close"></i>'
-    }).then((result) => {
-            if (result.value) {
-                swal({
-                    title: '<img src="dist/img/messagePic_2.png"/>',
-                    type: 'success'
-                })
-                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-            }
-        });
-}
-
-function send() {
-    swal({
-        title: '<img src="dist/img/messagePic.png"/>',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fa fa-check"></i>',
-        cancelButtonText: '<i class="fa fa-close"></i>'
-    }).then((result) => {
-            if (result.value) {
-                swal({
-                    title: '<img src="dist/img/messagePic_5.png"/>',
-                    type: 'success'
-                })
-                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-            }
-        });
-}
-
-function nhapKhoThanhCong() {
-    swal({
-        title: '<img src="dist/img/messagePic.png"/>',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fa fa-check"></i>',
-        cancelButtonText: '<i class="fa fa-close"></i>'
-    }).then((result) => {
-            if (result.value) {
-                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-                swal({
-                    title: '<img src="dist/img/messagePic_2.png"/>',
-                    type: 'success'                    
-                }).then((result) => {
-                    if(result.value) {
-                        location.href = 'lich_su_nhap_hang.html';
-                    }
-                })                              
-            }
-        });
-}
-
 function redirect() {
     if ($("#page").val() === '1') {
         var win = window.open('cong_no_khach_hang.html', '_blank');
@@ -277,33 +213,14 @@ function openNewTab() {
     win.focus();
 }
 
-function poPreview() {
-    var win = window.open('dist/Po_Preview.pdf', '_blank');
+function taomoi() {
+    var win = window.open('phanphoi_donhang_lap-phieu.html', '_blank');
     win.focus();
 }
 
-function create() {
-    swal({
-        title: '<img src="dist/img/messagePic.png"/>',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fa fa-check"></i>',
-        cancelButtonText: '<i class="fa fa-close"></i>'
-    }).then((result) => {
-            if (result.value) {
-                swal({
-                    title: '<img src="dist/img/messagePic_1.png"/>',
-                    imageUrl: 'dist/img/Noti.gif',
-                    imageWidth: 400,
-                    imageHeight: 300,
-                    imageAlt: 'Custom image',
-                    animation: false
-                })
-                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-            }
-        });
+function poPreview() {
+    var win = window.open('dist/Po_Preview.pdf', '_blank');
+    win.focus();
 }
 
 function configCkAll(stt) {
