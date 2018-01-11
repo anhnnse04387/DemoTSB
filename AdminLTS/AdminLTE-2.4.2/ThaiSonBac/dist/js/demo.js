@@ -6,6 +6,18 @@
  */
 var limit = 5;
 
+function create() {
+    swal({
+        title: '<img src="dist/img/messagePic_1.png"/>',
+        imageUrl: 'dist/img/Noti.gif',
+        imageWidth: 400,
+        imageHeight: 300,
+        imageAlt: 'Custom image',
+        animation: false
+    })
+    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+}
+
 function deliveryQtt() {
     if(document.getElementById('delivery').value === '1') {
         $('#turn1').addClass('noDisplay');

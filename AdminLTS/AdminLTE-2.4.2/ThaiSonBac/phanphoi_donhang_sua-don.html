@@ -418,11 +418,11 @@
                                                 <i class="fa fa-edit text-grey"></i>
                                                 <span><strong>Tạo Mới</strong></span>
                                             </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" data-target="#confirmSave">
-                                                <i class="fa fa-save text-yellow"></i>
+                                            <a class="btn btn-app custom-btn disabled">
+                                                <i class="fa fa-save text-grey"></i>
                                                 <span><strong>Lưu</strong></span>
                                             </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
+                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirmSave" href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
                                                 <i class="fa fa-close text-red"></i>
                                                 <span><strong>Hủy</strong></span>
                                             </a>
@@ -917,11 +917,11 @@
                                             <i class="fa fa-edit text-grey"></i>
                                             <span><strong>Tạo Mới</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" data-target="#confirmSave">
-                                            <i class="fa fa-save text-yellow"></i>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-save text-grey"></i>
                                             <span><strong>Lưu</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirmSave" href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
                                             <i class="fa fa-close text-red"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
@@ -970,24 +970,25 @@
             </footer>
             <div class="modal fade" id="confirmSave" role="dialog">
                 <div class="modal-dialog">
-
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Xác nhận lưu ?</h4>
-                        </div>
+                            <h4 class="modal-title">Xác nhận hủy ?</h4>
+                        </div> 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Đồng ý</button>
+                            <p style="text-align: left;"><label style="vertical-align: text-bottom;
+                                                                color: black;margin-bottom: 30px;">Lý do</label>
+                                <textarea style="margin-left: 20px;width: 500px;
+                                          height: 70px;"></textarea></p>
+                            <a href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html"><button type="button" class="btn btn-success">Đồng ý</button></a>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="modal fade" id="confirmComplete" role="dialog">
                 <div class="modal-dialog">
-
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
@@ -995,11 +996,10 @@
                             <h4 class="modal-title">Xác nhận chốt đơn ?</h4>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Đồng ý</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="create();">Đồng ý</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -1010,73 +1010,73 @@
         <script src="dist/js/jquery-1.12.4.js"></script>
         <script src="dist/js/jquery-ui.js"></script>
         <script>
-                                            $(function () {
-                                                var availableTags = [
-                                                    "ABN 52c",
-                                                    "TS1000N AG6 3P",
-                                                    "ABS 32c",
-                                                    "ABH 53c",
-                                                    "ABE103-G"
-                                                ];
-                                                var ampe = [
-                                                    "5A",
-                                                    "15A",
-                                                    "30A",
-                                                    "63A",
-                                                    "1000A"
-                                                ];
-                                                $("#name_6").autocomplete({
-                                                    source: availableTags,
-                                                    change: function () {
-                                                        if ($('#name_6').val() === 'ABN 52c') {
-                                                            document.getElementById('dongia_6').value = '590,000';
-                                                        } else if ($('#name_6').val() === 'TS1000N AG6 3P') {
-                                                            document.getElementById('dongia_6').value = '80,807,000';
-                                                        } else if ($('#name_6').val() === 'ABS 32c') {
-                                                            document.getElementById('dongia_6').value = '1,859,000';
-                                                        } else if ($('#name_6').val() === 'ABH 53c') {
-                                                            document.getElementById('dongia_6').value = '2,375,000';
-                                                        } else {
-                                                            document.getElementById('dongia_6').value = '8,443,000';
-                                                        }
-                                                    }
-                                                });
-                                                $("#name_8").autocomplete({
-                                                    source: availableTags,
-                                                    change: function () {
-                                                        if ($('#name_8').val() === 'ABN 52c') {
-                                                            document.getElementById('dongia_8').value = '590,000';
-                                                        } else if ($('#name_8').val() === 'TS1000N AG6 3P') {
-                                                            document.getElementById('dongia_8').value = '80,807,000';
-                                                        } else if ($('#name_8').val() === 'ABS 32c') {
-                                                            document.getElementById('dongia_8').value = '1,859,000';
-                                                        } else if ($('#name_8').val() === 'ABH 53c') {
-                                                            document.getElementById('dongia_8').value = '2,375,000';
-                                                        } else {
-                                                            document.getElementById('dongia_8').value = '8,443,000';
-                                                        }
-                                                    }
-                                                });
-                                                $("#name_9").autocomplete({
-                                                    source: availableTags,
-                                                    change: function () {
-                                                        if ($('#name_9').val() === 'ABN 52c') {
-                                                            document.getElementById('dongia_9').value = '590,000';
-                                                        } else if ($('#name_9').val() === 'TS1000N AG6 3P') {
-                                                            document.getElementById('dongia_9').value = '80,807,000';
-                                                        } else if ($('#name_9').val() === 'ABS 32c') {
-                                                            document.getElementById('dongia_9').value = '1,859,000';
-                                                        } else if ($('#name_9').val() === 'ABH 53c') {
-                                                            document.getElementById('dongia_9').value = '2,375,000';
-                                                        } else {
-                                                            document.getElementById('dongia_9').value = '8,443,000';
-                                                        }
-                                                    }
-                                                });
-                                                $(".ampe").autocomplete({
-                                                    source: ampe
-                                                });
-                                            });
+                                $(function () {
+                                    var availableTags = [
+                                        "ABN 52c",
+                                        "TS1000N AG6 3P",
+                                        "ABS 32c",
+                                        "ABH 53c",
+                                        "ABE103-G"
+                                    ];
+                                    var ampe = [
+                                        "5A",
+                                        "15A",
+                                        "30A",
+                                        "63A",
+                                        "1000A"
+                                    ];
+                                    $("#name_6").autocomplete({
+                                        source: availableTags,
+                                        change: function () {
+                                            if ($('#name_6').val() === 'ABN 52c') {
+                                                document.getElementById('dongia_6').value = '590,000';
+                                            } else if ($('#name_6').val() === 'TS1000N AG6 3P') {
+                                                document.getElementById('dongia_6').value = '80,807,000';
+                                            } else if ($('#name_6').val() === 'ABS 32c') {
+                                                document.getElementById('dongia_6').value = '1,859,000';
+                                            } else if ($('#name_6').val() === 'ABH 53c') {
+                                                document.getElementById('dongia_6').value = '2,375,000';
+                                            } else {
+                                                document.getElementById('dongia_6').value = '8,443,000';
+                                            }
+                                        }
+                                    });
+                                    $("#name_8").autocomplete({
+                                        source: availableTags,
+                                        change: function () {
+                                            if ($('#name_8').val() === 'ABN 52c') {
+                                                document.getElementById('dongia_8').value = '590,000';
+                                            } else if ($('#name_8').val() === 'TS1000N AG6 3P') {
+                                                document.getElementById('dongia_8').value = '80,807,000';
+                                            } else if ($('#name_8').val() === 'ABS 32c') {
+                                                document.getElementById('dongia_8').value = '1,859,000';
+                                            } else if ($('#name_8').val() === 'ABH 53c') {
+                                                document.getElementById('dongia_8').value = '2,375,000';
+                                            } else {
+                                                document.getElementById('dongia_8').value = '8,443,000';
+                                            }
+                                        }
+                                    });
+                                    $("#name_9").autocomplete({
+                                        source: availableTags,
+                                        change: function () {
+                                            if ($('#name_9').val() === 'ABN 52c') {
+                                                document.getElementById('dongia_9').value = '590,000';
+                                            } else if ($('#name_9').val() === 'TS1000N AG6 3P') {
+                                                document.getElementById('dongia_9').value = '80,807,000';
+                                            } else if ($('#name_9').val() === 'ABS 32c') {
+                                                document.getElementById('dongia_9').value = '1,859,000';
+                                            } else if ($('#name_9').val() === 'ABH 53c') {
+                                                document.getElementById('dongia_9').value = '2,375,000';
+                                            } else {
+                                                document.getElementById('dongia_9').value = '8,443,000';
+                                            }
+                                        }
+                                    });
+                                    $(".ampe").autocomplete({
+                                        source: ampe
+                                    });
+                                });
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -1090,15 +1090,15 @@
         <script src="dist/js/demo.js"></script>
         <script src="dist/js/sweetalert2.all.js"></script>
         <script>
-                                            $(document).ready(function () {
-                                                $('[data-toggle="tooltip"]').tooltip();
-                                                $('[data-toggle="popover"]').popover();
-                                                $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
-                                                $('.datepicker').datepicker({
-                                                    format: 'dd/mm/yyyy'
-                                                });
-                                                deliveryQtt();
-                                            });
+                                $(document).ready(function () {
+                                    $('[data-toggle="tooltip"]').tooltip();
+                                    $('[data-toggle="popover"]').popover();
+                                    $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+                                    $('.datepicker').datepicker({
+                                        format: 'dd/mm/yyyy'
+                                    });
+                                    deliveryQtt();
+                                });
         </script>      
     </body>
 </html>
