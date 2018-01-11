@@ -31,7 +31,26 @@ $('.input-group-addon', '.week-select').click(function () {
  *
  */
 $(function () {
-    $('#example1').DataTable();
+    $('#example1').DataTable({
+        'paging': true,
+        'lengthChange': true,
+        'searching': false,
+        'ordering': true,
+        'info': true,
+        'autoWidth': false,
+		'language':{
+			"lengthMenu": "Hiển thị _MENU_ dòng",
+			"info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+			"paginate": {
+						"first": "Trang đầu",
+						"last": "Trang cuối",
+						"next": "Tiếp",
+						"previous": "Trước",							
+					}
+						
+						
+		}
+    });
     $('#example2').DataTable();
     $('#example3').DataTable();
 });

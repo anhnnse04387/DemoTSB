@@ -88,6 +88,12 @@
 				min-width: 30px;
 				height: 30px;
 			}
+			label {
+				display: inline-block;
+				max-width: 100%;
+				margin-bottom: 5px;
+				font-weight: 500 !important;
+			}
         </style>
     </head>
 
@@ -399,7 +405,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">TỒN KHO</h3>
+                                    <h3 class="box-title"><b>TỒN KHO</b></h3>
                                 </div>
 								<div class="box-header with-border" style="background-color: #fcf9f9;">
                                         <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
@@ -410,7 +416,7 @@
                                             <i class="fa fa-plus text-green"></i>
 											 <span><strong>Thêm mới</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
                                             <i class="fa fa-save text-grey"></i>
                                             <span><strong>Lưu</strong></span>
                                         </a>
@@ -418,33 +424,33 @@
                                             <i class="fa fa-close text-grey"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn"  title="Chốt đơn" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled"  title="Chốt đơn" data-placement="bottom" >
                                             <i class="fa fa-check-circle text-grey"></i>
                                             <span><strong>Chốt đơn</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" >
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                             <i class="fa fa-eye text-grey"></i>
                                             <span><strong>Xem Trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
                                             <i class="fa fa-print text-grey"></i>
                                             <span><strong>In</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
                                             <i class="fa fa-download text-grey"></i>
                                             <span><strong>Import Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
                                             <i class="fa fa-file-excel-o text-grey"></i>
-                                            <span><strong>Tải xuống</strong></span>
+                                            <span><strong>Xuất Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
                                             <i class="fa fa-file-pdf-o text-grey"></i>
-                                            <span><strong>Tải xuống</strong></span>
+                                            <span><strong>Xuất PDF</strong></span>
                                         </a>
 										
 
@@ -499,7 +505,7 @@
                                                                <input type="checkbox"  checked>
                                                                                 Trước VAT
                                                                 </label>
-															<label class="custom-chk">
+															<label>
                                                              <input type="checkbox" >
                                                                                 Sau VAT
                                                               </label>
@@ -525,7 +531,7 @@
                                         <tr>
                                             <tr>
                                                 <th style="width: 1%">STT</th>
-                                                <th colspan="2" style="width: 12%">Description</th>                                    
+                                                <th colspan="2" style="width: 12%">Mã hàng</th>                                    
 												<th style="width: 4%">Tổng nhập</th>
 												<th style="width: 4%">Tổng xuất</th>
 												<th style="width: 3%">Tổng tồn</th>
@@ -891,7 +897,7 @@
                                         </tr>
                                         <tr style="background-color: #ccffcc;font-weight: bold">
                                             <td></td>
-                                            <td style="text-align: left;border-right: none">MCCB Total</td>
+                                            <td style="text-align: left;border-right: none">Tổng MCCB</td>
                                             <td style="border-left: none"></td>                                          
                                             <td class="right">550</td>
                                             <td class="right">470</td>
@@ -1326,7 +1332,7 @@
                                         </tr>                                
                                         <tr style="background-color: #ccffcc;font-weight: bold">
                                             <td></td>
-                                            <td style="text-align: left;border-right: none">Phụ kiện MCCB Total:</td>
+                                            <td style="text-align: left;border-right: none">Tổng phụ kiện MCCB:</td>
                                             <td style="border-left: none"></td>                                  
                                             <td class="right">228</td>
                                             <td class="right">195</td>
@@ -1361,7 +1367,7 @@
                                     <tfoot>
                                         <tr>
                                             <td></td>
-                                            <td style="text-align: left;border-right: none">Grand Total</td>
+                                            <td style="text-align: left;border-right: none">Tổng cộng</td>
                                             <td style="border-left: none"></td>                                  
                                             <td class="right">778</td>
                                             <td class="right">665</td>
@@ -1380,7 +1386,7 @@
                                             <i class="fa fa-plus text-green"></i>
 											 <span><strong>Thêm mới</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Lưu" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom" >
                                             <i class="fa fa-save text-grey"></i>
                                             <span><strong>Lưu</strong></span>
                                         </a>
@@ -1388,33 +1394,33 @@
                                             <i class="fa fa-close text-grey"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn"  title="Chốt đơn" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled"  title="Chốt đơn" data-placement="bottom">
                                             <i class="fa fa-check-circle text-grey"></i>
                                             <span><strong>Chốt đơn</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" >
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                             <i class="fa fa-eye text-grey"></i>
                                             <span><strong>Xem Trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
                                             <i class="fa fa-print text-grey"></i>
                                             <span><strong>In</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Import Excel" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
                                             <i class="fa fa-download text-grey"></i>
                                             <span><strong>Import Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
                                             <i class="fa fa-file-excel-o text-grey"></i>
-                                            <span><strong>Tải xuống</strong></span>
+                                            <span><strong>Xuất Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" disabled>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
                                             <i class="fa fa-file-pdf-o text-grey"></i>
-                                            <span><strong>Tải xuống</strong></span>
+                                            <span><strong>Xuất PDF</strong></span>
                                         </a>
 										
 

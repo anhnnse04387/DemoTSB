@@ -42,6 +42,12 @@
 			.left{
 				text-align:left;
 			}
+			label {
+				display: inline-block;
+				max-width: 100%;
+				margin-bottom: 5px;
+				font-weight: 500;
+			}
         </style>
     </head>
 
@@ -491,7 +497,7 @@
                                                 <td class="right">1.87</td>
                                             </tr>
                                             <tr>
-                                                <td style="text-align: left">6</td>
+                                                <td style="text-align: left">5</td>
                                                 <td style="border-right: none;text-align:left"> <a href="phanphoi_hanghoa_chi-tiet-san-pham.html">UR-02</a></td>
                                                 <td style="border-left: none;text-align:left">For MC 6a~150a</td>
 												<td style="text-align:left">MCCB</td>
@@ -502,7 +508,7 @@
                                                 <td class="right">5.88</td>
                                             </tr style="font-weight:bold">
 											<tr>
-												 <td style="text-align: left">7</td>
+												 <td style="text-align: left">6</td>
                                                 <td style="border-right: none;text-align:left"> <a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
                                                 <td style="border-left: none;text-align:left">AX (R) - LWT</td>
 												<td style="text-align:left">Phụ kiên MCCB</td>
@@ -513,7 +519,7 @@
                                                 <td class="right">4.7</td>
 											</tr>
 											<tr>
-											    <td style="text-align: left">8</td>
+											    <td style="text-align: left">7</td>
                                                 <td style="border-right: none;text-align:left"> <a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
                                                 <td style="border-left: none;text-align:left">AL (R) - LWT</td>
 												<td style="text-align:left">Phụ kiện MCCB</td>
@@ -524,7 +530,7 @@
                                                 <td class="right">4.7</td>
 											</tr>
 											<tr>
-												<td style="text-align: left">9</td>
+												<td style="text-align: left">8</td>
                                                 <td style="border-right: none;text-align:left"> <a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
                                                 <td style="border-left: none;text-align:left">AX/AL (R) - LWT</td>
 												<td style="text-align:left">Phụ kiện MCCB</td>
@@ -535,7 +541,7 @@
                                                 <td class="right">4.7</td>
 											</tr>
 											<tr>
-												<td style="text-align: left">10</td>
+												<td style="text-align: left">9</td>
                                                 <td style="border-right: none;text-align:left"> <a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABN50c~200c/ABS30c~200c/ABH50c~200c</a></td>
                                                 <td style="border-left: none;text-align:left">UVT (T) - 200C AC/DC 200~220V</td>
 												<td style="text-align:left">Phụ kiện MCCB</td>
@@ -582,17 +588,25 @@
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
+           $('#example1').DataTable({
+				'paging': true,
+				'lengthChange': true,
+				'searching': false,
+				'ordering': true,
+				'info': true,
+				'autoWidth': false,
+				'language':{
+					"lengthMenu": "Hiển thị _MENU_ dòng",
+					"info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+					"paginate": {
+					"first": "Trang đầu",
+					"last": "Trang cuối",
+					"next": "Tiếp",
+					"previous": "Trước",							
+					}					
+				}
+			});
+										
         </script>
     </body>
 
