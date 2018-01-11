@@ -408,8 +408,8 @@
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
                                     <div class="row">
-                                        <div class="box-header with-border pull-left" style="background-color: #fcf9f9; margin-left: 15px; width: 1067px;">
-                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
+                                        <div class="box-header with-border" style="background-color: #fcf9f9; margin-left: 5px; margin-right: 5px;">
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html">
                                                 <i class="fa fa-arrow-circle-left text-blue"></i>
                                                 <span><strong>Quay Lại</strong></span>
                                             </a>
@@ -907,8 +907,8 @@
                                         </div>
                                         <div id="sound" class="noDisplay"></div>
                                     </form>
-                                    <div class="box-header with-border pull-left" style="background-color: #fcf9f9; width: 1067px;">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_donhang_chi-tiet-phieu-giao-nhieu-lan.html">
+                                    <div class="box-header with-border" style="background-color: #fcf9f9; margin-left: -10px; margin-right: -10px;">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html">
                                             <i class="fa fa-arrow-circle-left text-blue"></i>
                                             <span><strong>Quay Lại</strong></span>
                                         </a>
@@ -968,21 +968,22 @@
             <footer class="main-footer">
                 <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
             </footer>
-            <div class="modal fade" id="confirmSave" role="dialog">
+            <div class="modal fade" id="confirmSave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Xác nhận hủy ?</h4>
-                        </div> 
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Xác nhận hủy đơn hàng</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Bạn thực sự muốn hủy đơn hàng?</label>
+                            <br/>
+                            <p>Lý do</p>
+                            <textarea id="" style="width: 100%" rows="10"></textarea>
+                        </div>
                         <div class="modal-footer">
-                            <p style="text-align: left;"><label style="vertical-align: text-bottom;
-                                                                color: black;margin-bottom: 30px;">Lý do</label>
-                                <textarea style="margin-left: 20px;width: 500px;
-                                          height: 70px;"></textarea></p>
-                            <a href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html"><button type="button" class="btn btn-success">Đồng ý</button></a>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
+                            <a href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html" type="button" class="btn btn-danger btn-ok">Hủy</a>
                         </div>
                     </div>
                 </div>

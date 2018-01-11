@@ -6,6 +6,14 @@
  */
 var limit = 5;
 
+function saveDraft() {
+    swal({
+        title: '<img src="dist/img/messagePic_2.png"/>',
+        type: 'success'
+    })
+    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+}
+
 function create() {
     swal({
         title: '<img src="dist/img/messagePic_1.png"/>',
