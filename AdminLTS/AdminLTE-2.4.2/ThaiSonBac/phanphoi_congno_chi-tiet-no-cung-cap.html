@@ -581,12 +581,10 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colspan="3" style="font-weight: bold;text-align: center">Total</td>
-                                                <td></td>
+                                                <td colspan="5" style="font-weight: bold;text-align: center">Tổng</td>
                                                 <td style="font-weight: bold">0</td>
                                                 <td style="font-weight: bold">0</td>
-                                                <td style="font-weight: bold">0</td>
-                                                <td style="font-weight: bold">0</td>
+                                                <td style="font-weight: bold">24,305,440,452</td>
                                                 <td style="font-weight: bold"></td>
                                             </tr>
                                         </tfoot>
@@ -754,7 +752,19 @@
         <!-- page script -->
         <script>
             $(function () {
-                $('#example1').DataTable()
+                $('#example1').DataTable({
+                    'searching': false,
+                    'language': {
+                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                        "lengthMenu": "Hiển thị _MENU_ dòng",
+                        "paginate": {
+                            "first": "Trang đầu",
+                            "last": "Trang cuối",
+                            "next": "Tiếp",
+                            "previous": "Trước"
+                        }
+                    }
+                })
                 $('#example2').DataTable({
                     'paging': true,
                     'lengthChange': false,
