@@ -594,7 +594,7 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colspan="3" style="font-weight: bold;text-align: center">Total</td>
+                                                <td colspan="3" style="font-weight: bold;text-align: center">Tổng</td>
                                                 <td></td>
                                                 <td style="font-weight: bold">0</td>
                                                 <td style="font-weight: bold"></td>
@@ -780,7 +780,19 @@
                 var date = d + "/" + m + "/" + y;
                 document.getElementById("date").innerHTML = $.datepicker.formatDate('dd-M-y', new Date());       
                 $(function () {
-                    $('#example1').DataTable()
+                    $('#example1').DataTable({
+                        'searching': false,
+                        'language': {
+                            "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                            "lengthMenu": "Hiển thị _MENU_ dòng",
+                            "paginate": {
+                                "first": "Trang đầu",
+                                "last": "Trang cuối",
+                                "next": "Tiếp",
+                                "previous": "Trước"
+                            }
+                        }
+                    })
                     $('#example2').DataTable({
                         'paging': true,
                         'lengthChange': false,
