@@ -472,6 +472,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="confirm-cancel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">Xác nhận hủy đơn hàng</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>Bạn muốn hủy đơn hàng?</label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
+                                        <a href="phanphoi_donhang_danh-sach-phieu-dang-soan.html" class="btn btn-success btn-ok">Hủy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -495,7 +512,7 @@
                                         <i class="fa fa-save text-grey"></i>
                                         <span><strong>Lưu</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" style="height: 50px;" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="ketoan_thong-bao.html">
+                                    <a class="btn btn-app custom-btn" style="height: 50px;" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirm-cancel">
                                         <i class="fa fa-close text-red"></i>
                                         <span><strong>Hủy</strong></span>
                                     </a>
@@ -745,7 +762,7 @@
                                         <i class="fa fa-save text-grey"></i>
                                         <span><strong>Lưu</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" style="height: 50px;" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="ketoan_thong-bao.html">
+                                    <a class="btn btn-app custom-btn" style="height: 50px;" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirm-cancel">
                                         <i class="fa fa-close text-red"></i>
                                         <span><strong>Hủy</strong></span>
                                     </a>
