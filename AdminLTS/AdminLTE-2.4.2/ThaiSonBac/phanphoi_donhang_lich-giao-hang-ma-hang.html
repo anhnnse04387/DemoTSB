@@ -340,12 +340,6 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                      ABN 52c
-                      <small>
-                        ngày giao hàng 03/01/2018
-                      </small>
-                    </h1>
                     <ol class="breadcrumb">
                         <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
                         <li><a href="timeline-mahang.html"> Lập phiếu</a></li>
@@ -356,17 +350,33 @@
                   <div class="row">
                       <div class="col-md-12">
                           <div class="box">
-                              <div class="box-header with-border">
-                                  <h3 class="box-title">ABN 52c</h3>
-                                  <div class="box-tools pull-right">
-                                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                      </button>
-                                  </div>
-                              </div>
+                              <div class="box-header">
+                                    <h4>
+                                        <b>ABN 52c</b>
+                                    </h4>
+                                    <div class="box"></div>
+                                </div>
                               <!--\ box header -->
                               <div class="box-body">
                                   <div class="col-md-12">
-
+                                        <form class="row form-inline">
+                                            <div class="col-md-8">
+                                                <div class="form-group" style="margin-right: 16px;">
+                                                    <label for="fromDate">Từ ngày </label>
+                                                    <input type="date" class="form-control" id="fromDate" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="toDate">Đến ngày </label>
+                                                    <input type="date" class="form-control" id="toDate" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group" style="float: right;">
+                                                    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="clearfix"></div>
                                       <div style="margin-top: 16px;">
                                         <div id="timeline"></div>
                                       </div>
