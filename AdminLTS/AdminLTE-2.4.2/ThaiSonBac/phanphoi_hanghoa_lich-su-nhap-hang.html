@@ -29,10 +29,16 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
+            .menu-button {
+                background-color: #fcf9f9; 
+                margin-top: 20px;
+                padding-top:20px;
+                padding-right:25px;
+            }
             .custom-btn {
                 padding: 10px 5px;
-                min-width: 60px;
-                height: 50px;
+                min-width: 80px;
+                height: 55px;
             }
             .mainTable {
                 background-color: rgb(240, 240, 240);
@@ -47,36 +53,11 @@
             .mainTable tbody td:nth-child(9) {
                 text-align: right;
             }
-            .customTable tr{
-                height: 60px;
-            }
-            .customTable .col2 select{
-                width: 250px;
-            }
-            .customTable .col2 input{
-                width: 250px;
-            }
-            .customTable .col1{
-                width: 100px;
-            }
-            .customTable .col2{
-                width: 350px;
-            }
-            .customTable .col3{
-                width: 110px;
-            }
-            .customTable .col4{
-                width: 250px;
-            }
             .pointerCursor {
                 cursor: pointer;
             }
             .textCursor {
                 cursor: text;
-            }
-            .customTable .col4 input:hover, .customTable .col4 select:hover {
-                border: 1px solid #3c8dbc;
-                color: #000;
             }
             .noDisplay {
                 display: none !important;
@@ -413,7 +394,8 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li><a href="hanghoa_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-                        <li><a href="#">Hàng hóa</a></li>
+                        <li>Hàng hóa</li>
+                        <li>Nhập hàng</li>
                         <li class="active">Lịch sử nhập hàng</li>
                     </ol>
                 </section>
@@ -429,54 +411,54 @@
                                     </h4>
                                     <div class="box"></div>
                                 </div>
-                                <div class="box-header with-border" style="background-color: #fcf9f9;">
-                                    <a class="btn btn-app custom-btn" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay Lại</strong></span>
+                                <div class="box-header with-border text-center menu-button">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo mới" data-placement="bottom" href="phanphoi_hanghoa_tao-dot-nhap-kho.html">
+                                        <i class="fa fa-plus-square text-green"></i>
+                                        <span><strong>Tạo Mới</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Nhập mới" data-placement="bottom" href="phanphoi_hanghoa_tao-dot-nhap-kho.html">
-                                        <i class="fa fa-edit text-green"></i>
-                                        <span><strong>Nhập Mới</strong></span>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                        <i class="fa fa-edit text-gray"></i>
+                                        <span><strong>Sửa</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
+                                        <i class="fa fa-save text-gray"></i>
                                         <span><strong>Lưu</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="hanghoa_index.html">
-                                        <i class="fa fa-close text-grey"></i>
+                                        <i class="fa fa-close text-gray"></i>
                                         <span><strong>Hủy</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
-                                        <i class="fa fa-check-circle text-grey"></i>
+                                        <i class="fa fa-check-circle text-gray"></i>
                                         <span><strong>Chốt đơn</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                        <i class="fa fa-exchange text-grey"></i>
+                                        <i class="fa fa-exchange text-gray"></i>
                                         <span><strong>Đổi trả</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-grey"></i>
+                                        <i class="fa fa-eye text-gray"></i>
                                         <span><strong>Xem Trước</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
+                                        <i class="fa fa-print text-gray"></i>
                                         <span><strong>In</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
+                                        <i class="fa fa-download text-gray"></i>
                                         <span><strong>Import Excel</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
+                                        <i class="fa fa-file-excel-o text-gray"></i>
                                         <span><strong>Xuất Excel</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
+                                        <i class="fa fa-file-pdf-o text-gray"></i>
                                         <span><strong>Xuất PDF</strong></span>
                                     </a>
                                 </div>
                                 <!-- /.box-header -->
-                                <div class="box-body pad">
+                                <div class="box-body pad" style="margin-top: 40px;">
                                     <div class="row">
 
                                     </div>
@@ -484,24 +466,29 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <fieldset>
-                                                    
-                                                        <div class="col-md-offset-3" style="display: inline-flex; padding-top: 10px; padding-bottom: 20px">
-                                                            <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Từ:  </label>
-                                                            <div class="input-group week-select col-md-3"> 
+                                                    <legend></legend>
+                                                    <div class="box-header">
+                                                        <div class="col-md-6">
+                                                            <label>Từ ngày</label>
+                                                            <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                 <input id="datepicker" type="text" class="form-control" name="week" value="01-01-2018" />
                                                             </div>
-                                                            <label style="padding-left:15px;padding-right: 10px; padding-top: 7px;">Đến: </label>
-                                                            <div class="input-group week-select col-md-3"> 
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Đến ngày</label>
+                                                            <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                 <input id="datepicker2" type="text" class="form-control" name="week" value="07-01-2018" />
                                                             </div>
                                                         </div>
-                                                        
+                                                    </div>
+
                                                 </fieldset>
 
                                             </div>
                                         </div>
+                                        <hr/>
                                         <div class="row">
                                             <div class="col-xs-12 table-responsive">
                                                 <fieldset>
@@ -615,52 +602,6 @@
                                     </form>
 
                                 </div>
-                                <div class="box-footer with-border" style="background-color: #fcf9f9;">
-                                    <a class="btn btn-app custom-btn" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay Lại</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Nhập mới" data-placement="bottom" href="phanphoi_hanghoa_tao-dot-nhap-kho.html">
-                                        <i class="fa fa-edit text-green"></i>
-                                        <span><strong>Nhập Mới</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
-                                        <span><strong>Lưu</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="hanghoa_index.html">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span><strong>Hủy</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
-                                        <i class="fa fa-check-circle text-grey"></i>
-                                        <span><strong>Chốt đơn</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span><strong>Đổi trả</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-grey"></i>
-                                        <span><strong>Xem Trước</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
-                                        <span><strong>In</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span><strong>Import Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span><strong>Xuất Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span><strong>Xuất PDF</strong></span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                         <!-- /.col-->
@@ -692,15 +633,15 @@
         <!-- bootstrap datepicker -->
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <script>
-                                                                    $(function () {
-                                                                        //Date picker
-                                                                        $('#datepicker').datepicker({
-                                                                            autoclose: true
-                                                                        });
-                                                                        $('#datepicker2').datepicker({
-                                                                            autoclose: true
-                                                                        });
-                                                                    });
+            $(function () {
+                //Date picker
+                $('#datepicker').datepicker({
+                    autoclose: true
+                });
+                $('#datepicker2').datepicker({
+                    autoclose: true
+                });
+            });
         </script>
     </body>
 </html>
