@@ -632,6 +632,9 @@
         <!-- bootstrap datepicker -->
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
             $(function () {
                 //Date picker
                 $('#datepicker').datepicker({
