@@ -103,8 +103,14 @@
 
             .custom-btn {
                 padding: 10px 5px;
-                min-width: 60px;
-                height: 50px;
+                min-width: 80px;
+                height: 55px;
+            }
+            .menu-button {
+                background-color: #fcf9f9; 
+                margin-top: 20px;
+                padding-top:20px;
+                padding-right:25px;
             }
 
         </style>
@@ -416,134 +422,104 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li>
-                            <a href="#">
+                            <a href="phanphoi_index.html">
                                 <i class="fa fa-dashboard"></i> Trang Chủ</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class=""></i> Đơn Hàng</a>
+                            <a class="active">
+                                <i class=""></i> Đơn hàng</a>
+                        </li>
+                        <li>
+                            <a href="phanphoi_donhang_danh-sach-phieu-dang-xu-ly.html">
+                                <i class=""></i> Phiếu đang xử lý</a>
+                        </li>
+                        <li>
+                            <a class="active">
+                                <i class=""></i> Lịch sử chỉnh sửa</a>
                         </li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row">
-                        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Xác nhận xử lí đơn hàng</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label>Bạn muốn xử lí đơn hàng?</label>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                                        <input onclick="location.href = 'accountant_notification.html'" type="button" class="btn btn-success btn-ok" value="Xử lý" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="confirm-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Xác nhận in đơn hàng</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label>Lựa chọn hình thức in?</label>
-                                        <span style="padding-left: 20px">
-                                            <select>
-                                                <option value="">In có giá</option>
-                                                <option value="">In không giá</option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                                        <input type="button" class="btn btn-success btn-ok" value="In đơn"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="box box-info">
-                                <div class="box-header with-border">
-                                    <div class="row text-center">
-                                        <h3><label>Đơn hàng lô số 8135-1</label></h3>
+                            <div class="box">
+                                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>Đơn hàng lô số 8135-1</b>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="box-header with-border menu-button">
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" >
+                                            <i class="fa fa-plus-square text-grey"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                            <i class="fa fa-edit text-grey"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-grey"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Giao hàng</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-black"></i>
+                                            <span><strong>Xem trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                            <span><strong>Xuất Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                            <span><strong>Xuất PDF</strong></span>
+                                        </a>
+
                                     </div>
                                 </div>
 
-                                <div class="box-header with-border" style="background-color: #fcf9f9;">
-
-                                    <a href="phanphoi_index.html" class="btn btn-app custom-btn" title="Quay Lại" data-placement="bottom">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay lại</strong></span>
-                                    </a>
-
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                        <i class="fa fa-edit text-grey"></i>
-                                        <span><strong>Tạo Mới</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
-                                        <span><strong>Lưu</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span><strong>Hủy</strong></span>
-                                    </a>
-                                    <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
-                                        <i class="fa fa-check-circle text-green"></i>
-                                        <span><strong>Giao hàng</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span><strong>Đổi trả</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-black"></i>
-                                        <span><strong>Xem trước</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
-                                        <i class="fa fa-print text-blue"></i>
-                                        <span><strong>In</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span><strong>Import Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span><strong>Xuất Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span><strong>Xuất PDF</strong></span>
-                                    </a>
-
-                                </div>
-                                <div class="box-header">
-                                    <div class="box-header with-border">
-                                        <div class="col-md-12 no-padding" style="margin-left: -30px;">
-                                            <ul class="progressSteps">	
-                                                <li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
-                                                <li id="bill" >Xuất Hóa Đơn</br><small>10:12 09/11/2017</small></li>
-                                                <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
-                                                <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
-                                                <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
-                                            </ul>
-                                            <span class="pull-right" style="margin-right: 50px;"><a href="phanphoi_donhang_tien-trinh-don-hang.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-left: -30px;">
+                                        <ul class="progressSteps">	
+                                            <li id="note" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lã Mạnh Đạt" class="complete">Lập Phiếu</br><small>09:15 09/11/2017</small></li>
+                                            <li id="bill" >Xuất Hóa Đơn</br><small>10:12 09/11/2017</small></li>
+                                            <li id="warehouse">Xuất Kho</br><small>Chưa hoàn thành</small></li>
+                                            <li id="deliver">Giao Hàng</br><small>Chưa hoàn thành</small></li>
+                                            <li id="finish">Nhận Hàng</br><small>Chưa hoàn thành</small></li>
+                                        </ul>
+                                        <span class="pull-right" style="margin-right: 50px;"><a href="phanphoi_donhang_tien-trinh-don-hang.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
                                     </div>
-
-                                    <div class="row ">
-                                        <div class="col-md-5" style="margin-left: 50px; margin-right: 20px; margin-bottom: 10px;">
+                                </div>
+                                <div class="box-body"><hr></div>
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label>Đơn vị</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -552,10 +528,7 @@
                                                 <input class="form-control" placeholder="Công ty Long Giang" disabled>
                                             </div>
                                         </div>
-
-
-
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <label>Nơi xuất HĐ</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -564,12 +537,12 @@
                                                 <input class="form-control" placeholder="Công ty TNHH Thái Sơn Bắc" disabled>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <!--\. col -->
-                                    <div class="row">
-
-                                        <div class="col-md-5" style="margin-left: 50px; margin-right: 20px;">
+                                </div>
+                                <!--\. col -->
+                                <div class="row">
+                                    <div class="col-md-12" style="padding-top: 10px;">
+                                        <div class="col-md-6">
                                             <label>Địa chỉ giao hàng</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -578,8 +551,7 @@
                                                 <input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <label>MST</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -588,23 +560,16 @@
                                                 <input class="form-control" placeholder="54363678" disabled>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                                 <!-- /.box-header -->
-                                <div class="box-body pad">
-                                    <div class="container-fluid">
-                                        <div class="box-header">
-                                            <div class="container-fluid">
-                                                <div class="row box-header with-border">
-                                                    <h4><label style="margin-right: 10px;">Lịch sử chỉnh sửa</label></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!-- Custom Tabs -->
-                                            <div class="nav-tabs-custom col-md-12">
+
+                                <div class="box-body">                                    
+                                    <div class="row">
+                                        <!-- Custom Tabs -->
+                                        <div class="col-md-12">
+                                            <fieldset class="nav-tabs-custom">
+                                                <legend style="font-size: 17px;"><b>Lịch sử chỉnh sửa</b></legend>
                                                 <ul class="nav nav-tabs">
                                                     <li class="active"><a href="#tab_1" data-toggle="tab">24/12/2017</a></li>
                                                     <li><a href="#tab_2" data-toggle="tab">22/12/2017</a></li>
@@ -848,7 +813,6 @@
                                                     </div>
                                                     <!-- /.tab-pane -->
                                                     <div class="tab-pane" id="tab_3">
-
                                                         <table id="mainTable" class="table table-striped">
                                                             <thead style="text-align: center;">
                                                                 <tr>
@@ -968,61 +932,62 @@
                                                     <!-- /.tab-pane -->
                                                 </div>
                                                 <!-- /.tab-content -->
-                                            </div>
+                                            </fieldset>
                                             <!-- nav-tabs-custom -->
                                         </div>
-                                        <!-- /.col -->                                        
-                                    </div>                                    
+                                    </div>
+                                    <!-- /.col -->                                                                                                                
                                 </div>
-                                <div class="box-header with-border" style="background-color: #fcf9f9;">
 
-                                            <a href="phanphoi_index.html" class="btn btn-app custom-btn" title="Quay Lại" data-placement="bottom">
-                                                <i class="fa fa-arrow-circle-left text-blue"></i>
-                                                <span><strong>Quay lại</strong></span>
-                                            </a>
+                                <div class="box-header with-border text-center menu-button">
 
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                                <i class="fa fa-edit text-grey"></i>
-                                                <span><strong>Tạo Mới</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                                <i class="fa fa-save text-grey"></i>
-                                                <span><strong>Lưu</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                                <i class="fa fa-close text-grey"></i>
-                                                <span><strong>Hủy</strong></span>
-                                            </a>
-                                            <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
-                                                <i class="fa fa-check-circle text-green"></i>
-                                                <span><strong>Giao hàng</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
-                                                <i class="fa fa-exchange text-grey"></i>
-                                                <span><strong>Đổi trả</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
-                                                <i class="fa fa-eye text-black"></i>
-                                                <span><strong>Xem trước</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
-                                                <i class="fa fa-print text-blue"></i>
-                                                <span><strong>In</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                                <i class="fa fa-download text-grey"></i>
-                                                <span><strong>Import Excel</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                                <i class="fa fa-file-excel-o text-grey"></i>
-                                                <span><strong>Xuất Excel</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                                <i class="fa fa-file-pdf-o text-grey"></i>
-                                                <span><strong>Xuất PDF</strong></span>
-                                            </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" >
+                                        <i class="fa fa-plus-square text-grey"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
 
-                                        </div>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                        <i class="fa fa-edit text-grey"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                        <i class="fa fa-save text-grey"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                        <i class="fa fa-close text-grey"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
+                                        <i class="fa fa-check-circle text-green"></i>
+                                        <span><strong>Giao hàng</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
+                                        <i class="fa fa-exchange text-grey"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
+                                        <i class="fa fa-eye text-black"></i>
+                                        <span><strong>Xem trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                        <i class="fa fa-print text-blue"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <i class="fa fa-download text-grey"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                        <i class="fa fa-file-excel-o text-grey"></i>
+                                        <span><strong>Xuất Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                        <i class="fa fa-file-pdf-o text-grey"></i>
+                                        <span><strong>Xuất PDF</strong></span>
+                                    </a>
+
+                                </div>
                             </div>
                         </div>
                         <!-- /.col-->
@@ -1037,7 +1002,49 @@
             </footer>
         </div>
         <!-- ./wrapper -->
-
+        <!-- Modal -->
+        <div class="row">
+            <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Xác nhận xử lí đơn hàng</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Bạn muốn xử lí đơn hàng?</label>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                            <input onclick="location.href = 'accountant_notification.html'" type="button" class="btn btn-success btn-ok" value="Xử lý" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="confirm-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Xác nhận in đơn hàng</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Lựa chọn hình thức in?</label>
+                            <span style="padding-left: 20px">
+                                <select>
+                                    <option value="">In có giá</option>
+                                    <option value="">In không giá</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                            <input type="button" class="btn btn-success btn-ok" value="In đơn"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
@@ -1050,12 +1057,12 @@
         <script src="dist/js/demo.js"></script>
 
         <script>
-                                            $(document).ready(function () {
-                                                $('[data-toggle="tooltip"]').tooltip();
-                                            });
-                                            $(document).ready(function () {
-                                                $('[data-toggle="popover"]').popover();
-                                            });
+                                $(document).ready(function () {
+                                    $('[data-toggle="tooltip"]').tooltip();
+                                });
+                                $(document).ready(function () {
+                                    $('[data-toggle="popover"]').popover();
+                                });
         </script>
     </body>
 
