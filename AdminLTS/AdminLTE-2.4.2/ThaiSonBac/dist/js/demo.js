@@ -14,6 +14,18 @@ function saveDraft() {
     document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
 }
 
+function chotDon() {
+    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+    swal({
+        title: '<img src="dist/img/messagePic_6.png"/>',
+        type: 'success'
+    }).then((result) => {
+        if (result.value) {
+            window.location.href = 'phanphoi_donhang_danh-sach-phieu-dang-soan.html';
+        }
+    });   
+}
+
 function create() {
     swal({
         title: '<img src="dist/img/messagePic_1.png"/>',

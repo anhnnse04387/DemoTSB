@@ -450,7 +450,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
-                                        <a href="phanphoi_donhang_danh-sach-phieu-dang-soan.html" class="btn btn-success btn-ok">Xử lý</a>
+                                        <a onclick="chotDon();" class="btn btn-success btn-ok">Xử lý</a>
                                     </div>
                                 </div>
                             </div>
@@ -487,6 +487,9 @@
                                     </div>
                                     <div class="modal-body">
                                         <label>Bạn muốn hủy đơn hàng?</label>
+                                        <br/>
+                                        <p>Lý do</p>
+                                        <textarea id="" style="width: 100%" rows="10"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
@@ -499,18 +502,17 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-info">
-
-                                <h3 class="text-center">
-                                    <b>Đơn hàng lô số 81264-1</b>
-                                </h3>
+                                <div class="box-header" style="text-align: center;margin-top: 30px;">
+                                    <h3 class="box-title with-border"><b style="font-size: 25px;">Đơn hàng lô số 81264-1</b></h3>
+                                </div>
                                 <div class="box-header with-border text-center menu-button">
 
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" >
                                         <i class="fa fa-plus-square text-gray"></i>
                                         <span><strong>Tạo Mới</strong></span>
                                     </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                        <i class="fa fa-edit text-gray"></i>
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" href="phanphoi_donhang_sua-don.html">
+                                        <i class="fa fa-edit text-blue"></i>
                                         <span><strong>Sửa</strong></span>
                                     </a>
                                     <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
@@ -602,16 +604,16 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-handshake-o"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Số hóa đơn">
+                                                    <input class="form-control" placeholder="2" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>VAT khách hàng (%)</label>
+                                                <label>VAT khách hàng</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-bank"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="VAT khách hàng">
+                                                    <input class="form-control" disabled placeholder="10%">
                                                 </div>
                                             </div>
                                         </div>
@@ -755,7 +757,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div id="sound"></div>
                         </div>
                         <!-- /.col-->
                     </div>
@@ -780,13 +782,14 @@
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+        <script src="dist/js/sweetalert2.all.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
 
         <script>
-            $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
+                                            $(document).ready(function () {
+                                                $('[data-toggle="tooltip"]').tooltip();
+                                            });
         </script>
         <script>
             $('#confirm-delete').on('click', '.btn-ok', function (e) {
@@ -804,7 +807,6 @@
                 $('.title', this).text(data.recordTitle);
                 $('.btn-ok', this).data('recordId', data.recordId);
             });
-            $('textarea').autoWidth();
         </script>
     </body>
 
