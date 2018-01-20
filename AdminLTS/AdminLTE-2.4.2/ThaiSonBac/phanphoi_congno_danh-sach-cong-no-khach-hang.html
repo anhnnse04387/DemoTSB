@@ -57,11 +57,18 @@
                 border-top-color: #f4f4f4;
                 background-color: white;
             }
-            .custom-btn {
-                padding: 10px 5px;
-                min-width: 60px;
-                height: 50px;
+            .menu-button {
+                background-color: #fcf9f9; 
+                margin-top: 20px;
+                padding-top:20px;
+                padding-right:25px;
             }
+            .edit-btn {
+                padding: 5px 5px;
+                min-width: 40px;
+                height: 35px;
+            }
+
         </style>
     </head>
 
@@ -374,7 +381,7 @@
                             <a href="ThaiSonBac/phanphoi_index.html">
                                 <i class="fa fa-dashboard"></i> Trang Chủ</a>						
                         </li>
-                        <li><a href="phanphoi_congno_danh-sach-cong-no-khach-hang.html"><i class="fa fa-dashboard"></i>Nợ khách hàng</a></li>
+                        <li><a href="phanphoi_congno_danh-sach-cong-no-khach-hang.html">Nợ khách hàng</a></li>
                     </ol>
                 </section>
                 <section class="content">
@@ -383,70 +390,61 @@
                             <div class="box">
                                 <div class="box-header"></div>
                                 <div class="box-header">
-                                    <h3 class="box-title"><b>Công nợ khách hàng</b></h3>
+                                    <h4 class="box-title"><b>Công Nợ Khách Hàng</b></h4>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="box"></div>
+                                <div class="box">
+                                    <div class="box-header with-border text-center menu-button">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-grey"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-grey"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-grey"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                            <span><strong>Xuất Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                            <span><strong>Xuất PDF</strong></span>
+                                        </a>
+
+                                        <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                            <i class="fa fa-plus text-red"></i>
+                                            <span><strong>Tạo mới</strong></span>
+                                        </a>
+
                                     </div>
                                 </div>
-
-                                   <div class="box-header with-border" style="background-color: #fcf9f9;margin-bottom:10px">
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay Lại</strong></span>
-                                    </a>
-
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
-                                        <span><strong>Lưu</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span><strong>Hủy</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
-                                        <i class="fa fa-check-circle text-grey"></i>
-                                        <span><strong>Chốt đơn</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span><strong>Đổi trả</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-grey"></i>
-                                        <span><strong>Xem Trước</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
-                                        <span><strong>In</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span><strong>Import Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span><strong>Xuất Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span><strong>Xuất PDF</strong></span>
-                                    </a>
-
-                                    <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
-                                        <i class="fa fa-plus text-red"></i>
-                                        <span><strong>Tạo mới</strong></span>
-                                    </a>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="box">
-                                        </div>
-                                    </div>
-                                </div>
+                                <hr>
                                 <div class="box-body">
 
                                     <table id="example1" class="table table-bordered table-striped">
@@ -475,8 +473,8 @@
                                                 <td class="highlight">717,069,500 </td>
                                                 <td class="right">0</td>
                                                 <td class="highlight">3,152,187,079 </td>
-                                                <td>
-                                                    <a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row1" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -491,7 +489,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" value="2482	" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                    <input type="text" value="2482" class="form-control number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -500,7 +498,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" value="2435117579" id="noCu1" class="form-control number"placeholder="" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                    <input type="text" value="2435117579" id="noCu1" class="form-control number" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -511,7 +509,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang1" class="form-control number"placeholder="" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                    <input type="text" id="tienHang1" class="form-control number" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -576,8 +574,8 @@
                                                 <td class="highlight">7,084,183,800 </td>
                                                 <td class="right">4,182,000,000 </td>
                                                 <td class="highlight">11,011,055,360 </td>
-                                                <td>
-                                                    <a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row2" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -601,7 +599,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu2" class="form-control number"placeholder=""  onkeyup="tinhTong('tienHang2', 'noCu2', 'vat2', 'thanhToan2', 'tongCong2', 'conNo2')"   value="8108871560" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                    <input type="text" id="noCu2" class="form-control number"  onkeyup="tinhTong('tienHang2', 'noCu2', 'vat2', 'thanhToan2', 'tongCong2', 'conNo2')"   value="8108871560" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                 </div>
                                                             </div>
 
@@ -613,7 +611,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang2"  onkeyup="tinhTong('tienHang2', 'noCu2', 'vat2', 'thanhToan2', 'tongCong2', 'conNo2')"  class="form-control number"placeholder=""  value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                    <input type="text" id="tienHang2"  onkeyup="tinhTong('tienHang2', 'noCu2', 'vat2', 'thanhToan2', 'tongCong2', 'conNo2')"  class="form-control number"  value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -679,8 +677,8 @@
                                                 <td class="highlight"> 3,879,990,800 </td>
                                                 <td class="right">3,123,569,840 </td>
                                                 <td class="highlight">10,298,157,979 </td>
-                                                <td>
-                                                    <a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row3" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -704,7 +702,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu3"  onkeyup="tinhTong('tienHang3', 'noCu3', 'vat3', 'thanhToan3', 'tongCong3', 'conNo3')"  class="form-control number"placeholder=""  value="9541737019" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                    <input type="text" id="noCu3"  onkeyup="tinhTong('tienHang3', 'noCu3', 'vat3', 'thanhToan3', 'tongCong3', 'conNo3')"  class="form-control number"  value="9541737019" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                 </div>
                                                             </div>
 
@@ -725,7 +723,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang3"  onkeyup="tinhTong('tienHang3', 'noCu3', 'vat3', 'thanhToan3', 'tongCong3', 'conNo3')"  class="form-control number"placeholder=""  value="3594056020" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang3"  onkeyup="tinhTong('tienHang3', 'noCu3', 'vat3', 'thanhToan3', 'tongCong3', 'conNo3')"  class="form-control number"  value="3594056020" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -781,8 +779,8 @@
                                                 <td class="highlight">1,890,907,200 </td>
                                                 <td class="right">714,000,000 </td>
                                                 <td class="highlight">6,861,994,934 </td>
-                                                <td>
-                                                    <a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row4" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -806,7 +804,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu4" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="noCu4" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
 
@@ -827,7 +825,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang4" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang4" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -836,7 +834,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong4" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output  id="tongCong4" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -854,7 +852,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo4" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="conNo4" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -883,8 +881,8 @@
                                                 <td class="highlight">2,541,119,000 </td>
                                                 <td class="right">1,836,000,000 </td>
                                                 <td class="highlight">6,299,886,835</td>
-                                                <td>
-                                                    <a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row5" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -908,7 +906,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu5" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="noCu5" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
 
@@ -929,7 +927,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang5" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang5" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -938,7 +936,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong5" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="tongCong5" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -956,7 +954,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo5" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="conNo5" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -985,8 +983,8 @@
                                                 <td class="highlight">4,393,031,300 </td>
                                                 <td class="right">2,723,400,000  </td>
                                                 <td class="highlight">7,566,532,245</td>
-                                                <td>
-                                                    <a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row6" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -1003,17 +1001,17 @@
                                                                     </span>
                                                                     <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
-                                                               
+
                                                             </div>
-															 <div class="col-md-6">
-                                                                    <label>Nợ cũ</label>
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-addon">
-                                                                            <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                        </span>
-                                                                        <input type="text" id="noCu6" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                                    </div>
-                                                              </div>
+                                                            <div class="col-md-6">
+                                                                <label>Nợ cũ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" id="noCu6" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-6">
@@ -1031,7 +1029,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang5" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang5" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1040,7 +1038,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong6" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="tongCong6" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1058,7 +1056,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo6" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="conNo6" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1087,8 +1085,8 @@
                                                 <td class="highlight">0</td>
                                                 <td class="right">0</td>
                                                 <td class="highlight">(1,245,612)</td>
-                                                <td>
-                                                    <a id="btn_row7" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row7" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -1112,7 +1110,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu7" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="noCu7" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
 
@@ -1127,13 +1125,13 @@
                                                                     <input type="text" id="vat7" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
-															 <div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Tiền hàng</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang7" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang7" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1142,10 +1140,10 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong7" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="tongCong7" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
-                                                           
+
                                                             <div class="col-md-6">
                                                                 <label>Thanh toán</label>
                                                                 <div class="input-group">
@@ -1161,7 +1159,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo7" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output  id="conNo7" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1190,8 +1188,8 @@
                                                 <td class="highlight">177,590,000 </td>
                                                 <td class="right">204,000,000</td>
                                                 <td class="highlight">875,603,105 </td>
-                                                <td>
-                                                    <a id="btn_row8" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row8" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -1209,25 +1207,25 @@
                                                                     <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
-															<div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Nợ cũ</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu8" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="noCu8" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
-                                                          
+
                                                         </div>
                                                         <div class="row">
-														  <div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Tiền hàng</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang8" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang8" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1245,7 +1243,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong8" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="tongCong8" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1263,7 +1261,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo8" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output  id="conNo8" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1292,8 +1290,8 @@
                                                 <td class="highlight">3,203,735,872 </td>
                                                 <td class="right">939,188,234 </td>
                                                 <td class="highlight">6,133,642,412 </td>
-                                                <td>
-                                                    <a id="btn_row9" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row9" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -1311,25 +1309,25 @@
                                                                     <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
-															<div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Nợ cũ</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="noCu9" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="noCu9" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
-                                                           
+
                                                         </div>
                                                         <div class="row">
-															<div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Tiền hàng</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang9" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang9" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1347,7 +1345,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong9" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output  id="tongCong9" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1365,7 +1363,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo9" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output  id="conNo9" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1394,8 +1392,8 @@
                                                 <td class="highlight">158,652,000 </td>
                                                 <td class="right">0</td>
                                                 <td class="highlight">158,652,513 </td>
-                                                <td>
-                                                    <a id="btn_row10" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row10" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -1404,7 +1402,7 @@
                                                 <td colspan="10">
                                                     <div class="container-fluid">
                                                         <div class="row">
-														 <div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Số lượng</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
@@ -1422,16 +1420,16 @@
                                                                     <input type="text" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
-                                                          
+
                                                         </div>
                                                         <div class="row">
-                                                             <div class="col-md-6">
+                                                            <div class="col-md-6">
                                                                 <label>Tiền hàng</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-usd" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <input type="text" id="tienHang10" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                    <input type="text" id="tienHang10" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1452,7 +1450,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="tongCong10" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="tongCong10" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -1470,7 +1468,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-money" aria-hidden="true"></i>
                                                                     </span>
-                                                                    <output type="text" id="conNo10" class="form-control number" placeholder="" readonly  value="0">
+                                                                    <output id="conNo10" class="form-control number">0</output>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1681,52 +1679,52 @@
                                             $('#row1').hide();
                                             $('#btn_row1').click(function () {
                                                 $('#row1').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row2').hide();
                                             $('#btn_row2').click(function () {
                                                 $('#row2').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row3').hide();
                                             $('#btn_row3').click(function () {
                                                 $('#row3').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row4').hide();
                                             $('#btn_row4').click(function () {
                                                 $('#row4').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row5').hide();
                                             $('#btn_row5').click(function () {
                                                 $('#row5').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row6').hide();
                                             $('#btn_row6').click(function () {
                                                 $('#row6').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row7').hide();
                                             $('#btn_row7').click(function () {
                                                 $('#row7').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row8').hide();
                                             $('#btn_row8').click(function () {
                                                 $('#row8').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row9').hide();
                                             $('#btn_row9').click(function () {
                                                 $('#row9').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             $('#row10').hide();
                                             $('#btn_row10').click(function () {
                                                 $('#row10').toggle();
-												 event.preventDefault();
+                                                event.preventDefault();
                                             })
                                             window.onload = function () {
                                                 $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});

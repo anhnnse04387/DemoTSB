@@ -43,11 +43,7 @@
             .khachHang{
                 text-align:left;
             }
-            .custom-btn {
-                padding: 10px 5px;
-                min-width: 60px;
-                height: 50px;
-            }
+
             .modal-header {
                 padding: 15px;
                 border-bottom: 1px solid #e5e5e5;
@@ -61,6 +57,17 @@
             .modal-footer {
                 border-top-color: #f4f4f4;
                 background-color: white;
+            }
+            .menu-button {
+                background-color: #fcf9f9; 
+                margin-top: 20px;
+                padding-top:20px;
+                padding-right:25px;
+            }
+            .edit-btn {
+                padding: 5px 5px;
+                min-width: 40px;
+                height: 40px;
             }
         </style>
     </head>
@@ -375,7 +382,7 @@
                             <a href="ThaiSonBac/phanphoi_index.html">
                                 <i class="fa fa-dashboard"></i> Trang Chủ</a>						
                         </li>
-                        <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html"><i class="fa fa-dashboard"></i>Nợ cung cấp</a></li>
+                        <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html">Nợ cung cấp</a></li>
                     </ol>
                 </section>
                 <section class="content">
@@ -383,70 +390,62 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header" style="margin-top:10px">
-                                    <h3 class="box-title"><b>Nợ nhà cung cấp</b>
-                                    </h3>
+                                    <h4 class="box-title"><b>Nợ Nhà Cung Cấp</b>
+                                    </h4>
                                 </div>
-								<div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="box"></div>
-                                    </div>
+                                <div class="box">
+                                    <div class="box-header with-border text-center menu-button">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
+                                            <i class="fa fa-arrow-circle-left text-blue"></i>
+                                            <span><strong>Quay Lại</strong></span>
+                                        </a>
+
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-grey"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-grey"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-grey"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                            <span><strong>Xuất Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                            <span><strong>Xuất PDF</strong></span>
+                                        </a>
+
+                                        <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                            <i class="fa fa-plus text-red"></i>
+                                            <span><strong>Tạo mới</strong></span>
+                                        </a>
+
+                                    </div>	
                                 </div>
-                                <div class="box-header with-border" style="background-color: #fcf9f9;margin-bottom:10px">
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay Lại</strong></span>
-                                    </a>
-
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
-                                        <span><strong>Lưu</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span><strong>Hủy</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
-                                        <i class="fa fa-check-circle text-grey"></i>
-                                        <span><strong>Chốt đơn</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span><strong>Đổi trả</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-grey"></i>
-                                        <span><strong>Xem Trước</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
-                                        <span><strong>In</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span><strong>Import Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span><strong>Xuất Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span><strong>Xuất PDF</strong></span>
-                                    </a>
-
-                                    <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
-                                        <i class="fa fa-plus text-red"></i>
-                                        <span><strong>Tạo mới</strong></span>
-                                    </a>
-
-                                </div>	
-								<div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="box"></div>
-                                    </div>
-                                </div>
+                                <hr>
                                 <div class="box-body">
-
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -471,8 +470,8 @@
                                                 <td class="right">0</td>
                                                 <td class="right">0</td>
                                                 <td class="right">0</td>
-                                                <td>
-                                                    <a id="btn_row1" href="javascript:void(0);"  class="btn btn-app" style="height: 50px; min-width: 50px;"   title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row1" href="javascript:void(0);"  class="btn btn-app edit-btn" style="height: 50px; min-width: 50px;"   title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -554,8 +553,8 @@
                                                 <td class="right">0</td>
                                                 <td class="right">0</td>
                                                 <td class="right">262,620,000</td>										
-                                                <td>
-                                                    <a id="btn_row2" href="javascript:void(0);" class="btn btn-app" style="height: 50px; min-width: 50px;" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                <td class="text-center">
+                                                    <a id="btn_row2" href="javascript:void(0);" class="btn btn-app edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                         <i class="fa fa-edit text-blue"></i>
                                                     </a>
                                                 </td>
@@ -1051,118 +1050,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <!-- Modal content-->
-                        <div class="modal-dialog">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><b>Thêm công nợ mới</b></h4>
-                            </div>
-                            <div class="modal-body">
-                                <table style="margin-left:20%;height:400px">
-                                    <tr>
-                                        <td><i class="fa fa-file"><b>  Khách hàng: </b></td>
-                                        <td style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa fa-sliders"><b>  Nợ đầu kỳ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-                                            <input type="text" class="form-control number" id = "noDauKy" onkeyup="calculate1()" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa fa-handshake-o"><b>  Nhập trong kỳ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-                                            <input type="text" id="nhapTrongKy" class="form-control number" onkeyup="calculate1()"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa fa-bars"><b>  Thanh toán: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-                                            <input type="text" class="form-control number" id="thanhToan" onkeyup="calculate1()" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
-                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-                                            <input type="text" class="form-control number" id="conNo" readonly />
-                                        </td>
-                                    </tr>
 
-                                </table>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" style="color:white;background-color:#32CD32" class="btn btn-default"  data-toggle="modal" data-target="#popupConfirm1">Lưu</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="popupConfirm" role="dialog">
-                        <div class="modal-dialog" style="width:250px;height:150px">
 
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Xác nhận sửa thông tin</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tr>
-                                            <td>Lưu thông tin đã sửa?</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="modal-footer" style="margin-right:15px">
-                                    <div style="margin:0 auto;">
-                                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_danh-sach-cong-no-cung-cap-sua.html'">OK</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-
-                        </div>
-                    </div>
-                    <div class="modal fade" id="popupConfirm1" role="dialog">
-                        <div class="modal-dialog" style="width:250px;height:150px">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Xác nhận thêm mới</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tr>
-                                            <td>Tạo công nợ mới ?</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="modal-footer" style="margin-right:15px">
-                                    <div style="margin:0 auto;">
-                                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_danh-sach-cong-no-cung-cap-them-moi.html'">OK</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-
-                        </div>
-                    </div>
                 </section>
+
             </div>
+
+
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+                <a href="#0" class="cd-top">Top</a>
+            </footer>
         </div>
         <!-- ./wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-            <a href="#0" class="cd-top">Top</a>
-        </footer>
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="dist/js/back-to-top.js"></script>
@@ -1182,39 +1082,39 @@
         <!-- page script -->
         <script src="dist/js/autoNumeric.min.js"></script>
         <script>
-                                            $(document).ready(function () {
+                                                                        $(document).ready(function () {
 
-                                                $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+                                                                            $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
 
-                                            });
-                                            $('#row1').hide();
-                                            $('#btn_row1').click(function () {
-                                                $('#row1').toggle();
-                                            })
-                                            $('#row2').hide();
-                                            $('#btn_row2').click(function () {
-                                                $('#row2').toggle();
-                                            })
-                                            $('#row3').hide();
-                                            $('#btn_row3').click(function () {
-                                                $('#row3').toggle();
-                                            })
-                                            $('#row4').hide();
-                                            $('#btn_row4').click(function () {
-                                                $('#row4').toggle();
-                                            })
-                                            $('#row5').hide();
-                                            $('#btn_row5').click(function () {
-                                                $('#row5').toggle();
-                                            })
-                                            $('#row6').hide();
-                                            $('#btn_row6').click(function () {
-                                                $('#row6').toggle();
-                                            })
-                                            $('#row7').hide();
-                                            $('#btn_row7').click(function () {
-                                                $('#row7').toggle();
-                                            })
+                                                                        });
+                                                                        $('#row1').hide();
+                                                                        $('#btn_row1').click(function () {
+                                                                            $('#row1').toggle();
+                                                                        })
+                                                                        $('#row2').hide();
+                                                                        $('#btn_row2').click(function () {
+                                                                            $('#row2').toggle();
+                                                                        })
+                                                                        $('#row3').hide();
+                                                                        $('#btn_row3').click(function () {
+                                                                            $('#row3').toggle();
+                                                                        })
+                                                                        $('#row4').hide();
+                                                                        $('#btn_row4').click(function () {
+                                                                            $('#row4').toggle();
+                                                                        })
+                                                                        $('#row5').hide();
+                                                                        $('#btn_row5').click(function () {
+                                                                            $('#row5').toggle();
+                                                                        })
+                                                                        $('#row6').hide();
+                                                                        $('#btn_row6').click(function () {
+                                                                            $('#row6').toggle();
+                                                                        })
+                                                                        $('#row7').hide();
+                                                                        $('#btn_row7').click(function () {
+                                                                            $('#row7').toggle();
+                                                                        })
         </script>
         <script>
             $(function () {
@@ -1245,6 +1145,110 @@
                 $('#conNo').val(conNo);
             }
         </script>
+        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <!-- Modal content-->
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Thêm công nợ mới</b></h4>
+                </div>
+                <div class="modal-body">
+                    <table style="margin-left:20%;height:400px">
+                        <tr>
+                            <td><i class="fa fa-file"><b>  Khách hàng: </b></td>
+                            <td style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-sliders"><b>  Nợ đầu kỳ: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+                                <input type="text" class="form-control number" id = "noDauKy" onkeyup="calculate1()" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-handshake-o"><b>  Nhập trong kỳ: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+                                <input type="text" id="nhapTrongKy" class="form-control number" onkeyup="calculate1()"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-bars"><b>  Thanh toán: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+                                <input type="text" class="form-control number" id="thanhToan" onkeyup="calculate1()" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+                                <input type="text" class="form-control number" id="conNo" readonly />
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="color:white;background-color:#32CD32" class="btn btn-default"  data-toggle="modal" data-target="#popupConfirm1">Lưu</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupConfirm" role="dialog">
+            <div class="modal-dialog" style="width:250px;height:150px">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận sửa thông tin</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <td>Lưu thông tin đã sửa?</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_danh-sach-cong-no-cung-cap-sua.html'">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            </div>
+        </div>
+        <div class="modal fade" id="popupConfirm1" role="dialog">
+            <div class="modal-dialog" style="width:250px;height:150px">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận thêm mới</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <td>Tạo công nợ mới ?</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_danh-sach-cong-no-cung-cap-them-moi.html'">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            </div>
+        </div>
     </body>
 
 </html>

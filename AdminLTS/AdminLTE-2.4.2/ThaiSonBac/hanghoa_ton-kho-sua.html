@@ -36,6 +36,11 @@
                 font-weight: bold;
                 background-color: #544d61;
             }
+            .custom-btn {
+                padding: 5px 5px;
+                min-width: 40px;
+                height: 35px;
+            }
             .highlight{
                 font-weight:bold;
                 text-align:right;
@@ -45,11 +50,6 @@
             }
             .right{
                 text-align:center;
-            }
-            .custom-btn {
-                padding: 10px 5px;
-                min-width: 60px;
-                height: 50px;
             }
             .modal-header {
                 padding: 15px;
@@ -365,21 +365,22 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-                                            <!-- /.box-body -->
-                                            <div class="box-footer clearfix">
-                                                <div class="pagination pagination-sm no-margin pull-right">
-                                                    <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                <div class="box-footer clearfix">
+                                                    <div class="pagination pagination-sm no-margin pull-right">
+                                                        <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                    </div>
                                                 </div>
-                                            </div>                              
+                                            </div>                                         
                                         </div>
                                     </div>
                                 </div>
+                                <!-- /.box-body -->
                                 <hr>
                                 <div class="box-body">
                                     <div class="row">                                   
                                         <fieldset class="col-sm-12">
-                                            <table id="example1" class="table table-bordered table-striped" style="width:90%;margin:0 auto">
+                                            <legend><b>Hàng Tồn Kho</b></legend>
+                                            <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
                                                     <tr>
@@ -407,7 +408,7 @@
                                                         <td>CB-Aptomat</td>
                                                         <td class="right">20</td>
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -457,7 +458,7 @@
                                                         <td>CB-Aptomat</td>												
                                                         <td class="right">16</td>   
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -507,7 +508,7 @@
                                                         <td>CB-Aptomat</td>	
                                                         <td class="right">20</td> 
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -557,7 +558,7 @@
                                                         <td>CB-Aptomat</td>												
                                                         <td class="right">30</td>          
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -608,7 +609,7 @@
                                                         <td>CB-Aptomat</td>												
                                                         <td class="right">20</td>    
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -675,7 +676,7 @@
                                                         <td>Inverter-Biến tần</td>		
                                                         <td class="right">20</td> 
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom"/>
                                                             <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -725,7 +726,7 @@
                                                         <td>Inverter-Biến tần</td>
                                                         <td class="right">20</td>                     
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -791,7 +792,7 @@
                                                         <td>Công tắc ổ cắm</td>
                                                         <td class="right">0</td>
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row7" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -842,7 +843,7 @@
                                                         <td>Công tắc ổ cắm</td>
                                                         <td class="right">242</td>                   
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row8" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -892,7 +893,7 @@
                                                         <td>Công tắc ổ cắm</td>
                                                         <td class="right">20</td>          
                                                         <td></td>
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row9" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
@@ -942,7 +943,7 @@
                                                         <td>Công tắc ổ cắm</td>
                                                         <td class="right">20</td> 
                                                         <td></td>	
-                                                        <td>
+                                                        <td class="right">
                                                             <a id="btn_row10" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
