@@ -43,25 +43,33 @@
             .khachHang{
                 text-align:left;
             }
-			.custom-btn {
-				padding: 10px 5px;
-				min-width: 60px;
-				height: 50px;
-			}
-			.modal-header {
+
+            .modal-header {
                 padding: 15px;
                 border-bottom: 1px solid #e5e5e5;
                 background-color: aliceblue;
             }
-			.modal-body {
-				position: relative;
-				padding: 15px;
-				background-color: white;
-			}
-			.modal-footer {
-				border-top-color: #f4f4f4;
-				background-color: white;
-			}
+            .modal-body {
+                position: relative;
+                padding: 15px;
+                background-color: white;
+            }
+            .modal-footer {
+                border-top-color: #f4f4f4;
+                background-color: white;
+            }
+            .edit-btn {
+                padding: 5px 5px;
+                min-width: 40px;
+                height: 35px;
+            }
+
+            .menu-button {
+                background-color: #fcf9f9; 
+                margin-top: 20px;
+                padding-top:20px;
+                padding-right:25px;
+            }
         </style>
     </head>
 
@@ -90,7 +98,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <!-- Notifications: style can be found in dropdown.less -->
-                               <li class="dropdown notifications-menu">
+                            <li class="dropdown notifications-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-bell-o"></i>
                                     <span class="label label-warning">5</span>
@@ -136,7 +144,7 @@
                                     </li>
                                 </ul>
                             </li>
-                             <!-- User Account: style can be found in dropdown.less -->
+                            <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
@@ -243,7 +251,7 @@
                                         </span>
                                     </a>
                                 </li>
-								 <li>
+                                <li>
                                     <a href="phanphoi_donhang_lich-giao-hang-tong.html">
                                         <i class="fa fa-calendar-minus-o"></i>
                                         <span>Lịch giao hàng</span>
@@ -263,28 +271,28 @@
                             <ul class="treeview-menu">
                                 <li><a href="phanphoi_hanghoa_gia-hang-hoa.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
                                 <li><a href="phanphoi_hanghoa_ton-kho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-								<li class="treeview">
-								  <a href="#"><i class="fa fa-hand-o-right"></i> Yêu cầu nhập
-									<span class="pull-right-container">
-									  <i class="fa fa-angle-left pull-right"></i>
-									</span>
-								  </a>
-								  <ul class="treeview-menu">
-									<li><a href="phanphoi_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
-									<li><a href="phanphoi_toBeContinue.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
-								  </ul>
-								</li>
-								<li class="treeview">
-								  <a href="#"><i class="fa fa-hand-o-right"></i> Nhập hàng
-									<span class="pull-right-container">
-									  <i class="fa fa-angle-left pull-right"></i>
-									</span>
-								  </a>
-								  <ul class="treeview-menu">
-									<li><a href="phanphoi_hanghoa_tao-dot-nhap-kho.html"><i class="fa fa-edit"></i> Tạo đợt nhập mới</a></li>
-									<li><a href="phanphoi_hanghoa_lich-su-nhap-hang.html"><i class="fa fa-table"></i> Lịch sử nhập hàng</a></li>
-								  </ul>
-								</li>
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-hand-o-right"></i> Yêu cầu nhập
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="phanphoi_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
+                                        <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-hand-o-right"></i> Nhập hàng
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="phanphoi_hanghoa_tao-dot-nhap-kho.html"><i class="fa fa-edit"></i> Tạo đợt nhập mới</a></li>
+                                        <li><a href="phanphoi_hanghoa_lich-su-nhap-hang.html"><i class="fa fa-table"></i> Lịch sử nhập hàng</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
 
@@ -310,7 +318,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Thông tin lái xe</a></li>
-								<li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Nhân viên giao hàng</a></li>
+                                <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Nhân viên giao hàng</a></li>
                                 <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Thông tin xe hàng</a></li>
                                 <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-hand-o-right"></i> Định vị xe hàng</a></li>
                             </ul>
@@ -352,7 +360,7 @@
                                 <li>
                                     <a href="phanphoi_toBeContinue.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="phanphoi_cai-dat.html"><i class="fa fa-users"></i> Cài đặt</a>
                                 </li>
                             </ul>
@@ -374,7 +382,7 @@
                             <a href="ThaiSonBac/phanphoi_index.html">
                                 <i class="fa fa-dashboard"></i> Trang Chủ</a>						
                         </li>
-                        <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html"><i class="fa fa-dashboard"></i>Nợ cung cấp</a></li>
+                        <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html">Nợ cung cấp</a></li>
                     </ol>
                 </section>
                 <section class="content">
@@ -382,73 +390,65 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header" style="margin-top:10px">
-                                    <h3 class="box-title"><b>Nợ nhà cung cấp</b>
-                                    </h3>
+                                    <h4 class="box-title"><b>Nợ Nhà Cung Cấp</b>
+                                    </h4>
                                 </div>
-								
-								<div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="box"></div>
-                                    </div>
-                                </div>
-								
-								<div class="box-header with-border" style="background-color: #fcf9f9;margin-bottom:10px">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                            <i class="fa fa-arrow-circle-left text-blue"></i>
-                                            <span><strong>Quay Lại</strong></span>
-                                        </a>
 
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                            <i class="fa fa-save text-grey"></i>
-                                            <span><strong>Lưu</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
-                                            <i class="fa fa-close text-grey"></i>
-                                            <span><strong>Hủy</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
-                                            <i class="fa fa-check-circle text-grey"></i>
-                                            <span><strong>Chốt đơn</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                            <i class="fa fa-exchange text-grey"></i>
-                                            <span><strong>Đổi trả</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                            <i class="fa fa-eye text-grey"></i>
-                                            <span><strong>Xem Trước</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                            <i class="fa fa-print text-grey"></i>
-                                            <span><strong>In</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                            <i class="fa fa-download text-grey"></i>
-                                            <span><strong>Import Excel</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
-                                            <i class="fa fa-file-excel-o text-grey"></i>
-                                            <span><strong>Xuất Excel</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                            <i class="fa fa-file-pdf-o text-grey"></i>
-                                            <span><strong>Xuất PDF</strong></span>
-                                        </a>
-										
-										<a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
-                                            <i class="fa fa-plus text-red"></i>
-											 <span><strong>Tạo mới</strong></span>
-                                        </a>
-							
-                                    </div>	
-									<div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="box"></div>
-                                    </div>
+                                <div class="box">
+                                <div class="box-header with-border text-center menu-button">
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
+                                        <i class="fa fa-arrow-circle-left text-blue"></i>
+                                        <span><strong>Quay Lại</strong></span>
+                                    </a>
+
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                        <i class="fa fa-save text-grey"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                                        <i class="fa fa-close text-grey"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
+                                        <i class="fa fa-check-circle text-grey"></i>
+                                        <span><strong>Chốt đơn</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                        <i class="fa fa-exchange text-grey"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                        <i class="fa fa-eye text-grey"></i>
+                                        <span><strong>Xem Trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                        <i class="fa fa-print text-grey"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <i class="fa fa-download text-grey"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                        <i class="fa fa-file-excel-o text-grey"></i>
+                                        <span><strong>Xuất Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                        <i class="fa fa-file-pdf-o text-grey"></i>
+                                        <span><strong>Xuất PDF</strong></span>
+                                    </a>
+
+                                    <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                        <i class="fa fa-plus text-red"></i>
+                                        <span><strong>Tạo mới</strong></span>
+                                    </a>
+
+                                </div>	
                                 </div>
+                              
                                 <div class="box-body">
-								<hr />
-								                                    <div class="row">
+                                    <hr />
+                                    <div class="row">
                                         <div class="col-md-offset-2" style="display: inline-flex; margin-bottom: 20px;">
                                             <label style="padding-left:15px;padding-right: 10px; padding-top: 10px;">Từ: </label>
                                             <div class="input-group week-select col-md-4"> 
@@ -462,6 +462,7 @@
                                             </div>
                                         </div>	
                                     </div>
+                                    <hr>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -472,7 +473,7 @@
                                                 <th>Nhập trong kỳ</th>
                                                 <th>Thanh toán</th>
                                                 <th>Còn nợ</th>
-												<th>Thay đổi</th>
+                                                <th>Thay đổi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -486,79 +487,79 @@
                                                 <td class="right">50,000,000</td>
                                                 <td class="right">20,000,000</td>
                                                 <td class="right">130,000,000</td>
-												<td>
-													<a id="btn_row1" href="#" class="btn btn-app custom-btn"   title="Sửa" data-placement="bottom">
-														<i class="fa fa-edit text-blue"></i>
-													</a>
-												</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row1" href="#" class="btn btn-app custom-btn edit-btn"   title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-											<tr id="row1">
-												<td colspan="8">
-													<div class="container-fluid">
-													<div class="row">
-															<div class="col-md-6">
-																<label>Nợ đầu kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" onkeyup="calculate('nhapTrongKy1','noDauKy1','thanhToan1','conNo1')" id="noDauKy1" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                            <tr id="row1">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nợ đầu kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" onkeyup="calculate('nhapTrongKy1', 'noDauKy1', 'thanhToan1', 'conNo1')" id="noDauKy1" class="form-control number" placeholder="" value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
                                                             </div>
-															</div>
-                                                        <div class="col-md-6">
-                                                            <label>Số lượng</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control number"placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            <div class="col-md-6">
+                                                                <label>Số lượng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number"  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nhập trong kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input onkeyup="calculate('nhapTrongKy1', 'noDauKy1', 'thanhToan1', 'conNo1')" type="text" id="nhapTrongKy1" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Thanh toán</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" onkeyup="calculate('nhapTrongKy1', 'noDauKy1', 'thanhToan1', 'conNo1')" id="thanhToan1" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Còn nợ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <output  id="conNo1" class="form-control number">0</output>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Nhập trong kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-money" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input onkeyup="calculate('nhapTrongKy1','noDauKy1','thanhToan1','conNo1')" type="text" id="nhapTrongKy1" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                            </div>
-															</div>
-															<div class="col-md-6">
-																<label>Thanh toán</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" onkeyup="calculate('nhapTrongKy1','noDauKy1','thanhToan1','conNo1')" id="thanhToan1" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<label>Còn nợ</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<output type="text" id="conNo1" class="form-control number" placeholder="" readonly  value="0">
-																</div>
-															</div>
-														</div>
-														<br>
-														<div class="row">
-															<div class="">
-																<div class="col-md-10"></div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-default btn-block">Hủy</a>
-																</div>
-																<div class="col-md-1">
-                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
-																	</div>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="khachHang">2</td>
                                                 <td class="khachHang">
@@ -569,79 +570,79 @@
                                                 <td class="right">0</td>
                                                 <td class="right">0</td>
                                                 <td class="right">262,620,000</td>										
-												<td>
-													<a id="btn_row2" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-														<i class="fa fa-edit text-blue"></i>
-													</a>
-												</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row2" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-											<tr id="row2">
-												<td colspan="8">
-													<div class="container-fluid">
-													<div class="row">
-															<div class="col-md-6">
-																<label>Nợ đầu kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input value="262,620,000" id="noDauKy2" onkeyup="calculate('nhapTrongKy1','noDauKy1','thanhToan1','conNo1')" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                            <tr id="row2">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nợ đầu kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="262,620,000" id="noDauKy2" onkeyup="calculate('nhapTrongKy1', 'noDauKy1', 'thanhToan1', 'conNo1')" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
                                                             </div>
-															</div>
-                                                        <div class="col-md-6">
-                                                            <label>Số lượng</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input value="0" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            <div class="col-md-6">
+                                                                <label>Số lượng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="0" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nhập trong kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="0" id="nhapTrongKy2" onkeyup="calculate('nhapTrongKy2', 'noDauKy2', 'thanhToan2', 'conNo2')" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Thanh toán</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="0" id="thanhToan2" onkeyup="calculate('nhapTrongKy2', 'noDauKy2', 'thanhToan2', 'conNo2')" type="text" class="form-control number" placeholder=""  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Còn nợ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="262,620,000" id="conNo2" onkeyup="calculate('nhapTrongKy2', 'noDauKy2', 'thanhToan2', 'conNo2')" type="text" class="form-control number" placeholder="" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Nhập trong kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-money" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input value="0" id="nhapTrongKy2" onkeyup="calculate('nhapTrongKy2','noDauKy2','thanhToan2','conNo2')" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                            </div>
-															</div>
-															<div class="col-md-6">
-																<label>Thanh toán</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input value="0" id="thanhToan2" onkeyup="calculate('nhapTrongKy2','noDauKy2','thanhToan2','conNo2')" type="text" class="form-control number" placeholder=""  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<label>Còn nợ</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input value="262,620,000" id="conNo2" onkeyup="calculate('nhapTrongKy2','noDauKy2','thanhToan2','conNo2')" type="text" class="form-control number" placeholder="" readonly>
-																</div>
-															</div>
-														</div>
-														<br>
-														<div class="row">
-															<div class="">
-																<div class="col-md-10"></div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-default btn-block">Hủy</a>
-																</div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="khachHang">3</td>
                                                 <td class="khachHang"><a href="phanphoi_congno_chi-tiet-no-cung-cap.html">HD T09-1</a></td>
@@ -650,79 +651,79 @@
                                                 <td class="right">0</td>
                                                 <td class="right">0</td>
                                                 <td class="right">626,200,000</td>
-												<td>
-													<a id="btn_row3" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-														<i class="fa fa-edit text-blue"></i>
-													</a>
-												</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row3" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-											<tr id="row3">
-												<td colspan="8">
-													<div class="container-fluid">
-													<div class="row">
-															<div class="col-md-6">
-																<label>Nợ đầu kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input value="626,200,000" onkeyup="calculate('nhapTrongKy3','noDauKy3','thanhToan3','conNo3')" id="noDauKy3" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                            <tr id="row3">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nợ đầu kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="626,200,000" onkeyup="calculate('nhapTrongKy3', 'noDauKy3', 'thanhToan3', 'conNo3')" id="noDauKy3" type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
                                                             </div>
-															</div>
-                                                        <div class="col-md-6">
-                                                            <label>Số lượng</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" value="0" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            <div class="col-md-6">
+                                                                <label>Số lượng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" value="0" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nhập trong kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" value="0" onkeyup="calculate('nhapTrongKy3', 'noDauKy3', 'thanhToan3', 'conNo3')" id="nhapTrongKy3" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Thanh toán</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input value="0" type="text" onkeyup="calculate('nhapTrongKy3', 'noDauKy3', 'thanhToan3', 'conNo3')" id="thanhToan3" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Còn nợ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input  value="626,200,000" id="conNo3" type="text" class="form-control number" placeholder="" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Nhập trong kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-money" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" value="0" onkeyup="calculate('nhapTrongKy3','noDauKy3','thanhToan3','conNo3')" id="nhapTrongKy3" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                            </div>
-															</div>
-															<div class="col-md-6">
-																<label>Thanh toán</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input value="0" type="text" onkeyup="calculate('nhapTrongKy3','noDauKy3','thanhToan3','conNo3')" id="thanhToan3" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<label>Còn nợ</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input  value="626,200,000" id="conNo3" type="text" class="form-control number" placeholder="" readonly>
-																</div>
-															</div>
-														</div>
-														<br>
-														<div class="row">
-															<div class="">
-																<div class="col-md-10"></div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-default btn-block">Hủy</a>
-																</div>
-																<div class="col-md-1">
-                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
-																	</div>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="khachHang">4</td>
                                                 <td class="khachHang"><a href="phanphoi_congno_chi-tiet-no-cung-cap.html">HĐ T09-6</a></td>
@@ -731,79 +732,79 @@
                                                 <td class="right">12,225,000</td>
                                                 <td class="right">12,225,000</td>
                                                 <td class="right">0</td>
-												<td>
-													<a id="btn_row4" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-														<i class="fa fa-edit text-blue"></i>
-													</a>
-												</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row4" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-											<tr id="row4">
-												<td colspan="8">
-													<div class="container-fluid">
-													<div class="row">
-															<div class="col-md-6">
-																<label>Nợ đầu kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                            <tr id="row4">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nợ đầu kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
                                                             </div>
-															</div>
-                                                        <div class="col-md-6">
-                                                            <label>Số lượng</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            <div class="col-md-6">
+                                                                <label>Số lượng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nhập trong kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Thanh toán</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Còn nợ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control number" placeholder="" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Nhập trong kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-money" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                            </div>
-															</div>
-															<div class="col-md-6">
-																<label>Thanh toán</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<label>Còn nợ</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" class="form-control number" placeholder="" readonly>
-																</div>
-															</div>
-														</div>
-														<br>
-														<div class="row">
-															<div class="">
-																<div class="col-md-10"></div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-default btn-block">Hủy</a>
-																</div>
-																<div class="col-md-1">
-                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
-																	</div>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="khachHang">5</td>
                                                 <td class="khachHang"><a href="phanphoi_congno_chi-tiet-no-cung-cap.html">HĐ T10-1</a></td>
@@ -812,79 +813,79 @@
                                                 <td class="right">343,325,046</td>
                                                 <td class="right">635,655,486</td>
                                                 <td class="right">0</td>
-												<td>
-													<a id="btn_row5" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-														<i class="fa fa-edit text-blue"></i>
-													</a>
-												</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row5" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-											<tr id="row5">
-												<td colspan="8">
-													<div class="container-fluid">
-													<div class="row">
-													<div class="col-md-6">
-																<label>Nợ đầu kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                            <tr id="row5">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nợ đầu kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
                                                             </div>
-															</div>
-                                                        <div class="col-md-6">
-                                                            <label>Số lượng</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            <div class="col-md-6">
+                                                                <label>Số lượng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nhập trong kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Thanh toán</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Còn nợ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Nhập trong kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-money" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                            </div>
-															</div>
-															<div class="col-md-6">
-																<label>Thanh toán</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<label>Còn nợ</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" class="form-control" placeholder="" readonly>
-																</div>
-															</div>
-														</div>
-														<br>
-														<div class="row">
-															<div class="">
-																<div class="col-md-10"></div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-default btn-block">Hủy</a>
-																</div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="khachHang">6</td>
                                                 <td class="khachHang"><a href="phanphoi_congno_chi-tiet-no-cung-cap.html">Thái Sơn Nam</a></td>
@@ -893,79 +894,79 @@
                                                 <td class="right">0</td>
                                                 <td class="right">0</td>
                                                 <td class="right">6,200,000</td>
-												<td>
-													<a id="btn_row6" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-														<i class="fa fa-edit text-blue"></i>
-													</a>
-												</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row6" href="#" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-											<tr id="row6">
-												<td colspan="8">
-													<div class="container-fluid">
-													<div class="row">
-															<div class="col-md-6">
-																<label>Nợ đầu kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                            <tr id="row6">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nợ đầu kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
                                                             </div>
-															</div>
-                                                        <div class="col-md-6">
-                                                            <label>Số lượng</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                            <div class="col-md-6">
+                                                                <label>Số lượng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Nhập trong kỳ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Thanh toán</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Còn nợ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Nhập trong kỳ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-money" aria-hidden="true"></i>
-                                                                </span>
-                                                                <input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                                            </div>
-															</div>
-															<div class="col-md-6">
-																<label>Thanh toán</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" class="form-control" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<label>Còn nợ</label>
-																<div class="input-group">
-																	<span class="input-group-addon">
-																		<i class="fa fa-money" aria-hidden="true"></i>
-																	</span>
-																	<input type="text" class="form-control" placeholder="" readonly>
-																</div>
-															</div>
-														</div>
-														<br>
-														<div class="row">
-															<div class="">
-																<div class="col-md-10"></div>
-																<div class="col-md-1">
-																	<a href="" class="btn btn-default btn-block">Hủy</a>
-																</div>
-																<div class="col-md-1">
-                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
-																	</div>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr class="sum">   
@@ -975,7 +976,7 @@
                                                 <td  class="right">343,856,046</td>
                                                 <td class="right">645,678,486</td>
                                                 <td class="right">975,000,000</td>
-												<td></td>
+                                                <td></td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -983,7 +984,7 @@
                             </div>
                         </div>
                     </div>
-					 <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <!-- Modal content-->
                         <div class="modal-dialog">
                             <div class="modal-header">
@@ -999,30 +1000,30 @@
                                     <tr>
                                         <td><i class="fa fa-sliders"><b>  Nợ đầu kỳ: </b></td>
                                         <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-											<input type="text" class="form-control number" id="noDauKy" onkeyup="calculate1()" />
-										</td>
+                                            <input type="text" class="form-control number" id="noDauKy" onkeyup="calculate1()" />
+                                        </td>
                                     </tr>
-									 <tr>
+                                    <tr>
                                         <td><i class="fa fa-list-ol"><b>  Số lượng: </b></td>
                                         <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control number"/></td>
                                     </tr>
-									<tr>
+                                    <tr>
                                         <td><i class="fa fa-handshake-o"><b>  Nhập trong kỳ: </b></td>
                                         <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-											<input type="text" class="form-control number" id="nhapTrongKy" onkeyup="calculate1()" />
-										</td>
+                                            <input type="text" class="form-control number" id="nhapTrongKy" onkeyup="calculate1()" />
+                                        </td>
                                     </tr>
-									<tr>
+                                    <tr>
                                         <td><i class="fa fa-bars"><b>  Thanh toán: </b></td>
-                                       <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
-											<input type="text" id="thanhToan" class="form-control number" onkeyup="calculate1()" />
-									   </td>
+                                        <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px">
+                                            <input type="text" id="thanhToan" class="form-control number" onkeyup="calculate1()" />
+                                        </td>
                                     </tr>
-									<tr>
+                                    <tr>
                                         <td><i class="fa fa-info"><b>  Còn nợ: </b></td>
                                         <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input  id="conNo" readonly type="text" class="form-control number"/></td>
                                     </tr>
-									
+
                                 </table>
                             </div>
                             <div class="modal-footer">
@@ -1031,7 +1032,7 @@
                             </div>
                         </div>
                     </div>
-					 <div class="modal fade" id="popupConfirm" role="dialog">
+                    <div class="modal fade" id="popupConfirm" role="dialog">
                         <div class="modal-dialog" style="width:250px;height:150px">
 
                             <!-- Modal content-->
@@ -1049,16 +1050,16 @@
                                 </div>
                                 <div class="modal-footer" style="margin-right:15px">
                                     <div style="margin:0 auto;">
-										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='phanphoi_congno_danh-sach-cong-no-cung-cap-sua.html'">OK</button>
-										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-									</div>
+                                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_danh-sach-cong-no-cung-cap-sua.html'">OK</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                    </div>
                                 </div>
                             </div>
                             <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-							
+
                         </div>
                     </div>
-					 <div class="modal fade" id="popupConfirm1" role="dialog">
+                    <div class="modal fade" id="popupConfirm1" role="dialog">
                         <div class="modal-dialog" style="width:250px;height:150px">
 
                             <!-- Modal content-->
@@ -1076,13 +1077,13 @@
                                 </div>
                                 <div class="modal-footer" style="margin-right:15px">
                                     <div style="margin:0 auto;">
-										<button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='phanphoi_congno_danh-sach-cong-no-cung-cap-them-moi.html'">OK</button>
-										<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-									</div>
+                                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_danh-sach-cong-no-cung-cap-them-moi.html'">OK</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                    </div>
                                 </div>
                             </div>
                             <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-							
+
                         </div>
                     </div>
                 </section>
@@ -1110,45 +1111,45 @@
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
-		<script src="dist/js/autoNumeric.min.js"></script>
+        <script src="dist/js/autoNumeric.min.js"></script>
         <script>
-			$(document).ready(function(){
-			
-				$('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
-			
-			});
-			 $('#row1').hide();
-        $('#btn_row1').click(function () {
-            $('#row1').toggle();
-			event.preventDefault();
-        })
-        $('#row2').hide();
-        $('#btn_row2').click(function () {
-            $('#row2').toggle();
-			event.preventDefault();
-        })
-        $('#row3').hide();
-        $('#btn_row3').click(function () {
-            $('#row3').toggle();
-			event.preventDefault();
-        })
-        $('#row4').hide();
-        $('#btn_row4').click(function () {
-            $('#row4').toggle();
-			event.preventDefault();
-        })
-        $('#row5').hide();
-        $('#btn_row5').click(function () {
-            $('#row5').toggle();
-			event.preventDefault();
-        })
-        $('#row6').hide();
-        $('#btn_row6').click(function () {
-            $('#row6').toggle();
-			event.preventDefault();
-        })
+                                            $(document).ready(function () {
+
+                                                $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+
+                                            });
+                                            $('#row1').hide();
+                                            $('#btn_row1').click(function () {
+                                                $('#row1').toggle();
+                                                event.preventDefault();
+                                            })
+                                            $('#row2').hide();
+                                            $('#btn_row2').click(function () {
+                                                $('#row2').toggle();
+                                                event.preventDefault();
+                                            })
+                                            $('#row3').hide();
+                                            $('#btn_row3').click(function () {
+                                                $('#row3').toggle();
+                                                event.preventDefault();
+                                            })
+                                            $('#row4').hide();
+                                            $('#btn_row4').click(function () {
+                                                $('#row4').toggle();
+                                                event.preventDefault();
+                                            })
+                                            $('#row5').hide();
+                                            $('#btn_row5').click(function () {
+                                                $('#row5').toggle();
+                                                event.preventDefault();
+                                            })
+                                            $('#row6').hide();
+                                            $('#btn_row6').click(function () {
+                                                $('#row6').toggle();
+                                                event.preventDefault();
+                                            })
         </script>
-		<script>
+        <script>
             $(function () {
                 $('#example1').DataTable()
                 $('#example2').DataTable({
@@ -1160,23 +1161,24 @@
                     'autoWidth': false
                 })
             })
-			function calculate(id1,id2,id3,id4){
-				var nhap = $("#"+id1+"").val() === '' ? 0 : parseInt($("#"+id1+"").val().replace(new RegExp(',', 'g'), ''));
-				var noCu = $("#"+id2+"").val() === '' ? 0 : parseInt( $("#"+id2+"").val().replace(new RegExp(',', 'g'), ''));
-				var thanhToan = $("#"+id3+"").val() === '' ? 0 : parseInt( $("#"+id3+"").val().replace(new RegExp(',', 'g'), ''));
-				
-				var conNo = parseInt(nhap+noCu-thanhToan);
-				document.getElementById(""+id4+"").value = conNo;
-			};
-			
-			function calculate1(){
-				var noDauKy = $('#noDauKy').val() === '' ? 0 : parseInt($('#noDauKy').val().replace(new RegExp(',', 'g'), ''));
-				var nhapTrongKy = $('#nhapTrongKy').val() === '' ? 0 : parseInt($('#nhapTrongKy').val().replace(new RegExp(',', 'g'), ''));
-				var thanhToan = $('#thanhToan').val() === '' ? 0 : parseInt($('#thanhToan').val().replace(new RegExp(',', 'g'), ''));
-				
-				var conNo = parseInt(noDauKy+nhapTrongKy-thanhToan);
-				$('#conNo').val(conNo);
-			}
+            function calculate(id1, id2, id3, id4) {
+                var nhap = $("#" + id1 + "").val() === '' ? 0 : parseInt($("#" + id1 + "").val().replace(new RegExp(',', 'g'), ''));
+                var noCu = $("#" + id2 + "").val() === '' ? 0 : parseInt($("#" + id2 + "").val().replace(new RegExp(',', 'g'), ''));
+                var thanhToan = $("#" + id3 + "").val() === '' ? 0 : parseInt($("#" + id3 + "").val().replace(new RegExp(',', 'g'), ''));
+
+                var conNo = parseInt(nhap + noCu - thanhToan);
+                document.getElementById("" + id4 + "").value = conNo;
+            }
+            ;
+
+            function calculate1() {
+                var noDauKy = $('#noDauKy').val() === '' ? 0 : parseInt($('#noDauKy').val().replace(new RegExp(',', 'g'), ''));
+                var nhapTrongKy = $('#nhapTrongKy').val() === '' ? 0 : parseInt($('#nhapTrongKy').val().replace(new RegExp(',', 'g'), ''));
+                var thanhToan = $('#thanhToan').val() === '' ? 0 : parseInt($('#thanhToan').val().replace(new RegExp(',', 'g'), ''));
+
+                var conNo = parseInt(noDauKy + nhapTrongKy - thanhToan);
+                $('#conNo').val(conNo);
+            }
         </script>
     </body>
 
