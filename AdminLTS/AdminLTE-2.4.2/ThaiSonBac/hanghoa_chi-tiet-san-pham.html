@@ -101,6 +101,7 @@
                         <img style="width:50px; height:50px;" class="img-responsive pull-left" src="dist/img/Logo TSB - Final.png" alt="Photo">
                         <b style="margin-right: 35px;">Hàng hóa</b>
                         <span style="position: absolute; margin-top: 15px; margin-left: -125px; font-size: x-small;"><small>Phân hệ</small></span>
+                    </span>
                 </a>
 
 
@@ -315,13 +316,15 @@
                         <!--main col-->
                         <div class="col-xs-12">
                             <!--main box-->
-                            <div class="box">								
-                                <div class="box-header"></div>
-                                <div class="col-md-12">
-                                    <h4>
-                                        <b>Chi tiết sản phẩm : ABN 52c 115AE9</b>
-                                    </h4>
+                            <div class="box">
+                                 <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;margin-bottom: -7px">
+                                    <div class="col-md-12">
+                                        <h4>
+                                           <b>Chi tiết sản phẩm : ABN 52c 115AE9</b>
+                                        </h4>
+                                    </div>
                                 </div>
+                             
                                 <div class="box-body">
                                     <div class="row">
                                         <!--col-->
@@ -374,7 +377,7 @@
                                                 </div>
 
                                                 <div class="tab-content">
-                                                    <div id="tongQuan" class="active tab-pane">
+                                                    <div id="tongQuan" class="active tab-pane" style="height: 300px">
                                                         <div style="margin-top:30px;margin-left:40px">
                                                             <b>Mô tả:</b>
                                                             <br/>
@@ -386,8 +389,8 @@
                                                         </div>
                                                     </div>
 
-                                                    <div id="chiTiet" class="tab-pane">
-                                                        <table style="margin-top:40px;margin-left:40px">
+                                                    <div id="chiTiet" class="tab-pane" style="height: 300px">
+                                                        <table  style="margin-top:30px;margin-left:40px">
                                                             <tr>
                                                                 <td><h5><i class="fa fa-file"></i><b>  Mã máy</b></h5></td>														
                                                                 <td><h5>ABN 52c 115AE9</h5></td>
@@ -410,12 +413,12 @@
                                                     </div>
                                                 </div>
                                                 <!--end div tab-content-->
-                                                <div style="height:150px"></div>
+
                                                 <hr>
 
                                                 <div class="row">
                                                     <fieldset class="col-sm-12">
-                                                        <legend><b>Danh Sách Đơn Hàng Đã Đặt Sản Phẩm Này</b></legend>
+                                                        <legend><b>Danh sách đơn hàng đã đặt sản phẩm này</b></legend>
                                                         <table id="example1" class="table table-bordered table-striped">
                                                             <thead>
                                                                 <tr>
@@ -465,8 +468,8 @@
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
-                                                                    <td colspan="2" style="text-align:right">Tổng</td>
-                                                                    <td></td>
+                                                                    <td colspan="3" class="text-center">Tổng</td>
+                                                                    
                                                                     <td style="text-align:right">145</td>
                                                                     <td style="text-align:right">1,482,311,075</td>
                                                                 </tr>
@@ -719,12 +722,13 @@
 
                 $('#example1').DataTable({
                     'paging': true,
-                    'lengthChange': false,
+                    'lengthChange': true,
                     'searching': false,
                     'ordering': true,
                     'info': true,
                     'autoWidth': false,
                     'language': {
+                        "lengthMenu": "Hiển thị _MENU_ dòng",
                         "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
                         "paginate": {
                             "first": "Trang đầu",
@@ -737,21 +741,7 @@
             })
         </script>
 
-        <script>
-            function openCity(evt, cityName) {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-                tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-                document.getElementById(cityName).style.display = "block";
-                evt.currentTarget.className += " active";
-            }
-        </script>
+     
     </body>
 
 </html>																																																																																								

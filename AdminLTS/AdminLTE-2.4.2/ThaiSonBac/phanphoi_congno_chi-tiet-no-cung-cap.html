@@ -401,32 +401,37 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li>
-                            <a href="ThaiSonBac/phanphoi_index.html">
+                            <a href="phanphoi_index.html">
                                 <i class="fa fa-dashboard"></i> Trang Chủ</a>						
                         </li>
-                        <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html">Nợ cung cấp</a></li>
-                        <li><a href="phanphoi_congno_chi-tiet-no-cung-cap.html">Nợ chi tiết</a></li>
+                        <li>Công nợ</li>
+                        <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html">Công nợ nhà cung cấp</a></li>
+                        <li><a href="phanphoi_congno_chi-tiet-no-cung-cap.html">Chi tiết</a></li>
                     </ol>
                 </section>
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="box-header" style="margin-top:10px">
-                                    <h4 class="box-title"><b>Tên Nhà Cung Cấp : HD T07-1</b>
+                                <div class="box-header" style="margin-top:10px;margin-bottom: -5px">
+                                    <h4 class="box-title"><b>Tên Nhà Cung Cấp : Thái Sơn Nam</b>
                                     </h4>
                                 </div>
 
-                                <div class="box">
+                              <div class="box">
                                     <div class="box-header with-border text-center menu-button">
-                                        <a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html" class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom">
-                                            <i class="fa fa-arrow-circle-left text-blue"></i>
-                                            <span><strong>Quay lại</strong></span>
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                            <i class="fa fa-plus text-green"></i>
+                                            <span><strong>Thêm</strong></span>
                                         </a>
 
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                            <i class="fa fa-edit text-grey"></i>
+                                            <i class="fa fa-plus-square text-grey"></i>
                                             <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                            <i class="fa fa-edit text-grey"></i>
+                                            <span><strong>Sửa</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
                                             <i class="fa fa-save text-grey"></i>
@@ -436,20 +441,17 @@
                                             <i class="fa fa-close text-grey"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
-                                            <i class="fa fa-plus text-green"></i>
-                                            <span><strong>Thêm</strong></span>
-                                        </a>
+
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Xem Trước" data-placement="bottom">
-                                            <i class="fa fa-eye text-black"></i>
+                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-grey"></i>
                                             <span><strong>Xem trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
-                                            <i class="fa fa-print text-blue"></i>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-grey"></i>
                                             <span><strong>In</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
@@ -466,7 +468,7 @@
                                         </a>
                                     </div>
                                 </div>
-
+                                
 
                                 <div class="box-body">
                                     <hr />
@@ -755,7 +757,7 @@
                         </table>
                     </div>
                     <div class="modal-footer" style="margin-right:15px">
-                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_chi-tiet-phanphoi_congno_danh-sach-cong-no-cung-cap-them-moi.html'">Xác nhận</button>
+                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_congno_chi-tiet-no-cung-cap-them-moi.html'">Xác nhận</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>

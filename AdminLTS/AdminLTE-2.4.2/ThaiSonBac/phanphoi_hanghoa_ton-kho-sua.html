@@ -68,9 +68,9 @@
             }
 
             .smallBtn{
-                padding: 5px 5px;
-                min-width: 30px;
-                height: 30px;
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 40px;
             }
             label {
                 display: inline-block;
@@ -393,8 +393,9 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <ol class="breadcrumb">
-                        <li><a href="hanghoa_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>                    
-                        <li class="active">Hàng tồn kho</li>
+                        <li><a href="hanghoa_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li> 
+                        <li><a href=""></a>Hàng hóa</li>
+                        <li class="active"><a href="phanphoi_hanghoa_ton_kho.html">Hàng tồn kho</a></li>
                     </ol>
                 </section>
 
@@ -410,15 +411,16 @@
                                 </div>
 
                                 <div class="box">
-                                    <div class="box-header with-border text-center menu-button" style="background-color: #fcf9f9;margin-bottom:10px">
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                            <i class="fa fa-arrow-circle-left text-blue"></i>
-                                            <span><strong>Quay Lại</strong></span>
-                                        </a>
+                                    <div class="box-header with-border text-center menu-button">                                  
                                         <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
                                             <i class="fa fa-plus text-green"></i>
-                                            <span><strong>Thêm mới</strong></span>
+                                            <span><strong>Tạo mới</strong></span>
                                         </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-edit text-blue"></i>
+                                            <span><strong>Sửa</strong></span>
+                                        </a>
+
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
                                             <i class="fa fa-save text-grey"></i>
                                             <span><strong>Lưu</strong></span>
@@ -451,10 +453,10 @@
                                             <i class="fa fa-file-excel-o text-grey"></i>
                                             <span><strong>Xuất Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom" >
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
                                             <i class="fa fa-file-pdf-o text-grey"></i>
                                             <span><strong>Xuất PDF</strong></span>
-                                        </a>
+                                        </a>						
                                     </div>	
                                 </div>
 
@@ -528,909 +530,883 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
+
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                            <tr>
-                                                <th style="width: 1%">STT</th>
-                                                <th style="width: 6%;text-align:right;border-right:none !important">Mã hàng</th>  
-                                                <th style="width: 6%;border-left:none !important"></th>
-                                                <th style="width: 4%">Tổng nhập</th>
-                                                <th style="width: 4%">Tổng xuất</th>
-                                                <th style="width: 3%">Tổng tồn</th>
-                                                <th rowspan="2" style="width:3%">Thay đổi</th>
-                                            </tr>
-
-                                        </thead>
-                                        <tbody>
-                                            <tr style="background-color:yellow">
-                                                <td style="text-align: left"> 1</td>
-                                                <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>                        
-                                                <td class="right">310</td>
-                                                <td class="right">290</td>
-                                                <td class="right">20</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row1">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 1%">STT</th>
+                                                        <th style="width: 6%;text-align:right;border-right:none !important">Mã hàng</th>  
+                                                        <th style="width: 6%;border-left:none !important"></th>
+                                                        <th style="width: 4%">Tổng nhập</th>
+                                                        <th style="width: 4%">Tổng xuất</th>
+                                                        <th style="width: 3%">Tổng tồn</th>
+                                                        <th rowspan="2" style="width:3%">Thay đổi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="background-color: yellow">
+                                                        <td></td>
+                                                        <td style="border-right: none"></td>
+                                                        <td style="border-left:none">CB-Aptomat</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color:yellow">
+                                                        <td class="text-center"> 1</td>
+                                                        <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>                        
+                                                        <td class="right">310</td>
+                                                        <td class="right">290</td>
+                                                        <td class="right">20</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row1">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">2</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">20A</a></td>
+                                                        <td class="right">80</td>
+                                                        <td class="right">55</td>
+                                                        <td class="right">25</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row2" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row2">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">                    
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center"> 3</td>
+                                                        <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>                                         
+                                                        <td class="right">50</td>
+                                                        <td class="right">45</td>
+                                                        <td class="right">5</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row3" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row3">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">2</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">20A</a></td>
-                                                <td class="right">80</td>
-                                                <td class="right">55</td>
-                                                <td class="right">25</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row2" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row2">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">                    
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left"> 3</td>
-                                                <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>                                         
-                                                <td class="right">50</td>
-                                                <td class="right">45</td>
-                                                <td class="right">5</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row3" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row3">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left"> 4</td>
-                                                <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>
-                                                <td class="right">100</td>
-                                                <td class="right">75</td>
-                                                <td class="right">25</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row4" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row4">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left"> 5</td>
-                                                <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>
-                                                <td class="right">20</td>
-                                                <td class="right">15</td>
-                                                <td class="right">5</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row5" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row5">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr style="background-color: #ccffcc;font-weight: bold">
-                                                <td></td>
-                                                <td style="text-align: left;border-right: none">Tổng MCCB</td>
-                                                <td style="border-left: none"></td>                                          
-                                                <td class="right">560</td>
-                                                <td class="right">480</td>
-                                                <td class="right">80</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">6</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">For TS 630</a></td>                                      
-                                                <td class="right">80</td>
-                                                <td class="right">75</td>
-                                                <td class="right">5</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row6" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row6">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">7</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">For TS 630</a></td>                                           
-                                                <td class="right">5</td>
-                                                <td class="right">5</td>
-                                                <td class="right">2</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row7" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row7">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">8</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">IB-13 100AF</a></td>
-                                                <td class="right">90</td>
-                                                <td class="right">85</td>
-                                                <td class="right">5</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row8" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row8">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">9</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">IB-23 100~200AF</a></td>                                       
-                                                <td class="right">15</td>
-                                                <td class="right">5</td>
-                                                <td class="right">10</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row9" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row9">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">10</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">B-43B 400AF</a></td>                                 
-                                                <td class="right">20</td>
-                                                <td class="right">10</td>
-                                                <td class="right">10</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row10" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row10">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">11</td>
-                                                <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
-                                                <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">TS630, ABS800c</a></td>
-                                                <td class="right">18</td>
-                                                <td class="right">15</td>
-                                                <td class="right">3</td>
-                                                <td style="text-align:center">
-                                                    <a id="btn_row11" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row11">
-                                                <td colspan="7">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder=""/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(USD)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder=""/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Trước VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder=""/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Sau VAT(VND)</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" placeholder=""/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>                                
-                                            <tr style="background-color: #ccffcc;font-weight: bold">
-                                                <td></td>
-                                                <td style="text-align: left;border-right: none">Tổng phụ kiện MCCB:</td>
-                                                <td style="border-left: none"></td>                                  
-                                                <td class="right">228</td>
-                                                <td class="right">195</td>
-                                                <td class="right">33</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: left">12</td>
-                                                <td style="border-right: none !important;text-align: right">
-                                                    <input style="text-align:right" type="text" class="form-control"/>
-                                                </td>
-                                                <td style="border-left: none !important;text-align: right">
-                                                    <input style="text-align:right" type="text" class="form-control"/>
-                                                </td>
-                                                <td class="right">
-                                                    <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
-                                                </td>
-                                                <td>
-                                                    <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
-                                                </td>
-                                                <td class="right">
-                                                    <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
-                                                </td>                                      
-                                                <td style="text-align:center">
-                                                    <a id="btn_row12" href="#" class="smallBtn btn btn-app custom-btn smal" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                                        <i class="fa fa-save text-yellow"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-
-                                        <tfoot>
-                                            <tr>
-                                                <td></td>
-                                                <td style="text-align: left;border-right: none">Tổng cộng</td>
-                                                <td style="border-left: none"></td>                                  
-                                                <td class="right">788</td>
-                                                <td class="right">675</td>
-                                                <td class="right">113</td>    
-                                                <td></td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
+                                                        </td>
+                                                    </tr>
 
 
-                                <div class="box-header with-border text-center menu-button" style="background-color: #fcf9f9;">
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Quay Lại" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span><strong>Quay Lại</strong></span>
-                                    </a>
-                                    <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
-                                        <i class="fa fa-plus text-green"></i>
-                                        <span><strong>Thêm mới</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
-                                        <span><strong>Lưu</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span><strong>Hủy</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled"  title="Chốt đơn" data-placement="bottom">
-                                        <i class="fa fa-check-circle text-grey"></i>
-                                        <span><strong>Chốt đơn</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span><strong>Đổi trả</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                        <i class="fa fa-eye text-grey"></i>
-                                        <span><strong>Xem Trước</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
-                                        <span><strong>In</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom" >
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span><strong>Import Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom" >
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span><strong>Xuất Excel</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span><strong>Xuất PDF</strong></span>
-                                    </a>
+                                                    <tr>
+                                                        <td class="text-center"> 4</td>
+                                                        <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>
+                                                        <td class="right">100</td>
+                                                        <td class="right">75</td>
+                                                        <td class="right">25</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row4" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row4">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center"> 5</td>
+                                                        <td style="border-right: none;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">ABS 52c</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">15A</a></td>
+                                                        <td class="right">20</td>
+                                                        <td class="right">15</td>
+                                                        <td class="right">5</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row5" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row5">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="background-color: #00b3b3;font-weight: bold">
+                                                        <td></td>                                                        
+                                                        <td style="border-right: none"></td>  
+                                                        <td style="text-align: left;border-left: none;color: white">Tổng</td>
+                                                        <td class="right">560</td>
+                                                        <td class="right">480</td>
+                                                        <td class="right">80</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: yellow">
+                                                        <td></td>
+                                                        <td style="border-right: none"></td>
+                                                        <td style="border-left:none">Inventer-Biến tần</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">6</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">For TS 630</a></td>                                      
+                                                        <td class="right">80</td>
+                                                        <td class="right">75</td>
+                                                        <td class="right">5</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row6" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row6">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">7</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">For TS 630</a></td>                                           
+                                                        <td class="right">5</td>
+                                                        <td class="right">5</td>
+                                                        <td class="right">2</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row7" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row7">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">8</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">IB-13 100AF</a></td>
+                                                        <td class="right">90</td>
+                                                        <td class="right">85</td>
+                                                        <td class="right">5</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row8" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row8">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">9</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">IB-23 100~200AF</a></td>                                       
+                                                        <td class="right">15</td>
+                                                        <td class="right">5</td>
+                                                        <td class="right">10</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row9" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row9">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">10</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">B-43B 400AF</a></td>                                 
+                                                        <td class="right">20</td>
+                                                        <td class="right">10</td>
+                                                        <td class="right">10</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row10" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row10">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">11</td>
+                                                        <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
+                                                        <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">TS630, ABS800c</a></td>
+                                                        <td class="right">18</td>
+                                                        <td class="right">15</td>
+                                                        <td class="right">3</td>
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row11" href="#" class="smallBtn btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="row11">
+                                                        <td colspan="7">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder=""/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(USD)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder=""/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Trước VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder=""/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Sau VAT(VND)</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" placeholder=""/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="col-md-10"></div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>                                
+                                                    <tr style="background-color: #00b3b3;font-weight: bold">
+                                                        <td></td>
 
-                                </div>	
+                                                        <td style="border-right: none"></td>  
+                                                        <td style="text-align: left;border-left: none">Tổng</td>
+                                                        <td class="right">228</td>
+                                                        <td class="right">195</td>
+                                                        <td class="right">33</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">12</td>
+                                                        <td style="border-right: none !important;text-align: right">
+                                                            <input style="text-align:right" type="text" class="form-control"/>
+                                                        </td>
+                                                        <td style="border-left: none !important;text-align: right">
+                                                            <input style="text-align:right" type="text" class="form-control"/>
+                                                        </td>
+                                                        <td class="right">
+                                                            <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+                                                        </td>
+                                                        <td>
+                                                            <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+                                                        </td>
+                                                        <td class="right">
+                                                            <input onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right" type="text" class="form-control number"/>
+                                                        </td>                                      
+                                                        <td style="text-align:center">
+                                                            <a id="btn_row12" href="#" class="smallBtn btn btn-app custom-btn smal" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                                                <i class="fa fa-save text-yellow"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+
+                                                <tfoot>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="text-align: left;border-right: none">Tổng cộng</td>
+                                                        <td style="border-left: none"></td>                                  
+                                                        <td class="right">788</td>
+                                                        <td class="right">675</td>
+                                                        <td class="right">113</td>    
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                              
                             </div>
                         </div>
                     </div>
