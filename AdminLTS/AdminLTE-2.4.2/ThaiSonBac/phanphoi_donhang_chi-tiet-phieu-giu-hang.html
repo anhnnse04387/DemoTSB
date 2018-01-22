@@ -430,12 +430,13 @@
                                 <i class="fa fa-dashboard"></i> Trang Chủ</a>
                         </li>
                         <li>
-                            <a class="active">
-                                <i class=""></i> Đơn hàng</a>
+                            <a class="active"> Đơn hàng</a>
                         </li>
                         <li>
-                            <a href="phanphoi_donhang_danh-sach-phieu-giu-hang.html">
-                                <i class=""></i> Phiếu đang giữ hàng</a>
+                            <a href="phanphoi_donhang_danh-sach-phieu-giu-hang.html">Phiếu giữ hàng</a>
+                        </li>
+                        <li >
+                            <a class="active"> Phiếu tiết phiếu</a>
                         </li>
                     </ol>
                 </section>
@@ -484,8 +485,8 @@
                                             <i class="fa fa-eye text-black"></i>
                                             <span><strong>Xem trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
-                                            <i class="fa fa-print text-blue"></i>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="modal" title="In" data-placement="bottom" data-target="#confirm-print">
+                                            <i class="fa fa-print text-grey"></i>
                                             <span><strong>In</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
@@ -502,7 +503,7 @@
                                         </a>
                                     </div>
                                 </div>
-
+                                <div class="box-body"><hr></div>
                                 <div class="row">
                                     <div class="col-md-12" style="margin-left: -30px;">
                                         <ul class="progressSteps">	
@@ -514,80 +515,83 @@
                                         </ul>
                                         <span class="pull-right" style="margin-right: 50px;"><a href="phanphoi_donhang_tien-trinh-don-hang.html">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
                                     </div>
-                                </div>        
-                                <div class="box-body"><hr></div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="col-md-4">
-                                            <label>Đơn vị</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-user-circle-o"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="Công ty Long Giang" disabled>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <label>MST</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-bank"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="54363678" disabled>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <label>Nơi xuất HĐ</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-user-circle-o"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="Công ty TNHH Thái Sơn Bắc" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                <!--\. col -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="col-md-4">
-                                            <label>Địa chỉ giao hàng</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-address-book"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Số hóa đơn</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-handshake-o"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="Số hóa đơn" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>VAT khách hàng</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-bank"></i>
-                                                </span>
-                                                <input class="form-control" placeholder="VAT khách hàng" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--\. col -->
+                                <div class="box-body" >
+                                    <fieldset>
+                                        <legend style="font-size: 17px"><b>Thông tin đơn hàng</b></legend>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <label>Đơn vị</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user-circle-o"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Công ty Long Giang" disabled>
+                                                    </div>
+                                                </div>
 
+                                                <div class="col-md-4">
+                                                    <label>MST</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-bank"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="54363678" disabled>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Nơi xuất HĐ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user-circle-o"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Công ty TNHH Thái Sơn Bắc" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--\. col -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <label>Địa chỉ giao hàng</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-book"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Số hóa đơn</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-handshake-o"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="Số hóa đơn" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>VAT khách hàng</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-bank"></i>
+                                                        </span>
+                                                        <input class="form-control" placeholder="VAT khách hàng" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--\. col -->
+                                    </fieldset>
+                                </div>
                                 <!-- begin table -->
-                                <div class="box-body">
+                                <div class="box-body" style="margin-top: 20px;">
                                     <div class="row">
                                         <fieldset class="col-md-12">
-                                            <legend style="font-size: 17px"><b>Chi tiết</b></legend>
+                                            <legend style="font-size: 17px"><b>Chi tiết đơn hàng</b></legend>
                                             <table id="mainTable" class="table table-striped">
                                                 <thead style="text-align: center;">
                                                     <tr>
@@ -737,7 +741,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                            <input onclick="location.href = 'accountant_notification.html'" type="button" class="btn btn-success btn-ok" value="Xử lý" />
+                            <input onclick="location.href = 'phanphoi_donhang_lap-phieu.html'" type="button" class="btn btn-success btn-ok" value="Xử lý" />
                         </div>
                     </div>
                 </div>
