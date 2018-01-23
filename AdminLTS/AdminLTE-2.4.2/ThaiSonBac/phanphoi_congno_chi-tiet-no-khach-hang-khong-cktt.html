@@ -711,16 +711,15 @@
 
             }
         </script>
-        <script>
-            $('#btnThanhToan').click(function () {
+         <script>
+            function redirectPage() {
                 var isChecked = $('#ckttCheckbox').prop("checked");
                 if (isChecked === true) {
                     window.location.href = "phanphoi_congno_chi-tiet-no-khach-hang-cktt.html";
                 } else {
                     window.location.href = "phanphoi_congno_chi-tiet-no-khach-hang-khong-cktt.html";
                 }
-            });
-
+            }
         </script>
         <!-- Modal -->
         <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -778,7 +777,7 @@
                         </table>
                     </div>
                     <div class="modal-footer" style="margin-right:15px">
-                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-target="#msgs" data-toggle="modal">Xác nhận</button>
+                        <button type="button" style="color:white;background-color:#337ab7" class="btn btn-default" onClick="redirectPage();return false;">Xác nhận</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
@@ -788,30 +787,6 @@
             </div>
         </div>	
 
-        <!--pop up message-->
-        <div class="modal fade" id="msgs" role="dialog">
-            <div class="modal-dialog" style="width:200px;height:150px">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Thông báo</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table>
-                            <tr>
-                                <td>Bạn đã thanh toán thành công.</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="modal-footer" style="margin-right:15px">
-
-                        <button type="button" class="btn btn-default"  id="close-all" onclick="location.reload();return false;">Đóng</button>
-                    </div>
-                </div>
-            </div>
-        </div>	
     </body>
 
 </html>

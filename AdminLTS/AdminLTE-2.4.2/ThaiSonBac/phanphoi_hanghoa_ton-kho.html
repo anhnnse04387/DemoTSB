@@ -413,7 +413,7 @@
                                             <span><strong>Tạo mới</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                            <i class="fa fa-edit text-blue"></i>
+                                            <i class="fa fa-edit text-grey"></i>
                                             <span><strong>Sửa</strong></span>
                                         </a>
 
@@ -433,99 +433,88 @@
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                             <i class="fa fa-eye text-grey"></i>
                                             <span><strong>Xem Trước</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                            <i class="fa fa-print text-grey"></i>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-blue"></i>
                                             <span><strong>In</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
                                             <i class="fa fa-download text-grey"></i>
                                             <span><strong>Import Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
-                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-green"></i>
                                             <span><strong>Xuất Excel</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-red"></i>
                                             <span><strong>Xuất PDF</strong></span>
                                         </a>						
                                     </div>	
                                 </div>
+
                                 <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                    <h3 class="box-title">Tìm kiếm theo</h3>
-                                                </div>
-                                                <!-- /.box-header -->
-                                                <div class="box-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:80px">Mã hàng</td>
+                                                <td style="width:400px">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-file"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" placeholder="Mã hàng...">
+                                                    </div>
+                                                </td>
 
-                                                    <div class="row">
-                                                        <div class="col-md-1">Mã hàng</div>
-                                                        <div class="col-md-5">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Mã hàng...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">Danh mục</div>
-                                                        <div class="col-md-5">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"><i class="fa fa-sliders"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Danh mục...">
-                                                            </div>
+                                                <td style="width:80px">Danh mục</td>
+                                                <td style="width:400px">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-sliders"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" placeholder="Danh mục...">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tổng tồn</td>
+                                                <td>
+                                                    <div class="col-sm-5 no-padding">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">Từ</span>
+                                                            <input type="number" class="form-control">
                                                         </div>
                                                     </div>
-                                                    <br />
-                                                    <div class="row" >
-
-                                                        <div class="col-md-1">Giá</div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">Từ</span>
-                                                                <input type="number" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">Đến</span>
-                                                                <input type="number" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1"></div>
-                                                        <div class="col-md-1">VAT</div>
-                                                        <div class="col-md-5">
-                                                            <div class="form-group">
-                                                                <label style="padding-right : 20px;">
-                                                                    <input type="checkbox"  checked>
-                                                                    Trước VAT
-                                                                </label>
-                                                                <label>
-                                                                    <input type="checkbox" >
-                                                                    Sau VAT
-                                                                </label>
-
-                                                            </div>
+                                                    <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">Đến</span>
+                                                            <input type="number" class="form-control">
                                                         </div>
                                                     </div>
-
-                                                </div>
-                                                <!-- /.box-body -->
-                                                <div class="box-footer clearfix">
-                                                    <div class="pagination pagination-sm no-margin pull-right">
-                                                        <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                </td>
+                                                <td>VAT</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label style="padding-right : 20px;">
+                                                            <input type="checkbox" checked="">
+                                                            Trước VAT
+                                                        </label>
+                                                        <label style="padding-right : 20px;">
+                                                            <input type="checkbox">
+                                                            Sau VAT
+                                                        </label>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
                                 </div>
-
+                                <hr>
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -613,7 +602,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn1" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -684,7 +673,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn2" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -755,7 +744,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn3" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -826,7 +815,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn4" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -897,7 +886,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn5" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -909,7 +898,7 @@
                                                     </tr>
                                                     <tr style="background-color: #00b3b3;font-weight: bold">
                                                         <td></td>
-                                                        
+
                                                         <td style="border-right: none"></td>     
                                                         <td style="text-align: left;border-left: none;color: white">Tổng</td>
                                                         <td class="right">550</td>
@@ -917,8 +906,17 @@
                                                         <td class="right">80</td>
                                                         <td></td>
                                                     </tr>
+                                                    <tr style="background-color: yellow">
+                                                        <td></td>
+                                                        <td style="border-right: none"></td>
+                                                        <td style="border-left:none">Inventer-Máy biến tần</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
                                                     <tr>
-                                                        <td style="text-align: left">6</td>
+                                                        <td class="text-center">6</td>
                                                         <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>
                                                         <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">For TS 630</a></td>                                      
                                                         <td class="right">80</td>
@@ -978,7 +976,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn6" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -989,7 +987,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="text-align: left">7</td>
+                                                        <td class="text-center">7</td>
                                                         <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Thanh cái</a></td>
                                                         <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">For TS 630</a></td>                                           
                                                         <td class="right">5</td>
@@ -1049,7 +1047,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn7" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -1060,7 +1058,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="text-align: left">8</td>
+                                                        <td class="text-center">8</td>
                                                         <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
                                                         <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">IB-13 100AF</a></td>
                                                         <td class="right">90</td>
@@ -1120,7 +1118,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn8" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -1131,7 +1129,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="text-align: left">9</td>
+                                                        <td class="text-center">9</td>
                                                         <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
                                                         <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">IB-23 100~200AF</a></td>                                       
                                                         <td class="right">15</td>
@@ -1191,7 +1189,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn9" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -1202,7 +1200,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="text-align: left">10</td>
+                                                        <td class="text-center">10</td>
                                                         <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
                                                         <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">B-43B 400AF</a></td>                                 
                                                         <td class="right">20</td>
@@ -1262,7 +1260,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn10" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -1273,7 +1271,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="text-align: left">11</td>
+                                                        <td class="text-center">11</td>
                                                         <td style="border-right: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Insulation barrier</a></td>
                                                         <td style="border-left: none !important;text-align: right"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">TS630, ABS800c</a></td>
                                                         <td class="right">18</td>
@@ -1333,7 +1331,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn11" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm1">Sửa</a>
@@ -1343,17 +1341,18 @@
                                                             </div>
                                                         </td>
                                                     </tr>                                
-                                                    <tr style="background-color: #ccffcc;font-weight: bold">
+                                                    <tr style="background-color: #00b3b3;font-weight: bold">
                                                         <td></td>
-                                                        <td style="text-align: left;border-right: none">Tổng phụ kiện MCCB:</td>
-                                                        <td style="border-left: none"></td>                                  
+
+                                                        <td style="border-right: none"></td>  
+                                                        <td style="text-align: left;border-left: none">Tổng</td>
                                                         <td class="right">228</td>
                                                         <td class="right">195</td>
                                                         <td class="right">33</td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="text-align: left">12</td>
+                                                        <td class="text-center">12</td>
                                                         <td style="border-right: none !important;text-align: right">
                                                             <input style="text-align:right" type="text" class="form-control"/>
                                                         </td>
@@ -1499,6 +1498,51 @@
                 $('#row11').toggle();
                 event.preventDefault();
             })
+            //cancel button
+            $('#cancel_btn1').click(function () {
+                $('#row1').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn2').click(function () {
+                $('#row2').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn3').click(function () {
+                $('#row3').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn4').click(function () {
+                $('#row4').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn5').click(function () {
+                $('#row5').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn6').click(function () {
+                $('#row6').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn7').click(function () {
+                $('#row7').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn8').click(function () {
+                $('#row8').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn9').click(function () {
+                $('#row9').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn10').click(function () {
+                $('#row10').toggle();
+                event.preventDefault();
+            });
+             $('#cancel_btn11').click(function () {
+                $('#row11').toggle();
+                event.preventDefault();
+            });
         </script>
 
         <!--code chuyen page-->
