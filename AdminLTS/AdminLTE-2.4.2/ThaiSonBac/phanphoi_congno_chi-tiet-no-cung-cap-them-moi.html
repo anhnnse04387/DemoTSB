@@ -420,16 +420,11 @@
 
                                 <div class="box">
                                     <div class="box-header with-border text-center menu-button">
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
-                                            <i class="fa fa-plus text-green"></i>
-                                            <span><strong>Thêm</strong></span>
-                                        </a>
-
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                            <i class="fa fa-plus-square text-grey"></i>
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Tạo mới" data-placement="bottom" data-target="#confirm-process">
+                                            <i class="fa fa-plus-square text-green"></i>
                                             <span><strong>Tạo Mới</strong></span>
-                                        </a>
-                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                        </a>                                  
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                             <i class="fa fa-edit text-grey"></i>
                                             <span><strong>Sửa</strong></span>
                                         </a>
@@ -441,12 +436,15 @@
                                             <i class="fa fa-close text-grey"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem trước" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem trước" data-placement="bottom">
                                             <i class="fa fa-eye text-grey"></i>
                                             <span><strong>Xem trước</strong></span>
                                         </a>
@@ -586,8 +584,8 @@
                                                     <td class="right"></td>
 
                                                 </tr>
-                                                <tr style="background-color:yellow">
-                                                    <td id="date"></td>
+                                                <tr  style="background-color:yellow">
+                                                    <td>30-Sep-17</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -648,31 +646,7 @@
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
-        <script>
-            $(function () {
-                $('#example1').DataTable({
-                    'searching': false,
-                    'language': {
-                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                        "lengthMenu": "Hiển thị _MENU_ dòng",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Tiếp",
-                            "previous": "Trước"
-                        }
-                    }
-                })
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
-        </script>
+
         <script>
             $(function () {
                 //Date picker

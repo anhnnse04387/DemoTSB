@@ -396,10 +396,7 @@
 
                                 <div class="box">
                                     <div class="box-header with-border text-center menu-button">
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
-                                            <i class="fa fa-check-circle text-green"></i>
-                                            <span><strong>Thanh Toán</strong></span>
-                                        </a>
+                                        
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo mới" data-placement="bottom">
                                             <i class="fa fa-plus-square text-grey"></i>
                                             <span><strong>Tạo mới</strong></span>
@@ -418,7 +415,10 @@
                                             <i class="fa fa-close text-grey"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-
+										<a href="" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Thanh Toán</strong></span>
+                                        </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
@@ -663,43 +663,20 @@
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
+       <script src="dist/js/demo.js"></script>
 
         <!-- page script -->
+       
+		
         <script>
-            $(function () {
-                $('#example1').DataTable({
-                    'searching': false,
-                    'language': {
-                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                        "lengthMenu": "Hiển thị _MENU_ dòng",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Tiếp",
-                            "previous": "Trước"
-                        }
-                    }
-                });
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
-        </script>
-        <script>
-            $('#btnThanhToan').click(function () {
+            function redirectPage() {
                 var isChecked = $('#ckttCheckbox').prop("checked");
                 if (isChecked === true) {
                     window.location.href = "phanphoi_congno_chi-tiet-no-khach-hang-cktt.html";
                 } else {
                     window.location.href = "phanphoi_congno_chi-tiet-no-khach-hang-khong-cktt.html";
                 }
-            });
+            }
         </script>
         <!-- Modal -->
         <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -759,7 +736,7 @@
                         </table>
                     </div>
                     <div class="modal-footer" style="margin-right:15px">
-                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-target="#msgs" data-toggle="modal">Xác nhận</button>
+                        <button onClick="redirectPage();return false;" type="button" style="color:white;background-color:#337ab7" class="btn btn-default">Xác nhận</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
@@ -768,30 +745,7 @@
 
             </div>
         </div>
-         <!--pop up message-->
-        <div class="modal fade" id="msgs" role="dialog">
-            <div class="modal-dialog" style="width:200px;height:150px">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Thông báo</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table>
-                            <tr>
-                                <td>Bạn đã thanh toán thành công.</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="modal-footer" style="margin-right:15px">
-
-                        <button type="button" class="btn btn-default"  id="close-all" onclick="location.reload();return false;">Đóng</button>
-                    </div>
-                </div>
-            </div>
-        </div>	
+       
     </body>
 
 </html>
