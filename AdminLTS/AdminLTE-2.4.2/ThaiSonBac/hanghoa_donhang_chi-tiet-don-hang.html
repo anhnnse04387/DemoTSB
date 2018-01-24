@@ -333,6 +333,10 @@
 								<i class="fa fa-dashboard"></i> Trang Chủ</a>
 							</li>
 							<li>
+								<a href="#">
+								<i class=""></i> Đơn hàng</a>
+							</li>
+							<li>
 								<a href="hanghoa_index.html">
 								<i class=""></i> Chờ xuất kho</a>
 							</li>
@@ -412,7 +416,7 @@
 														<i class="fa fa-close text-red"></i>
 														<span><strong>Hủy</strong></span>
 												</a>
-												<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+												<a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirm-move">
 														<i class="fa fa-check-circle text-green"></i>
 														<span><strong>Chốt đơn</strong></span>
 												</a>
@@ -444,85 +448,87 @@
 									</div>
 									<hr>
 									<div class="box-header">
-										<div class="row">
-											<div class="col-md-6">
-												<label>Đơn vị</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-user-circle-o"></i>
-													</span>
-													<input class="form-control" placeholder="Công ty Long Giang" disabled>
+										<div class="container-fluid">
+											<legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Đơn vị</label>
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="fa fa-user-circle-o"></i>
+														</span>
+														<input class="form-control" placeholder="Công ty Long Giang" disabled>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<label>MST</label>
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="fa fa-bank"></i>
+														</span>
+														<input class="form-control" placeholder="54363678" disabled>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<label>MST</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-bank"></i>
-													</span>
-													<input class="form-control" placeholder="54363678" disabled>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Nơi xuất HĐ</label>
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="fa fa-user-circle-o"></i>
+														</span>
+														<input class="form-control" placeholder="Công ty TNHH Thái Sơn Bắc" disabled>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<label>Địa chỉ giao hàng</label>
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="fa fa-address-book"></i>
+														</span>
+														<input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<label>Nơi xuất HĐ</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-user-circle-o"></i>
-													</span>
-													<input class="form-control" placeholder="Công ty TNHH Thái Sơn Bắc" disabled>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Số hóa đơn</label>
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="fa fa-handshake-o"></i>
+														</span>
+														<input class="form-control" placeholder="24324" disabled>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div style="margin-top: 25px;">
+														<label>
+															Đã lấy hóa đơn
+														</label>
+														<span class="custom-span">
+															<input type="checkbox">
+														</span>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div style="margin-top: 25px;">
+														<label>
+															Đã lấy phiếu
+														</label>
+														<span class="custom-span">
+															<input type="checkbox">
+														</span>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<label>Trạng Thái</label>
+													<div class="input-group">
+														<span class="label label-primary label-medium">
+															Đã xuất phiếu
+														</span>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<label>Địa chỉ giao hàng</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-address-book"></i>
-													</span>
-													<input class="form-control" placeholder="235 Nguyễn Văn Cừ, phường Nguyễn Cư Trinh, Quận 1, TPHCM" disabled>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<label>Số hóa đơn</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-handshake-o"></i>
-													</span>
-													<input class="form-control" placeholder="24324" disabled>
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div style="margin-top: 25px;">
-													<label>
-														Đã lấy hóa đơn
-													</label>
-													<span class="custom-span">
-														<input type="checkbox">
-													</span>
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div style="margin-top: 25px;">
-													<label>
-														Đã lấy phiếu
-													</label>
-													<span class="custom-span">
-														<input type="checkbox">
-													</span>
-												</div>
-											</div>
-											<div class="col-md-2">
-												<label>Trạng Thái</label>
-												<div class="input-group">
-													<span class="label label-primary label-medium">
-														Đã xuất phiếu
-													</span>
-												</div>
-											</div>
-											
 										</div>
 										<div class="row">
 											<div class="col-md-3"></div>
@@ -533,79 +539,82 @@
 									</div>
 									<!-- /.box-header -->
 									<div class="box-body pad">
-										<div class="row">
-											<div class="col-md-12">
-												<table id="mainTable" class="table table-striped">
-													<thead style="text-align: center">
-														<tr>
-															<th rowspan="2">STT</th>
-															<th rowspan="2">Tên hàng</th>
-															<th colspan="2">Số lượng</th>
-															<th rowspan="2">Đã đủ</th>
-														</tr>
-														<tr>
-															<th>Cái</th>
-															<th>Thùng</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>1</td>
-															<td>ABN 52c</td>
-															<td>20</td>
-															<td>1</td>
-															<td>
-																<input type="checkbox" class="checky">
-															</td>
-														</tr>
-														<tr>
-															<td>2</td>
-															<td>TS1000N AG6 3P</td>
-															<td>20</td>
-															<td>1</td>
-															<td>
-																<input type="checkbox" class="checky">
-															</td>
-														</tr>
-														<tr>
-															<td>3</td>
-															<td>ABS 32c</td>
-															<td>20</td>
-															<td>1</td>
-															<td>
-																<input type="checkbox" class="checky">
-															</td>
-														</tr>
-														<tr>
-															<td>4</td>
-															<td>ABH 53C</td>
-															<td>20</td>
-															<td>1</td>
-															<td>
-																<input type="checkbox" class="checky">
-															</td>
-														</tr>
-														<tr>
-															<td>5</td>
-															<td>ABE103-G</td>
-															<td>20</td>
-															<td>1</td>
-															<td>
-																<input type="checkbox" class="checky">
-															</td>
-														</tr>
-														<tr>
-															<td>6</td>
-															<td>SDO 123d</td>
-															<td>1</td>
-															<td>1</td>
-															<td>
-																<input type="checkbox" class="checky">
-															</td>
-														</tr>
-													</tbody>
-													<tfoot></tfoot>
-												</table>
+										<div class="container-fluid">
+											<legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+											<div class="row">
+												<div class="col-md-12">
+													<table id="mainTable" class="table table-striped">
+														<thead style="text-align: center">
+															<tr>
+																<th rowspan="2">STT</th>
+																<th rowspan="2">Tên hàng</th>
+																<th colspan="2">Số lượng</th>
+																<th rowspan="2">Đã đủ</th>
+															</tr>
+															<tr>
+																<th>Cái</th>
+																<th>Thùng</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>1</td>
+																<td>ABN 52c</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>2</td>
+																<td>TS1000N AG6 3P</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>3</td>
+																<td>ABS 32c</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>4</td>
+																<td>ABH 53C</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>5</td>
+																<td>ABE103-G</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>6</td>
+																<td>SDO 123d</td>
+																<td>1</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+														</tbody>
+														<tfoot></tfoot>
+													</table>
+												</div>
 											</div>
 										</div>
 									</div>
