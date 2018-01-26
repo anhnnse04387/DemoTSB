@@ -42,8 +42,14 @@
 
             .custom-btn {
                 padding: 10px 5px;
-                min-width: 60px;
-                height: 50px;
+                min-width: 80px;
+                height: 55px;
+            }
+            .menu-button {
+                    background-color: #fcf9f9;
+                    margin-top: 20px;
+                    padding-top: 20px;
+                    padding-right: 25px;
             }
             .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
                 margin: 0;
@@ -268,6 +274,7 @@
                                     </a>
                                     <ul class="treeview-menu">
                                         <li><a href="phanphoi_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
+										<li><a href="phanphoi_hanghoa_nhap-hoa-don.html"><i class="fa fa-id-card-o"></i> Nhập hoá đơn</a></li>
                                         <li><a href="phanphoi_toBeContinue.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
                                     </ul>
                                 </li>
@@ -372,7 +379,11 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class=""></i> Tạo khách hàng mới</a>
+                                <i class=""></i> Danh sách khách hàng</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class=""></i> Tạo khách hàng</a>
                         </li>
                     </ol>
                 </section>
@@ -399,76 +410,61 @@
                         </div>
                         <div class="row">
                             <div class="box">
-                                <h3 style="text-align: center; font-weight: 600;">TẠO KHÁCH HÀNG MỚI</h3>
-                                <div class="box-header with-border" style="background-color: #fcf9f9;">
-                                    <a href="phanphoi_khachhang_danh-sach-khach-hang.html" class="btn btn-app custom-btn" title="Quay Lại" data-placement="bottom">
-                                        <i class="fa fa-arrow-circle-left text-blue"></i>
-                                        <span>
-                                            <strong>Quay Lại</strong>
-                                        </span>
-                                    </a>
+                                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>TẠO KHÁCH HÀNG MỚI</b>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="box-header with-border text-center menu-button">
 
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                        <i class="fa fa-edit text-grey"></i>
-                                        <span>
-                                            <strong>Tạo Mới</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-save text-grey"></i>
-                                        <span>
-                                            <strong>Lưu</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span>
-                                            <strong>Hủy</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn" data-toggle="modal" title="Tạo mới" data-placement="bottom" data-target=
-                                       "#confirm-delete">
-                                        <i class="fa fa-check-circle text-green"></i>
-                                        <span>
-                                            <strong>Tạo mới</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" >
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span>
-                                            <strong>Đổi trả</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" >
-                                        <i class="fa fa-eye text-grey"></i>
-                                        <span>
-                                            <strong>Xem Trước</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
-                                        <span>
-                                            <strong>In</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span>
-                                            <strong>Import Excel</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span>
-                                            <strong>Xuất Excel</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span>
-                                            <strong>Xuất PDF</strong>
-                                        </span>
-                                    </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" >
+                                            <i class="fa fa-plus-square text-gray"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                            <i class="fa fa-edit text-gray"></i>
+                                            <span><strong>Sửa</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" data-target="#confirm-delete">
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-gray"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-gray"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                            <i class="fa fa-exchange text-gray"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-gray"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-gray"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-gray"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-gray"></i>
+                                            <span><strong>Xuất Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-gray"></i>
+                                            <span><strong>Xuất PDF</strong></span>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="box-body">
                                     <div class="row">
