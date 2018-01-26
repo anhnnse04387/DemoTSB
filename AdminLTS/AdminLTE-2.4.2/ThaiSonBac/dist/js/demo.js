@@ -132,6 +132,18 @@ function purchase() {
     document.getElementById('payment').value = 'L/C 90 days';
 }
 
+function choosePo() {
+    document.getElementById('commodity').value = 'LS ELECTRICAL PRODUCT';
+    document.getElementById('payment').value = 'BY T/T IN ADVANCE OR USANCE L/C 90 DAYS';
+    document.getElementById('price').value = 'CIF HAIPHONG PORT, VIETNAM IN US DOLLARS';
+    document.getElementById('port').value = 'BUSAN';
+    document.getElementById('destination').value = 'HAIPHONG';
+    document.getElementById('inspection').value = "MAKER'S TO BE FINAL";
+    document.getElementById('package').value = "TO BE PROCEEDED BY SELLER AT SELLER'S EXPENSE, SUITABLE FOR AIR AND INLAND TRANSFORTATION";
+    document.getElementById('origin').value = 'REPUBLIC OF KOREA';
+    document.getElementById('remark').value = '1. PAYMENT SHALL BE DONE BEFORE SHIPMENT. PROJECT SUPPORT:2,534$';
+}
+
 function nhaphang() {
     var cai = 0;
     if (parseInt($("#sl").val().replace(new RegExp(',', 'g'), '')) > 0) {
@@ -252,6 +264,11 @@ function taomoi() {
 
 function poPreview() {
     var win = window.open('dist/Po_Preview.pdf', '_blank');
+    win.focus();
+}
+
+function poPreview() {
+    var win = window.open('dist/Pi_Preview.pdf', '_blank');
     win.focus();
 }
 
