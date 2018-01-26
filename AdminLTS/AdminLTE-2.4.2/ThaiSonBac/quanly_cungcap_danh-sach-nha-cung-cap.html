@@ -17,7 +17,8 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -27,6 +28,37 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+        <style>
+            #example1 {
+                background-color: rgb(240, 240, 240);
+            }
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+            #example1 tbody td:nth-child(6),#example1 tbody td:nth-child(7),
+            #example1 tbody td:nth-child(9) {
+                text-align: right;
+            }
+            .menu-button {
+                background-color: #fcf9f9; 
+                margin-top: 20px;
+                padding-top:20px;
+                padding-right:25px;
+            }
+            .custom-btn {
+                padding: 10px 5px;
+                min-width: 80px;
+                height: 55px;
+            }
+            .edit-btn {
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 40px;
+            }
+        </style>
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -368,112 +400,182 @@
                                 <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
                                     <div class="col-md-12">
                                         <h4>
-                                            <b>Trang chủ</b>
+                                            <b>Danh sách nhà cung cấp</b>
                                         </h4>
+                                    </div>
+                                </div>
+                                <!--end box header-->
+                                <div class="box">
+                                    <div class="box-header with-border text-center menu-button">
+
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" >
+                                            <i class="fa fa-plus-square text-grey"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                            <i class="fa fa-edit text-grey"></i>
+                                            <span><strong>Sửa</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-grey"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span><strong>Chốt đơn</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                            <i class="fa fa-eye text-grey"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-blue"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-green"></i>
+                                            <span><strong>Xuất Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-red"></i>
+                                            <span><strong>Xuất PDF</strong></span>
+                                        </a>
                                     </div>
                                     <div class="box-body">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <!-- small box -->
-                                                <div class="small-box" style="background-color: #ffff1a;  color: white">
-                                                    <div class="inner">
-                                                        <h3>4</h3>
-
-                                                        <p>Phân hệ</p>
+                                            <div class="col-md-12">
+                                                <div class="box">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title">Tìm kiếm theo</h3>
                                                     </div>
-                                                    <div class="icon">
-                                                        <i class="fa fa-folder-open-o"></i>
+                                                    <div class="box-body">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="padding-left: 0px;">Tên</td>
+                                                                    <td width="35%">
+                                                                        <div class="input-group" >
+                                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Tên...">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Ngày tạo</td>
+                                                                    <td>
+                                                                        <div class="col-sm-5 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                <input type="text" class="form-control"  id="datepicker" placeholder="Từ...">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding" style="margin-left: 42px">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                <input type="text" class="form-control" id="datepicker2" placeholder="Đến...">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody> 
+                                                        </table>
+                                                        <div class="box-footer clearfix">
+                                                            <div class="pagination pagination-sm no-margin pull-right">
+                                                                <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <a href="quantri_phanhe_danh-sach-phan-he.html" class="small-box-footer">Chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                                                    <!--end box search-->
                                                 </div>
                                             </div>
-                                            <!-- ./col -->
-                                            <div class="col-md-3" style="margin-left: 12.5%">
-                                                <!-- small box -->
-                                                <div class="small-box bg-yellow">
-                                                    <div class="inner">
-                                                        <h3>16</h3>
-
-                                                        <p>Người dùng</p>
-                                                    </div>
-                                                    <div class="icon">
-                                                        <i class="fa fa-users"></i>
-                                                    </div>
-                                                    <a href="quantri_nguoidung_danh-sach-nguoi-dung.html" class="small-box-footer">Chi tiết <i class="fa fa-arrow-circle-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- ./col -->
-                                            <div class="col-md-3" style="margin-left: 12.5%">
-                                                <!-- small box -->
-                                                <div class="small-box bg-green">
-                                                    <div class="inner">
-                                                        <h3>69</h3>
-
-                                                        <p>Trang</p>
-                                                    </div>
-                                                    <div class="icon">
-                                                        <i class="fa fa-file-o"></i>
-                                                    </div>
-                                                    <a href="quantri_tainguyen_danh-sach-trang.html" class="small-box-footer">Chi tiết <i class="fa fa-arrow-circle-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- ./col -->
                                         </div>
-                                        <!-- /.row -->
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <!-- small box -->
-                                                <div class="small-box bg-aqua">
-                                                    <div class="inner">
-                                                        <h3>24</h3>
+                                        <hr>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <fieldset>
+                                                        <table id="example1" class="table table-bordered table-striped">
 
-                                                        <p>Danh mục</p>
-                                                    </div>
-                                                    <div class="icon">
-                                                        <i class="fa fa-calendar-check-o"></i>
-                                                    </div>
-                                                    <a href="quantri_hanghoa_danh-sach-danh-muc.html" class="small-box-footer">Chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width: 2%">STT</th>
+                                                                    <th style="width: 12%">Tên</th>
+                                                                    <th style="width: 12%">Địa chỉ</th>
+                                                                    <th style="width: 5%">Ngày tạo</th>
+                                                                    <th style="width: 3%">Thay đổi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-center">1</td>
+                                                                    <td class="text-left"><a href="quanly_cungcap_chi-tiet-nha-cung-cap.html">HĐ T07-1</a></td>                                                               
+                                                                    <td class="text-left">307 Nguyễn Trãi, Thanh Xuân Hà Nội</td>
+                                                                    <td class="text-center">26-01-2017</td>
+                                                                    <td class="text-center">
+                                                                        <a href="quanly_cungcap_sua-cung-cap.html" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                            <i class="fa fa-edit text-blue"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">2</td>
+                                                                    <td class="text-left"><a href="quanly_cungcap_chi-tiet-nha-cung-cap.html">Thái Sơn Nam</a></td>                                                               
+                                                                    <td class="text-left">22-124 đường D1,Khu Đô thị mới Him lam, Tân Hưng, Quận 7</td>
+                                                                    <td class="text-center">26-12-2014</td>
+                                                                    <td class="text-center">
+                                                                        <a href="" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                            <i class="fa fa-edit text-blue"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">3</td>
+                                                                    <td class="text-left"><a href="quanly_cungcap_chi-tiet-nha-cung-cap.html">LS</a></td>                                                               
+                                                                    <td class="text-left">Cát Linh, Đống Đa, Hà Nội</td>
+                                                                    <td class="text-center">22-04-2015</td>
+                                                                    <td class="text-center">
+                                                                        <a href="quanly_cungcap_sua-cung-cap.html" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                            <i class="fa fa-edit text-blue"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">4</td>
+                                                                    <td class="text-left"><a href="quanly_cungcap_chi-tiet-nha-cung-cap.html">Hàn Quốc</a></td>                                                               
+                                                                    <td class="text-left">Hàn Quốc</td>
+                                                                    <td class="text-center">22-11-2017</td>
+                                                                    <td class="text-center">
+                                                                        <a href="quanly_cungcap_sua-cung-cap.html" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                            <i class="fa fa-edit text-blue"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </fieldset>
                                                 </div>
                                             </div>
-                                            <!-- ./col -->
-                                            <div class="col-md-3" style="margin-left: 12.5%">
-                                                <!-- small box -->
-                                                <div class="small-box" style="background-color: #ff6666; color: white">
-                                                    <div class="inner">
-                                                        <h3>150</h3>
-
-                                                        <p>Sản phẩm</p>
-                                                    </div>
-                                                    <div class="icon">
-                                                        <i class="ion ion-bag"></i>
-                                                    </div>
-                                                    <a href="quantri_hanghoa_danh-sach-san-pham.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- ./col -->
-                                            <div class="col-md-3" style="margin-left: 12.5%">
-                                                <!-- small box -->
-                                                <div class="small-box" style="background-color: #ff33ff; color: white">
-                                                    <div class="inner">
-                                                        <h3>38</h3>
-
-                                                        <p>File tải lên</p>
-                                                    </div>
-                                                    <div class="icon">
-                                                        <i class="ion ion-person-add"></i>
-                                                    </div>
-                                                    <a href="quantri_tainguyen_danh-sach-file.html" class="small-box-footer">Chi tiết <i class="fa fa-arrow-circle-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- ./col -->
                                         </div>
-                                        <!-- /.row -->
+
                                     </div>
                                 </div>
-                                <!-- /.box-header -->
+
                             </div>
+                            <!--end main box-->
                         </div>
+                        <!--end main col-->
                     </div>
+                    <!--end main row-->
                 </section>
                 <!-- /.content -->
             </div>
@@ -490,11 +592,36 @@
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- FastClick -->
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
-        <!-- SlimScroll -->
-        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script>
+            $(function () {
+                $('#example1').DataTable({
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': false,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'language': {
+                        "lengthMenu": "Hiển thị _MENU_ dòng",
+                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                        "paginate": {
+                            "first": "Trang đầu",
+                            "last": "Trang cuối",
+                            "next": "Tiếp",
+                            "previous": "Trước"
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
