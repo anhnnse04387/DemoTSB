@@ -15,8 +15,10 @@
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <!-- bootstrap wysihtml5 - text editor -->
-        <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+        <!-- bootstrap datepicker -->
+        <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <!-- bootstrap toggle -->
+        <link href="dist/css/bootstrap-toggle.min.css" rel="stylesheet">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -420,38 +422,60 @@
                                     <p class="text-muted text-center"></p>
                                     <ul class="list-group list-group-unbordered">
                                         <li class="list-group-item">
-                                            <i class="fa fa-codepen"></i>
-                                            <b>Chức vụ</b>
-                                            <a class="pull-right">Giám đốc</a>
+                                            <div class="form-group row" style="margin-bottom: -5px;">
+                                                <label for="role" class="col-sm-5 col-form-label"><i class="fa fa-codepen"></i> Chức vụ</label>
+                                                <div class="col-sm-7">
+                                                    <a class='pull-right' id='role'>Giám đốc</a>
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-diamond"></i>
-                                            <b>Phân hệ</b>
-                                            <a class="pull-right">Quản lý</a>
+                                            <div class="form-group row" style="margin-bottom: -5px;">
+                                                <label for="roleType" class="col-sm-5 col-form-label"><i class="fa fa-diamond"></i> Phân hệ</label>
+                                                <div class="col-sm-7">
+                                                    <a class='pull-right' id='roleType'>Quản lý</a>
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-phone"></i>
-                                            <b>Số điện thoại</b>
-                                            <a class="pull-right">01673228545</a>
+                                            <div class="form-group row" style="margin-bottom: -5px;">
+                                                <label for="UserPhone" class="col-sm-9 col-form-label"><i class="fa fa-phone"></i> Số điện thoại</label>
+                                                <div class="col-sm-3">
+                                                    <a class='pull-right' id='UserPhone'>01673228545</a>
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-id-card-o"></i>
-                                            <b>Mã BHYT</b>
-                                            <a class="pull-right">2322509752</a>
+                                            <div class="form-group row" style="margin-bottom: -5px;">
+                                                <label for="insurranceID" class="col-sm-9 col-form-label"><i class="fa fa-id-card-o"></i> Mã BHYT</label>
+                                                <div class="col-sm-3">
+                                                    <a class='pull-right' id='insurranceID'>2322509752</a>
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
                                             <i class="fa fa-address-book"></i>
                                             <b>Địa chỉ</b>
                                             <br>
-                                            <span style="color: #4682b4">108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>
+                                            <span id='userAddress' style="color: #4682b4">108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-phone"></i>
-                                            <b>Ngày tạo</b>
-                                            <a class="pull-right">20-12-2017</a>
+                                            <div class="form-group row" style="margin-bottom: -5px;">
+                                                <label for="dateCreate" class="col-sm-9 col-form-label"><i class="fa fa-calendar"></i> Ngày tạo</label>
+                                                <div class="col-sm-3">
+                                                    <a class="pull-right" id='dateCreate'>20/12/2017</a>
+                                                </div>
+                                            </div>
                                         </li>
+                                        <li class="list-group-item">
+                                            <i class="fa fa-address-book"></i>
+                                            <b>Trạng thái</b>
+                                            <br>
+                                            <input type="checkbox" id="userStatus" class="form-control-plaintext form-control-sm" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="230" disabled>
+                                        </li>
+
                                     </ul>
-                                    <a href="phanphoi_khachhang_sua-khach-hang.html" class="btn btn-primary btn-block">
+                                    <a id="btnEdit" class="btn btn-primary btn-block" onclick="doEdit();">
                                         <b>Chỉnh sửa</b>
                                     </a>
                                 </div>
@@ -465,193 +489,112 @@
                                             <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Công việc</a>
                                         </li>
                                         <li class="">
-                                            <a href="#mathang" data-toggle="tab" aria-expanded="false">Hoạt động</a>
+                                            <a href="#mathang" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="doanhthu">
                                         <div class="container-fluid">
-
-                                            <fieldset class="row">
-                                                <legend style="font-size: 17px"><b>KPI trong tháng</b></legend>
-                                                <div class="col-md-6">
-                                                    <div class="progress-group">
-                                                        <span class="progress-text">Số đơn hàng bán ra</span>
-                                                        <span class="progress-number"><b>16</b>/20</span>
-
-                                                        <div class="progress sm">
-                                                            <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                                                        </div>
+                                            <div class="row">
+                                                <h4 class="text-center">
+                                                    <strong>Doanh thu 6 tháng gần nhất</strong>
+                                                </h4>
+                                                <div class="col-md-offset-3" style="display: inline-flex;padding-top: 20px">
+                                                    <label style="padding-right: 20px; padding-top: 7px;">Từ: </label>
+                                                    <div class="input-group week-select col-md-3 no-padding"> 
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input id="datepicker" type="text" class="form-control" style="width: 150px" value="01/06/2017">
+                                                    </div>
+                                                    <label style="padding-right: 10px; padding-top: 7px;padding-left:50px">Đến: </label>
+                                                    <div class="input-group week-select col-md-3 no-padding"> 
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input id="datepicker2" type="text" class="form-control" style="width: 150px" value="07/01/2018">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="progress-group">
-                                                        <span class="progress-text">Tổng tiền thu được</span>
-                                                        <span class="progress-number"><b>20,527,000 </b>/30,000,000</span>
-
-                                                        <div class="progress sm">
-                                                            <div class="progress-bar progress-bar-red" style="width: 86.4%"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
+                                                <canvas id="line-chart" width="800" height="450"></canvas>
+                                            </div>
                                             <br>
-                                            <fieldset class="row">
-                                                <legend style="font-size: 17px"><b>Ghi chú</b></legend>
-                                                <form>
-                                                    <textarea id="editor1" class="textarea" rows="5" style="width: 100%" disabled></textarea>
-                                                </form>
-                                                <a id="btnEditor" onclick="doEdit();" style="width: 100px; margin-top: 20px;" class="btn btn-primary btn-block pull-right">
-                                                    <b>Chỉnh sửa</b>
-                                                </a>
-                                            </fieldset>
-                                            <fieldset class="row">
-
-                                                <legend style="font-size: 17px"><b>Đơn hàng chờ xử lý</b></legend>
-                                                <table id="example1" class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>STT</th>
-                                                            <th>Lô số</th>
-                                                            <th>Ngày</th>
-                                                            <th>Trạng thái</th>
-                                                            <th width="20%">Ghi chú</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>
-                                                                <a href="#">81265-0</a>
-                                                            </td>
-                                                            <td>22-12-2017</td>
-                                                            <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>
-                                                                <a href="#">81264-0</a>
-                                                            </td>
-                                                            <td>21-12-2017</td>
-                                                            <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>
-                                                                <a href="#">81263-1</a>
-                                                            </td>
-                                                            <td>19-12-2017</td>
-                                                            <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>
-                                                                <a href="#">81262-1</a>
-                                                            </td>
-                                                            <td>18-12-2017</td>
-                                                            <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>
-                                                                <a href="#">81261-0</a>
-                                                            </td>
-                                                            <td>01-12-2017</td>
-                                                            <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot></tfoot>
-                                                </table>
-                                            </fieldset>
-
+                                            <div class="row text-center" style="font-size:15px">
+                                                <label class="col-md-4">Thời gian xử lí trung bình</label>
+                                                <label class="col-md-4">Tổng giá trị các đơn hàng</label>
+                                                <label class="col-md-4">Lượng đơn trung bình trong năm</label>
+                                            </div>
+                                            <div class="row text-center" style="font-size:20px">
+                                                <label class="col-md-4" style="color:#439c07">2 giờ 30 phút</label>
+                                                <label class="col-md-4">350 triệu đồng</label>
+                                                <label class="col-md-4" style="color:#ff3300">8 đơn</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="mathang">
-                                        <ul class="timeline">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <fieldset>
+                                                    <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Trạng thái</label>
+                                                            <div class="input-group">
+                                                                <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label id="namePi">PI No.</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                                <select class="form-control" id="piNo">
+                                                                    <option></option>
+                                                                    <option>M01-121629-1</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Tên nhà cung cấp</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                                <input type="text" class="form-control" id="donVi">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Địa chỉ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                                                <input type="text" class="form-control" id="address">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Số điện thoại</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                                <input type="text" class="form-control" id="phone">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Ngày yêu cầu</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input type="text" class="form-control datepicker" id="requestDay" style="padding-left: 12px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Ngày nhập</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input type="text" class="form-control datepicker" id="day" style="padding-left: 12px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
 
-                                            <!-- timeline time label -->
-                                            <li class="time-label">
-                                                <span class="bg-red">
-                                                    26/12/2018
-                                                </span>
-                                            </li>
-                                            <!-- /.timeline-label -->
-
-                                            <!-- timeline item -->
-                                            <li>
-                                                <!-- timeline icon -->
-                                                <i class="fa fa-bell bg-blue"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thông báo: Xử lí đơn hàng 81265-0</a></h3>
-                                                    <div class="timeline-body">
-                                                        <a>Lã Mạnh Đạt</a> đã gửi cho bạn một yêu cầu sửa đơn 81265-0
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">Chấp nhận</a>
-                                                        <a class="btn btn-danger btn-xs">Xóa</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <!-- END timeline item -->
-                                            <!-- timeline time label -->
-                                            <li class="time-label">
-                                                <span class="bg-red">
-                                                    25/12/2018
-                                                </span>
-                                            </li>
-                                            <!-- /.timeline-label -->
-
-                                            <!-- timeline item -->
-                                            <li>
-                                                <!-- timeline icon -->
-                                                <i class="fa fa-bell bg-blue"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thông báo: Xử lí đơn hàng 81265-0</a></h3>
-                                                    <div class="timeline-body">
-                                                        <a>Lã Mạnh Đạt</a> đã gửi cho bạn một yêu cầu sửa đơn 81265-0
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">Chấp nhận</a>
-                                                        <a class="btn btn-danger btn-xs">Xóa</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <!-- timeline icon -->
-                                                <i class="fa fa-bell bg-blue"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thông báo: Xử lí đơn hàng 81265-0</a></h3>
-                                                    <div class="timeline-body">
-                                                        <a>Lã Mạnh Đạt</a> đã gửi cho bạn một yêu cầu sửa đơn 81265-0
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">Chấp nhận</a>
-                                                        <a class="btn btn-danger btn-xs">Xóa</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <!-- END timeline item -->
-
-                                        </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -675,8 +618,12 @@
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- Bootstrap WYSIHTML5 -->
         <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <!-- bootstrap datepicker -->
+        <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <!-- Chart JS -->
         <script src="dist/js/Chart.min.js"></script>
+        <!-- Switch toggle -->
+        <script src="dist/js/bootstrap-toggle.min.js"></script>
         <!-- FastClick -->
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
@@ -685,37 +632,91 @@
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-                                                    $(function () {
-                                                        $('#example1').DataTable({
-                                                            'paging': true,
-                                                            'lengthChange': false,
-                                                            'searching': false,
-                                                            'ordering': true,
-                                                            'info': true,
-                                                            'autoWidth': true,
-                                                            'language': {
-                                                                "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                                                                "paginate": {
-                                                                    "first": "Trang đầu",
-                                                                    "last": "Trang cuối",
-                                                                    "next": "Tiếp",
-                                                                    "previous": "Trước"
-                                                                }
-                                                            }
-                                                        });
-                                                    });
-                                                    var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' style='width: 100px; margin-top: 20px;' onclick='doSave();'><b>Lưu</b></a>"];
-                                                    var buttonEdit = ["<a id='btnEditor' class='btn btn-primary btn-block pull-right' style='width: 100px; margin-top: 20px;' onclick='doEdit();'><b>Chỉnh sửa</b></a>"];
-                                                    function doEdit() {
-                                                        document.getElementById("editor1").disabled = false;
-                                                        $('#btnEditor').replaceWith(buttonSave);
+                                        $(function () {
+                                            $('#example1').DataTable({
+                                                'paging': true,
+                                                'lengthChange': false,
+                                                'searching': false,
+                                                'ordering': true,
+                                                'info': true,
+                                                'autoWidth': true,
+                                                'language': {
+                                                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                                                    "paginate": {
+                                                        "first": "Trang đầu",
+                                                        "last": "Trang cuối",
+                                                        "next": "Tiếp",
+                                                        "previous": "Trước"
                                                     }
-                                                    function doSave() {
-                                                        document.getElementById("editor1").disabled = true;
-                                                        $('#btnSave').replaceWith(buttonEdit);
-                                                    }
+                                                }
+                                            });
+                                        });
         </script>
-
+        <script>
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    labels: ['06-2017', '07-2017', '08-2017', '09-2017', '10-2017', '11-2017', '12-2017', '1-2018'],
+                    datasets: [{
+                            data: [5, 8, 4, 3, 10, 2, 11, 9],
+                            label: "Số lượng đơn bán hàng",
+                            borderColor: "#3cba9f",
+                            fill: false
+                        }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: ''
+                    },
+                    elements: {
+                        line: {
+                            tension: 0 // disables bezier curves
+                        }
+                    }
+                }
+            });
+        </script>
+        <script>
+            $(function () {
+                //Date picker
+                $('#datepicker').datepicker({
+                    autoclose: true
+                });
+                $('#datepicker2').datepicker({
+                    autoclose: true
+                });
+            });
+        </script>
+        <script>
+            var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block' onclick='doSave();'><b>Lưu</b></a>"];
+            var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block' onclick='doEdit();'><b>Chỉnh sửa</b></a>"];
+            function doEdit() {
+                $('#UserPhone').replaceWith("<input type='text' class='pull-right form-control-plaintext form-control-sm' id='UserPhone' value='01673228545' size='10' style='height: 22px;'>");
+                $('#role').replaceWith("<select class='pull-right form-control-plaintext form-control-sm' \n"
+                        + "id='role'>\n<option>Giám đốc</option>\n<option>Nhân viên bán hàng</option>\n"
+                        + "<option>Nhân viên kế toán</option>\n</select>");
+                $('#roleType').replaceWith("<select class='pull-right form-control-plaintext form-control-sm' id='roleType'>\n"
+                        + "<option>Quản lý</option>\n<option>Phân phối</option>\n"
+                        + "<option> Kế toán </option>\n"
+                        + "<option> Hàng hóa </option>\n</select>");
+                $('#insurranceID').replaceWith("<input type='text' class='pull-right form-control-plaintext form-control-sm' id='insurranceID' value='2322509752' size='10' style='height: 22px;'>");
+                $('#userAddress').replaceWith("<textarea id='userAddress' cols='34' rows='2'>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</textarea>");
+                $('#dateCreate').replaceWith("<input type='text' class='pull-right form-control-plaintext form-control-sm' id='dateCreate' value='20-12-2017' size='10' style='height: 22px;'>");
+                $('#userStatus').bootstrapToggle('enable');
+                $('#btnEdit').replaceWith(buttonSave);
+            }
+            function doSave() {
+                $('#UserPhone').replaceWith("<a class='pull-right' id='UserPhone'>01673228545</a>");
+                $('#role').replaceWith("<a class='pull-right' id='role'>Giám đốc</a>");
+                $('#roleType').replaceWith("<a class='pull-right' id='roleType'>Quản lý</a>");
+                $('#insurranceID').replaceWith("<a class='pull-right' id='insurranceID'>2322509752</a>");
+                $('#userAddress').replaceWith("<span id='userAddress' style='color: #4682b4'>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>");
+                $('#dateCreate').replaceWith("<a class='pull-right' id='dateCreate'>20/12/2017</a>");
+                $('#userStatus').bootstrapToggle('disable');
+                $('#btnSave').replaceWith(buttonEdit);
+            }
+        </script>
     </body>
 
 </html>
