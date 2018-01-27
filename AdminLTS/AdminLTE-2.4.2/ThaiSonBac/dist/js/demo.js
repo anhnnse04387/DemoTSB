@@ -262,12 +262,47 @@ function taomoi() {
     win.focus();
 }
 
+function taomoi_lichsu_quanly() {
+    var win = window.open('quanly_hanghoa_nhap-hoa-don.html', '_blank');
+    win.focus();
+}
+
+function taomoi_lichsu_phanphoi() {
+    var win = window.open('phanphoi_hanghoa_nhap-hoa-don.html', '_blank');
+    win.focus();
+}
+
+function taomoi_lichsunhaphang_quanly() {
+    var win = window.open('quanly_hanghoa_tao-dot-nhap-kho.html', '_blank');
+    win.focus();
+}
+
+function taomoi_lichsunhaphang_phanphoi() {
+    var win = window.open('phanphoi_hanghoa_tao-dot-nhap-kho.html', '_blank');
+    win.focus();
+}
+
+function taomoi_danhmuc_quanly() {
+    var win = window.open('quanly_hanghoa_tao-danh-muc.html', '_blank');
+    win.focus();
+}
+
+function taomoi_danhmuc_phanphoi() {
+    var win = window.open('phanphoi_hanghoa_tao-danh-muc.html', '_blank');
+    win.focus();
+}
+
+function taomoi_danhmuc_quantri() {
+    var win = window.open('quantri_hanghoa_tao-danh-muc.html', '_blank');
+    win.focus();
+}
+
 function poPreview() {
     var win = window.open('dist/Po_Preview.pdf', '_blank');
     win.focus();
 }
 
-function poPreview() {
+function piPreview() {
     var win = window.open('dist/Pi_Preview.pdf', '_blank');
     win.focus();
 }

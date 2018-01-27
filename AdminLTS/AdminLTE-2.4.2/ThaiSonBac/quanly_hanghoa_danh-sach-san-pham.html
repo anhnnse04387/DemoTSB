@@ -15,13 +15,13 @@
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <!-- Select2 -->
+        <link rel="stylesheet" href="dist/css/back-to-top.css">
         <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="dist/css/back-to-top.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -66,6 +66,7 @@
                 padding-right:25px;
             }
         </style>
+        <link href="dist/css/bootstrap-toggle.min.css" rel="stylesheet">
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -257,7 +258,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview active">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Hàng hoá</span>
                                 <span class="pull-right-container">
@@ -267,7 +268,7 @@
                             <ul class="treeview-menu">
                                 <li class=""><a href="quanly_hanghoa_gia-hang-hoa.html"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
                                 <li class=""><a href="quanly_hanghoa_ton-kho.html"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-                                <li class="treeview active">
+                                <li class="treeview">
                                     <a href="#"><i class="fa fa-hand-o-right"></i> Yêu cầu nhập
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
@@ -276,7 +277,7 @@
                                     <ul class="treeview-menu">
                                         <li class=""><a href="quanly_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
                                         <li class=""><a href="quanly_hanghoa_nhap-hoa-don.html"><i class="fa fa-id-card-o"></i> Nhập hoá đơn</a></li>
-                                        <li class="active"><a href="quanly_hanghoa_lich-su-yeu-cau-nhap.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
+                                        <li class=""><a href="quanly_hanghoa_lich-su-yeu-cau-nhap.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -347,7 +348,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview ">
+                        <li class="treeview active">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -364,15 +365,15 @@
                                 <li class="">
                                     <a href="quanly_nhanvien_danh-sach-nhan-vien.html"><i class="fa fa-users"></i> Danh sách nhân viên</a>
                                 </li>
-                                <li class="treeview">
+                                <li class="treeview active">
                                     <a href="#"><i class="fa fa-paper-plane"></i> Hàng hoá
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li class=""><a href="quanly_hanghoa_danh-sach-danh-muc.html"><i class="fa fa-tags"></i> Danh mục</a></li>
-                                        <li class=""><a href="quanly_hanghoa_danh-sach-san-pham.html"><i class="fa fa-anchor"></i> Sản phẩm</a></li>
+                                        <li><a href="quanly_hanghoa_danh-sach-danh-muc.html"><i class="fa fa-tags"></i> Danh mục</a></li>
+                                        <li class="active"><a href="quanly_hanghoa_danh-sach-san-pham.html"><i class="fa fa-anchor"></i> Sản phẩm</a></li>
                                     </ul>
                                 </li>
                                 <li class="">
@@ -396,9 +397,9 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li><a href="quanly_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+                        <li>Quản trị</li>
                         <li>Hàng hóa</li>
-                        <li>Yêu cầu nhập</li>
-                        <li class="active">Lịch sử yêu cầu nhập</li>
+                        <li class="active">Sản phẩm</li>
                     </ol>
                 </section>
 
@@ -408,14 +409,14 @@
                         <div class="col-md-12">
                             <div class="box box-info">
                                 <div class="box-header" style="text-align: center;margin-top: 30px;">
-                                    <h3 class="box-title with-border"><b style="font-size: 25px;">Lịch sử yêu cầu nhập hàng</b></h3>
+                                    <h3 class="box-title with-border"><b style="font-size: 25px;">Danh sách sản phẩm</b></h3>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
                                     <div class="row">
                                         <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
-                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="taomoi_lichsu_quanly();">
-                                                <i class="fa fa-plus-square text-green"></i>
+                                            <a class="btn btn-app custom-btn disabled">
+                                                <i class="fa fa-plus-square text-gray"></i>
                                                 <span><strong>Tạo Mới</strong></span>
                                             </a>
 
@@ -473,67 +474,11 @@
                                                         <table class="table">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td style="padding-left: 0px;">PO No.</td>
+                                                                    <td style="padding-left: 0px;">Mã hàng</td>
                                                                     <td width="35%">
                                                                         <div class="input-group" >
                                                                             <span class="input-group-addon"><i class="fa fa-bank"></i></span>
                                                                             <input type="text" class="form-control">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>PI No.</td>
-                                                                    <td width="35%">
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
-                                                                            <input type="text" class="form-control">
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td style="padding-left: 0px;">Ngày (PO)</td>
-                                                                    <td>
-                                                                        <div class="col-sm-5 no-padding">
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">Từ</span>
-                                                                                <input type="text" class="form-control datepicker">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">Đến</span>
-                                                                                <input type="text" class="form-control datepicker">
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>Ngày (PI)</td>
-                                                                    <td>
-                                                                        <div class="col-sm-5 no-padding">
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">Từ</span>
-                                                                                <input type="text" class="form-control datepicker">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">Đến</span>
-                                                                                <input type="text" class="form-control datepicker">
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td style="padding-left: 0px;">Tổng tiền</td>
-                                                                    <td>
-                                                                        <div class="col-sm-5 no-padding">
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">Từ</span>
-                                                                                <input type="number" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">Đến</span>
-                                                                                <input type="number" class="form-control">
-                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                     <td>Nhà cung cấp</td>
@@ -547,6 +492,56 @@
                                                                             </select>
                                                                         </div>
                                                                     </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding-left: 0px;">Ngày nhập</td>
+                                                                    <td>
+                                                                        <div class="col-sm-5 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Từ</span>
+                                                                                <input type="text" class="form-control datepicker">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Đến</span>
+                                                                                <input type="text" class="form-control datepicker">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>Danh mục</td>
+                                                                    <td width="35%">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-tree"></i></span>
+                                                                            <select class="form-control">
+                                                                                <option></option>
+                                                                                <option>CB-Aptomat</option>
+                                                                                <option>Inverter-Biến tần</option>
+                                                                                <option>Cáp thông tin</option>
+                                                                                <option>Công tắc ổ cắm</option>
+                                                                                <option>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding-left: 0px;">Đơn giá</td>
+                                                                    <td>
+                                                                        <div class="col-sm-5 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Từ</span>
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Đến</span>
+                                                                                <input type="text" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td></td>
+                                                                    <td></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -567,65 +562,72 @@
                                             <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr style="background-color: #3c8dbc;color: white;">
-                                                        <th>STT</th>
-                                                        <th>PO No.</th>
-                                                        <th>Ngày</th>
-                                                        <th>PI No.</th>
-                                                        <th>Ngày</th>
-                                                        <th>Nhà cung cấp</th>
-                                                        <th>Tổng tiền</th>
+                                                        <th style="width: 30px;">STT</th>
+                                                        <th style="width: 300px;">Sản phẩm</th>
+                                                        <th style="width: 50px;">Danh mục</th>
+                                                        <th style="width: 50px;">Số lượng cái/thùng</th>
+                                                        <th style="width: 150px;">Nhà cung cấp</th>
+                                                        <th style="width: 80px;">Giá trước VAT</th>
+                                                        <th style="width: 60px;">Thuế NK (%)</th>
+                                                        <th style="width: 60px;">VAT (%)</th>
+                                                        <th style="width: 80px;">Giá sau VAT</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PO.html">11-11/2017/TSB</a>
-                                                        </td>
-                                                        <td style="text-align: center;">25/10/2017</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PI.html">M01-121629-1</a></td>
-                                                        <td style="text-align: center;">26/10/2017</td>
-                                                        <td>LS Industrial Systems Co., Ltd.</td>
-                                                        <td>15,858,858,000</td>
+                                                        <td style="vertical-align: middle;">1</td>
+                                                        <td style="vertical-align: middle;">ABS33c 10A EXP<span style="float: right; margin-right: 5px;">AX (R) - LWT</span></td>
+                                                        <td style="vertical-align: middle;">ABS</td>
+                                                        <td style="vertical-align: middle; text-align: right;">20</td>
+                                                        <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
+                                                        <td style="vertical-align: middle; text-align: right;">13.02</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">15.624</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>2</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PO.html">12-11/2017/TSB</a>
-                                                        </td>
-                                                        <td style="text-align: center;">27/10/2017</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PI.html">M01-121629-2</a></td>
-                                                        <td style="text-align: center;">28/10/2017</td>
-                                                        <td>LS Industrial Systems Co., Ltd.</td>
-                                                        <td>15,858,858,000</td>
+                                                        <td style="vertical-align: middle;">2</td>
+                                                        <td style="vertical-align: middle;">ABS53c 20A EXP<span style="float: right; margin-right: 5px;">AL (R) - LWT</span></td>
+                                                        <td style="vertical-align: middle;">ABS</td>
+                                                        <td style="vertical-align: middle; text-align: right;">20</td>
+                                                        <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
+                                                        <td style="vertical-align: middle; text-align: right;">14.82</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">17.784</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>3</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PO.html">13-11/2017/TSB</a>
-                                                        </td>
-                                                        <td style="text-align: center;">29/10/2017</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PI.html">M01-121629-3</a></td>
-                                                        <td style="text-align: center;">30/10/2017</td>
-                                                        <td>Thái Sơn Nam</td>
-                                                        <td>15,858,858,000</td>
+                                                        <td style="vertical-align: middle;">3</td>
+                                                        <td style="vertical-align: middle;">ABS103c 40A EXP<span style="float: right; margin-right: 5px;">AX (R) - LWT</span></td>
+                                                        <td style="vertical-align: middle;">ABS</td>
+                                                        <td style="vertical-align: middle; text-align: right;">20</td>
+                                                        <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
+                                                        <td style="vertical-align: middle; text-align: right;">22.71</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">27.252</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>4</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PO.html">14-11/2017/TSB</a>
-                                                        </td>
-                                                        <td style="text-align: center;">31/10/2017</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PI.html">M01-121629-4</a></td>
-                                                        <td style="text-align: center;">01/11/2017</td>
-                                                        <td>Thái Sơn Nam</td>
-                                                        <td>15,858,858,000</td>
+                                                        <td style="vertical-align: middle;">4</td>
+                                                        <td style="vertical-align: middle;">ABS103c 125A EXP<span style="float: right; margin-right: 5px;">AL (R) - LWT</span></td>
+                                                        <td style="vertical-align: middle;">ABS</td>
+                                                        <td style="vertical-align: middle; text-align: right;">20</td>
+                                                        <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
+                                                        <td style="vertical-align: middle; text-align: right;">23.36</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">28.032</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>5</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PO.html">15-11/2017/TSB</a>
-                                                        </td>
-                                                        <td style="text-align: center;">02/11/2017</td>
-                                                        <td><a href="quanly_hanghoa_chi-tiet-PI.html">M01-121629-5</a></td>
-                                                        <td style="text-align: center;">03/11/2017</td>
-                                                        <td>LS Industrial Systems Co., Ltd.</td>
-                                                        <td>15,858,858,000</td>
+                                                        <td style="vertical-align: middle;">5</td>
+                                                        <td style="vertical-align: middle;">ABS203c 125A EXP<span style="float: right; margin-right: 5px;">AX (R) - LWT</span></td>
+                                                        <td style="vertical-align: middle;">ABS</td>
+                                                        <td style="vertical-align: middle; text-align: right;">20</td>
+                                                        <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
+                                                        <td style="vertical-align: middle; text-align: right;">36.64</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">10</td>
+                                                        <td style="vertical-align: middle; text-align: right;">43.968</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -647,23 +649,24 @@
             </footer>
         </div>
         <!-- ./wrapper -->
+
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="dist/js/bootstrap-toggle.min.js"></script>
         <!-- FastClick -->
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
-        <script src="dist/js/back-to-top.js"></script>
         <!-- DataTables -->
         <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- bootstrap datepicker -->
-        <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>       
+        <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="dist/js/back-to-top.js"></script>
         <script>
             $(document).ready(function () {
                 $('#example1').DataTable({

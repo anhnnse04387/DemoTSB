@@ -271,15 +271,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-info">
-                                <div class="box-header" style="text-align: center;margin-top: 30px;">
-                                    <h3 class="box-title with-border"><b style="font-size: 25px;">Quản lý danh mục</b></h3>
+                                <div class="row" style="margin-left:10px; margin-top:10px;">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>DANH SÁCH PHIẾU ĐANG SOẠN</b>
+                                        </h4>
+                                    </div>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
                                     <div class="row">
                                         <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-plus-square text-gray"></i>
+                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="taomoi_danhmuc_quantri()();">
+                                                <i class="fa fa-plus-square text-green"></i>
                                                 <span><strong>Tạo Mới</strong></span>
                                             </a>
                                             <a class="btn btn-app custom-btn disabled">
@@ -324,7 +328,7 @@
                                             </a>
                                         </div>	
                                     </div>
-                                    <form style="margin-top: 25px;">
+                                    <form style="margin-top: 45px;">
                                         <div class="box-header">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -530,8 +534,7 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th style="width: 30px;">STT</th>
-                                                                    <th style="width: 200px;">Sản phẩm</th>
-                                                                    <th style="width: 120px;">Mã hàng</th>
+                                                                    <th colspan="2">Sản phẩm</th>
                                                                     <th style="width: 50px;">Danh mục</th>
                                                                     <th style="width: 50px;">Số lượng cái/thùng</th>
                                                                     <th style="width: 150px;">Nhà cung cấp</th>
@@ -544,8 +547,8 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td style="vertical-align: middle;">1</td>
-                                                                    <td style="vertical-align: middle;">ABS33c 10A EXP</td>
-                                                                    <td style="vertical-align: middle;">0129001800</td>
+                                                                    <td style="vertical-align: middle;"><a href="quantri_hanghoa_chi-tiet-san-pham.html">ABS33c 10A EXP</a></td>
+                                                                    <td style="vertical-align: middle; width: 150px;">AX (R) - LWT</td>
                                                                     <td style="vertical-align: middle;">ABS</td>
                                                                     <td style="vertical-align: middle; text-align: right;">20</td>
                                                                     <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
@@ -556,8 +559,8 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="vertical-align: middle;">2</td>
-                                                                    <td style="vertical-align: middle;">ABS53c 20A EXP</td>
-                                                                    <td style="vertical-align: middle;">0131001400</td>
+                                                                    <td style="vertical-align: middle;"><a href="quantri_hanghoa_chi-tiet-san-pham.html">ABS53c 20A EXP</a></td>
+                                                                    <td style="vertical-align: middle;">AL (R) - LWT</td>
                                                                     <td style="vertical-align: middle;">ABS</td>
                                                                     <td style="vertical-align: middle; text-align: right;">20</td>
                                                                     <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
@@ -568,8 +571,8 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="vertical-align: middle;">3</td>
-                                                                    <td style="vertical-align: middle;">ABS103c 40A EXP</td>
-                                                                    <td style="vertical-align: middle;">0134000400</td>
+                                                                    <td style="vertical-align: middle;"><a href="quantri_hanghoa_chi-tiet-san-pham.html">ABS103c 40A EXP</a></td>
+                                                                    <td style="vertical-align: middle;">AX (R) - LWT</td>
                                                                     <td style="vertical-align: middle;">ABS</td>
                                                                     <td style="vertical-align: middle; text-align: right;">20</td>
                                                                     <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
@@ -580,8 +583,8 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="vertical-align: middle;">4</td>
-                                                                    <td style="vertical-align: middle;">ABS103c 125A EXP</td>
-                                                                    <td style="vertical-align: middle;">0134000900</td>
+                                                                    <td style="vertical-align: middle;"><a href="quantri_hanghoa_chi-tiet-san-pham.html">ABS103c 125A EXP</a></td>
+                                                                    <td style="vertical-align: middle;">AL (R) - LWT</td>
                                                                     <td style="vertical-align: middle;">ABS</td>
                                                                     <td style="vertical-align: middle; text-align: right;">20</td>
                                                                     <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
@@ -592,8 +595,8 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="vertical-align: middle;">5</td>
-                                                                    <td style="vertical-align: middle;">ABS203c 125A EXP</td>
-                                                                    <td style="vertical-align: middle;">0137000200</td>
+                                                                    <td style="vertical-align: middle;"><a href="quantri_hanghoa_chi-tiet-san-pham.html">ABS203c 125A EXP</a></td>
+                                                                    <td style="vertical-align: middle;">AX (R) - LWT</td>
                                                                     <td style="vertical-align: middle;">ABS</td>
                                                                     <td style="vertical-align: middle; text-align: right;">20</td>
                                                                     <td style="vertical-align: middle;">LS Industrial Systems Co., Ltd.</td>
