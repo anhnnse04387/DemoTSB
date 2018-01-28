@@ -313,17 +313,17 @@
                                                     <tr class="text-center" style="background-color: #3c8dbc;color: white;">
                                                         <th>STT</th>
                                                         <th>Tên trang</th>
-                                                        <th>Phân hệ</th>
+                                                        <th>Phân loại</th>
                                                         <th>Trạng thái</th>
                                                         <th>Ngày tạo</th>
-                                                        <th>Xóa</th>
+                                                        <th>Thay đổi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
                                                         <td class="text-center">1</td>
                                                         <td><a href="hanghoa_index.html">Trang chủ - Hàng Hóa</a></td>
-                                                        <td>Hàng Hóa</td>
+                                                        <td>Trang chủ</td>
                                                         <td class="text-center">
                                                             <a href="#" data-toggle="modal" data-placement="bottom" data-target="#confirm-process">
                                                                 <span class="label label-success">Active</span>
@@ -331,15 +331,15 @@
                                                         </td>
                                                         <td class="text-center">26/01/2018</td>
                                                         <td class="text-center">
-                                                            <a href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-placement="bottom" data-target="#confirm-delete" title="Xóa">
-                                                                <i class="fa fa-close text-red"></i>
+                                                            <a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#confirm-process" style="width: 100px; margin: 0 auto;">
+                                                                Deactive
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-center">2</td>
                                                         <td><a href="phanphoi_donhang_lap-phieu.html">Lập phiếu xuất hàng</a></td>
-                                                        <td>Phân phối</td>
+                                                        <td>Đơn hàng</td>
                                                         <td class="text-center">
                                                             <a href="#" data-toggle="modal" data-placement="bottom" data-target="#confirm-process">
                                                                 <span class="label label-danger">Deactive</span>
@@ -347,15 +347,15 @@
                                                         </td>
                                                         <td class="text-center">26/01/2018</td>
                                                         <td class="text-center">
-                                                            <a href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-placement="bottom" data-target="#confirm-delete" title="Xóa">
-                                                                <i class="fa fa-close text-red"></i>
+                                                            <a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#confirm-process" style="width: 100px; margin: 0 auto;">
+                                                                Active
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-center">3</td>
                                                         <td><a href="phanphoi_donhang_danh-sach-phieu-giu-hang.html">Danh sách phiếu giữ hàng</a></td>
-                                                        <td>Phân phối</td>
+                                                        <td>Đơn hàng</td>
                                                         <td class="text-center">
                                                             <a href="#" data-toggle="modal" data-placement="bottom" data-target="#confirm-process">
                                                                 <span class="label label-success">Active</span>
@@ -363,8 +363,8 @@
                                                         </td>
                                                         <td class="text-center">26/01/2018</td>
                                                         <td class="text-center">
-                                                            <a href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-placement="bottom" data-target="#confirm-delete" title="Xóa">
-                                                                <i class="fa fa-close text-red"></i>
+                                                            <a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#confirm-process" style="width: 100px; margin: 0 auto;">
+                                                                Deactive
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -395,10 +395,34 @@
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+        <script>
+            $(function () {
+                $('#example1').DataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'language': {
+                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                        "paginate": {
+                            "first": "Trang đầu",
+                            "last": "Trang cuối",
+                            "next": "Tiếp",
+                            "previous": "Trước"
+                        }
+                    }
+                });
+            });
+        </script>
 
         <!-- Modal -->
         <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -419,22 +443,5 @@
             </div>
         </div>
         
-        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Xác nhận xóa trang</h4>
-                    </div>
-                    <div class="modal-body">
-                        <label>Xóa trang?</label>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                        <input type="button" class="btn btn-danger btn-ok" value="Xóa" />
-                    </div>
-                </div>
-            </div>
-        </div>
     </body>
 </html>
