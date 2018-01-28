@@ -388,8 +388,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-info">
-                                <div class="box-header" style="text-align: center;margin-top: 30px;">
-                                    <h3 class="box-title with-border"><b style="font-size: 25px;">Lịch sử nhập hàng</b></h3>
+                                <div class="row" style="margin-left:10px; margin-top:10px;">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>LỊCH SỬ NHẬP HÀNG</b>
+                                        </h4>
+                                    </div>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
@@ -538,7 +542,7 @@
                                                         <td style="text-align: center;"><a href="quanly_hanghoa_chi-tiet-dot-nhap-hang.html">12-11/2017/TSB</a>
                                                         </td>
                                                         <td>LS Industrial Systems Co., Ltd.</td>
-                                                        <td>Đổi trả</td>
+                                                        <td>Nhập hàng</td>
                                                         <td style="text-align: center;">27/10/2017</td>
                                                         <td></td>
                                                     </tr>
@@ -565,7 +569,7 @@
                                                         <td style="text-align: center;"><a href="quanly_hanghoa_chi-tiet-dot-nhap-hang.html">81265-0</a>
                                                         </td>
                                                         <td>Công ty HPH</td>
-                                                        <td>Nhập hàng</td>
+                                                        <td>Đổi trả</td>
                                                         <td style="text-align: center;">30/10/2017</td>
                                                         <td></td>
                                                     </tr>
@@ -608,28 +612,28 @@
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <script src="dist/js/back-to-top.js"></script>
         <script>
-            $(document).ready(function () {
-                $('#example1').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': true,
-                    'language': {
-                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Tiếp",
-                            "previous": "Trước"
-                        }
-                    }
-                });
-                $('.datepicker').datepicker({
-                    format: 'dd/mm/yyyy'
-                });
-            });
+                                                $(document).ready(function () {
+                                                    $('#example1').DataTable({
+                                                        'paging': true,
+                                                        'lengthChange': false,
+                                                        'searching': false,
+                                                        'ordering': true,
+                                                        'info': true,
+                                                        'autoWidth': true,
+                                                        'language': {
+                                                            "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                                                            "paginate": {
+                                                                "first": "Trang đầu",
+                                                                "last": "Trang cuối",
+                                                                "next": "Tiếp",
+                                                                "previous": "Trước"
+                                                            }
+                                                        }
+                                                    });
+                                                    $('.datepicker').datepicker({
+                                                        format: 'dd/mm/yyyy'
+                                                    });
+                                                });
         </script>
     </body>
 </html>

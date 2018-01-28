@@ -263,12 +263,12 @@ function taomoi() {
 }
 
 function taomoi_lichsu_quanly() {
-    var win = window.open('quanly_hanghoa_nhap-hoa-don.html', '_blank');
+    var win = window.open('quanly_hanghoa_tao-yeu-cau-nhap.html', '_blank');
     win.focus();
 }
 
 function taomoi_lichsu_phanphoi() {
-    var win = window.open('phanphoi_hanghoa_nhap-hoa-don.html', '_blank');
+    var win = window.open('phanphoi_hanghoa_tao-yeu-cau-nhap.html', '_blank');
     win.focus();
 }
 
