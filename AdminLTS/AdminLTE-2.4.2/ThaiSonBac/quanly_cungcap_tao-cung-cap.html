@@ -324,7 +324,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview ">
+                        <li class="treeview active">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -335,7 +335,7 @@
                                 <li class="">
                                     <a href="quanly_khachhang_danh-sach-khach-hang.html"><i class="fa fa-globe"></i> Danh sách khách hàng</a>
                                 </li>
-                                <li class="">
+                                <li class="active">
                                     <a href="quanly_cungcap_danh-sach-nha-cung-cap.html"><i class="fa fa-cubes"></i> Danh sách nhà cung cấp</a>
                                 </li>
                                 <li class="">
@@ -373,6 +373,8 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li><a href="quanly_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+                        <li>Danh sách nhà cung cấp</li>
+                        <li><a href="quanly_cungcap_tao-cung-cap.html">Thêm nhà cung cấp</a></li>
                     </ol>
                 </section>
 
@@ -381,149 +383,157 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
+                                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <b>Thêm nhà cung cấp</b>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
 
+                                <div class="box">
+                                    <div class="box-header with-border text-center menu-button">
 
-
-                                <div class="box-header with-border text-center menu-button">
-
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                        <i class="fa fa-edit text-grey"></i>
-                                        <span>
-                                            <strong>Tạo Mới</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                        <i class="fa fa-edit text-grey"></i>
-                                        <span><strong>Sửa</strong></span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn " data-toggle="modal" title="Lưu" data-placement="bottom" data-target=
-                                       "#confirm-delete">
-                                        <i class="fa fa-save text-yellow"></i>
-                                        <span>
-                                            <strong>Lưu</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                        <i class="fa fa-close text-grey"></i>
-                                        <span>
-                                            <strong>Hủy</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-                                        <i class="fa fa-check-circle text-grey"></i>
-                                        <span>
-                                            <strong>Tạo mới</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" >
-                                        <i class="fa fa-exchange text-grey"></i>
-                                        <span>
-                                            <strong>Đổi trả</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" >
-                                        <i class="fa fa-eye text-grey"></i>
-                                        <span>
-                                            <strong>Xem Trước</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                        <i class="fa fa-print text-grey"></i>
-                                        <span>
-                                            <strong>In</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                        <i class="fa fa-download text-grey"></i>
-                                        <span>
-                                            <strong>Import Excel</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
-                                        <i class="fa fa-file-excel-o text-grey"></i>
-                                        <span>
-                                            <strong>Xuất Excel</strong>
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
-                                        <i class="fa fa-file-pdf-o text-grey"></i>
-                                        <span>
-                                            <strong>Xuất PDF</strong>
-                                        </span>
-                                    </a>
+                                        <a class="btn btn-app custom-btn" href="quanly_cungcap_tao-cung-cap.html" target="_blank" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                            <i class="fa fa-edit text-green"></i>
+                                            <span>
+                                                <strong>Tạo Mới</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                            <i class="fa fa-edit text-grey"></i>
+                                            <span><strong>Sửa</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn " data-toggle="modal" title="Lưu" data-placement="bottom" data-target=
+                                           "#confirm-delete">
+                                            <i class="fa fa-save text-yellow"></i>
+                                            <span>
+                                                <strong>Lưu</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                            <i class="fa fa-close text-grey"></i>
+                                            <span>
+                                                <strong>Hủy</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-grey"></i>
+                                            <span>
+                                                <strong>Chốt đơn</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom" >
+                                            <i class="fa fa-exchange text-grey"></i>
+                                            <span>
+                                                <strong>Đổi trả</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" >
+                                            <i class="fa fa-eye text-grey"></i>
+                                            <span>
+                                                <strong>Xem Trước</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                            <i class="fa fa-print text-grey"></i>
+                                            <span>
+                                                <strong>In</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                            <i class="fa fa-download text-grey"></i>
+                                            <span>
+                                                <strong>Import Excel</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                            <i class="fa fa-file-excel-o text-grey"></i>
+                                            <span>
+                                                <strong>Xuất Excel</strong>
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                            <i class="fa fa-file-pdf-o text-grey"></i>
+                                            <span>
+                                                <strong>Xuất PDF</strong>
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                                 <hr>
 
-                                <div class="box-header">
-                                    <h1 style="text-align: center; font-weight: 600;">THÊM NHÀ CUNG CẤP</h1>
-                                </div>
-                                <div class="box-body">
+
+                                <div class="box-body" style="padding-bottom: 50px">
                                     <div class="row">
-                                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
-                                        <form class="form form-vertical">
-                                            <div class="row">
-                                                <div class="col-md-3 text-center">
-                                                    <div class="kv-avatar">
-                                                        <div class="file-loading">
-                                                            <input id="avatar-2" name="avatar-2" type="file" required>
+                                        <div class="col-md-12">
+                                            <!--                                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>-->
+                                            <form class="form form-vertical">
+                                                <div class="row">
+                                                    <div class="col-md-3 text-center">
+                                                        <div class="kv-avatar">
+                                                            <div class="file-loading">
+                                                                <input id="avatar-2" name="avatar-2" type="file" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9" style="padding-top: 35px">
+                                                        <div class="row" >
+                                                            <div class="col-md-6">
+                                                                <label>Đơn vị</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="Tên nhà cung cấp...">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Địa chỉ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-address-book"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="Địa chỉ nhà cung cấp..." type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Số điện thoại</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-phone"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="Số điện thoại..." type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>MST</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-bank"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="Mã số thuế..." type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Email</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-envelope"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="Email..." type="text">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-9" style="padding-top: 35px">
-                                                    <div class="row" >
-                                                        <div class="col-md-6">
-                                                            <label>Đơn vị</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-user"></i>
-                                                                </span>
-                                                                <input class="form-control" placeholder="Tên nhà cung cấp...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>Địa chỉ</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-address-book"></i>
-                                                                </span>
-                                                                <input class="form-control" placeholder="Địa chỉ nhà cung cấp..." type="text">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Số điện thoại</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-phone"></i>
-                                                                </span>
-                                                                <input class="form-control" placeholder="Số điện thoại..." type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>MST</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-bank"></i>
-                                                                </span>
-                                                                <input class="form-control" placeholder="Mã số thuế..." type="text">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Email</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-envelope"></i>
-                                                                </span>
-                                                                <input class="form-control" placeholder="Email..." type="text">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>    
                                 </div>
                             </div>
@@ -552,8 +562,9 @@
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
+
         <!-- page script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
         <script>
             var btnCust = '';
             $("#avatar-2").fileinput({
@@ -586,7 +597,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng"/>
-                            <input onclick="location.href = 'quanly_cungcap_chi-tiet-nha-cung-cap.html';" type="button" class="btn btn-success btn-ok" value="Có"/>
+                            <input onclick="location.href = 'quanly_cungcap_danh-sach-nha-cung-cap.html';" type="button" class="btn btn-success btn-ok" value="Có"/>
                         </div>
                     </div>
                 </div>
