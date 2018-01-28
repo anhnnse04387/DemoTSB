@@ -78,6 +78,20 @@
                 max-width: 100%;
                 vertical-align: middle;
             }
+            #scrollContainer p {
+                margin: 0;
+                line-height: 30px;
+                font-size: 20px;
+                color: white;
+            }
+            #scrollContainer {
+                height: 30px;
+                margin-top: 10px;
+                overflow: hidden;
+            }
+            #scrollBox {
+                position: relative;   
+            }
         </style>
     </head>
 
@@ -175,7 +189,12 @@
                             </li>
                         </ul>
                     </div>
-
+                    <a href="#" id="scrollContainer" class="navbar-custom-menu pull-left" data-toggle="modal" data-target="#noteModal">
+                        <div id="scrollBox">    
+                            <p>Ngày 31/12/2017: Inbox để biết thêm chi tiết</p>
+                            <p>Ngày 05/01/2018: Hãy xử lý đơn hàng HD-83157-1</p>
+                        </div>                       
+                    </a>
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -413,10 +432,10 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="box">
+                            <div class="box box-primary">
                                 <div class="box-body box-profile">
                                     <img class="profile-user-img img-responsive img-circle" src="dist/img/user2-160x160.jpeg" alt="User profile picture">
-                                    <h3 class="profile-username text-center">Nguyễn Thành Công</h3>
+                                    <h3 style="margin-top: 20px;" class="profile-username text-center">Nguyễn Thành Công</h3>
                                     <p class="text-muted text-center"></p>
                                     <ul class="list-group list-group-unbordered">
                                         <li class="list-group-item">
@@ -433,6 +452,11 @@
                                             <i class="fa fa-phone"></i>
                                             <b>Số điện thoại</b>
                                             <a class="pull-right">01673228545</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="fa fa-envelope"></i>
+                                            <b>Email</b>
+                                            <a class="pull-right">CongNT@gmail.com</a>
                                         </li>
                                         <li class="list-group-item">
                                             <i class="fa fa-id-card-o"></i>
@@ -481,7 +505,7 @@
                                                         <span class="progress-number"><b>16</b>/20</span>
 
                                                         <div class="progress sm">
-                                                            <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                                            <div class="progress-bar progress-bar-green" style="width: 80%"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -500,7 +524,8 @@
                                             <fieldset class="row">
                                                 <legend style="font-size: 17px"><b>Ghi chú</b></legend>
                                                 <form>
-                                                    <textarea id="editor1" class="textarea" rows="5" style="width: 100%" disabled></textarea>
+                                                    <textarea id="editor1" class="textarea" rows="5" style="width: 100%" disabled>-Ngày 31/12/2017: Inbox để biết thêm chi tiết
+-Ngày 05/01/2018: Hãy xử lý đơn hàng HD-83157-1</textarea>
                                                 </form>
                                                 <a id="btnEditor" onclick="doEdit();" style="width: 100px; margin-top: 20px;" class="btn btn-primary btn-block pull-right">
                                                     <b>Chỉnh sửa</b>
@@ -527,7 +552,7 @@
                                                             </td>
                                                             <td>22-12-2017</td>
                                                             <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
+                                                                <span class="label label-primary">Kế toán đã xử lý</span>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -538,7 +563,7 @@
                                                             </td>
                                                             <td>21-12-2017</td>
                                                             <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
+                                                                <span class="label label-primary">Đã xuất phiếu</span>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -549,7 +574,7 @@
                                                             </td>
                                                             <td>19-12-2017</td>
                                                             <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
+                                                                <span class="label label-primary">Đã xuất phiếu</span>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -560,7 +585,7 @@
                                                             </td>
                                                             <td>18-12-2017</td>
                                                             <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
+                                                                <span class="label label-primary">Kế toán đã xử lý<</span>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -571,7 +596,7 @@
                                                             </td>
                                                             <td>01-12-2017</td>
                                                             <td>
-                                                                <span class="label label-primary">Đang xử lí</span>
+                                                                <span class="label label-primary">Đã xuất phiếu</span>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -599,13 +624,9 @@
                                                 <i class="fa fa-bell bg-blue"></i>
                                                 <div class="timeline-item">
                                                     <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thông báo: Xử lí đơn hàng 81265-0</a></h3>
+                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thêm sản phẩm đơn hàng 81265-0</a></h3>
                                                     <div class="timeline-body">
-                                                        <a>Lã Mạnh Đạt</a> đã gửi cho bạn một yêu cầu sửa đơn 81265-0
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">Chấp nhận</a>
-                                                        <a class="btn btn-danger btn-xs">Xóa</a>
+                                                        <a>Bạn</a> đã thêm sản phẩm vào đơn 81265-0
                                                     </div>
                                                 </div>
                                             </li>
@@ -624,13 +645,9 @@
                                                 <i class="fa fa-bell bg-blue"></i>
                                                 <div class="timeline-item">
                                                     <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thông báo: Xử lí đơn hàng 81265-0</a></h3>
+                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Xử lí đơn hàng 81265-0</a></h3>
                                                     <div class="timeline-body">
-                                                        <a>Lã Mạnh Đạt</a> đã gửi cho bạn một yêu cầu sửa đơn 81265-0
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">Chấp nhận</a>
-                                                        <a class="btn btn-danger btn-xs">Xóa</a>
+                                                        <a>Bạn</a> đã gửi một yêu cầu sửa đơn 81265-0
                                                     </div>
                                                 </div>
                                             </li>
@@ -639,13 +656,9 @@
                                                 <i class="fa fa-bell bg-blue"></i>
                                                 <div class="timeline-item">
                                                     <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thông báo: Xử lí đơn hàng 81265-0</a></h3>
+                                                    <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Hủy đơn hàng 81265-0</a></h3>
                                                     <div class="timeline-body">
-                                                        <a>Lã Mạnh Đạt</a> đã gửi cho bạn một yêu cầu sửa đơn 81265-0
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a class="btn btn-primary btn-xs">Chấp nhận</a>
-                                                        <a class="btn btn-danger btn-xs">Xóa</a>
+                                                        <a>Bạn</a> đã yêu cầu hủy đơn 81265-0
                                                     </div>
                                                 </div>
                                             </li>
@@ -715,7 +728,33 @@
                                                         $('#btnSave').replaceWith(buttonEdit);
                                                     }
         </script>
-
+        <script>
+            $(document).ready(function () {
+                function scroll() {
+                    $("#scrollBox").hover(function () {
+                        $("#scrollBox").stop();
+                        window.clearInterval(scrollInterval);
+                    });
+                    var x = 0;
+                    var scrollInterval = setInterval(function () {
+                        $("#scrollBox").delay(2000).animate({top: "-=30"}, 1000);
+                        if (++x === 2) {
+                            window.clearInterval(scrollInterval);
+                            $("#scrollBox").delay(2000).animate({top: "0px"}, 1000);
+                            scroll();
+                        }
+                    });
+                }
+                ;
+                scroll();
+            });
+            $(document).on('hide.bs.modal', '#noteModal', function () {
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(function () {
+                    location.reload();
+                }, 0);
+            });
+        </script>
     </body>
 
 </html>
