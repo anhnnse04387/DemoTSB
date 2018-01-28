@@ -446,6 +446,11 @@
                                             </div>
                                         </li>
                                         <li class="list-group-item">
+                                            <i class="fa fa-envelope"></i>
+                                            <b>Email</b>
+                                            <a class="pull-right">CongNT@gmail.com</a>
+                                        </li>
+                                        <li class="list-group-item">
                                             <div class="form-group row" style="margin-bottom: -5px;">
                                                 <label for="insurranceID" class="col-sm-9 col-form-label"><i class="fa fa-id-card-o"></i> Mã BHYT</label>
                                                 <div class="col-sm-3">
@@ -469,15 +474,11 @@
                                         </li>
                                         <li class="list-group-item">
                                             <i class="fa fa-address-book"></i>
-                                            <b>Trạng thái</b>
+                                            <b style="margin-bottom: 10px;">Trạng thái</b>
                                             <br>
-                                            <input type="checkbox" id="userStatus" class="form-control-plaintext form-control-sm" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="230" disabled>
+                                            <input  type="checkbox" id="userStatus" class="form-control-plaintext form-control-sm" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="230" disabled>
                                         </li>
-
                                     </ul>
-                                    <a id="btnEdit" class="btn btn-primary btn-block" onclick="doEdit();">
-                                        <b>Chỉnh sửa</b>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -487,6 +488,9 @@
                                     <ul class="nav nav-tabs">
                                         <li class="active">
                                             <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Công việc</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#mathang" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -524,7 +528,101 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="tab-pane" id="mathang">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <fieldset>
+                                                    <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Trạng thái</label>
+                                                            <div class="input-group">
+                                                                <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label id="nameLo" style="font-weight: bold;" class="noDisplay"> Tên nhân viên</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                                <input type="text" class="form-control" id="donVi">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Tên nhà cung cấp</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-codepen"></i></span>
+                                                                <select class='form-control' id='role'>
+                                                                    <option>Giám đốc</option>
+                                                                    <option>Nhân viên bán hàng</option>
+                                                                    <option>Nhân viên kế toán</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Phân hệ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-diamond"></i></span>
+                                                                <select class="form-control" id="roleType">
+                                                                    <option>Quản lý</option>
+                                                                    <option>Phân phối</option>
+                                                                    <option> Kế toán </option>
+                                                                    <option> Hàng hóa </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Số điện thoại</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                                <input type="text" class="form-control" id="phone" value="01673228545">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Email</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                                <input type="text" class="form-control" value="CongNT@gmail.com">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Mã BHYT</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                                                <input type="text" class="form-control" value="2322509752">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Địa chỉ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                                <input type="text" class="form-control" value="108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Ngày tạo</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input type="text" class="form-control" value="20/12/2017" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a id="btnEdit" class="btn btn-primary btn-block pull-right" onclick="doEdit();" style="width: 100px; margin-top: 15px;">
+                                                        <b>Chỉnh sửa</b>
+                                                    </a>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -560,25 +658,25 @@
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-                                        $(function () {
-                                            $('#example1').DataTable({
-                                                'paging': true,
-                                                'lengthChange': false,
-                                                'searching': false,
-                                                'ordering': true,
-                                                'info': true,
-                                                'autoWidth': true,
-                                                'language': {
-                                                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                                                    "paginate": {
-                                                        "first": "Trang đầu",
-                                                        "last": "Trang cuối",
-                                                        "next": "Tiếp",
-                                                        "previous": "Trước"
-                                                    }
-                                                }
-                                            });
-                                        });
+                                                        $(function () {
+                                                            $('#example1').DataTable({
+                                                                'paging': true,
+                                                                'lengthChange': false,
+                                                                'searching': false,
+                                                                'ordering': true,
+                                                                'info': true,
+                                                                'autoWidth': true,
+                                                                'language': {
+                                                                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                                                                    "paginate": {
+                                                                        "first": "Trang đầu",
+                                                                        "last": "Trang cuối",
+                                                                        "next": "Tiếp",
+                                                                        "previous": "Trước"
+                                                                    }
+                                                                }
+                                                            });
+                                                        });
         </script>
         <script>
             new Chart(document.getElementById("line-chart"), {
@@ -617,34 +715,34 @@
             });
         </script>
         <script>
-            var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block' onclick='doSave();'><b>Lưu</b></a>"];
-            var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block' onclick='doEdit();'><b>Chỉnh sửa</b></a>"];
+            var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
+            var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block pull-right' onclick='doEdit();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
             function doEdit() {
-                $('#UserPhone').replaceWith("<input type='text' class='pull-right form-control-plaintext form-control-sm' id='UserPhone' value='01673228545' size='10' style='height: 22px;'>");
-                $('#role').replaceWith("<select class='pull-right form-control-plaintext form-control-sm' \n"
-                        + "id='role'>\n<option>Giám đốc</option>\n<option>Nhân viên bán hàng</option>\n"
-                        + "<option>Nhân viên kế toán</option>\n</select>");
-                $('#roleType').replaceWith("<select class='pull-right form-control-plaintext form-control-sm' id='roleType'>\n"
-                        + "<option>Quản lý</option>\n<option>Phân phối</option>\n"
-                        + "<option> Kế toán </option>\n"
-                        + "<option> Hàng hóa </option>\n</select>");
-                $('#insurranceID').replaceWith("<input type='text' class='pull-right form-control-plaintext form-control-sm' id='insurranceID' value='2322509752' size='10' style='height: 22px;'>");
-                $('#userAddress').replaceWith("<textarea id='userAddress' cols='34' rows='2'>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</textarea>");
-                $('#dateCreate').replaceWith("<input type='text' class='pull-right form-control-plaintext form-control-sm' id='dateCreate' value='20-12-2017' size='10' style='height: 22px;'>");
-                $('#userStatus').bootstrapToggle('enable');
                 $('#btnEdit').replaceWith(buttonSave);
             }
             function doSave() {
-                $('#UserPhone').replaceWith("<a class='pull-right' id='UserPhone'>01673228545</a>");
-                $('#role').replaceWith("<a class='pull-right' id='role'>Giám đốc</a>");
-                $('#roleType').replaceWith("<a class='pull-right' id='roleType'>Quản lý</a>");
-                $('#insurranceID').replaceWith("<a class='pull-right' id='insurranceID'>2322509752</a>");
-                $('#userAddress').replaceWith("<span id='userAddress' style='color: #4682b4'>108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>");
-                $('#dateCreate').replaceWith("<a class='pull-right' id='dateCreate'>20/12/2017</a>");
-                $('#userStatus').bootstrapToggle('disable');
                 $('#btnSave').replaceWith(buttonEdit);
             }
         </script>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa đổi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn sửa đổi?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick='doSave();'/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>
