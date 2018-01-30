@@ -270,7 +270,7 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="box box-info">
+                            <div class="box">
                                 <div class="row" style="margin-left:10px; margin-top:10px;">
                                     <div class="col-md-12">
                                         <h4>
@@ -278,57 +278,57 @@
                                         </h4>
                                     </div>
                                 </div>
-                                <!-- /.box-header -->
+                                <!-- /.box-header -->                               
+                                <div class="box">
+                                    <div class="box-header with-border text-center menu-button">
+                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="taomoi_danhmuc_quantri()();">
+                                            <i class="fa fa-plus-square text-green"></i>
+                                            <span><strong>Tạo Mới</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-edit text-gray"></i>
+                                            <span><strong>Sửa</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-save text-gray"></i>
+                                            <span><strong>Lưu</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-close text-gray"></i>
+                                            <span><strong>Hủy</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-check-circle text-gray"></i>
+                                            <span><strong>Chốt</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-exchange text-gray"></i>
+                                            <span><strong>Đổi trả</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-eye text-gray"></i>
+                                            <span><strong>Xem Trước</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-print text-gray"></i>
+                                            <span><strong>In</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-download text-gray"></i>
+                                            <span><strong>Import Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-file-excel-o text-gray"></i>
+                                            <span><strong>Xuất Excel</strong></span>
+                                        </a>
+                                        <a class="btn btn-app custom-btn disabled">
+                                            <i class="fa fa-file-pdf-o text-gray"></i>
+                                            <span><strong>Xuất PDF</strong></span>
+                                        </a>
+                                    </div>	
+                                </div>
                                 <div class="box-body pad">
-                                    <div class="row">
-                                        <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
-                                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="taomoi_danhmuc_quantri()();">
-                                                <i class="fa fa-plus-square text-green"></i>
-                                                <span><strong>Tạo Mới</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-edit text-gray"></i>
-                                                <span><strong>Sửa</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-save text-gray"></i>
-                                                <span><strong>Lưu</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-close text-gray"></i>
-                                                <span><strong>Hủy</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-check-circle text-gray"></i>
-                                                <span><strong>Chốt</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-exchange text-gray"></i>
-                                                <span><strong>Đổi trả</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-eye text-gray"></i>
-                                                <span><strong>Xem Trước</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-print text-gray"></i>
-                                                <span><strong>In</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-download text-gray"></i>
-                                                <span><strong>Import Excel</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-file-excel-o text-gray"></i>
-                                                <span><strong>Xuất Excel</strong></span>
-                                            </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-file-pdf-o text-gray"></i>
-                                                <span><strong>Xuất PDF</strong></span>
-                                            </a>
-                                        </div>	
-                                    </div>
-                                    <hr style="margin-top: 45px;">
+                                    <hr>
                                     <form style="margin-top: 35px;">
                                         <div class="box-header">
                                             <div class="row">
@@ -346,7 +346,7 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td>1</td>
-                                                                        <td><a onclick="$('#aptomat').removeClass('noDisplay');">CB-Aptomat</a></td>
+                                                                        <td><a onclick="$('#aptomat').removeClass('noDisplay'); $('#btnAdd').removeClass('noDisplay');">CB-Aptomat</a></td>
                                                                         <td>
                                                                             <a id="btn_row1" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom"
                                                                                style="height: 45px; margin-left: 45px;">
@@ -520,8 +520,32 @@
                                                                             </a>
                                                                         </td>
                                                                     </tr>
+                                                                    <tr id="addDanhMucCon" class="noDisplay">
+                                                                        <td>3</td>
+                                                                        <td><input type="text" id="dmcName" class="form-control"/>
+                                                                            <a id="dmcLink" class="noDisplay"></a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div id="divButton">
+                                                                                <a onclick="$('#addDanhMucCon').addClass('noDisplay');" style="width: 70px; float: left; margin: 5px;" class="btn btn-default btn-block">Hủy</a>
+                                                                                <a onclick="$('#dmcLink').text(document.getElementById('dmcName').value);
+                                                                                        $('#dmcName').addClass('noDisplay');
+                                                                                        $('#divButton').addClass('noDisplay');
+                                                                                        $('#dmcLink').removeClass('noDisplay');
+                                                                                        $('#btnEdit').removeClass('noDisplay');" class="btn btn-danger btn-block" style="width: 70px; float: left; margin: 5px;">Tạo</a>
+                                                                            </div>
+                                                                            <a class="btn btn-app custom-btn noDisplay" id="btnEdit" data-toggle="tooltip" title="Sửa" data-placement="bottom"
+                                                                               style="height: 45px; margin-left: 45px;">
+                                                                                <i class="fa fa-edit text-blue"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
+                                                            <a class="btn btn-app custom-btn noDisplay" id="btnAdd" onclick="$('#addDanhMucCon').removeClass('noDisplay');">
+                                                                <i class="fa fa-plus-square text-green"></i>
+                                                                <span><strong>Tạo Mới</strong></span>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -608,6 +632,10 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                        <a class="btn btn-app custom-btn" href="quantri_hanghoa_tao-san-pham.html">
+                                                            <i class="fa fa-plus-square text-green"></i>
+                                                            <span><strong>Tạo Mới</strong></span>
+                                                        </a>
                                                     </fieldset>
                                                 </div>
                                                 <!-- /.col -->
@@ -718,37 +746,37 @@
         <script src="dist/js/demo.js"></script>
         <script src="dist/js/sweetalert2.all.js"></script>
         <script>
-                                                                            $(document).ready(function () {
-                                                                                $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
-                                                                            });
-                                                                            $('#danhmuc_1').hide();
-                                                                            $('#btn_row1').click(function () {
-                                                                                $('#danhmuc_1').toggle();
-                                                                                event.preventDefault();
-                                                                                document.getElementsByClassName('toggle btn btn-primary')[0].style.width = '150px';
-                                                                            });
-                                                                            $('#danhmuc_2').hide();
-                                                                            $('#btn_row2').click(function () {
-                                                                                $('#danhmuc_2').toggle();
-                                                                                event.preventDefault();
-                                                                                document.getElementsByClassName('toggle btn btn-primary')[1].style.width = '150px';
-                                                                            });
-                                                                            $('#btn_cancel1').click(function () {
-                                                                                $('#danhmuc_1').toggle();
-                                                                                event.preventDefault();
-                                                                            });
-                                                                            $('#btn_cancel2').click(function () {
-                                                                                $('#danhmuc_2').toggle();
-                                                                                event.preventDefault();
-                                                                            });
-                                                                            $('#btn_thanhtoan1').click(function () {
-                                                                                $('#danhmuc_1').toggle();
-                                                                                event.preventDefault();
-                                                                            });
-                                                                            $('#btn_thanhtoan2').click(function () {
-                                                                                $('#danhmuc_2').toggle();
-                                                                                event.preventDefault();
-                                                                            });
+                                                                $(document).ready(function () {
+                                                                    $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+                                                                });
+                                                                $('#danhmuc_1').hide();
+                                                                $('#btn_row1').click(function () {
+                                                                    $('#danhmuc_1').toggle();
+                                                                    event.preventDefault();
+                                                                    document.getElementsByClassName('toggle btn btn-primary')[0].style.width = '150px';
+                                                                });
+                                                                $('#danhmuc_2').hide();
+                                                                $('#btn_row2').click(function () {
+                                                                    $('#danhmuc_2').toggle();
+                                                                    event.preventDefault();
+                                                                    document.getElementsByClassName('toggle btn btn-primary')[1].style.width = '150px';
+                                                                });
+                                                                $('#btn_cancel1').click(function () {
+                                                                    $('#danhmuc_1').toggle();
+                                                                    event.preventDefault();
+                                                                });
+                                                                $('#btn_cancel2').click(function () {
+                                                                    $('#danhmuc_2').toggle();
+                                                                    event.preventDefault();
+                                                                });
+                                                                $('#btn_thanhtoan1').click(function () {
+                                                                    $('#danhmuc_1').toggle();
+                                                                    event.preventDefault();
+                                                                });
+                                                                $('#btn_thanhtoan2').click(function () {
+                                                                    $('#danhmuc_2').toggle();
+                                                                    event.preventDefault();
+                                                                });
         </script>
     </body>
 </html>
