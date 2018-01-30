@@ -470,14 +470,11 @@
                                             <span style="color: #4682b4">108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-phone"></i>
-                                            <b>Ngày tạo</b>
-                                            <a class="pull-right">20-12-2017</a>
+                                            <i class="fa fa-calendar"></i>
+                                            <b>Ngày sinh</b>
+                                            <a class="pull-right">20-12-1990</a>
                                         </li>
                                     </ul>
-                                    <a href="phanphoi_khachhang_sua-khach-hang.html" class="btn btn-primary btn-block">
-                                        <b>Chỉnh sửa</b>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -490,6 +487,9 @@
                                         </li>
                                         <li class="">
                                             <a href="#mathang" data-toggle="tab" aria-expanded="false">Hoạt động</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#chinhsua" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -666,6 +666,52 @@
 
                                         </ul>
                                     </div>
+                                    <div class="tab-pane" id="chinhsua">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <fieldset>
+                                                    <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                                    
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Số điện thoại</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                                <input type="text" class="form-control" id="phone" value="01673228545" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Email</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                                <input type="text" id="email" class="form-control" value="CongNT@gmail.com" disabled>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Địa chỉ</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                                <input type="text" id="address" class="form-control" value="108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Ngày sinh</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input id="birthDate" type="text" class="form-control" value="20/12/1990" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a id="btnEditSetting" class="btn btn-primary btn-block pull-right" onclick="doEditSetting();" style="width: 100px; margin-top: 15px;">
+                                                        <b>Chỉnh sửa</b>
+                                                    </a>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -755,6 +801,44 @@
                 }, 0);
             });
         </script>
+        <script>
+            var buttonSaveSetting = ["<a id='btnSaveSetting' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
+            var buttonEditSetting = ["<a id='btnEditSetting' class='btn btn-primary btn-block pull-right' onclick='doEditSetting();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
+            function doEditSetting() {
+                $('#phone').removeAttr('disabled');
+                $('#address').removeAttr('disabled');
+                $('#email').removeAttr('disabled');
+                $('#birthDate').removeAttr('disabled');
+                $('#btnEditSetting').replaceWith(buttonSaveSetting);
+            }
+            function doSaveSetting() {
+                $('#phone').prop('disabled', true);
+                $('#address').prop('disabled', true);
+                $('#email').prop('disabled', true);
+                $('#birthDate').prop('disabled', true);
+                $('#btnSaveSetting').replaceWith(buttonEditSetting);
+            }
+        </script>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa đổi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn sửa đổi?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick='doSaveSetting();'/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
+    
 
 </html>
