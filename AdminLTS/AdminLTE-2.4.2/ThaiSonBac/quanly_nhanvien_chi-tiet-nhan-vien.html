@@ -357,7 +357,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview ">
+                        <li class="treeview active">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -371,7 +371,7 @@
                                 <li class="">
                                     <a href="quanly_cungcap_danh-sach-nha-cung-cap.html"><i class="fa fa-cubes"></i> Danh sách nhà cung cấp</a>
                                 </li>
-                                <li class="">
+                                <li class="active">
                                     <a href="quanly_nhanvien_danh-sach-nhan-vien.html"><i class="fa fa-users"></i> Danh sách nhân viên</a>
                                 </li>
                                 <li class="treeview">
@@ -405,10 +405,21 @@
                 <section class="content-header">
                     <ol class="breadcrumb">
                         <li>
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> Trang Chủ</a>
+                            <a href="quanly_index.html">
+                                <i class="fa fa-dashboard"></i> Trang chủ</a>
                         </li>
-                        <li class="active"> Thông tin người dùng </li>
+                        <li>
+                            <a href="#">
+                                <i></i> Quản trị</a>
+                        </li>
+                        <li>
+                            <a href="quanly_nhanvien_danh-sach-nhan-vien.html">
+                                <i></i> Danh sách nhân viên</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <i></i> Chi tiết nhân viên</a>
+                        </li>
                     </ol>
                 </section>
                 <br>
@@ -466,17 +477,19 @@
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-group row" style="margin-bottom: -5px;">
-                                                <label for="dateCreate" class="col-sm-9 col-form-label"><i class="fa fa-calendar"></i> Ngày tạo</label>
+                                                <label for="dateCreate" class="col-sm-9 col-form-label"><i class="fa fa-calendar"></i> Ngày sinh</label>
                                                 <div class="col-sm-3">
-                                                    <a class="pull-right" id='dateCreate'>20/12/2017</a>
+                                                    <a class="pull-right" id='dateCreate'>20/12/1990</a>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-address-book"></i>
-                                            <b style="margin-bottom: 10px;">Trạng thái</b>
-                                            <br>
-                                            <input  type="checkbox" id="userStatus" class="form-control-plaintext form-control-sm" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="230" disabled>
+                                            <div class="form-group row" style="margin-bottom: -5px;">
+                                                <label class="col-sm-6 col-form-label"><i class="fa fa-address-book"></i> Trạng thái</label>
+                                                <div class="col-sm-6">
+                                                    <a class="pull-right text-green">Hoạt động</a>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -498,9 +511,6 @@
                                     <div class="active tab-pane" id="doanhthu">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h4 class="text-center">
-                                                    <strong>Doanh thu 6 tháng gần nhất</strong>
-                                                </h4>
                                                 <div class="col-md-offset-3" style="display: inline-flex;padding-top: 20px">
                                                     <label style="padding-right: 20px; padding-top: 7px;">Từ: </label>
                                                     <div class="input-group week-select col-md-3 no-padding"> 
@@ -528,7 +538,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="mathang">
+                                    <div class="tab-pane" id="mathang" style="padding-bottom: 32px;">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <fieldset>
@@ -546,14 +556,14 @@
                                                             <label id="nameLo" style="font-weight: bold;" class="noDisplay"> Tên nhân viên</label><span style="color: red;">*</span>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-                                                                <input type="text" class="form-control" id="donVi">
+                                                                <input type="text" class="form-control" id="empName" value="Nguyễn Thành Công" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label>Tên nhà cung cấp</label><span style="color: red;">*</span>
+                                                            <label>Chức vụ</label><span style="color: red;">*</span>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-codepen"></i></span>
-                                                                <select class='form-control' id='role'>
+                                                                <select class='form-control' id='Typerole' disabled>
                                                                     <option>Giám đốc</option>
                                                                     <option>Nhân viên bán hàng</option>
                                                                     <option>Nhân viên kế toán</option>
@@ -566,7 +576,7 @@
                                                             <label>Phân hệ</label>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-diamond"></i></span>
-                                                                <select class="form-control" id="roleType">
+                                                                <select class="form-control" id="roleLevel" disabled>
                                                                     <option>Quản lý</option>
                                                                     <option>Phân phối</option>
                                                                     <option> Kế toán </option>
@@ -578,7 +588,7 @@
                                                             <label>Số điện thoại</label><span style="color: red;">*</span>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                                                <input type="text" class="form-control" id="phone" value="01673228545">
+                                                                <input type="text" class="form-control" id="phone" value="01673228545" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -587,14 +597,14 @@
                                                             <label>Email</label>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                                <input type="text" class="form-control" value="CongNT@gmail.com">
+                                                                <input id="email" type="text" class="form-control" value="CongNT@gmail.com" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>Mã BHYT</label><span style="color: red;">*</span>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
-                                                                <input type="text" class="form-control" value="2322509752">
+                                                                <input id="bhyt" type="text" class="form-control" value="2322509752" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -603,14 +613,14 @@
                                                             <label>Địa chỉ</label>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                                <input type="text" class="form-control" value="108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội">
+                                                                <input id="address" type="text" class="form-control" value="108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label>Ngày tạo</label>
+                                                            <label>Ngày sinh</label>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                <input type="text" class="form-control" value="20/12/2017" disabled>
+                                                                <input id="birthDate" type="text" class="form-control" value="20/12/1990" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -718,9 +728,25 @@
             var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
             var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block pull-right' onclick='doEdit();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
             function doEdit() {
+                $('#Typerole').removeAttr('disabled');
+                $('#roleLevel').removeAttr('disabled');
+                $('#empName').removeAttr('disabled');
+                $('#bhyt').removeAttr('disabled');
+                $('#phone').removeAttr('disabled');
+                $('#address').removeAttr('disabled');
+                $('#email').removeAttr('disabled');
+                $('#birthDate').removeAttr('disabled');
                 $('#btnEdit').replaceWith(buttonSave);
             }
             function doSave() {
+                $('#Typerole').prop('disabled', true);
+                $('#roleLevel').prop('disabled', true);
+                $('#empName').prop('disabled', true);
+                $('#bhyt').prop('disabled', true);
+                $('#phone').prop('disabled', true);
+                $('#address').prop('disabled', true);
+                $('#email').prop('disabled', true);
+                $('#birthDate').prop('disabled', true);
                 $('#btnSave').replaceWith(buttonEdit);
             }
         </script>
