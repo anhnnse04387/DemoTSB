@@ -340,7 +340,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview ">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-database"></i> <span>Quản trị</span>
                                 <span class="pull-right-container">
@@ -354,7 +354,7 @@
                                 <li class="">
                                     <a href="quanly_cungcap_danh-sach-nha-cung-cap.html"><i class="fa fa-cubes"></i> Danh sách nhà cung cấp</a>
                                 </li>
-                                <li class="">
+                                <li class="active">
                                     <a href="quanly_nhanvien_danh-sach-nhan-vien.html"><i class="fa fa-users"></i> Danh sách nhân viên</a>
                                 </li>
                                 <li class="treeview">
@@ -399,10 +399,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
+							<div class="box-header" style="text-align: center;margin-top: 30px;">
+                                    <h3 class="box-title with-border"><b style="font-size: 25px;">TẠO NHÂN VIÊN</b></h3>
+                                </div>
 
                                 <div class="box-header with-border text-center menu-button">
 
-                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quantri_nguoidung_tao-nguoi-dung.html" title="Tạo Mới" data-placement="bottom" >
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quanly_nhanvien_tao-nhan-vien.html" title="Tạo Mới" data-placement="bottom" >
                                         <i class="fa fa-plus-square text-green"></i>
                                         <span><strong>Tạo Mới</strong></span>
                                     </a>
@@ -448,9 +451,7 @@
                                     </a>
                                 </div>
 
-                                <hr>
-                                <h3 style="text-align: center; font-weight: 600;">THÊM NGƯỜI DÙNG</h3>
-                                <div class="box-body" style="padding-bottom: 50px">
+                                <div class="box-body" style="padding-top: 50px; padding-bottom:50px">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <!--                                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>-->
@@ -499,7 +500,6 @@
                                                                         <i class="fa fa-group"></i>
                                                                     </span>
                                                                     <select class="form-control select2">
-                                                                        <option>Quản trị</option>
                                                                         <option>Quản lý</option>
                                                                         <option>Phân phối</option>
                                                                         <option>Hàng hóa</option>
@@ -642,12 +642,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Lưu thông tin đã nhập</h4>
+                        <h4 class="modal-title">Xác nhận tạo nhân viên mới</h4>
                     </div>
 
                     <div class="modal-footer" style="margin-right:15px">
                         <div style="margin:0 auto;">
-                            <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'quanly_nhanvien_danh-sach-nhan-vien.html'">OK</button>
+                            <button id="btnThanhToan" type="button" style="color:white;background-color:green" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'quanly_nhanvien_danh-sach-nhan-vien.html'">OK</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
