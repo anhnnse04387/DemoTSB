@@ -28,10 +28,15 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
         <style>
-            #example1 {
+            .table-condensed tbody tr td{
+                cursor: pointer;
+            }
+
+            
+            table {
                 background-color: rgb(240, 240, 240);
             }
-            #example1 thead tr th {
+            thead tr th {
                 vertical-align: middle !important;
                 text-align: center;
                 background-color: #3c8dbc;
@@ -260,63 +265,57 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
-                                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
-                                    <div class="col-md-12">
-                                        <h4>
-                                            <b>Thêm người dùng</b>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box">
-                                    <div class="box-header with-border text-center menu-button">
 
-                                        <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quantri_nguoidung_tao-nguoi-dung.html" title="Tạo Mới" data-placement="bottom" >
-                                            <i class="fa fa-plus-square text-green"></i>
-                                            <span><strong>Tạo Mới</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                            <i class="fa fa-edit text-grey"></i>
-                                            <span><strong>Sửa</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="modal" data-target="#popupConfirm" title="Lưu" data-placement="bottom">
-                                            <i class="fa fa-save text-yellow"></i>
-                                            <span><strong>Lưu</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
-                                            <i class="fa fa-close text-grey"></i>
-                                            <span><strong>Hủy</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
-                                            <i class="fa fa-check-circle text-grey"></i>
-                                            <span><strong>Chốt đơn</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-                                            <i class="fa fa-exchange text-grey"></i>
-                                            <span><strong>Đổi trả</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                            <i class="fa fa-eye text-grey"></i>
-                                            <span><strong>Xem Trước</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-                                            <i class="fa fa-print text-grey"></i>
-                                            <span><strong>In</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                            <i class="fa fa-download text-black"></i>
-                                            <span><strong>Import Excel</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-                                            <i class="fa fa-file-excel-o text-grey"></i>
-                                            <span><strong>Xuất Excel</strong></span>
-                                        </a>
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-                                            <i class="fa fa-file-pdf-o text-grey"></i>
-                                            <span><strong>Xuất PDF</strong></span>
-                                        </a>
-                                    </div>
+
+                                <div class="box-header with-border text-center menu-button">
+
+                                    <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quantri_nguoidung_tao-nguoi-dung.html" title="Tạo Mới" data-placement="bottom" >
+                                        <i class="fa fa-plus-square text-green"></i>
+                                        <span><strong>Tạo Mới</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                        <i class="fa fa-edit text-grey"></i>
+                                        <span><strong>Sửa</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn" data-toggle="modal" data-target="#popupConfirm" title="Lưu" data-placement="bottom">
+                                        <i class="fa fa-save text-yellow"></i>
+                                        <span><strong>Lưu</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                        <i class="fa fa-close text-grey"></i>
+                                        <span><strong>Hủy</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                        <i class="fa fa-check-circle text-grey"></i>
+                                        <span><strong>Chốt đơn</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                        <i class="fa fa-exchange text-grey"></i>
+                                        <span><strong>Đổi trả</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                        <i class="fa fa-eye text-grey"></i>
+                                        <span><strong>Xem Trước</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                        <i class="fa fa-print text-grey"></i>
+                                        <span><strong>In</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                        <i class="fa fa-download text-black"></i>
+                                        <span><strong>Import Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                        <i class="fa fa-file-excel-o text-grey"></i>
+                                        <span><strong>Xuất Excel</strong></span>
+                                    </a>
+                                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                        <i class="fa fa-file-pdf-o text-grey"></i>
+                                        <span><strong>Xuất PDF</strong></span>
+                                    </a>
+
                                 </div>
+                                <h3 style="text-align: center; font-weight: 600;">THÊM NGƯỜI DÙNG</h3>
                                 <div class="box-body" style="padding-bottom: 50px">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -330,7 +329,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-9" style="padding-top: 35px">
+                                                    <div class="col-md-9">
 
                                                         <div class="row" >
                                                             <div class="col-md-6">
@@ -375,35 +374,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label>Trạng thái</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-circle-o"></i>
-                                                                    </span>
-                                                                    <select class="form-control select2">
-                                                                        <option>Đang hoạt động</option>
-                                                                        <option>Ngừng hoạt động</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>DOB</label>
-                                                                <div class="input-group">
+                                                                <label>Ngày sinh</label>
+                                                                <div class="input-group week-select">
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-calendar"></i>
                                                                     </span>
-                                                                    <input class="form-control" placeholder="" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Số điện thoại</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-phone"></i>
-                                                                    </span>
-                                                                    <input class="form-control" placeholder="Số điện thoại..." type="text">
+                                                                    <input class="form-control" id="datepicker" name="week" placeholder="Ngày sinh..." type="text">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -418,12 +394,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label>Địa chỉ</label>
+                                                                <label>Số điện thoại</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">
-                                                                        <i class="fa fa-address-book"></i>
+                                                                        <i class="fa fa-phone"></i>
                                                                     </span>
-                                                                    <input class="form-control" placeholder="Địa chỉ..." type="text">
+                                                                    <input class="form-control" placeholder="Số điện thoại..." type="text">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -437,8 +413,18 @@
                                                                     <input class="form-control" placeholder="Số BHYT..." type="text">
                                                                 </div>
                                                             </div>
-                                                            
+
+                                                            <div class="col-md-6">
+                                                                <label>Địa chỉ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-address-book"></i>
+                                                                    </span>
+                                                                    <input class="form-control" placeholder="Địa chỉ..." type="text">
+                                                                </div>
+                                                            </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -473,9 +459,33 @@
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+         <!--date picker-->
+        <script src="dist/js/bootstrap-datepicker.min.js"></script>
         <!--page script-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
         <script>
+             /*
+             * Date picker
+             *
+             */
+            $('input[name=week]').datepicker({
+                format: "dd-mm-yyyy",
+                autoclose: true,
+                orientation: 'top auto'
+            }).on('show', function (e) {
+                var td = $('td', '.datepicker-days');
+                td.mouseover(function () {
+                }).mouseout(function () {
+                    $('.week', '.datepicker-days').removeClass('week');
+                });
+            }).on('hide', function (e) {
+
+                console.log($(this).val());
+            });
+
+            $('.input-group-addon', '.week-select').click(function () {
+                $('input[name=week]').datepicker('show');
+            });
             var btnCust = '';
             $("#avatar-2").fileinput({
                 overwriteInitial: true,
@@ -496,21 +506,15 @@
         </script>
 
         <div class="modal fade" id="popupConfirm" role="dialog">
-            <div class="modal-dialog" style="width:250px;height:150px">
+            <div class="modal-dialog">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Xác nhận lưu thông tin</h4>
+                        <h4 class="modal-title">Lưu thông tin đã nhập?</h4>
                     </div>
-                    <div class="modal-body">
-                        <table>
-                            <tr>
-                                <td>Lưu thông tin đã nhập?</td>
-                            </tr>
-                        </table>
-                    </div>
+                   
                     <div class="modal-footer" style="margin-right:15px">
                         <div style="margin:0 auto;">
                             <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'quantri_nguoidung_danh-sach-dang-hoat-dong.html'">OK</button>
