@@ -547,7 +547,7 @@
                                                         <div class="col-md-6">
                                                             <label>Trạng thái</label>
                                                             <div class="input-group">
-                                                                <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200">
+                                                                <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -728,6 +728,7 @@
             var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
             var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block pull-right' onclick='doEdit();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
             function doEdit() {
+				$('#status').bootstrapToggle('enable');
                 $('#Typerole').removeAttr('disabled');
                 $('#roleLevel').removeAttr('disabled');
                 $('#empName').removeAttr('disabled');
@@ -739,6 +740,7 @@
                 $('#btnEdit').replaceWith(buttonSave);
             }
             function doSave() {
+				$('#status').bootstrapToggle('disable');
                 $('#Typerole').prop('disabled', true);
                 $('#roleLevel').prop('disabled', true);
                 $('#empName').prop('disabled', true);
