@@ -12,22 +12,86 @@
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
-             folder instead of downloading all of them to reduce the load. -->
+           folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+        <style>
+            .custom-btn {
+                padding: 10px 5px;
+                min-width: 60px;
+                height: 40px;
+            }
 
+            .box-body-custom-detail-custom {
+                font-size: 20px;
+            }
+
+            th {
+                color: white;
+                background-color: #3c8dbc;
+                font-weight: bold;
+            }
+
+            th,
+            td {
+                text-align: center;
+            }
+            #mainTable {
+                background-color: rgb(240, 240, 240);
+            }
+
+            #mainTable thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            #mainTable tbody td:nth-child() {
+                text-align: left;
+            }
+
+            #mainTable tbody td:nth-child(4),
+            #mainTable tbody td:nth-child(5) {
+                text-align: right;
+            }
+            /* helpers/align.css */
+            .align {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            html {
+                height: 100%;
+            }
+            svg {
+                height: auto;
+                max-width: 100%;
+                vertical-align: middle;
+            }
+            #scrollContainer p {
+                margin: 0;
+                line-height: 30px;
+                font-size: 20px;
+                color: white;
+            }
+            #scrollContainer {
+                height: 30px;
+                margin-top: 10px;
+                overflow: hidden;
+            }
+            #scrollBox {
+                position: relative;   
+            }
+        </style>
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
         <div class="wrapper">
@@ -526,13 +590,117 @@
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- FastClick -->
-        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- DataTables -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <!-- Chart JS -->
+        <script src="dist/js/Chart.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+        <!-- page script -->
+        <script>
+                                                    $(function () {
+                                                        $('#example1').DataTable({
+                                                            'paging': true,
+                                                            'lengthChange': true,
+                                                            'searching': false,
+                                                            'ordering': true,
+                                                            'info': true,
+                                                            'autoWidth': true,
+                                                            'language': {
+                                                                "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                                                                'lengthMenu': "Hiển thị _MENU_ kết quả",
+                                                                "paginate": {
+                                                                    "first": "Trang đầu",
+                                                                    "last": "Trang cuối",
+                                                                    "next": "Tiếp",
+                                                                    "previous": "Trước"
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                    var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' style='width: 100px; margin-top: 20px;' onclick='doSave();'><b>Lưu</b></a>"];
+                                                    var buttonEdit = ["<a id='btnEditor' class='btn btn-primary btn-block pull-right' style='width: 100px; margin-top: 20px;' onclick='doEdit();'><b>Chỉnh sửa</b></a>"];
+                                                    function doEdit() {
+                                                        document.getElementById("editor1").disabled = false;
+                                                        $('#btnEditor').replaceWith(buttonSave);
+                                                    }
+                                                    function doSave() {
+                                                        document.getElementById("editor1").disabled = true;
+                                                        $('#btnSave').replaceWith(buttonEdit);
+                                                    }
+        </script>
+        <script>
+            $(document).ready(function () {
+                function scroll() {
+                    $("#scrollBox").hover(function () {
+                        $("#scrollBox").stop();
+                        window.clearInterval(scrollInterval);
+                    });
+                    var x = 0;
+                    var scrollInterval = setInterval(function () {
+                        $("#scrollBox").delay(2000).animate({top: "-=30"}, 1000);
+                        if (++x === 2) {
+                            window.clearInterval(scrollInterval);
+                            $("#scrollBox").delay(2000).animate({top: "0px"}, 1000);
+                            scroll();
+                        }
+                    });
+                }
+                ;
+                scroll();
+            });
+            $(document).on('hide.bs.modal', '#noteModal', function () {
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(function () {
+                    location.reload();
+                }, 0);
+            });
+        </script>
+        <script>
+            var buttonSaveSetting = ["<a id='btnSaveSetting' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
+            var buttonEditSetting = ["<a id='btnEditSetting' class='btn btn-primary btn-block pull-right' onclick='doEditSetting();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
+            function doEditSetting() {
+                $('#phone').removeAttr('disabled');
+                $('#address').removeAttr('disabled');
+                $('#email').removeAttr('disabled');
+                $('#birthDate').removeAttr('disabled');
+                $('#btnEditSetting').replaceWith(buttonSaveSetting);
+            }
+            function doSaveSetting() {
+                $('#phone').prop('disabled', true);
+                $('#address').prop('disabled', true);
+                $('#email').prop('disabled', true);
+                $('#birthDate').prop('disabled', true);
+                $('#btnSaveSetting').replaceWith(buttonEditSetting);
+            }
+        </script>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa đổi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn sửa đổi?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick='doSaveSetting();'/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
