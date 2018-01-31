@@ -459,9 +459,9 @@
                                             <a class="pull-right">CongNT@gmail.com</a>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-id-card-o"></i>
-                                            <b>Mã BHYT</b>
-                                            <a class="pull-right">2322509752</a>
+                                            <i class="fa fa-calendar"></i>
+                                            <b>Ngày sinh</b>
+                                            <a class="pull-right">20-12-1990</a>
                                         </li>
                                         <li class="list-group-item">
                                             <i class="fa fa-address-book"></i>
@@ -470,9 +470,9 @@
                                             <span style="color: #4682b4">108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội</span>
                                         </li>
                                         <li class="list-group-item">
-                                            <i class="fa fa-calendar"></i>
-                                            <b>Ngày sinh</b>
-                                            <a class="pull-right">20-12-1990</a>
+                                            <i class="fa fa-id-card-o"></i>
+                                            <b>Mã BHYT</b>
+                                            <a class="pull-right">2322509752</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -698,7 +698,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label>Ngày sinh</label>
+                                                            <label>Ngày sinh</label><span style="color: red;">*</span>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                 <input id="birthDate" type="text" class="form-control" value="20/12/1990" disabled>
@@ -747,13 +747,14 @@
                                                     $(function () {
                                                         $('#example1').DataTable({
                                                             'paging': true,
-                                                            'lengthChange': false,
+                                                            'lengthChange': true,
                                                             'searching': false,
                                                             'ordering': true,
                                                             'info': true,
                                                             'autoWidth': true,
                                                             'language': {
                                                                 "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                                                                'lengthMenu': "Hiển thị _MENU_ kết quả",
                                                                 "paginate": {
                                                                     "first": "Trang đầu",
                                                                     "last": "Trang cuối",
