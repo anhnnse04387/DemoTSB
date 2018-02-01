@@ -27,6 +27,8 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
+         <!-- DataTables -->
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <style>
             .example1 {
                 background-color: rgb(240, 240, 240);
@@ -278,8 +280,8 @@
                                             <i class="fa fa-edit text-grey"></i>
                                             <span><strong>Sửa</strong></span>
                                         </a>
-                                        <a class="btn btn-app custom-btn" data-toggle="modal" data-target="#popupConfirm" title="Lưu" data-placement="bottom">
-                                            <i class="fa fa-save text-yellow"></i>
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="modal" data-target="#popupConfirm" title="Lưu" data-placement="bottom">
+                                            <i class="fa fa-save text-grey"></i>
                                             <span><strong>Lưu</strong></span>
                                         </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
@@ -341,7 +343,7 @@
                                                             <td class="text-center">69</td>
                                                             <td class="text-center">Đang hoạt động</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Không hoạt động" data-placement="bottom">
+                                                                <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm" title="Không hoạt động" data-placement="bottom">
                                                                     <i class="fa fa-bell-slash text-red"></i>
                                                                 </a>
                                                             </td>
@@ -353,7 +355,7 @@
                                                             <td class="text-center">45</td>
                                                             <td class="text-center">Đang hoạt động</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row2" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Không hoạt động" data-placement="bottom">
+                                                                <a id="btn_row2" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm" title="Không hoạt động" data-placement="bottom">
                                                                     <i class="fa fa-bell-slash text-red"></i>
                                                                 </a>
                                                             </td>
@@ -365,7 +367,7 @@
                                                             <td class="text-center">50</td>
                                                             <td class="text-center">Đang hoạt động</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row3" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Không hoạt động" data-placement="bottom">
+                                                                <a id="btn_row3" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm" title="Không hoạt động" data-placement="bottom">
                                                                     <i class="fa fa-bell-slash text-red"></i>
                                                                 </a>
                                                             </td>
@@ -377,7 +379,7 @@
                                                             <td class="text-center">7</td>
                                                             <td class="text-center">Ngưng hoạt động</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row4" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Hoạt động" data-placement="bottom">
+                                                                <a id="btn_row4" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm" title="Hoạt động" data-placement="bottom">
                                                                     <i class="fa fa-bell text-red"></i>
                                                                 </a>
                                                             </td>
@@ -404,7 +406,56 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr></tr>
+                                                        <tr>
+                                                            <td class="text-center">1</td>
+                                                            <td>Trang chủ</td>
+                                                            <td>Trang chủ</td>
+                                                            <td class="text-center">
+                                                                <a id="btn_delete1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm-delete" title="Xóa" data-placement="bottom">
+                                                                    <i class="fa fa-trash text-black"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">2</td>
+                                                            <td>Người dùng</td>
+                                                            <td>Người dùng đang hoạt động</td>
+                                                            <td class="text-center">
+                                                                <a id="btn_delete2" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm-delete" title="Xóa" data-placement="bottom">
+                                                                    <i class="fa fa-trash text-black"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">3</td>
+                                                            <td>Người dùng</td>
+                                                            <td>Người dùng ngừng hoạt động</td>
+                                                            <td class="text-center">
+                                                                <a id="btn_delete3" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm-delete" title="Xóa" data-placement="bottom">
+                                                                    <i class="fa fa-trash text-black"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">4</td>
+                                                            <td>Hàng hóa</td>
+                                                            <td>Danh mục</td>
+                                                            <td class="text-center">
+                                                                <a id="btn_delete4" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm-delete" title="Xóa" data-placement="bottom">
+                                                                    <i class="fa fa-trash text-black"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">5</td>
+                                                            <td>Hàng hóa</td>
+                                                            <td>Sản phẩm</td>
+                                                            <td class="text-center">
+                                                                <a id="btn_delete5" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="modal" data-target="#confirm-delete" title="Xóa" data-placement="bottom">
+                                                                    <i class="fa fa-trash text-black"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </fieldset>
@@ -440,82 +491,12 @@
                                                             <td>09683456823</td>
                                                             <td>duongdt@gmail.com</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <a id="btn_row1" class="btn btn-app custom-btn smallBtn" href="quantri_nguoidung_chi-tiet-nguoi-dung.html" target="_blank" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                     <i class="fa fa-edit text-blue"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr id="row1">
-                                                            <td colspan="8">
-                                                                <div class="container-fluid">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>Tên</label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">
-                                                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                                                </span>
-                                                                                <input type="text" class="form-control" value="Diệp Thiếu "/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label>Giới tính</label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">
-                                                                                    <i class="fa fa-user-o" aria-hidden="true"></i>
-                                                                                </span>
-                                                                                <select class="form-control select2">
-                                                                                    <option selected>Nam</option>
-                                                                                    <option>Nữ</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>Phân hệ</label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">
-                                                                                    <i class="fa fa-group" aria-hidden="true"></i>
-                                                                                </span>
-                                                                                <select class="form-control select2">
-                                                                                    <option selected>Phân phối</option>
-                                                                                    <option>Kế toán</option>
 
-                                                                                    <option>Hàng hóa</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label>Trạng thái</label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon">
-                                                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                                                </span>
-                                                                                <select class="form-control select2">
-                                                                                    <option>Đang hoạt động</option>
-                                                                                    <option>Ngừng hoạt động</option>
-
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <br>
-                                                                    <div class="row">
-                                                                        <div class="">
-                                                                            <div class="col-md-10"></div>
-                                                                            <div class="col-md-1">
-                                                                                <a href="" id="cancel_btn2" class="btn btn-default btn-block">Hủy</a>
-                                                                            </div>
-                                                                            <div class="col-md-1">
-                                                                                <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm" >Sửa</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
                                                         <tr>
                                                             <td class="text-center">2</td>
                                                             <td><a href="quantri_nguoidung_chi-tiet-nguoi-dung.html">Ngô Tùng Sơn</a></td>
@@ -526,7 +507,7 @@
                                                             <td>0962346562</td>
                                                             <td>sonnt@gmail.com</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row2" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <a id="btn_row2" class="btn btn-app custom-btn smallBtn" href="quantri_nguoidung_chi-tiet-nguoi-dung.html" target="_blank" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                     <i class="fa fa-edit text-blue"></i>
                                                                 </a>
                                                             </td>
@@ -541,7 +522,7 @@
                                                             <td>09695672789</td>
                                                             <td>nhict@gmail.com</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row3" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <a id="btn_row3" class="btn btn-app custom-btn smallBtn" href="quantri_nguoidung_chi-tiet-nguoi-dung.html" target="_blank" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                     <i class="fa fa-edit text-blue"></i>
                                                                 </a>
                                                             </td>
@@ -556,7 +537,7 @@
                                                             <td>09565672789</td>
                                                             <td>minhntb@gmail.com</td>
                                                             <td class="text-center">
-                                                                <a id="btn_row4" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <a id="btn_row4" class="btn btn-app custom-btn smallBtn" href="quantri_nguoidung_chi-tiet-nguoi-dung.html" target="_blank" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                     <i class="fa fa-edit text-blue"></i>
                                                                 </a>
                                                             </td>
@@ -596,9 +577,68 @@
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+          <!-- DataTables -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+         <script>
+            $(function () {
+                $('.example1').DataTable({
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'language': {
+                        "lengthMenu":"Hiển thị _MENU_ dòng",
+                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                        "paginate": {
+                            "first": "Trang đầu",
+                            "last": "Trang cuối",
+                            "next": "Tiếp",
+                            "previous": "Trước"
+                        }
+                    }
+                });
+            });
+        </script>
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Phân hệ này sẽ không nhìn thấy trang này nữa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn xóa?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick="window.location.href='quantri_phanhe_danh-sach-phan-he.html'"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận thay đổi trạng thái?</h4>
+                    </div>
+                   
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick="window.location.href='quantri_phanhe_danh-sach-phan-he.html'"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
