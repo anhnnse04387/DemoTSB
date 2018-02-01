@@ -13,8 +13,12 @@
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <!-- Back to top -->
+        <link rel="stylesheet" href="dist/css/back-to-top.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <!-- Avatar kv-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -75,6 +79,26 @@
                 height: auto;
                 max-width: 100%;
                 vertical-align: middle;
+            }
+            .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+                text-align: center;
+            }
+            .kv-avatar {
+                display: inline-block;
+            }
+            .kv-avatar .file-input {
+                display: table-cell;
+                width: 213px;
+                padding-top: 25px;
+            }
+            .kv-reqd {
+                color: red;
+                font-family: monospace;
+                font-weight: normal;
             }
         </style>
     </head>
@@ -399,7 +423,7 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="box">
+                            <div class="box box-primary">
                                 <div class="box-body box-profile">
                                     <img class="profile-user-img img-responsive img-circle" src="dist/img/hph.jpg" alt="User profile picture">
                                     <h3 class="profile-username text-center">Công ty HPH</h3>
@@ -455,6 +479,9 @@
                                         <li class="">
                                             <a href="#mathang" data-toggle="tab" aria-expanded="false">Mặt hàng</a>
                                         </li>
+                                        <li class="">
+                                            <a href="#chinhsua" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="tab-content">
@@ -478,6 +505,105 @@
                                                 <label class="col-md-4" style="color:#ff3300">50 triệu đồng</label>
                                             </div>
                                         </div>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4>
+                                                        <b>DANH SÁCH ĐƠN HÀNG</b>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <table id="mainTable" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th>Lô số</th>
+                                                                <th>Ngày</th>
+                                                                <th>Tổng tiền</th>
+                                                                <th>Thanh toán</th>
+                                                                <th>Trạng thái</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>
+                                                                    <a href="#">81265-0</a>
+                                                                </td>
+                                                                <td>22-12-2017</td>
+                                                                <td>20.000.000</td>
+                                                                <td>20.000.000</td>
+                                                                <td>
+                                                                    <span class="label label-primary">Đang xử lí</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>
+                                                                    <a href="#">81264-0</a>
+                                                                </td>
+                                                                <td>21-12-2017</td>
+                                                                <td>30.000.000</td>
+                                                                <td>20.000.000</td>
+                                                                <td>
+                                                                    <span class="label label-primary">Đang xử lí</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>
+                                                                    <a href="#">81263-1</a>
+                                                                </td>
+                                                                <td>19-12-2017</td>
+                                                                <td>50.000.000</td>
+                                                                <td>32.500.000</td>
+                                                                <td>
+                                                                    <span class="label label-primary">Đang xử lí</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>
+                                                                    <a href="#">81262-1</a>
+                                                                </td>
+                                                                <td>18-12-2017</td>
+                                                                <td>20.000.000</td>
+                                                                <td>12.500.000</td>
+                                                                <td>
+                                                                    <span class="label label-primary">Đang xử lí</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td>
+                                                                    <a href="#">81261-0</a>
+                                                                </td>
+                                                                <td>01-12-2017</td>
+                                                                <td>70.000.000</td>
+                                                                <td>70.000.000</td>
+                                                                <td>
+                                                                    <span class="label label-primary">Đang xử lí</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot></tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span class="label label-default pull-right" id="attach_box" style="padding : 5px;">
+                                                        <a href="phanphoi_toBeContinue.html" style="color:black">Xem tất cả</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                        </div>
                                     </div>
                                     <div class="tab-pane" id="mathang">
                                         <div class="container-fluid">
@@ -489,108 +615,71 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="tab-pane" id="chinhsua" style="padding-top: 32px;">
+                                        <div class="row">
+                                            <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+                                            <form class="form form-vertical">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-3 text-center">
+                                                            <div class="kv-avatar">
+                                                                <div class="file-loading">
+                                                                    <input id="avatar-2" name="avatar-2" type="file" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+                                                                    <label>Đơn vị</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-user"></i>
+                                                                        </span>
+                                                                        <input class="form-control" value="Công ty HD-T701">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin-top: 10px;">
+                                                                    <label>Địa chỉ</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-address-book"></i>
+                                                                        </span>
+                                                                        <input class="form-control" value="307 Nguyễn Trãi, Thanh Xuân Hà Nội" type="text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin-top: 10px;">
+                                                                    <label>Số điện thoại</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-phone"></i>
+                                                                        </span>
+                                                                        <input class="form-control" value="0912509752" type="text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin-top: 10px;">
+                                                                    <label>MST</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-bank"></i>
+                                                                        </span>
+                                                                        <input class="form-control" value="54534593" type="text">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>
+                                                <a href="#" class="btn btn-primary btn-block pull-right" style="width: 100px; margin-right: 15px; margin-top: 20px;">
+                                                    <b>Chỉnh sửa</b>
+                                                </a>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <br>
                                 <br>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4>
-                                                <b>DANH SÁCH ĐƠN HÀNG</b>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
 
-                                        <div class="col-md-12">
-                                            <table id="mainTable" class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>STT</th>
-                                                        <th>Lô số</th>
-                                                        <th>Ngày</th>
-                                                        <th>Tổng tiền</th>
-                                                        <th>Thanh toán</th>
-                                                        <th>Trạng thái</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>
-                                                            <a href="#">81265-0</a>
-                                                        </td>
-                                                        <td>22-12-2017</td>
-                                                        <td>20.000.000</td>
-                                                        <td>20.000.000</td>
-                                                        <td>
-                                                            <span class="label label-primary">Đang xử lí</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>
-                                                            <a href="#">81264-0</a>
-                                                        </td>
-                                                        <td>21-12-2017</td>
-                                                        <td>30.000.000</td>
-                                                        <td>20.000.000</td>
-                                                        <td>
-                                                            <span class="label label-primary">Đang xử lí</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>
-                                                            <a href="#">81263-1</a>
-                                                        </td>
-                                                        <td>19-12-2017</td>
-                                                        <td>50.000.000</td>
-                                                        <td>32.500.000</td>
-                                                        <td>
-                                                            <span class="label label-primary">Đang xử lí</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>
-                                                            <a href="#">81262-1</a>
-                                                        </td>
-                                                        <td>18-12-2017</td>
-                                                        <td>20.000.000</td>
-                                                        <td>12.500.000</td>
-                                                        <td>
-                                                            <span class="label label-primary">Đang xử lí</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>
-                                                            <a href="#">81261-0</a>
-                                                        </td>
-                                                        <td>01-12-2017</td>
-                                                        <td>70.000.000</td>
-                                                        <td>70.000.000</td>
-                                                        <td>
-                                                            <span class="label label-primary">Đang xử lí</span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot></tfoot>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <span class="label label-default pull-right" id="attach_box" style="padding : 5px;">
-                                                <a href="phanphoi_toBeContinue.html" style="color:black">Xem tất cả</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -600,6 +689,7 @@
         <!-- ./wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+            <a href="#0" class="cd-top">Top</a>
         </footer>
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -608,8 +698,12 @@
         <!-- DataTables -->
         <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- BackToTop -->
+        <script src="dist/js/back-to-top.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- Avatar Kv -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
         <!-- FastClick -->
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
@@ -667,6 +761,25 @@
                         display: true,
                     }
                 }
+            });
+        </script>
+        <script>
+            var btnCust = '';
+            $("#avatar-2").fileinput({
+                overwriteInitial: true,
+                maxFileSize: 1500,
+                showClose: false,
+                showCaption: false,
+                showBrowse: false,
+                browseOnZoneClick: true,
+                removeLabel: '',
+                removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+                removeTitle: 'Cancel or reset changes',
+                elErrorContainer: '#kv-avatar-errors-2',
+                msgErrorClass: 'alert alert-block alert-danger',
+                defaultPreviewContent: '<img src="dist/img/hph.jpg" style="width:130px; height:130px;" alt="Your Avatar"><h6 class="text-muted">Lựa chọn ảnh</h6>',
+                layoutTemplates: {main2: '{preview} ' + btnCust + ' {remove} {browse}'},
+                allowedFileExtensions: ["jpg", "png", "gif"]
             });
         </script>
     </body>
