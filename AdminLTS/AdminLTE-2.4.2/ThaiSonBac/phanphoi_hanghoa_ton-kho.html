@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+		<link rel="stylesheet" href="dist/css/back-to-top.css">
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
@@ -404,7 +405,7 @@
                             <div class="box">        
                                 <div  class="row" style="margin-right: 0px;margin-left: 0px;margin-top: 10px">
                                     <div class="col-md-2">
-                                        <h4><b>Tồn Kho</b></h4>
+                                        <h4><b>TỒN KHO</b></h4>
                                     </div>
                                 </div>
                                 <div class="box">
@@ -1403,6 +1404,7 @@
         <!-- ./wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+			<a href="#0" class="cd-top">Top</a>
         </footer>
 
         <!-- jQuery 3 -->
@@ -1414,35 +1416,16 @@
         <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="dist/js/back-to-top.js"></script>
         <!-- FastClick -->
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
+        
         <script src="dist/js/autoNumeric.min.js"></script>
         <!-- page script -->
-        <script>
-                                                                $(document).ready(function () {
-                                                                    $(function () {
-                                                                        $('#example1').DataTable()
-                                                                        $('#example2').DataTable({
-                                                                            'paging': true,
-                                                                            'lengthChange': false,
-                                                                            'searching': false,
-                                                                            'ordering': true,
-                                                                            'info': true,
-                                                                            'autoWidth': false
-                                                                        })
-                                                                    });
-                                                                    $('.number').autoNumeric('init', {minimumValue: '0', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
-                                                                });
-                                                                $(document).on('click', 'input[type="checkbox"]', function () {
-                                                                    $('input[type="checkbox"]').not(this).prop('checked', false);
-                                                                });
-
-
-        </script>
+       
         <script>
             $('#row1').hide();
             $('#btn_row1').click(function () {
@@ -1634,24 +1617,18 @@
             </div>
         </div>
         <div class="modal fade" id="popupConfirm1" role="dialog">
-            <div class="modal-dialog" style="width:250px;height:150px">
+            <div class="modal-dialog">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Xác nhận sửa thông tin</h4>
+                        <h4 class="modal-title">Xác nhận lưu thông tin đã sửa?</h4>
                     </div>
-                    <div class="modal-body">
-                        <table>
-                            <tr>
-                                <td>Lưu thông tin đã sửa?</td>
-                            </tr>
-                        </table>
-                    </div>
+                   
                     <div class="modal-footer" style="margin-right:15px">
                         <div style="margin:0 auto;">
-                            <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_hanghoa_ton-kho-sua.html'">OK</button>
+                            <button id="btnThanhToan" type="button" style="color:white;background-color:green" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'phanphoi_hanghoa_ton-kho-sua.html'">OK</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
