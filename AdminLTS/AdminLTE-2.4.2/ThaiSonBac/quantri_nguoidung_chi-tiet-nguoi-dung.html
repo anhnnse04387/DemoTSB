@@ -361,10 +361,10 @@
                             <div class="nav-tabs-custom">
                                 <div class="nav nav-tabs">
                                     <ul class="nav nav-tabs">
-                                        <li class="active">
+                                        <li class="active" id="tab1">
                                             <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Công việc</a>
                                         </li>
-                                        <li class="">
+                                        <li class="" id="tab2">
                                             <a href="#mathang" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
                                         </li>
                                     </ul>
@@ -578,6 +578,17 @@
             });
         </script>
         <script>
+            $(document).ready(function () {
+                var url = window.location.href;
+                if (url !== '') {
+                    if (url.indexOf("chinh-sua") !== -1) {
+                        $('#doanhthu').removeClass("active");
+                        $('#tab1').removeClass("active");
+                        $('#mathang').addClass("active");
+                        $('#tab2').addClass("active");
+                    }
+                }
+            });
             $(function () {
                 //Date picker
                 $('#datepicker').datepicker({
@@ -592,7 +603,7 @@
             var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
             var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block pull-right' onclick='doEdit();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
             function doEdit() {
-				$('#status').bootstrapToggle('enable');
+                $('#status').bootstrapToggle('enable');
                 $('#Typerole').removeAttr('disabled');
                 $('#roleLevel').removeAttr('disabled');
                 $('#empName').removeAttr('disabled');
@@ -604,7 +615,7 @@
                 $('#btnEdit').replaceWith(buttonSave);
             }
             function doSave() {
-				$('#status').bootstrapToggle('disable');
+                $('#status').bootstrapToggle('disable');
                 $('#Typerole').prop('disabled', true);
                 $('#roleLevel').prop('disabled', true);
                 $('#empName').prop('disabled', true);
@@ -616,7 +627,7 @@
                 $('#btnSave').replaceWith(buttonEdit);
             }
         </script>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
