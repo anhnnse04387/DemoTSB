@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+		<!-- BackToTop -->
+        <link rel="stylesheet" href="dist/css/back-to-top.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -71,7 +73,7 @@
         <div class="wrapper">
 
             <header class="main-header">
-                               <!-- Logo -->
+                   <!-- Logo -->
     <a href="quanly_index.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>SB</span>
@@ -408,7 +410,6 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="box-header"></div>
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -618,9 +619,10 @@
                 </section>
             </div>
         </div>
-
+		
         <footer class="main-footer">
             <strong>Copyright &copy; 2017 <a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+			<a href="#0" class="cd-top">Top</a>
         </footer>
 
         <!-- jQuery 3 -->
@@ -641,6 +643,8 @@
         <!-- page script -->
         <!-- bootstrap datepicker -->
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+		<!-- BackToTop -->
+        <script src="dist/js/back-to-top.js"></script>
         <!-- Select2 -->
         <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
         <!-- iCheck 1.0.1 -->
@@ -648,13 +652,14 @@
             $(function () {
                 $('#example1').DataTable({
                     'paging': true,
-                    'lengthChange': false,
+                    'lengthChange': true,
                     'searching': false,
                     'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'language': {
                         "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+						"lengthMenu": "Hiển thị _MENU_ kết quả",
                         "paginate": {
                             "first": "Trang đầu",
                             "last": "Trang cuối",

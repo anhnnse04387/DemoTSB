@@ -100,8 +100,7 @@
         <div class="wrapper">
 
             <header class="main-header">
-                <!-- Logo -->
- <!-- Logo -->
+                   <!-- Logo -->
     <a href="quanly_index.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>SB</span>
@@ -227,7 +226,7 @@
                     <!-- /.search form -->
 					<!-- sidebar menu: : style can be found in sidebar.less -->
                   <ul class="sidebar-menu" data-widget="tree">
-                        <li class="">
+                        <li class="menu-open">
                             <a href="quanly_index.html">
                                 <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                             </a>
@@ -322,7 +321,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview menu-open">
+                        <li class="treeview menu-open active">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>Công nợ</span>
                                 <span class="pull-right-container">
@@ -440,18 +439,13 @@
                                     </h4>
                                 </div>
 
-                              <div class="box">
+                                <div class="box">
                                     <div class="box-header with-border text-center menu-button">
-                                        <a href="accountant_notification.html" class="btn btn-app custom-btn" data-toggle="modal" title="Thanh Toán" data-placement="bottom" data-target="#confirm-process">
-                                            <i class="fa fa-plus text-green"></i>
-                                            <span><strong>Thêm</strong></span>
-                                        </a>
-
-                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
-                                            <i class="fa fa-plus-square text-grey"></i>
+                                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled"  title="Tạo Mới" data-placement="bottom" >
+                                            <i class="fa fa-plus-square  text-grey"></i>
                                             <span><strong>Tạo Mới</strong></span>
                                         </a>
-                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                             <i class="fa fa-edit text-grey"></i>
                                             <span><strong>Sửa</strong></span>
                                         </a>
@@ -463,12 +457,15 @@
                                             <i class="fa fa-close text-grey"></i>
                                             <span><strong>Hủy</strong></span>
                                         </a>
-
+                                        <a class="btn btn-app custom-btn" data-toggle="modal" title="Thanh toán" data-target="#confirm-process" data-placement="bottom">
+                                            <i class="fa fa-check-circle text-green"></i>
+                                            <span><strong>Thanh toán</strong></span>
+                                        </a>
                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xử Lý" data-placement="bottom">
                                             <i class="fa fa-exchange text-grey"></i>
                                             <span><strong>Đổi trả</strong></span>
                                         </a>
-                                         <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem trước" data-placement="bottom">
+                                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem trước" data-placement="bottom">
                                             <i class="fa fa-eye text-grey"></i>
                                             <span><strong>Xem trước</strong></span>
                                         </a>
@@ -490,7 +487,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                
+
 
                                 <div class="box-body">
                                     <hr />
@@ -650,37 +647,14 @@
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <!-- Select2 -->
         <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-        <!-- SlimScroll -->
-		<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- iCheck 1.0.1 -->
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-            $(function () {
-                $('#example1').DataTable({
-                    'searching': false,
-                    'language': {
-                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                        "lengthMenu": "Hiển thị _MENU_ dòng",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Tiếp",
-                            "previous": "Trước"
-                        }
-                    }
-                })
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
+
         </script>
         <script>
             $(function () {
@@ -723,6 +697,10 @@
                             <td style="padding-left:15px;width:250px"><input type="text" id="datepicker" class="form-control"/></td>
                         </tr>
                         <tr>
+                            <td><i class="fa fa-datetime"><b>  Loại hàng: </b></td>
+                            <td style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
+                        </tr>
+                        <tr>
                             <td><i class="fa fa-datetime"><b>  Số PO: </b></td>
                             <td style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
                         </tr>
@@ -738,10 +716,7 @@
                             <td><i class="fa fa-datetime"><b>  Tiền hàng: </b></td>
                             <td style="padding-left:15px;width:250px"><input onkeypress='return event.charCode >= 48 && event.charCode <= 57' type="text" class="form-control" id="tienHang" onchange="calculate()"/></td>
                         </tr>
-                        <tr>
-                            <td><i class="fa fa-datetime"><b>  Loại hàng: </b></td>
-                            <td style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
-                        </tr>
+
                         <tr>
                             <td><i class="fa fa-money"><b>  Thanh toán: </b></td>
                             <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input id="thanhToan" type="text" class="form-control" onchange="calculate()"/></td>
@@ -757,11 +732,29 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" style="color:white;background-color:#32CD32" class="btn btn-default" data-toggle="modal" data-target="#popupConfirm">Thêm</button>
+                    <button type="button" style="color:white;background-color:green" class="btn btn-default" data-toggle="modal" data-target="#popupConfirm">Thêm</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
         </div>
+        <script>
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = mm + '/' + dd + '/' + yyyy;
+//            document.getElementById("datepicker").innerHTML(today);
+            $('#datepicker').val(today);
+        </script>
         <!--popup confirm-->
         <div class="modal fade" id="popupConfirm" role="dialog">
             <div class="modal-dialog" style="width:250px;height:150px">
@@ -780,7 +773,7 @@
                         </table>
                     </div>
                     <div class="modal-footer" style="margin-right:15px">
-                        <button id="btnThanhToan" type="button" style="color:white;background-color:#337ab7" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'quanly_congno_chi-tiet-no-cung-cap-them-moi.html'">Xác nhận</button>
+                        <button id="btnThanhToan" type="button" style="color:white;background-color:green" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'quanly_congno_chi-tiet-no-cung-cap-them-moi.html'">Xác nhận</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
