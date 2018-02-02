@@ -98,7 +98,7 @@
                         <i class="glyphicon glyphicon-lock"></i>
                         <input type="password" id="password" style="padding-left: 41px;" class="customInput" placeholder="Mật khẩu"/>
                     </div>
-                    <input type="button" onclick="location.href = 'phanphoi_index.html';" value="đăng nhập"/>
+                    <input type="button" onclick="forward();" value="đăng nhập"/>
                 </form>
             </div>
             <!-- /.login-box-body -->
@@ -109,5 +109,23 @@
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+                        function forward() {
+                            var username = document.getElementById('username').value;
+                            if (username == "phan_phoi") {
+                                window.location.href = "phanphoi_index.html";
+                            }else if(username == "ke_toan") {
+                                window.location.href = "ketoan_index.html";
+                            }else if(username == "hang_hoa") {
+                                window.location.href = "hanghoa_index.html";
+                            }else if(username == "quan_ly") {
+                                window.location.href = "quanly_index.html";
+                            }else if(username == "quan_tri") {
+                                window.location.href = "quantri_index.html";
+                            }else {
+                                window.alert('Error');
+                            }
+                        }
+        </script>
     </body>
 </html>
