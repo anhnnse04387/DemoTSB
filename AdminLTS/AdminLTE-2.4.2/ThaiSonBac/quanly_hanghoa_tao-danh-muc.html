@@ -406,7 +406,7 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="box box-info">
+                            <div class="box">
                                 <div class="box-header" style="text-align: center;margin-top: 30px;">
                                     <h3 class="box-title with-border"><b style="font-size: 25px;">Tạo danh mục</b></h3>
                                 </div>
@@ -423,17 +423,17 @@
                                                 <i class="fa fa-edit text-gray"></i>
                                                 <span><strong>Sửa</strong></span>
                                             </a>
-                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" data-target="#confirmSave">
-                                                <i class="fa fa-save text-orange"></i>
+                                            <a class="btn btn-app custom-btn disabled">
+                                                <i class="fa fa-save text-gray"></i>
                                                 <span><strong>Lưu</strong></span>
                                             </a>
                                             <a class="btn btn-app custom-btn disabled">
                                                 <i class="fa fa-close text-gray"></i>
                                                 <span><strong>Hủy</strong></span>
                                             </a>
-                                            <a class="btn btn-app custom-btn disabled">
-                                                <i class="fa fa-check-circle text-gray"></i>
-                                                <span><strong>Chốt đơn</strong></span>
+                                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt" data-placement="bottom" data-target="#confirmSave">
+                                                <i class="fa fa-check-circle text-green"></i>
+                                                <span><strong>Chốt</strong></span>
                                             </a>
                                             <a class="btn btn-app custom-btn disabled">
                                                 <i class="fa fa-exchange text-gray"></i>
@@ -500,79 +500,82 @@
                                         </div>
                                         <div class="box-header">
                                             <div class="row">
-                                                <div class="col-xs-12 table-responsive">                     
-                                                    <table class="table table-striped mainTable">
-                                                        <thead>
-                                                            <tr>
-                                                                <th style="width: 30px;">STT</th>
-                                                                <th>Sản phẩm</th>
-                                                                <th style="width: 100px;">Danh mục</th>
-                                                                <th style="width: 50px;">Số lượng cái/thùng</th>
-                                                                <th style="width: 150px;">Nhà cung cấp</th>
-                                                                <th style="width: 80px;">Giá trước VAT (USD)</th>
-                                                                <th style="width: 60px;">Thuế NK (%)</th>
-                                                                <th style="width: 60px;">VAT (%)</th>
-                                                                <th style="width: 80px;">Giá sau VAT (USD)</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                                <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <div class="col-xs-12 table-responsive">    
+                                                    <fieldset>
+                                                        <legend><b style="font-size: 17px;">Danh sách sản phẩm</b></legend>
+                                                        <table class="table table-striped mainTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width: 30px;">STT</th>
+                                                                    <th>Sản phẩm</th>
+                                                                    <th style="width: 100px;">Danh mục</th>
+                                                                    <th style="width: 50px;">Số lượng cái/thùng</th>
+                                                                    <th style="width: 150px;">Nhà cung cấp</th>
+                                                                    <th style="width: 80px;">Giá trước VAT (USD)</th>
+                                                                    <th style="width: 60px;">Thuế NK (%)</th>
+                                                                    <th style="width: 60px;">VAT (%)</th>
+                                                                    <th style="width: 80px;">Giá sau VAT (USD)</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="vertical-align: middle; text-align: center;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                    <td style="vertical-align: middle; text-align: right;" contenteditable="true"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </fieldset>
                                                 </div>
                                                 <!-- /.col -->
                                             </div>
