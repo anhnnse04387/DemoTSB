@@ -27,7 +27,7 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="dist/css/font/GoogleFont.css">
-         <!-- DataTables -->
+        <!-- DataTables -->
         <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <style>
             .example1 {
@@ -58,6 +58,9 @@
                 padding: 10px 5px;
                 min-width: 60px;
                 height: 40px;
+            }
+            .noneDisplay{
+                display: none;
             }
         </style>
     </head>
@@ -338,7 +341,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center">1</td>
-                                                            <td>Quản trị</td>
+                                                            <td><a href="" onclick="showData();return false;"> Quản trị</a></td>
                                                             <td class="text-center">3</td>
                                                             <td class="text-center">69</td>
                                                             <td class="text-center">Đang hoạt động</td>
@@ -350,7 +353,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="text-center">2</td>
-                                                            <td>Quản lý</td>
+                                                            <td><a href="" onclick="return false;">Quản lý</a></td>
                                                             <td class="text-center">5</td>
                                                             <td class="text-center">45</td>
                                                             <td class="text-center">Đang hoạt động</td>
@@ -362,7 +365,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="text-center">3</td>
-                                                            <td>Phân phối</td>
+                                                            <td><a href="" onclick="return false;">Phân phối</a></td>
                                                             <td class="text-center">7</td>
                                                             <td class="text-center">50</td>
                                                             <td class="text-center">Đang hoạt động</td>
@@ -374,7 +377,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="text-center">4</td>
-                                                            <td>Hàng hóa</td>
+                                                            <td><a href="" onclick="return false;">Hàng hóa</a></td>
                                                             <td class="text-center">3</td>
                                                             <td class="text-center">7</td>
                                                             <td class="text-center">Ngưng hoạt động</td>
@@ -391,7 +394,7 @@
                                     </div>
                                 </div>
                                 <!--bang 1-->
-                                <div class="box-body">
+                                <div class="box-body noneDisplay" id="pageList">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <fieldset>
@@ -459,11 +462,17 @@
                                                     </tbody>
                                                 </table>
                                             </fieldset>
+                                            <div class="box-footer clearfix">
+                                                <div class="pagination pagination-sm no-margin pull-right">
+                                                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#addPage">Thêm</button>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="box-body">
+                                <!--/bang 2-->
+                                <div class="box-body noneDisplay" id="userList">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <fieldset>
@@ -547,7 +556,7 @@
                                             </fieldset>
                                             <div class="box-footer clearfix">
                                                 <div class="pagination pagination-sm no-margin pull-right">
-                                                    <button type="button" class="btn btn-block btn-primary" onclick="window.location.href = ' quantri_nguoidung_tao-nguoi-dung.html'">Tạo người dùng</button>
+                                                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#addUser">Tạo người dùng</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -571,40 +580,54 @@
 
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="dist/js/jquery-1.12.4.js"></script>
+        <script src="dist/js/jquery-ui.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- FastClick -->
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-          <!-- DataTables -->
+        <!-- DataTables -->
         <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
-         <script>
-            $(function () {
-                $('.example1').DataTable({
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': true,
-                    'language': {
-                        "lengthMenu":"Hiển thị _MENU_ dòng",
-                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Tiếp",
-                            "previous": "Trước"
-                        }
-                    }
-                });
-            });
+        <script>
+                                                                $(function () {
+
+                                                                    var availableTags = [
+                                                                        "Huỳnh Tiến Đạt",
+                                                                        "Võ Văn Cung",
+                                                                        "Vũ Hồng Chiên"
+                                                                    ];
+                                                                    $('#name').autocomplete({
+                                                                        source: availableTags,
+                                                                        change: function () {
+                                                                            if ($('#name').val() === 'Huỳnh Tiến Đạt') {
+                                                                                document.getElementById('phone').value = '0929999231';
+                                                                                document.getElementById('email').value = 'datht@gmail.com';
+                                                                            } else if ($('#name').val() === 'Võ Văn Cung') {
+                                                                                document.getElementById('phone').value = '01265432789';
+                                                                                document.getElementById('email').value = 'cungvv@gmail.com';
+                                                                            } else if ($('#name').val() === 'Vũ Hồng Chiên') {
+                                                                                document.getElementById('phone').value = '0128002309';
+                                                                                document.getElementById('email').value = 'chienvh@gmail.com';
+                                                                            }
+                                                                        }
+
+                                                                    });
+
+
+                                                                });
+
+                                                                function showData() {
+                                                                    $('#pageList').removeClass('noneDisplay');
+                                                                    $('#userList').removeClass('noneDisplay');
+                                                                }
+
         </script>
         <!-- Modal -->
         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -619,7 +642,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick="window.location.href='quantri_phanhe_danh-sach-phan-he.html'"/>
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick="window.location.href = 'quantri_phanhe_danh-sach-phan-he.html'"/>
                     </div>
                 </div>
             </div>
@@ -632,10 +655,96 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title" id="myModalLabel">Xác nhận thay đổi trạng thái?</h4>
                     </div>
-                   
+
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
-                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick="window.location.href='quantri_phanhe_danh-sach-phan-he.html'"/>
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick="window.location.href = 'quantri_phanhe_danh-sach-phan-he.html'"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Thêm trang cho phân hệ Quản trị</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table" style="border: none !important">
+                            <tr>
+                                <td>Menu</td>
+                                <td>
+                                    <select class="select2 form-control">
+
+                                        <option>Trang chủ</option>
+                                        <option>Phân hệ</option>
+                                        <option>Người dùng</option>
+                                        <option>Hàng hóa</option>
+                                        <option>Tài nguyên</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trang</td>
+                                <td>
+                                    <input type="text" class="form-control"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Thêm người dùng cho phân hệ Quản trị</h4>
+                    </div>
+
+
+                    <table class="table">
+                        <tr>
+                            <td>Tên</td>
+                            <td><div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input class="form-control" placeholder="Tên..." id="name">
+                                </div></td>
+                        </tr>
+                        <tr>
+                            <td>Số điện thoại</td>
+                            <td><div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+                                    <input class="form-control" placeholder="Số điện thoại..." id="phone">
+                                </div></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+                                    <input class="form-control" placeholder="Email..." id="email">
+                                </div></td>
+                        </tr>
+                    </table>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" onclick="window.open('quantri_nguoidung_tao-nguoi-dung.html');return false;" value="Tạo mới" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Lưu" onclick="window.location.href = 'quantri_phanhe_danh-sach-phan-he.html'"/> 
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
                     </div>
                 </div>
             </div>
