@@ -517,11 +517,60 @@
                                                                     <td class="text-left">012345</td>
                                                                     <td class="text-center">26-01-2017</td>
                                                                     <td style="text-align: center">
-                                                                        <a href="phanphoi_cungcap_sua-cung-cap.html" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                        <a id="btn_row1" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                             <i class="fa fa-edit text-blue"></i>
                                                                         </a>
                                                                     </td>
                                                                 </tr>
+																<tr id="row1">
+																	<td colspan="10">
+																		<div class="container-fluid">
+																			<div class="row">
+																				<div class="col-md-6">
+																					<label>Tên</label>
+																					<div class="input-group">
+																						<span class="input-group-addon">
+																							<i class="fa fa-codepen" aria-hidden="true"></i>
+																						</span>
+																						<input type="text" class="form-control" value="HĐ T07-1">
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<label>Địa chỉ</label>
+																					<div class="input-group">
+																						<span class="input-group-addon">
+																							<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																						</span>
+																						<input type="text" class="form-control" value="307 Nguyễn Trãi, Thanh Xuân Hà Nội" >
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<label>Mã số thuế</label>
+																					<div class="input-group">
+																						<span class="input-group-addon">
+																							<i class="fa fa-codepen" aria-hidden="true"></i>
+																						</span>
+																						<input type="text" class="form-control" value="012345">
+																					</div>
+																				</div>																			
+																			</div>
+																			<br>
+																			<div class="row">
+																				<div class="">
+																					<div class="col-md-10"></div>
+																					<div class="col-md-1">
+																						<a href="" id="cancel_btn1" class="btn btn-default btn-block">Hủy</a>
+																					</div>
+																					<div class="col-md-1">
+																						<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</td>
+																</tr>
                                                                 <tr>
                                                                     <td class="text-center">2</td>
                                                                     <td class="text-left"><a href="phanphoi_cungcap_chi-tiet-nha-cung-cap.html">Thái Sơn Nam</a></td>                                                               
@@ -529,11 +578,60 @@
                                                                     <td>678901</td>
                                                                     <td class="text-center">26-12-2014</td>
                                                                     <td style="text-align: center">
-                                                                        <a href="" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                        <a id="btn_row2" class="btn btn-app custom-btn edit-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                             <i class="fa fa-edit text-blue"></i>
                                                                         </a>
                                                                     </td>
                                                                 </tr>
+																<tr id="row2">
+																	<td colspan="10">
+																		<div class="container-fluid">
+																			<div class="row">
+																				<div class="col-md-6">
+																					<label>Tên</label>
+																					<div class="input-group">
+																						<span class="input-group-addon">
+																							<i class="fa fa-codepen" aria-hidden="true"></i>
+																						</span>
+																						<input type="text" class="form-control" value="Thái Sơn Nam">
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<label>Địa chỉ</label>
+																					<div class="input-group">
+																						<span class="input-group-addon">
+																							<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																						</span>
+																						<input type="text" class="form-control" value="22-124 đường D1,Khu Đô thị mới Him lam, Tân Hưng, Quận 7" >
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<label>Mã số thuế</label>
+																					<div class="input-group">
+																						<span class="input-group-addon">
+																							<i class="fa fa-codepen" aria-hidden="true"></i>
+																						</span>
+																						<input type="text" class="form-control" value="678901">
+																					</div>
+																				</div>																			
+																			</div>
+																			<br>
+																			<div class="row">
+																				<div class="">
+																					<div class="col-md-10"></div>
+																					<div class="col-md-1">
+																						<a href="" id="cancel_btn2" class="btn btn-default btn-block">Hủy</a>
+																					</div>
+																					<div class="col-md-1">
+																						<a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</td>
+																</tr>
                                                                 <tr>
                                                                     <td class="text-center">3</td>
                                                                     <td class="text-left"><a href="phanphoi_cungcap_chi-tiet-nha-cung-cap.html">LS</a></td>                                                               
@@ -600,26 +698,44 @@
         <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <script>
-            $(function () {
-                $('#example1').DataTable({
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': true,
-                    'language': {
-                        "lengthMenu": "Hiển thị _MENU_ dòng",
-                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Tiếp",
-                            "previous": "Trước"
-                        }
-                    }
-                });
-            });
+           $('#row1').hide();
+			$('#btn_row1').click(function(){
+				$('#row1').toggle();
+				event.preventDefault();
+			});
+			$('#row2').hide();
+			$('#btn_row2').click(function(){
+				$('#row2').toggle();
+				event.preventDefault();
+			});
+			$('#cancel_btn1').click(function(){
+				$('#row1').toggle();
+				event.preventDefault();
+			});
+			$('#cancel_btn2').click(function(){
+				$('#row2').toggle();
+				event.preventDefault();
+			});
         </script>
+		<div class="modal fade" id="popupConfirm" role="dialog">
+            <div class="modal-dialog">		
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận lưu thông tin đã sửa</h4>
+					</div>
+                   
+                    
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnThanhToan" type="button" style="color:white;background-color:green" class="btn btn-default" data-dismiss="modal" onclick="window.location.href = 'quanly_cungcap_danh-sach-nha-cung-cap.html'">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
     </body>
 </html>
