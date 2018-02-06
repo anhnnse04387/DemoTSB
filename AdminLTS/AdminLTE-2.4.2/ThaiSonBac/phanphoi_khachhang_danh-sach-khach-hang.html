@@ -281,7 +281,7 @@
                                     </a>
                                     <ul class="treeview-menu">
                                         <li class=""><a href="phanphoi_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
-										<li class=""><a href="phanphoi_hanghoa_nhap-hoa-don.html"><i class="fa fa-id-card-o"></i> Nhập hoá đơn</a></li>
+                                        <li class=""><a href="phanphoi_hanghoa_nhap-hoa-don.html"><i class="fa fa-id-card-o"></i> Nhập hoá đơn</a></li>
                                         <li class=""><a href="phanphoi_hanghoa_lich-su-yeu-cau-nhap.html"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
                                     </ul>
                                 </li>
@@ -363,17 +363,17 @@
                                 <li class="">
                                     <a href="phanphoi_cungcap_danh-sach-nha-cung-cap.html"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
                                 </li>
-								<li class="treeview">
-								  <a href="#"><i class="fa fa-paper-plane"></i> Hàng hoá
-									<span class="pull-right-container">
-									  <i class="fa fa-angle-left pull-right"></i>
-									</span>
-								  </a>
-								  <ul class="treeview-menu">
-									<li class=""><a href="phanphoi_hanghoa_danh-sach-danh-muc.html"><i class="fa fa-tags"></i> Danh mục</a></li>
-									<li class=""><a href="phanphoi_hanghoa_danh-sach-san-pham.html"><i class="fa fa-anchor"></i> Sản phẩm</a></li>
-								  </ul>
-								</li>
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-paper-plane"></i> Hàng hoá
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class=""><a href="phanphoi_hanghoa_danh-sach-danh-muc.html"><i class="fa fa-tags"></i> Danh mục</a></li>
+                                        <li class=""><a href="phanphoi_hanghoa_danh-sach-san-pham.html"><i class="fa fa-anchor"></i> Sản phẩm</a></li>
+                                    </ul>
+                                </li>
                                 <li class="">
                                     <a href="phanphoi_cai-dat.html"><i class="fa fa-cogs"></i> Cài đặt</a>
                                 </li>
@@ -535,7 +535,7 @@
                                                         </td>
                                                         <td>15-12-2017</td>
                                                         <td>
-                                                            <a href="phanphoi_khachhang_sua-khach-hang.html" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <a id="btn_row1" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
                                                         </td>
@@ -713,34 +713,77 @@
         <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
         <!-- page script -->
         <script>
-                                        $(function () {
-                                            $('#example1').DataTable({
-                                                'paging': true,
-                                                'lengthChange': true,
-                                                'searching': false,
-                                                'ordering': true,
-                                                'info': true,
-                                                'autoWidth': true,
-                                                'language': {
-													"lengthMenu": "Hiển thị _MENU_ dòng",
-                                                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                                                    "paginate": {
-                                                        "first": "Trang đầu",
-                                                        "last": "Trang cuối",
-                                                        "next": "Tiếp",
-                                                        "previous": "Trước"
-                                                    }
-                                                }
-                                            });
-                                        });
-                                        $(function () {
-                                            //Date picker
-                                            $('#datepicker').datepicker({
-                                                autoclose: true
-                                            });
-                                        });
-                                        //Initialize Select2 Elements
-                                        $('.select2').select2();
+                                                                                $(function () {
+                                                                                    $('#example1').DataTable({
+                                                                                        'paging': true,
+                                                                                        'lengthChange': true,
+                                                                                        'searching': false,
+                                                                                        'ordering': true,
+                                                                                        'info': true,
+                                                                                        'autoWidth': true,
+                                                                                        'language': {
+                                                                                            "lengthMenu": "Hiển thị _MENU_ dòng",
+                                                                                            "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                                                                                            "paginate": {
+                                                                                                "first": "Trang đầu",
+                                                                                                "last": "Trang cuối",
+                                                                                                "next": "Tiếp",
+                                                                                                "previous": "Trước"
+                                                                                            }
+                                                                                        }
+                                                                                    });
+                                                                                });
+                                                                                $(function () {
+                                                                                    //Date picker
+                                                                                    $('#datepicker').datepicker({
+                                                                                        autoclose: true
+                                                                                    });
+                                                                                });
+                                                                                //Initialize Select2 Elements
+                                                                                $('.select2').select2();
+        </script>
+
+        <script>
+            $('#row1').hide();
+            $('#btn_row1').click(function () {
+                $('#row1').toggle();
+                event.preventDefault();
+            })
+            $('#row2').hide();
+            $('#btn_row2').click(function () {
+                $('#row2').toggle();
+                event.preventDefault();
+            })
+            $('#row3').hide();
+            $('#btn_row3').click(function () {
+                $('#row3').toggle();
+                event.preventDefault();
+            })
+            $('#row4').hide();
+            $('#btn_row4').click(function () {
+                $('#row4').toggle();
+                event.preventDefault();
+            })
+            $('#row5').hide();
+            $('#btn_row5').click(function () {
+                $('#row5').toggle();
+                event.preventDefault();
+            })
+            $('#row6').hide();
+            $('#btn_row6').click(function () {
+                $('#row6').toggle();
+                event.preventDefault();
+            })
+            $('#row7').hide();
+            $('#btn_row7').click(function () {
+                $('#row7').toggle();
+                event.preventDefault();
+            })
+            $('#row8').hide();
+            $('#btn_row8').click(function () {
+                $('#row8').toggle();
+                event.preventDefault();
+            })
         </script>
 
         <div class="modal fade" id="confirm-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
