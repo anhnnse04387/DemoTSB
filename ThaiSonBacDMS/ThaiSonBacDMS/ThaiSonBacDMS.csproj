@@ -124,6 +124,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
+    <Compile Include="Areas\KeToan\KeToanAreaRegistration.cs" />
+    <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
+    <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\QuanTri\QuanTriAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,6 +140,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\PhanPhoi\Views\web.config" />
+    <Content Include="Areas\QuanLy\Views\web.config" />
+    <Content Include="Areas\QuanTri\Views\web.config" />
+    <Content Include="Areas\HangHoa\Views\web.config" />
+    <Content Include="Areas\KeToan\Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -144,6 +154,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\HangHoa\Controllers\" />
+    <Folder Include="Areas\HangHoa\Models\" />
+    <Folder Include="Areas\HangHoa\Views\Shared\" />
+    <Folder Include="Areas\KeToan\Controllers\" />
+    <Folder Include="Areas\KeToan\Models\" />
+    <Folder Include="Areas\KeToan\Views\Shared\" />
+    <Folder Include="Areas\PhanPhoi\Controllers\" />
+    <Folder Include="Areas\PhanPhoi\Models\" />
+    <Folder Include="Areas\PhanPhoi\Views\Shared\" />
+    <Folder Include="Areas\QuanLy\Controllers\" />
+    <Folder Include="Areas\QuanLy\Models\" />
+    <Folder Include="Areas\QuanLy\Views\Shared\" />
+    <Folder Include="Areas\QuanTri\Controllers\" />
+    <Folder Include="Areas\QuanTri\Models\" />
+    <Folder Include="Areas\QuanTri\Views\Shared\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
