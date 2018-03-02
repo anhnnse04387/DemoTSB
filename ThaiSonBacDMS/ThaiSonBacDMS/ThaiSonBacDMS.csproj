@@ -126,6 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
     <Compile Include="Areas\KeToan\KeToanAreaRegistration.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\OrderController.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Areas\QuanTri\QuanTriAreaRegistration.cs" />
@@ -150,6 +151,7 @@
     <Content Include="Areas\QuanTri\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\KeToan\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HangHoa\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\Order\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,7 +165,6 @@
     <Folder Include="Areas\HangHoa\Models\" />
     <Folder Include="Areas\KeToan\Controllers\" />
     <Folder Include="Areas\KeToan\Models\" />
-    <Folder Include="Areas\PhanPhoi\Controllers\" />
     <Folder Include="Areas\PhanPhoi\Models\" />
     <Folder Include="Areas\QuanLy\Controllers\" />
     <Folder Include="Areas\QuanLy\Models\" />
@@ -174,6 +175,12 @@
     <Folder Include="Assets\plugins\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{1e25601b-4a2f-46e6-8870-4eba071be2a9}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
