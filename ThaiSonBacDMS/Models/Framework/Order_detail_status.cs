@@ -1,0 +1,32 @@
+namespace Models.Framework
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Order_detail_status
+    {
+        public byte ID { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string Order_ID { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string Order_part_ID { get; set; }
+
+        public byte? Status_ID { get; set; }
+
+        public DateTime? Date_change { get; set; }
+
+        [StringLength(10)]
+        public string User_ID { get; set; }
+
+        public virtual Order_total Order_total { get; set; }
+
+        public virtual Order_part Order_part { get; set; }
+    }
+}
