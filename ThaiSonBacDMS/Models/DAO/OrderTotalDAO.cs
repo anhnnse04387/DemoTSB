@@ -7,9 +7,15 @@ using Models.Framework;
 
 namespace Models.DAO
 {
-    class OrderDAO
+    public class OrderTotalDAO
     {
+
         private ThaiSonBacDMSDbContext db = null;
+
+        public OrderTotalDAO()
+        {
+            db = new ThaiSonBacDMSDbContext();
+        }
 
         public void createOrder(Order_total order)
         {
