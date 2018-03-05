@@ -16,6 +16,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var dao = new CustomerDAO();
             var model = new OrderTotalModel();
             model.lstCustomer = new SelectList(dao.getCustomer(), "Customer_ID", "Customer_name");
+            model.deliveryQtt = 1;
+            model.rate = 2016;
             return View(model);
         }
     }
