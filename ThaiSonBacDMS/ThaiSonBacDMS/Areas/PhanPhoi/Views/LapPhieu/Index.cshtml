@@ -28,8 +28,9 @@
             color: #fff;
         }
 
-        .mainTable tbody td:nth-child(6), .mainTable tbody td:nth-child(7),
-        .mainTable tbody td:nth-child(9) {
+        .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
+        .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
+        .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
             text-align: right;
         }
 
@@ -69,8 +70,7 @@
                     <div class="box-body pad">
                         <div class="row">
                             <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
-
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="taomoi();">
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" href="@Url.Action("Index","LapPhieu")" target="_blank">
                                     <i class="fa fa-plus-square text-green"></i>
                                     <span><strong>Tạo Mới</strong></span>
                                 </a>
@@ -78,18 +78,18 @@
                                     <i class="fa fa-edit text-gray"></i>
                                     <span><strong>Sửa</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" data-target="#confirmSave">
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" type="submit" data-target="#confirmSave">
                                     <i class="fa fa-save text-yellow"></i>
                                     <span><strong>Lưu</strong></span>
-                                </a>
+                                </button>
                                 <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-close text-gray"></i>
                                     <span><strong>Hủy</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-target="#confirmComplete" data-placement="bottom">
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" type="submit" data-target="#confirmComplete" data-placement="bottom">
                                     <i class="fa fa-check-circle text-green"></i>
                                     <span><strong>Chốt đơn</strong></span>
-                                </a>
+                                </button>
                                 <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
                                     <i class="fa fa-exchange text-gray"></i>
                                     <span><strong>Đổi trả</strong></span>
@@ -128,20 +128,21 @@
                                                         <label>Đơn vị</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                            <select class="form-control" onchange="lookup(); return false;" id="donVi">
-                                                                <option></option>
-                                                                <option value="1">Công ty Sáng Hà</option>
-                                                                <option value="2">Công ty Invico - Sắn</option>
-                                                            </select>
+                                                            @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
+                                                                                                                           new { value = 2016, text = "2016"},
+                                                                                                                           new { value = 2017, text = "2017"},
+                                                                                                                           new { value = 2018, text = "2018"} },
+                                                                                                                           "value", "text", 2016),
+                                                                                  new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>Lô số</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                            <input type="text" class="form-control pointerCursor" id="lo" value="O1349-0" onclick="$(this).removeClass('pointerCursor');
-                                                                                $(this).addClass('textCursor');
-                                                                                this.select();">
+                                                            @Html.EditorFor(model => model.orderId, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.orderId, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,14 +151,15 @@
                                                         <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                            <input type="text" class="form-control" id="AddressDeliver">
+                                                            <input id="deliveryAddress" class="form-control" value="@Html.ValueFor(model => model.deliveryAddress)" />
+                                                            @Html.ValidationMessageFor(model => model.deliveryAddress, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>Số đợt giao</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                                            <input type="number" id="delivery" min="0" step="1" value="1" style="padding-left: 12px;" onchange="deliveryQtt();" class="form-control">
+                                                            <input type="number" min="0" step="1" value="@Html.ValueFor(model => model.deliveryQtt)" style="padding-left: 12px;" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,17 +168,20 @@
                                                         <label>Địa chỉ xuất HĐ</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                                            <input type="text" class="form-control" id="AddressContact">
+                                                            <input id="invoiceAddress" class="form-control" value="@Html.ValueFor(model => model.invoiceAddress)" />
+                                                            @Html.ValidationMessageFor(model => model.invoiceAddress, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>Mức giá áp dụng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <select class="form-control" style="font-family: 'FontAwesome'; cursor: pointer;">
-                                                                <option>2016</option>
-                                                                <option>2017</option>
-                                                            </select>
+                                                            @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
+                                                                                                                           new { value = 2016, text = "2016"},
+                                                                                                                           new { value = 2017, text = "2017"}},
+                                                                                                                           "value", "text", 2016),
+                                                                                  new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -185,7 +190,8 @@
                                                         <label>Mã số thuế</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-                                                            <input type="text" class="form-control" id="TaxCode">
+                                                            <input id="taxCode" class="form-control" value="@Html.ValueFor(model => model.taxCode)" />
+                                                            @Html.ValidationMessageFor(model => model.taxCode, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -222,19 +228,19 @@
                                                         <td style="vertical-align: middle;">ABN 52c</td>
                                                         <td style="vertical-align: middle;">15A</td>
                                                         <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
+                                                            <input type="text" class="form-control"
                                                                    onkeyup="configSp('1');
                                                                                        return false;" id="cai_1" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
+                                                            <input type="text" class="form-control"
                                                                    onkeyup="configThung('1');
                                                                                        return false;" id="thung_1" title="20 cái/1" />
                                                         </td>
                                                         <td><output id="dongia_1" class="number">590000</output></td>
                                                         <td><output id="tien_chua_ck_1"></output></td>
                                                         <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
+                                                            <input type="text" class="form-control"
                                                                    onkeyup="configCk('1');
                                                                                        return false;" id="ck_1" />
                                                         </td>

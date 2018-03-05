@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         // GET: PhanPhoi/LapPhieu
         public ActionResult Index()
         {
+
+            //setViewBag();
             return View();
+        }
+
+        public void setViewBag(String selectedId = null)
+        {
+            var dao = new CustomerDAO();
+            ViewBag.customerId = new SelectList(dao.getCustomer(), "Customer_ID", "Customer_name", selectedId);
         }
     }
 }
