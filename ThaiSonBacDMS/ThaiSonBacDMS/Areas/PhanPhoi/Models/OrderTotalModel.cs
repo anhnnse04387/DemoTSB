@@ -42,5 +42,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 
         public List<OrderItemModel> lstItem { get; set; }
 
+        public SelectList lstCustomer { get; set; }
+
     }
 }

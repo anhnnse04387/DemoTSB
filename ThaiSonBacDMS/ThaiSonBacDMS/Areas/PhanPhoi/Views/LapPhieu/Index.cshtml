@@ -128,11 +128,15 @@
                                                         <label>Đơn vị</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
+<<<<<<< HEAD
                                                             @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
                                                                                                                            new { value = 2016, text = "2016"},
                                                                                                                            new { value = 2017, text = "2017"},
                                                                                                                            new { value = 2018, text = "2018"} },
                                                                                                                            "value", "text", 2016),
+=======
+                                                            @Html.DropDownListFor(model => model.customerId, Model.lstCustomer,
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                                                   new { htmlAttributes = new { @class = "form-control" } })
                                                             @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
                                                         </div>
@@ -141,7 +145,11 @@
                                                         <label>Lô số</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-file"></i></span>
+<<<<<<< HEAD
                                                             @Html.EditorFor(model => model.orderId, new { htmlAttributes = new { @class = "form-control" } })
+=======
+                                                            <input id="orderId" class="form-control" value="@Model.orderId" />
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                             @Html.ValidationMessageFor(model => model.orderId, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -151,7 +159,11 @@
                                                         <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+<<<<<<< HEAD
                                                             <input id="deliveryAddress" class="form-control" value="@Html.ValueFor(model => model.deliveryAddress)" />
+=======
+                                                            <input id="deliveryAddress" class="form-control" value="@Model.deliveryAddress" />
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                             @Html.ValidationMessageFor(model => model.deliveryAddress, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -159,7 +171,11 @@
                                                         <label>Số đợt giao</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+<<<<<<< HEAD
                                                             <input type="number" min="0" step="1" value="@Html.ValueFor(model => model.deliveryQtt)" style="padding-left: 12px;" class="form-control">
+=======
+                                                            <input type="number" min="0" step="1" value="@Model.deliveryQtt" style="padding-left: 12px;" class="form-control">
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +184,11 @@
                                                         <label>Địa chỉ xuất HĐ</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+<<<<<<< HEAD
                                                             <input id="invoiceAddress" class="form-control" value="@Html.ValueFor(model => model.invoiceAddress)" />
+=======
+                                                            <input id="invoiceAddress" class="form-control" value="@Model.invoiceAddress" />
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                             @Html.ValidationMessageFor(model => model.invoiceAddress, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -178,7 +198,12 @@
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                             @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
                                                                                                                            new { value = 2016, text = "2016"},
+<<<<<<< HEAD
                                                                                                                            new { value = 2017, text = "2017"}},
+=======
+                                                                                                                           new { value = 2017, text = "2017"},
+                                                                                                                           new { value = 2018, text = "2018" } },
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                                                                                            "value", "text", 2016),
                                                                                   new { htmlAttributes = new { @class = "form-control" } })
                                                             @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
@@ -190,7 +215,11 @@
                                                         <label>Mã số thuế</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+<<<<<<< HEAD
                                                             <input id="taxCode" class="form-control" value="@Html.ValueFor(model => model.taxCode)" />
+=======
+                                                            <input id="taxCode" class="form-control" value="@Model.taxCode" />
+>>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                             @Html.ValidationMessageFor(model => model.taxCode, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
