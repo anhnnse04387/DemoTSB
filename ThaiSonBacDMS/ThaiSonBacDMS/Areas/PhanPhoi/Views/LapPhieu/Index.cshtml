@@ -128,29 +128,14 @@
                                                         <label>Đơn vị</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-<<<<<<< HEAD
-                                                            @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
-                                                                                                                           new { value = 2016, text = "2016"},
-                                                                                                                           new { value = 2017, text = "2017"},
-                                                                                                                           new { value = 2018, text = "2018"} },
-                                                                                                                           "value", "text", 2016),
-=======
-                                                            @Html.DropDownListFor(model => model.customerId, Model.lstCustomer,
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
-                                                                                  new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
+                                                            @Html.DropDownListFor(model => model.rate, Model.lstCustomer, new { @class = "form-control" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>Lô số</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-file"></i></span>
-<<<<<<< HEAD
-                                                            @Html.EditorFor(model => model.orderId, new { htmlAttributes = new { @class = "form-control" } })
-=======
-                                                            <input id="orderId" class="form-control" value="@Model.orderId" />
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
-                                                            @Html.ValidationMessageFor(model => model.orderId, "", new { @class = "text-danger" })
+                                                            @Html.TextBoxFor(model => model.orderId, new { @class = "form-control", @id = "orderId", @required = "required" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,23 +144,14 @@
                                                         <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-<<<<<<< HEAD
-                                                            <input id="deliveryAddress" class="form-control" value="@Html.ValueFor(model => model.deliveryAddress)" />
-=======
-                                                            <input id="deliveryAddress" class="form-control" value="@Model.deliveryAddress" />
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
-                                                            @Html.ValidationMessageFor(model => model.deliveryAddress, "", new { @class = "text-danger" })
+                                                            @Html.TextBoxFor(model => model.deliveryAddress, new { @class = "form-control", @id = "deliveryAddress", @required = "required" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>Số đợt giao</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-<<<<<<< HEAD
-                                                            <input type="number" min="0" step="1" value="@Html.ValueFor(model => model.deliveryQtt)" style="padding-left: 12px;" class="form-control">
-=======
                                                             <input type="number" min="0" step="1" value="@Model.deliveryQtt" style="padding-left: 12px;" class="form-control">
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,12 +160,7 @@
                                                         <label>Địa chỉ xuất HĐ</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-<<<<<<< HEAD
-                                                            <input id="invoiceAddress" class="form-control" value="@Html.ValueFor(model => model.invoiceAddress)" />
-=======
-                                                            <input id="invoiceAddress" class="form-control" value="@Model.invoiceAddress" />
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
-                                                            @Html.ValidationMessageFor(model => model.invoiceAddress, "", new { @class = "text-danger" })
+                                                            @Html.TextBoxFor(model => model.invoiceAddress, new { @class = "form-control", @id = "invoiceAddress", @required = "required" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -198,15 +169,9 @@
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                             @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
                                                                                                                            new { value = 2016, text = "2016"},
-<<<<<<< HEAD
-                                                                                                                           new { value = 2017, text = "2017"}},
-=======
                                                                                                                            new { value = 2017, text = "2017"},
-                                                                                                                           new { value = 2018, text = "2018" } },
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
-                                                                                                                           "value", "text", 2016),
-                                                                                  new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
+                                                                                                                           new { value = 2018, text = "2018"} },
+                                                                                                                           "value", "text", 2016), new { @class = "form-control" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,12 +180,7 @@
                                                         <label>Mã số thuế</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-<<<<<<< HEAD
-                                                            <input id="taxCode" class="form-control" value="@Html.ValueFor(model => model.taxCode)" />
-=======
-                                                            <input id="taxCode" class="form-control" value="@Model.taxCode" />
->>>>>>> c5010b3600a2f6426226a542cb2e59792e0cec51
-                                                            @Html.ValidationMessageFor(model => model.taxCode, "", new { @class = "text-danger" })
+                                                            @Html.TextBoxFor(model => model.taxCode, new { @class = "form-control", @id = "taxCode", @required = "required" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -274,98 +234,6 @@
                                                                                        return false;" id="ck_1" />
                                                         </td>
                                                         <td><output id="tien_da_ck_1"></output></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="vertical-align: middle;">2</td>
-                                                        <td style="vertical-align: middle;">TS1000N AG6 3P</td>
-                                                        <td style="vertical-align: middle;">1000A</td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configSp('2');
-                                                                                       return false;" id="cai_2" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configThung('2');
-                                                                                       return false;" id="thung_2" title="20 cái/1" />
-                                                        </td>
-                                                        <td><output id="dongia_2" class="number">80807000</output></td>
-                                                        <td><output id="tien_chua_ck_2"></output></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configCk('2');
-                                                                                       return false;" id="ck_2" />
-                                                        </td>
-                                                        <td><output id="tien_da_ck_2"></output></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="vertical-align: middle;">3</td>
-                                                        <td style="vertical-align: middle;">ABS 32c</td>
-                                                        <td style="vertical-align: middle;">5A</td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configSp('3');
-                                                                                       return false;" id="cai_3" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configThung('3');
-                                                                                       return false;" id="thung_3" title="20 cái/1" />
-                                                        </td>
-                                                        <td><output id="dongia_3" class="number">1859000</output></td>
-                                                        <td><output id="tien_chua_ck_3"></output></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configCk('3');
-                                                                                       return false;" id="ck_3" />
-                                                        </td>
-                                                        <td><output id="tien_da_ck_3"></output></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="vertical-align: middle;">4</td>
-                                                        <td style="vertical-align: middle;">ABH 53c</td>
-                                                        <td style="vertical-align: middle;">30A</td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configSp('4');
-                                                                                       return false;" id="cai_4" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configThung('4');
-                                                                                       return false;" id="thung_4" title="20 cái/1" />
-                                                        </td>
-                                                        <td><output id="dongia_4" class="number">2375000</output></td>
-                                                        <td><output id="tien_chua_ck_4"></output></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configCk('4');
-                                                                                       return false;" id="ck_4" />
-                                                        </td>
-                                                        <td><output id="tien_da_ck_4"></output></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="vertical-align: middle;">5</td>
-                                                        <td style="vertical-align: middle;">ABE103-G</td>
-                                                        <td style="vertical-align: middle;">63A</td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configSp('5');
-                                                                                       return false;" id="cai_5" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configThung('5');
-                                                                                       return false;" id="thung_5" title="20 cái/1" />
-                                                        </td>
-                                                        <td><output id="dongia_5" class="number">8443000</output></td>
-                                                        <td><output id="tien_chua_ck_5"></output></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" style="text-align: right;"
-                                                                   onkeyup="configCk('5');
-                                                                                       return false;" id="ck_5" />
-                                                        </td>
-                                                        <td><output id="tien_da_ck_5"></output></td>
                                                     </tr>
                                                     <tr>
                                                         <td style="vertical-align: middle;">6</td>
@@ -590,126 +458,6 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_da_ck_2" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </fieldset>
-                                        <fieldset id="turn2" class="noDisplay">
-                                            <legend><b style="font-size: 17px;">Giao hàng đợt 2</b></legend>
-                                            <div class="box-header">
-                                                <div class="col-md-6">
-                                                    <label>Xuất ngày</label><span style="color: red;">*</span>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" style="padding-left: 12px;" value="15/01/2018" class="form-control datepicker pointerCursor">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Lô số</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                        <input class="form-control" disabled id="lo_2" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <table class="table table-striped mainTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th rowspan="2" style="width: 30px;">STT</th>
-                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
-                                                        <th colspan="2">Số lượng</th>
-                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
-                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
-                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
-                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width: 70px;">Cái</th>
-                                                        <th style="width: 70px;">Thùng</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="vertical-align: middle;">1</td>
-                                                        <td style="vertical-align: middle; width: 24.7%;"><input type="text" class="form-control" id="name_9" /></td>
-                                                        <td style="vertical-align: middle;"><input type="text" class="form-control ampe" /></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" id="cai_9" style="text-align: right;"
-                                                                   onkeyup="configSp('9');
-                                                                                       return false;" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control" id="thung_9"
-                                                                   title="20 cái/1" style="text-align: right;" onkeyup="configThung('9');
-                                                                                       return false;" />
-                                                        </td>
-                                                        <td><output id="dongia_9"></output></td>
-                                                        <td><output id="tien_chua_ck_9"></output></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" id="ck_9" style="text-align: right;"
-                                                                   onkeyup="configCk('9');
-                                                                                       return false;" />
-                                                        </td>
-                                                        <td><output id="tien_da_ck_9" class="number"></output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_cai_3" style="color: #fff; font-weight: bold;"></output></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_thung_3" style="color: #fff; font-weight: bold;"></output></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_chua_ck_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" id="tong_ck_3" style="text-align: right; float: right; font-weight: bold;"
-                                                                   onkeyup="configCkAll('3');
-                                                                                       return false;" />
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="tien_ck_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="con_lai_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            <input type="text" class="form-control" id="vat_3" style="text-align: right; float: right;; font-weight: bold;"
-                                                                   onkeyup="configCkAll('3');
-                                                                                       return false;" />
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="tien_vat_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_da_ck_3" class="number" style="color: #fff; font-weight: bold;"></output></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
