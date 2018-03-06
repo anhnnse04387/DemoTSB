@@ -670,7 +670,7 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <fieldset>
-                                                    <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                                    <legend><b style="font-size: 17px;">Thông tin cá nhân</b></legend>
                                                     
                                                     <div class="row" style="margin-top: 15px;">
                                                         <div class="col-md-6">
@@ -707,6 +707,35 @@
                                                     </div>
                                                     <a id="btnEditSetting" class="btn btn-primary btn-block pull-right" onclick="doEditSetting();" style="width: 100px; margin-top: 15px;">
                                                         <b>Chỉnh sửa</b>
+                                                    </a>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+																				<div class="row">
+                                            <div class="col-sm-12">
+                                                <fieldset>
+                                                    <legend><b style="font-size: 17px;">Thông tin tài khoản</b></legend>
+                                                    
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                            <label>Tên tài khoản</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                <input type="text" class="form-control" id="account_name" value="CongNT@gmail.com" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Mật khẩu</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                <input type="password" id="account_pass" class="form-control" value="CongNT@gmail.com" disabled>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                   
+                                                    <a id="btnEditSettingAccount" class="btn btn-primary btn-block pull-right" onclick="doEditSettingAccount();" style="width: 100px; margin-top: 15px;">
+                                                        <b>Đổi mật khẩu</b>
                                                     </a>
                                                 </fieldset>
                                             </div>
@@ -802,7 +831,8 @@
                 }, 0);
             });
         </script>
-        <script>
+       <script>
+		<!-- thông tin cá nhân -->
             var buttonSaveSetting = ["<a id='btnSaveSetting' class='btn btn-success btn-block pull-right' data-target='#confirm-process' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
             var buttonEditSetting = ["<a id='btnEditSetting' class='btn btn-primary btn-block pull-right' onclick='doEditSetting();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
             function doEditSetting() {
@@ -818,6 +848,20 @@
                 $('#email').prop('disabled', true);
                 $('#birthDate').prop('disabled', true);
                 $('#btnSaveSetting').replaceWith(buttonEditSetting);
+            }
+			<!-- thông tin tài khoản -->
+			var buttonSaveSettingAccount = ["<a id='buttonSaveSettingAccount' class='btn btn-success btn-block pull-right' data-target='#confirm-process-account' data-toggle='modal' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
+            var buttonEditSettingAccount = ["<a id='buttonEditSettingAccount' class='btn btn-primary btn-block pull-right' onclick='doEditSettingAccount();' style='width: 100px; margin-top: 15px;'><b>Đổi mật khẩu</b></a>"];
+            
+			function doEditSettingAccount() {
+                $('#account_name').removeAttr('disabled');
+                $('#account_pass').removeAttr('disabled');
+                $('#btnEditSettingAccount').replaceWith(buttonSaveSettingAccount);
+            }
+			 function doSaveSettingAccount() {
+                $('#account_name').prop('disabled', true);
+                $('#account_pass').prop('disabled', true);
+                $('#buttonSaveSettingAccount').replaceWith(buttonEditSettingAccount);
             }
         </script>
         
@@ -835,6 +879,24 @@
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
                         <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick='doSaveSetting();'/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!--- Modal for account -->
+		        <div class="modal fade" id="confirm-process-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa đổi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn sửa đổi?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Đồng ý" onclick='doSaveSettingAccount();'/>
                     </div>
                 </div>
             </div>
