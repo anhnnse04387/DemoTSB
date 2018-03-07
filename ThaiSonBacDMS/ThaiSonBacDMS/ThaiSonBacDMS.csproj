@@ -134,16 +134,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
     <Compile Include="Areas\KeToan\KeToanAreaRegistration.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderItemModel.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\QuanTri\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanTri\QuanTriAreaRegistration.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\UserSession.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\PhanPhoi\Models\OrderPartModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderTotalModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +173,10 @@
     <Content Include="Areas\HangHoa\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\LapPhieu\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\Items.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\Home\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\Home\Index.cshtml" />
+    <Content Include="Areas\QuanTri\Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -177,16 +190,12 @@
     <Folder Include="Areas\HangHoa\Models\" />
     <Folder Include="Areas\KeToan\Controllers\" />
     <Folder Include="Areas\KeToan\Models\" />
-    <Folder Include="Areas\QuanLy\Controllers\" />
     <Folder Include="Areas\QuanLy\Models\" />
-    <Folder Include="Areas\QuanTri\Controllers\" />
     <Folder Include="Areas\QuanTri\Models\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\dist\" />
     <Folder Include="Assets\plugins\" />
-    <Folder Include="Common\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

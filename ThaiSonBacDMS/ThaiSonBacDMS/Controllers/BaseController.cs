@@ -12,8 +12,8 @@ namespace ThaiSonBacDMS.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var session = (UserSession) Session[CommonConstants.USER_SESSION];
-            if(session == null)
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Login", Area = "" }));

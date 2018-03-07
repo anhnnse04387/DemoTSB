@@ -17,27 +17,29 @@ namespace Models.DAO
         }
         public Account GetByName(string account_name)
         {
-            return context.Accounts.SingleOrDefault(s=>s.Account_name == account_name);
+            return context.Accounts.SingleOrDefault(s => s.Account_name == account_name);
         }
         public int Login(string accountName, string password)
         {
-            var data = context.Accounts.SingleOrDefault(s=>s.Account_name == accountName);
+            var data = context.Accounts.SingleOrDefault(s => s.Account_name == accountName);
             if (data == null)
             {
-                return 0;    
-            }else
+                return 0;
+            }
+            else
             {
                 if (data.Account_Status == "Deactive")
                 {
                     return -1;
-                }else
+                }
+                else
                 {
                     if (data.Password == password)
                         return 1;
                     else
                         return -2;
                 }
-                    
+
             }
         }
     }

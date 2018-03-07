@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         // GET: PhanPhoi/Home
         public ActionResult Index()

@@ -114,8 +114,8 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(false, "", new { @class = "text-danger", @style = "font-size: 12px; padding-right: 20px; text-align: left;" })
-                
-                
+
+
                 <div class="inner-addon left-addon">
                     <i class="glyphicon glyphicon-user"></i>
                     @Html.TextBoxFor(model => model.accountName, new { @class = "customInput", @placeholder = "Tài khoản", @style = "padding-left: 40px;", @id = "username", @autofocus = "autofocus" })
@@ -128,7 +128,7 @@
                 <div>
                     <button style="margin-right: 26px; width: 270px;" type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
                 </div>
-                
+
             }
         </div>
         <!-- /.login-box-body -->
