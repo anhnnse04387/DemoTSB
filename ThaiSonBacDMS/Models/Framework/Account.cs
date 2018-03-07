@@ -19,6 +19,12 @@ namespace Models.Framework
         [StringLength(10)]
         public string Account_ID { get; set; }
 
+        [StringLength(30)]
+        public string Account_name { get; set; }
+
+        [StringLength(20)]
+        public string Password { get; set; }
+
         [StringLength(10)]
         public string User_ID { get; set; }
 

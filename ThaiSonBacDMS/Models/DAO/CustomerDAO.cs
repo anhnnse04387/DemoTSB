@@ -22,5 +22,13 @@ namespace Models.DAO
             return db.Customers.ToList();
         }
 
+        public Customer getCustomerById(String id)
+        {
+            var query = from e in getCustomer()
+                        where e.Customer_ID.Equals(id)
+                        select e;
+            return query.ToList()[0];
+        }
+
     }
 }

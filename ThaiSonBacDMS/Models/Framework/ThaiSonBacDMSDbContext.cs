@@ -57,6 +57,14 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Account>()
+                .Property(e => e.Account_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
                 .Property(e => e.User_ID)
                 .IsUnicode(false);
 
