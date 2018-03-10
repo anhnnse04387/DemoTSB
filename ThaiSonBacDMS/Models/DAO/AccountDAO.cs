@@ -19,6 +19,7 @@ namespace Models.DAO
         {
             return context.Accounts.SingleOrDefault(s => s.Account_name == account_name);
         }
+        
         public int Login(string accountName, string password)
         {
             var data = context.Accounts.SingleOrDefault(s => s.Account_name == accountName);

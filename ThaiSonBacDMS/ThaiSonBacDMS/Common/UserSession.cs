@@ -10,6 +10,8 @@ namespace ThaiSonBacDMS.Common
     {
         public string accountID;
         public string account_name;
-
+        public string user_id;
+        public string user_name;
+        public string role_name;
     }
 }

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Models;
 using ThaiSonBacDMS.Common;
+using System.Web.Security;
 
 namespace ThaiSonBacDMS.Controllers
 {
@@ -25,6 +26,7 @@ namespace ThaiSonBacDMS.Controllers
             if (ModelState.IsValid)
             {
                 var accDAO = new AccountDAO();
+                var roleDAO = new RoleDAO();
                 //var encryptor = Encryptor.MD5Hash(model.password);
                 var result = accDAO.Login(model.accountName, model.password);
                 if (result == 1)
@@ -35,7 +37,7 @@ namespace ThaiSonBacDMS.Controllers
                     userSession.accountID = account.Account_ID;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
 
-                    return RedirectToAction("Index", "PhanPhoi/Home");
+                    return RedirectToAction("ConfirmRole", "ConfirmRole");                    
                 }
                 else if (result == 0)
                 {
@@ -52,5 +54,14 @@ namespace ThaiSonBacDMS.Controllers
             }
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon(); // it will clear the session at the end of request
+            return RedirectToAction("Login", "Login");
+        }
+
+
     }
 }

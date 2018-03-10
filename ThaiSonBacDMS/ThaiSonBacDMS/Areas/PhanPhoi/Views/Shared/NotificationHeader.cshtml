@@ -1,0 +1,31 @@
+﻿@model List<Models.Framework.Notification>
+@{
+    var session = (ThaiSonBacDMS.Common.UserSession)Session[ThaiSonBacDMS.Common.CommonConstants.USER_SESSION];
+}
+
+<!-- Notifications: style can be found in dropdown.less -->
+<li class="dropdown notifications-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell-o"></i>
+        <span class="label label-warning">@Model.Count(x=>x.User_ID == session.user_id)</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">Bạn có @Model.Count(x => x.User_ID == session.user_id) thông báo mới</li>
+        <li>
+            <ul class="menu">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a href="@item.Link">
+                            <i class="fa fa-shopping-cart text-green"></i> @item.Content
+                            <div class="pull-right">@item.Notif_date</div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li class="footer">
+            <a href="#">Xem tất cả</a>
+        </li>
+    </ul>
+</li>
