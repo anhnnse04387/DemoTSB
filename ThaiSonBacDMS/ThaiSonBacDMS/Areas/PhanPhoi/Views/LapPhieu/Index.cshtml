@@ -21,18 +21,27 @@
         background-color: rgb(240, 240, 240);
     }
 
-        .mainTable thead tr th {
-            vertical-align: middle !important;
-            text-align: center;
-            background-color: #3c8dbc;
-            color: #fff;
-        }
+    .number {
+        text-align: right;
+    }
 
-        .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
-        .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
-        .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
-            text-align: right;
-        }
+    .mainTable thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
+
+    .mainTable tbody tr td:nth-child(1) {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
+    .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
+    .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
+        text-align: right;
+    }
 
     .pointerCursor {
         cursor: pointer;
@@ -193,9 +202,114 @@
                             <div class="box-header">
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-xs-12 table-responsive">
-                                        <fieldset id="detailOrder">
+                                        <fieldset>
                                             <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
-                                            @Html.Partial("Items", Model)
+                                            <table class="table table-striped mainTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="2" style="width: 30px;">STT</th>
+                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                        <th colspan="2">Số lượng</th>
+                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 70px;">Cái</th>
+                                                        <th style="width: 70px;">Thùng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="addingRow">
+                                                        <td>1</td>
+                                                        <td style="vertical-align: middle; width: 24.7%;">
+                                                            <input type="text" required class="form-control code" />
+                                                            <input type="hidden" class="productId" /><input type="hidden" class="qtt" />
+                                                        </td>
+                                                        <td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>
+                                                        <td><input type="text" class="form-control cai number" required /></td>
+                                                        <td><input type="text" class="form-control thung number" required /></td>
+                                                        <td><output class="dongia number"></output></td>
+                                                        <td><output class="tienchuack number"></output></td>
+                                                        <td><input type="text" class="form-control ck number" required /></td>
+                                                        <td><output class="tiendack number"></output></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a style="padding: 3px;" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" id="addLstItem" href="javascript:void(0)">
+                                                                <i class="fa fa-plus-square" style="color: #3c8dbc; font-size: 20px"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_cai_1" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_thung_1" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_chua_ck_1" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" class="form-control" id="tong_ck_1" style="text-align: right; float: right; font-weight: bold;"
+                                                                   onkeyup="configCkAll('1');
+                                                                                       return false;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="tien_ck_1" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="con_lai_1" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" class="form-control" id="vat_1" style="text-align: right; float: right; font-weight: bold;"
+                                                                   onkeyup="configCkAll('1');
+                                                                                       return false;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="tien_vat_1" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="tong_tien_da_ck_1" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </fieldset>
                                         <fieldset id="turn1" class="noDisplay">
                                             <legend><b style="font-size: 17px;">Giao hàng đợt 1</b></legend>
@@ -357,52 +471,8 @@
 }
 @section LapPhieu
 {
-    <script type="text/javascript">
-        $(function () {
-            $('#addLstItem').on('click', function () {
-                $.post('@Url.Action("CreateItem")', $('form').serializeModel(), function (html) {
-                    $('#detailOrder').html(html);
-                });
-            });
-        });
-        $.fn.serializeModel = function () {
-            var model = {};
-            $(this).serializeArray().map(function (item) {
-                model[item.name] = item.value;
-            });
-            return model;
-        };
-
-    </script>
-}
-@section LookupCustomer
-{
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#customer').change(function () {
-                $.ajax({
-                    type: "post",
-                    url: "/LapPhieu/changeCustomer",
-                    data: $('form').serializeModel(),
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        document.getElementById('deliveryAddress').value = data.deliveryAddress;
-                        document.getElementById('taxCode').value = data.taxCode;
-                        document.getElementById('invoiceAddress').value = data.invoiceAddress;
-                    }
-                });
-            });
-        });
-        $.fn.serializeModel = function () {
-            var model = {};
-            $(this).serializeArray().map(function (item) {
-                model[item.name] = item.value;
-            });
-            return model;
-        };
-    </script>
+    <script src="~/Assets/dist/js/autoNumeric.min.js"></script>
+    <script src="~/Assets/dist/js/LapPhieu.js"></script>
 }
 
 
