@@ -13,6 +13,7 @@ namespace Models.Framework
         public Account()
         {
             Account_role = new HashSet<Account_role>();
+            Notes = new HashSet<Note>();
         }
 
         [Key]
@@ -41,5 +42,8 @@ namespace Models.Framework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account_role> Account_role { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Note> Notes { get; set; }
     }
 }

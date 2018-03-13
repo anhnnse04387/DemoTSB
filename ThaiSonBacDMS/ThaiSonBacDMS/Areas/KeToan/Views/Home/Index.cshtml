@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/KeToan/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard"></i> Trang Chủ
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class=""></i> Phiếu đang chờ
+            </a>
+        </li>
+    </ol>
+</section>
+<br>
+<section class="content">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        <b>DANH SÁCH ĐƠN HÀNG</b>
+                    </h4>
+                </div>
+            </div>
+            <div class="box">
+                <div class="row" style="margin-left :0px; margin-right:0px">
+                    <div class="col-md-12">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Tìm kiếm theo</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-2">Lô số</div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-codepen"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Lô số">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">Số hóa đơn</div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-codepen"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Số hóa đơn">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2">Ngày</div>
+                                <div class="col-md-2">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input placeholder="Từ ngày" type="text" class="form-control" id="datepicker1">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input placeholder="Đến ngày" type="text" class="form-control" id="datepicker2">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">Tổng tiền</div>
+                                <div class="col-md-2">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-money"></i>
+                                        </div>
+                                        <input placeholder="Từ" type="text" class="form-control" id="datepicker">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-money"></i>
+                                        </div>
+                                        <input placeholder="Đến" type="text" class="form-control" id="datepicker">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2">Tên khách hàng</div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Tên khách hàng">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <button type="button" class="btn btn-block btn-primary">
+                                Tìm kiếm
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="example1" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Lô số</th>
+                                <th>Số hóa đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Ngày</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <a href="ketoan_chi-tiet-don-hang.html">81264-0</a>
+                                </td>
+                                <td>24324</td>
+                                <td>Công ty Phú An</td>
+                                <td>20-12-2017</td>
+                                <td>15,069,500</td>
+                                <td>
+                                    <span class="label label-primary">Đã xuất phiếu</span>
+                                </td>
+                                <td>Chốt TT T9</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    <a href="ketoan_chi-tiet-don-hang.html">81263-0</a>
+                                </td>
+                                <td>24323</td>
+                                <td>Công ty HPH</td>
+                                <td>20-12-2017</td>
+                                <td>82,735,872</td>
+                                <td>
+                                    <span class="label label-primary">Đã xuất phiếu</span>
+                                </td>
+                                <td>Chốt TT T12</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    <a href="ketoan_chi-tiet-don-hang.html">81262-1</a>
+                                </td>
+                                <td>24322</td>
+                                <td>Công ty HPH</td>
+                                <td>19-12-2017</td>
+                                <td>41,735,872</td>
+                                <td>
+                                    <span class="label label-warning">Đang giao hàng</span>
+                                </td>
+                                <td>Chốt TT T12</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <a href="ketoan_chi-tiet-don-hang.html">81261-1</a>
+                                </td>
+                                <td>24321</td>
+                                <td>Công ty Invico - Sắn</td>
+                                <td>18-12-2017</td>
+                                <td>5,990,800</td>
+                                <td>
+                                    <span class="label label-primary">Đã xuất phiếu</span>
+                                </td>
+                                <td>Chốt TT T10</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    <a href="ketoan_chi-tiet-don-hang.html">81260-0</a>
+                                </td>
+                                <td>24320</td>
+                                <td>Công ty Sáng Hà</td>
+                                <td>11-12-2017</td>
+                                <td>17,590,000</td>
+                                <td>
+                                    <span class="label label-warning">Đã xuất kho</span>
+                                </td>
+                                <td>Chốt TT T11</td>
+                            </tr>
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

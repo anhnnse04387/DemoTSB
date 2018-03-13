@@ -9,6 +9,7 @@ using ThaiSonBacDMS.Common;
 using ThaiSonBacDMS.Controllers;
 using Models.Framework;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
@@ -29,6 +30,34 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             List<Notification> listNoti = new List<Notification>();
             listNoti = notiDAO.getByUserID(session.user_id);
             return PartialView(listNoti);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult NoteEdit()
+        {
+            var noteDAO = new NoteDAO();
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            var content = noteDAO.getNotebyAccount(session.accountID);
+            
+            return PartialView(content);
+        }
+
+        [HttpPost]
+        public ActionResult NoteEdit(Note note)
+        {
+            var noteDAO = new NoteDAO();
+            noteDAO.editNotebyAccount(note.Account_ID, note.Contents);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult NoteHeader()
+        {
+            var noteDAO = new NoteDAO();
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            var content = noteDAO.getNotebyAccount(session.accountID).Contents;
+            string[] lines = content.Split(Environment.NewLine.ToCharArray());
+            return PartialView(lines);
         }
     }
 }

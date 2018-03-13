@@ -28,6 +28,7 @@ namespace Models.Framework
         public virtual DbSet<KPI_emp> KPI_emp { get; set; }
         public virtual DbSet<KPI_supplier> KPI_supplier { get; set; }
         public virtual DbSet<Medium> Media { get; set; }
+        public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<Order_detail_status> Order_detail_status { get; set; }
@@ -250,6 +251,14 @@ namespace Models.Framework
 
             modelBuilder.Entity<Medium>()
                 .Property(e => e.Upload_by)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Note>()
+                .Property(e => e.Note_ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Note>()
+                .Property(e => e.Account_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Notification>()

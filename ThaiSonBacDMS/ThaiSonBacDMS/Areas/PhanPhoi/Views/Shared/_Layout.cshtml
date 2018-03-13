@@ -100,12 +100,8 @@
                         </li>
                     </ul>
                 </div>
-                <a href="#" id="scrollContainer" class="navbar-custom-menu pull-left" data-toggle="modal" data-target="#noteModal">
-                    <div id="scrollBox">
-                        <p>Ngày 31/12/2017: Inbox để biết thêm chi tiết</p>
-                        <p>Ngày 05/01/2018: Hãy sử lý đơn hàng HD-83157-1</p>
-                    </div>
-                </a>
+                <!-- Note header-->
+                @{ Html.RenderAction("NoteHeader", "Home"); }
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
@@ -353,30 +349,6 @@
     @RenderSection("LapPhieu", false/*required*/)
     @RenderSection("LookupCustomer", false/*required*/)
 
-    <!-- Modal -->
-    <div class="modal fade" id="noteModal" role="dialog">
-
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Ghi chú</h4>
-                </div>
-                <div class="modal-body">
-                    <textarea class="textarea" id="txtNote"
-                              style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; margin-top: 20px;">
-                        - Ngày 31/12/2017: Inbox để biết thêm chi tiết&#x0a;- Ngày 05/01/2018: Hãy sử lý đơn hàng HD-83157-1
-                    </textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Thêm mới</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                </div>
-            </div>
-
-        </div>
-    </div> 
+    @{ Html.RenderAction("NoteEdit", "Home"); }
 </body>
 </html>
