@@ -9,7 +9,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class OrderTotalModel
     {
-        public String orderId { get; set; }      
+        public String orderId { get; set; }
         public String customerId { get; set; }
         public String deliveryAddress { get; set; }
         public int deliveryQtt { get; set; }
