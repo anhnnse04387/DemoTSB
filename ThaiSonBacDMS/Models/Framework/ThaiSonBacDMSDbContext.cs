@@ -28,6 +28,7 @@ namespace Models.Framework
         public virtual DbSet<KPI_emp> KPI_emp { get; set; }
         public virtual DbSet<KPI_supplier> KPI_supplier { get; set; }
         public virtual DbSet<Medium> Media { get; set; }
+        public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<Order_detail_status> Order_detail_status { get; set; }
@@ -197,11 +198,7 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<History_price>()
-                .Property(e => e.VAT_VND)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<History_price>()
-                .Property(e => e.VAT_USD)
+                .Property(e => e.VAT)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<History_price>()
@@ -250,6 +247,14 @@ namespace Models.Framework
 
             modelBuilder.Entity<Medium>()
                 .Property(e => e.Upload_by)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Note>()
+                .Property(e => e.Note_ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Note>()
+                .Property(e => e.Account_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Notification>()
@@ -332,10 +337,6 @@ namespace Models.Framework
                 .HasMany(e => e.Order_detail_status)
                 .WithRequired(e => e.Order_part)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Order_part>()
-                .HasOptional(e => e.Order_items)
-                .WithRequired(e => e.Order_part);
 
             modelBuilder.Entity<Order_total>()
                 .Property(e => e.Order_ID)
@@ -426,6 +427,10 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
+                .Property(e => e.Supplier_ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
                 .Property(e => e.Category_ID)
                 .IsUnicode(false);
 
@@ -450,11 +455,7 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.VAT_VND)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.VAT_USD)
+                .Property(e => e.VAT)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product_media>()

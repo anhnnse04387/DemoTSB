@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,12 +17,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public String invoiceAddress { get; set; }
         public int rate { get; set; }
         public String taxCode { get; set; }
-        public long subTotal { get; set; }
-        public long vat { get; set; }
-        public long discount { get; set; }
-        public long total { get; set; }
-        public List<OrderPartModel> lstPart { get; set; }
-        public List<OrderItemModel> lstItem { get; set; }
+        public List<Order_part> part { get; set; }
+        public List<Order_items> items { get; set; }
         public IList<SelectListItem> lstCustomer { get; set; }
 
     }

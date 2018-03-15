@@ -8,7 +8,9 @@ namespace Models.Framework
 
     public partial class Order_items
     {
-        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
+
         [StringLength(10)]
         public string Order_part_ID { get; set; }
 

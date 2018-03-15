@@ -23,7 +23,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 ddl.Add(new SelectListItem { Text = x.Customer_name, Value = x.Customer_ID.ToString() });
             });
             model.lstCustomer = ddl;
-            model.deliveryQtt = 1;
+            model.deliveryQtt = 0;
             model.rate = 2016;
             return View(model);
         }
@@ -71,7 +71,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             try
             {
                 var dao = new ProductDAO();
-                return Json(dao.getProduct(input), JsonRequestBehavior.AllowGet);
+                var lst = dao.getProduct(input);
+                return Json(lst, JsonRequestBehavior.AllowGet);
             }
             catch
             {

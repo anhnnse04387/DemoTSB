@@ -31,10 +31,7 @@ namespace Models.Framework
         public decimal? Price_before_VAT_USD { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? VAT_VND { get; set; }
-
-        [Column(TypeName = "money")]
-        public decimal? VAT_USD { get; set; }
+        public decimal? VAT { get; set; }
 
         [StringLength(10)]
         public string User_ID { get; set; }

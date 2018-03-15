@@ -12,6 +12,7 @@ namespace Models.Framework
         public Order_part()
         {
             Order_detail_status = new HashSet<Order_detail_status>();
+            Order_items = new HashSet<Order_items>();
             Stock_in = new HashSet<Stock_in>();
             Stock_out = new HashSet<Stock_out>();
         }
@@ -73,7 +74,8 @@ namespace Models.Framework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_detail_status> Order_detail_status { get; set; }
 
-        public virtual Order_items Order_items { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_items> Order_items { get; set; }
 
         public virtual Order_total Order_total { get; set; }
 

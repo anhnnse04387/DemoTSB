@@ -29,6 +29,9 @@ namespace Models.Framework
         public string Product_parameters { get; set; }
 
         [StringLength(10)]
+        public string Supplier_ID { get; set; }
+
+        [StringLength(10)]
         public string Category_ID { get; set; }
 
         [StringLength(10)]
@@ -53,10 +56,7 @@ namespace Models.Framework
         public decimal? Price_before_VAT_USD { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? VAT_VND { get; set; }
-
-        [Column(TypeName = "money")]
-        public decimal? VAT_USD { get; set; }
+        public decimal? VAT { get; set; }
 
         public int? Quantities_in_inventory { get; set; }
 

@@ -42,6 +42,8 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? Current_debt { get; set; }
 
+        public int? Status { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier_transaction> Supplier_transaction { get; set; }
     }
