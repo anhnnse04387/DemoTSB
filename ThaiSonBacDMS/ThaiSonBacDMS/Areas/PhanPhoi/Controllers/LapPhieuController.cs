@@ -2,10 +2,12 @@
 using Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
@@ -16,6 +18,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             var ddl = new List<SelectListItem>();
             var dao = new CustomerDAO();
+            var orderDAO = new OrderTotalDAO();
             var model = new OrderTotalModel();
             var lstCustomer = dao.getCustomer();
             lstCustomer.ForEach(x =>
@@ -23,29 +26,85 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 ddl.Add(new SelectListItem { Text = x.Customer_name, Value = x.Customer_ID.ToString() });
             });
             model.lstCustomer = ddl;
+            model.orderId = "O" + orderDAO.getNextValueID();
             model.deliveryQtt = 0;
-            model.rate = 2016;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Index(OrderTotalModel model)
+        public ActionResult SaveOrder(OrderTotalModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (!String.IsNullOrEmpty(model.orderId) && !String.IsNullOrEmpty(model.customerId)
+                    && !String.IsNullOrEmpty(model.deliveryAddress) && !String.IsNullOrEmpty(model.invoiceAddress)
+                    && !String.IsNullOrEmpty(model.taxCode) && model.rate > 0 && model.items != null && model.items.Count > 0)
                 {
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    return View(model);
+                    var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                    var orderDAO = new OrderTotalDAO();
+                    var orderPartDAO = new OrderPartDAO();
+                    var orderStatusDAO = new OrderDetailStatusDAO();
+                    var orderItemDAO = new OrderItemDAO();
+                    var result = orderDAO.createOrder(new Order_total
+                    {
+                        Order_ID = model.orderId,
+                        Address_delivery = model.deliveryAddress,
+                        Address_invoice_issuance = model.invoiceAddress,
+                        Customer_ID = model.customerId,
+                        Date_created = DateTime.Now,
+                        Rate = model.rate,
+                        User_ID = session.user_id,
+                        Sub_total = model.subTotal,
+                        VAT = model.vat,
+                        Total_price = model.total,
+                        Order_discount = model.discount,
+                        Status_ID = 0
+                    });
+                    if (result != null)
+                    {
+                        orderStatusDAO.createOrderStatus(new Order_detail_status
+                        {
+                            Order_ID = model.orderId,
+                            Status_ID = 0,
+                            Date_change = DateTime.Now,
+                            User_ID = session.user_id
+                        });
+                        foreach (Order_items o in model.items)
+                        {
+                            o.Order_ID = model.orderId;
+                            orderItemDAO.createOrderItem(o);
+                        }
+                        if (model.deliveryQtt > 0)
+                        {
+                            foreach (Order_part o in model.part)
+                            {
+                                o.Order_ID = model.orderId;
+                                o.Date_created = DateTime.Now;
+                                o.Status_ID = 0;
+                                o.Customer_ID = model.customerId;
+                                if (orderPartDAO.createOrderPart(o) != null)
+                                {
+                                    orderStatusDAO.createOrderStatus(new Order_detail_status
+                                    {
+                                        Order_ID = model.orderId,
+                                        Order_part_ID = o.Order_part_ID,
+                                        Status_ID = 0,
+                                        Date_change = DateTime.Now,
+                                        User_ID = session.user_id
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    return Json(new { success = true }, JsonRequestBehavior.AllowGet);
                 }
             }
-            else
+            catch (Exception e)
             {
-                return View(model);
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
             }
+            return RedirectToAction("Index");
         }
 
         public ActionResult ChangeCustomer(String customerId)
@@ -60,8 +119,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.invoiceAddress = customer.Export_invoice_address;
                 return Json(model, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index");
             }
         }
@@ -74,8 +134,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var lst = dao.getProduct(input);
                 return Json(lst, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index");
             }
         }

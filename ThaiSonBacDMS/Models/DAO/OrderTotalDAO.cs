@@ -17,10 +17,19 @@ namespace Models.DAO
             db = new ThaiSonBacDMSDbContext();
         }
 
-        public void createOrder(Order_total order)
+        public String createOrder(Order_total order)
         {
             db.Order_total.Add(order);
-            db.SaveChanges();
+            if (db.SaveChanges() > 0)
+            {
+                return order.Order_ID;
+            }
+            return null;
+        }
+
+        public int getNextValueID()
+        {
+            return db.Order_total.ToList().Count + 1;
         }
 
     }
