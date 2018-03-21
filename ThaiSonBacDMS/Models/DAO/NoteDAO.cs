@@ -16,7 +16,22 @@ namespace Models.DAO
         }
         public Note getNotebyAccount(string account_id)
         {
-            return context.Notes.SingleOrDefault(s => s.Account_ID == account_id);
+            var note = context.Notes.SingleOrDefault(s => s.Account_ID == account_id);
+            if (note == null)
+            {
+                var newNote = new Note();
+                newNote.Note_ID = (context.Notes.Count() + 1).ToString();
+                newNote.Account_ID = account_id;
+                newNote.Date_Created = DateTime.Now;
+                newNote.Contents = string.Empty;
+                context.Notes.Add(newNote);
+                context.SaveChanges();
+                return context.Notes.SingleOrDefault(s => s.Account_ID == account_id);
+            }
+            else
+            {
+                return context.Notes.SingleOrDefault(s => s.Account_ID == account_id);
+            }
         }
         public void editNotebyAccount(string account_id, string content)
         {
@@ -24,6 +39,7 @@ namespace Models.DAO
                            where n.Account_ID == account_id
                            select n).SingleOrDefault();
             rowEdit.Contents = content;
+            rowEdit.Date_Created = DateTime.Now;
             context.SaveChanges();
         }
     }

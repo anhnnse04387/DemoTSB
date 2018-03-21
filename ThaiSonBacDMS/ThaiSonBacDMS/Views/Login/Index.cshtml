@@ -110,7 +110,7 @@
         </div>
         <!-- /.login-logo -->
         <div class="form">
-            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(false, "", new { @class = "text-danger", @style = "font-size: 12px; padding-right: 20px; text-align: left;" })

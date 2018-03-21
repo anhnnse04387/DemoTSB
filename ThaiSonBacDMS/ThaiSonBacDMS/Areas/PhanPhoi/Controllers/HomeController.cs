@@ -31,24 +31,24 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             listNoti = notiDAO.getByUserID(session.user_id);
             return PartialView(listNoti);
         }
-
         [ChildActionOnly]
         public PartialViewResult NoteEdit()
         {
             var noteDAO = new NoteDAO();
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             var content = noteDAO.getNotebyAccount(session.accountID);
-            
+
             return PartialView(content);
         }
 
         [HttpPost]
-        public ActionResult NoteEdit(Note note)
+        public JsonResult NoteEdit(string accID, string content)
         {
             var noteDAO = new NoteDAO();
-            noteDAO.editNotebyAccount(note.Account_ID, note.Contents);
-            return RedirectToAction("Index", "Home");
+            noteDAO.editNotebyAccount(accID, content);
+            return Json(content, JsonRequestBehavior.AllowGet);
         }
+
 
         [ChildActionOnly]
         public PartialViewResult NoteHeader()
@@ -56,7 +56,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var noteDAO = new NoteDAO();
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             var content = noteDAO.getNotebyAccount(session.accountID).Contents;
-            string[] lines = content.Split(Environment.NewLine.ToCharArray());
+            string[] lines = new string[] { };
+            if (!string.IsNullOrEmpty(content.Trim()))
+            {
+                lines = content.Split(Environment.NewLine.ToCharArray());
+            }
+            else
+            {
+                lines = new string[] { "Hãy điền ghi chú vào đây" };
+            }
             return PartialView(lines);
         }
     }
