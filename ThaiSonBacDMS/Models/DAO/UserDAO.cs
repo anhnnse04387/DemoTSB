@@ -18,7 +18,7 @@ namespace Models.DAO
         {
             return context.Users.SingleOrDefault(s => s.User_ID == user_id);
         } 
-        public User getByAccountID(string account_id)
+        public User getByAccountID(int account_id)
         {
             var x = from a in context.Accounts
                     join u in context.Users on a.User_ID equals (u.User_ID)

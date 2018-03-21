@@ -9,7 +9,7 @@ namespace Models.Framework
     public partial class Exchange_rate
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Change_ID { get; set; }
 
         [StringLength(10)]

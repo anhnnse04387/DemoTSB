@@ -18,7 +18,7 @@ namespace Models.DAO
         {
             return context.Role_detail.SingleOrDefault(s => s.Role_ID == id);
         }
-        public List<Role_detail> getRoleByAccount(string account_id)
+        public List<Role_detail> getRoleByAccount(int account_id)
         {
             var x = from a in context.Account_role
                     join r in context.Role_detail on a.Role_ID equals (r.Role_ID)

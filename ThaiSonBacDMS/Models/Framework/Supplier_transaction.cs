@@ -9,17 +9,15 @@ namespace Models.Framework
     public partial class Supplier_transaction
     {
         [Key]
-        [StringLength(10)]
-        public string Transaction_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Transaction_ID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Date_Created { get; set; }
 
-        [StringLength(10)]
-        public string Supplier_ID { get; set; }
+        public int? Supplier_ID { get; set; }
 
-        [StringLength(10)]
-        public string Purchase_invoice_ID { get; set; }
+        public int? Purchase_invoice_ID { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Old_debt { get; set; }

@@ -10,11 +10,10 @@ namespace Models.Framework
     public partial class Note
     {
         [Key]
-        [StringLength(10)]
-        public string Note_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Note_ID { get; set; }
 
-        [StringLength(10)]
-        public string Account_ID { get; set; }
+        public int? Account_ID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Date_Created { get; set; }

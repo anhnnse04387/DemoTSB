@@ -17,8 +17,8 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string Product_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Product_ID { get; set; }
 
         [StringLength(50)]
         public string Product_code { get; set; }
@@ -28,8 +28,7 @@ namespace Models.Framework
         [StringLength(100)]
         public string Product_parameters { get; set; }
 
-        [StringLength(10)]
-        public string Supplier_ID { get; set; }
+        public int? Supplier_ID { get; set; }
 
         [StringLength(10)]
         public string Category_ID { get; set; }

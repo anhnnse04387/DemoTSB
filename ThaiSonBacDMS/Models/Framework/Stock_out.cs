@@ -15,14 +15,13 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string Stock_out_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Stock_out_ID { get; set; }
 
         [StringLength(10)]
         public string Order_part_ID { get; set; }
 
-        [StringLength(10)]
-        public string Purchase_invoice_ID { get; set; }
+        public int? Purchase_invoice_ID { get; set; }
 
         public string Description { get; set; }
 
@@ -36,7 +35,5 @@ namespace Models.Framework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detail_stock_out> Detail_stock_out { get; set; }
-
-        public virtual Order_part Order_part { get; set; }
     }
 }

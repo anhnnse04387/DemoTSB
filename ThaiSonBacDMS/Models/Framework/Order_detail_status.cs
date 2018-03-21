@@ -8,7 +8,7 @@ namespace Models.Framework
 
     public partial class Order_detail_status
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]

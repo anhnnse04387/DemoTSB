@@ -19,10 +19,6 @@ namespace Models.DAO
 
         public String createOrderPart(Order_part orderPart)
         {
-            foreach(Order_items o in orderPart.Order_items)
-            {
-                o.ID = db.Order_items.Count() + 1;
-            }
             db.Order_part.Add(orderPart);
             if (db.SaveChanges() > 0)
             {

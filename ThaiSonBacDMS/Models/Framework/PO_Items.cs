@@ -8,13 +8,12 @@ namespace Models.Framework
 
     public partial class PO_Items
     {
-        public byte ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
-        [StringLength(10)]
-        public string PO_ID { get; set; }
+        public int? PO_ID { get; set; }
 
-        [StringLength(10)]
-        public string Product_ID { get; set; }
+        public int? Product_ID { get; set; }
 
         public int? Quantity { get; set; }
 

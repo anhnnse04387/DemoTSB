@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
@@ -59,7 +60,34 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
         public JsonResult CheckOut(String orderId)
         {
-            var 
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderTotalDAO();
+                dao.checkOut(orderId, session.user_id);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult cancelOrder(String orderId, String note)
+        {
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderTotalDAO();
+                dao.cancelOrder(orderId, note, session.user_id);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
     }

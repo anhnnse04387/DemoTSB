@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $('#customer').change(function () {
-        var id = $('#customer').val();
+        var id = parseInt($('#customer').val());
         $.ajax({
-            url: "/LapPhieu/ChangeCustomer",
+            url: "/PhanPhoi/LapPhieu/ChangeCustomer",
             data: {customerId: id},
             datatype: "json",
             success: function (data) {
@@ -158,7 +158,7 @@ function addLstSubItem(e) {
 
 function saveOrder() {
     $.ajax({
-        url: '/LapPhieu/SaveOrder',
+        url: '/PhanPhoi/LapPhieu/SaveOrder',
         type: 'POST',
         dataType: 'json',
         data: getAllData(),
@@ -183,7 +183,7 @@ function saveOrder() {
 function previewOrder() {
     var data = JSON.stringify(getAllData());
     $.ajax({
-        url: '/Preview/Index',
+        url: '/PhanPhoi/Preview/Index',
         type: 'GET',
         dataType: 'json',
         data: JSON.stringify({model: data})
@@ -193,7 +193,7 @@ function previewOrder() {
 function doneOrder() {
     var data = JSON.stringify(getAllData());
     $.ajax({
-        url: '/Preview/CheckOut',
+        url: '/PhanPhoi/Preview/CheckOut',
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify({model: data}),
@@ -228,7 +228,7 @@ function productATC() {
                 var re = req.term;
                 if (re.length > 2) {
                     $.ajax({
-                        url: '/LapPhieu/ChooseProduct',
+                        url: '/PhanPhoi/LapPhieu/ChooseProduct',
                         data: {
                             input: re
                         },
@@ -284,13 +284,14 @@ function productSubATC() {
             source: function (req, responseFn) {
                 var re = req.term;
                 var data = [];
-                $('.addingRow').each(function () {
-                    var subCode = $('.addingRow').find('.code').val();
-                    var productId = $('.addingRow').find('.productId').val();
-                    var param = $('.addingRow').find('.param').val();
-                    var dongia = $('.addingRow').find('.dongia').val();
-                    var qttBox = $('.addingRow').find('.qttBox').val();
-                    var qttInven = $('.addingRow').find('.cai').val();
+                var arr = $('.addingRow');
+                for (var i = 0; i < arr.length; i++) {
+                    var subCode = arr.eq(i).find('.code').val();
+                    var productId = arr.eq(i).find('.productId').val();
+                    var param = arr.eq(i).find('.param').val();
+                    var dongia = arr.eq(i).find('.dongia').val();
+                    var qttBox = arr.eq(i).find('.qttBox').val();
+                    var qttInven = arr.eq(i).find('.cai').val();
                     if (subCode.length > 2) {
                         var items = {
                             label: subCode,
@@ -302,7 +303,7 @@ function productSubATC() {
                         };
                         data.push(items);
                     }
-                });
+                }
                 if (re.length > 2) {
                     responseFn($.map(data, function (m) {
                         return {
@@ -382,7 +383,7 @@ function getAllData() {
             var invoiceDate = arr.eq(i).find('.invoiceDate').val();
             var table = arr.eq(i).find('.mainTable');
             var partVat = parseFloat(table.find('.vat').val());
-            var partTotal = parseFloat(table.find('.tongtiendack').val().replace(new RegExp(',', 'g'), ''));            
+            var partTotal = parseFloat(table.find('.tongtiendack').val().replace(new RegExp(',', 'g'), ''));
             table.find('.addingSubRow').each(function () {
                 var tiendack = parseFloat($(this).find('.tiendack').val().replace(new RegExp(',', 'g'), ''));
                 var productId = $(this).find('.productId').val();

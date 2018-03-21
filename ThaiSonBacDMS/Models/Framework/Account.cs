@@ -17,8 +17,8 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string Account_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Account_ID { get; set; }
 
         [Required]
         [StringLength(30)]

@@ -19,7 +19,6 @@ namespace Models.DAO
 
         public void createOrderItem(Order_items orderItem)
         {
-            orderItem.ID = db.Order_items.Count() + 1;
             db.Order_items.Add(orderItem);
             db.SaveChanges();
         }

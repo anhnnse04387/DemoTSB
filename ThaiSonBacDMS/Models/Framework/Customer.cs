@@ -16,14 +16,13 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string Customer_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Customer_ID { get; set; }
 
         [StringLength(50)]
         public string Customer_name { get; set; }
 
-        [StringLength(10)]
-        public string Media_ID { get; set; }
+        public int? Media_ID { get; set; }
 
         public string Delivery_address { get; set; }
 

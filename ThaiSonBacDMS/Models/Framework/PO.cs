@@ -17,14 +17,13 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string PO_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PO_ID { get; set; }
 
         [StringLength(20)]
         public string PO_no { get; set; }
 
-        [StringLength(10)]
-        public string Supplier_ID { get; set; }
+        public int? Supplier_ID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Date_create { get; set; }

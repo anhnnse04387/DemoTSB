@@ -8,8 +8,7 @@ namespace Models.Framework
 
     public partial class History_price
     {
-        [StringLength(10)]
-        public string Product_ID { get; set; }
+        public int? Product_ID { get; set; }
 
         [Key]
         [StringLength(10)]
