@@ -6,10 +6,10 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Common;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
     public class LapPhieuController : Controller
     {
@@ -58,14 +58,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         VAT = model.vat,
                         Total_price = model.total,
                         Order_discount = model.discount,
-                        Status_ID = 1
+                        Status_ID = 0
                     });
                     if (result != null)
                     {
                         orderStatusDAO.createOrderStatus(new Order_detail_status
                         {
                             Order_ID = model.orderId,
-                            Status_ID = 1,
+                            Status_ID = 0,
                             Date_change = DateTime.Now,
                             User_ID = session.user_id
                         });
@@ -80,7 +80,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             {
                                 o.Order_ID = model.orderId;
                                 o.Date_created = DateTime.Now;
-                                o.Status_ID = 1;
+                                o.Status_ID = 0;
                                 o.Customer_ID = model.customerId;
                                 if (orderPartDAO.createOrderPart(o) != null)
                                 {
@@ -88,7 +88,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                     {
                                         Order_ID = model.orderId,
                                         Order_part_ID = o.Order_part_ID,
-                                        Status_ID = 1,
+                                        Status_ID = 0,
                                         Date_change = DateTime.Now,
                                         User_ID = session.user_id
                                     });

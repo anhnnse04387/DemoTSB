@@ -27,7 +27,7 @@ namespace Models.DAO
             var query = from e in getCustomer()
                         where e.Customer_ID.Equals(id)
                         select e;
-            return query.ToList()[0];
+            return query.SingleOrDefault();
         }
 
     }

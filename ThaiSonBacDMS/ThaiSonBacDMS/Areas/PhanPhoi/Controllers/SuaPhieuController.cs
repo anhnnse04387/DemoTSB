@@ -9,7 +9,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
     public class SuaPhieuController : Controller
     {
         // GET: PhanPhoi/SuaPhieu
-        public ActionResult Index()
+        public ActionResult Index(String orderId)
         {
             return View();
         }

@@ -24,5 +24,10 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public List<Order_items> getOrderItem(String orderId)
+        {
+            return db.Order_items.Where(x => x.Order_ID.Equals(orderId)).Where(x => x.Order_part_ID == null).ToList();
+        }
+
     }
 }
