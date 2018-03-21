@@ -17,6 +17,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public String invoiceAddress { get; set; }
         public int rate { get; set; }
         public String taxCode { get; set; }
+        public decimal subTotal { get; set; }
+        public decimal total { get; set; }
+        public decimal vat { get; set; }
+        public decimal discount { get; set; }
         public List<Order_part> part { get; set; }
         public List<Order_items> items { get; set; }
         public IList<SelectListItem> lstCustomer { get; set; }

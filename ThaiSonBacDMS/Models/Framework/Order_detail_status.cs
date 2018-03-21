@@ -8,13 +8,13 @@ namespace Models.Framework
 
     public partial class Order_detail_status
     {
-        public byte ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
 
         [Required]
         [StringLength(10)]
         public string Order_ID { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string Order_part_ID { get; set; }
 

@@ -333,11 +333,6 @@ namespace Models.Framework
                 .Property(e => e.Driver_ID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Order_part>()
-                .HasMany(e => e.Order_detail_status)
-                .WithRequired(e => e.Order_part)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Order_total>()
                 .Property(e => e.Order_ID)
                 .IsUnicode(false);
