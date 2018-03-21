@@ -23,5 +23,10 @@ namespace Models.DAO
             db.Configuration.ProxyCreationEnabled = false; //added line
             return db.Products.Where(x => x.Product_code.Trim().ToLower().Contains(code.Trim().ToLower())).ToList();
         }
+
+        public Product getProductById(String id)
+        {
+            return db.Products.Where(x => x.Product_ID.Equals(id)).SingleOrDefault();
+        }
     }
 }

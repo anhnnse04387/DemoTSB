@@ -190,7 +190,7 @@ function previewOrder() {
     });
 }
 
-function addOrder() {
+function doneOrder() {
     var data = JSON.stringify(getAllData());
     $.ajax({
         url: '/Preview/CheckOut',

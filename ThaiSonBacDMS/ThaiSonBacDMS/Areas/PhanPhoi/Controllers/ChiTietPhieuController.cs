@@ -1,0 +1,66 @@
+﻿using Models.DAO;
+using Models.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+
+namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+{
+    public class ChiTietPhieuController : Controller
+    {
+        // GET: PhanPhoi/ChiTietPhieu
+        public ActionResult Index(String orderId = "O6")
+        {
+            var dao = new OrderTotalDAO();
+            var itemDAO = new OrderItemDAO();
+            var customerDAO = new CustomerDAO();
+            var data = dao.getOrder(orderId);
+            var statusDAO = new StatusDAO();
+            var model = new OrderTotalModel();
+            var productDAO = new ProductDAO();
+            model.orderId = orderId;
+            model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
+            model.deliveryAddress = data.Address_delivery;
+            model.deliveryQtt = data.Order_part.Count;
+            model.status = statusDAO.getStatus(data.Status_ID);
+            var customer = customerDAO.getCustomerById(data.Customer_ID);
+            model.customerName = customer.Customer_name;
+            model.taxCode = customer.Tax_code;
+            var items = new List<OrderItemModel>();
+            foreach (Order_items o in itemDAO.getOrderItem(orderId))
+            {
+                var product = productDAO.getProductById(o.Product_ID);
+                var item = new OrderItemModel
+                {
+                    code = product.Product_code,
+                    param = product.Product_parameters,
+                    Box = o.Box,
+                    Discount = o.Discount,
+                    Price = o.Price,
+                    Quantity = o.Quantity,
+                    per = product.Price_before_VAT_VND,
+                    priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                };
+                items.Add(item);
+                model.qttTotal += o.Quantity;
+                model.boxTotal += o.Box;
+                model.subTotal = data.Sub_total;
+                model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount)) : 0;
+                model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
+                model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * (100 + data.VAT)) : 0;
+                model.total = data.Total_price;
+            }
+            model.readItems = items;
+            return View(model);
+        }
+
+        public JsonResult CheckOut(String orderId)
+        {
+            var 
+        }
+
+    }
+}
