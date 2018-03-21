@@ -16,7 +16,7 @@ namespace ThaiSonBacDMS.Controllers
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Login", action = "Login", Area = "" }));
+                    RouteValueDictionary(new { controller = "Login", action = "Index", Area = "" }));
             }
             base.OnActionExecuting(filterContext);
         }

@@ -13,8 +13,7 @@
                 scroll();
             }
         });
-    }
-    ;
+    };
     scroll();
 });
 $(document).on('hide.bs.modal', '#noteModal', function () {

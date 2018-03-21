@@ -14,7 +14,7 @@ namespace ThaiSonBacDMS.Controllers
     {
         // GET: Login
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Index()
         {
             //set username and password if has cookie
             string username = string.Empty;
@@ -108,7 +108,7 @@ namespace ThaiSonBacDMS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Index(LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -223,7 +223,7 @@ namespace ThaiSonBacDMS.Controllers
                 ckPassword.Expires = DateTime.Now.AddDays(-1d);
                 Response.Cookies.Add(ckPassword);
             }
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Index", "Login");
         }
 
     }

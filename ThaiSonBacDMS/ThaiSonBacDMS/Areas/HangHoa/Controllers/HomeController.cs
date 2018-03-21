@@ -26,7 +26,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             listNoti = notiDAO.getByUserID(session.user_id);
             return PartialView(listNoti);
         }
-
         [ChildActionOnly]
         public PartialViewResult NoteEdit()
         {
@@ -38,12 +37,13 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult NoteEdit(Note note)
+        public JsonResult NoteEdit(string accID, string content)
         {
             var noteDAO = new NoteDAO();
-            noteDAO.editNotebyAccount(note.Account_ID, note.Contents);
-            return PartialView();
+            noteDAO.editNotebyAccount(accID, content);
+            return Json(content, JsonRequestBehavior.AllowGet);
         }
+
 
         [ChildActionOnly]
         public PartialViewResult NoteHeader()
