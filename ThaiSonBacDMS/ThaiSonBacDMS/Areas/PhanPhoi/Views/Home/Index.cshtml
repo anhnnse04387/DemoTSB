@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
 <!-- Content Header (Page header) -->
@@ -14,7 +14,7 @@
 <!-- Main content -->
 <section class="content">
     <!-- Info boxes -->
-    <h3><b>THÁNG 12/2017</b></h3>
+    <h3><b>THÁNG @DateTime.Now.ToString("MM/yyyy")</b></h3>
     <div class="row dm">
         <div class="col-md-3 col-sm-6 col-xs-12">
             <a href="phanphoi_toBeContinue.html">
@@ -447,5 +447,224 @@
     </div>
     <!-- /.box -->
 </section>
-<!-- /.content --> 
+<!-- /.content -->
+
+@section Index {
+    <!-- ChartJS -->
+    <script src="/Assets/dist/js/Chart.bundle.js"></script>
+    <script>
+        new Chart(document.getElementById("barChart"), {
+            type: 'bar',
+            data: {
+                labels: ["AN-16D3-16H - 1600A", "EBS 54c 50A - 500mA", "EBN 203c 125A - 30mA", "EBN 52c	50A - 500mA", "EBS 52Fb 30mA - 50A", "32GRhd 30mA 30A", "MT-800 660A", "MT-63 42(34~50)A", "UW-18 for MC-6a~18a", "UA-1 1NO+1NC"],
+                datasets: [
+                    {
+                        label: "Số lượng: ",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "rgba(192,28,229,1)", "rgba(113,150,64,1)", "rgba(117,140,135,1", "rgba(255,199,0,1)", "rgba(0,0,0,1)"],
+                        data: [72, 68, 64, 59, 40, 38, 32, 25, 18, 14]
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Tháng 11'
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(document.getElementById("barChart2"), {
+            type: 'bar',
+            data: {
+                labels: ["AN-16D3-16H - 1600A", "EBS 54c 50A - 500mA", "EBN 203c 125A - 30mA", "EBN 52c	50A - 500mA", "EBS 52Fb 30mA - 50A", "32GRhd 30mA 30A", "MT-800 660A", "MT-63 42(34~50)A", "UW-18 for MC-6a~18a", "UA-1 1NO+1NC"],
+                datasets: [
+                    {
+                        label: "Số lượng: ",
+                        backgroundColor: ["#3e95cd", "#c45850", "#3cba9f", "rgba(192,28,229,1)", "#e8c3b9", "#8e5ea2", "rgba(113,150,64,1)", "rgba(0,0,0,1)", "rgba(117,140,135,1", "rgba(255,199,0,1)"],
+                        data: [101, 99, 90, 81, 77, 70, 50, 41, 30, 28]
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Tháng 12'
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(document.getElementById("lineChart"), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: [{
+                        x: 1,
+                        y: 3
+                    },
+                        {
+                            x: 7,
+                            y: 1.1
+                        },
+                        {
+                            x: 15,
+                            y: 3.5
+                        }, {
+                            x: 20,
+                            y: 2.5
+                        }, {
+                            x: 28,
+                            y: 4.1
+                        }],
+                    label: "Tháng 12",
+                    borderColor: "#33FF33",
+                    backgroundColor: "#33FF33",
+                    fill: false
+                }, {
+                    data: [{
+                        x: 1,
+                        y: 1.5
+                    }, {
+                        x: 18,
+                        y: 3.2
+                    }, {
+                        x: 22,
+                        y: 3.4
+                    }, {
+                        x: 31,
+                        y: 3
+                    }],
+                    label: "Tháng 11",
+                    borderColor: "#EE0000",
+                    backgroundColor: "#EE0000",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            stepSize: 1,
+                            max: 5
+                        }
+                    }],
+                    xAxes: [{
+                        type: "linear",
+                        ticks: {
+                            min: 1,
+                            stepSize: 5,
+                            max: 31
+                        }
+                    }, ],
+                }
+            }
+        });
+
+        new Chart(document.getElementById("lineChart2"), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: [{
+                        x: 1,
+                        y: 3
+                    },
+                        {
+                            x: 7,
+                            y: 1
+                        },
+                        {
+                            x: 15,
+                            y: 3
+                        }, {
+                            x: 20,
+                            y: 2
+                        }, {
+                            x: 28,
+                            y: 4
+                        }],
+                    label: "Tháng 12",
+                    borderColor: "#33FF33",
+                    backgroundColor: "#33FF33",
+                    fill: false
+                }, {
+                    data: [{
+                        x: 1,
+                        y: 1
+                    }, {
+                        x: 18,
+                        y: 3
+                    }, {
+                        x: 22,
+                        y: 3
+                    }, {
+                        x: 31,
+                        y: 4
+                    }],
+                    label: "Tháng 11",
+                    borderColor: "#EE0000",
+                    backgroundColor: "#EE0000",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            stepSize: 1,
+                            max: 5
+                        }
+                    }],
+                    xAxes: [{
+                        type: "linear",
+                        ticks: {
+                            min: 1,
+                            stepSize: 5,
+                            max: 31
+                        }
+                    }, ],
+                }
+            }
+        });
+    </script>
+
+}
 

@@ -19,6 +19,20 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            //OrderTotalDAO totalDAO = new OrderTotalDAO();
+            var firstDayOfTheMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            //var listTotal = totalDAO.getOrderByDateCreated(firstDayOfTheMonth); 
+            //return order in month
+            //var orderInMonth = listTotal.Count;
+            //return value in month
+            decimal valueInMonth = 0;
+            /*
+            foreach(var item in listTotal)
+            {
+                valueInMonth += (decimal) item.Total_price;
+            }
+            */
+            //return total product in month
             return View();
         }
 
@@ -48,7 +62,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             noteDAO.editNotebyAccount(accID, content);
             return Json(content, JsonRequestBehavior.AllowGet);
         }
-
 
         [ChildActionOnly]
         public PartialViewResult NoteHeader()
