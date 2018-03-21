@@ -8,10 +8,10 @@ namespace Models.Framework
 
     public partial class Account_role
     {
-        public byte ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
-        [StringLength(10)]
-        public string Account_ID { get; set; }
+        public int? Account_ID { get; set; }
 
         public byte? Role_ID { get; set; }
 

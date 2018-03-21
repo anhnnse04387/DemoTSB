@@ -22,9 +22,7 @@ namespace Models.Framework
         [StringLength(10)]
         public string Order_ID { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string Customer_ID { get; set; }
+        public int Customer_ID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime Date_created { get; set; }
@@ -56,6 +54,9 @@ namespace Models.Framework
 
         [Column(TypeName = "money")]
         public decimal? Total_price { get; set; }
+
+        [StringLength(1)]
+        public string Note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer_transaction> Customer_transaction { get; set; }

@@ -8,7 +8,7 @@ namespace Models.Framework
 
     public partial class Order_items
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [StringLength(10)]
@@ -18,8 +18,7 @@ namespace Models.Framework
         [StringLength(10)]
         public string Order_ID { get; set; }
 
-        [StringLength(10)]
-        public string Product_ID { get; set; }
+        public int? Product_ID { get; set; }
 
         public int? Quantity { get; set; }
 

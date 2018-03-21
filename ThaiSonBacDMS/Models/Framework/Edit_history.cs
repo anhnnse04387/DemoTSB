@@ -8,7 +8,8 @@ namespace Models.Framework
 
     public partial class Edit_history
     {
-        public byte ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         [Required]
         [StringLength(10)]
@@ -16,8 +17,7 @@ namespace Models.Framework
 
         public byte Edit_code { get; set; }
 
-        [StringLength(10)]
-        public string Product_ID { get; set; }
+        public int? Product_ID { get; set; }
 
         public int? Quantity_change { get; set; }
 

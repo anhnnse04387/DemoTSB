@@ -8,7 +8,7 @@ namespace ThaiSonBacDMS.Common
     [Serializable]
     public class UserSession
     {
-        public string accountID;
+        public int accountID;
         public string account_name;
         public string user_id;
         public string user_name;

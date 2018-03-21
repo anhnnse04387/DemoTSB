@@ -14,13 +14,13 @@ namespace Models.DAO
         {
             context = new ThaiSonBacDMSDbContext();
         }
-        public Note getNotebyAccount(string account_id)
+        public Note getNotebyAccount(int account_id)
         {
             var note = context.Notes.SingleOrDefault(s => s.Account_ID == account_id);
             if (note == null)
             {
                 var newNote = new Note();
-                newNote.Note_ID = (context.Notes.Count() + 1).ToString();
+                newNote.Note_ID = context.Notes.Count() + 1;
                 newNote.Account_ID = account_id;
                 newNote.Date_Created = DateTime.Now;
                 newNote.Contents = string.Empty;
@@ -33,7 +33,7 @@ namespace Models.DAO
                 return context.Notes.SingleOrDefault(s => s.Account_ID == account_id);
             }
         }
-        public void editNotebyAccount(string account_id, string content)
+        public void editNotebyAccount(int account_id, string content)
         {
             var rowEdit = (from n in context.Notes
                            where n.Account_ID == account_id

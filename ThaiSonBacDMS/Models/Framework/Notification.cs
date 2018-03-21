@@ -10,8 +10,8 @@ namespace Models.Framework
     public partial class Notification
     {
         [Key]
-        [StringLength(10)]
-        public string Notif_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Notif_ID { get; set; }
 
         public DateTime? Notif_date { get; set; }
 

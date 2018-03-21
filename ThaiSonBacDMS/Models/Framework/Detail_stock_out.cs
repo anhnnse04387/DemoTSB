@@ -8,16 +8,14 @@ namespace Models.Framework
 
     public partial class Detail_stock_out
     {
-        public byte ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
-        [StringLength(10)]
-        public string Stock_out_ID { get; set; }
+        public int? Stock_out_ID { get; set; }
 
-        [StringLength(10)]
-        public string Product_ID { get; set; }
+        public int? Product_ID { get; set; }
 
-        [StringLength(10)]
-        public string Purchase_invoice_ID { get; set; }
+        public int? Purchase_invoice_ID { get; set; }
 
         public int? Quantities { get; set; }
 

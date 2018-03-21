@@ -24,7 +24,7 @@ namespace Models.DAO
             return db.Products.Where(x => x.Product_code.Trim().ToLower().Contains(code.Trim().ToLower())).ToList();
         }
 
-        public Product getProductById(String id)
+        public Product getProductById(int? id)
         {
             return db.Products.Where(x => x.Product_ID.Equals(id)).SingleOrDefault();
         }

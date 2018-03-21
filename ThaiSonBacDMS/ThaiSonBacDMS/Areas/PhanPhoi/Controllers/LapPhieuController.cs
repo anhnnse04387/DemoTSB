@@ -36,7 +36,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             try
             {
-                if (!String.IsNullOrEmpty(model.orderId) && !String.IsNullOrEmpty(model.customerId)
+                if (!String.IsNullOrEmpty(model.orderId) && model.customerId > 0
                     && !String.IsNullOrEmpty(model.deliveryAddress) && !String.IsNullOrEmpty(model.invoiceAddress)
                     && !String.IsNullOrEmpty(model.taxCode) && model.rate > 0 && model.items != null && model.items.Count > 0)
                 {
@@ -107,7 +107,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ChangeCustomer(String customerId)
+        public ActionResult ChangeCustomer(int customerId)
         {
             try
             {

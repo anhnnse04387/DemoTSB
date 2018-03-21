@@ -16,14 +16,13 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string Supplier_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Supplier_ID { get; set; }
 
         [StringLength(50)]
         public string Supplier_name { get; set; }
 
-        [StringLength(10)]
-        public string Media_ID { get; set; }
+        public int? Media_ID { get; set; }
 
         public string Supplier_address { get; set; }
 

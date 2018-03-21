@@ -5,7 +5,7 @@
 function doneOrder() {
     var data = JSON.stringify(getAllData());
     $.ajax({
-        url: '/ChiTietPhieu/CheckOut',
+        url: '/PhanPhoi/ChiTietPhieu/CheckOut',
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify({ orderId: $('#orderId').val() }),
@@ -34,7 +34,7 @@ function doneOrder() {
 
 function cancelOrder() {
     $.ajax({
-        url: '/ChiTietPhieu/cancelOrder',
+        url: '/PhanPhoi/ChiTietPhieu/cancelOrder',
         dataType: 'json',
         data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
         success: function () {
@@ -43,6 +43,12 @@ function cancelOrder() {
                 type: 'success'
             });
             document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+        },
+        error: function () {
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
+                type: 'error'
+            });
         }
     });
 }

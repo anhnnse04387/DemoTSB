@@ -42,7 +42,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         }
 
         [HttpPost]
-        public JsonResult NoteEdit(string accID, string content)
+        public JsonResult NoteEdit(int accID, string content)
         {
             var noteDAO = new NoteDAO();
             noteDAO.editNotebyAccount(accID, content);

@@ -15,8 +15,8 @@ namespace Models.Framework
         }
 
         [Key]
-        [StringLength(10)]
-        public string Media_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Media_ID { get; set; }
 
         [StringLength(50)]
         public string Media_name { get; set; }
