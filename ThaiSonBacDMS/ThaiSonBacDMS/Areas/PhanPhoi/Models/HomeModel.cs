@@ -8,6 +8,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class HomeModel
     {
-        public User user { get; set; }
+        public int orderInMonth { get; set; }
+        public decimal valueInMonth { get; set; }
+        public int prodInMonth { get; set; }
+        public int numberCustomer { get; set; }
     }
 }

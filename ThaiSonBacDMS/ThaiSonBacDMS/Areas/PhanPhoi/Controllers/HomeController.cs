@@ -19,21 +19,30 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //OrderTotalDAO totalDAO = new OrderTotalDAO();
-            var firstDayOfTheMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            //var listTotal = totalDAO.getOrderByDateCreated(firstDayOfTheMonth); 
+            OrderTotalDAO totalDAO = new OrderTotalDAO();
+            ProductDAO productDAO = new ProductDAO();
+            CustomerDAO customerDAO = new CustomerDAO();
+            HomeModel model = new HomeModel();
+            var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            var listTotal = totalDAO.getOrderByDateCreated(firstDayOfMonth); 
             //return order in month
-            //var orderInMonth = listTotal.Count;
+            var orderInMonth = listTotal.Count;
+            model.orderInMonth = orderInMonth;
             //return value in month
             decimal valueInMonth = 0;
-            /*
             foreach(var item in listTotal)
             {
                 valueInMonth += (decimal) item.Total_price;
             }
-            */
+            model.valueInMonth = valueInMonth;
             //return total product in month
-            return View();
+            var prodInMonth = productDAO.getProductByDateSold(firstDayOfMonth).Count;
+            model.prodInMonth = prodInMonth;
+            //return number of new customer
+            var numberCustomer = customerDAO.getCustomerByDateCreated(firstDayOfMonth, lastDayOfMonth).Count;
+            model.numberCustomer = numberCustomer;
+            return View(model);
         }
 
         [ChildActionOnly]

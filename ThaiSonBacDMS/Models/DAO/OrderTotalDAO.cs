@@ -72,5 +72,9 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public List<Order_total> getOrderByDateCreated(DateTime date)
+        {
+            return db.Order_total.Where(s => s.Date_created >= date).ToList();
+        }
     }
 }

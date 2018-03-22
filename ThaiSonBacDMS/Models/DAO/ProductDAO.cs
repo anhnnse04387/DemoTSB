@@ -28,5 +28,32 @@ namespace Models.DAO
         {
             return db.Products.Where(x => x.Product_ID.Equals(id)).SingleOrDefault();
         }
+
+        public List<Product> getProductByDateSold(DateTime date)
+        {
+            var query = from p in db.Products
+                        join oi in db.Order_items on p.Product_ID equals oi.Product_ID
+                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                        where ot.Date_created >= date
+                        select new
+                        {
+                            productID = p.Product_ID,
+                            categoryID = p.Category_ID
+                        };
+            List<Product> listProduct = new List<Product>();
+            if(query == null)
+            {
+                return new List<Product>();
+            }else
+            {
+                foreach(var item in query)
+                {
+                    Product prod = new Product();
+                    prod = new ProductDAO().getProductById(item.productID);
+                    listProduct.Add(prod);
+                }
+                return listProduct;
+            }
+        }
     }
 }
