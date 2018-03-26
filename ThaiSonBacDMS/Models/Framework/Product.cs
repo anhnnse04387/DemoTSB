@@ -1,5 +1,6 @@
 namespace Models.Framework
 {
+    using DAO;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -71,5 +72,40 @@ namespace Models.Framework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product_media> Product_media { get; set; }
+    }
+    //display suppliers' name
+    public partial class Product
+    {
+        public string supplierName
+        {
+            get
+            {
+                SupplierDAO db = new SupplierDAO();
+                string supplierName = null;
+                string[] supplierId = Supplier_ID.Split(',');
+                if (supplierId != null)
+                {
+                    foreach (string item in supplierId)
+                    {
+                        var supplierNameTemp = db.getSupplierName(Convert.ToInt32(item));
+                        supplierName += ", " + supplierNameTemp;
+                    }
+                }
+                supplierName = supplierName.Remove(0, 2);
+                return supplierName;
+            }
+        }
+
+    }
+    //calculate price
+    public partial class Product
+    {
+        public decimal price
+        {
+            get
+            {
+                return (decimal)(Price_before_VAT_VND + (Price_before_VAT_VND * (VAT / 100)));
+            }
+        }
     }
 }
