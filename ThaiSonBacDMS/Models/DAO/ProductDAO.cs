@@ -41,12 +41,13 @@ namespace Models.DAO
                             categoryID = p.Category_ID
                         };
             List<Product> listProduct = new List<Product>();
-            if(query == null)
+            if (query == null)
             {
                 return new List<Product>();
-            }else
+            }
+            else
             {
-                foreach(var item in query)
+                foreach (var item in query)
                 {
                     Product prod = new Product();
                     prod = new ProductDAO().getProductById(item.productID);
@@ -55,5 +56,115 @@ namespace Models.DAO
                 return listProduct;
             }
         }
+        //ProductDAO by ThuongTX
+        public List<Product> getListProduct()
+        {
+            return db.Products.Where(x => x.Status == 1).ToList();
+        }
+        public List<Category> getListCate()
+        {
+            return db.Categories.Where(x => x.Status == 1).ToList();
+        }
+
+        public int insertProduct(Product item)
+        {
+            db.Products.Add(item);
+            return db.SaveChanges();
+        }
+        //autocomplete
+        public List<Product> getLstProductSearch(string value)
+        {
+            return db.Products.Where((x => (x.Product_code.Contains(value) || x.Product_name.Contains(value)) && x.Status == 1)).ToList();
+        }
+
+        public List<Product> getLstSearch(Product product)
+        {
+            var result = db.Products.AsQueryable();
+            if (product.Category_ID != null && product.Category_ID != "0")
+            {
+                result = result.Where(x => x.Category_ID == product.Category_ID && x.Status == 1);
+            }
+            if (product.Product_code != null)
+            {
+                result = result.Where(x => x.Product_code.Equals(product.Product_code) && x.Status == 1);
+            }
+            if (product.Supplier_ID != null)
+            {
+                result = result.Where(x => x.Supplier_ID.Contains(product.Supplier_ID) && x.Status == 1);
+            }
+
+            return result.ToList();
+        }
+        public string getCateIdByProductCode(string pCode)
+        {
+            var cateId = "";
+            List<Product> productList = db.Products.Where(x => x.Product_code.Equals(pCode) && x.Status == 1).ToList();
+            foreach (Product item in productList)
+            {
+                cateId = item.Category_ID;
+            }
+            return cateId;
+        }
+
+        //get product_id by supplier_id
+        public List<Product> lstProductBySupplierId(string supplierId)
+        {
+            return db.Products.Where(x => x.Supplier_ID.Contains(supplierId) && x.Status == 1).ToList();
+        }
+        //get product list by product id
+        public Product getProductByProductId(int productId)
+        {
+            Product product = new Product();
+            product = db.Products.SingleOrDefault(x => x.Product_ID == productId && x.Status == 1);
+            return product;
+        }
+        //get list product by from price before VAT
+        public List<Product> getProductListByPriceBeforeVAT(decimal priceFrom, Boolean checkboxValue)
+        {
+            if (checkboxValue)
+            {
+                return db.Products.Where(x => x.Price_before_VAT_USD >= priceFrom && x.Status == 1).ToList();
+            }
+            return db.Products.Where(x => (x.Price_before_VAT_VND + (x.Price_before_VAT_VND * x.VAT)) >= priceFrom && x.Status == 1).ToList();
+        }
+        //function search for GiaSanPham
+        public List<Product> getLstSearch(Product product, decimal priceFrom, decimal priceTo, Boolean checkboxValue)
+        {
+            var result = db.Products.AsQueryable();
+            if (product.Category_ID != null && product.Category_ID != "0")
+            {
+                result = result.Where(x => x.Category_ID == product.Category_ID && x.Status == 1);
+            }
+            if (product.Product_code != null)
+            {
+                result = result.Where(x => x.Product_code.Equals(product.Product_code) && x.Status == 1);
+            }
+            if (priceFrom != 0 && checkboxValue)
+            {
+                result = result.Where(x => x.Price_before_VAT_VND >= priceFrom && x.Status == 1);
+            }
+            if (priceFrom != 0 && !checkboxValue)
+            {
+                result = result.Where(x => (x.Price_before_VAT_VND + (x.Price_before_VAT_VND * (x.VAT / 100)) >= priceFrom && x.Status == 1));
+            }
+            if (priceTo != 0 && checkboxValue)
+            {
+                result = result.Where(x => x.Price_before_VAT_VND <= priceTo && x.Status == 1);
+            }
+            if (priceTo != 0 && !checkboxValue)
+            {
+                result = result.Where(x => (x.Price_before_VAT_VND + (x.Price_before_VAT_VND * (x.VAT / 100))) <= priceTo && x.Status == 1);
+            }
+            if (priceFrom != 0 && priceTo != 0 && checkboxValue)
+            {
+                result = result.Where(x => (priceFrom <= x.Price_before_VAT_VND && x.Price_before_VAT_VND <= priceTo) && x.Status == 1);
+            }
+            if (priceFrom != 0 && priceTo != 0 && !checkboxValue)
+            {
+                result = result.Where(x => (priceFrom <= (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) && (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) <= priceTo) && x.Status == 1);
+            }
+            return result.ToList();
+        }
     }
 }
+

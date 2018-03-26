@@ -1,0 +1,294 @@
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ProductPhanPhoiModel
+
+@{
+    ViewBag.Title = "GiaSanPham";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    #example1 {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+    tfoot {
+        color: white;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: #544d61;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .left {
+        text-align: left;
+    }
+
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .table1 {
+        padding-bottom: 35px;
+    }
+</style>
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a href="phanphoi_index.html">
+                <i class="fa fa-dashboard"></i> Trang Chủ
+            </a>
+        </li>
+        <li><a href="">Hàng hóa</a></li>
+        <li><a href="phanphoi_hanghoa_gia-hang-hoa.html">Giá Hàng Hóa</a></li>
+    </ol>
+</section>
+@using (Html.BeginForm("Index", "GiaSanPham", FormMethod.Post))
+{
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;margin-bottom: -15px">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>GIÁ HÀNG HÓA</b>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">
+                                    <div class="row" style="margin-top: 10px;margin-left: 0px;margin-right: 0px">
+                                        <div class="col-md-12">
+                                            <h4>Tìm kiếm theo</h4>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:80px">Mã hàng</td>
+                                                <td style="width:400px">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-file"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.pCodeSearch, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "pCodeSearch" })
+                                                    </div>
+                                                </td>
+
+                                                <td style="width:80px">Danh mục</td>
+                                                <td style="width:400px">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-tree"></i>
+                                                        </span>
+                                                        @Html.DropDownListFor(model => model.categorySearch, Model.lstCateSearch, "", new { @class = "form-control" })
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Giá</td>
+                                                <td>
+                                                    <div class="col-sm-5 no-padding">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">Từ</span>
+                                                            @Html.TextBoxFor(model => model.priceFrom, new { @class = "form-control", @id = "priceFrom", @placeholder = "100,000" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">Đến</span>
+                                                            @Html.TextBoxFor(model => model.priceTo, new { @class = "form-control", @id = "priceTo", @placeholder = "999,999,999" })
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>VAT</td>
+                                                <td>
+                                                    <label style="padding-right : 20px;">
+                                                        @Html.RadioButton("VAT", "1", true)
+                                                        Trước VAT
+                                                    </label>
+                                                    <label class="custom-chk">
+                                                        @Html.RadioButton("VAT", "0")
+                                                        Sau VAT
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <div class="pagination pagination-sm no-margin pull-right">
+                                            <button type="submit" class="btn btn-block btn-primary" onclick="setData()">Tìm kiếm <i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body table1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th colspan="2">Mã hàng</th>
+                                                <th>Danh Mục</th>
+                                                <th>CIF</th>
+                                                <th>Giá Trước (VAT)</th>
+                                                <th>% Thuế NK</th>
+                                                <th>VAT</th>
+                                                <th>Giá sau (VAT)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{int i = 1;}
+                                            @foreach (var itemCate in Model.map)
+                                            {
+                                                if (Model.lstProduct.Count == 0)
+                                                {
+                                                    <tr>
+                                                        <td style="font-size:15px" colspan="8"> Không tìm thấy sản phẩm! </td>
+                                                    </tr>
+                                                }
+                                                else
+                                                {
+                                                    <tr style="background-color:yellow">
+                                                        <td style="border-right: none !important;"></td>
+                                                        <td style="border-right: none !important;border-left:none !important;text-align:right">@itemCate.Key</td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td class="right"></td>
+                                                    </tr>
+                                                    foreach (var items in itemCate.Value.ToList())
+                                                    {
+                                                        <tr>
+                                                            <td style="text-align: left">@i</td>
+                                                            <td style="border-right: none;text-align:left"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">@items.Product_name</a></td>
+                                                            <td style="border-left: none;text-align:left">@items.Product_parameters</td>
+                                                            <td style="text-align:left">@itemCate.Key</td>
+                                                            <td class="right">@Convert.ToDouble(@items.CIF)</td>
+                                                            <td class="right number">@items.Price_before_VAT_VND</td>
+                                                            <td class="right">@items.TAX <span>%</span></td>
+                                                            <td class="right number">@items.VAT</td>
+                                                            <td class="right number">@items.price</td>
+                                                        </tr>
+                                                        i++;
+                                                    }
+                                                }
+                                            }
+                                        </tbody>
+                                        @if (Model.lstProduct.Count != 0)
+                                        {
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="4" style="padding: 10px;text-align: center">Tổng cộng</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tfoot>
+                                        }
+
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    @section GiaSanPham{
+        <script>
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+            $('#example1').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': false,
+                'info': true,
+                'autoWidth': false,
+                'language': {
+                    "lengthMenu": "Hiển thị _MENU_ dòng",
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước",
+                    }
+                }
+
+            });
+
+
+            $("#pCodeSearch").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '@Url.Action("GetSearchValue", "SanPhamDangKinhDoanh")',
+                        minLength: 2,
+                        dataType: "json",
+                        data: { searchValue: $("#pCodeSearch").val() },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.pCodeSearch, value: item.pCodeSearch }
+                            }))
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error");
+                        }
+                    });
+                }
+            });
+            $(document).ready(function () {
+                $('#priceFrom').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                $('#priceTo').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                $("#beforeVAT").attr("checked", "checked");
+                //setData();
+            });
+            function setData() {
+                //$('#priceFrom').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                var priceFrom = $('#priceFrom').val();
+                var priceTo = $('#priceTo').val();
+                if (priceFrom !== "" && priceFrom !== 0) {
+                    //$('#priceFrom').text(priceFrom);
+                    priceFrom = priceFrom.replace(/,/g, '');
+                    $('#priceFrom').val(priceFrom);
+                    //$('#priceFrom').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                }
+                if (priceTo !== "" && priceTo !== 0) {
+                    priceTo = priceTo.replace(/,/g, '');
+                    $('#priceTo').val(priceTo);
+                }
+
+            }
+
+        </script>
+    }
+                                                }
