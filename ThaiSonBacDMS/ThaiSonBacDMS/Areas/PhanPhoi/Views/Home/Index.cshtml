@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
-
+@model ThaiSonBacDMS.Areas.PhanPhoi.Models.HomeModel
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
@@ -25,7 +24,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">ĐƠN HÀNG <br />TRONG THÁNG</span>
-                        <span class="info-box-number">25</span>
+                        <span class="info-box-number">@Model.orderInMonth </span>
                     </div>
 
                     <!-- /.info-box-content -->
@@ -41,7 +40,7 @@
                     <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-signal"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">DOANH THU</span>
-                        <span class="info-box-number">60,527,000 VND</span>
+                        <span class="info-box-number"><span class="number">@Model.valueInMonth</span> VND</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -59,7 +58,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">TỔNG SẢN PHẨM <br />BÁN RA</span>
-                        <span class="info-box-number">160</span>
+                        <span class="info-box-number">@Model.prodInMonth </span>
                     </div>
                     <!-- /.info-box-content -->
 
@@ -77,7 +76,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">KHÁCH MỚI</span>
-                        <span class="info-box-number">2 </span>
+                        <span class="info-box-number">@Model.numberCustomer </span>
                     </div>
                     <!-- /.info-box-content -->
 
@@ -452,6 +451,9 @@
 @section Index {
     <!-- ChartJS -->
     <script src="/Assets/dist/js/Chart.bundle.js"></script>
+    <!-- Auto Numberic-->
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
         new Chart(document.getElementById("barChart"), {
             type: 'bar',
@@ -665,6 +667,10 @@
             }
         });
     </script>
-
+    <script>
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
+        })
+    </script>
 }
 

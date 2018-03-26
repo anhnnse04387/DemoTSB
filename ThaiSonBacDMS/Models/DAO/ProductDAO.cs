@@ -26,7 +26,7 @@ namespace Models.DAO
 
         public Product getProductById(int? id)
         {
-            return db.Products.Where(x => x.Product_ID.Equals(id)).SingleOrDefault();
+            return db.Products.Where(x => x.Product_ID == id).SingleOrDefault();
         }
 
         public List<Product> getProductByDateSold(DateTime date)
@@ -49,7 +49,8 @@ namespace Models.DAO
                 foreach(var item in query)
                 {
                     Product prod = new Product();
-                    prod = new ProductDAO().getProductById(item.productID);
+                    int prod_id = item.productID;
+                    prod = new ProductDAO().getProductById(prod_id);
                     listProduct.Add(prod);
                 }
                 return listProduct;

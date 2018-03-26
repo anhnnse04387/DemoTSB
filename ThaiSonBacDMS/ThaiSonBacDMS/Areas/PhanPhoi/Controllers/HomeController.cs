@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: PhanPhoi/Home
         [HttpGet]
@@ -30,10 +30,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var orderInMonth = listTotal.Count;
             model.orderInMonth = orderInMonth;
             //return value in month
-            decimal valueInMonth = 0;
+            int valueInMonth = 0;
             foreach(var item in listTotal)
             {
-                valueInMonth += (decimal) item.Total_price;
+                valueInMonth += (int) item.Total_price;
             }
             model.valueInMonth = valueInMonth;
             //return total product in month
