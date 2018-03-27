@@ -120,92 +120,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(var item in Model.newestOrderList) { 
                                 <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR9842 - 1</a></td>
-                                    <td>Công ty HPH</td>
-                                    <td class="text-right">200</td>
-                                    <td class="text-right">10</td>
-                                    <td class="text-right">2,332,556</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-success">Đơn mới</span></a></td>
+                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">@item.orderID</a></td>
+                                    <td>@item.customerName</td>
+                                    <td class="text-right">@item.numberBox</td>
+                                    <td class="text-right">@item.numberProduct</td>
+                                    <td class="text-right">@item.totalPrice</td>
+                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-success">@item.status</span></a></td>
                                 </tr>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1848 - 0</a></td>
-                                    <td>Công ty HPH</td>
-                                    <td class="text-right">400</td>
-                                    <td class="text-right">40</td>
-                                    <td class="text-right">22,332,556</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-success">Đơn mới</span></a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR7429 - 0</a></td>
-                                    <td>Công ty Hoàng Nhật</td>
-                                    <td class="text-right">350</td>
-                                    <td class="text-right">4</td>
-                                    <td class="text-right">6,364,374</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-danger"> Đã huỷ</span></a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR7429 - 3</a></td>
-                                    <td>Công ty Hoàng Nhật</td>
-                                    <td class="text-right">460</td>
-                                    <td class="text-right">5</td>
-                                    <td class="text-right">25,465,154</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1164 - 2</a></td>
-                                    <td>Thiết bị điện BẢO LỘC</td>
-                                    <td class="text-right">560</td>
-                                    <td class="text-right">7</td>
-                                    <td class="text-right">26,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR9894 - 3</a></td>
-                                    <td>Công ty Long Giang - Chị Thơm</td>
-                                    <td class="text-right">660</td>
-                                    <td class="text-right">5</td>
-                                    <td class="text-right">6,471,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1164 - 1</a></td>
-                                    <td>Thiết bị điện BẢO LỘC</td>
-                                    <td class="text-right">860</td>
-                                    <td class="text-right">8</td>
-                                    <td class="text-right">5,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1156 - 0</a></td>
-                                    <td>ĐẠI LÝ SAO THÁNG TÁM -VẠN XUÂN</td>
-                                    <td class="text-right">860</td>
-                                    <td class="text-right">9</td>
-                                    <td class="text-right">10,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1329 - 5</a></td>
-                                    <td>Thiết bị điện BẢO LỘC</td>
-                                    <td class="text-right">460</td>
-                                    <td class="text-right">5</td>
-                                    <td class="text-right">3,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR7429 - 1</a></td>
-                                    <td>Công ty Hoàng Nhật</td>
-                                    <td class="text-right">330</td>
-                                    <td class="text-right">3</td>
-                                    <td class="text-right">15,465,154</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -252,8 +176,6 @@
 
                         <div class="col-md-6">
                             <h4><strong>DOANH SỐ BÁN HÀNG</strong></h4>
-
-
                             <div class="chart">
                                 <!-- Sales Chart Canvas -->
                                 <canvas id="lineChart" style="height: 300px;"></canvas>
@@ -279,17 +201,24 @@
                 <div class="box-footer">
                     <div class="col-sm-offset-5">
                         <div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
-                        <strong>Tháng 11</strong>
+                        <strong>Tháng @(DateTime.Now.Month -1)</strong>
                         <div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
-                        <strong>Tháng 12</strong>
+                        <strong>Tháng @(DateTime.Now.Month)</strong>
                     </div>
                 </div>
                 <div class="box-footer">
                     <div class="row">
                         <div class="col-sm-6 col-xs-6">
                             <div class="description-block border-right">
-                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 15%</span>
-                                <h5 class="description-header">10,625,414</h5>
+                                @if (Model.valueFlag)
+                                {
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> <span class="number">@Model.diffrentValueMonth</span>%</span>
+                                }
+                                else
+                                {
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> <span class="number">@Model.diffrentValueMonth</span>%</span>
+                                }
+                                <h5 class="description-header number">@Model.valueInMonth</h5>
                                 <span class="description-text">DOANH THU SỐ BÁN HÀNG</span>
                             </div>
                             <!-- /.description-block -->
@@ -297,8 +226,15 @@
                         <!-- /.col -->
                         <div class="col-sm-6 col-xs-6">
                             <div class="description-block border-right">
-                                <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 11.25%</span>
-                                <h5 class="description-header">9</h5>
+                                @if (Model.orderFlag)
+                                {
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> <span class="number">@Model.diffrentOrderMonth</span>%</span>
+                                }
+                                else
+                                {
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> <span class="number">@Model.diffrentOrderMonth</span>%</span>
+                                }
+                                <h5 class="description-header">@Model.orderInMonth</h5>
                                 <span class="description-text">SỐ ĐƠN HÀNG</span>
                             </div>
                             <!-- /.description-block -->
@@ -515,43 +451,14 @@
             type: 'line',
             data: {
                 datasets: [{
-                    data: [{
-                        x: 1,
-                        y: 3
-                    },
-                        {
-                            x: 7,
-                            y: 1.1
-                        },
-                        {
-                            x: 15,
-                            y: 3.5
-                        }, {
-                            x: 20,
-                            y: 2.5
-                        }, {
-                            x: 28,
-                            y: 4.1
-                        }],
-                    label: "Tháng 12",
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartCurrentMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value/10000000 +"}")))],
+                    label: "Tháng @DateTime.Now.Month",
                     borderColor: "#33FF33",
                     backgroundColor: "#33FF33",
                     fill: false
                 }, {
-                    data: [{
-                        x: 1,
-                        y: 1.5
-                    }, {
-                        x: 18,
-                        y: 3.2
-                    }, {
-                        x: 22,
-                        y: 3.4
-                    }, {
-                        x: 31,
-                        y: 3
-                    }],
-                    label: "Tháng 11",
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartPreviousMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value / 10000000 + "}")))],
+                    label: "Tháng @(DateTime.Now.Month-1)",
                     borderColor: "#EE0000",
                     backgroundColor: "#EE0000",
                     fill: false
@@ -593,43 +500,14 @@
             type: 'line',
             data: {
                 datasets: [{
-                    data: [{
-                        x: 1,
-                        y: 3
-                    },
-                        {
-                            x: 7,
-                            y: 1
-                        },
-                        {
-                            x: 15,
-                            y: 3
-                        }, {
-                            x: 20,
-                            y: 2
-                        }, {
-                            x: 28,
-                            y: 4
-                        }],
-                    label: "Tháng 12",
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartOrderCurrentMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value  + "}")))],
+                    label: "Tháng @DateTime.Now.Month",
                     borderColor: "#33FF33",
                     backgroundColor: "#33FF33",
                     fill: false
                 }, {
-                    data: [{
-                        x: 1,
-                        y: 1
-                    }, {
-                        x: 18,
-                        y: 3
-                    }, {
-                        x: 22,
-                        y: 3
-                    }, {
-                        x: 31,
-                        y: 4
-                    }],
-                    label: "Tháng 11",
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartOrderPreviousMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value + "}")))],
+                    label: "Tháng @(DateTime.Now.Month-1)",
                     borderColor: "#EE0000",
                     backgroundColor: "#EE0000",
                     fill: false
