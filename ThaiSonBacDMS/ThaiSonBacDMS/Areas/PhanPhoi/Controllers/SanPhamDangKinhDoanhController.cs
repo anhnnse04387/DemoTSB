@@ -64,7 +64,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.lstProduct = daoProduct.getLstSearch(product);
                 }
                 //first load page
-                if (mo.pCodeSearch == null && mo.categorySearch == null && mo.supplierSearch == null)
+                if (mo.pCodeSearch == null && mo.categorySearch == null && mo.supplierSearch == null && mo.fromDate == null && mo.toDate == null)
                 {
                     model.lstCategory = daoCategory.getLstCate();
                     model.lstProduct = daoProduct.getListProduct();
@@ -97,7 +97,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
                         foreach (ShowProductModel p in model.lstDisplay)
                         {
-                            if (p.product.Equals(item.Category_ID))
+                            if (p.product.Category_ID.Equals(item.Category_ID))
                             {
                                 lstProductAdd.Add(p);
                             }

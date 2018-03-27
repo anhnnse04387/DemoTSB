@@ -5,28 +5,30 @@
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
 }
 <style>
-    .chosen-container-multi .chosen-choices {
-        height: 33.99px !important;
-        width: 370.22px;
-        border-top-left-radius: 0 !important;
-        border-bottom-left-radius: 0 !important;
-        border-color: #d2d6de !important;
-        box-shadow: none !important;
-        padding-top: 3px !important;
-    }
+    <link rel="stylesheet" href="/Assets/dist/css/bootstrap-datepicker.min.css">
 
-    .chosen-container-multi .chosen-drop .result-selected {
-        display: list-item;
-        color: #ccc;
-        cursor: default;
-        width: 385.22px !important;
-    }
+     .chosen-container-multi .chosen-choices {
+         height: 33.99px !important;
+         width: 370.22px;
+         border-top-left-radius: 0 !important;
+         border-bottom-left-radius: 0 !important;
+         border-color: #d2d6de !important;
+         box-shadow: none !important;
+         padding-top: 3px !important;
+     }
 
-    .smallBtn {
-        padding: 10px 5px;
-        min-width: 60px;
-        height: 40px;
-    }
+     .chosen-container-multi .chosen-drop .result-selected {
+         display: list-item;
+         color: #ccc;
+         cursor: default;
+         width: 385.22px !important;
+     }
+
+     .smallBtn {
+         padding: 10px 5px;
+         min-width: 60px;
+         height: 40px;
+     }
 </style>
 
 <script>
@@ -220,7 +222,7 @@
                                                         <td style="vertical-align: middle; text-align: center;">@items.product.Quantities_in_inventory</td>
                                                         <td style="vertical-align: middle;">@items.supplierName</td>
                                                         <td style="vertical-align: middle; text-align: center;">
-                                                            <a id="btn_row_@i" href="#" class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <a id="btn_row_@i" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
                                                         </td>
@@ -246,8 +248,8 @@
     <!-- /.content -->
 }
 @section Index{
-    <script>
-
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <script>   
         $("#pCodeSearch").autocomplete({
             source: function (request, response) {
                 $.ajax({
@@ -266,6 +268,10 @@
                 });
             }
         });
+        $(document).ready(function () {
+            $('.datepicker').datepicker(function () {
 
+            });
+        });
     </script>
 }

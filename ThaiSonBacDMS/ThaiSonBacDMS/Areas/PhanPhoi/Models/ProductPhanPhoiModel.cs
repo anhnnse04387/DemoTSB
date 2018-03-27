@@ -14,8 +14,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public string pNameSearch { get; set; }
         public string productIdSearch { get; set; }
         public string supplierSearch { get; set; }
-        public DateTime fromDate { get; set; }
-        public DateTime toDate { get; set; }
+        public string fromDate { get; set; }
+        public string toDate { get; set; }
         public string categorySearch { get; set; }
         public string priceFrom { get; set; }
         public string priceTo { get; set; }
