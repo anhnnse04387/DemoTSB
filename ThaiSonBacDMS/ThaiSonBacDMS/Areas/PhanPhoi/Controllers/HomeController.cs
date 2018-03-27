@@ -225,26 +225,20 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             var content = String.Empty;
             string[] lines = new string[] { };
-<<<<<<< HEAD
             try
             {
                 content = noteDAO.getNotebyAccount(session.accountID).Contents;
                 if (content != null && !string.IsNullOrEmpty(content))
                 {
-                    
+
                     lines = content.Trim().Split(Environment.NewLine.ToCharArray());
                 }
                 else
                 {
                     lines = new string[] { "Hãy điền ghi chú vào đây" };
                 }
-=======
-            if (content != null)
-            {
-                lines = content.Trim().Split(Environment.NewLine.ToCharArray());
->>>>>>> 0c2be5852225e1561f1041309739b2b0507af426
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
                 RedirectToAction("Index");
