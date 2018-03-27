@@ -22,10 +22,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             OrderTotalDAO totalDAO = new OrderTotalDAO();
             ProductDAO productDAO = new ProductDAO();
             CustomerDAO customerDAO = new CustomerDAO();
+            OrderItemDAO orderItemDAO = new OrderItemDAO();
             HomeModel model = new HomeModel();
             var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            var listTotal = totalDAO.getOrderByDateCreated(firstDayOfMonth); 
+            var listTotal = totalDAO.getOrderByDateCreated(firstDayOfMonth, lastDayOfMonth); 
             //return order in month
             var orderInMonth = listTotal.Count;
             model.orderInMonth = orderInMonth;
@@ -37,39 +38,184 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             model.valueInMonth = valueInMonth;
             //return total product in month
-            var prodInMonth = productDAO.getProductByDateSold(firstDayOfMonth).Count;
+            var prodInMonth = orderItemDAO.countNumberProductSoldMonth(firstDayOfMonth, lastDayOfMonth);
             model.prodInMonth = prodInMonth;
             //return number of new customer
             var numberCustomer = customerDAO.getCustomerByDateCreated(firstDayOfMonth, lastDayOfMonth).Count;
             model.numberCustomer = numberCustomer;
+
+            //table for newest order
+            model.newestOrderList = new List<NewsetOrder>();
+            var session = (UserSession)Session[CommonConstants.USER_SESSION]; 
+            var n = totalDAO.showNewestOrder(int.Parse(session.user_id));
+            foreach(var item in n)
+            {
+                NewsetOrder no = new NewsetOrder();
+                no.orderID = item.Order_ID;
+                no.numberBox = orderItemDAO.countNumberProduct(item.Order_ID);
+                no.numberProduct = orderItemDAO.countNumberBox(item.Order_ID);
+                no.totalPrice = (decimal) item.Total_price;
+                no.customerName = customerDAO.getCustomerById(item.Customer_ID).Customer_name;
+                no.status = new StatusDAO().getStatus(item.Status_ID);
+                model.newestOrderList.Add(no);
+            }
+            //line chart
+            Dictionary<int, decimal> dataLineChartCurrentMonth = new Dictionary<int, decimal>();
+            Dictionary<int, int> dataLineChartOrderCurrentMonth = new Dictionary<int, int>();
+            if(listTotal.First().Date_created.Day != 1)
+            {
+                dataLineChartCurrentMonth.Add(1, 0);
+                dataLineChartOrderCurrentMonth.Add(1, 0);
+            }
+            foreach(var item in listTotal)
+            {
+                if(dataLineChartCurrentMonth.ContainsKey(item.Date_created.Day))
+                {
+                    dataLineChartCurrentMonth[item.Date_created.Day] += (decimal)item.Total_price;
+                }else
+                {
+                    dataLineChartCurrentMonth.Add(item.Date_created.Day, (decimal)item.Total_price);
+                }
+
+                if(dataLineChartOrderCurrentMonth.ContainsKey(item.Date_created.Day))
+                {
+                    dataLineChartOrderCurrentMonth[item.Date_created.Day] += 1;
+                }else
+                {
+                    dataLineChartOrderCurrentMonth.Add(item.Date_created.Day, 1);
+                }
+            }
+            model.dataLineChartCurrentMonth = dataLineChartCurrentMonth;
+            model.dataLineChartOrderCurrentMonth = dataLineChartOrderCurrentMonth;
+
+            Dictionary<int, decimal> dataLineChartPreviousMonth = new Dictionary<int, decimal>();
+            Dictionary<int, int> dataLineChartPreviousOrderMonth = new Dictionary<int, int>();
+            var firstMonthPrevious = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
+            var lastMonthPrevious = firstMonthPrevious.AddMonths(1).AddDays(-1);
+            var listTotalPrevious = totalDAO.getOrderByDateCreated(firstMonthPrevious, lastMonthPrevious);
+            if (listTotalPrevious.First().Date_created.Day != 1)
+            {
+                dataLineChartPreviousMonth.Add(1, 0);
+                dataLineChartPreviousOrderMonth.Add(1, 0);
+            }
+            
+            foreach (var item in listTotalPrevious)
+            {
+                if (dataLineChartPreviousMonth.ContainsKey(item.Date_created.Day))
+                {
+                    dataLineChartPreviousMonth[item.Date_created.Day] += (decimal)item.Total_price;
+                }
+                else
+                {
+                    dataLineChartPreviousMonth.Add(item.Date_created.Day, (decimal)item.Total_price);
+                }
+
+                if (dataLineChartPreviousOrderMonth.ContainsKey(item.Date_created.Day))
+                {
+                    dataLineChartPreviousOrderMonth[item.Date_created.Day] += 1;
+                }
+                else
+                {
+                    dataLineChartPreviousOrderMonth.Add(item.Date_created.Day, 1);
+                }
+            }
+            if(!dataLineChartPreviousMonth.ContainsKey(lastMonthPrevious.Day))
+            {
+                dataLineChartPreviousMonth.Add(lastMonthPrevious.Day, 0);
+            }
+            if (!dataLineChartPreviousOrderMonth.ContainsKey(lastMonthPrevious.Day))
+            {
+                dataLineChartPreviousOrderMonth.Add(lastMonthPrevious.Day, 0);
+            }
+            model.dataLineChartPreviousMonth = dataLineChartPreviousMonth;
+            model.dataLineChartOrderPreviousMonth = dataLineChartPreviousOrderMonth;
+
+            //count value in previous month
+            int valueInPreviousMonth = 0;
+            foreach (var item in listTotalPrevious)
+            {
+                valueInPreviousMonth += (int)item.Total_price;
+            }
+            model.diffrentValueMonth = 0;
+            model.valueFlag = false;
+            if (valueInMonth >= valueInPreviousMonth)
+            {
+                model.valueFlag = true;
+                model.diffrentValueMonth = (valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100;
+            }else
+            {
+                model.diffrentValueMonth = (valueInPreviousMonth - valueInMonth) / valueInMonth * 100;
+            }
+
+            model.diffrentOrderMonth = 0;
+            model.orderFlag = false;
+            var orderInPreviousMonth = dataLineChartPreviousOrderMonth.Values.Sum();
+            var totalInMonth = dataLineChartOrderCurrentMonth.Values.Sum();
+            if (totalInMonth >= orderInPreviousMonth)
+            {
+                model.orderFlag = true;
+                model.diffrentOrderMonth = (totalInMonth - orderInPreviousMonth) / orderInPreviousMonth * 100;
+            }
+            else
+            {
+                model.diffrentOrderMonth = (orderInPreviousMonth - totalInMonth) / totalInMonth * 100;
+            }
+
             return View(model);
         }
 
         [ChildActionOnly]
         public PartialViewResult NotificationHeader()
         {
-            var notiDAO = new NotificationDAO();
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            List<Notification> listNoti = new List<Notification>();
-            listNoti = notiDAO.getByUserID(session.user_id);
-            return PartialView(listNoti);
+            try
+            {
+                var notiDAO = new NotificationDAO();
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                List<Notification> listNoti = new List<Notification>();
+                listNoti = notiDAO.getByUserID(session.user_id);
+                return PartialView(listNoti);
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return PartialView();
         }
         [ChildActionOnly]
         public PartialViewResult NoteEdit()
         {
-            var noteDAO = new NoteDAO();
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var content = noteDAO.getNotebyAccount(session.accountID);
+            try
+            {
+                var noteDAO = new NoteDAO();
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var content = noteDAO.getNotebyAccount(session.accountID);
 
-            return PartialView(content);
+                return PartialView(content);
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return PartialView();
         }
 
         [HttpPost]
         public JsonResult NoteEdit(int accID, string content)
         {
-            var noteDAO = new NoteDAO();
-            noteDAO.editNotebyAccount(accID, content);
-            return Json(content, JsonRequestBehavior.AllowGet);
+            try
+            {
+                var noteDAO = new NoteDAO();
+                noteDAO.editNotebyAccount(accID, content);
+                return Json(content, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e) 
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
         [ChildActionOnly]
@@ -77,15 +223,31 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             var noteDAO = new NoteDAO();
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var content = noteDAO.getNotebyAccount(session.accountID).Contents;
+            var content = String.Empty;
             string[] lines = new string[] { };
+<<<<<<< HEAD
+            try
+            {
+                content = noteDAO.getNotebyAccount(session.accountID).Contents;
+                if (content != null && !string.IsNullOrEmpty(content))
+                {
+                    
+                    lines = content.Trim().Split(Environment.NewLine.ToCharArray());
+                }
+                else
+                {
+                    lines = new string[] { "Hãy điền ghi chú vào đây" };
+                }
+=======
             if (content != null)
             {
                 lines = content.Trim().Split(Environment.NewLine.ToCharArray());
+>>>>>>> 0c2be5852225e1561f1041309739b2b0507af426
             }
-            else
+            catch(Exception e)
             {
-                lines = new string[] { "Hãy điền ghi chú vào đây" };
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
             }
             return PartialView(lines);
         }

@@ -28,13 +28,13 @@ namespace Models.DAO
         {
             return db.Products.Where(x => x.Product_ID == id).SingleOrDefault();
         }
-
+        //ProductDAO by CuongNM
         public List<Product> getProductByDateSold(DateTime date)
         {
             var query = from p in db.Products
                         join oi in db.Order_items on p.Product_ID equals oi.Product_ID
                         join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
-                        where ot.Date_created >= date
+                        where ot.Date_created >= date && oi.Order_part_ID == null
                         select new
                         {
                             productID = p.Product_ID,
@@ -57,6 +57,8 @@ namespace Models.DAO
                 return listProduct;
             }
         }
+
+        
         //ProductDAO by ThuongTX
         public List<Product> getListProduct()
         {
