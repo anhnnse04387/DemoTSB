@@ -30,5 +30,9 @@ namespace Models.DAO
             cate = db.Categories.SingleOrDefault(x => x.Category_ID == cateId && x.Status == 1);
             return cate;
         }
+        public void aba()
+        {
+
+        }
     }
 }
