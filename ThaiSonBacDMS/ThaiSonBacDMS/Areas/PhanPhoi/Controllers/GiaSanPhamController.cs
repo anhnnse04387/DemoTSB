@@ -22,7 +22,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
 
                 ProductPhanPhoiModel model = new ProductPhanPhoiModel();
-                model.map = new Dictionary<string, List<Product>>();
+                model.map = new Dictionary<string, List<ShowProductModel>>();
+                model.lstDisplay = new List<ShowProductModel>();
                 model.lstCateSearch = new List<SelectListItem>();
                 model.lstCategory = daoCategory.getLstCate();
                 model.lstProduct = new List<Product>();
@@ -39,17 +40,25 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.lstCategory = daoCategory.getLstCate();
                 model.lstProduct = productDAO.getListProduct();
 
-
+                if (model.lstProduct.Count != 0)
+                {
+                    foreach (Product p in model.lstProduct)
+                    {
+                        ShowProductModel spm = new ShowProductModel();
+                        spm.product = p;
+                        model.lstDisplay.Add(spm);
+                    }
+                }
                 //Nhom san pham theo category
                 if (model.lstCategory != null)
                 {
                     foreach (Category item in model.lstCategory)
                     {
-                        List<Product> lstProductAdd = new List<Product>();
+                        List<ShowProductModel> lstProductAdd = new List<ShowProductModel>();
 
-                        foreach (Product p in model.lstProduct)
+                        foreach (ShowProductModel p in model.lstDisplay)
                         {
-                            if (p.Category_ID.Equals(item.Category_ID))
+                            if (p.product.Equals(item.Category_ID))
                             {
                                 lstProductAdd.Add(p);
                             }
@@ -76,7 +85,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var daoCategory = new CategoryDAO();
 
                 ProductPhanPhoiModel model = new ProductPhanPhoiModel();
-                model.map = new Dictionary<string, List<Product>>();
+                model.map = new Dictionary<string, List<ShowProductModel>>();
                 model.lstCateSearch = new List<SelectListItem>();
                 model.lstCategory = daoCategory.getLstCate();
                 model.lstProduct = new List<Product>();
@@ -100,7 +109,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     model.lstCateSearch.Add(new SelectListItem { Text = item.Category_name, Value = item.Category_ID });
                 }
-                if (mo.categorySearch != null || mo.pCodeSearch != null || mo.priceFrom != null || mo.priceTo != null)
+                if (mo.categorySearch != null || mo.pCodeSearch != null || mo.priceFrom != null || mo.priceTo == null)
                 {
                     //search products by product code
                     if (mo.pCodeSearch != null)
@@ -132,18 +141,27 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     }
                     model.lstProduct = productDAO.getLstSearch(product, mo.priceFrom == null ? 0 : Decimal.Parse(mo.priceFrom), mo.priceTo == null ? 0 : Decimal.Parse(mo.priceTo), checkboxValue);
                 }
+                if (model.lstProduct.Count != 0)
+                {
+                    foreach (Product p in model.lstProduct)
+                    {
+                        ShowProductModel spm = new ShowProductModel();
+                        spm.product = p;
+                        model.lstDisplay.Add(spm);
+                    }
+                }
                 //Nhom san pham theo category
                 if (model.lstCategory != null)
                 {
                     foreach (Category item in model.lstCategory)
                     {
-                        List<Product> lstProductAdd = new List<Product>();
+                        List<ShowProductModel> lstProductAdd = new List<ShowProductModel>();
 
-                        foreach (Product p in model.lstProduct)
+                        foreach (ShowProductModel p in model.lstDisplay)
                         {
-                            if (p.Category_ID.Equals(item.Category_ID))
+                            if (p.product.Equals(item.Category_ID))
                             {
-                                lstProductAdd.Add(p);
+                                model.lstDisplay.Add(p);
                             }
                         }
                         model.map.Add(item.Category_name, lstProductAdd);

@@ -79,9 +79,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             var content = noteDAO.getNotebyAccount(session.accountID).Contents;
             string[] lines = new string[] { };
-            if (!string.IsNullOrEmpty(content.Trim()))
+            if (content != null)
             {
-                lines = content.Split(Environment.NewLine.ToCharArray());
+                lines = content.Trim().Split(Environment.NewLine.ToCharArray());
             }
             else
             {

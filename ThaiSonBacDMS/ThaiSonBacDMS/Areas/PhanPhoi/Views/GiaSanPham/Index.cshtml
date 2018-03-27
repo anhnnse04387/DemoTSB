@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "GiaSanPham";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
 <style>
@@ -160,16 +160,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @{int i = 1;}
-                                            @foreach (var itemCate in Model.map)
+                                            @if (Model.lstDisplay.Count == 0)
                                             {
-                                                if (Model.lstProduct.Count == 0)
-                                                {
-                                                    <tr>
-                                                        <td style="font-size:15px" colspan="8"> Không tìm thấy sản phẩm! </td>
-                                                    </tr>
-                                                }
-                                                else
+                                                <tr>
+                                                    <td style="font-size:15px" colspan="8"> Không tìm thấy sản phẩm! </td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                int i = 1;
+                                                foreach (var itemCate in Model.map)
                                                 {
                                                     <tr style="background-color:yellow">
                                                         <td style="border-right: none !important;"></td>
@@ -186,21 +186,23 @@
                                                     {
                                                         <tr>
                                                             <td style="text-align: left">@i</td>
-                                                            <td style="border-right: none;text-align:left"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">@items.Product_name</a></td>
-                                                            <td style="border-left: none;text-align:left">@items.Product_parameters</td>
+                                                            <td style="border-right: none;text-align:left"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">@items.product.Product_name</a></td>
+                                                            <td style="border-left: none;text-align:left">@items.product.Product_parameters</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
-                                                            <td class="right">@Convert.ToDouble(@items.CIF)</td>
-                                                            <td class="right number">@items.Price_before_VAT_VND</td>
-                                                            <td class="right">@items.TAX <span>%</span></td>
-                                                            <td class="right number">@items.VAT</td>
+                                                            <td class="right">@Convert.ToDouble(@items.product.CIF)</td>
+                                                            <td class="right number">@items.product.Price_before_VAT_VND</td>
+                                                            <td class="right">@items.product.TAX <span>%</span></td>
+                                                            <td class="right number">@items.product.VAT</td>
                                                             <td class="right number">@items.price</td>
                                                         </tr>
                                                         i++;
                                                     }
+
                                                 }
                                             }
+
                                         </tbody>
-                                        @if (Model.lstProduct.Count != 0)
+                                        @if (Model.lstDisplay.Count != 0)
                                         {
                                             <tfoot>
                                                 <tr>
@@ -213,7 +215,6 @@
                                                 </tr>
                                             </tfoot>
                                         }
-
                                     </table>
                                 </fieldset>
                             </div>
@@ -224,7 +225,7 @@
         </div>
 
     </section>
-    @section GiaSanPham{
+    @section Index{
         <script>
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
             $('#example1').DataTable({
@@ -288,7 +289,6 @@
                 }
 
             }
-
         </script>
     }
-                                                }
+}

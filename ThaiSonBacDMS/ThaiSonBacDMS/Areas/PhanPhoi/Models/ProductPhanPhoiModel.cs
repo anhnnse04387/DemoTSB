@@ -1,4 +1,5 @@
-﻿using Models.Framework;
+﻿using Models.DAO;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +24,41 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public List<Category> lstCategory { get; set; }
         public List<Category> lstCategorySearch { get; set; }
         public List<SelectListItem> lstSupplier { get; set; }
-        public Dictionary<string, List<Product>> map { get; set; }
+        public Dictionary<string, List<ShowProductModel>> map { get; set; }
         public List<SelectListItem> lstCateSearch { get; set; }
         public string suppliers { get; set; }
         public string VAT { get; set; }
-        public string test { get; set; }
+        public List<ShowProductModel> lstDisplay { get; set; }
+      
+    }
+    public class ShowProductModel
+    {
+        public Product product { get; set; }
+        public string supplierName
+        {
+            get
+            {
+                SupplierDAO db = new SupplierDAO();
+                string supplierName = null;
+                string[] supplierId = product.Supplier_ID.Split(',');
+                if (supplierId != null)
+                {
+                    foreach (string item in supplierId)
+                    {
+                        var supplierNameTemp = db.getSupplierName(Convert.ToInt32(item));
+                        supplierName += ", " + supplierNameTemp;
+                    }
+                }
+                supplierName = supplierName.Remove(0, 2);
+                return supplierName;
+            }
+        }
+        public decimal price
+        {
+            get
+            {
+                return (decimal)(product.Price_before_VAT_VND + (product.Price_before_VAT_VND * (product.VAT / 100)));
+            }
+        }
     }
 }
