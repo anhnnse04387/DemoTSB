@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ChiTietSanPham";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
 <style>
@@ -374,11 +374,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><i class="fa fa-file"></i> Mã máy :</td>
-                                                        <td style="padding-left: 10px">@Model.product.Product_code</td>
+                                                        <td style="padding-left: 10px">@Model.itemDisplay.product.Product_code</td>
                                                     </tr>
                                                     <tr>
                                                         <td><i class="fa fa-handshake-o"></i> Nhà cung cấp : </td>
-                                                        <td style="padding-left: 10px">@Model.product.supplierName</td>
+                                                        <td style="padding-left: 10px">@Model.itemDisplay.supplierName</td>
                                                     </tr>
                                                     <tr>
 
@@ -504,7 +504,7 @@
         </div>
     </div>
 </section>
-@section ChiTietSanPham{
+@section Index{
     <script>
         $(function () {
 

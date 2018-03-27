@@ -16,7 +16,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
             var daoProduct = new ProductDAO();
             ChiTietSanPhamModel model = new ChiTietSanPhamModel();
-            model.product = daoProduct.getProductByProductId(product_Id);
+            model.itemDisplay.product = daoProduct.getProductByProductId(product_Id);
             return View(model);
         }
     }
