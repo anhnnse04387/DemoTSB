@@ -1,17 +1,118 @@
-﻿using System;
+﻿using Models.DAO;
+using Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ThaiSonBacDMS.Areas.QuanTri.Models;
+using ThaiSonBacDMS.Common;
+using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: QuanTri/Home
         public ActionResult Index()
         {
-            return View();
+            HomeModel model = new HomeModel();
+            try
+            {
+                model.accountCount = new AccountDAO().accountCount();
+                model.categoryCount = new CategoryDAO().categoryCount();
+                model.roleCount = new RoleDAO().roleCount();
+                model.pageCount = 0;
+                model.productCount = new ProductDAO().productCount();
+                model.fileCount = new MediaDAO().mediaCount();
+            }catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult NotificationHeader()
+        {
+            try
+            {
+                var notiDAO = new NotificationDAO();
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                List<Notification> listNoti = new List<Notification>();
+                listNoti = notiDAO.getByUserID(session.user_id);
+                return PartialView(listNoti);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return PartialView();
+        }
+        [ChildActionOnly]
+        public PartialViewResult NoteEdit()
+        {
+            try
+            {
+                var noteDAO = new NoteDAO();
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var content = noteDAO.getNotebyAccount(session.accountID);
+
+                return PartialView(content);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return PartialView();
+        }
+
+        [HttpPost]
+        public JsonResult NoteEdit(int accID, string content)
+        {
+            try
+            {
+                var noteDAO = new NoteDAO();
+                noteDAO.editNotebyAccount(accID, content);
+                return Json(content, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult NoteHeader()
+        {
+            var noteDAO = new NoteDAO();
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            var content = String.Empty;
+            string[] lines = new string[] { };
+            try
+            {
+                content = noteDAO.getNotebyAccount(session.accountID).Contents;
+                if (content != null && !string.IsNullOrEmpty(content))
+                {
+
+                    lines = content.Trim().Split(Environment.NewLine.ToCharArray());
+                }
+                else
+                {
+                    lines = new string[] { "Hãy điền ghi chú vào đây" };
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                RedirectToAction("Index");
+            }
+            return PartialView(lines);
         }
     }
 }

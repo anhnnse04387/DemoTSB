@@ -21,6 +21,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public double diffrentValueMonth {get;set;}
         public bool orderFlag { get; set; }
         public double diffrentOrderMonth { get; set; }
+        public Dictionary<string, int> topSellingCurrentMonth { get; set; }
+        public Dictionary<string, int> topSellingPreviousMonth { get; set; }    
+        public List<TopSellingCategory> listTopSellingCate { get; set; }    
     }
     public class NewsetOrder
     {
@@ -30,5 +33,12 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public int numberBox { get; set; }
         public decimal totalPrice { get; set; }
         public string status { get; set; }
+    }
+    public class TopSellingCategory
+    {
+        public string categoryName { get; set; }
+        public int numberCategory { get; set; }
+        public decimal diffrentPercent { get; set; }
+        public bool categoryFlag { get; set; }
     }
 }

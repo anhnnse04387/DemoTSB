@@ -43,5 +43,10 @@ namespace Models.DAO
 
             }
         }
+
+        public int accountCount()
+        {
+            return context.Accounts.Count();
+        }
     }
 }

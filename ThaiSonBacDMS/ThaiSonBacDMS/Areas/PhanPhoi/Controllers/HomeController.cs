@@ -62,7 +62,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //line chart
             Dictionary<int, decimal> dataLineChartCurrentMonth = new Dictionary<int, decimal>();
             Dictionary<int, int> dataLineChartOrderCurrentMonth = new Dictionary<int, int>();
-            if(listTotal.First().Date_created.Day != 1)
+            if(listTotal.Any() && listTotal.First().Date_created.Day != 1)
             {
                 dataLineChartCurrentMonth.Add(1, 0);
                 dataLineChartOrderCurrentMonth.Add(1, 0);
@@ -93,7 +93,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var firstMonthPrevious = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
             var lastMonthPrevious = firstMonthPrevious.AddMonths(1).AddDays(-1);
             var listTotalPrevious = totalDAO.getOrderByDateCreated(firstMonthPrevious, lastMonthPrevious);
-            if (listTotalPrevious.First().Date_created.Day != 1)
+            if (listTotal.Any() && listTotalPrevious.First().Date_created.Day != 1)
             {
                 dataLineChartPreviousMonth.Add(1, 0);
                 dataLineChartPreviousOrderMonth.Add(1, 0);
@@ -146,7 +146,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 model.diffrentValueMonth = (valueInPreviousMonth - valueInMonth) / valueInMonth * 100;
             }
-
+            //different order of month
             model.diffrentOrderMonth = 0;
             model.orderFlag = false;
             var orderInPreviousMonth = dataLineChartPreviousOrderMonth.Values.Sum();
@@ -160,6 +160,40 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 model.diffrentOrderMonth = (orderInPreviousMonth - totalInMonth) / totalInMonth * 100;
             }
+
+            //Top Selling Product
+            model.topSellingCurrentMonth = orderItemDAO.
+                getTopSellingProductInMonth(firstDayOfMonth, lastDayOfMonth);
+            model.topSellingPreviousMonth = orderItemDAO.
+                getTopSellingProductInMonth(firstMonthPrevious, lastMonthPrevious);
+
+
+            //Top Selling Category
+            Dictionary<string, int> topSellingCategoryCurrent = new Dictionary<string, int>();
+            topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, lastDayOfMonth);
+            Dictionary<string, int> topSellingCategoryPrevious = new Dictionary<string, int>();
+            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, lastMonthPrevious);
+            List<TopSellingCategory> listTSC = new List<TopSellingCategory>();
+
+            foreach(var item in topSellingCategoryCurrent) {
+                TopSellingCategory tsc = new TopSellingCategory();
+                tsc.categoryName = new CategoryDAO().getCategoryById(item.Key).Category_name;
+                tsc.numberCategory = item.Value;
+                tsc.diffrentPercent = 0;
+                int valuePrevious = orderItemDAO.
+                    getCategoryQuantityByDate(item.Key, firstMonthPrevious, lastMonthPrevious);
+                if (item.Value >= valuePrevious)
+                {
+                    tsc.categoryFlag = true;
+                    tsc.diffrentPercent = (decimal) (item.Value - valuePrevious) / valuePrevious * 100;
+                }else
+                {
+                    tsc.categoryFlag = false;
+                    tsc.diffrentPercent = (valuePrevious - item.Value) / item.Value * 100;
+                }
+                listTSC.Add(tsc);
+            }
+            model.listTopSellingCate = listTSC;
 
             return View(model);
         }

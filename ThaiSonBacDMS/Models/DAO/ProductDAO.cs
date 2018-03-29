@@ -58,6 +58,10 @@ namespace Models.DAO
             }
         }
 
+        public int productCount()
+        {
+            return db.Products.Count();
+        }
         
         //ProductDAO by ThuongTX
         public List<Product> getListProduct()

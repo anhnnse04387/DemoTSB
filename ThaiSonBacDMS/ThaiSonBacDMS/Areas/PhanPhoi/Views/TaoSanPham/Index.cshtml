@@ -1,0 +1,370 @@
+﻿@{
+    ViewBag.Title = "taoSanPham";
+    Layout = "~/Areas/QuanTri/Views/Shared/_Layout.cshtml";
+}
+@model ThaiSonBacDMS.Areas.PhanPhoi.Models.TaoSanPhamModel
+@section IndexStyle {
+    <style>
+        .fileinput-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .fileinput-button input {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                opacity: 0;
+                -ms-filter: 'alpha(opacity=0)';
+                font-size: 200px;
+                direction: ltr;
+                cursor: pointer;
+            }
+
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+        .noneDisplay {
+            display: none;
+        }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 80px;
+            height: 55px;
+        }
+
+        .custom-chk {
+            padding-left: 15px;
+        }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+
+        .smallBtn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
+        .chosen-container-multi .chosen-choices {
+            width: 98.5% !important;
+        }
+
+            .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+                height: 28px !important;
+                width: 382px;
+            }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.css">
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="quantri_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li>Hàng hóa</li>
+        <li><a href="quantri_hanghoa_tao-san-pham.html">Thêm sản phẩm mới</a></li>
+    </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                    <div class="col-md-12">
+                        <h4>
+                            <b>Thêm sản phẩm</b>
+                        </h4>
+
+                    </div>
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box">
+                    <div class="box-header with-border text-center menu-button">
+
+                        <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quantri_hanghoa_tao-san-pham.html" title="Tạo Mới" data-placement="bottom">
+                            <i class="fa fa-plus-square text-green"></i>
+                            <span><strong>Tạo Mới</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                            <i class="fa fa-edit text-grey"></i>
+                            <span><strong>Sửa</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn" id="btnUpload" title="Lưu" data-placement="bottom">
+                            <i class="fa fa-save text-yellow"></i>
+                            <span><strong>Lưu</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <i class="fa fa-close text-grey"></i>
+                            <span><strong>Hủy</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                            <i class="fa fa-check-circle text-grey"></i>
+                            <span><strong>Chốt đơn</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                            <i class="fa fa-exchange text-grey"></i>
+                            <span><strong>Đổi trả</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <i class="fa fa-eye text-grey"></i>
+                            <span><strong>Xem Trước</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <i class="fa fa-print text-grey"></i>
+                            <span><strong>In</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <i class="fa fa-download text-black"></i>
+                            <span><strong>Import Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <i class="fa fa-file-excel-o text-grey"></i>
+                            <span><strong>Xuất Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <i class="fa fa-file-pdf-o text-grey"></i>
+                            <span><strong>Xuất PDF</strong></span>
+                        </a>
+                    </div>
+                </div>
+                <span id="msgs" style="color:red;text-align:center;margin-left:40%;font-size:20px"></span>
+                <div class="box-body" style="padding-bottom: 50px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form form-vertical">
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <div class="kv-avatar">
+                                            <div class="file-loading">
+                                                @Html.TextBoxFor(Model => Model.file, new { @id= "FileUpload1", @name= "FileUpload1", @multiple= "multiple", @type= "file" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9" style="padding-top: 15px">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Mã máy</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Mã máy..." id="pCode" type="text" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Nhà cung cấp</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-handshake-o"></i>
+                                                    </span>
+                                                    <select class="form-control chosen-select" multiple="multiple">
+                                                        <option>Thái Sơn Nam</option>
+                                                        <option>LS</option>
+                                                        <option>Hàn Quốc</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Danh mục</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-sliders"></i>
+                                                    </span>
+                                                    <select class="form-control" data-placeholder="Danh mục">
+                                                        <option>Thái Sơn Nam</option>
+                                                        <option>LS</option>
+                                                        <option>Hàn Quốc</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Danh mục con</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-sliders"></i>
+                                                    </span>
+                                                    <select class="form-control" data-placeholder="Danh mục">
+                                                        <option>Thái Sơn Nam</option>
+                                                        <option>LS</option>
+                                                        <option>Hàn Quốc</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Giá (VNĐ)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền VNĐ" id="vnd" type="text" required />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Giá (USD)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-dollar"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền USD" id="usd" type="text" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <label>%NK</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-gg-circle"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="%NK..." id="tax" type="text" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>VAT</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-eercast"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="VAT" id="vat" type="text" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>CIF</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="cid" id="cid" type="text" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Tổng quan sản phẩm</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-circle-o"></i>
+                                                    </span>
+                                                    <textarea class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Chi tiết sản phẩm</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa-chevron-circle-down"></i>
+                                                    </span>
+                                                    <textarea class="form-control"></textarea>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--main box-->
+        </div>
+        <!--main col-->
+    </div>
+    <!--main row-->
+    <div class="modal fade" id="popupConfirm" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận lưu thông tin đã nhập?</h4>
+                </div>
+
+                <div class="modal-footer" style="margin-right:15px">
+                    <div style="margin:0 auto;">
+                        <button id="btnSave" type="submit" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+@section Index {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
+    <script>
+        $(".chosen-select").chosen({
+            placeholder_text_multiple: 'Chọn nhà cung cấp'
+        });
+
+
+        $("#FileUpload1").fileinput({
+            uploadUrl: "@Url.Action("UploadFiles", "TaoSanPham")",
+            uploadAsync : true,
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            showBrowse: false,
+            browseOnZoneClick: true,
+            removeLabel: '',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-2',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="/Assets/dist/img/hph.jpg" style="width:130px; height:130px;" alt="Your Avatar"><h6 class="text-muted">Lựa chọn ảnh</h6>',
+            layoutTemplates: { main2: '{preview}' },
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+
+
+        $('#btnUpload').click(function () {
+                console.log('here');
+                $('#FileUpload1').fileinput('upload').click();
+                console.log('here2');
+            });
+
+    </script>
+}
+
+
+
+
+

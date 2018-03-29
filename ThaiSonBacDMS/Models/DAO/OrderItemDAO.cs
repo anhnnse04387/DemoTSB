@@ -88,5 +88,95 @@ namespace Models.DAO
             }
             return numberBox;
         }
+
+        public Dictionary<string, int> getTopSellingProductInMonth(DateTime beginDate, DateTime endDate)
+        {
+            var query = from oi in db.Order_items
+                        join p in db.Products on oi.Product_ID equals p.Product_ID
+                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                        where ot.Date_created >= beginDate && ot.Date_created <= endDate 
+                        && oi.Order_part_ID == null
+                        select new
+                        {
+                            orderItemId = oi.ID,
+                            productName = p.Product_name,
+                            quantity = oi.Quantity
+                        };
+            Dictionary<string, int> topSellingProductInMonth = new Dictionary<string, int>();
+            if(query != null)
+            {
+                foreach (var item in query)
+                {
+                    if (topSellingProductInMonth.ContainsKey(item.productName))
+                    {
+                        topSellingProductInMonth[item.productName] += (int)item.quantity;
+                    }
+                    else
+                    {
+                        topSellingProductInMonth.Add(item.productName, (int)item.quantity);
+                    }
+                }
+                topSellingProductInMonth = topSellingProductInMonth.Take(10).OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            } 
+            return topSellingProductInMonth;
+        }
+
+        public Dictionary<string, int> getTopSellingCategory(DateTime beginDate, DateTime endDate)
+        {
+            var query = from oi in db.Order_items
+                        join p in db.Products on oi.Product_ID equals p.Product_ID
+                        join c in db.Categories on p.Category_ID equals c.Category_ID
+                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                        where oi.Order_part_ID == null 
+                        && ot.Date_created >= beginDate && ot.Date_created <= endDate
+                        select new
+                        {
+                            category = c,
+                            quantity = oi.Quantity
+                        };
+            Dictionary<string, int> topSellingCategory = new Dictionary<string, int>();
+            if (query != null)
+            {
+                foreach (var item in query)
+                {
+                    if (topSellingCategory.ContainsKey(item.category.Category_ID))
+                    {
+                        topSellingCategory[item.category.Category_ID] += (int)item.quantity;
+                    }
+                    else
+                    {
+                        topSellingCategory.Add(item.category.Category_ID, (int)item.quantity);
+                    }
+                }
+                topSellingCategory = topSellingCategory.Take(5).OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            }
+            return topSellingCategory;
+        }
+
+        public int getCategoryQuantityByDate(string cateID, DateTime beginDate, DateTime endDate)
+        {
+            var query = from oi in db.Order_items
+                        join p in db.Products on oi.Product_ID equals p.Product_ID
+                        join c in db.Categories on p.Category_ID equals c.Category_ID
+                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                        where oi.Order_part_ID == null && c.Category_ID == cateID
+                        && ot.Date_created >= beginDate && ot.Date_created <= endDate
+                        select new
+                        {
+                            quantity = oi.Quantity
+                        };
+            var total = 0;
+            foreach(var item in query)
+            {
+                if(item == null)
+                {
+                    total += 0;
+                }else
+                {
+                    total += (int)item.quantity;
+                }
+            }
+            return total;
+        }
     }
 }
