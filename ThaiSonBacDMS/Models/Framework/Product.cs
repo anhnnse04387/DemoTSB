@@ -1,5 +1,6 @@
 namespace Models.Framework
 {
+    using DAO;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -28,7 +29,8 @@ namespace Models.Framework
         [StringLength(100)]
         public string Product_parameters { get; set; }
 
-        public int? Supplier_ID { get; set; }
+        [StringLength(255)]
+        public string Supplier_ID { get; set; }
 
         [StringLength(10)]
         public string Category_ID { get; set; }

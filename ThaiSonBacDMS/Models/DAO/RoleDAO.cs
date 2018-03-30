@@ -36,5 +36,9 @@ namespace Models.DAO
             }
             return result;
         }
+        public int roleCount()
+        {
+            return context.Role_detail.Count();
+        }
     }
 }

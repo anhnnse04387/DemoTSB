@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
-
+@model ThaiSonBacDMS.Areas.PhanPhoi.Models.HomeModel
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
@@ -14,7 +13,7 @@
 <!-- Main content -->
 <section class="content">
     <!-- Info boxes -->
-    <h3><b>THÁNG 12/2017</b></h3>
+    <h3><b>THÁNG @DateTime.Now.ToString("MM/yyyy")</b></h3>
     <div class="row dm">
         <div class="col-md-3 col-sm-6 col-xs-12">
             <a href="phanphoi_toBeContinue.html">
@@ -25,7 +24,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">ĐƠN HÀNG <br />TRONG THÁNG</span>
-                        <span class="info-box-number">25</span>
+                        <span class="info-box-number">@Model.orderInMonth </span>
                     </div>
 
                     <!-- /.info-box-content -->
@@ -41,7 +40,7 @@
                     <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-signal"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">DOANH THU</span>
-                        <span class="info-box-number">60,527,000 VND</span>
+                        <span class="info-box-number"><span class="number">@Model.valueInMonth</span> VND</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -59,7 +58,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">TỔNG SẢN PHẨM <br />BÁN RA</span>
-                        <span class="info-box-number">160</span>
+                        <span class="info-box-number">@Model.prodInMonth </span>
                     </div>
                     <!-- /.info-box-content -->
 
@@ -77,7 +76,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">KHÁCH MỚI</span>
-                        <span class="info-box-number">2 </span>
+                        <span class="info-box-number">@Model.numberCustomer </span>
                     </div>
                     <!-- /.info-box-content -->
 
@@ -121,92 +120,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR9842 - 1</a></td>
-                                    <td>Công ty HPH</td>
-                                    <td class="text-right">200</td>
-                                    <td class="text-right">10</td>
-                                    <td class="text-right">2,332,556</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-success">Đơn mới</span></a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1848 - 0</a></td>
-                                    <td>Công ty HPH</td>
-                                    <td class="text-right">400</td>
-                                    <td class="text-right">40</td>
-                                    <td class="text-right">22,332,556</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-success">Đơn mới</span></a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR7429 - 0</a></td>
-                                    <td>Công ty Hoàng Nhật</td>
-                                    <td class="text-right">350</td>
-                                    <td class="text-right">4</td>
-                                    <td class="text-right">6,364,374</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-danger"> Đã huỷ</span></a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR7429 - 3</a></td>
-                                    <td>Công ty Hoàng Nhật</td>
-                                    <td class="text-right">460</td>
-                                    <td class="text-right">5</td>
-                                    <td class="text-right">25,465,154</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1164 - 2</a></td>
-                                    <td>Thiết bị điện BẢO LỘC</td>
-                                    <td class="text-right">560</td>
-                                    <td class="text-right">7</td>
-                                    <td class="text-right">26,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR9894 - 3</a></td>
-                                    <td>Công ty Long Giang - Chị Thơm</td>
-                                    <td class="text-right">660</td>
-                                    <td class="text-right">5</td>
-                                    <td class="text-right">6,471,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1164 - 1</a></td>
-                                    <td>Thiết bị điện BẢO LỘC</td>
-                                    <td class="text-right">860</td>
-                                    <td class="text-right">8</td>
-                                    <td class="text-right">5,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1156 - 0</a></td>
-                                    <td>ĐẠI LÝ SAO THÁNG TÁM -VẠN XUÂN</td>
-                                    <td class="text-right">860</td>
-                                    <td class="text-right">9</td>
-                                    <td class="text-right">10,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR1329 - 5</a></td>
-                                    <td>Thiết bị điện BẢO LỘC</td>
-                                    <td class="text-right">460</td>
-                                    <td class="text-right">5</td>
-                                    <td class="text-right">3,475,213</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">OR7429 - 1</a></td>
-                                    <td>Công ty Hoàng Nhật</td>
-                                    <td class="text-right">330</td>
-                                    <td class="text-right">3</td>
-                                    <td class="text-right">15,465,154</td>
-                                    <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary"> Đang xử lý</span></a></td>
-                                </tr>
+                                @foreach (var item in Model.newestOrderList)
+                                {
+                                    <tr>
+                                        <td><a href="phanphoi_donhang_chi-tiet-phieu-giao-mot-lan.html">@item.orderID</a></td>
+                                        <td>@item.customerName</td>
+                                        <td class="text-right">@item.numberBox</td>
+                                        <td class="text-right">@item.numberProduct</td>
+                                        <td class="text-right number">@item.totalPrice</td>
+                                        @if (item.status == "Bản nháp")
+                                        {
+                                            <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-info">@item.status</span></a></td>
+                                        }
+                                        else if (item.status == "Chưa xuất phiếu")
+                                        {
+                                            <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-warning">@item.status</span></a></td>
+                                        }
+                                        else if (item.status == "Đã xuất phiếu" || item.status == "Kế toán đã xử lý" || item.status == "Đã xuất kho" || item.status == "Đang giao hàng")
+                                        {
+                                            <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-primary">@item.status</span></a></td>
+                                        }
+                                        else if (item.status == "Hoàn thành")
+                                        {
+                                            <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-success">@item.status</span></a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center"><a href="phanphoi_donhang_tien-trinh-don-hang.html"><span class="label label-danger">@item.status</span></a></td>
+                                        }                                        
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -253,8 +196,6 @@
 
                         <div class="col-md-6">
                             <h4><strong>DOANH SỐ BÁN HÀNG</strong></h4>
-
-
                             <div class="chart">
                                 <!-- Sales Chart Canvas -->
                                 <canvas id="lineChart" style="height: 300px;"></canvas>
@@ -280,17 +221,24 @@
                 <div class="box-footer">
                     <div class="col-sm-offset-5">
                         <div style="width: 13px; height: 13px; background-color: rgba(221, 41, 13, 1); display: inline-block;"></div>
-                        <strong>Tháng 11</strong>
+                        <strong>Tháng @(DateTime.Now.Month - 1)</strong>
                         <div class="col-sm-offset-1" style="width: 13px; height: 13px; background-color: rgba(15,224,15,1); display: inline-block;"></div>
-                        <strong>Tháng 12</strong>
+                        <strong>Tháng @(DateTime.Now.Month)</strong>
                     </div>
                 </div>
                 <div class="box-footer">
                     <div class="row">
                         <div class="col-sm-6 col-xs-6">
                             <div class="description-block border-right">
-                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 15%</span>
-                                <h5 class="description-header">10,625,414</h5>
+                                @if (Model.valueFlag)
+                                {
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> <span class="number">@Model.diffrentValueMonth</span>%</span>
+                                }
+                                else
+                                {
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> <span class="number">@Model.diffrentValueMonth</span>%</span>
+                                }
+                                <h5 class="description-header number">@Model.valueInMonth</h5>
                                 <span class="description-text">DOANH THU SỐ BÁN HÀNG</span>
                             </div>
                             <!-- /.description-block -->
@@ -298,8 +246,15 @@
                         <!-- /.col -->
                         <div class="col-sm-6 col-xs-6">
                             <div class="description-block border-right">
-                                <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 11.25%</span>
-                                <h5 class="description-header">9</h5>
+                                @if (Model.orderFlag)
+                                {
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> <span class="number">@Model.diffrentOrderMonth</span>%</span>
+                                }
+                                else
+                                {
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> <span class="number">@Model.diffrentOrderMonth</span>%</span>
+                                }
+                                <h5 class="description-header">@Model.orderInMonth</h5>
                                 <span class="description-text">SỐ ĐƠN HÀNG</span>
                             </div>
                             <!-- /.description-block -->
@@ -349,103 +304,228 @@
         <!-- /.col -->
 
         <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
+            @foreach (var item in Model.listTopSellingCate)
+            {
+                if (item.categoryFlag)
+                {
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box bg-green">
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text">FTU: loại không chỉnh dòng</span>
-                    <span class="info-box-number">390</span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">@item.categoryName</span>
+                            <span class="info-box-number">@item.numberCategory</span>
 
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 100%"></div>
+                            </div>
+                            <span class="progress-description">
+                                Tăng <span class="number">@item.diffrentPercent</span>%
+                            </span>
+                        </div>
+                        <!-- /.info-box-content -->
                     </div>
-                    <span class="progress-description">
-                        Tăng 50% Trong 30 Ngày
-                    </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                }
+                else
+                {
+                    <!-- /.info-box -->
+                    <div class="info-box bg-red">
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-down"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text">ATU: loại chỉnh dòng cắt (nhiệt)</span>
-                    <span class="info-box-number">1100</span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">@item.categoryName</span>
+                            <span class="info-box-number number">@item.numberCategory</span>
 
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 20%"></div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 100%"></div>
+                            </div>
+                            <span class="progress-description">
+                                Giảm <span class="number">@item.diffrentPercent</span>%
+                            </span>
+                        </div>
+                        <!-- /.info-box-content -->
                     </div>
-                    <span class="progress-description">
-                        Tăng 20% Trong 30 Ngày
-                    </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-down"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text">Chỉnh dòng Metasol + BS </span>
-                    <span class="info-box-number">114,381</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                        Giảm 50% Trong 30 Ngày
-                    </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-up"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">ELCB - CHỐNG RÒ ĐIỆN 4 PHA </span>
-                    <span class="info-box-number">114,381</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                        Tăng 20% Trong 30 Ngày
-                    </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-
-            <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-arrow-down"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Chỉnh dòng Metasol + BS </span>
-                    <span class="info-box-number">114,381</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                        Giảm 50% Trong 30 Ngày
-                    </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
+                }
+            }
 
             <div>
-                <a href="phanphoi_toBeContinue.html">
-                    <button type="button" class="btn btn-block btn-default">
-                        Xem thêm
-                        <i class="fa fa-arrow-circle-right"></i>
-                    </button>
+                <a href="phanphoi_toBeContinue.html" class="btn btn-block btn-default">
+                    Xem thêm
+                    <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div>
     </div>
     <!-- /.box -->
 </section>
-<!-- /.content --> 
+<!-- /.content -->
+
+@section Index {
+    <!-- ChartJS -->
+    <script src="/Assets/dist/js/Chart.bundle.js"></script>
+    <!-- Auto Numberic-->
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script>
+        new Chart(document.getElementById("barChart"), {
+            type: 'bar',
+            data: {
+                labels: [@Html.Raw(String.Join(",", Model.topSellingPreviousMonth.Select(x => "\"" + x.Key + "\"")))],
+                datasets: [
+                    {
+                        label: "Số lượng: ",
+                        backgroundColor: ["#3e95cd", "#c45850", "#3cba9f", "rgba(192,28,229,1)", "#e8c3b9", "#8e5ea2", "rgba(113,150,64,1)", "rgba(0,0,0,1)", "rgba(117,140,135,1", "rgba(255,199,0,1)"],
+                        data: [@Html.Raw(String.Join(",", Model.topSellingPreviousMonth.Select(x => "\"" + x.Value + "\"")))]
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Tháng @(DateTime.Now.Month-1)'
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(document.getElementById("barChart2"), {
+            type: 'bar',
+            data: {
+                labels: [@Html.Raw(String.Join(",", Model.topSellingCurrentMonth.Select(x => "\"" + x.Key + "\"" )))],
+                datasets: [
+                    {
+                        label: "Số lượng: ",
+                        backgroundColor: ["#3e95cd", "#c45850", "#3cba9f", "rgba(192,28,229,1)", "#e8c3b9", "#8e5ea2", "rgba(113,150,64,1)", "rgba(0,0,0,1)", "rgba(117,140,135,1", "rgba(255,199,0,1)"],
+                        data: [@Html.Raw(String.Join(",", Model.topSellingCurrentMonth.Select(y => y.Value)))]
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Tháng @DateTime.Now.Month'
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(document.getElementById("lineChart"), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartCurrentMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value/10000000 +"}")))],
+                    label: "Tháng @DateTime.Now.Month",
+                    borderColor: "#33FF33",
+                    backgroundColor: "#33FF33",
+                    fill: false
+                }, {
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartPreviousMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value / 10000000 + "}")))],
+                    label: "Tháng @(DateTime.Now.Month-1)",
+                    borderColor: "#EE0000",
+                    backgroundColor: "#EE0000",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            stepSize: 1,
+                            max: 5
+                        }
+                    }],
+                    xAxes: [{
+                        type: "linear",
+                        ticks: {
+                            min: 1,
+                            stepSize: 5,
+                            max: 31
+                        }
+                    }, ],
+                }
+            }
+        });
+
+        new Chart(document.getElementById("lineChart2"), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartOrderCurrentMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value  + "}")))],
+                    label: "Tháng @DateTime.Now.Month",
+                    borderColor: "#33FF33",
+                    backgroundColor: "#33FF33",
+                    fill: false
+                }, {
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartOrderPreviousMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value + "}")))],
+                    label: "Tháng @(DateTime.Now.Month-1)",
+                    borderColor: "#EE0000",
+                    backgroundColor: "#EE0000",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            stepSize: 1,
+                            max: 5
+                        }
+                    }],
+                    xAxes: [{
+                        type: "linear",
+                        ticks: {
+                            min: 1,
+                            stepSize: 5,
+                            max: 31
+                        }
+                    }, ],
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
+        })
+    </script>
+}
 

@@ -30,5 +30,10 @@ namespace Models.DAO
             return query.SingleOrDefault();
         }
 
+        public List<Customer> getCustomerByDateCreated(DateTime dateBegin, DateTime dateEnd)
+        {
+            return db.Customers.Where(s => s.Date_Created >= dateBegin && s.Date_Created <= dateEnd).ToList();
+        }
+
     }
 }

@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/QuanTri/Views/Shared/_Layout.cshtml";
 }
-
+@model ThaiSonBacDMS.Areas.QuanTri.Models.HomeModel
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
@@ -28,7 +28,7 @@
                                 <!-- small box -->
                                 <div class="small-box" style="background-color: #ffff1a;  color: white">
                                     <div class="inner">
-                                        <h3>4</h3>
+                                        <h3>@Model.roleCount</h3>
 
                                         <p>Phân hệ</p>
                                     </div>
@@ -43,7 +43,7 @@
                                 <!-- small box -->
                                 <a href="quantri_nguoidung_danh-sach-nguoi-dung.html" class="small-box bg-yellow">
                                     <div class="inner">
-                                        <h3>16</h3>
+                                        <h3>@Model.categoryCount</h3>
 
                                         <p>Người dùng</p>
                                     </div>
@@ -58,7 +58,7 @@
                                 <!-- small box -->
                                 <a href="quantri_tainguyen_danh-sach-trang.html" class="small-box bg-green">
                                     <div class="inner">
-                                        <h3>69</h3>
+                                        <h3>@Model.pageCount</h3>
 
                                         <p>Trang</p>
                                     </div>
@@ -76,7 +76,7 @@
                                 <!-- small box -->
                                 <div class="small-box bg-aqua">
                                     <div class="inner">
-                                        <h3>24</h3>
+                                        <h3>@Model.categoryCount</h3>
 
                                         <p>Danh mục</p>
                                     </div>
@@ -91,7 +91,7 @@
                                 <!-- small box -->
                                 <div class="small-box" style="background-color: #ff6666; color: white">
                                     <div class="inner">
-                                        <h3>150</h3>
+                                        <h3>@Model.productCount</h3>
 
                                         <p>Sản phẩm</p>
                                     </div>
@@ -106,7 +106,7 @@
                                 <!-- small box -->
                                 <a href="quantri_tainguyen_danh-sach-file.html" class="small-box" style="background-color: #ff33ff; color: white">
                                     <div class="inner">
-                                        <h3>38</h3>
+                                        <h3>@Model.fileCount</h3>
 
                                         <p>File tải lên</p>
                                     </div>

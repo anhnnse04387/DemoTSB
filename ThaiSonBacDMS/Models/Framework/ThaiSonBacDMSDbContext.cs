@@ -314,6 +314,10 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
+                .Property(e => e.Supplier_ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
                 .Property(e => e.Category_ID)
                 .IsUnicode(false);
 

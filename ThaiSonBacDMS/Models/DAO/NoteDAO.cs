@@ -20,7 +20,6 @@ namespace Models.DAO
             if (note == null)
             {
                 var newNote = new Note();
-                newNote.Note_ID = context.Notes.Count() + 1;
                 newNote.Account_ID = account_id;
                 newNote.Date_Created = DateTime.Now;
                 newNote.Contents = string.Empty;

@@ -72,10 +72,45 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+<<<<<<< HEAD
         public List<Order_total> getLstOrder()
         {
             return db.Order_total.ToList();
         }
 
+=======
+        public List<Order_total> getOrderByDateCreated(DateTime dateBegin, DateTime dateEnd)
+        {
+            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).ToList();
+        }
+
+        public List<Order_total> showNewestOrder(int user_id)
+        {
+            var query = (from od in db.Order_total
+                         join cus in db.Customers on od.Customer_ID equals cus.Customer_ID
+                         join sta in db.Status on od.Status_ID equals sta.Status_ID
+                         join u in db.Users on od.User_ID equals u.User_ID
+                         orderby od.Date_created
+                        select new
+                        {
+                           orderID = od.Order_ID
+                        }).Take(10);
+            List<Order_total> listOrder= new List<Order_total>();
+            if (query == null)
+            {
+                return new List<Order_total>();
+            }
+            else
+            {
+                foreach (var item in query)
+                {
+                    Order_total order = new Order_total();
+                    order = new OrderTotalDAO().getOrder(item.orderID);
+                    listOrder.Add(order);
+                }
+                return listOrder;
+            }
+        }
+>>>>>>> b9965fc5d8ac0de86c43ce8b6b46f20d2d792a50
     }
 }
