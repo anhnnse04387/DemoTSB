@@ -12,20 +12,72 @@ $(document).ready(function () {
             }
         });
     });
-    $("#btnSubmit").click(function () {
+    $("#btnSubmit").click(function (event) {
         if (validate() === 0) {
+            event.preventDefault();
             previewOrder();
+        } else {
+            $('form')[0].checkValidity();
         }
-        return false;
     });
-    $("#btnSave").click(function () {
+    $("#btnSave").click(function (event) {
         if (validate() === 0) {
+            event.preventDefault();
             $('#confirmSave').modal();
+        } else {
+            $('form')[0].checkValidity();
         }
-        return false;
+    });
+    $("#btnDone").click(function (event) {
+        if (validate() === 0) {
+            event.preventDefault();
+            $('#confirmComplete').modal();
+        } else {
+            $('form')[0].checkValidity();
+        }
     });
     initMain();
 });
+
+function donePendingOrder() {
+    $.ajax({
+        url: '/PhanPhoi/LapPhieu/CheckOut',
+        type: 'POST',
+        dataType: 'json',
+        data: { orderId: $('#orderId').val() },
+        success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
+                imageUrl: '/Assets/dist/img/Noti.gif',
+                imageWidth: 400,
+                imageHeight: 300,
+                imageAlt: 'Custom image',
+                animation: false
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/PhanPhoi/ProcessingOrderList/Index';
+                }
+            });
+        },
+        error: function () {
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
+                text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
+                type: 'error',
+                showCancelButton: false,
+                showConfirmButton: true
+            });
+        }
+    });
+}
+
+function deleteRow(comp) {
+    var table = $(comp).closest("table");
+    comp.closest("table").deleteRow(comp.closest("tr").rowIndex);
+    calcTotal(table);
+    total(table);
+}
 
 function initMain() {
     $('.number').autoNumeric('init', {minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
@@ -44,7 +96,7 @@ function changeQtt() {
     var div = '';
     var inside = document.getElementById('template').innerHTML;
     document.getElementById('deliveryDiv').innerHTML = '';
-    if (qtt > 0) {
+    if (qtt > 1) {
         for (i = 0; i < qtt; i++) {
             var fieldset = '<fieldset class="deliveryFS">';
             fieldset += inside.replace('--loso--', ($('#orderId').val() + '-' + (i + 1)))
@@ -121,7 +173,7 @@ function addLstItem(e) {
     var rowCount = table.find('.addingRow').length + 1;
     var div = '<tr class="addingRow">'
             + '<td>' + rowCount + '</td>'
-            + '<td style="vertical-align: middle; width: 24.7%;"><input type="text" required class="form-control code" />'
+            + '<td style="vertical-align: middle; width: 20%;"><input type="text" required class="form-control code" />'
             + '<input type="hidden" class="productId"/>'
             + '<input type="hidden" class="qttInven" /><input type="hidden" class="qttBox" /></td>'
             + '<td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>'
@@ -131,6 +183,10 @@ function addLstItem(e) {
             + '<td><output class="tienchuack number"></output></td>'
             + '<td><input type="text" class="form-control ck number"/></td>'
             + '<td><output class="tiendack number"></output></td>'
+            + '<td style="vertical-align: middle;">'
+            + '<a data-toggle="tooltip" title="Xóa" data-placement="bottom" onclick="deleteRow(this)" href="javascript:void(0)">'
+            + '<i class="fa fa-close text-red" style="color: #3c8dbc; font-size: 20px"></i>'
+            + '</a></td>'
             + '</tr>';
     table.find('.addingRow').last().after(div);
     initMain();
@@ -141,7 +197,7 @@ function addLstSubItem(e) {
     var rowCount = table.find('.addingSubRow').length + 1;
     var div = '<tr class="addingSubRow">'
             + '<td>' + rowCount + '</td>'
-            + '<td style="vertical-align: middle; width: 24.7%;"><input type="text" required class="form-control subCode" />'
+            + '<td style="vertical-align: middle; width: 20%;"><input type="text" required class="form-control subCode" />'
             + '<input type="hidden" class="productId"/>'
             + '<input type="hidden" class="qttInven" /><input type="hidden" class="qttBox" /></td>'
             + '<td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>'
@@ -151,6 +207,10 @@ function addLstSubItem(e) {
             + '<td><output class="tienchuack number"></output></td>'
             + '<td><input type="text" class="form-control ck number"/></td>'
             + '<td><output class="tiendack number"></output></td>'
+            + '<td style="vertical-align: middle;">'
+            + '<a data-toggle="tooltip" title="Xóa" data-placement="bottom" onclick="deleteRow(this)" href="javascript:void(0)">'
+            + '<i class="fa fa-close text-red" style="color: #3c8dbc; font-size: 20px"></i>'
+            + '</a></td>'
             + '</tr>';
     table.find('.addingSubRow').last().after(div);
     initMain();
@@ -163,11 +223,15 @@ function saveOrder() {
         dataType: 'json',
         data: getAllData(),
         success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
                 title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
                 type: 'success'
-            });
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/PhanPhoi/PendingOrderList/Index';
+                }
+            });            
         },
         error: function () {
             swal({
@@ -175,6 +239,31 @@ function saveOrder() {
                 type: 'error',
                 showCancelButton: false,
                 showConfirmButton: true
+            });
+        }
+    });
+}
+
+function cancelOrder() {
+    $.ajax({
+        url: '/PhanPhoi/ChiTietPhieu/cancelOrder',
+        dataType: 'json',
+        data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
+        success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_10.png"/>',
+                type: 'success'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/PhanPhoi/Home/Index';
+                }
+            });            
+        },
+        error: function () {
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
+                type: 'error'
             });
         }
     });
@@ -198,6 +287,7 @@ function doneOrder() {
         dataType: 'json',
         data: JSON.stringify({model: data}),
         success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
                 title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
                 imageUrl: '/Assets/dist/img/Noti.gif',
@@ -205,8 +295,11 @@ function doneOrder() {
                 imageHeight: 300,
                 imageAlt: 'Custom image',
                 animation: false
-            });
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/PhanPhoi/ProcessingOrderList/Index';
+                }
+            });            
         },
         error: function () {
             swal({
@@ -375,7 +468,7 @@ function getAllData() {
         };
         items.push(item);
     });
-    if (deliveryQtt > 0) {
+    if (deliveryQtt > 1) {
         for (var i = 0; i < arr.length; i++) {
             var part = [];
             var partsItem = [];

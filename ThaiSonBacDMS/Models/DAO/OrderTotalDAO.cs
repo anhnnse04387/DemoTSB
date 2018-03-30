@@ -72,5 +72,10 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public List<Order_total> getLstOrder()
+        {
+            return db.Order_total.ToList();
+        }
+
     }
 }

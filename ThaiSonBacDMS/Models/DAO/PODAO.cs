@@ -7,23 +7,29 @@ using System.Threading.Tasks;
 
 namespace Models.DAO
 {
-    public class StatusDAO
+    public class PODAO
     {
 
         private ThaiSonBacDMSDbContext db = null;
-        public StatusDAO()
+
+        public PODAO()
         {
             db = new ThaiSonBacDMSDbContext();
         }
 
-        public String getStatus(byte? id)
+        public int createPO(PO po)
         {
-            return db.Status.Where(x => x.Status_ID == id).SingleOrDefault().Status_name;
+            db.POes.Add(po);
+            if (db.SaveChanges() > 0)
+            {
+                return po.PO_ID;
+            }
+            return 0;
         }
 
-        public List<Status> getLstStatus()
+        public PO getPO(int id)
         {
-            return db.Status.ToList();
+            return db.POes.Where(x => x.PO_ID == id).SingleOrDefault();
         }
 
     }

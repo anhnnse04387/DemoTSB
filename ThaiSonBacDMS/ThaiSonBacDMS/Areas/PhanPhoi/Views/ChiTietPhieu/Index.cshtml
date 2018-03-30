@@ -74,7 +74,7 @@
                 <div class="box">
                     <div class="box-header" style="text-align: center;margin-top: 30px;">
                         <h3 class="box-title with-border"><b style="font-size: 25px;">Đơn hàng lô số @Model.orderId</b></h3>
-                        <input type="hidden" value="@Model.orderId" id="orderId"/>
+                        <input type="hidden" value="@Model.orderId" id="orderId" />
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body pad">
@@ -84,7 +84,7 @@
                                     <i class="fa fa-plus-square text-green"></i>
                                     <span><strong>Tạo Mới</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" href="@Url.Action("Index","SuaPhieu")">
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" href="@Url.Action("SuaPhieu", "LapPhieu", new { orderId = Model.orderId })">
                                     <i class="fa fa-edit text-blue"></i>
                                     <span><strong>Sửa</strong></span>
                                 </a>
@@ -343,8 +343,9 @@
     </div>
     <!-- /.content -->
 }
-@section LapPhieu
+@section ChiTietPhieu
 {
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script src="/Assets/dist/js/ChiTietPhieu.js"></script>
 }

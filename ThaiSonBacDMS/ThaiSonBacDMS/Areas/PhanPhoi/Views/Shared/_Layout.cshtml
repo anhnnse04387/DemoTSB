@@ -34,19 +34,21 @@
     <link rel="stylesheet" href="/Assets/dist/css/font/GoogleFont.css">
     <style>
         #scrollContainer p {
-                margin: 0;
-                line-height: 30px;
-                font-size: 20px;
-                color: white;
-            }
-            #scrollContainer {
-                height: 30px;
-                margin-top: 10px;
-                overflow: hidden;
-            }
-            #scrollBox {
-                position: relative;   
-            }
+            margin: 0;
+            line-height: 30px;
+            font-size: 20px;
+            color: white;
+        }
+
+        #scrollContainer {
+            height: 30px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        #scrollBox {
+            position: relative;
+        }
     </style>
 </head>
 
@@ -332,8 +334,10 @@
     <!-- jQuery 3 -->
     <script src="/Assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/Assets/dist/js/jquery-1.12.4.js"></script>
-    <script src="/Assets/dist/js/jquery-ui.js"></script>   
+    <script src="/Assets/dist/js/jquery-ui.js"></script>
     @RenderSection("LapPhieu", false/*required*/)
+    @RenderSection("PO", false)
+    @RenderSection("ChiTietPhieu", false);
     <!-- Bootstrap 3.3.7 -->
     <script src="/Assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->

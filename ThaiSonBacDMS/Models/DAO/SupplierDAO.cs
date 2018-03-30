@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace Models.DAO
 {
-    public class CustomerDAO
+    public class SupplierDAO
     {
 
         private ThaiSonBacDMSDbContext db = null;
 
-        public CustomerDAO()
+        public SupplierDAO()
         {
             db = new ThaiSonBacDMSDbContext();
         }
 
-        public List<Customer> getCustomer()
+        public List<Supplier> getSupplier()
         {
-            return db.Customers.ToList();
+            return db.Suppliers.ToList();
         }
 
-        public Customer getCustomerById(int id)
+        public Supplier getSupplierById(int? id)
         {
-            var query = from e in getCustomer()
-                        where e.Customer_ID == id && e.Status == 1
-                        select e;
+            var query = from s in getSupplier()
+                        where s.Supplier_ID == id && s.Status == 1
+                        select s;
             return query.SingleOrDefault();
         }
 

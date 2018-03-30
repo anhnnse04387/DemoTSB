@@ -133,6 +133,7 @@
     <Content Include="Assets\dist\js\pages\hanghoa_index.js" />
     <Content Include="Assets\dist\js\pages\index.js" />
     <Content Include="Assets\dist\js\pages\ketoan_index.js" />
+    <Content Include="Assets\dist\js\PO.js" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
@@ -147,9 +148,15 @@
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuController.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\SuaPhieuController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\POController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\StockController.cs" />
     <Compile Include="Areas\PhanPhoi\Models\HomeModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\POItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\POModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\StockItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\StockModel.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\PreviewController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
@@ -198,12 +205,15 @@
     <Content Include="Areas\HangHoa\Views\Shared\NoteHeader.cshtml" />
     <Content Include="Areas\HangHoa\Views\Shared\NotificationHeader.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Preview\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\SuaPhieu\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NoteEdit.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NoteHeader.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NotificationHeader.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\_Layout1.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PO\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\LapPhieu\SuaPhieu.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PO\Detail.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\Stock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -215,6 +225,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HangHoa\Models\" />
     <Folder Include="Areas\KeToan\Models\" />
+    <Folder Include="Areas\PhanPhoi\Views\PI\" />
     <Folder Include="Areas\QuanLy\Models\" />
     <Folder Include="Areas\QuanTri\Models\" />
     <Folder Include="Assets\bower_components\" />
