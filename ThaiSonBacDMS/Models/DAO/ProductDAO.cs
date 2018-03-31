@@ -173,8 +173,6 @@ namespace Models.DAO
                 result = result.Where(x => (priceFrom <= (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) && (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) <= priceTo) && x.Status == 1);
             }
             return result.ToList();
-<<<<<<< HEAD
-=======
 
         }
         //function search for SanPhamDangKinhDoanh
@@ -278,7 +276,6 @@ namespace Models.DAO
                 }
             }
             return lstProduct;
->>>>>>> 9be8fbbbcdae3c41b4c3adb9b5908fb4ffaec433
         }
     }
 }
