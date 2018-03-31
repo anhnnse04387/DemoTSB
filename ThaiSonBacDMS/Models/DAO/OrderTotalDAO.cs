@@ -72,13 +72,10 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
-<<<<<<< HEAD
         public List<Order_total> getLstOrder()
         {
             return db.Order_total.ToList();
         }
-
-=======
         public List<Order_total> getOrderByDateCreated(DateTime dateBegin, DateTime dateEnd)
         {
             return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).ToList();
@@ -111,6 +108,5 @@ namespace Models.DAO
                 return listOrder;
             }
         }
->>>>>>> b9965fc5d8ac0de86c43ce8b6b46f20d2d792a50
     }
 }
