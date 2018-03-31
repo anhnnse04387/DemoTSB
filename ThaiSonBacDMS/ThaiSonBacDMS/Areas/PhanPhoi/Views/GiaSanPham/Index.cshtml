@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "GiaSanPham";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
 }
 
 <style>
@@ -226,6 +226,8 @@
 
     </section>
     @section Index{
+        <script src="/Assets/dist/js/autoNumeric.js"></script>
+        <script src="/Assets/dist/js/autoNumeric.min.js"></script>
         <script>
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
             $('#example1').DataTable({
