@@ -9,8 +9,8 @@ namespace Models.Framework
     [Table("Notification")]
     public partial class Notification
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Notif_ID { get; set; }
 
         public DateTime? Notif_date { get; set; }

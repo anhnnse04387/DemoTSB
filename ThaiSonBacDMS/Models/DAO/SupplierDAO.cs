@@ -9,18 +9,13 @@ namespace Models.DAO
 {
     public class SupplierDAO
     {
-<<<<<<< HEAD
 
         private ThaiSonBacDMSDbContext db = null;
 
-=======
-        private ThaiSonBacDMSDbContext db = null;
->>>>>>> b9965fc5d8ac0de86c43ce8b6b46f20d2d792a50
         public SupplierDAO()
         {
             db = new ThaiSonBacDMSDbContext();
         }
-<<<<<<< HEAD
 
         public List<Supplier> getSupplier()
         {
@@ -35,7 +30,6 @@ namespace Models.DAO
             return query.SingleOrDefault();
         }
 
-=======
         public List<Supplier> getLstSupplier()
         {
             return db.Suppliers.Where(x => x.Status == 1).ToList();
@@ -45,6 +39,5 @@ namespace Models.DAO
             return db.Suppliers.SingleOrDefault(x => x.Supplier_ID == supplierId && x.Status == 1).Supplier_name;
         }
         
->>>>>>> b9965fc5d8ac0de86c43ce8b6b46f20d2d792a50
     }
 }

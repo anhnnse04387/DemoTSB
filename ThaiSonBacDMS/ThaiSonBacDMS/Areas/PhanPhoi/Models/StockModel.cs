@@ -16,7 +16,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public String address { get; set; }
         public String tel { get; set; }
         public int qttTotal { get; set; }
-        public IList<SelectListItem> lstNo { get; set; }
+        public IList<SelectListItem> lstLo { get; set; }
+        public IList<SelectListItem> lstPi { get; set; }
         public DateTime? dateRequested { get; set; }
         public DateTime? dateImported { get; set; }
         public List<StockItemModel> lstItem { get; set; }

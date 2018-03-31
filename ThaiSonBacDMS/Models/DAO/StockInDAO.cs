@@ -7,24 +7,20 @@ using System.Threading.Tasks;
 
 namespace Models.DAO
 {
-    public class PIDAO
+    public class StockInDAO
     {
 
         private ThaiSonBacDMSDbContext db = null;
 
-        public PIDAO()
+        public StockInDAO()
         {
             db = new ThaiSonBacDMSDbContext();
         }
 
-        public List<Purchase_invoice> getLstPI()
+        public void createStockIn(Stock_in model)
         {
-            return db.Purchase_invoice.ToList();
-        }
-
-        public Purchase_invoice getPI(int id)
-        {
-            return db.Purchase_invoice.Where(x => x.Purchase_invoice_ID == id).SingleOrDefault();
+            db.Stock_in.Add(model);
+            db.SaveChanges();
         }
 
     }

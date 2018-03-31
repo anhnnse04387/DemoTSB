@@ -16,8 +16,8 @@ namespace Models.Framework
             Notes = new HashSet<Note>();
         }
 
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Account_ID { get; set; }
 
         [Required]

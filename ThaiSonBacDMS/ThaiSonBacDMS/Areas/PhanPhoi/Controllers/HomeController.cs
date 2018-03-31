@@ -141,7 +141,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             if (valueInMonth >= valueInPreviousMonth)
             {
                 model.valueFlag = true;
-                model.diffrentValueMonth = (valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100;
+                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
             }else
             {
                 model.diffrentValueMonth = (valueInPreviousMonth - valueInMonth) / valueInMonth * 100;
@@ -154,11 +154,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             if (totalInMonth >= orderInPreviousMonth)
             {
                 model.orderFlag = true;
-                model.diffrentOrderMonth = (totalInMonth - orderInPreviousMonth) / orderInPreviousMonth * 100;
+                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
             }
             else
             {
-                model.diffrentOrderMonth = (orderInPreviousMonth - totalInMonth) / totalInMonth * 100;
+                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
             }
 
             //Top Selling Product

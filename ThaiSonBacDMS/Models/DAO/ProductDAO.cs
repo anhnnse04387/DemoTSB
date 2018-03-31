@@ -26,10 +26,7 @@ namespace Models.DAO
 
         public Product getProductById(int? id)
         {
-<<<<<<< HEAD
             return db.Products.Where(x => x.Product_ID == id && x.Status == 1).SingleOrDefault();
-=======
-            return db.Products.Where(x => x.Product_ID == id).SingleOrDefault();
         }
         //ProductDAO by CuongNM
         public List<Product> getProductByDateSold(DateTime date)
@@ -174,7 +171,6 @@ namespace Models.DAO
                 result = result.Where(x => (priceFrom <= (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) && (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) <= priceTo) && x.Status == 1);
             }
             return result.ToList();
->>>>>>> b9965fc5d8ac0de86c43ce8b6b46f20d2d792a50
         }
     }
 }
