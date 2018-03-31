@@ -42,14 +42,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
                 if (model.lstProduct.Count != 0)
                 {
-                    foreach (Product p in model.lstProduct)
+                    foreach (Product itemProduct in model.lstProduct)
                     {
                         ShowProductModel spm = new ShowProductModel();
-                        spm.product = p;
+                        spm.product = itemProduct;
                         model.lstDisplay.Add(spm);
                     }
                 }
-                //Nhom san pham theo category
+                //Loc san pham theo category
                 if (model.lstCategory != null)
                 {
                     foreach (Category item in model.lstCategory)
@@ -58,7 +58,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
                         foreach (ShowProductModel p in model.lstDisplay)
                         {
-                            if (p.product.Equals(item.Category_ID))
+                            if (p.product.Category_ID.Equals(item.Category_ID))
                             {
                                 lstProductAdd.Add(p);
                             }
@@ -66,7 +66,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         model.map.Add(item.Category_name, lstProductAdd);
                     }
                 }
-
                 return View(model);
             }
             catch (Exception ex)
@@ -91,6 +90,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.lstProduct = new List<Product>();
                 model.priceFrom = mo.priceFrom;
                 model.priceTo = mo.priceTo;
+                model.lstDisplay = new List<ShowProductModel>();
 
                 Product product = new Product();
                 product.Category_ID = mo.categorySearch;
@@ -159,9 +159,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
                         foreach (ShowProductModel p in model.lstDisplay)
                         {
-                            if (p.product.Equals(item.Category_ID))
+                            if (p.product.Category_ID.Equals(item.Category_ID))
                             {
-                                model.lstDisplay.Add(p);
+                               lstProductAdd.Add(p);
                             }
                         }
                         model.map.Add(item.Category_name, lstProductAdd);

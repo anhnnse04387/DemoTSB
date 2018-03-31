@@ -9,14 +9,21 @@ namespace Models.DAO
 {
     public class SupplierDAO
     {
+<<<<<<< HEAD
 
         private ThaiSonBacDMSDbContext db = null;
 
+=======
+        private ThaiSonBacDMSDbContext db = null;
+>>>>>>> 9be8fbbbcdae3c41b4c3adb9b5908fb4ffaec433
         public SupplierDAO()
         {
             db = new ThaiSonBacDMSDbContext();
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9be8fbbbcdae3c41b4c3adb9b5908fb4ffaec433
         public List<Supplier> getSupplier()
         {
             return db.Suppliers.ToList();
