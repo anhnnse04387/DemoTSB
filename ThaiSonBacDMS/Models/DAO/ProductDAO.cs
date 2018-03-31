@@ -1,6 +1,7 @@
 ﻿using Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,7 @@ namespace Models.DAO
 
         public Product getProductById(int? id)
         {
-<<<<<<< HEAD
             return db.Products.Where(x => x.Product_ID == id && x.Status == 1).SingleOrDefault();
-=======
-            return db.Products.Where(x => x.Product_ID == id).SingleOrDefault();
         }
         //ProductDAO by CuongNM
         public List<Product> getProductByDateSold(DateTime date)
@@ -149,6 +147,7 @@ namespace Models.DAO
             {
                 result = result.Where(x => x.Product_code.Equals(product.Product_code) && x.Status == 1);
             }
+
             if (priceFrom != 0 && checkboxValue)
             {
                 result = result.Where(x => x.Price_before_VAT_VND >= priceFrom && x.Status == 1);
@@ -174,7 +173,109 @@ namespace Models.DAO
                 result = result.Where(x => (priceFrom <= (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) && (x.Price_before_VAT_VND + x.Price_before_VAT_VND * (x.VAT / 100)) <= priceTo) && x.Status == 1);
             }
             return result.ToList();
->>>>>>> b9965fc5d8ac0de86c43ce8b6b46f20d2d792a50
+
+        }
+        //function search for SanPhamDangKinhDoanh
+        public List<Product> getLstSearch(Product product, string fromDate, string toDate)
+        {
+            var query = from p in db.Products
+                        join d in db.Detail_stock_in on p.Product_ID equals d.Product_ID
+                        join s in db.Stock_in on d.Stock_in_ID equals s.Stock_in_ID
+                        where p.Status == 1
+                        select new { p, s.Date_import };
+            if (product.Category_ID != null)
+            {
+                query = query.Where(x => x.p.Category_ID == product.Category_ID);
+            }
+            if (product.Supplier_ID != null)
+            {
+                query = query.Where(x => x.p.Supplier_ID.Contains(product.Supplier_ID));
+            }
+            if (product.Product_code != null)
+            {
+                query = query.Where(x => x.p.Product_code.Equals(product.Product_code));
+            }
+            if (fromDate != null && toDate == null)
+            {
+                DateTime fromDateValue = DateTime.Parse(fromDate);
+                query = query.Where(x => x.Date_import >= fromDateValue);
+            }
+            if (toDate != null && fromDate == null)
+            {
+                DateTime toDateValue = DateTime.Parse(toDate);
+                toDateValue = DateTime.Parse(toDateValue.ToString("mm/dd/yyyy"));
+                query = query.Where(x => x.Date_import <= toDateValue);
+            }
+            if (fromDate != null && toDate != null)
+            {
+                DateTime fromDateValue = DateTime.Parse(fromDate);
+                DateTime toDateValue = DateTime.Parse(toDate);
+                query = query.Where(x => x.Date_import <= toDateValue && x.Date_import >= fromDateValue);
+            }
+            List<Product> lstProduct = new List<Product>();
+            if (query.Count() != 0)
+            {
+                foreach (var itemProduct in query)
+                {
+                    lstProduct.Add(itemProduct.p);
+                }
+            }
+            return lstProduct;
+        }
+        //functions ton kho
+        public List<Product> getAllProduct()
+        {
+            var query = from p in db.Products
+                        join dsi in db.Detail_stock_in on p.Product_ID equals dsi.Product_ID
+                        join dso in db.Detail_stock_out on p.Product_ID equals dso.Product_ID
+                        where p.Status == 1 orderby p.Product_ID ascending
+                        select p;
+            List<Product> lstProduct = new List<Product>();
+            if (query.Count() != 0)
+            {
+                foreach (Product itemProduct in query)
+                {
+                    lstProduct.Add(itemProduct);
+                }
+            }
+            return lstProduct;
+        }
+        public List<Product> getLstProductSearch(string fromValue, string toValue, string pCode,string categorySearch)
+        {
+            var query = from p in db.Products
+                        join dsi in db.Detail_stock_in on p.Product_ID equals dsi.Product_ID
+                        join dso in db.Detail_stock_out on p.Product_ID equals dso.Product_ID
+                        where p.Status == 1 orderby p.Product_ID ascending
+                        select new { p, nhap = dsi.Quantities, xuat = dso.Quantities, ton = dsi.Quantities - dso.Quantities };
+            if (pCode != null)
+            {
+                query = query.Where(x => x.p.Product_code.Equals(pCode));
+            }
+            if (categorySearch != null)
+            {
+                query = query.Where(x => x.p.Category_ID.Equals(categorySearch));
+            }
+            if (fromValue != null)
+            {
+                query = query.Where(x => x.ton >= Convert.ToInt32(fromValue));
+            }
+            if (toValue != null)
+            {
+                query = query.Where(x => x.ton <= Convert.ToInt32(toValue));
+            }
+            if (fromValue != null && toValue != null)
+            {
+                query = query.Where(x => x.ton >= Convert.ToInt32(fromValue) && x.ton <= Convert.ToInt32(toValue));
+            }
+            List<Product> lstProduct = new List<Product>();
+            if (query.Count() != 0)
+            {
+                foreach (var itemProduct in query)
+                {
+                    lstProduct.Add(itemProduct.p);
+                }
+            }
+            return lstProduct;
         }
     }
 }
