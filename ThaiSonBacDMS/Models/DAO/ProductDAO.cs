@@ -28,7 +28,6 @@ namespace Models.DAO
         public Product getProductById(int? id)
         {
             return db.Products.Where(x => x.Product_ID == id && x.Status == 1).SingleOrDefault();
-            return db.Products.Where(x => x.Product_ID == id).SingleOrDefault();
         }
         //ProductDAO by CuongNM
         public List<Product> getProductByDateSold(DateTime date)
