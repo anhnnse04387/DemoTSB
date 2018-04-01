@@ -16,8 +16,8 @@ namespace Models.Framework
             Purchase_invoice = new HashSet<Purchase_invoice>();
         }
 
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int PO_ID { get; set; }
 
         [StringLength(20)]

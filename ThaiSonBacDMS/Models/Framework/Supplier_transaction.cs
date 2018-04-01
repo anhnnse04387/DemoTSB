@@ -8,8 +8,8 @@ namespace Models.Framework
 
     public partial class Supplier_transaction
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Transaction_ID { get; set; }
 
         [Column(TypeName = "date")]

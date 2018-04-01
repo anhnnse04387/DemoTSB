@@ -133,6 +133,8 @@
     <Content Include="Assets\dist\js\pages\hanghoa_index.js" />
     <Content Include="Assets\dist\js\pages\index.js" />
     <Content Include="Assets\dist\js\pages\ketoan_index.js" />
+    <Content Include="Assets\dist\js\PO.js" />
+    <Content Include="Assets\dist\js\Stock.js" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
@@ -151,15 +153,23 @@
     <Compile Include="Areas\PhanPhoi\Controllers\GiaSanPhamController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuController.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\SanPhamDangKinhDoanhController.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\SuaPhieuController.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\WorkFlowController.cs" />
-    <Compile Include="Areas\PhanPhoi\Models\ChiTietSanPhamModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\POController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\StockController.cs" />
     <Compile Include="Areas\PhanPhoi\Models\HomeModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\POItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\POModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\StockItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\StockModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\SanPhamDangKinhDoanhController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\WorkFlowController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\TonKhoController.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\ChiTietSanPhamModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ProductPhanPhoiModel.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\TaoSanPhamController.cs" />
     <Compile Include="Areas\PhanPhoi\Models\TaoSanPhamModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\TonKhoModel.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\PreviewController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ErrorPageController.cs" />
@@ -210,12 +220,15 @@
     <Content Include="Areas\HangHoa\Views\Shared\NoteHeader.cshtml" />
     <Content Include="Areas\HangHoa\Views\Shared\NotificationHeader.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Preview\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\SuaPhieu\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NoteEdit.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NoteHeader.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NotificationHeader.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\_Layout1.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PO\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\LapPhieu\SuaPhieu.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PO\Detail.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\Stock\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\GiaSanPham\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamDangKinhDoanh\Index.cshtml" />
@@ -228,6 +241,8 @@
     <Content Include="Areas\PhanPhoi\Views\ErrorPage\Index.cshtml" />
     <Content Include="Areas\HangHoa\Views\ErrorPage\Index.cshtml" />
     <Content Include="Areas\QuanLy\Views\ErrorPage\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\Stock\_chooseNoPartial.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\TonKho\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -239,6 +254,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HangHoa\Models\" />
     <Folder Include="Areas\KeToan\Models\" />
+    <Folder Include="Areas\PhanPhoi\Views\PI\" />
     <Folder Include="Areas\QuanLy\Models\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />

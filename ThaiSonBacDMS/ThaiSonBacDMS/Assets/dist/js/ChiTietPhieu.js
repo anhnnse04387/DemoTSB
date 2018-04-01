@@ -3,13 +3,13 @@
 });
 
 function doneOrder() {
-    var data = JSON.stringify(getAllData());
     $.ajax({
         url: '/PhanPhoi/ChiTietPhieu/CheckOut',
         type: 'POST',
         dataType: 'json',
-        data: JSON.stringify({ orderId: $('#orderId').val() }),
+        data: { orderId: $('#orderId').val() },
         success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
                 title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
                 imageUrl: '/Assets/dist/img/Noti.gif',
@@ -17,8 +17,11 @@ function doneOrder() {
                 imageHeight: 300,
                 imageAlt: 'Custom image',
                 animation: false
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/PhanPhoi/ProcessingOrderList/Index';
+                }
             });
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
         },
         error: function () {
             swal({
@@ -36,13 +39,17 @@ function cancelOrder() {
     $.ajax({
         url: '/PhanPhoi/ChiTietPhieu/cancelOrder',
         dataType: 'json',
-        data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
+        data: { orderId: $('#orderId').val(), note: $('#reason').val() },
         success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
                 title: '<img src="/Assets/dist/img/messagePic_10.png"/>',
                 type: 'success'
-            });
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/PhanPhoi/Home/Index';
+                }
+            });            
         },
         error: function () {
             swal({

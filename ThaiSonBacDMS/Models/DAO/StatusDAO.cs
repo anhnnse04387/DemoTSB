@@ -15,9 +15,15 @@ namespace Models.DAO
         {
             db = new ThaiSonBacDMSDbContext();
         }
+
         public String getStatus(byte? id)
         {
             return db.Status.Where(x => x.Status_ID == id).SingleOrDefault().Status_name;
+        }
+
+        public List<Status> getLstStatus()
+        {
+            return db.Status.ToList();
         }
 
     }

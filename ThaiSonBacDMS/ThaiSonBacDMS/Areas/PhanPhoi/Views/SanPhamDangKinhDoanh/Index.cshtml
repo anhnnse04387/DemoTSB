@@ -5,34 +5,32 @@
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 <style>
-    <link rel="stylesheet" href="/Assets/dist/css/bootstrap-datepicker.min.css">
+    .chosen-container-multi .chosen-choices {
+        height: 33.99px !important;
+        width: 370.22px;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-color: #d2d6de !important;
+        box-shadow: none !important;
+        padding-top: 3px !important;
+    }
 
-     .chosen-container-multi .chosen-choices {
-         height: 33.99px !important;
-         width: 370.22px;
-         border-top-left-radius: 0 !important;
-         border-bottom-left-radius: 0 !important;
-         border-color: #d2d6de !important;
-         box-shadow: none !important;
-         padding-top: 3px !important;
-     }
+    .chosen-container-multi .chosen-drop .result-selected {
+        display: list-item;
+        color: #ccc;
+        cursor: default;
+        width: 385.22px !important;
+    }
 
-     .chosen-container-multi .chosen-drop .result-selected {
-         display: list-item;
-         color: #ccc;
-         cursor: default;
-         width: 385.22px !important;
-     }
-
-     .smallBtn {
-         padding: 10px 5px;
-         min-width: 60px;
-         height: 40px;
-     }
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
 </style>
 
 <!-- Main content -->
-@using (Html.BeginForm("Index", "SanPhamDangKinhDoanh", FormMethod.Post))
+@using (Html.BeginForm())
 {
                 <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -127,7 +125,7 @@
                                                     <td>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-                                                            @Html.DropDownListFor(model => model.supplierSearch, @Model.lstSupplier, "", new { @class = "form-control select2" })
+                                                            @Html.DropDownListFor(model => model.supplierSearch, @Model.lstSupplier, "", new { @class = "form-control select2", @id = "supplierSearch" })
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -137,13 +135,13 @@
                                                         <div class="col-sm-5 no-padding">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon">Từ</span>
-                                                                <input type="text" class="form-control datepicker">
+                                                                @Html.TextBoxFor(model => model.fromDate, new { @class = "form-control datepicker", @id = "fromDate" })
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-sm-offset-1 no-padding">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon">Đến</span>
-                                                                <input type="text" class="form-control datepicker">
+                                                                @Html.TextBoxFor(model => model.toDate, new { @class = "form-control datepicker", @id = "toDate" })
                                                             </div>
                                                         </div>
                                                     </td>
@@ -151,7 +149,7 @@
                                                     <td width="35%">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-tree"></i></span>
-                                                            @Html.DropDownListFor(model => model.categorySearch, @Model.lstCateSearch, "", new { @class = "form-control" })
+                                                            @Html.DropDownListFor(model => model.categorySearch, @Model.lstCateSearch, "", new { @class = "form-control", @id = "categorySearch" })
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -161,7 +159,7 @@
                                     </div>
                                     <div class="box-footer clearfix">
                                         <div class="pagination pagination-sm no-margin pull-right">
-                                            <button type="submit" id="btnSumit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                            <button id="btnSumit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +240,28 @@
 }
 @section Index{
     <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
-    <script>   
+
+    <script>
+        $("#btnSubmit").click(function (event) {
+            event.preventDefault();
+            var data = {
+                pCodeSearch: $("#pCodeSearch").val(),
+                supplierSearch: $("#supplierSearch").val(),
+                categorySearch: $("#categorySearch").val(),
+                fromDate: $("#fromDate").val(),
+                toDate: $("toDate").val()
+            }
+            $.ajax({
+                
+                type: "POST",
+                url: "SanPhamDangKinhDoanh/Index",
+                data: JSON.stringify({ mo: data }),
+                dataType: "json",
+                success: function (result) {
+
+                }
+            })
+        });
         $("#pCodeSearch").autocomplete({
             source: function (request, response) {
                 $.ajax({
@@ -262,8 +281,8 @@
             }
         });
         $(document).ready(function () {
-            $('.datepicker').datepicker(function () {
-
+            $('.datepicker').datepicker({
+                format: 'mm/dd/yyyy'
             });
         });
     </script>

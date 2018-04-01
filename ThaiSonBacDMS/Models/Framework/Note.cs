@@ -9,8 +9,8 @@ namespace Models.Framework
     [Table("Note")]
     public partial class Note
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Note_ID { get; set; }
 
         public int? Account_ID { get; set; }

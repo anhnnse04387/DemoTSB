@@ -14,9 +14,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
     {
         // GET: PhanPhoi/ChiTietPhieu
         public ActionResult Index(String orderId = "O6")
-        {
+        {            
             var dao = new OrderTotalDAO();
-            var itemDAO = new OrderItemDAO();
             var customerDAO = new CustomerDAO();
             var data = dao.getOrder(orderId);
             var statusDAO = new StatusDAO();
@@ -31,29 +30,32 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.customerName = customer.Customer_name;
             model.taxCode = customer.Tax_code;
             var items = new List<OrderItemModel>();
-            foreach (Order_items o in itemDAO.getOrderItem(orderId))
+            foreach (Order_items o in data.Order_items)
             {
-                var product = productDAO.getProductById(o.Product_ID);
-                var item = new OrderItemModel
+                if (o.Order_part_ID == null)
                 {
-                    code = product.Product_code,
-                    param = product.Product_parameters,
-                    Box = o.Box,
-                    Discount = o.Discount,
-                    Price = o.Price,
-                    Quantity = o.Quantity,
-                    per = product.Price_before_VAT_VND,
-                    priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
-                };
-                items.Add(item);
-                model.qttTotal += o.Quantity;
-                model.boxTotal += o.Box;
-                model.subTotal = data.Sub_total;
-                model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount)) : 0;
-                model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-                model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * (100 + data.VAT)) : 0;
-                model.total = data.Total_price;
+                    var product = productDAO.getProductById(o.Product_ID);
+                    var item = new OrderItemModel
+                    {
+                        code = product.Product_code,
+                        param = product.Product_parameters,
+                        Box = o.Box,
+                        Discount = o.Discount,
+                        Price = o.Price,
+                        Quantity = o.Quantity,
+                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                    };
+                    items.Add(item);
+                    model.qttTotal += o.Quantity;
+                    model.boxTotal += o.Box;                    
+                }
             }
+            model.subTotal = data.Sub_total;
+            model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount)) : 0;
+            model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
+            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * (100 + data.VAT)) : 0;
+            model.total = data.Total_price;
             model.readItems = items;
             return View(model);
         }

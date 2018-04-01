@@ -25,7 +25,7 @@ namespace Models.DAO
         public Customer getCustomerById(int id)
         {
             var query = from e in getCustomer()
-                        where e.Customer_ID.Equals(id)
+                        where e.Customer_ID == id && e.Status == 1
                         select e;
             return query.SingleOrDefault();
         }

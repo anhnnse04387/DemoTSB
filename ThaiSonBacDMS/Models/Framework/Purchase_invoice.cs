@@ -15,8 +15,8 @@ namespace Models.Framework
             Supplier_transaction = new HashSet<Supplier_transaction>();
         }
 
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Purchase_invoice_ID { get; set; }
 
         [StringLength(20)]
