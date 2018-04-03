@@ -129,12 +129,16 @@
     <Content Include="Assets\dist\css\pages\hanghoa_index.css" />
     <Content Include="Assets\dist\css\pages\ketoan_index.css" />
     <Content Include="Assets\dist\css\pages\NoteSrcoll.css" />
+    <Content Include="Assets\dist\js\chiTietPhieuQuanLy.js" />
+    <Content Include="Assets\dist\js\lapPhieuQuanLy.js" />
     <Content Include="Assets\dist\js\pages\addNote.js" />
     <Content Include="Assets\dist\js\pages\hanghoa_index.js" />
     <Content Include="Assets\dist\js\pages\index.js" />
     <Content Include="Assets\dist\js\pages\ketoan_index.js" />
     <Content Include="Assets\dist\js\PO.js" />
+    <Content Include="Assets\dist\js\poQuanLy.js" />
     <Content Include="Assets\dist\js\Stock.js" />
+    <Content Include="Assets\dist\js\stockQuanLy.js" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
@@ -145,8 +149,12 @@
     <Compile Include="Areas\HangHoa\Controllers\ErrorPageController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\HomeController.cs" />
     <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
+    <Compile Include="Areas\KeToan\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\KeToan\Controllers\HomeController.cs" />
     <Compile Include="Areas\KeToan\KeToanAreaRegistration.cs" />
+    <Compile Include="Areas\KeToan\Models\OrderItemModel.cs" />
+    <Compile Include="Areas\KeToan\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\KeToan\Models\OrderTotalModel.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ErrorPageController.cs" />
@@ -171,9 +179,19 @@
     <Compile Include="Areas\PhanPhoi\Models\TaoSanPhamModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\TonKhoModel.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\PreviewController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ErrorPageController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\LapPhieuController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\POController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\StockController.cs" />
+    <Compile Include="Areas\QuanLy\Models\OrderItemModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\OrderTotalModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\POItemModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\POModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\StockItemModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\StockModel.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Areas\QuanTri\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanTri\Models\HomeModel.cs" />
@@ -219,7 +237,6 @@
     <Content Include="Areas\HangHoa\Views\Shared\NoteEdit.cshtml" />
     <Content Include="Areas\HangHoa\Views\Shared\NoteHeader.cshtml" />
     <Content Include="Areas\HangHoa\Views\Shared\NotificationHeader.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\Preview\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NoteEdit.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\NoteHeader.cshtml" />
@@ -243,6 +260,14 @@
     <Content Include="Areas\QuanLy\Views\ErrorPage\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Stock\_chooseNoPartial.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\TonKho\Index.cshtml" />
+    <Content Include="Areas\KeToan\Views\ChiTietPhieu\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ChiTietPhieu\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\LapPhieu\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\LapPhieu\SuaPhieu.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PO\Detail.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PO\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\Stock\_chooseNoPartial.cshtml" />
+    <Content Include="Areas\QuanLy\Views\Stock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -253,9 +278,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HangHoa\Models\" />
-    <Folder Include="Areas\KeToan\Models\" />
-    <Folder Include="Areas\PhanPhoi\Views\PI\" />
-    <Folder Include="Areas\QuanLy\Models\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />
     <Folder Include="Views\Base\" />

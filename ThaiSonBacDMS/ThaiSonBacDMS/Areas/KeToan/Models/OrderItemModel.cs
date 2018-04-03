@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
+namespace ThaiSonBacDMS.Areas.KeToan.Models
 {
     public class OrderItemModel
     {
