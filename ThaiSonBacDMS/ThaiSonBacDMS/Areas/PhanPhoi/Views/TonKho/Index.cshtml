@@ -195,13 +195,14 @@
                         </table>
                         <div class="box-footer clearfix">
                             <div class="pagination pagination-sm no-margin pull-right">
-                                <button type="submit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                <button id="btnSearch" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                     <hr>
 
                     <div class="box-body">
+                        <span style="color:red;font-size:15px;margin-left:35%" id="msgs"></span>
                         <div class="row">
                             <div class="col-md-12">
 
@@ -263,7 +264,7 @@
                                                                             <span class="input-group-addon">
                                                                                 <i class="fa fa-usd" aria-hidden="true"></i>
                                                                             </span>
-                                                                            <input type="text" class="form-control" value="@items.TongNhap" id="editNhap_@i" />
+                                                                            <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongNhap" id="editNhap_@i" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -272,7 +273,7 @@
                                                                             <span class="input-group-addon">
                                                                                 <i class="fa fa-usd" aria-hidden="true"></i>
                                                                             </span>
-                                                                            <input type="text" class="form-control" value="@items.TongXuat" id="editXuat_@i" />
+                                                                            <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongXuat" id="editXuat_@i" />
 
                                                                         </div>
 
@@ -289,7 +290,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row" id="hidden_@i">
+                                                                <div class="row hidden">
                                                                     <div class="col-md-6">
                                                                         <label>Tổng tồn</label>
                                                                         <div class="input-group">
@@ -318,16 +319,18 @@
                                                     </tr>
                                                     i++;
                                                 }
-                                                <tr style="background-color: #00b3b3;font-weight: bold">
-                                                    <td></td>
-
-                                                    <td style="border-right: none"></td>
-                                                    <td style="text-align: left;border-left: none;color: white">Tổng</td>
-                                                    <td class="right" id="sumNhap_@j"></td>
-                                                    <td class="right" id="sumXuat_@j"></td>
-                                                    <td class="right" id="sumTon_@j"></td>
-                                                    <td></td>
-                                                </tr>
+                                                if (Model.lstProduct.Count != 0)
+                                                {
+                                                    <tr style="background-color: #00b3b3;font-weight: bold">
+                                                        <td></td>
+                                                        <td style="border-right: none"></td>
+                                                        <td style="text-align: left;border-left: none;color: white">Tổng</td>
+                                                        <td class="right" id="sumNhap_@j"></td>
+                                                        <td class="right" id="sumXuat_@j"></td>
+                                                        <td class="right" id="sumTon_@j"></td>
+                                                        <td></td>
+                                                    </tr>
+                                                }
                                                 j++;
                                             }
                                         }
@@ -373,21 +376,61 @@
 
             </div>
         </div>
+        <div class="modal fade" id="popupNotification" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Đã update thành công!</h4>
+                    </div>
+
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnSubmit" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            </div>
+        </div>
     </section>
     @section Index{
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
         <script src="/Assets/dist/js/autoNumeric.js"></script>
         <script src="/Assets/dist/js/autoNumeric.min.js"></script>
         <script>
+            function setData() {
+                var priceFrom = $('#fromSearch').val();
+                var priceTo = $('#toSearch').val();
+                if (priceFrom !== "" && priceFrom !== 0) {
+                    //$('#priceFrom').text(priceFrom);
+                    priceFrom = priceFrom.replace(/,/g, '');
+                    $('#fromSearch').val(priceFrom);
+
+                }
+                if (priceTo !== "" && priceTo !== 0) {
+                    priceTo = priceTo.replace(/,/g, '');
+                    $('#toSearch').val(priceTo);
+                }
+                $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                $('#fromSearch').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                $('#toSearch').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+            }
             $(document).ready(function () {
-                $("#fromSearch").autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
-                $("#toSearch").autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                setData();
 
                 var length = $(".key").length;
                 var nhap = 0;
                 var xuat = 0;
                 var ton = 0;
+                $(".hidden").hide();
                 for (var i = 0; i < length; i++) {
-                    $("#hidden_" + i).hide();
+
+
                     $(".nhap_" + i).each(function () {
                         nhap += parseInt($(this).text());
                     });
@@ -449,8 +492,8 @@
                 }
             });
 
-            $("btnSearch").change("click", function (event) {
-                event.preventDefault();
+            $("#btnSearch").click(function () {
+                //event.preventDefault();
                 var data = {
                     pCodeSearch: $("#pCodeSearch").val(),
                     fromValue: $("#fromSearch").val(),
@@ -459,11 +502,11 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: "Search/TonKho",
-                    data: JSON.stringify({ mo: data }),
+                    url: "/TonKho/Index",
+                    data: { mo: data },
                     dataType: "json",
-                    error: function (xhr, status, error) {
-                        alert("Error!");
+                    success: function (result) {
+
                     }
                 })
             });
@@ -472,6 +515,7 @@
                 var msgs = "";
                 var nhap = $("#editNhap_" + i).val();
                 var xuat = $("#editXuat_" + i).val();
+
                 var ton = 0;
                 if (nhap == null || nhap == '') {
                     msgs += "Vui lòng nhập tổng nhập!";
@@ -487,30 +531,53 @@
                 }
                 if (msgs != null && msgs != "") {
                     $("#msgs").text(msgs);
+                    event.preventDefault();
                 } else {
-                   
                     $("#popupConfirm1").modal('show');
                     event.preventDefault();
-                    $("#btnSubmit").click(function () {              
+                    $("#btnSubmit").click(function () {
+
                         $.ajax({
                             type: "POST",
-                            url: "UpdateData/TonKho",
-                            data: {productId:$("#productId_"+i).val(),nhap:$("#editNhap_"+i).val(),xuat:$("#editXuat_"+i).val()},
+                            url: "/TonKho/UpdateData",
+                            data: { productId: $("#productId_" + i).val(), nhap: $("#editNhap_" + i).val(), xuat: $("#editXuat_" + i).val() },
                             dataType: "json",
-                            success:function(data){
+                            success: function () {
                                 swal({
-                                    title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
-                                    imageUrl: '/Assets/dist/img/Noti.gif',
-                                    imageWidth: 400,
-                                    imageHeight: 300,
-                                    imageAlt: 'Custom image',
-                                    animation: false
+                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                    type: 'success',
+                                    timer: 5000,
+                                    showConfirmButton:false
+                                }).then((result) => {
+                                    if (result.value) {
+                                        window.location.reload();
+                                    }
                                 });
                             }
                         })
+
                     });
                 }
-            }                      
+            }
+
+            function calculate(i) {
+                var nhap = $("#editNhap_" + i).val().replace(/,/g, "");
+                var xuat = $("#editXuat_" + i).val().replace(/,/g, "");
+                if (xuat > nhap) {
+                    $("#editXuat_" + i).val(nhap);
+                    $("#editXuat_" + i).text(nhap);
+                    xuat = nhap;
+                }
+                var ton = 0;
+                if (nhap != null && nhap != '' && xuat != null && xuat != "") {
+                    ton = parseInt(nhap) - parseInt(xuat);
+                    $("#editTon_" + i).text(ton);
+                    $("#editTon_" + i).val(ton);
+                    $("#editTon_" + i).autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                }
+
+
+            }
         </script>
     }
 
