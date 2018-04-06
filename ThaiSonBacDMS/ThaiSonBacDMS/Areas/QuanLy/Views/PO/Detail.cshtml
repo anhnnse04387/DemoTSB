@@ -1,0 +1,256 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.POModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        .mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        .mainTable tbody td:nth-child(6), .mainTable tbody td:nth-child(7),
+        .mainTable tbody td:nth-child(9) {
+            text-align: right;
+        }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
+
+    .textCursor {
+        cursor: text;
+    }
+
+    .noDisplay {
+        display: none !important;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Hàng hóa</li>
+        <li>Yêu cầu nhập</li>
+        <li class="active">Tạo yêu cầu nhâp</li>
+    </ol>
+</section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header" style="text-align: center;margin-top: 30px;">
+                        <h3 class="box-title with-border"><b style="font-size: 25px;">PO No @Model.PO_no</b></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                        <div class="row">
+                            <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
+                                <a class="btn btn-app custom-btn" href="@Url.Action("Index", "PO")" target="_blank" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                    <i class="fa fa-plus-square text-green"></i>
+                                    <span><strong>Tạo Mới</strong></span>
+                                </a>
+
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-edit text-gray"></i>
+                                    <span><strong>Sửa</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-save text-gray"></i>
+                                    <span><strong>Lưu</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-close text-gray"></i>
+                                    <span><strong>Hủy</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-check-circle text-gray"></i>
+                                    <span><strong>Chốt đơn</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-exchange text-gray"></i>
+                                    <span><strong>Đổi trả</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                    <i class="fa fa-eye text-black"></i>
+                                    <span><strong>Xem Trước</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                    <i class="fa fa-print text-blue"></i>
+                                    <span><strong>In</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-download text-gray"></i>
+                                    <span><strong>Import Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                    <i class="fa fa-file-excel-o text-green"></i>
+                                    <span><strong>Xuất Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                    <i class="fa fa-file-pdf-o text-orange"></i>
+                                    <span><strong>Xuất PDF</strong></span>
+                                </a>
+                            </div>
+                        </div>
+                        <form style="margin-top: 25px;">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Order's Information</b></legend>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>To</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                        <input type="text" class="form-control" value="@Model.Supplier_ID" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>PO No.</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                        <input type="text" class="form-control" disabled value="@Model.PO_no">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Address</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                                        <input type="text" class="form-control" disabled value="@Model.address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Tel</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                        <input type="text" class="form-control" disabled value="@Model.tel">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Email</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                                        <input type="text" class="form-control" disabled value="@Model.email" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Payment</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                        <input type="text" class="form-control" disabled value="@Model.Payment">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Date</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker" style="padding-left: 15px;" disabled value="@Model.Date_create">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Requested ex-work on</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker" style="padding-left: 15px;" disabled value="@Model.Date_request_ex_work">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-header">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-xs-12 table-responsive">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Order's Detail</b></legend>
+                                            <table class="table table-striped mainTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 30px;">STT</th>
+                                                        <th style="width: 450px;">Product</th>
+                                                        <th style="width: 100px;">Quantity</th>
+                                                        <th style="width: 100px;">Price (USD)</th>
+                                                        <th style="width: 100px;">Subtotal (USD)</th>
+                                                        <th>Note</th>
+                                                        <th style="width: 30px;"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (int i = 0; i < Model.readItems.Count; i++)
+                                                    {
+                                                        <tr class="addingRow">
+                                                            <td>@(i + 1)</td>
+                                                            <td style="vertical-align: middle;">
+                                                                <input type="text" class="form-control code" disabled value="@Model.readItems[i].product" />
+                                                            </td>
+                                                            <td><input type="text" class="form-control qtt" style="text-align: right;" disabled value="@Model.readItems[i].Quantity" /></td>
+                                                            <td><output class="per number" style="text-align: right;">@Model.readItems[i].per</output></td>
+                                                            <td><output class="subtotal number" style="text-align: right;">@Model.readItems[i].Price</output></td>
+                                                            <td><input type="text" class="form-control note" disabled value="@Model.readItems[i].NOTE" /></td>
+                                                        </tr>
+                                                    }
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td style="vertical-align: middle; text-align:center" colspan="2"><b>Total</b></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output value="@Model.totalQtt" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output value="@Model.Total_price" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                            <div id="sound"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+    </section>
+    <!-- /.content -->
+}
+@section PO
+{
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+    <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script src="/Assets/dist/js/poQuanLy.js"></script>
+}

@@ -1,0 +1,234 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.StockModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout1.cshtml";
+}
+<link href="/Assets/dist/css/bootstrap-toggle.min.css" rel="stylesheet">
+<style>
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+    .number {
+        text-align: right;
+    }
+
+    .mainTable thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
+
+    .mainTable tbody tr td:nth-child(1) {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
+    .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
+    .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
+        text-align: right;
+    }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
+
+    .textCursor {
+        cursor: text;
+    }
+
+    .noDisplay {
+        display: none !important;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Hàng hóa</li>
+        <li>Nhập hàng</li>
+        <li class="active">Tạo đợt nhập mới</li>
+    </ol>
+</section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header" style="text-align: center;margin-top: 30px;">
+                        <h3 class="box-title with-border"><b style="font-size: 25px;">Nhập hàng vào kho</b></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                        <div class="row">
+                            <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
+                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Tạo Mới" href="@Url.Action("Index", "Stock")" data-placement="bottom" target="_blank">
+                                    <i class="fa fa-plus-square text-green"></i>
+                                    <span><strong>Tạo Mới</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-edit text-gray"></i>
+                                    <span><strong>Sửa</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-save text-gray"></i>
+                                    <span><strong>Lưu</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-close text-gray"></i>
+                                    <span><strong>Hủy</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt" data-placement="bottom" id="btnSubmit">
+                                    <i class="fa fa-check-circle text-green"></i>
+                                    <span><strong>Chốt</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-exchange text-gray"></i>
+                                    <span><strong>Đổi trả</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-eye text-gray"></i>
+                                    <span><strong>Xem Trước</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-print text-gray"></i>
+                                    <span><strong>In</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-download text-gray"></i>
+                                    <span><strong>Import Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-excel-o text-gray"></i>
+                                    <span><strong>Xuất Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-pdf-o text-gray"></i>
+                                    <span><strong>Xuất PDF</strong></span>
+                                </a>
+                            </div>
+                        </div>
+                        <form style="margin-top: 25px;">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Nhập hàng / Đổi trả</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-exchange"></i></span>
+                                                        <input type="checkbox" id="status" checked data-toggle="toggle" data-on="Nhập hàng" data-off="Đổi trả">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label id="namePi">PI No.</label>
+                                                    <label id="nameLo" style="font-weight: bold;" class="noDisplay"> Lô số</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                        @Html.DropDownListFor(model => model.no, @Model.lstPi, "--Select--", new { @class = "form-control", @id = "valuePi" })
+                                                        @Html.DropDownListFor(model => model.no, @Model.lstLo, "--Select--", new { @class = "form-control noDisplay", @id = "valueLo" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Đơn vị</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                        <input type="text" class="form-control" id="donVi" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Địa chỉ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                                        <input type="text" class="form-control" id="address" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Số điện thoại</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                        <input type="text" class="form-control" id="tel" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Ngày yêu cầu</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker" required id="dayRequested" style="padding-left: 12px;">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Ngày nhập</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker" required id="dayImported" style="padding-left: 12px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-header" id="lstItem">
+                                @Html.Partial("_chooseNoPartial")
+                            </div>
+                            <div id="sound"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+    </section>
+    <div class="modal fade" id="confirmSubmit" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận chốt đơn ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="doneOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@section Stock
+{
+    <script src="/Assets/dist/js/bootstrap-toggle.min.js"></script>
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+    <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script src="/Assets/dist/js/stockQuanLy.js"></script>
+}
+

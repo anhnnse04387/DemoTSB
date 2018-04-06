@@ -1,0 +1,689 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.OrderTotalModel
+@{
+    ViewBag.Title = "SuaPhieu";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+    .number {
+        text-align: right;
+    }
+
+    .mainTable thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
+
+    .mainTable tbody tr td:nth-child(1) {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
+    .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
+    .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
+        text-align: right;
+    }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
+
+    .textCursor {
+        cursor: text;
+    }
+
+    .noDisplay {
+        display: none !important;
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Đơn hàng</li>
+        <li>Phiếu đang xử lý</li>
+        <li class="active">Sửa phiếu</li>
+    </ol>
+</section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header" style="text-align: center;margin-top: 30px;">
+                        <h3 class="box-title with-border"><b style="font-size: 25px;">Phiếu xuất hàng</b></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                        <div class="row">
+                            <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" href="@Url.Action("Index","LapPhieu")" target="_blank">
+                                    <i class="fa fa-plus-square text-green"></i>
+                                    <span><strong>Tạo Mới</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-edit text-gray"></i>
+                                    <span><strong>Sửa</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" id="btnSave">
+                                    <i class="fa fa-save text-yellow"></i>
+                                    <span><strong>Lưu</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirmCancel">
+                                    <i class="fa fa-close text-red"></i>
+                                    <span><strong>Hủy</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" id="btnDone" data-placement="bottom">
+                                    <i class="fa fa-check-circle text-green"></i>
+                                    <span><strong>Chốt đơn</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-exchange text-gray"></i>
+                                    <span><strong>Đổi trả</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                    <i class="fa fa-eye text-black"></i>
+                                    <span><strong>Xem Trước</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                    <i class="fa fa-print text-blue"></i>
+                                    <span><strong>In</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-download text-gray"></i>
+                                    <span><strong>Import Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-excel-o text-gray"></i>
+                                    <span><strong>Xuất Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-pdf-o text-gray"></i>
+                                    <span><strong>Xuất PDF</strong></span>
+                                </a>
+                            </div>
+                        </div>
+                        <form style="margin-top: 25px;">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                            <div class="box-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Đơn vị</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                            @Html.DropDownListFor(model => model.customerId, @Model.lstCustomer, "--Select--", new { @class = "form-control", @id = "customer", @required = "required" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Lô số</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                            @Html.TextBoxFor(model => model.orderId, new { @class = "form-control", @id = "orderId", @required = "required" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-md-6">
+                                                        <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                            @Html.TextBoxFor(model => model.deliveryAddress, new { @class = "form-control", @id = "deliveryAddress", @required = "required" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Số đợt giao</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                                            <input type="number" min="1" step="1" value="@Model.deliveryQtt" id="deliveryQtt" style="padding-left: 12px;" class="form-control" onchange="changeQtt();">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-md-6">
+                                                        <label>Địa chỉ xuất HĐ</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                                            @Html.TextBoxFor(model => model.invoiceAddress, new { @class = "form-control", @id = "invoiceAddress", @required = "required" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Mức giá áp dụng</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            @Html.DropDownListFor(model => model.rate, new SelectList(new List<Object> {
+                                                                                                                           new { value = 2016, text = "2016"},
+                                                                                                                           new { value = 2017, text = "2017"},
+                                                                                                                           new { value = 2018, text = "2018"} },
+                                                                                                                           "value", "text", Model.rate), new { @class = "form-control", @id = "rate" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-md-6">
+                                                        <label>Mã số thuế</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                            @Html.TextBoxFor(model => model.taxCode, new { @class = "form-control", @id = "taxCode", @required = "required" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Trạng thái</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                            @Html.DropDownListFor(model => model.statusId, @Model.lstStatus, new { @class = "form-control", @id = "statusId" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-header">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-xs-12 table-responsive">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+                                            <table class="table table-striped mainTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="2" style="width: 30px;">STT</th>
+                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                        <th colspan="2">Số lượng</th>
+                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 30px;"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 70px;">Cái</th>
+                                                        <th style="width: 70px;">Thùng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (int i = 0; i < Model.readItems.Count; i++)
+                                                    {
+                                                        <tr class="addingRow">
+                                                            <td>@(i + 1)</td>
+                                                            <td style="vertical-align: middle; width: 24.7%;">
+                                                                <input type="text" value="@Model.readItems[i].code" class="form-control" />
+                                                            </td>
+                                                            <td style="vertical-align: middle;"><input type="text" value="@Model.readItems[i].param" class="form-control" /></td>
+                                                            <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" class="form-control" /></td>
+                                                            <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" class="form-control" /></td>
+                                                            <td><output class="number">@Model.readItems[i].per</output></td>
+                                                            <td><output class="number">@Model.readItems[i].priceBeforeDiscount</output></td>
+                                                            <td><input type="text" value="@Model.readItems[i].Discount" class="form-control number" /></td>
+                                                            <td><output class="number">@Model.readItems[i].Price</output></td>
+                                                            <td style="vertical-align: middle;">
+                                                                @if (i > 0)
+                                                                {
+                                                                    <a data-toggle="tooltip" title="Xóa" data-placement="bottom" onclick="deleteRow(this)" href="javascript:void(0)">
+                                                                        <i class="fa fa-close text-red" style="color: #3c8dbc; font-size: 20px"></i>
+                                                                    </a>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td>
+                                                            <a style="padding: 3px;" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="addLstItem(this)" href="javascript:void(0)">
+                                                                <i class="fa fa-plus-square" style="color: #3c8dbc; font-size: 20px"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tongcai" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tongthung" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tongtienchuack number" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tienck number" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number conlai" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number tongtiendack" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                        <fieldset class="noDisplay" id="template">
+                                            <legend><b style="font-size: 17px;">Giao hàng đợt --giaohangdot--</b></legend>
+                                            <div class="box-header">
+                                                <div class="col-md-6">
+                                                    <label>Xuất ngày</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" style="padding-left: 12px;" class="form-control datepicker invoiceDate" --req-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Lô số</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                        <input class="form-control orderPartId" disabled value="--loso--" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <table class="table table-striped mainTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="2" style="width: 30px;">STT</th>
+                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                        <th colspan="2">Số lượng</th>
+                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 30px;"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 70px;">Cái</th>
+                                                        <th style="width: 70px;">Thùng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="addingSubRow">
+                                                        <td>1</td>
+                                                        <td style="vertical-align: middle; width: 20%;">
+                                                            <input type="text" --req-- class="form-control subCode" />
+                                                            <input type="hidden" class="productId" /><input type="hidden" class="qttInven" />
+                                                            <input type="hidden" class="qttBox" />
+                                                        </td>
+                                                        <td style="vertical-align: middle;"><input type="text" --req-- class="form-control param" /></td>
+                                                        <td><input type="text" class="form-control cai" style="text-align: right;" --req-- /></td>
+                                                        <td><input type="text" class="form-control thung" style="text-align: right;" --req-- /></td>
+                                                        <td><output class="dongia number"></output></td>
+                                                        <td><output class="tienchuack number"></output></td>
+                                                        <td><input type="text" class="form-control ck number" /></td>
+                                                        <td><output class="tiendack number"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a style="padding: 3px;" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="addLstSubItem(this)" href="javascript:void(0)">
+                                                                <i class="fa fa-plus-square" style="color: #3c8dbc; font-size: 20px"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tongcai" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tongthung" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tongtienchuack number" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="tienck number" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number conlai" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number tongtiendack" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                        <div id="deliveryDiv">
+                                            @if (Model.readPart.Count > 1)
+                                            {
+                                                for (int j = 0; j < Model.readPart.Count; j++)
+                                                {
+                                                    <fieldset>
+                                                        <legend><b style="font-size: 17px;">Giao hàng đợt @(j + 1)</b></legend>
+                                                        <div class="box-header">
+                                                            <div class="col-md-6">
+                                                                <label>Xuất ngày</label><span style="color: red;">*</span>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input type="text" style="padding-left: 12px;" class="form-control datepicker invoiceDate" value="@Model.readPart[j].Date_reveice_invoice" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Lô số</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                                    <input class="form-control orderPartId" disabled value="@Model.readPart[j].Order_part_ID" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <table class="table table-striped mainTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th rowspan="2" style="width: 30px;">STT</th>
+                                                                    <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                                    <th colspan="2">Số lượng</th>
+                                                                    <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                                    <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                                    <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                                    <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                                    <th rowspan="2" style="width: 30px;"></th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th style="width: 70px;">Cái</th>
+                                                                    <th style="width: 70px;">Thùng</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @for (int k = 0; k < Model.readPart[j].items.Count; k++)
+                                                                {
+                                                                    <tr class="addingSubRow">
+                                                                        <td>@(k + 1)</td>
+                                                                        <td style="vertical-align: middle; width: 20%;">
+                                                                            <input type="text" required class="form-control subCode" />
+                                                                            <input type="hidden" class="productId" /><input type="hidden" class="qttInven" />
+                                                                            <input type="hidden" class="qttBox" />
+                                                                        </td>
+                                                                        <td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>
+                                                                        <td><input type="text" class="form-control cai" style="text-align: right;" required /></td>
+                                                                        <td><input type="text" class="form-control thung" style="text-align: right;" required /></td>
+                                                                        <td><output class="dongia number"></output></td>
+                                                                        <td><output class="tienchuack number"></output></td>
+                                                                        <td><input type="text" class="form-control ck number" /></td>
+                                                                        <td><output class="tiendack number"></output></td>
+                                                                        <td>
+                                                                            @if (k > 0)
+                                                                            {
+                                                                                <a data-toggle="tooltip" title="Xóa" data-placement="bottom" onclick="deleteRow(this)" href="javascript:void(0)">
+                                                                                    <i class="fa fa-close text-red" style="color: #3c8dbc; font-size: 20px"></i>
+                                                                                </a>
+                                                                            }
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                                <tr>
+                                                                    <td>
+                                                                        <a style="padding: 3px;" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="addLstSubItem(this)" href="javascript:void(0)">
+                                                                            <i class="fa fa-plus-square" style="color: #3c8dbc; font-size: 20px"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr style="background-color: #544d61;color: #fff;">
+                                                                    <td></td>
+                                                                    <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="tongcai" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="tongthung" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="tongtienchuack number" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr style="background-color: #544d61;color: #fff;">
+                                                                    <td></td>
+                                                                    <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" />
+                                                                    </td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="tienck number" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr style="background-color: #544d61;color: #fff;">
+                                                                    <td></td>
+                                                                    <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="number conlai" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr style="background-color: #544d61;color: #fff;">
+                                                                    <td></td>
+                                                                    <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" />
+                                                                    </td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr style="background-color: #544d61;color: #fff;">
+                                                                    <td></td>
+                                                                    <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="number tongtiendack" style="color: #fff; font-weight: bold;"></output></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </fieldset>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                            <div id="sound"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+    </section>
+    <div class="modal fade" id="confirmSave" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận lưu ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="saveOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="confirmComplete" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận chốt đơn ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="donePendingOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmCancel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận hủy đơn hàng</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Bạn muốn hủy đơn hàng?</label>
+                    <br />
+                    <p>Lý do</p>
+                    <textarea style="width: 100%" rows="10" id="reason"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
+                    <button type="button" class="btn btn-danger btn-ok" data-dismiss="modal" onclick="cancelOrder();">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content -->
+}
+@section LapPhieu
+{
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+    <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script src="/Assets/dist/js/lapPhieuQuanLy.js"></script>
+}
+

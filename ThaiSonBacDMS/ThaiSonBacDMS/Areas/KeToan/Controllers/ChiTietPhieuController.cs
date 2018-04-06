@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.KeToan.Models;
 using ThaiSonBacDMS.Common;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.KeToan.Controllers
 {
     public class ChiTietPhieuController : Controller
     {
-        // GET: PhanPhoi/ChiTietPhieu
+        // GET: KeToan/ChiTietPhieu
         public ActionResult Index(String orderId)
-        {            
+        {
             var dao = new OrderTotalDAO();
             var customerDAO = new CustomerDAO();
             var data = dao.getOrder(orderId);
@@ -48,7 +48,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     };
                     items.Add(item);
                     model.qttTotal += o.Quantity;
-                    model.boxTotal += o.Box;                    
+                    model.boxTotal += o.Box;
                 }
             }
             model.subTotal = data.Sub_total;
@@ -60,13 +60,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public JsonResult CheckOut(String orderId)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.checkOut(orderId, session.user_id);
+                dao.keToan_checkOut(orderId, session.user_id);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -75,22 +76,5 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
         }
-
-        public JsonResult cancelOrder(String orderId, String note)
-        {
-            try
-            {
-                var session = (UserSession)Session[CommonConstants.USER_SESSION];
-                var dao = new OrderTotalDAO();
-                dao.cancelOrder(orderId, note, session.user_id);
-                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
     }
 }

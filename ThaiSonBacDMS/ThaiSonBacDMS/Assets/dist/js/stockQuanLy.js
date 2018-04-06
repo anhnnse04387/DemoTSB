@@ -28,7 +28,7 @@
     });
     $('#valuePi').on('change', function () {
         $.ajax({
-            url: "/PhanPhoi/Stock/ChooseNo",
+            url: "/QuanLy/Stock/ChooseNo",
             data: { no: $(this).val(), status: true },
             datatype: "json",
             success: function (data) {
@@ -42,7 +42,7 @@
     });
     $('#valueLo').on('change', function () {
         $.ajax({
-            url: "/PhanPhoi/Stock/ChooseNo",
+            url: "/QuanLy/Stock/ChooseNo",
             data: { no: $(this).val(), status: false },
             datatype: "json",
             success: function (data) {
@@ -63,7 +63,7 @@ function getAllData() {
     if ($('#status').prop("checked") === false) {
         status = false;
         no = $('#valueLo').val();
-    } 
+    }
     var dateImported = $('#dayImported').val();
     $('.item').each(function () {
         var productId = $(this).find('.productId').val();
@@ -85,7 +85,7 @@ function getAllData() {
 
 function doneOrder() {
     $.ajax({
-        url: '/PhanPhoi/Stock/CheckOut',
+        url: '/QuanLy/Stock/CheckOut',
         dataType: 'json',
         data: { model: getAllData() },
         success: function () {
@@ -95,7 +95,7 @@ function doneOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/PhanPhoi/Stock/History';
+                    window.location.href = '/QuanLy/Stock/History';
                 }
             });
         },

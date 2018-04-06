@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ChiTietSanPham";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
 }
 
 <style>
@@ -223,7 +223,7 @@
                 <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;margin-bottom: -7px">
                     <div class="col-md-12">
                         <h4>
-                            <b>Chi tiết sản phẩm : @Model.product.Product_code</b>
+                            <b>Chi tiết sản phẩm : @Model.itemDisplay.product.Product_code</b>
                         </h4>
                     </div>
                 </div>
@@ -383,7 +383,7 @@
                                                     <tr>
 
                                                         <td><i class="fa fa-money"></i> Giá :</td>
-                                                        <td style="padding-left: 10px"><span style="color:red"> @Model.product.Price_before_VAT_VND VNĐ</span></td>
+                                                        <td style="padding-left: 10px;color:red" class="number">@Model.itemDisplay.product.Price_before_VAT_VND</td>
                                                     </tr>
 
                                             </table>
@@ -415,7 +415,7 @@
                                             <b>Mô tả:</b>
                                             <br />
                                             <h5>
-                                                @Model.product.Overview
+                                                @Model.itemDisplay.product.Overview
                                             </h5>
                                         </div>
                                     </div>
@@ -424,7 +424,7 @@
                                         <div style="margin-top:30px;margin-left:40px">
 
                                             <h5>
-                                                @Model.product.Specification
+                                                @Model.itemDisplay.product.Specification
                                             </h5>
                                         </div>
                                     </div>
@@ -505,7 +505,12 @@
     </div>
 </section>
 @section Index{
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+        });
         $(function () {
 
             $('#example1').DataTable({

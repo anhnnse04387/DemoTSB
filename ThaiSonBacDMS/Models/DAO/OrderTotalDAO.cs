@@ -39,12 +39,26 @@ namespace Models.DAO
 
         public void checkOut(String orderId, String userId)
         {
-            (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 7);
-            (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 7);
+            (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 3);
+            (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 3);
             var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
             foreach (Order_detail_status s in status)
             {
-                s.Status_ID = 7;
+                s.Status_ID = 3;
+                s.User_ID = userId;
+                s.Date_change = DateTime.Now;
+            }
+            db.SaveChanges();
+        }
+
+        public void keToan_checkOut(String orderId, String userId)
+        {
+            (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 4);
+            (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 4);
+            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
+            foreach (Order_detail_status s in status)
+            {
+                s.Status_ID = 4;
                 s.User_ID = userId;
                 s.Date_change = DateTime.Now;
             }

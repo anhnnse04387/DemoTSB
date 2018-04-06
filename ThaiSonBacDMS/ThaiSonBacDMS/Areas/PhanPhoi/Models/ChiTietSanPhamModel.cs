@@ -9,7 +9,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class ChiTietSanPhamModel
     {
-        public Product product { get; set; }
+       
         public ShowDetailProductModel itemDisplay = new ShowDetailProductModel();
     }
     public class ShowDetailProductModel
