@@ -109,5 +109,24 @@ namespace Models.DAO
                 return listOrder;
             }
         }
+
+        public List<int> getListYear()
+        {
+            List<int> listYear = new List<int>();
+
+            var query = (from ot in db.Order_total
+                        select new
+                        {
+                            date_created = ot.Date_created.Year
+                        }).Distinct().OrderBy(d=>d);
+            if(query!= null)
+            {
+                foreach(var item in query)
+                {
+                    listYear.Add((int) item.date_created);
+                }
+            }
+            return listYear;
+        }
     }
 }
