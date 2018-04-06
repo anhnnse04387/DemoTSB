@@ -22,7 +22,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public String taxCode { get; set; }
         public decimal subTotal { get; set; }
         public decimal? total { get; set; }
-        public decimal vat { get; set; }
+        public decimal? vat { get; set; }
         public int? qttTotal { get; set; }
         public int? boxTotal { get; set; }
         public decimal? discount { get; set; }

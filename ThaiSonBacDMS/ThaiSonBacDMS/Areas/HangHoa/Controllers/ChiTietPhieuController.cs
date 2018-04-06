@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.QuanLy.Models;
+using ThaiSonBacDMS.Areas.HangHoa.Models;
 using ThaiSonBacDMS.Common;
 
-namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
+namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
 {
     public class ChiTietPhieuController : Controller
     {
         // GET: PhanPhoi/ChiTietPhieu
         public ActionResult Index(String orderId)
-        {            
+        {
             var dao = new OrderTotalDAO();
             var customerDAO = new CustomerDAO();
             var data = dao.getOrder(orderId);
@@ -38,28 +38,73 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     var item = new OrderItemModel
                     {
                         code = product.Product_code,
-                        param = product.Product_parameters,
                         Box = o.Box,
-                        Discount = o.Discount,
-                        Price = o.Price,
-                        Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
-                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                        Quantity = o.Quantity
                     };
                     items.Add(item);
-                    model.qttTotal += o.Quantity;
-                    model.boxTotal += o.Box;                    
                 }
             }
-            model.discount = data.Order_discount;
-            model.vat = data.VAT;
-            model.subTotal = data.Sub_total;
-            model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * data.Order_discount / 100) : 0;
-            model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * data.VAT / 100) : 0;
-            model.total = data.Total_price;
             model.readItems = items;
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delivery(String orderId)
+        {
+            var dao = new OrderTotalDAO();
+            var customerDAO = new CustomerDAO();
+            var data = dao.getOrder(orderId);
+            var statusDAO = new StatusDAO();
+            var daoDelivery = new DeliveryMethodDAO();
+            var shipper = new List<SelectListItem>();
+            var delivery = new List<SelectListItem>();
+            var driver = new List<SelectListItem>();
+            var daoUser = new UserDAO();
+            var model = new OrderDeliveryModel();
+            var lstDelivery = daoDelivery.getLstDelivery();
+            var lstShipper = daoUser.getLstShipper();
+            var lstDriver = daoUser.getLstDriver();
+            lstDelivery.ForEach(x =>
+            {
+                delivery.Add(new SelectListItem { Text = x.Method_name, Value = x.Method_ID.ToString() });
+            });
+            lstShipper.ForEach(x =>
+            {
+                shipper.Add(new SelectListItem { Text = x.User_name, Value = x.User_ID.ToString() });
+            });
+            lstDriver.ForEach(x =>
+            {
+                driver.Add(new SelectListItem { Text = x.User_name, Value = x.User_ID.ToString() });
+            });
+            model.orderId = orderId;
+            model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
+            model.deliveryAddress = data.Address_delivery;
+            model.deliveryQtt = data.Order_part.Count;
+            model.status = statusDAO.getStatus(data.Status_ID);
+            var customer = customerDAO.getCustomerById(data.Customer_ID);
+            model.customerName = customer.Customer_name;
+            model.taxCode = customer.Tax_code;
+            model.shipper = shipper;
+            model.deliveryMethod = delivery;
+            model.driver = driver;
+            return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult DeliveryCheckOut(String orderId, byte? DeliverMethod_ID, string Driver_ID, string Shiper_ID)
+        {
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderTotalDAO();
+                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult CheckOut(String orderId)
@@ -68,7 +113,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.checkOut(orderId, session.user_id);
+                dao.kho_checkOut(orderId, session.user_id);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -146,14 +146,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\HangHoa\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\ErrorPageController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\HomeController.cs" />
     <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
+    <Compile Include="Areas\HangHoa\Models\OrderDeliveryModel.cs" />
+    <Compile Include="Areas\HangHoa\Models\OrderItemModel.cs" />
+    <Compile Include="Areas\HangHoa\Models\OrderTotalModel.cs" />
     <Compile Include="Areas\KeToan\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\KeToan\Controllers\HomeController.cs" />
     <Compile Include="Areas\KeToan\KeToanAreaRegistration.cs" />
     <Compile Include="Areas\KeToan\Models\OrderItemModel.cs" />
-    <Compile Include="Areas\KeToan\Models\OrderPartModel.cs" />
     <Compile Include="Areas\KeToan\Models\OrderTotalModel.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietSanPhamController.cs" />
@@ -268,6 +271,8 @@
     <Content Include="Areas\QuanLy\Views\PO\Index.cshtml" />
     <Content Include="Areas\QuanLy\Views\Stock\_chooseNoPartial.cshtml" />
     <Content Include="Areas\QuanLy\Views\Stock\Index.cshtml" />
+    <Content Include="Areas\HangHoa\Views\ChiTietPhieu\Index.cshtml" />
+    <Content Include="Areas\HangHoa\Views\ChiTietPhieu\Delivery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -277,7 +282,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\HangHoa\Models\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />
     <Folder Include="Views\Base\" />

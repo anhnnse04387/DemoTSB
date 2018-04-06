@@ -1,7 +1,7 @@
-﻿@model ThaiSonBacDMS.Areas.KeToan.Models.OrderTotalModel
+﻿@model ThaiSonBacDMS.Areas.HangHoa.Models.OrderTotalModel
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/KeToan/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/HangHoa/Views/Shared/_Layout.cshtml";
 }
 <style>
     .label-medium {
@@ -106,51 +106,53 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body pad box">
-                        <div class="box-header with-border text-center menu-button" style="margin-left : -10px; margin-right: -10px;">
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-plus-square text-gray"></i>
-                                <span><strong>Tạo Mới</strong></span>
-                            </a>
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-edit text-gray"></i>
-                                <span><strong>Sửa</strong></span>
-                            </a>
-                            <button class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-save text-gray"></i>
-                                <span><strong>Lưu</strong></span>
-                            </button>
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-close text-gray"></i>
-                                <span><strong>Hủy</strong></span>
-                            </a>
-                            <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmComplete" onclick="return false;">
-                                <i class="fa fa-check-circle text-green"></i>
-                                <span><strong>Chốt đơn</strong></span>
-                            </button>
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-exchange text-gray"></i>
-                                <span><strong>Đổi trả</strong></span>
-                            </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                <i class="fa fa-eye text-black"></i>
-                                <span><strong>Xem Trước</strong></span>
-                            </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
-                                <i class="fa fa-print text-blue"></i>
-                                <span><strong>In</strong></span>
-                            </a>
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-download text-gray"></i>
-                                <span><strong>Import Excel</strong></span>
-                            </a>
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-file-excel-o text-gray"></i>
-                                <span><strong>Xuất Excel</strong></span>
-                            </a>
-                            <a class="btn btn-app custom-btn disabled">
-                                <i class="fa fa-file-pdf-o text-gray"></i>
-                                <span><strong>Xuất PDF</strong></span>
-                            </a>
+                        <div class="row">
+                            <div class="box-header with-border text-center menu-button">
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-plus-square text-gray"></i>
+                                    <span><strong>Tạo Mới</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled disabled">
+                                    <i class="fa fa-edit text-gray"></i>
+                                    <span><strong>Sửa</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-save text-gray"></i>
+                                    <span><strong>Lưu</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirmCancel">
+                                    <i class="fa fa-close text-red"></i>
+                                    <span><strong>Hủy</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" id="btnSubmit">
+                                    <i class="fa fa-check-circle text-green"></i>
+                                    <span><strong>Chốt đơn</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-exchange text-gray"></i>
+                                    <span><strong>Đổi trả</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-eye text-gray"></i>
+                                    <span><strong>Xem Trước</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                    <i class="fa fa-print text-blue"></i>
+                                    <span><strong>In</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-download text-gray"></i>
+                                    <span><strong>Import Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                    <i class="fa fa-file-excel-o text-green"></i>
+                                    <span><strong>Xuất Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                    <i class="fa fa-file-pdf-o text-orange"></i>
+                                    <span><strong>Xuất PDF</strong></span>
+                                </a>
+                            </div>
                         </div>
                         <form style="margin-top: 25px;">
                             <div class="box-header">
@@ -199,16 +201,27 @@
                                                             <input class="form-control" disabled value="@Model.deliveryQtt" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label>VAT khách hàng</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input class="form-control" disabled />
+                                                    <div class="col-md-2">
+                                                        <div style="margin-top: 25px;">
+                                                            <label>
+                                                                Đã lấy hóa đơn
+                                                            </label>
+                                                            <span class="custom-span">
+                                                                <input type="checkbox" required>
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row" style="margin-top: 15px;">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-2">
+                                                        <div style="margin-top: 25px;">
+                                                            <label>
+                                                                Đã lấy phiếu
+                                                            </label>
+                                                            <span class="custom-span">
+                                                                <input type="checkbox" required>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
                                                         <label>Trạng Thái</label>
                                                         <div class="input-group">
                                                             <span class="label label-primary label-medium">
@@ -232,17 +245,14 @@
                                             <table class="table table-striped mainTable">
                                                 <thead>
                                                     <tr>
-                                                        <th rowspan="2" style="width: 30px;">STT</th>
-                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                        <th rowspan="2">STT</th>
+                                                        <th rowspan="2">Tên hàng</th>
                                                         <th colspan="2">Số lượng</th>
-                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
-                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
-                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
-                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2">Đã đủ&nbsp;&nbsp;&nbsp;<input type="checkbox" id="checkAll" style="vertical-align: sub;" /></th>
                                                     </tr>
                                                     <tr>
-                                                        <th style="width: 70px;">Cái</th>
-                                                        <th style="width: 70px;">Thùng</th>
+                                                        <th>Cái</th>
+                                                        <th>Thùng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -253,69 +263,12 @@
                                                             <td style="vertical-align: middle; width: 24.7%;">
                                                                 <input type="text" value="@Model.readItems[i].code" disabled class="form-control" />
                                                             </td>
-                                                            <td style="vertical-align: middle;"><input type="text" value="@Model.readItems[i].param" disabled class="form-control" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" disabled class="form-control" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" disabled class="form-control" /></td>
-                                                            <td><output class="number">@Model.readItems[i].per</output></td>
-                                                            <td><output class="number">@Model.readItems[i].priceBeforeDiscount</output></td>
-                                                            <td><input type="text" value="@Model.readItems[i].Discount" disabled class="form-control number" /></td>
-                                                            <td><output class="number">@Model.readItems[i].Price</output></td>
+                                                            <td><input type="checkbox" required class="checkPer" /></td>
                                                         </tr>
                                                     }
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.qttTotal</output></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.boxTotal</output></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.subTotal</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            <input type="text" value="@Model.discount" class="form-control number" disabled style="text-align: right; float: right; font-weight: bold;" />
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.discountMoney</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.afterDiscountMoney</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            <input type="text" disabled class="form-control number" value="@Model.vat" style="text-align: right; float: right; font-weight: bold;">
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.total</output></td>
-                                                    </tr>
+                                                    <tr><td></td><td></td><td></td><td></td><td><input type="checkbox" required class="checkPer" /></td></tr>
                                                 </tbody>
                                             </table>
                                         </fieldset>
@@ -347,19 +300,48 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="confirmCancel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận hủy đơn hàng</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Bạn muốn hủy đơn hàng?</label>
+                    <br />
+                    <p>Lý do</p>
+                    <textarea style="width: 100%" rows="10" id="reason"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
+                    <button type="button" class="btn btn-danger btn-ok" data-dismiss="modal" onclick="cancelOrder();">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- /.content -->
 }
 @section ChiTietPhieu
 {
     <script src="/Assets/dist/js/sweetalert2.all.js"></script>
-    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+            $("#btnSubmit").click(function (event) {
+                if ($('input:checkbox:checked').length === $('input:checkbox').length) {
+                    event.preventDefault();
+                    $("#confirmComplete").modal();
+                } else {
+                    $('form')[0].checkValidity();
+                }
+            });
+            $("#checkAll").click(function () {
+                $('.checkPer').prop('checked', this.checked);
+            });
         });
         function doneOrder() {
             $.ajax({
-                url: '/KeToan/ChiTietPhieu/CheckOut',
+                url: '/HangHoa/ChiTietPhieu/CheckOut',
                 type: 'POST',
                 dataType: 'json',
                 data: { orderId: $('#orderId').val() },
@@ -374,7 +356,7 @@
                         animation: false
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/KeToan/Home/Index';
+                            window.location.href = '/HangHoa/Home/Index';
                         }
                     });
                 },
@@ -385,6 +367,30 @@
                         type: 'error',
                         showCancelButton: false,
                         showConfirmButton: true
+                    });
+                }
+            });
+        }
+        function cancelOrder() {
+            $.ajax({
+                url: '/HangHoa/ChiTietPhieu/cancelOrder',
+                dataType: 'json',
+                data: { orderId: $('#orderId').val(), note: $('#reason').val() },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_10.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/HangHoa/Home/Index';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
+                        type: 'error'
                     });
                 }
             });

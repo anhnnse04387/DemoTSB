@@ -65,6 +65,41 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public void kho_checkOut(String orderId, String userId)
+        {
+            (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 5);
+            (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 5);
+            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
+            foreach (Order_detail_status s in status)
+            {
+                s.Status_ID = 5;
+                s.User_ID = userId;
+                s.Date_change = DateTime.Now;
+            }
+            db.SaveChanges();
+        }
+
+        public void delivery_checkOut(String orderId, String userId, byte? DeliverMethod_ID, string Driver_ID, string Shiper_ID)
+        {
+            (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 6);
+            var part = (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList();
+            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
+            foreach(Order_part p in part)
+            {
+                p.Status_ID = 6;
+                p.Shiper_ID = Shiper_ID;
+                p.DeliverMethod_ID = DeliverMethod_ID;
+                p.Driver_ID = Driver_ID;
+            }
+            foreach (Order_detail_status s in status)
+            {
+                s.Status_ID = 6;
+                s.User_ID = userId;
+                s.Date_change = DateTime.Now;
+            }
+            db.SaveChanges();
+        }
+
         public void cancelOrder(String orderId, String reason, String userId)
         {
             var order = (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).SingleOrDefault();
