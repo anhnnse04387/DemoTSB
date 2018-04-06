@@ -257,14 +257,22 @@ namespace Models.DAO
             }
             if (fromValue != null)
             {
-                query = query.Where(x => x.ton >= Convert.ToInt32(fromValue));
+                fromValue = fromValue.Replace(",", "");
+                int valueSearch = Convert.ToInt32(fromValue);
+                query = query.Where(x => x.ton >= valueSearch);
             }
             if (toValue != null)
             {
-                query = query.Where(x => x.ton <= Convert.ToInt32(toValue));
+                toValue = toValue.Replace(",", "");
+                int valueSearch = Convert.ToInt32(toValue);
+                query = query.Where(x => x.ton <= valueSearch);
             }
             if (fromValue != null && toValue != null)
             {
+                fromValue = fromValue.Replace(",", "");
+                toValue = toValue.Replace(",", "");
+                int valueSearch1 = Convert.ToInt32(fromValue);
+                int valueSearch2 = Convert.ToInt32(toValue);
                 query = query.Where(x => x.ton >= Convert.ToInt32(fromValue) && x.ton <= Convert.ToInt32(toValue));
             }
             List<Product> lstProduct = new List<Product>();
@@ -277,6 +285,7 @@ namespace Models.DAO
             }
             return lstProduct;
         }
+      
     }
 }
 

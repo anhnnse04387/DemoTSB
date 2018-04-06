@@ -144,7 +144,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
             }else
             {
-                model.diffrentValueMonth = (valueInPreviousMonth - valueInMonth) / valueInMonth * 100;
+                model.diffrentValueMonth = valueInMonth > 0 ? (valueInPreviousMonth - valueInMonth) / valueInMonth * 100 : valueInPreviousMonth;
             }
             //different order of month
             model.diffrentOrderMonth = 0;
@@ -158,7 +158,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             else
             {
-                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
+                model.diffrentValueMonth = valueInMonth > 0 ? ((valueInPreviousMonth - valueInMonth) / valueInPreviousMonth * 100) : valueInPreviousMonth;
             }
 
             //Top Selling Product
@@ -182,11 +182,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 tsc.diffrentPercent = 0;
                 int valuePrevious = orderItemDAO.
                     getCategoryQuantityByDate(item.Key, firstMonthPrevious, lastMonthPrevious);
-                if (item.Value >= valuePrevious)
+                if (item.Value >= valuePrevious && valuePrevious != 0)
                 {
                     tsc.categoryFlag = true;
                     tsc.diffrentPercent = (decimal) (item.Value - valuePrevious) / valuePrevious * 100;
-                }else
+                }else if(item.Value != 0)
                 {
                     tsc.categoryFlag = false;
                     tsc.diffrentPercent = (valuePrevious - item.Value) / item.Value * 100;

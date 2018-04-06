@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ChiTietSanPham";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
 }
 
 <style>
@@ -223,7 +223,7 @@
                 <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;margin-bottom: -7px">
                     <div class="col-md-12">
                         <h4>
-                            <b>Chi tiết sản phẩm : @Model.product.Product_code</b>
+                            <b>Chi tiết sản phẩm : @Model.itemDisplay.product.Product_code</b>
                         </h4>
                     </div>
                 </div>
@@ -383,7 +383,7 @@
                                                     <tr>
 
                                                         <td><i class="fa fa-money"></i> Giá :</td>
-                                                        <td style="padding-left: 10px"><span style="color:red"> @Model.product.Price_before_VAT_VND VNĐ</span></td>
+                                                        <td style="padding-left: 10px;color:red" class="number">@Model.itemDisplay.product.Price_before_VAT_VND</td>
                                                     </tr>
 
                                             </table>
@@ -415,7 +415,7 @@
                                             <b>Mô tả:</b>
                                             <br />
                                             <h5>
-                                                @Model.product.Overview
+                                                @Model.itemDisplay.product.Overview
                                             </h5>
                                         </div>
                                     </div>
@@ -424,7 +424,7 @@
                                         <div style="margin-top:30px;margin-left:40px">
 
                                             <h5>
-                                                @Model.product.Specification
+                                                @Model.itemDisplay.product.Specification
                                             </h5>
                                         </div>
                                     </div>
@@ -447,50 +447,42 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>801</td>
-                                                    <td>10/12/2017</td>
-                                                    <td style="text-align:right">10</td>
-                                                    <td style="text-align:right">102,228,350</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>801</td>
-                                                    <td>11/12/2017</td>
-                                                    <td style="text-align:right">100</td>
-                                                    <td style="text-align:right">1,022,283,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>802</td>
-                                                    <td>11/12/2017</td>
-                                                    <td style="text-align:right">5</td>
-                                                    <td style="text-align:right">51,114,175</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>803</td>
-                                                    <td>11/12/2017</td>
-                                                    <td style="text-align:right">10</td>
-                                                    <td style="text-align:right">102,228,350</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>804</td>
-                                                    <td>12/12/2017</td>
-                                                    <td style="text-align:right">20</td>
-                                                    <td style="text-align:right">204,456,700</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="3" class="text-center">Tổng</td>
+                                                @{int i = 1};
+                                                @if (Model.lstDisplay.Count == 0)
+                                                {
+                                                    <tr>
+                                                        <td colspan="4" style="font-size:17px">Không tìm thấy bản ghi nào!</td>
+                                                    </tr>
+                                                }
+                                                else
+                                                {
+                                                    foreach (var itemDisplay in Model.lstDisplay)
+                                                    {
+                                                        <tr>
+                                                            <td>@i</td>
+                                                            <td>@itemDisplay.item.Order_ID</td>
+                                                            <td>@itemDisplay.date</td>
+                                                            <td style="text-align:right">@itemDisplay.item.Quantity</td>
+                                                            <td style="text-align:right" class="number">@itemDisplay.item.Price</td>
+                                                        </tr>
 
-                                                    <td style="text-align:right">145</td>
-                                                    <td style="text-align:right">1,482,311,075</td>
-                                                </tr>
-                                            </tfoot>
+                                                        i++;
+                                                    }
+                                                }
+
+
+                                            </tbody>
+                                            @if (Model.lstDisplay.Count != 0)
+                                            {
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">Tổng</td>
+
+                                                        <td style="text-align:right">145</td>
+                                                        <td style="text-align:right">1,482,311,075</td>
+                                                    </tr>
+                                                </tfoot>
+                                            }
                                         </table>
                                     </fieldset>
                                 </div>
@@ -505,7 +497,12 @@
     </div>
 </section>
 @section Index{
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+        });
         $(function () {
 
             $('#example1').DataTable({

@@ -9,8 +9,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class ChiTietSanPhamModel
     {
-        public Product product { get; set; }
+
         public ShowDetailProductModel itemDisplay = new ShowDetailProductModel();
+        public ShowOrderItemModel orderItem { get; set; }
+        public List<ShowOrderItemModel> lstDisplay { get; set; }
     }
     public class ShowDetailProductModel
     {
@@ -32,6 +34,18 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
                 }
                 supplierName = supplierName.Remove(0, 2);
                 return supplierName;
+            }
+        }
+    }
+    public class ShowOrderItemModel
+    {
+        public Order_items item { get; set; }
+        public DateTime? date
+        {
+            get
+            {
+                OrderTotalDAO dao = new OrderTotalDAO();
+                return dao.getDate(item.Order_ID);
             }
         }
     }
