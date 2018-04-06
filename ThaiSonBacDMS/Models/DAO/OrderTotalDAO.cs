@@ -123,5 +123,10 @@ namespace Models.DAO
                 return listOrder;
             }
         }
+        //thuongtx
+        public DateTime? getDate(string orderId)
+        {
+            return db.Order_total.SingleOrDefault(x => x.Order_ID.Equals(orderId)).Date_completed;
+        }
     }
 }

@@ -183,5 +183,23 @@ namespace Models.DAO
             }
             return total;
         }
+        //thuongtx
+        public List<Order_items> getLstOrderItems(int productId)
+        {
+            List<Order_items> lstOrderItem = new List<Order_items>();
+            var query = from oi in db.Order_items
+                        join od in db.Order_total on oi.Order_ID equals od.Order_ID
+                        where oi.Product_ID == productId
+                        select oi;
+            if (query.Count() != 0)
+            {
+                foreach(var orderItem in query)
+                {
+                    lstOrderItem.Add(orderItem);
+                }
+            }
+            
+            return lstOrderItem;
+        }
     }
 }
