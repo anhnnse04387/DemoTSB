@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Models.DAO_Model;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
@@ -13,14 +14,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public string selectedYear { set; get; }
         public string selectedMonth { set; get; }
         public string selectedDay { set; get; }
-        public string productName { set; get; }
+        public string productID { set; get; }
         public string categoryName { set; get; }
-        public int numberSoldFrom { set; get; }
-        public int numberSoldTo { set; get; }
-        public decimal priceFrom { set; get; }
-        public decimal priceTo { set; get; }
-        public decimal doanhThuFrom { set; get; }
-        public decimal doanhThuTo { set; get; }
+        public string numberSoldFrom { set; get; }
+        public string numberSoldTo { set; get; }
+        public string priceFrom { set; get; }
+        public string priceTo { set; get; }
+        public string doanhThuFrom { set; get; }
+        public string doanhThuTo { set; get; }
+        public List<DataChiTietDoanhThu> data { set; get; }
 
     }
 }
