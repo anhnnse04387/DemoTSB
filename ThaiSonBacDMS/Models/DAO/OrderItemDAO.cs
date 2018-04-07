@@ -276,7 +276,6 @@ namespace Models.DAO
 
         }
 
-<<<<<<< HEAD
         public List<DataChiTietDoanhThu> getDataDoanhThu(DateTime beginDate, DateTime endDate, string categoryID,
             int? productID, int? numberFrom, int? numberTo, decimal? priceFrom,
             decimal? priceTo, decimal? doanhThuFrom, decimal? doanhThuTo)
@@ -361,7 +360,6 @@ namespace Models.DAO
             return dataList;
         }
 
-=======
         //thuongtx
         public List<Order_items> getLstOrderItems(int productId)
         {
@@ -380,6 +378,5 @@ namespace Models.DAO
             
             return lstOrderItem;
         }
->>>>>>> 7072edf5d5b33a6ad5bba1047547e03d41220769
     }
 }
