@@ -27,5 +27,10 @@ namespace Models.DAO
             return null;
         }
 
+        public void deleteOrderPart(String id)
+        {
+            db.Order_part.RemoveRange(db.Order_part.Where(x => x.Order_ID.Equals(id)).ToList());
+        }
+
     }
 }

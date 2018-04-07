@@ -24,6 +24,11 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public void deleteOrderItems(String id)
+        {
+            db.Order_items.RemoveRange(db.Order_items.Where(x => x.Order_ID.Equals(id)).ToList());
+        }
+
         public List<Order_items> getOrderItem(String orderId)
         {
             return db.Order_items.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID == null).ToList();

@@ -40,27 +40,52 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     && !String.IsNullOrEmpty(model.deliveryAddress) && !String.IsNullOrEmpty(model.invoiceAddress)
                     && !String.IsNullOrEmpty(model.taxCode) && model.rate > 0 && model.items != null && model.items.Count > 0)
                 {
+                    var result = 0;
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var orderDAO = new OrderTotalDAO();
                     var orderPartDAO = new OrderPartDAO();
                     var orderStatusDAO = new OrderDetailStatusDAO();
                     var orderItemDAO = new OrderItemDAO();
-                    var result = orderDAO.createOrder(new Order_total
+                    if (orderDAO.checkOrder(model.orderId) == 0)
                     {
-                        Order_ID = model.orderId,
-                        Address_delivery = model.deliveryAddress,
-                        Address_invoice_issuance = model.invoiceAddress,
-                        Customer_ID = model.customerId,
-                        Date_created = DateTime.Now,
-                        Rate = model.rate,
-                        User_ID = session.user_id,
-                        Sub_total = model.subTotal,
-                        VAT = model.vat,
-                        Total_price = model.total,
-                        Order_discount = model.discount,
-                        Status_ID = 1
-                    });
-                    if (result != null)
+                        orderDAO.createOrder(new Order_total
+                        {
+                            Order_ID = model.orderId,
+                            Address_delivery = model.deliveryAddress,
+                            Address_invoice_issuance = model.invoiceAddress,
+                            Customer_ID = model.customerId,
+                            Date_created = DateTime.Now,
+                            Rate = model.rate,
+                            User_ID = session.user_id,
+                            Sub_total = model.subTotal,
+                            VAT = model.vat,
+                            Total_price = model.total,
+                            Order_discount = model.discount,
+                            Status_ID = 1
+                        });
+                        result++;
+                    }
+                    else
+                    {
+                        orderDAO.updateOrder(new Order_total
+                        {
+                            Order_ID = model.orderId,
+                            Address_delivery = model.deliveryAddress,
+                            Address_invoice_issuance = model.invoiceAddress,
+                            Customer_ID = model.customerId,
+                            Rate = model.rate,
+                            User_ID = session.user_id,
+                            Sub_total = model.subTotal,
+                            VAT = model.vat,
+                            Total_price = model.total,
+                            Order_discount = model.discount,
+                            Status_ID = 1
+                        });
+                        orderPartDAO.deleteOrderPart(model.orderId);
+                        orderItemDAO.deleteOrderItems(model.orderId);
+                        result++;
+                    }
+                    if (result > 0)
                     {
                         orderStatusDAO.createOrderStatus(new Order_detail_status
                         {
@@ -270,32 +295,57 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     && !String.IsNullOrEmpty(model.deliveryAddress) && !String.IsNullOrEmpty(model.invoiceAddress)
                     && !String.IsNullOrEmpty(model.taxCode) && model.rate > 0 && model.items != null && model.items.Count > 0)
                 {
+                    var result = 0;
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var orderDAO = new OrderTotalDAO();
                     var orderPartDAO = new OrderPartDAO();
                     var orderStatusDAO = new OrderDetailStatusDAO();
                     var orderItemDAO = new OrderItemDAO();
-                    var result = orderDAO.createOrder(new Order_total
+                    if (orderDAO.checkOrder(model.orderId) == 0)
                     {
-                        Order_ID = model.orderId,
-                        Address_delivery = model.deliveryAddress,
-                        Address_invoice_issuance = model.invoiceAddress,
-                        Customer_ID = model.customerId,
-                        Date_created = DateTime.Now,
-                        Rate = model.rate,
-                        User_ID = session.user_id,
-                        Sub_total = model.subTotal,
-                        VAT = model.vat,
-                        Total_price = model.total,
-                        Order_discount = model.discount,
-                        Status_ID = 1
-                    });
-                    if (result != null)
+                        orderDAO.createOrder(new Order_total
+                        {
+                            Order_ID = model.orderId,
+                            Address_delivery = model.deliveryAddress,
+                            Address_invoice_issuance = model.invoiceAddress,
+                            Customer_ID = model.customerId,
+                            Date_created = DateTime.Now,
+                            Rate = model.rate,
+                            User_ID = session.user_id,
+                            Sub_total = model.subTotal,
+                            VAT = model.vat,
+                            Total_price = model.total,
+                            Order_discount = model.discount,
+                            Status_ID = 3
+                        });
+                        result++;
+                    }
+                    else
+                    {
+                        orderDAO.updateOrder(new Order_total
+                        {
+                            Order_ID = model.orderId,
+                            Address_delivery = model.deliveryAddress,
+                            Address_invoice_issuance = model.invoiceAddress,
+                            Customer_ID = model.customerId,
+                            Rate = model.rate,
+                            User_ID = session.user_id,
+                            Sub_total = model.subTotal,
+                            VAT = model.vat,
+                            Total_price = model.total,
+                            Order_discount = model.discount,
+                            Status_ID = 3
+                        });
+                        orderPartDAO.deleteOrderPart(model.orderId);
+                        orderItemDAO.deleteOrderItems(model.orderId);
+                        result++;
+                    }
+                    if (result > 0)
                     {
                         orderStatusDAO.createOrderStatus(new Order_detail_status
                         {
                             Order_ID = model.orderId,
-                            Status_ID = 1,
+                            Status_ID = 3,
                             Date_change = DateTime.Now,
                             User_ID = session.user_id
                         });
@@ -310,7 +360,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             {
                                 o.Order_ID = model.orderId;
                                 o.Date_created = DateTime.Now;
-                                o.Status_ID = 1;
+                                o.Status_ID = 3;
                                 o.Customer_ID = model.customerId;
                                 if (orderPartDAO.createOrderPart(o) != null)
                                 {
@@ -318,7 +368,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                     {
                                         Order_ID = model.orderId,
                                         Order_part_ID = o.Order_part_ID,
-                                        Status_ID = 1,
+                                        Status_ID = 3,
                                         Date_change = DateTime.Now,
                                         User_ID = session.user_id
                                     });
@@ -335,7 +385,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
                                 VAT = model.vat,
-                                Status_ID = 1,
+                                Status_ID = 3,
                                 Total_price = model.total
                             });
                         }
@@ -349,6 +399,22 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
+        }
+
+        public JsonResult cancelOrder(String orderId, String note)
+        {
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderTotalDAO();
+                dao.cancelOrder(orderId, note, session.user_id);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
     }
