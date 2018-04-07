@@ -51,10 +51,12 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.boxTotal += o.Box;                    
                 }
             }
+            model.discount = data.Order_discount;
+            model.vat = data.VAT;
             model.subTotal = data.Sub_total;
-            model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount)) : 0;
+            model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * data.Order_discount / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * (100 + data.VAT)) : 0;
+            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * data.VAT / 100) : 0;
             model.total = data.Total_price;
             model.readItems = items;
             return View(model);

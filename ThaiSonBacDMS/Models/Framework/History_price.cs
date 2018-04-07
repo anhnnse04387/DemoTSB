@@ -8,6 +8,7 @@ namespace Models.Framework
 
     public partial class History_price
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Product_ID { get; set; }
 
         [Key]

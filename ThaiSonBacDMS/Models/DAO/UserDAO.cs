@@ -17,7 +17,15 @@ namespace Models.DAO
         public User getByID(string user_id)
         {
             return context.Users.SingleOrDefault(s => s.User_ID == user_id);
-        } 
+        }
+        public List<User> getLstShipper()
+        {
+            return context.Users.Where(s => s.Role_ID == 4 && s.Office_ID == 4).ToList();
+        }
+        public List<User> getLstDriver()
+        {
+            return context.Users.Where(s => s.Role_ID == 4 && s.Office_ID == 12).ToList();
+        }
         public User getByAccountID(int account_id)
         {
             var x = from a in context.Accounts

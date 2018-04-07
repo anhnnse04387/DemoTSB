@@ -276,6 +276,7 @@ namespace Models.DAO
 
         }
 
+<<<<<<< HEAD
         public List<DataChiTietDoanhThu> getDataDoanhThu(DateTime beginDate, DateTime endDate, string categoryID,
             int? productID, int? numberFrom, int? numberTo, decimal? priceFrom,
             decimal? priceTo, decimal? doanhThuFrom, decimal? doanhThuTo)
@@ -360,5 +361,25 @@ namespace Models.DAO
             return dataList;
         }
 
+=======
+        //thuongtx
+        public List<Order_items> getLstOrderItems(int productId)
+        {
+            List<Order_items> lstOrderItem = new List<Order_items>();
+            var query = from oi in db.Order_items
+                        join od in db.Order_total on oi.Order_ID equals od.Order_ID
+                        where oi.Product_ID == productId
+                        select oi;
+            if (query.Count() != 0)
+            {
+                foreach(var orderItem in query)
+                {
+                    lstOrderItem.Add(orderItem);
+                }
+            }
+            
+            return lstOrderItem;
+        }
+>>>>>>> 7072edf5d5b33a6ad5bba1047547e03d41220769
     }
 }

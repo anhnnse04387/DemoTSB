@@ -22,7 +22,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public String taxCode { get; set; }
         public decimal subTotal { get; set; }
         public decimal? total { get; set; }
-        public decimal vat { get; set; }
+        public decimal? vat { get; set; }
         public int? qttTotal { get; set; }
         public int? boxTotal { get; set; }
         public decimal? discount { get; set; }
@@ -34,7 +34,6 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public List<Order_items> items { get; set; }
         public List<OrderItemModel> readItems { get; set; }
         public IList<SelectListItem> lstCustomer { get; set; }
-        public List<OrderPartModel> readPart { get; set; }
 
     }
 }
