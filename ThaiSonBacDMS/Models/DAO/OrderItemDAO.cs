@@ -1,4 +1,5 @@
-﻿using Models.Framework;
+﻿using Models.DAO_Model;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -265,7 +266,7 @@ namespace Models.DAO
             {
                 if (returnDic.ContainsKey(item.categoryName))
                 {
-                    returnDic[item.categoryName][0] += (decimal) item.quantity;
+                    returnDic[item.categoryName][0] += (decimal)item.quantity;
                     returnDic[item.categoryName][1] += (decimal)item.nhapVon;
                     returnDic[item.categoryName][2] += (decimal)item.xuatVon;
                     returnDic[item.categoryName][3] += (decimal)item.banChoKhach;
@@ -273,6 +274,90 @@ namespace Models.DAO
             }
             return returnDic;
 
+        }
+
+        public List<DataChiTietDoanhThu> getDataDoanhThu(DateTime beginDate, DateTime endDate, string categoryID,
+            int? productID, int? numberFrom, int? numberTo, decimal? priceFrom,
+            decimal? priceTo, decimal? doanhThuFrom, decimal? doanhThuTo)
+        {
+            List<DataChiTietDoanhThu> dataList = new List<DataChiTietDoanhThu>();
+             var query = from oi in db.Order_items
+                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                        where ot.Date_created >= beginDate && ot.Date_created <= endDate
+                        && oi.Order_part_ID == null
+                        group oi by oi.Product_ID into sumQuantity
+                        select new
+                        {
+                            productID = sumQuantity.Key,
+                            totalQuantity = sumQuantity.Sum(x => x.Quantity),
+                        };
+            var handleQuery = (from oi in db.Order_items
+                              join p in db.Products on oi.Product_ID equals p.Product_ID
+                              join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                              join c in db.Categories on p.Category_ID equals c.Category_ID
+                              join q in query on oi.Product_ID equals q.productID
+                              where ot.Date_created >= beginDate && ot.Date_created <= endDate
+                              && oi.Order_part_ID == null
+                              select new
+                              {
+                                  productID = oi.Product_ID,
+                                  categoryID = c.Category_ID,
+                                  price = p.Price_before_VAT_VND + p.Price_before_VAT_VND*(p.VAT/100),
+                                  totalQuantity = q.totalQuantity,
+                                  doanhThu = q.totalQuantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
+                              }).Distinct();
+            if(productID!=null)
+            {
+                handleQuery = handleQuery.Where(x => x.productID == productID);
+            }
+            if (categoryID != null)
+            {
+                handleQuery = handleQuery.Where(x => x.categoryID == categoryID);
+            }
+            if (numberFrom != null)
+            {
+                handleQuery = handleQuery.Where(x => x.totalQuantity >= numberFrom);
+            }
+            if (numberTo != null)
+            {
+                handleQuery = handleQuery.Where(x => x.totalQuantity <= numberTo);
+            }
+            if (priceFrom != null)
+            {
+                handleQuery = handleQuery.Where(x => x.price >= priceFrom);
+            }
+            if (priceTo != null)
+            {
+                handleQuery = handleQuery.Where(x => x.price <= priceTo);
+            }
+            if (doanhThuFrom != null)
+            {
+                handleQuery = handleQuery.Where(x => x.doanhThu >= doanhThuFrom);
+            }
+            if (doanhThuTo != null)
+            {
+                handleQuery = handleQuery.Where(x => x.doanhThu <= doanhThuTo);
+            }
+            foreach(var item in handleQuery)
+            {
+                try
+                {
+                    DataChiTietDoanhThu data = new DataChiTietDoanhThu();
+                    data.productName = new ProductDAO().getProductById(item.productID).Product_name;
+                    data.categoryName = new CategoryDAO().getCategoryById(item.categoryID).Category_name;
+                    data.price = (decimal)item.price;
+                    data.totalQuantity = (int)item.totalQuantity;
+                    data.doanhThu = (decimal)item.doanhThu;
+                    dataList.Add(data);
+                }
+                catch(Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine(e);
+                }
+                
+                
+            }
+            return dataList;
         }
 
     }

@@ -209,7 +209,7 @@ namespace ThaiSonBacDMS.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
+                ModelState.AddModelError("", "Đã có lỗi xảy ra khi đăng nhập");
             }
 
             return View();
