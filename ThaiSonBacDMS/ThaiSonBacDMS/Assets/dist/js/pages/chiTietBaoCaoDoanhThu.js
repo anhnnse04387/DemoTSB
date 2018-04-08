@@ -4,6 +4,10 @@
     return dat;
 };
 
+$(document).ready(function () {
+    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
+});
+
 function getFirstDayOfWeek(date) {
     var currentTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     var firstDayOfWeek = new Date();
@@ -81,3 +85,4 @@ function changeWeek(year, month) {
                 .text(obj.value));
     });
 };
+
