@@ -24,6 +24,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var item = new SelectListItem { Text = i.ToString(), Value = i.ToString() };
                 model.listShowYear.Add(item);
             }
+            //set category in db
             //display data
             var dataLst = new OrderItemDAO().getDataDoanhThu(DateTime.Now, DateTime.Now.AddDays(6), null,
                     null, null, null, null, null, null, null);
