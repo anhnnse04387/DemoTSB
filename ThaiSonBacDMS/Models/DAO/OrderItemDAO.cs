@@ -25,6 +25,11 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public void deleteOrderItems(String id)
+        {
+            db.Order_items.RemoveRange(db.Order_items.Where(x => x.Order_ID.Equals(id)).ToList());
+        }
+
         public List<Order_items> getOrderItem(String orderId)
         {
             return db.Order_items.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID == null).ToList();
@@ -277,7 +282,7 @@ namespace Models.DAO
         }
 
         public List<DataChiTietDoanhThu> getDataDoanhThu(DateTime beginDate, DateTime endDate, string categoryID,
-            int? productID, int? numberFrom, int? numberTo, decimal? priceFrom,
+            string productCode, int? numberFrom, int? numberTo, decimal? priceFrom,
             decimal? priceTo, decimal? doanhThuFrom, decimal? doanhThuTo)
         {
             List<DataChiTietDoanhThu> dataList = new List<DataChiTietDoanhThu>();
@@ -300,17 +305,18 @@ namespace Models.DAO
                               && oi.Order_part_ID == null
                               select new
                               {
-                                  productID = oi.Product_ID,
+                                  productCode = p.Product_code,
+                                  productID = p.Product_ID,
                                   categoryID = c.Category_ID,
                                   price = p.Price_before_VAT_VND + p.Price_before_VAT_VND*(p.VAT/100),
                                   totalQuantity = q.totalQuantity,
                                   doanhThu = q.totalQuantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
                               }).Distinct();
-            if(productID!=null)
+            if(!string.IsNullOrEmpty(productCode))
             {
-                handleQuery = handleQuery.Where(x => x.productID == productID);
+                handleQuery = handleQuery.Where(x => x.productCode.Contains(productCode));
             }
-            if (categoryID != null)
+            if (!string.IsNullOrEmpty(categoryID))
             {
                 handleQuery = handleQuery.Where(x => x.categoryID == categoryID);
             }
@@ -343,7 +349,8 @@ namespace Models.DAO
                 try
                 {
                     DataChiTietDoanhThu data = new DataChiTietDoanhThu();
-                    data.productName = new ProductDAO().getProductById(item.productID).Product_name;
+                    data.productName = new ProductDAO().getProductById(item.productID).Product_name
+                        + "     " + new ProductDAO().getProductById(item.productID).Product_parameters;
                     data.categoryName = new CategoryDAO().getCategoryById(item.categoryID).Category_name;
                     data.price = (decimal)item.price;
                     data.totalQuantity = (int)item.totalQuantity;

@@ -17,6 +17,11 @@ namespace Models.DAO
             db = new ThaiSonBacDMSDbContext();
         }
 
+        public int checkOrder(String id)
+        {
+            return db.Order_total.Where(x => x.Order_ID.Equals(id)).Count();
+        }
+
         public String createOrder(Order_total order)
         {
             db.Order_total.Add(order);
@@ -25,6 +30,22 @@ namespace Models.DAO
                 return order.Order_ID;
             }
             return null;
+        }
+
+        public void updateOrder(Order_total order)
+        {
+            var record = db.Order_total.Where(x => x.Order_ID.Equals(order.Order_ID)).SingleOrDefault();
+            record.Address_delivery = order.Address_delivery;
+            record.Address_invoice_issuance = order.Address_invoice_issuance;
+            record.Customer_ID = order.Customer_ID;
+            record.Rate = order.Rate;
+            record.User_ID = order.User_ID;
+            record.Sub_total = order.Sub_total;
+            record.VAT = order.VAT;
+            record.Total_price = order.Total_price;
+            record.Order_discount = order.Order_discount;
+            record.Status_ID = order.Status_ID;
+            db.SaveChanges();
         }
 
         public int getNextValueID()
@@ -41,13 +62,13 @@ namespace Models.DAO
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 3);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 3);
-            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
-            foreach (Order_detail_status s in status)
+            db.Order_detail_status.Add(new Order_detail_status
             {
-                s.Status_ID = 3;
-                s.User_ID = userId;
-                s.Date_change = DateTime.Now;
-            }
+                Status_ID = 3,
+                User_ID = userId,
+                Date_change = DateTime.Now,
+                Order_ID = orderId
+            });
             db.SaveChanges();
         }
 
@@ -55,13 +76,13 @@ namespace Models.DAO
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 4);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 4);
-            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
-            foreach (Order_detail_status s in status)
+            db.Order_detail_status.Add(new Order_detail_status
             {
-                s.Status_ID = 4;
-                s.User_ID = userId;
-                s.Date_change = DateTime.Now;
-            }
+                Status_ID = 4,
+                User_ID = userId,
+                Date_change = DateTime.Now,
+                Order_ID = orderId
+            });
             db.SaveChanges();
         }
 
@@ -69,13 +90,13 @@ namespace Models.DAO
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 5);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 5);
-            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
-            foreach (Order_detail_status s in status)
+            db.Order_detail_status.Add(new Order_detail_status
             {
-                s.Status_ID = 5;
-                s.User_ID = userId;
-                s.Date_change = DateTime.Now;
-            }
+                Status_ID = 5,
+                User_ID = userId,
+                Date_change = DateTime.Now,
+                Order_ID = orderId
+            });
             db.SaveChanges();
         }
 
@@ -83,20 +104,20 @@ namespace Models.DAO
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 6);
             var part = (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList();
-            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
-            foreach(Order_part p in part)
+            foreach (Order_part p in part)
             {
                 p.Status_ID = 6;
                 p.Shiper_ID = Shiper_ID;
                 p.DeliverMethod_ID = DeliverMethod_ID;
                 p.Driver_ID = Driver_ID;
             }
-            foreach (Order_detail_status s in status)
+            db.Order_detail_status.Add(new Order_detail_status
             {
-                s.Status_ID = 6;
-                s.User_ID = userId;
-                s.Date_change = DateTime.Now;
-            }
+                Status_ID = 3,
+                User_ID = userId,
+                Date_change = DateTime.Now,
+                Order_ID = orderId
+            });
             db.SaveChanges();
         }
 
@@ -106,18 +127,18 @@ namespace Models.DAO
             order.Status_ID = 8;
             order.Note = reason;
             var part = (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList();
-            foreach(Order_part p in part)
+            foreach (Order_part p in part)
             {
                 p.Status_ID = 8;
                 p.Note = reason;
             }
-            var status = (from os in db.Order_detail_status where os.Order_ID.Equals(orderId) select os).ToList();
-            foreach(Order_detail_status s in status)
+            db.Order_detail_status.Add(new Order_detail_status
             {
-                s.Status_ID = 8;
-                s.User_ID = userId;
-                s.Date_change = DateTime.Now;
-            }
+                Status_ID = 8,
+                User_ID = userId,
+                Date_change = DateTime.Now,
+                Order_ID = orderId
+            });
             db.SaveChanges();
         }
 
@@ -138,11 +159,11 @@ namespace Models.DAO
                          join sta in db.Status on od.Status_ID equals sta.Status_ID
                          join u in db.Users on od.User_ID equals u.User_ID
                          orderby od.Date_created
-                        select new
-                        {
-                           orderID = od.Order_ID
-                        }).Take(10);
-            List<Order_total> listOrder= new List<Order_total>();
+                         select new
+                         {
+                             orderID = od.Order_ID
+                         }).Take(10);
+            List<Order_total> listOrder = new List<Order_total>();
             if (query == null)
             {
                 return new List<Order_total>();
@@ -164,15 +185,15 @@ namespace Models.DAO
             List<int> listYear = new List<int>();
 
             var query = (from ot in db.Order_total
-                        select new
-                        {
-                            date_created = ot.Date_created.Year
-                        }).Distinct().OrderBy(d=>d);
-            if(query!= null)
+                         select new
+                         {
+                             date_created = ot.Date_created.Year
+                         }).Distinct().OrderBy(d => d);
+            if (query != null)
             {
-                foreach(var item in query)
+                foreach (var item in query)
                 {
-                    listYear.Add((int) item.date_created);
+                    listYear.Add((int)item.date_created);
                 }
             }
             return listYear;

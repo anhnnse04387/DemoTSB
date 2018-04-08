@@ -24,13 +24,28 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var item = new SelectListItem { Text = i.ToString(), Value = i.ToString() };
                 model.listShowYear.Add(item);
             }
+            //display data
+            var dataLst = new OrderItemDAO().getDataDoanhThu(DateTime.Now, DateTime.Now.AddDays(6), null,
+                    null, null, null, null, null, null, null);
+            var returnValue = from d in dataLst
+                              group d by d.categoryName into g
+                              select new
+                              {
+                                  categoryName = g.Key,
+                                  data = g.ToList()
+                              };
+            Dictionary<string, List<DataChiTietDoanhThu>> dataDic = new Dictionary<string, List<DataChiTietDoanhThu>>();
+            foreach (var item in returnValue)
+            {
+                dataDic.Add(item.categoryName, item.data);
+            }
+            model.data = dataDic;
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Index(ChiTietBaoCaoDoanhThu model)
         {
-            int? productID = null;
             int? numberFrom = null;
             int? numberTo = null;
             decimal? priceFrom = null;
@@ -47,10 +62,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             try
             {
-                if(!string.IsNullOrEmpty(model.productID))
-                {
-                    productID = int.Parse(model.productID);
-                }
                 if (!string.IsNullOrEmpty(model.numberSoldFrom))
                 {
                     numberFrom = int.Parse(model.numberSoldFrom);
@@ -114,8 +125,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     RedirectToAction("Index");
                 }
-                model.data = new OrderItemDAO().getDataDoanhThu(firstDate, lastDate, model.categoryName, 
-                    productID, numberFrom, numberTo, priceFrom, priceTo, doanhThuFrom, doanhThuTo);
                 
             }
             else if (model.selectedMonth == "-1")
@@ -130,8 +139,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 firstDate = new DateTime(selectYear, 1, 1);
                 lastDate = new DateTime(selectYear, 12, 31);
-                model.data = new OrderItemDAO().getDataDoanhThu(firstDate, lastDate, model.categoryName,
-                    productID, numberFrom, numberTo, priceFrom, priceTo, doanhThuFrom, doanhThuTo);
             }
             else
             {
@@ -145,9 +152,23 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 firstDate = selectedDate;
                 lastDate = firstDate.AddDays(6);
-                model.data = new OrderItemDAO().getDataDoanhThu(firstDate, lastDate, model.categoryName,
-                    productID, numberFrom, numberTo, priceFrom, priceTo, doanhThuFrom, doanhThuTo);
+                
             }
+            var dataLst = new OrderItemDAO().getDataDoanhThu(firstDate, lastDate, model.categoryName,
+                    model.productCode, numberFrom, numberTo, priceFrom, priceTo, doanhThuFrom, doanhThuTo);
+            var returnValue = from d in dataLst
+                              group d by d.categoryName into g
+                              select new
+                              {
+                                  categoryName = g.Key,
+                                  data = g.ToList()
+                              };
+            Dictionary<string, List<DataChiTietDoanhThu>> dataDic = new Dictionary<string, List<DataChiTietDoanhThu>>();
+            foreach(var item in returnValue)
+            {
+                dataDic.Add(item.categoryName, item.data);
+            }
+            model.data = dataDic;
             return View(model);
         }
     }
