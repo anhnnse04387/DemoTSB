@@ -103,6 +103,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             catch(Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index");
             }
 
@@ -124,6 +125,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 catch (Exception e)
                 {
+                    System.Diagnostics.Debug.WriteLine(e);
                     RedirectToAction("Index");
                 }
                 
@@ -136,6 +138,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 catch (Exception e)
                 {
+                    System.Diagnostics.Debug.WriteLine(e);
                     return RedirectToAction("Index");
                 }
                 firstDate = new DateTime(selectYear, 1, 1);
@@ -149,6 +152,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 catch (Exception e)
                 {
+                    System.Diagnostics.Debug.WriteLine(e);
                     return RedirectToAction("Index");
                 }
                 firstDate = selectedDate;
