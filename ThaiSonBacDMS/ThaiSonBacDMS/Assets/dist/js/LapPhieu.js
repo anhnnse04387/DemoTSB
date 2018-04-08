@@ -12,13 +12,20 @@ $(document).ready(function () {
             }
         });
     });
-    $("#btnSubmit").click(function (event) {
+    $("#btnPreview").click(function (event) {
         if (validate() === 0) {
             event.preventDefault();
-            previewOrder();
+            $('#preview').removeClass('noDisplay');
+            $('#normal').addClass('noDisplay');
+            $('form :input').not($('#btnSubmit')).prop('disabled', true);
         } else {
             $('form')[0].checkValidity();
         }
+    });
+    $('#btnCancelPreview').click(function () {
+        $('#preview').addClass('noDisplay');
+        $('#normal').removeClass('noDisplay');
+        $('form :input').prop('disabled', false);
     });
     $("#btnSave").click(function (event) {
         if (validate() === 0) {
@@ -28,7 +35,7 @@ $(document).ready(function () {
             $('form')[0].checkValidity();
         }
     });
-    $("#btnDone").click(function (event) {
+    $("#btnSubmit").click(function (event) {
         if (validate() === 0) {
             event.preventDefault();
             $('#confirmComplete').modal();
@@ -246,7 +253,7 @@ function saveOrder() {
 
 function cancelOrder() {
     $.ajax({
-        url: '/PhanPhoi/ChiTietPhieu/cancelOrder',
+        url: '/PhanPhoi/LapPhieu/cancelOrder',
         dataType: 'json',
         data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
         success: function () {
@@ -264,50 +271,6 @@ function cancelOrder() {
             swal({
                 title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
                 type: 'error'
-            });
-        }
-    });
-}
-
-function previewOrder() {
-    var data = JSON.stringify(getAllData());
-    $.ajax({
-        url: '/PhanPhoi/Preview/Index',
-        type: 'GET',
-        dataType: 'json',
-        data: JSON.stringify({model: data})
-    });
-}
-
-function doneOrder() {
-    var data = JSON.stringify(getAllData());
-    $.ajax({
-        url: '/PhanPhoi/Preview/CheckOut',
-        type: 'POST',
-        dataType: 'json',
-        data: JSON.stringify({model: data}),
-        success: function () {
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-            swal({
-                title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
-                imageUrl: '/Assets/dist/img/Noti.gif',
-                imageWidth: 400,
-                imageHeight: 300,
-                imageAlt: 'Custom image',
-                animation: false
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = '/PhanPhoi/ProcessingOrderList/Index';
-                }
-            });            
-        },
-        error: function () {
-            swal({
-                title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
-                text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
-                type: 'error',
-                showCancelButton: false,
-                showConfirmButton: true
             });
         }
     });

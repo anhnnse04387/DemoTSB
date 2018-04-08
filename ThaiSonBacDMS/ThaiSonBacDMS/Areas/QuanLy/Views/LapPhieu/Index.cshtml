@@ -1,7 +1,7 @@
 ﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.OrderTotalModel
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout1.cshtml";
 }
 <style>
     .menu-button {
@@ -78,12 +78,12 @@
                     <!-- /.box-header -->
                     <div class="box-body pad">
                         <div class="row">
-                            <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
+                            <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;" id="normal">
                                 <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" href="@Url.Action("Index","LapPhieu")" target="_blank">
                                     <i class="fa fa-plus-square text-green"></i>
                                     <span><strong>Tạo Mới</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-edit text-gray"></i>
                                     <span><strong>Sửa</strong></span>
                                 </a>
@@ -95,11 +95,11 @@
                                     <i class="fa fa-close text-gray"></i>
                                     <span><strong>Hủy</strong></span>
                                 </a>
-                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" id="btnSubmit" data-placement="bottom">
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" id="btnPreview" data-placement="bottom">
                                     <i class="fa fa-check-circle text-green"></i>
                                     <span><strong>Chốt đơn</strong></span>
                                 </button>
-                                <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-exchange text-gray"></i>
                                     <span><strong>Đổi trả</strong></span>
                                 </a>
@@ -111,15 +111,61 @@
                                     <i class="fa fa-print text-blue"></i>
                                     <span><strong>In</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-download text-gray"></i>
                                     <span><strong>Import Excel</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-file-excel-o text-gray"></i>
                                     <span><strong>Xuất Excel</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-pdf-o text-gray"></i>
+                                    <span><strong>Xuất PDF</strong></span>
+                                </a>
+                            </div>
+                            <div class="box-header with-border text-center menu-button noDisplay" style="margin-left: 5px; margin-right: 5px;" id="preview">
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-plus-square text-gray"></i>
+                                    <span><strong>Tạo Mới</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-edit text-gray"></i>
+                                    <span><strong>Sửa</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-save text-gray"></i>
+                                    <span><strong>Lưu</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" id="btnCancelPreview" data-placement="bottom">
+                                    <i class="fa fa-close text-red"></i>
+                                    <span><strong>Hủy</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" id="btnSubmit" data-placement="bottom">
+                                    <i class="fa fa-check-circle text-green"></i>
+                                    <span><strong>Chốt đơn</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-exchange text-gray"></i>
+                                    <span><strong>Đổi trả</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-eye text-gray"></i>
+                                    <span><strong>Xem Trước</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-print text-gray"></i>
+                                    <span><strong>In</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-download text-gray"></i>
+                                    <span><strong>Import Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-excel-o text-gray"></i>
+                                    <span><strong>Xuất Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-file-pdf-o text-gray"></i>
                                     <span><strong>Xuất PDF</strong></span>
                                 </a>
@@ -480,6 +526,21 @@
 
         </div>
     </div>
+    <div class="modal fade" id="confirmComplete" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận chốt đơn ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="donePendingOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- /.content -->
 }
 @section LapPhieu
@@ -487,7 +548,7 @@
     <script src="/Assets/dist/js/sweetalert2.all.js"></script>
     <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
-    <script src="/Assets/dist/js/lapPhieuQuanLy.js"></script>
+    <script src="/Assets/dist/js/chiTietPhieuQuanLy.js"></script>
 }
 
 
