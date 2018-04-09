@@ -190,7 +190,7 @@
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-sliders"></i></span>
-                                                                @Html.TextBoxFor(model => model.categoryName, new { @class = "form-control", @placeholder = "Danh mục...", @id = "categoryName" })
+                                                                @Html.DropDownListFor(model => model.categoryName, @Model.lstCategorySearch, "", new { @class = "form-control select2", @id = "cateSearch" })
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -307,7 +307,7 @@
                                             <td class="noBorder"></td>
                                             <td class="noBorder" style="text-align:center">Tổng</td>
                                             <td></td>
-                                            <td style="text-align:right" class="number">@item.Value.Sum(x=>x.totalQuantity)</td>
+                                            <td style="text-align:right" class="number">@item.Value.Sum(x => x.totalQuantity)</td>
                                             <td style="text-align:right"></td>
                                             <td style="text-align:right" class="number">@item.Value.Sum(x => x.doanhThu)</td>
                                         </tr>
@@ -318,7 +318,7 @@
                                         <td class="noBorder"></td>
                                         <td class="noBorder" style="text-align:center">Tổng Cộng</td>
                                         <td></td>
-                                        <td style="text-align:right">@Model.data.Sum(x=>x.Value.Sum(s=>s.totalQuantity))</td>
+                                        <td style="text-align:right">@Model.data.Sum(x => x.Value.Sum(s => s.totalQuantity))</td>
                                         <td style="text-align:right"></td>
                                         <td style="text-align:right">@Model.data.Sum(x => x.Value.Sum(s => s.doanhThu))</td>
                                     </tr>
@@ -343,5 +343,33 @@
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <!-- page JS-->
     <script src="~/Assets/dist/js/pages/chiTietBaoCaoDoanhThu.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#numberFrom").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#numberTo").autoNumeric("init", { minValue: "1", maxValue: "9999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#priceFrom").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#priceTo").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#doanhThuFrom").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#doanhThuTo").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+        });
+        $("#productName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetSearchValue","SanPhamDangKinhDoanh")',
+                    minLength: 2,
+                    dataType: "json",
+                    data: { searchValue: $("#productName").val() },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.pCodeSearch, value: item.pCodeSearch }
+                        }))
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            }
+        });
+    </script>
 }
 
