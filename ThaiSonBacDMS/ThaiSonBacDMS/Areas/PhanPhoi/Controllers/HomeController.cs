@@ -170,9 +170,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
             //Top Selling Category
             Dictionary<string, int> topSellingCategoryCurrent = new Dictionary<string, int>();
-            topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, lastDayOfMonth);
+            topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, DateTime.Now);
             Dictionary<string, int> topSellingCategoryPrevious = new Dictionary<string, int>();
-            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, lastMonthPrevious);
+            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, DateTime.Now.AddMonths(-1));
             List<TopSellingCategory> listTSC = new List<TopSellingCategory>();
 
             foreach(var item in topSellingCategoryCurrent) {

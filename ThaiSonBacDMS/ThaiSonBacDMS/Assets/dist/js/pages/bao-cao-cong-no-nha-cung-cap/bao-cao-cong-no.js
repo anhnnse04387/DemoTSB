@@ -1,40 +1,105 @@
-/*
- * Date picker
- *
- */
-$(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2();
+Date.prototype.addDays = function (days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+};
+
+$(document).ready(function () {
+    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
 });
 
-$('input[name=week]').datepicker({
-    format: "dd-mm-yyyy",
-    autoclose: true,
-    orientation: 'top auto'
-}).on('show', function (e) {
-    var td = $('td', '.datepicker-days');
-    td.mouseover(function () {
-    }).mouseout(function () {
-        $('.week', '.datepicker-days').removeClass('week');
+function getFirstDayOfWeek(date) {
+    var currentTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var firstDayOfWeek = new Date();
+    var dayOfWeek = currentTime.getDay();
+    if (dayOfWeek == 0) {
+        firstDayOfWeek = currentTime.addDays(-6);
+    }
+    else {
+        firstDayOfWeek = currentTime.addDays(-(dayOfWeek - 1));
+    }
+    return firstDayOfWeek;
+};
+
+function getListDay(year, month) {
+    var currentTime = new Date(year, month - 1, 1);
+    var dateControl = getFirstDayOfWeek(currentTime);
+    var returnMap = [];
+    var count = false;
+    while (dateControl.getMonth() <= currentTime.getMonth()) {
+        var item = {};
+        if (count) {
+            dateControl = dateControl.addDays(1);
+            item['key'] = moment(dateControl).format();
+            item['value'] = moment(dateControl).format('DD/MM') + ' => ' + moment(dateControl.addDays(6)).format('DD/MM');
+            returnMap.push(item);
+        } else {
+            item['key'] = moment(dateControl).format();
+            item['value'] = moment(dateControl).format('DD/MM') + ' => ' + moment(dateControl.addDays(6)).format('DD/MM');
+            count = true;
+            returnMap.push(item);
+        }
+        dateControl = dateControl.addDays(6);
+        if (dateControl.addDays(1).getDate() == 1) break;
+    }
+    return returnMap;
+};
+
+
+
+$(document).ready(function () {
+    var date = new Date();
+    $("#selectedYear").val(date.getFullYear());
+    $('#selectedMonth').val(date.getMonth() + 1);
+    var month = $('#selectedMonth').val();
+    var year = $('#selectedYear').val();
+    changeWeek(year, month);
+    var firstDate = getFirstDayOfWeek(date);
+    $("#selectedWeek").val(moment(firstDate).format());
+    $("#selectedMonth, #selectedYear").change(function () {
+        month = $('#selectedMonth').val();
+        year = $("#selectedYear").val();
+        if (month == -1) {
+            $("#selectedWeek").empty();
+            $('#selectedWeek')
+                .append($("<option></option>")
+                .attr("value", "-1")
+                .text("Tất cả"));
+        } else {
+            $("#selectedWeek").empty();
+            changeWeek(year, month);
+        }
+
     });
-}).on('hide', function (e) {
-
-    console.log($(this).val());
 });
 
-$('.input-group-addon', '.week-select').click(function () {
-    $('input[name=week]').datepicker('show');
-});
+function changeWeek(year, month) {
+    $('#selectedWeek')
+                .append($("<option></option>")
+                .attr("value", "-1")
+                .text("Tất cả"));
+    $.each(getListDay(year, month), function (i, obj) {
+        $('#selectedWeek')
+                .append($("<option></option>")
+                .attr("value", obj.key)
+                .text(obj.value));
+    });
+};
 
-/*
- * DataTable
- *
- */
-$(function () {
-   
-    $('#example2').DataTable();
-    $('#example3').DataTable();
-});
+
+function changeWeek(year, month) {
+    $('#selectedWeek')
+                .append($("<option></option>")
+                .attr("value", "-1")
+                .text("Tất cả"));
+    $.each(getListDay(year, month), function (i, obj) {
+        $('#selectedWeek')
+                .append($("<option></option>")
+                .attr("value", obj.key)
+                .text(obj.value));
+    });
+};
+
 
 /*
  * Chart JS
@@ -493,89 +558,5 @@ var config3 = {
     }
 };
 
-var config4 = {
-    type: 'line',
-    data: {
-        labels: [// Date Objects
-            newDate2('12/1/2017'),
-            newDate2('12/5/2017'),
-            newDate2('12/10/2017'),
-            newDate2('12/15/2017'),
-            newDate2('12/20/2017'),
-            newDate2('12/25/2017'),
-            newDate2('12/30/2017')
-        ],
-        datasets: [{
-                label: "CB - Aptomat",
-                backgroundColor: '#00ed17',
-                borderColor: '#00ed17',
-                fill: false,
-                data: [{
-                        x: newDate2('12/1/2017'),
-                        y: 1.5
-                    }, {
-                        x: newDate2('12/6/2017'),
-                        y: 4.2
-                    }, {
-                        x: newDate2('12/12/2017'),
-                        y: 3.1
-                    }, {
-                        x: newDate2('12/31/2017'),
-                        y: 4
-                    }]
-            }]
-    },
-    options: {
-        elements: {
-            line: {
-                tension: 0 // disables bezier curves
-            }
-        },
-        scales: {
-            xAxes: [{
-                    type: "time",
-                    time: {
-                        format: timeFormat,
-                        // round: 'day'
-                        tooltipFormat: 'DD/MM',
-                        displayFormats: {
-                            'day': 'DD/MM'
-                        }
-                    }
-                }
-            ], yAxes: [{
-                    ticks: {
-                        min: 0,
-                        stepSize: 1,
-                        max: 5
-                    }
-                }]
-        }
-    }
-};
-window.onload = function () {
-    var ctx = document.getElementById("lineChart").getContext("2d");
-    var ctx2 = document.getElementById("lineChart2").getContext("2d");
-    var ctx3 = document.getElementById("lineChart3").getContext("2d");
-    
-    window.myLine = new Chart(ctx, config);
-    window.myLine = new Chart(ctx2, config2);
-    window.myLine = new Chart(ctx3, config3);
-    
-};
 
-/*
- * OnChange event
- *
- */
-$('select').on('change', function() {
-  if( this.value ===  'CB - Aptomat') {
-      $( "#lineChart" ).replaceWith( "<canvas id=\"lineChart4\" style=\"height: 407px\"></canvas>" );
-      var ctx4 = document.getElementById("lineChart4").getContext("2d");
-      window.myLine = new Chart(ctx4, config4);
-  }else {
-      $( "#lineChart4" ).replaceWith( "<canvas id=\"lineChart\" style=\"height: 407px\"></canvas>" );
-      var ctx = document.getElementById("lineChart").getContext("2d");
-      window.myLine = new Chart(ctx, config);
-  }
-});
+

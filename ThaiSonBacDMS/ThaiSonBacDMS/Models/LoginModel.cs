@@ -8,9 +8,7 @@ namespace ThaiSonBacDMS.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Xin hãy nhập tài khoản")]
         public string accountName { get; set; }
-        [Required(ErrorMessage = "Xin hãy nhập mật khẩu")]
         public string password { get; set; }
         public bool rememberMe { get; set; }
 

@@ -41,9 +41,12 @@ namespace ThaiSonBacDMS.Controllers
             var roleDAO = new RoleDAO();
             var userDAO = new UserDAO();
 
-            var currentUser = userDAO.getByAccountID(session.accountID);
+            var currentUser = session.user_info;
             var listRole = roleDAO.getRoleByAccount(session.accountID);
             var userSession = new UserSession();
+            userSession.user_info = currentUser;
+            userSession.role_name = new UserDAO().getOffice((byte)currentUser.Office_ID);
+            userSession.roleSelectFlag = true;
             userSession.account_name = session.account_name;
             userSession.accountID = session.accountID;
             userSession.user_name = currentUser.User_name;
@@ -52,39 +55,28 @@ namespace ThaiSonBacDMS.Controllers
             var roleName = roleDAO.getByID(roleID).Role_name;
             if (roleID == 1)
             {
-                userSession.role_name = roleName;
                 Session.Add(CommonConstants.USER_SESSION, userSession);
                 return RedirectToAction("Index", "Quantri/Home");
             }
             else if (roleID == 2)
             {
-                userSession.role_name = roleName;
                 Session.Add(CommonConstants.USER_SESSION, userSession);
                 return RedirectToAction("Index", "Quanly/Home");
             }
             else if (roleID == 3)
             {
-                userSession.role_name = roleName;
                 Session.Add(CommonConstants.USER_SESSION, userSession);
                 return RedirectToAction("Index", "PhanPhoi/Home");
             }
             else if (roleID == 4)
             {
-                userSession.role_name = roleName;
                 Session.Add(CommonConstants.USER_SESSION, userSession);
                 return RedirectToAction("Index", "HangHoa/Home");
             }
             else if (roleID == 5)
             {
-                userSession.role_name = roleName;
                 Session.Add(CommonConstants.USER_SESSION, userSession);
                 return RedirectToAction("Index", "KeToan/Home");
-            }
-            else if (roleID == 5)
-            {
-                userSession.role_name = roleName;
-                Session.Add(CommonConstants.USER_SESSION, userSession);
-                return RedirectToAction("Index", "GiaoHang/Home");
             }
             
             return View();

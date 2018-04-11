@@ -367,6 +367,48 @@ namespace Models.DAO
             return dataList;
         }
 
+
+        public Dictionary<string, List<DataCongNoKhachHang>> getDataCongNoKhachHang(DateTime beginDate, DateTime endDate, string categoryID)
+        {
+            Dictionary<string, List<DataCongNoKhachHang>> listData = new Dictionary<string, List<DataCongNoKhachHang>>();
+            if (categoryID == "-1") categoryID = "";
+            var tested_query = from oi in db.Order_items
+                               join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                               where ot.Date_created >= beginDate && ot.Date_created <= endDate
+                               && oi.Order_part_ID == null
+                               group oi by ot.Customer_ID into group_customer
+                               from group_category in
+                               (from oi in group_customer
+                                join p in db.Products on oi.Product_ID equals p.Product_ID
+                                where p.Category_ID.Contains(categoryID)
+                                group oi by p.Category_ID)
+                               group group_category by group_customer.Key;
+            
+            foreach(var item in tested_query)
+            {
+                try
+                {
+                    var listCategory = new List<DataCongNoKhachHang>();
+                    foreach(var i in item)
+                    {
+                        DataCongNoKhachHang data = new DataCongNoKhachHang();
+                        data.categoryName = new CategoryDAO().getCategoryById(i.Key).Category_name;
+                        data.totalQuantity = (int) i.Sum(x => x.Quantity);
+                        data.totalPrice = i.Sum(x=>x.Discount==null ? (decimal)x.Price 
+                        : (decimal)x.Price - (decimal)x.Price*((decimal)x.Discount/100));
+                        listCategory.Add(data);
+                    }
+                    var cusName = new CustomerDAO().getCustomerById(item.Key).Customer_name;
+                    listData.Add(cusName, listCategory);
+                }
+                catch(Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine(e);
+                }
+            }                
+            return listData;
+        }
+
         //thuongtx
         public List<Order_items> getLstOrderItems(int productId)
         {

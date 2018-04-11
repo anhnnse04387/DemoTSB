@@ -156,10 +156,6 @@
                     <!-- /.table-responsive -->
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                    <a href="phanphoi_toBeContinue.html" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
-                </div>
-                <!-- /.box-footer -->
             </div>
             <!-- /.box -->
         </div>
@@ -387,9 +383,10 @@
                     text: 'Tháng @(DateTime.Now.Month-1)'
                 },
                 scales: {
-                    xAxes: [{
+                    yAxes: [{
                         ticks: {
-                            display: false
+                            min: 0,
+                            
                         }
                     }]
                 }
@@ -415,9 +412,10 @@
                     text: 'Tháng @DateTime.Now.Month'
                 },
                 scales: {
-                    xAxes: [{
+                    yAxes: [{
                         ticks: {
-                            display: false
+                            min: 0,
+                            
                         }
                     }]
                 }

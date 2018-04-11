@@ -35,5 +35,10 @@ namespace Models.DAO
             return db.Customers.Where(s => s.Date_Created >= dateBegin && s.Date_Created <= dateEnd).ToList();
         }
 
+        public List<Customer> getTop10CustomerDebt()
+        {
+            return db.Customers.OrderBy(s => s.Current_debt).Where(s => s.Status == 1).Take(10).ToList();
+        }
+
     }
 }
