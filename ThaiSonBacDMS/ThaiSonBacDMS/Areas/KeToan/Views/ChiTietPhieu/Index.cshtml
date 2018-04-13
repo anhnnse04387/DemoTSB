@@ -9,61 +9,11 @@
         font-size: medium;
     }
 
-    .input-group {
-        padding-bottom: 10px;
-    }
-
-    .custom-btn {
-        padding: 10px 5px;
-        min-width: 60px;
-        height: 40px;
-    }
-
-    .accountant-view-box-body-custom {
-        font-size: 20px;
-    }
-
-    .a-custom-label {
-        color: white;
-    }
-
-    th {
-        color: white;
-        background-color: #3c8dbc;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    td {
-        text-align: center;
-    }
-
-    tfoot {
-        color: white;
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-        background-color: #544d61;
-    }
-
-    textarea {
-        resize: vertical;
-        resize: horizontal;
-    }
-
-    .mainTable {
-        background-color: rgb(240, 240, 240);
-    }
-
-        .mainTable thead tr th {
-            vertical-align: middle !important;
-            text-align: center;
-            background-color: #3c8dbc;
-            color: #fff;
-        }
-
-    .custom-span {
-        margin: 0 0 0 10px;
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
     }
 
     .custom-btn {
@@ -72,11 +22,42 @@
         height: 55px;
     }
 
-    .menu-button {
-        background-color: #fcf9f9;
-        margin-top: 20px;
-        padding-top: 20px;
-        padding-right: 25px;
+    .mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+    .number {
+        text-align: right;
+    }
+
+    .mainTable thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
+
+    .mainTable tbody tr td:nth-child(1) {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
+    .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
+    .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
+        text-align: right;
+    }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
+
+    .textCursor {
+        cursor: text;
+    }
+
+    .noDisplay {
+        display: none !important;
     }
 </style>
 
@@ -365,13 +346,10 @@
                 data: { orderId: $('#orderId').val() },
                 success: function () {
                     document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
                     swal({
-                        title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
-                        imageUrl: '/Assets/dist/img/Noti.gif',
-                        imageWidth: 400,
-                        imageHeight: 300,
-                        imageAlt: 'Custom image',
-                        animation: false
+                        title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
+                        type: 'success'
                     }).then((result) => {
                         if (result.value) {
                             window.location.href = '/KeToan/Home/Index';

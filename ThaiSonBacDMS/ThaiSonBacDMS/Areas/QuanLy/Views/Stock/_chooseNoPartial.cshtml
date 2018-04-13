@@ -1,7 +1,11 @@
 ﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.StockModel
 @{
-    Layout = null
+    Layout = null;
 }
+<input type="hidden" id="addressChange" value="@Model.address" />
+<input type="hidden" id="telChange" value="@Model.tel" />
+<input type="hidden" id="donViChange" value="@Model.customer" />
+<input type="hidden" id="dateRequestedChange" value="@Model.dateRequested" />
 <div class="row" style="margin-top: 10px;">
     <div class="col-xs-12 table-responsive">
         <fieldset>
@@ -17,16 +21,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model.lstItem != null)
+                    @if (Model.items != null)
                     {
-                        for (int i = 0; i < Model.lstItem.Count; i++)
+                        for (int i = 0; i < Model.items.Count; i++)
                         {
                             <tr class="item">
                                 <td>@(i + 1)</td>
-                                <td><input type="hidden" class="productId" value="@Model.lstItem[i].Product_ID" />@Model.lstItem[i].productName</td>
-                                <td>@Model.lstItem[i].orderQtt</td>
-                                <td><input type="text" class="form-control qtt" value="@Model.lstItem[i].Quantities" required/></td>
-                                <td><input type="text" class="form-control note" value="@Model.lstItem[i].Note" /></td>
+                                <td><input type="hidden" class="productId" value="@Model.items[i].Product_ID" />@Model.items[i].productName</td>
+                                <td>@Model.items[i].orderQtt</td>
+                                <td><input type="text" class="form-control qtt" value="@Model.items[i].Quantities" onkeyup="calc()" required /></td>
+                                <td><input type="text" class="form-control note" value="@Model.items[i].Note" /></td>
                             </tr>
                         }
                     }

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
     public class OrderListController : Controller
     {
-        // GET: PhanPhoi/OrderList
+        // GET: QuanLy/OrderList
         public ActionResult Index()
         {
             var orderDAO = new OrderTotalDAO();

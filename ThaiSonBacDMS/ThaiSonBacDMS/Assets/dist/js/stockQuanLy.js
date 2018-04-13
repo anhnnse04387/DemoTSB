@@ -30,13 +30,13 @@
         $.ajax({
             url: "/QuanLy/Stock/ChooseNo",
             data: { no: $(this).val(), status: true },
-            datatype: "json",
+            datatype: "html",
             success: function (data) {
-                document.getElementById('address').value = data.address;
-                document.getElementById('tel').value = data.tel;
-                document.getElementById('donVi').value = data.customer;
-                document.getElementById('dateRequested').value = data.dateRequested;
-                $("#lstItem").html(data.lstItem);
+                $("#lstItem").html(data);
+                document.getElementById('address').value = $('#addressChange').val();
+                document.getElementById('tel').value = $('#telChange').val();
+                document.getElementById('donVi').value = $('#donViChange').val();
+                $('#dayRequested').datepicker('setDate', $('#dateRequestedChange').val());
             }
         });
     });
@@ -46,15 +46,26 @@
             data: { no: $(this).val(), status: false },
             datatype: "json",
             success: function (data) {
-                document.getElementById('address').value = data.address;
-                document.getElementById('tel').value = data.tel;
-                document.getElementById('donVi').value = data.customer;
-                document.getElementById('dateRequested').value = data.dateRequested;
-                $("#lstItem").html(data.lstItem);
+                $("#lstItem").html(data);
+                document.getElementById('address').value = $('#addressChange').val();
+                document.getElementById('tel').value = $('#telChange').val();
+                document.getElementById('donVi').value = $('#donViChange').val();
+                $('#dayRequested').datepicker('setDate', $('#dateRequestedChange').val());
             }
         });
     });
 });
+
+function calc() {
+    var qttAll = 0;
+    var lst = $('.qtt');
+    for (var i = 0; i < lst.length; i++) {
+        if (lst.eq(i).val() !== "") {
+            qttAll += parseInt(lst.eq(i).val());
+        }
+    }
+    $('#qttAll').val(qttAll);
+}
 
 function getAllData() {
     var items = [];
@@ -66,7 +77,7 @@ function getAllData() {
     }
     var dateImported = $('#dayImported').val();
     $('.item').each(function () {
-        var productId = $(this).find('.productId').val();
+        var productId = parseInt($(this).find('.productId').val());
         var qtt = parseInt($(this).find('.qtt').val());
         var note = $(this).find('.note').val();
         var item = {
@@ -78,16 +89,18 @@ function getAllData() {
     });
     var data = {
         no: no, status: status,
-        dateImported: dateImported, lstItem: items
+        dateImported: dateImported, items: items
     };
-    return data;
+    return JSON.stringify({ 'model': data });
 }
 
 function doneOrder() {
     $.ajax({
         url: '/QuanLy/Stock/CheckOut',
+        contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        data: { model: getAllData() },
+        type: 'POST',
+        data: getAllData(),
         success: function () {
             document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({

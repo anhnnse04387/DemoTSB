@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.datepicker').datepicker();
     $('#customer').change(function () {
         var id = parseInt($('#customer').val());
         $.ajax({

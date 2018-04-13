@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.KeToan.Models;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.KeToan.Controllers
 {
     public class OrderListController : Controller
     {
@@ -18,10 +18,24 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).ToList();
+            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID > 3 && x.Status_ID < 9).ToList();
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
+                var spanClass = "";
+                var status = statusDAO.getStatus(o.Status_ID);
+                if (o.Status_ID == 3 || o.Status_ID == 4)
+                {
+                    spanClass = "label-primary";
+                }
+                else if (o.Status_ID == 5 || o.Status_ID == 6 || o.Status_ID == 7)
+                {
+                    spanClass = "label-success";
+                }
+                else
+                {
+                    spanClass = "label-danger";
+                }
                 var item = new ListItemModel
                 {
                     orderId = o.Order_ID,
@@ -30,107 +44,22 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     delivery = o.Order_part.Count,
                     note = o.Note,
                     total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-info"
+                    status = status,
+                    spanClass = spanClass
                 };
                 items.Add(item);
             }
-            model.statusId = 1;
             model.items = items;
             return View(model);
         }
 
-        public ActionResult Complete()
+        public ActionResult Pending()
         {
             var orderDAO = new OrderTotalDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
-            {
-                var item = new ListItemModel
-                {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-success"
-                };
-                items.Add(item);
-            }
-            model.statusId = 7;
-            model.items = items;
-            return View(model);
-        }
-
-        public ActionResult Cancel()
-        {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 8).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
-            {
-                var item = new ListItemModel
-                {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-danger"
-                };
-                items.Add(item);
-            }
-            model.statusId = 8;
-            model.items = items;
-            return View(model);
-        }
-
-        public ActionResult Store()
-        {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 2).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
-            {
-                var item = new ListItemModel
-                {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-warning"
-                };
-                items.Add(item);
-            }
-            model.statusId = 2;
-            model.items = items;
-            return View(model);
-        }
-
-        public ActionResult Processing()
-        {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).ToList();
+            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 3 || x.Status_ID == 10 || x.Status_ID == 11).ToList();
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
@@ -141,17 +70,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     status = status.Substring(0, status.IndexOf("warning") - 1);
                     spanClass = "label-warning";
                 }
-                if (o.Status_ID == 3 || o.Status_ID == 4)
+                else
                 {
                     spanClass = "label-primary";
-                }
-                if (o.Status_ID == 5 || o.Status_ID == 6)
-                {
-                    spanClass = "label-success";
-                }
-                if (o.Status_ID == 9)
-                {
-                    spanClass = "label-danger";
                 }
                 var item = new ListItemModel
                 {
@@ -176,13 +97,18 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 var orderDAO = new OrderTotalDAO();
                 var lstOrder = new List<Order_total>();
-                if(model.statusId == 12)
+                if (model.statusId == 12)
                 {
-                    lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).ToList();
-                } else
+                    lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID > 3 && x.Status_ID < 9).ToList();
+                }
+                else if (model.statusId == 13)
+                {
+                    lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 3 || x.Status_ID == 10 || x.Status_ID == 11).ToList();
+                }
+                else
                 {
                     lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == model.statusId).ToList();
-                }                                
+                }
                 if (!String.IsNullOrEmpty(model.orderId))
                 {
                     lstOrder = lstOrder.Where(x => x.Order_ID.ToLower().Contains(model.orderId.ToLower())).ToList();
@@ -263,14 +189,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     }
                 }
                 model.items = items;
-                if (model.statusId == 1 || model.statusId == 8)
-                {
-                    return PartialView("_searchPartialNormal", model);
-                }
-                else
-                {
-                    return PartialView("_searchPartialSpecial", model);
-                }
+                return PartialView("_searchPartial", model);
             }
             catch (Exception e)
             {
