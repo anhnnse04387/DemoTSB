@@ -66,14 +66,14 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/Assets/dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">@session.user_name</span>
+                                <span class="hidden-xs">@session.user_info.User_name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="/Assets/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                                     <p>
-                                        @session.user_name<small>@session.role_name</small>
+                                        @session.user_info.User_name<small>@session.role_name</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -81,6 +81,12 @@
                                     <div class="pull-left">
                                         <a href="phanphoi_nguoidung_thong-tin-nguoi-dung.html" class="btn btn-default btn-flat">Hồ sơ</a>
                                     </div>
+                                    @if (session.roleSelectFlag)
+                                    {
+                                        <div class="pull-left" style = "margin-left: 22px;">
+                                            @Html.ActionLink("Đổi phân hệ", "ConfirmRole", new { area = "", controller = "ConfirmRole" }, new { @class = "btn btn-default btn-flat",  })
+                                        </div>
+                                    }
                                     <div class="pull-right">
                                         @Html.ActionLink("Thoát", "Logout", new { area = "", controller = "Login" }, new { @class = "btn btn-default btn-flat" })
                                     </div>
@@ -90,7 +96,7 @@
                     </ul>
                 </div>
                 <!-- Note header-->
-                @{ Html.RenderAction("NoteHeader", "Home"); }
+                @*{ Html.RenderAction("NoteHeader", "Home"); }*@
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->

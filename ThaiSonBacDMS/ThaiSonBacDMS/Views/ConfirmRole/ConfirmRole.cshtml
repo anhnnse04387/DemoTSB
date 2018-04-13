@@ -116,11 +116,11 @@
                 </div>
                 @Html.DropDownListFor(model => model.roleID, @Model.account_role, new { @class = "form-control", @id = "roleSelect", @required = "required", @style = "margin-bottom: 10px;" });
                 <div>
-                    <button style="margin-right: 26px; width: 270px;" type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
+                    <button style="margin-right: 26px; width: 270px; height: 45px; margin-bottom: 10px;" type="submit" class="btn btn-lg btn-success">Đến</button>
                 </div>
-                @Html.ActionLink("Logout", "Logout", "Login")
-                
-            }
+                @Html.ActionLink("Thoát", "Logout", new { area = "", controller = "Login" }, new { @style= "margin-right: 26px; width: 270px; height: 45px;", @class= "btn btn-lg btn-primary" })
+
+           }
         </div>
         <!-- /.login-box-body -->
     </div>

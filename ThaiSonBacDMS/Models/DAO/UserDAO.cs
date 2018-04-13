@@ -43,5 +43,9 @@ namespace Models.DAO
             }
             return user;
         }
+        public string getOffice(int officeID)
+        {
+            return context.Offices.SingleOrDefault(x => x.Office_ID == officeID).Office_name;
+        }
     }
 }

@@ -38,6 +38,7 @@ namespace ThaiSonBacDMS.Controllers
                     var account = accDAO.GetByName(username);
                     var currentUser = userDAO.getByAccountID(account.Account_ID);
                     var userSession = new UserSession();
+                    userSession.role_name = new UserDAO().getOffice((byte)currentUser.Office_ID);
                     userSession.account_name = account.Account_name;
                     userSession.accountID = account.Account_ID;
                     userSession.user_name = currentUser.User_name;
@@ -49,37 +50,31 @@ namespace ThaiSonBacDMS.Controllers
                         var roleName = roleDAO.getByID(roleID).Role_name;
                         if (roleID == 1)
                         {
-                            userSession.role_name = roleName;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "Quantri/Home");
                         }
                         else if (roleID == 2)
                         {
-                            userSession.role_name = roleName;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "Quanly/Home");
                         }
                         else if (roleID == 3)
                         {
-                            userSession.role_name = roleName;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "PhanPhoi/Home");
                         }
                         else if (roleID == 4)
                         {
-                            userSession.role_name = roleName;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "HangHoa/Home");
                         }
                         else if (roleID == 5)
                         {
-                            userSession.role_name = roleName;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "KeToan/Home");
                         }
                         else if (roleID == 5)
                         {
-                            userSession.role_name = roleName;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "GiaoHang/Home");
                         }
@@ -118,12 +113,20 @@ namespace ThaiSonBacDMS.Controllers
                     var roleDAO = new RoleDAO();
                     var userDAO = new UserDAO();
                     //var encryptor = Encryptor.MD5Hash(model.password);
+                    if(string.IsNullOrEmpty(model.accountName) || string.IsNullOrEmpty(model.password))
+                    {
+                        ModelState.AddModelError("", "Xin hãy điền đầy đủ tài khoản và mật khẩu");
+                        return View();
+                    }
                     var result = accDAO.Login(model.accountName, model.password);
                     if (result == 1)
                     {
                         var account = accDAO.GetByName(model.accountName);
                         var currentUser = userDAO.getByAccountID(account.Account_ID);
                         var userSession = new UserSession();
+                        userSession.user_info = currentUser;
+                        userSession.role_name = new UserDAO().getOffice((byte) currentUser.Office_ID);
+                        userSession.roleSelectFlag = false;
                         userSession.account_name = account.Account_name;
                         userSession.accountID = account.Account_ID;
                         userSession.user_name = currentUser.User_name;
@@ -149,43 +152,38 @@ namespace ThaiSonBacDMS.Controllers
                             var roleName = roleDAO.getByID(roleID).Role_name;
                             if (roleID == 1)
                             {
-                                userSession.role_name = roleName;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "Quantri/Home");
                             }
                             else if (roleID == 2)
                             {
-                                userSession.role_name = roleName;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "Quanly/Home");
                             }
                             else if (roleID == 3)
                             {
-                                userSession.role_name = roleName;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "PhanPhoi/Home");
                             }
                             else if (roleID == 4)
                             {
-                                userSession.role_name = roleName;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "HangHoa/Home");
                             }
                             else if (roleID == 5)
                             {
-                                userSession.role_name = roleName;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "KeToan/Home");
                             }
                             else if (roleID == 5)
                             {
-                                userSession.role_name = roleName;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "GiaoHang/Home");
                             }
                         }
                         else
                         {
+                            userSession.roleSelectFlag = true;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("ConfirmRole", "ConfirmRole");
                         }

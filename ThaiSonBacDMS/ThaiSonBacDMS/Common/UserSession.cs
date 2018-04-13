@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,8 @@ namespace ThaiSonBacDMS.Common
     public class UserSession
     {
         public int accountID;
+        public User user_info;
+        public bool roleSelectFlag;
         public string account_name;
         public string user_id;
         public string user_name;

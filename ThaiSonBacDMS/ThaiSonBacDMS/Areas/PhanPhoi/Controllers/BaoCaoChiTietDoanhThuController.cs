@@ -1,5 +1,6 @@
 ﻿using Models.DAO;
 using Models.DAO_Model;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,24 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         public ActionResult Index()
         {
             ChiTietBaoCaoDoanhThu model = new ChiTietBaoCaoDoanhThu();
+            CategoryDAO daoCate = new CategoryDAO();
             //set year in db
             model.listShowYear = new List<SelectListItem>();
             foreach (var i in new OrderTotalDAO().getListYear())
             {
                 var item = new SelectListItem { Text = i.ToString(), Value = i.ToString() };
                 model.listShowYear.Add(item);
+            }
+            //set category in db
+            List<Category> lstTemp = new List<Category>();
+            model.lstCategorySearch = new List<SelectListItem>();
+            lstTemp = daoCate.getLstCate();
+            if (lstTemp.Count != 0)
+            {
+                foreach (Category itemCate in lstTemp)
+                {
+                    model.lstCategorySearch.Add(new SelectListItem { Text = itemCate.Category_name, Value = itemCate.Category_ID });
+                }
             }
             //display data
             var dataLst = new OrderItemDAO().getDataDoanhThu(DateTime.Now, DateTime.Now.AddDays(6), null,
@@ -46,6 +59,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         [HttpPost]
         public ActionResult Index(ChiTietBaoCaoDoanhThu model)
         {
+            CategoryDAO daoCate = new CategoryDAO();
+
             int? numberFrom = null;
             int? numberTo = null;
             decimal? priceFrom = null;
@@ -59,6 +74,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 var item = new SelectListItem { Text = i.ToString(), Value = i.ToString() };
                 model.listShowYear.Add(item);
+            }
+            //set category in db
+            List<Category> lstTemp = new List<Category>();
+            model.lstCategorySearch = new List<SelectListItem>();
+            lstTemp = daoCate.getLstCate();
+            if (lstTemp.Count != 0)
+            {
+                foreach (Category itemCate in lstTemp)
+                {
+                    model.lstCategorySearch.Add(new SelectListItem { Text = itemCate.Category_name, Value = itemCate.Category_ID });
+                }
             }
             try
             {
@@ -90,7 +116,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     throw new Exception("Số lượng từ nhỏ hơn giá đến");
                 }
-                if (priceFrom > priceTo && priceFrom!=null && priceTo!=null)
+                if (priceFrom > priceTo && priceFrom != null && priceTo != null)
                 {
                     throw new Exception("Giá từ nhỏ hơn giá đến");
                 }
@@ -100,7 +126,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index");
@@ -127,7 +153,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     System.Diagnostics.Debug.WriteLine(e);
                     RedirectToAction("Index");
                 }
-                
+
             }
             else if (model.selectedMonth == "-1")
             {
@@ -156,7 +182,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 firstDate = selectedDate;
                 lastDate = firstDate.AddDays(6);
-                
+
             }
             var dataLst = new OrderItemDAO().getDataDoanhThu(firstDate, lastDate, model.categoryName,
                     model.productCode, numberFrom, numberTo, priceFrom, priceTo, doanhThuFrom, doanhThuTo);
@@ -168,7 +194,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                   data = g.ToList()
                               };
             Dictionary<string, List<DataChiTietDoanhThu>> dataDic = new Dictionary<string, List<DataChiTietDoanhThu>>();
-            foreach(var item in returnValue)
+            foreach (var item in returnValue)
             {
                 dataDic.Add(item.categoryName, item.data);
             }

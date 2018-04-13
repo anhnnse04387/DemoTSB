@@ -62,7 +62,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //line chart
             Dictionary<int, decimal> dataLineChartCurrentMonth = new Dictionary<int, decimal>();
             Dictionary<int, int> dataLineChartOrderCurrentMonth = new Dictionary<int, int>();
-            if(listTotal.Any() && listTotal.First().Date_created.Day != 1)
+            if(listTotal.Count != 0 && listTotal.First().Date_created.Day != 1)
             {
                 dataLineChartCurrentMonth.Add(1, 0);
                 dataLineChartOrderCurrentMonth.Add(1, 0);
@@ -93,7 +93,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var firstMonthPrevious = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
             var lastMonthPrevious = firstMonthPrevious.AddMonths(1).AddDays(-1);
             var listTotalPrevious = totalDAO.getOrderByDateCreated(firstMonthPrevious, lastMonthPrevious);
-            if (listTotal.Any() && listTotalPrevious.First().Date_created.Day != 1)
+            if (listTotal.Count != 0 && listTotalPrevious.First().Date_created.Day != 1)
             {
                 dataLineChartPreviousMonth.Add(1, 0);
                 dataLineChartPreviousOrderMonth.Add(1, 0);
@@ -154,11 +154,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             if (totalInMonth >= orderInPreviousMonth)
             {
                 model.orderFlag = true;
-                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
+                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : 0;
             }
             else
             {
-                model.diffrentValueMonth = valueInMonth > 0 ? ((valueInPreviousMonth - valueInMonth) / valueInPreviousMonth * 100) : valueInPreviousMonth;
+                model.diffrentValueMonth = valueInMonth > 0 ? ((valueInPreviousMonth - valueInMonth) / valueInPreviousMonth * 100) : 0;
             }
 
             //Top Selling Product
@@ -170,9 +170,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
             //Top Selling Category
             Dictionary<string, int> topSellingCategoryCurrent = new Dictionary<string, int>();
-            topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, lastDayOfMonth);
+            topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, DateTime.Now);
             Dictionary<string, int> topSellingCategoryPrevious = new Dictionary<string, int>();
-            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, lastMonthPrevious);
+            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, DateTime.Now.AddMonths(-1));
             List<TopSellingCategory> listTSC = new List<TopSellingCategory>();
 
             foreach(var item in topSellingCategoryCurrent) {

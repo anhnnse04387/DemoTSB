@@ -9,6 +9,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class ChiTietBaoCaoDoanhThu
     {
+        public List<SelectListItem> lstCategorySearch { get; set; }
         public IList<SelectListItem> listShowYear { get; set; }
 
         public string selectedYear { set; get; }
