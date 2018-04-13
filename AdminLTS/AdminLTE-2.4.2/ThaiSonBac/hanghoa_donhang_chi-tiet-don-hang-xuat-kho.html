@@ -35,6 +35,10 @@
             font-size: medium;
 			}
 			
+			.input-group {
+            padding-bottom: 10px;
+			}
+			
 			.custom-btn {
             padding: 10px 5px;
             min-width: 60px;
@@ -51,15 +55,13 @@
 			
 			th {
             color: white;
-            background-color: #f88457;
+            background-color: #3c8dbc;
             font-weight: bold;
-            font-size: 18px;
             text-align: center;
 			}
 			
 			td {
             text-align: center;
-            font-size: 16px;
 			}
 			
 			tfoot {
@@ -75,16 +77,38 @@
             resize: horizontal;
 			}
 			
+			#mainTable {
+            background-color: rgb(240, 240, 240);
+			}
+			
+			#mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+			}
+			
+			#mainTable tbody td:nth-child(2) {
+            text-align: left;
+			}
+			
+			#mainTable tbody td:nth-child() {
+            text-align: right;
+			}
+			
+			.custom-span {
+            margin: 0 0 0 10px;
+			}
 			.custom-btn {
-				padding: 10px 5px;
-				min-width: 80px;
-				height: 55px;
-	}
+						padding: 10px 5px;
+						min-width: 80px;
+						height: 55px;
+			}
 			.menu-button {
-				background-color: #fcf9f9;
-				margin-top: 20px;
-				padding-top: 20px;
-				padding-right: 25px;
+						background-color: #fcf9f9;
+						margin-top: 20px;
+						padding-top: 20px;
+						padding-right: 25px;
 			}
 		</style>
 	</head>
@@ -93,7 +117,6 @@
 		<div class="wrapper">
 			
 			<header class="main-header">
-				
 				<a href="hanghoa_index.html" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini">
@@ -244,13 +267,13 @@
 									</span>
 								</a>
 								<ul class="treeview-menu ">	
-									<li class="">
+									<li class="active">
 										<a href="hanghoa_index.html">
 											<i class="fa fa-file-text"></i>
 											<span>Chờ xuất kho</span>
 										</a>
 									</li>								
-									<li class="active">
+									<li class="">
 										<a href="hanghoa_donhang_danh-sach-da-chuan-bi-hang.html">
 											<i class="fa fa-file-text"></i>
 											<span>Đã chuẩn bị hàng</span>
@@ -315,15 +338,16 @@
 								<i class=""></i> Đơn hàng</a>
 							</li>
 							<li>
-								<a href="#">
-								<i class=""></i> Đã chuẩn bị hàng</a>
+								<a href="hanghoa_index.html">
+								<i class=""></i> Chờ xuất kho</a>
 							</li>
 							<li>
 								<a href="#">
-								<i class=""></i> Chi tiết vận chuyển</a>
+								<i class=""></i> Chi tiết phiếu</a>
 							</li>
 						</ol>
 					</section>
+					
 					<!-- Main content -->
 					<section class="content">
 						<div class="row">
@@ -355,11 +379,11 @@
 											<h4 class="modal-title" id="myModalLabel">Xác nhận đơn hàng</h4>
 										</div>
 										<div class="modal-body">
-											<label>Xác nhận giao hàng?</label>
+											<label>Xác nhận xuất kho?</label>
 										</div>
 										<div class="modal-footer">
-											<a type="button" class="btn btn-default" data-dismiss="modal">Đóng</a>
-											<a href="hanghoa_donhang_danh-sach-da-chuan-bi-hang.html" type="button" class="btn btn-default" style="background-color:green;color:white">Xử lý</a>
+											<a type="button"  class="btn btn-default" data-dismiss="modal">Đóng</a>
+											<a href="hanghoa_index.html" type="button" style="background-color: green !important;color:white" class="btn  btn-ok">Xử lí</a>
 										</div>
 									</div>
 								</div>
@@ -371,7 +395,7 @@
 									<div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
 										<div class="col-md-12">
 											<h4>
-												<b>ĐƠN HÀNG LÔ SỐ: 81264-0</b>
+												<b>ĐƠN HÀNG LÔ SỐ: 81264-1</b>
 											</h4>
 										</div>
 									</div>
@@ -386,7 +410,7 @@
 														<span><strong>Sửa</strong></span>
 												</a>
 												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
-														<i class="fa fa-save text-gray"></i>
+														<i class="fa fa-save  text-gray"></i>
 														<span><strong>Lưu</strong></span>
 												</a>
 												<a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirm-delete">
@@ -398,27 +422,27 @@
 														<span><strong>Chốt đơn</strong></span>
 												</a>
 												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
-														<i class="fa fa-exchange text-gray"></i>
+														<i class="fa fa-exchange  text-gray"></i>
 														<span><strong>Đổi trả</strong></span>
 												</a>
 												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-														<i class="fa fa-eye text-gray"></i>
+														<i class="fa fa-eye  text-gray"></i>
 														<span><strong>Xem Trước</strong></span>
 												</a>
-												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
-														<i class="fa fa-print text-gray"></i>
+												<a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+														<i class="fa fa-print text-blue"></i>
 														<span><strong>In</strong></span>
 												</a>
 												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-														<i class="fa fa-download text-gray"></i>
+														<i class="fa fa-download  text-gray"></i>
 														<span><strong>Import Excel</strong></span>
 												</a>
-												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
-														<i class="fa fa-file-excel-o text-gray"></i>
+												<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+														<i class="fa fa-file-excel-o  text-green"></i>
 														<span><strong>Xuất Excel</strong></span>
 												</a>
-												<a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
-														<i class="fa fa-file-pdf-o text-gray"></i>
+												<a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+														<i class="fa fa-file-pdf-o text-green"></i>
 														<span><strong>Xuất PDF</strong></span>
 												</a>
 										</div>
@@ -477,7 +501,27 @@
 														<input class="form-control" placeholder="24324" disabled>
 													</div>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-2">
+													<div style="margin-top: 25px;">
+														<label>
+															Đã lấy hóa đơn
+														</label>
+														<span class="custom-span">
+															<input type="checkbox">
+														</span>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div style="margin-top: 25px;">
+														<label>
+															Đã lấy phiếu
+														</label>
+														<span class="custom-span">
+															<input type="checkbox">
+														</span>
+													</div>
+												</div>
+												<div class="col-md-2">
 													<label>Trạng Thái</label>
 													<div class="input-group">
 														<span class="label label-primary label-medium">
@@ -487,121 +531,150 @@
 												</div>
 											</div>
 										</div>
+										<div class="row">
+											<div class="col-md-3"></div>
+											
+											
+										</div>
+										
 									</div>
-									
-									
-									<hr>
-									<div class="box-body" style="margin-left: 20px;">
-										<div class="row">
-											<div class="col-md-4">
-												<label>Lựa chọn giao hàng</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-hourglass"></i>
-													</span>
-													<select class="form-control" style="font-family: 'FontAwesome';">
-														<option>Khách đến lấy</option>
-														<option>30A-342.21</option>
-														<option>29A-652.12</option>
-														<option>28A-113.121</option>
-														<option>Xe máy</option>
-														<option>Thuê xe</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-md-4">
-												<label>Nhân viên giao hàng</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-user"></i>
-													</span>
-													<select class="form-control" style="font-family: 'FontAwesome';">
-														<option>Lương Đức Chinh</option>
-														<option>Hà Văn Thanh</option>
-														<option>Vũ Xuân Trường</option>
-														<option>Nguyễn Văn Hậu</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-md-4">
-												<label>Lái xe</label>
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="fa fa-user"></i>
-													</span>
-													<select class="form-control" style="font-family: 'FontAwesome';">
-														<option>Nguyễn Ngọc Hải</option>
-														<option>Nguyễn Văn Toàn</option>
-														<option>Lê Duy Mạnh</option>
-														<option>Trần Minh Long</option>
-													</select>
+									<!-- /.box-header -->
+									<div class="box-body pad">
+										<div class="container-fluid">
+											<legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+											<div class="row">
+												<div class="col-md-12">
+													<table id="mainTable" class="table table-striped">
+														<thead style="text-align: center">
+															<tr>
+																<th rowspan="2">STT</th>
+																<th rowspan="2">Tên hàng</th>
+																<th colspan="2">Số lượng</th>
+																<th rowspan="2">Đã đủ</th>
+															</tr>
+															<tr>
+																<th>Cái</th>
+																<th>Thùng</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>1</td>
+																<td>ABN 52c</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>2</td>
+																<td>TS1000N AG6 3P</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>3</td>
+																<td>ABS 32c</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>4</td>
+																<td>ABH 53C</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>5</td>
+																<td>ABE103-G</td>
+																<td>20</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+															<tr>
+																<td>6</td>
+																<td>SDO 123d</td>
+																<td>1</td>
+																<td>1</td>
+																<td>
+																	<input type="checkbox" class="checky">
+																</td>
+															</tr>
+														</tbody>
+														<tfoot></tfoot>
+													</table>
 												</div>
 											</div>
 										</div>
-										<br/>
-										<div class="row">
-											<div class="col-md-4"><input type="checkbox"><label>Đã nhận hoá đơn</label></input></div>
-											<div class="col-md-4"><input type="checkbox"><label>Đã nhận phiếu</label></input></div>
-										</div>
-										<hr>
-									
 									</div>
 								</div>
-								<!-- /.col-->
-								
 							</div>
-							<!-- ./row -->
-							<!-- /. tools -->
 						</div>
-						<!-- /.box-header -->
-						
-					</section>
-					<!-- /.content -->
+					</div>
+					
 				</div>
-				<!-- /.content-wrapper -->
-				<footer class="main-footer">
-					<strong>Copyright &copy; 2017
-					<a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
-					<a href="#0" class="cd-top">Top</a>
-				</footer>
+				<!-- /.col-->
 			</div>
-			<!-- ./wrapper -->
-		
-		<!-- jQuery 3 -->
-		<script src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="dist/js/back-to-top.js"></script>
-		<!-- Bootstrap 3.3.7 -->
-		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- FastClick -->
-		<script src="bower_components/fastclick/lib/fastclick.js"></script>
-		<!-- AdminLTE App -->
-		<script src="dist/js/adminlte.min.js"></script>
-		<!-- AdminLTE for demo purposes -->
-		<script src="dist/js/demo.js"></script>
-		
-		<script>
-        $(document).ready(function () {
-		$('[data-toggle="tooltip"]').tooltip();
-        });
-		</script>
-		<script>
-        $('#confirm-delete').on('click', '.btn-ok', function (e) {
-		var $modalDiv = $(e.delegateTarget);
-		var id = $(this).data('recordId');
-		// $.ajax({url: '/api/record/' + id, type: 'DELETE'})
-		// $.post('/api/record/' + id).then()
-		$modalDiv.addClass('loading');
-		setTimeout(function () {
-		$modalDiv.modal('hide').removeClass('loading');
-		}, 1000)
-        });
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-		var data = $(e.relatedTarget).data();
-		$('.title', this).text(data.recordTitle);
-		$('.btn-ok', this).data('recordId', data.recordId);
-        });
-        $('textarea').autoWidth();
-		</script>
-		</body>
-		
-		</html>		
+			<!-- ./row -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<strong>Copyright &copy; 2017
+		<a href="http://www.thaisonbac.com.vn/">Bản quyền thuộc Thái Sơn Bắc</a>.</strong>
+		<a href="#0" class="cd-top">Top</a>
+	</footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="dist/js/back-to-top.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+
+<script>
+$(document).ready(function () {
+$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script>
+$('#confirm-delete').on('click', '.btn-ok', function (e) {
+var $modalDiv = $(e.delegateTarget);
+var id = $(this).data('recordId');
+// $.ajax({url: '/api/record/' + id, type: 'DELETE'})
+// $.post('/api/record/' + id).then()
+$modalDiv.addClass('loading');
+setTimeout(function () {
+$modalDiv.modal('hide').removeClass('loading');
+}, 1000)
+});
+$('#confirm-delete').on('show.bs.modal', function (e) {
+var data = $(e.relatedTarget).data();
+$('.title', this).text(data.recordTitle);
+$('.btn-ok', this).data('recordId', data.recordId);
+});
+$('textarea').autoWidth();
+</script>
+</body>
+
+</html>
