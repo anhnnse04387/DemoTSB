@@ -453,7 +453,60 @@
                                             <span><strong>Xuất PDF</strong></span>
                                         </a>
                                 </div>
-                                <hr>
+								<P/>
+							<div class="box">
+                            <div class="row" style="margin-left :0px; margin-right:0px">
+                                <div class="col-md-12">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+										<div class="row">
+                                            <div class="col-md-2">Tên khách hàng</div>
+                                            <div class="col-md-4">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" placeholder="Tên khách hàng">
+                                                </div>
+                                            </div>
+											<div class="col-md-1"></div>
+											 <div class="col-md-1">Dư nợ</div>
+                                            <div class="col-md-2">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <input placeholder="Từ" type="text" class="form-control" id="datepicker">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <input placeholder="Đến" type="text" class="form-control" id="datepicker">
+                                                </div>
+                                            </div>
+											
+                                        </div>
+                                        <br>
+                                        
+                                    </div>
+                                </div>
+								<hr>
+                                <!-- /.box-body -->
+                                <div class="box-footer clearfix">
+                                    <div class="pagination pagination-sm no-margin pull-right">
+                                        <button type="button" class="btn btn-block btn-primary">Tìm kiếm
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                                 <div class="box-body">
                                     <div class="row">
@@ -470,7 +523,7 @@
                                                         <th style="width: 7%">TỔNG CỘNG</th>
                                                         <th style="width: 7%">THANH TOÁN</th>
                                                         <th style="width: 7%">CÒN NỢ</th>
-                                                        <th style="width: 5%">THAY ĐỔI</th>
+                                                        <th style="width: 5%"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -494,27 +547,7 @@
                                                         <td colspan="10">
                                                             <div class="container-fluid">
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label>Số lượng</label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                            </span>
-                                                                            <input type="text" value="248" class="form-control number" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label>Nợ cũ</label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                            </span>
-                                                                            <input type="text" value="2435117579" id="noCu1" class="form-control number" placeholder="" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
+																<div class="col-md-6">
                                                                         <label>Tiền hàng</label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon">
@@ -523,7 +556,19 @@
                                                                             <input type="text" id="tienHang1" class="form-control number" placeholder="" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" value="663849900" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                <div class="col-md-6">
+                                                                        <label>Nợ cũ</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input readonly type="text" value="2435117579" id="noCu1" class="form-control number" placeholder="" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                                                                        </div>
+                                                                    </div>
+																	
+                                                                </div>
+                                                                <div class="row">
+																<div class="col-md-6">
                                                                         <label>VAT</label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon">
@@ -532,8 +577,8 @@
                                                                             <input type="text" id="vat1" class="form-control number" placeholder=""  onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" value="53219600" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <label>Tổng cộng</label>
+																<div class="col-md-6">
+                                                                    <label>Tổng cộng</label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon">
                                                                                 <i class="fa fa-money" aria-hidden="true"></i>
@@ -541,7 +586,17 @@
                                                                             <input value="717069500" type="text" id="tongCong1" class="form-control number" placeholder="" readonly />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+																	<div class="col-md-6">
+                                                                        <label>Diễn giải</label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-book" aria-hidden="true"></i>
+                                                                            </span>
+                                                                            <input type="text" value="Thanh toán đơn hàng" class="form-control" />
+                                                                        </div>
+                                                                    </div>
+																	
+                                                                   <div class="col-md-6">
                                                                         <label>Thanh toán</label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon">
@@ -550,6 +605,7 @@
                                                                             <input type="text"  id="thanhToan1" onkeyup="tinhTong('tienHang1', 'noCu1', 'vat1', 'thanhToan1', 'tongCong1', 'conNo1')" class="form-control number" placeholder=""  value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-md-6"> </div>
                                                                     <div class="col-md-6">
                                                                         <label>Còn nợ</label>
                                                                         <div class="input-group">
@@ -1326,7 +1382,7 @@
                                                                             <span class="input-group-addon">
                                                                                 <i class="fa fa-usd" aria-hidden="true"></i>
                                                                             </span>
-                                                                            <input type="text" id="noCu9" class="form-control number"   value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                                            <input readonly type="text" id="noCu9" class="form-control number"   value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                                                         </div>
                                                                     </div>
 
