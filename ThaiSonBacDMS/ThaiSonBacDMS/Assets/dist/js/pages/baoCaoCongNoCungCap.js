@@ -254,25 +254,46 @@ function changeData() {
                 lavelValue2.push(index);
                 value.forEach(function (entry) {
                     if (myMap2.has(entry.categoryName)) {
-                        myMap2.get(entry.categoryName).push(entry.totalQuantity);
+                        myMap2.get(entry.categoryName).push({
+                            totalQuantity: entry.totalQuantity,
+                            totalPrice: entry.totalPrice
+                        });
                     } else {
                         var totalMap = [];
-                        totalMap.push(entry.totalQuantity);
+                        totalMap.push({
+                            totalQuantity: entry.totalQuantity,
+                            totalPrice: entry.totalPrice
+                        });
                         myMap2.set(entry.categoryName, totalMap);
                     }
                 });
             });
 
             var datasetsValue2 = [];
+            var dataTable2 = [];
             myMap2.forEach(function (value, key) {
                 var color = randomColorGenerator();
+                var arraySet = [];
+                var totalQuantity = 0;
+                var totalPrice = 0;
+                value.forEach(function (entry) {
+                    totalPrice += entry.totalPrice;
+                    totalQuantity += entry.totalQuantity;
+                    arraySet.push(entry.totalQuantity);
+                });
+                dataTable2.push({
+                    category: key,
+                    quantity: totalQuantity,
+                    price: totalPrice
+                });
                 datasetsValue2.push({
-                    data: value,
+                    data: arraySet,
                     label: key,
                     borderColor: color,
                     backgroundColor: color,
                     fill: false
                 });
+
             });
 
             lineChart2 = new Chart(document.getElementById('lineChart2'), {
@@ -305,7 +326,31 @@ function changeData() {
                     }
                 }
             });
+            //Total
             $('#sumLS').replaceWith('<h5 class="description-header number" id="sumLS">' + data.sumLS + '</h5>');
+            //Table
+            $("#bodyLS").empty();
+            $("#footLS").empty();
+            var i = 1;
+            var sumQuantityLS = 0;
+            var sumPriceLS = 0;
+            dataTable2.forEach(function (entry) {
+                $('#bodyLS').append('<tr>'
+                + '<td class="text-center">' + i + '</td>'
+                + '<td style="text-align:left" class="number">' + entry.category + '</td>'
+                + '<td style="text-align:right" class="number">' + entry.quantity + '</td>'
+                + '<td style="text-align:right" class="number">' + entry.price + '</td>'
+                + '</tr>');
+                i++;
+                sumQuantityLS += entry.quantity;
+                sumPriceLS += entry.price;
+            });
+            $('#footLS').append('<tr>'
+                + '<tr style="background-color: #544d61; color: white; font-weight: bold;">'
+                + '<td colspan="2" style="font-size:17px" class="text-center">Tổng cộng</td>'
+                + '<td class="text-right number">' + sumQuantityLS + '</td>'
+                + '<td class="text-right number">' + sumPriceLS + '</td>'
+                + '</tr>');
             //Chart 3
             var myMap3 = new Map();
             var lavelValue3 = [];
@@ -313,25 +358,47 @@ function changeData() {
                 lavelValue3.push(index);
                 value.forEach(function (entry) {
                     if (myMap3.has(entry.categoryName)) {
-                        myMap3.get(entry.categoryName).push(entry.totalQuantity);
+                        myMap3.get(entry.categoryName).push({
+                            totalQuantity: entry.totalQuantity,
+                            totalPrice: entry.totalPrice
+                        });
                     } else {
                         var totalMap = [];
-                        totalMap.push(entry.totalQuantity);
+                        totalMap.push({
+                            totalQuantity: entry.totalQuantity,
+                            totalPrice: entry.totalPrice
+                        });
                         myMap3.set(entry.categoryName, totalMap);
                     }
                 });
             });
 
             var datasetsValue3 = [];
+            var dataTable3 = [];
             myMap3.forEach(function (value, key) {
+
                 var color = randomColorGenerator();
+                var arraySet = [];
+                var totalQuantity = 0;
+                var totalPrice = 0;
+                value.forEach(function (entry) {
+                    totalPrice += entry.totalPrice;
+                    totalQuantity += entry.totalQuantity;
+                    arraySet.push(entry.totalQuantity);
+                });
+                dataTable3.push({
+                    category: key,
+                    quantity: totalQuantity,
+                    price: totalPrice
+                });
                 datasetsValue3.push({
-                    data: value,
+                    data: arraySet,
                     label: key,
                     borderColor: color,
                     backgroundColor: color,
                     fill: false
                 });
+
             });
 
             lineChart3 = new Chart(document.getElementById('lineChart3'), {
@@ -364,7 +431,32 @@ function changeData() {
                     }
                 }
             });
-            $('#sumHanQuoc').replaceWith('<h5 class="description-header number" id="sumHanQuoc">' + data.sumHanQuoc + '</h5>');
+            
+            //Total
+            $('#sumHQ').replaceWith('<h5 class="description-header number" id="sumHanQuoc">' + data.sumHanQuoc + '</h5>');
+            //Table
+            $("#bodyHQ").empty();
+            $("#footHQ").empty();
+            var i = 1;
+            var sumQuantityHQ = 0;
+            var sumPriceHQ = 0;
+            dataTable3.forEach(function (entry) {
+                $('#bodyHQ').append('<tr>'
+                + '<td class="text-center">' + i + '</td>'
+                + '<td style="text-align:left" class="number">' + entry.category + '</td>'
+                + '<td style="text-align:right" class="number">' + entry.quantity + '</td>'
+                + '<td style="text-align:right" class="number">' + entry.price + '</td>'
+                + '</tr>');
+                i++;
+                sumQuantityHQ += entry.quantity;
+                sumPriceHQ += entry.price;
+            });
+            $('#footHQ').append('<tr>'
+                + '<tr style="background-color: #544d61; color: white; font-weight: bold;">'
+                + '<td colspan="2" style="font-size:17px" class="text-center">Tổng cộng</td>'
+                + '<td class="text-right number">' + sumQuantityHQ + '</td>'
+                + '<td class="text-right number">' + sumPriceHQ + '</td>'
+                + '</tr>');
         },
         async: false
     });

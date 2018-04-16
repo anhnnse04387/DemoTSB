@@ -209,7 +209,7 @@ namespace Models.DAO
                             dateCreated = ot.Date_created,
                             nhapVon = p.CIF * oi.Quantity,
                             xuatVon = (p.CIF + p.CIF * (p.VAT / 100)) * oi.Quantity,
-                            banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
+                            banChoKhach = oi.Quantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
                         };
             if (category_ID != "-1")
             {
