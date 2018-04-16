@@ -437,19 +437,27 @@
                                                             <tr>
                                                                 <td>
                                                                     Kiểm tra
-                                                                </td>
-                                                                <td>
-                                                                    <div class="form-group">
-                                                                        <label>
+																 </td>
+                                                               <td colspan="3">
+															   <div class="form-group">
+																		<input type="checkbox" />
+                                                                        <label style="padding-left : 10px; padding-right:30px;">
+                                                                            Lấy phiếu
+                                                                        </label>
+                                                                       <input type="checkbox" />
+                                                                        <label style="padding-left : 10px;  padding-right:30px;">
+                                                                            Lấy hoá đơn
+                                                                        </label>
+																		<input type="checkbox" />
+                                                                        <label style="padding-left : 10px;  padding-right:30px;">
                                                                             Nhận phiếu
-                                                                            <input type="checkbox" >
                                                                         </label>
-                                                                        <label class="custom-chk">
-                                                                            Nhận hóa đơn
-                                                                            <input type="checkbox" >
+																		<input type="checkbox" />
+                                                                        <label style="padding-left : 10px;">
+                                                                            Nhận hoá đơn
                                                                         </label>
-                                                                    </div>
-                                                                </td>
+                                                                </div>
+															   </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -475,6 +483,8 @@
                                                         <th>Lô số</th>
                                                         <th>Tên khách hàng</th>
                                                         <th>Số hóa đơn</th>
+														<th>Lấy hoá đơn</th>
+														<th>Lấy phiếu</th>
                                                         <th>Nhận phiếu</th>
                                                         <th>Nhận hóa đơn</th>
                                                         <th>Trạng thái</th>
@@ -493,10 +503,16 @@
                                                         <td>Công ty Long Giang</td>
                                                         <td>24329</td>
                                                         <td>
-                                                            <input type="checkbox"  />
+                                                            <center> <input type="checkbox" disabled  /> </center>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox"  />
+                                                            <center> <input type="checkbox" disabled  /> </center>
+                                                        </td>
+														<td>
+                                                            <center> <input type="checkbox" disabled  /> </center>
+                                                        </td>
+                                                        <td>
+                                                           <center> <input type="checkbox" disabled  /> </center>
                                                         </td>
                                                         <td>
                                                             <span class="label label-primary">Đang giao hàng</span>
@@ -510,7 +526,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr id="row1">
-                                                        <td colspan="10">
+                                                        <td colspan="13">
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -561,11 +577,17 @@
                                                                 </div>
                                                                 </br>
                                                                 <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Đã nhận phiếu</label>
+																	<div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Lấy phiếu</label>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Đã nhận hóa đơn</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Lấy hoá đơn</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Nhận phiếu</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Nhận hoá đơn</label>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -594,10 +616,16 @@
                                                         <td>Công ty Phú An</td>
                                                         <td>24328</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <center> <input type="checkbox"  disabled /> </center>
+                                                        </td>
+														<td>
+                                                            <center> <input type="checkbox"  disabled /> </center>
+                                                        </td>
+                                                        <td>
+                                                            <center> <input type="checkbox"  disabled /> </center>
                                                         </td>
                                                         <td>
                                                             <span class="label label-primary">Đang giao hàng</span>
@@ -611,7 +639,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr id="row2">
-                                                        <td colspan="10">
+                                                        <td colspan="13">
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -660,12 +688,18 @@
                                                                     </div>
                                                                 </div>
                                                                 </br>
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Đã nhận phiếu</label>
+                                                                 <div class="row">
+																	<div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Lấy phiếu</label>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Đã nhận hóa đơn</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Lấy hoá đơn</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Nhận phiếu</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Nhận hoá đơn</label>
                                                                     </div>
                                                                 </div>
                                                                 </br>
@@ -694,10 +728,16 @@
                                                         <td>Công ty Invico</td>
                                                         <td>24327</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
+                                                        </td>
+														<td>
+                                                            <input type="checkbox" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <center> <input type="checkbox"  disabled /> </center>
                                                         </td>
                                                         <td>
                                                             <span class="label label-warning">Đang giao hàng</span>
@@ -711,7 +751,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr id="row3">
-                                                        <td colspan="10">
+                                                        <td colspan="13">
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -761,11 +801,17 @@
                                                                 </div>
                                                                 </br>
                                                                 <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Đã nhận phiếu</label>
+																	<div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Lấy phiếu</label>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Đã nhận hóa đơn</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Lấy hoá đơn</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Nhận phiếu</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Nhận hoá đơn</label>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -794,10 +840,16 @@
                                                         <td>Công ty Sáng Hà</td>
                                                         <td>24326</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
+                                                        </td>
+														<td>
+                                                            <input type="checkbox" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <center> <input type="checkbox"  disabled /> </center>
                                                         </td>
                                                         <td>
                                                             <span class="label label-primary">Đang giao hàng</span>
@@ -811,7 +863,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr id="row4">
-                                                        <td colspan="10">
+                                                        <td colspan="13">
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -862,12 +914,18 @@
                                                                     </div>
                                                                 </div>
                                                                 </br>
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Đã nhận phiếu</label>
+                                                                 <div class="row">
+																	<div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Lấy phiếu</label>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Đã nhận hóa đơn</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Lấy hoá đơn</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Nhận phiếu</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Nhận hoá đơn</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -895,10 +953,16 @@
                                                         <td>Công ty Vạn Xuân</td>
                                                         <td>24325</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
+                                                        </td>
+														<td>
+                                                            <input type="checkbox" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <center> <input type="checkbox"  disabled /> </center>
                                                         </td>
                                                         <td>
                                                             <span class="label label-warning">Đang giao hàng</span>
@@ -912,7 +976,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr id="row5">
-                                                        <td colspan="10">
+                                                        <td colspan="13">
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -962,11 +1026,17 @@
                                                                 </div>
                                                                 </br>
                                                                 <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Đã nhận phiếu</label>
+																	<div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Lấy phiếu</label>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Đã nhận hóa đơn</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Lấy hoá đơn</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Nhận phiếu</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Nhận hoá đơn</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -994,10 +1064,16 @@
                                                         <td>Công ty Tương Lai</td>
                                                         <td>24324</td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" />
+                                                            <input type="checkbox" disabled  />
+                                                        </td>
+														<td>
+                                                            <input type="checkbox" disabled />
+                                                        </td>
+                                                        <td style="align: center;">
+                                                            <center> <input type="checkbox"  disabled /> </center>
                                                         </td>
                                                         <td>
                                                             <span class="label label-primary">Đang giao hàng</span>
@@ -1011,7 +1087,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr id="row6">
-                                                        <td colspan="10">
+                                                        <td colspan="13">
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -1060,12 +1136,18 @@
                                                                     </div>
                                                                 </div>
                                                                 </br>
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Đã nhận phiếu</label>
+                                                               <div class="row">
+																	<div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Lấy phiếu</label>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Đã nhận hóa đơn</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Lấy hoá đơn</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" /><label style="margin-left: 10px;"> Nhận phiếu</label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox"/><label style="margin-left: 10px;"> Nhận hoá đơn</label>
                                                                     </div>
                                                                 </div>
                                                                 <br>
