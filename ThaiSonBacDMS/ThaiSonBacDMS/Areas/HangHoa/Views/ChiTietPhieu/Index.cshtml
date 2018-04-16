@@ -246,7 +246,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th rowspan="2">STT</th>
-                                                        <th rowspan="2">Tên hàng</th>
+                                                        <th rowspan="2" style="width: 500px;">Tên hàng</th>
                                                         <th colspan="2">Số lượng</th>
                                                         <th rowspan="2">Đã đủ&nbsp;&nbsp;&nbsp;<input type="checkbox" id="checkAll" style="vertical-align: sub;" /></th>
                                                     </tr>
@@ -259,16 +259,15 @@
                                                     @for (int i = 0; i < Model.readItems.Count; i++)
                                                     {
                                                         <tr>
-                                                            <td>@(i + 1)</td>
-                                                            <td style="vertical-align: middle; width: 24.7%;">
+                                                            <td style="vertical-align: inherit;">@(i + 1)</td>
+                                                            <td style="vertical-align: middle;">
                                                                 <input type="text" value="@Model.readItems[i].code" disabled class="form-control" />
                                                             </td>
                                                             <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" disabled class="form-control" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" disabled class="form-control" /></td>
-                                                            <td><input type="checkbox" required class="checkPer" /></td>
+                                                            <td style="vertical-align: inherit;"><input type="checkbox" required class="checkPer" /></td>
                                                         </tr>
                                                     }
-                                                    <tr><td></td><td></td><td></td><td></td><td><input type="checkbox" required class="checkPer" /></td></tr>
                                                 </tbody>
                                             </table>
                                         </fieldset>

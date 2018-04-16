@@ -62,6 +62,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return View(model);
         }
 
+        public ActionResult One(String orderId)
+        {
+            return View();
+        }
+
+        public ActionResult Many(String orderId)
+        {
+            return View();
+        }
+
         public JsonResult CheckOut(String orderId)
         {
             try

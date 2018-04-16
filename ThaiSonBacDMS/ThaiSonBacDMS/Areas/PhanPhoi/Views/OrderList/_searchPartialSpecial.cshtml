@@ -1,0 +1,61 @@
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ListModel
+@{
+    Layout = null;
+}
+<div class="col-md-12">
+    <table id="dtTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Lô số</th>
+                <th>Khách hàng</th>
+                <th>Ngày</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Ghi chú</th>
+                <th>Số đợt giao</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.items != null)
+            {
+                for (int i = 0; i < Model.items.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        @if (Model.items[i].delivery == 1)
+                        {
+                            <td>
+                                <a href="/PhanPhoi/ChiTietPhieu/One?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                {
+                                    <span class="custom-span">
+                                        <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                    </span>
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a href="/PhanPhoi/ChiTietPhieu/Many?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                {
+                                    <span class="custom-span">
+                                        <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                    </span>
+                                }
+                            </td>
+                        }
+                        <td>@Model.items[i].customer</td>
+                        <td>@Model.items[i].date</td>
+                        <td>@Model.items[i].total</td>
+                        <td><span class="label @Model.items[i].spanClass">@Model.items[i].status</span></td>
+                        <td>@Model.items[i].note</td>
+                        <td>@Model.items[i].delivery</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

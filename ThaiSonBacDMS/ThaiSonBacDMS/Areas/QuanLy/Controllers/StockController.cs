@@ -12,7 +12,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
     public class StockController : Controller
     {
-        // GET: PhanPhoi/Stock
+        // GET: QuanLy/Stock
         public ActionResult Index()
         {
             var ddlOrder = new List<SelectListItem>();
@@ -54,7 +54,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     var supplier = daoSup.getSupplierById(pi.Supplier_ID);
                     model.address = supplier.Supplier_address;
                     model.customer = supplier.Supplier_name;
-                    model.dateRequested = pi.Date_requested;
+                    model.dateRequested = pi.Date_requested.ToString().Substring(0, 10);
                     model.tel = supplier.Phone;
                     foreach (Purchase_invoice_Items p in pi.Purchase_invoice_Items)
                     {
@@ -68,7 +68,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         };
                         lstItem.Add(item);
                     }
-                    model.lstItem = lstItem;
+                    model.items = lstItem;
                 }
                 else
                 {
@@ -76,7 +76,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     var customer = daoCus.getCustomerById(order.Customer_ID);
                     model.address = customer.Delivery_address;
                     model.customer = customer.Customer_name;
-                    model.dateRequested = order.Date_created;
+                    model.dateRequested = order.Date_created.ToString().Substring(0, 10);
                     model.tel = customer.Phone;
                     foreach (Order_items i in daoItem.getReturnOrderItem(no))
                     {
@@ -90,7 +90,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         };
                         lstItem.Add(item);
                     }
-                    model.lstItem = lstItem;
+                    model.items = lstItem;
                 }
                 return PartialView("_chooseNoPartial", model);
             }
@@ -101,12 +101,13 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult CheckOut(StockModel model)
         {
             try
             {
                 if (!String.IsNullOrEmpty(model.no) && !String.IsNullOrEmpty(model.dateImported.ToString()) &&
-                    model.lstItem != null)
+                    model.items != null)
                 {
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var dao = new StockInDAO();
@@ -117,7 +118,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         stockIn.Date_import = model.dateImported;
                         stockIn.Purchase_invoice_ID = int.Parse(model.no);
                         stockIn.User_ID = session.user_id;
-                        foreach (StockItemModel i in model.lstItem)
+                        foreach (StockItemModel i in model.items)
                         {
                             var item = new Detail_stock_in
                             {
@@ -134,7 +135,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         stockIn.Date_import = model.dateImported;
                         stockIn.Order_part_ID = model.no;
                         stockIn.User_ID = session.user_id;
-                        foreach (StockItemModel i in model.lstItem)
+                        foreach (StockItemModel i in model.items)
                         {
                             var item = new Detail_stock_in
                             {
