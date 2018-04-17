@@ -285,6 +285,74 @@ namespace Models.DAO
             }
             return lstProduct;
         }
+        //functions san pham ngung kinh doanh
+        public List<Product> sanPhamNgungKinhDoanh()
+        {
+            return db.Products.Where(x => x.Status == 0).ToList();
+        }
+        public List<Product> sanPhamNgungKinhDoanh(Product product, string fromDate, string toDate)
+        {
+            var query = from p in db.Products
+            join d in db.Detail_stock_in on p.Product_ID equals d.Product_ID
+            join s in db.Stock_in on d.Stock_in_ID equals s.Stock_in_ID
+            where p.Status == 0
+            select new { p, s.Date_import };
+            if (!String.IsNullOrEmpty(product.Category_ID))
+            {
+                query = query.Where(x => x.p.Category_ID.Equals(product.Category_ID));
+            }
+            if (!string.IsNullOrEmpty(product.Product_code))
+            {
+                query = query.Where(x => x.p.Product_code.Equals(product.Product_code));
+            }
+            if (!String.IsNullOrEmpty(product.Supplier_ID))
+            {
+                query = query.Where(x=>x.p.Supplier_ID.Contains(product.Supplier_ID));
+            }
+            if(!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
+            {
+                DateTime fromValue = Convert.ToDateTime(fromDate);
+                query = query.Where(x=>x.Date_import >= fromValue);
+            }
+            if(string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime toValue = Convert.ToDateTime(toDate);
+                query = query.Where(x=>x.Date_import <= toValue);
+            }
+            if(!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime fromValue = Convert.ToDateTime(fromDate);
+                DateTime toValue = Convert.ToDateTime(toDate);
+                query = query.Where(x=>x.Date_import >= fromValue && x.Date_import <= toValue);
+            }
+            List<Product> lst = new List<Product>();
+            if(query.Count() !=0)
+            {
+                foreach(var item in query)
+                {
+                    lst.Add(item.p);
+                }
+            }
+            return lst;
+        }
+        public List<Product> searchNgungKinhDoanh(string value)
+        {
+            var query = from p in db.Products
+                        join d in db.Detail_stock_in on p.Product_ID equals d.Product_ID
+                        join s in db.Stock_in on d.Stock_in_ID equals s.Stock_in_ID
+                        where p.Status == 0
+                        select new { p, s.Date_import };
+            query = query.Where(x => x.p.Product_code.Contains(value) || x.p.Product_code.Contains(value) && x.p.Status == 0);
+            List<Product> lst = new List<Product>();
+            if (query.Count() != 0)
+            {
+                foreach(var item in query)
+                {
+                    lst.Add(item.p);
+                }
+            }
+            return lst;
+        }
       
     }
 }
