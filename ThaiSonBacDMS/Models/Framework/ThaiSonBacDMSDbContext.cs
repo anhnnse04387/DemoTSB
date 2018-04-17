@@ -90,7 +90,7 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer_transaction>()
-                .Property(e => e.Order_total)
+                .Property(e => e.Sub_total)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
@@ -100,7 +100,9 @@ namespace Models.Framework
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Debt)
                 .HasPrecision(19, 4);
-
+            modelBuilder.Entity<Customer_transaction>()
+                .Property(e => e.Total)
+                .HasPrecision(19, 4);
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.User_ID)
                 .IsUnicode(false);
@@ -410,7 +412,7 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supplier_transaction>()
-                .Property(e => e.Order_total)
+                .Property(e => e.Sub_total)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supplier_transaction>()

@@ -40,12 +40,12 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
     public class ShowOrderItemModel
     {
         public Order_items item { get; set; }
-        public DateTime? date
+        public DateTime date
         {
             get
             {
                 OrderTotalDAO dao = new OrderTotalDAO();
-                return dao.getDate(item.Order_ID);
+                return Convert.ToDateTime(dao.getDate(item.Order_ID));
             }
         }
     }

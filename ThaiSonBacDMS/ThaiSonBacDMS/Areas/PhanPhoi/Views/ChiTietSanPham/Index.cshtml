@@ -447,7 +447,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @{int i = 1};
+
                                                 @if (Model.lstDisplay.Count == 0)
                                                 {
                                                     <tr>
@@ -456,14 +456,15 @@
                                                 }
                                                 else
                                                 {
+                                                    int i = 1;
                                                     foreach (var itemDisplay in Model.lstDisplay)
                                                     {
                                                         <tr>
-                                                            <td>@i</td>
+                                                            <td class="length">@i</td>
                                                             <td>@itemDisplay.item.Order_ID</td>
-                                                            <td>@itemDisplay.date</td>
-                                                            <td style="text-align:right">@itemDisplay.item.Quantity</td>
-                                                            <td style="text-align:right" class="number">@itemDisplay.item.Price</td>
+                                                            <td class="date">@itemDisplay.date</td>
+                                                            <td style="text-align:center" id="quantity_@i">@itemDisplay.item.Quantity</td>
+                                                            <td style="text-align:right" class="number" id="price_@i">@itemDisplay.item.Price</td>
                                                         </tr>
 
                                                         i++;
@@ -478,8 +479,8 @@
                                                     <tr>
                                                         <td colspan="3" class="text-center">Tổng</td>
 
-                                                        <td style="text-align:right">145</td>
-                                                        <td style="text-align:right">1,482,311,075</td>
+                                                        <td style="text-align:center" class="number" id="quantity"></td>
+                                                        <td style="text-align:right" class="number" id="price"></td>
                                                     </tr>
                                                 </tfoot>
                                             }
@@ -501,8 +502,30 @@
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
         $(document).ready(function () {
+            display();
+            tinhTong();
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
         });
+        function tinhTong() {
+            var quantity = 0;
+            var price = 0;
+            var length = $(".length").length;
+            for (var i = 1; i <= length; i++) {
+                quantity += parseFloat($("#quantity_" + i).text().replace(/,/g, ''));
+                price += parseFloat($('#price_' + i).text().replace(/,/g, ''));
+            }
+            $('#quantity').text(quantity);
+            $('#price').text(price);
+
+        }
+        function display() {
+            for (var i = 0; i < $('.date').length; i++) {
+                if ($($('.date')[i]).text()) {
+                    var date = $($('.date')[i]).text().split(" ");
+                    $($('.date')[i]).text(date[0]);
+                }
+            }
+        }
         $(function () {
 
             $('#example1').DataTable({

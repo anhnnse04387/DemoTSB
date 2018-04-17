@@ -23,10 +23,11 @@
         public string Description { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Order_total { get; set; }
+        public decimal? Sub_total { get; set; }
 
         public byte? VAT { get; set; }
-
+        [Column(TypeName = "money")]
+        public decimal? Total { get; set; }
         [Column(TypeName = "money")]
         public decimal? Pay { get; set; }
 
