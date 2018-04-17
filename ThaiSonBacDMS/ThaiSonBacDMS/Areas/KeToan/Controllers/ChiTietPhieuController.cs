@@ -30,6 +30,8 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             model.customerName = customer.Customer_name;
             model.taxCode = customer.Tax_code;
             var items = new List<OrderItemModel>();
+            model.qttTotal = 0;
+            model.boxTotal = 0;
             foreach (Order_items o in data.Order_items)
             {
                 if (o.Order_part_ID == null)

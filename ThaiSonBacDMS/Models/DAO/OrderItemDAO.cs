@@ -25,11 +25,6 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
-        public void deleteOrderItems(String id)
-        {
-            db.Order_items.RemoveRange(db.Order_items.Where(x => x.Order_ID.Equals(id)).ToList());
-        }
-
         public List<Order_items> getOrderItem(String orderId)
         {
             return db.Order_items.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID == null).ToList();
@@ -207,8 +202,8 @@ namespace Models.DAO
                             categoryName = c.Category_name,
                             categoryID = c.Category_ID,
                             dateCreated = ot.Date_created,
-                            nhapVon = p.CIF * oi.Quantity,
-                            xuatVon = (p.CIF + p.CIF * (p.VAT / 100)) * oi.Quantity,
+                            nhapVon = p.CIF_VND * oi.Quantity,
+                            xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
                             banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
                         };
             if (category_ID != "-1")
@@ -263,8 +258,8 @@ namespace Models.DAO
                             categoryName = c.Category_name,
                             categoryID = c.Category_ID,
                             quantity = oi.Quantity,
-                            nhapVon = p.CIF * oi.Quantity,
-                            xuatVon = (p.CIF + p.CIF * (p.VAT / 100)) * oi.Quantity,
+                            nhapVon = p.CIF_VND * oi.Quantity,
+                            xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
                             banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
                         };
             foreach (var item in query)

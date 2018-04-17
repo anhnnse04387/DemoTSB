@@ -24,7 +24,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public decimal? total { get; set; }
         public decimal? vat { get; set; }
         public int? qttTotal { get; set; }
-        public int? boxTotal { get; set; }
+        public float? boxTotal { get; set; }
         public decimal? discount { get; set; }
         public decimal? discountMoney { get; set; }
         public decimal? afterDiscountMoney { get; set; }

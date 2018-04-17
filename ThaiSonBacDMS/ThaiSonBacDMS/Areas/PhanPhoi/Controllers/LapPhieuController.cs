@@ -81,8 +81,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             Order_discount = model.discount,
                             Status_ID = 1
                         });
-                        orderPartDAO.deleteOrderPart(model.orderId);
-                        orderItemDAO.deleteOrderItems(model.orderId);
+                        orderDAO.deleteContent(model.orderId);
                         result++;
                     }
                     if (result > 0)
@@ -129,10 +128,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Order_part_ID = model.orderId + "-1",
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
+                                Date_reveice_invoice = DateTime.Now,
                                 VAT = model.vat,
                                 Status_ID = 1,
                                 Total_price = model.total
                             });
+                            foreach (Order_items o in model.items)
+                            {
+                                o.Order_ID = model.orderId;
+                                o.Order_part_ID = model.orderId + "-1";
+                                orderItemDAO.createOrderItem(o);
+                            }
                         }
                     }
                     return Json(new { success = true }, JsonRequestBehavior.AllowGet);
@@ -212,6 +218,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.rate = data.Rate;
             model.taxCode = customer.Tax_code;
             var items = new List<OrderItemModel>();
+            model.qttTotal = 0;
+            model.boxTotal = 0;
             foreach (Order_items o in data.Order_items)
             {
                 if (o.Order_part_ID == null)
@@ -226,7 +234,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         Price = o.Price,
                         Quantity = o.Quantity,
                         per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
-                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
+                        productId = o.Product_ID,
+                        qttBox = product.Quantity_in_carton,
+                        qttInven = product.Quantities_in_inventory
                     };
                     items.Add(item);
                     model.qttTotal += o.Quantity;
@@ -245,7 +256,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 var partItems = new List<OrderItemModel>();
                 int? qttTotal = 0;
-                int? boxTotal = 0;
+                float? boxTotal = 0;
                 decimal? subTotal = 0;
                 foreach (Order_items o in op.Order_items)
                 {
@@ -259,7 +270,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         Price = o.Price,
                         Quantity = o.Quantity,
                         per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
-                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
+                        productId = o.Product_ID,
+                        qttBox = product.Quantity_in_carton
                     };
                     partItems.Add(item);
                     qttTotal += o.Quantity;
@@ -336,8 +349,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             Order_discount = model.discount,
                             Status_ID = 3
                         });
-                        orderPartDAO.deleteOrderPart(model.orderId);
-                        orderItemDAO.deleteOrderItems(model.orderId);
+                        orderDAO.deleteContent(model.orderId);
                         result++;
                     }
                     if (result > 0)
@@ -386,8 +398,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Date_created = DateTime.Now,
                                 VAT = model.vat,
                                 Status_ID = 3,
+                                Date_reveice_invoice = DateTime.Now,
                                 Total_price = model.total
                             });
+                            foreach (Order_items o in model.items)
+                            {
+                                o.Order_ID = model.orderId;
+                                o.Order_part_ID = model.orderId + "-1";
+                                orderItemDAO.createOrderItem(o);
+                            }
                         }
                     }
                     return Json(new { success = true }, JsonRequestBehavior.AllowGet);

@@ -10,6 +10,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class OrderTotalModel
     {
+        public Dictionary<int, StatusDetailModel> dict { get; set; }
+        public String lineStatus { get; set; }
         public String orderId { get; set; }
         public int customerId { get; set; }
         public String customerName { get; set; }
@@ -22,10 +24,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public String taxCode { get; set; }
         public decimal subTotal { get; set; }
         public decimal? total { get; set; }
-        public decimal? vat { get; set; }
+        public byte? vat { get; set; }
         public int? qttTotal { get; set; }
-        public int? boxTotal { get; set; }
-        public decimal? discount { get; set; }
+        public float? boxTotal { get; set; }
+        public byte? discount { get; set; }
         public decimal? discountMoney { get; set; }
         public decimal? afterDiscountMoney { get; set; }
         public decimal? vatMoney { get; set; }

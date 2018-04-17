@@ -90,7 +90,11 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer_transaction>()
-                .Property(e => e.Order_total)
+                .Property(e => e.Sub_total)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Customer_transaction>()
+                .Property(e => e.Total)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
@@ -99,6 +103,10 @@ namespace Models.Framework
 
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Debt)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Customer_transaction>()
+                .Property(e => e.Old_debt)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
@@ -254,19 +262,15 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order_total>()
+                .Property(e => e.Tax_code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order_total>()
                 .Property(e => e.User_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order_total>()
                 .Property(e => e.Sub_total)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Order_total>()
-                .Property(e => e.VAT)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Order_total>()
-                .Property(e => e.Order_discount)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Order_total>()
@@ -326,7 +330,11 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.CIF)
+                .Property(e => e.CIF_USD)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.CIF_VND)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
@@ -410,7 +418,11 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supplier_transaction>()
-                .Property(e => e.Order_total)
+                .Property(e => e.Sub_total)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Supplier_transaction>()
+                .Property(e => e.Total)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supplier_transaction>()

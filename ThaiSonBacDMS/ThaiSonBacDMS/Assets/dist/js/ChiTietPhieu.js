@@ -19,7 +19,7 @@ function doneOrder() {
                 animation: false
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/PhanPhoi/ProcessingOrderList/Index';
+                    window.location.href = '/PhanPhoi/OrderList/Processing';
                 }
             });
         },

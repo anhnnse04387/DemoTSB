@@ -32,6 +32,9 @@ namespace Models.Framework
 
         public int? Rate { get; set; }
 
+        [StringLength(20)]
+        public string Tax_code { get; set; }
+
         public byte? Status_ID { get; set; }
 
         [Required]
@@ -46,16 +49,13 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal Sub_total { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? VAT { get; set; }
+        public byte? VAT { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? Order_discount { get; set; }
+        public byte? Order_discount { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Total_price { get; set; }
 
-        [StringLength(1)]
         public string Note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

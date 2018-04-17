@@ -44,7 +44,10 @@ namespace Models.Framework
         public string Specification { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? CIF { get; set; }
+        public decimal? CIF_USD { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal? CIF_VND { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? TAX { get; set; }

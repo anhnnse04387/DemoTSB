@@ -147,7 +147,7 @@ function doneOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/POHistory/Index';
+                    window.location.href = '/QuanLy/PO/History';
                 }
             });
         },

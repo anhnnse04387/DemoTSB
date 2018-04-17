@@ -1,9 +1,10 @@
 ﻿$(document).ready(function () {
+    $('.datepicker').datepicker();
     $('#customer').change(function () {
         var id = parseInt($('#customer').val());
         $.ajax({
             url: "/QuanLy/LapPhieu/ChangeCustomer",
-            data: {customerId: id},
+            data: { customerId: id },
             datatype: "json",
             success: function (data) {
                 document.getElementById('deliveryAddress').value = data.deliveryAddress;
@@ -12,18 +13,33 @@
             }
         });
     });
-    $("#btnSubmit").click(function (event) {
+    $("#btnPreview").click(function (event) {
         if (validate() === 0) {
             event.preventDefault();
-            previewOrder();
+            $('#preview').removeClass('noDisplay');
+            $('#normal').addClass('noDisplay');
+            $('form :input').not($('#btnSubmit')).prop('disabled', true);
         } else {
             $('form')[0].checkValidity();
         }
+    });
+    $('#btnCancelPreview').click(function () {
+        $('#preview').addClass('noDisplay');
+        $('#normal').removeClass('noDisplay');
+        $('form :input').prop('disabled', false);
     });
     $("#btnSave").click(function (event) {
         if (validate() === 0) {
             event.preventDefault();
             $('#confirmSave').modal();
+        } else {
+            $('form')[0].checkValidity();
+        }
+    });
+    $("#btnSubmit").click(function (event) {
+        if (validate() === 0) {
+            event.preventDefault();
+            $('#confirmComplete').modal();
         } else {
             $('form')[0].checkValidity();
         }
@@ -44,7 +60,7 @@ function donePendingOrder() {
         url: '/QuanLy/LapPhieu/CheckOut',
         type: 'POST',
         dataType: 'json',
-        data: { orderId: $('#orderId').val() },
+        data: getAllData(),
         success: function () {
             document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
@@ -56,14 +72,13 @@ function donePendingOrder() {
                 animation: false
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/ProcessingOrderList/Index';
+                    window.location.href = '/QuanLy/OrderList/Processing';
                 }
             });
         },
         error: function () {
             swal({
-                title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
-                text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
+                title: '<img src="/Assets/dist/img/messagePic_9.png"/><img src="/Assets/dist/img/messagePic_8.png"/>',
                 type: 'error',
                 showCancelButton: false,
                 showConfirmButton: true
@@ -80,7 +95,7 @@ function deleteRow(comp) {
 }
 
 function initMain() {
-    $('.number').autoNumeric('init', {minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0'});
+    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
     configCai();
     configThung();
     configCk();
@@ -88,6 +103,15 @@ function initMain() {
     productATC();
     productSubATC();
     configCkAll();
+    var arr = $('.addingRow');
+    var arrSub = $('.addingSubRow');
+    for (var i = 0; i < arr.length ; i++) {
+        for (var j = 0; j < arrSub.length ; j++) {
+            if (arr.eq(i).find('.productId').val() === arrSub.eq(j).find('.productId').val()) {
+                arrSub.eq(j).find('.qttInven').val(arr.eq(i).find('.cai').val());
+            }
+        }
+    }
 }
 
 function changeQtt() {
@@ -229,9 +253,9 @@ function saveOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/PendingOrderList/Index';
+                    window.location.href = '/QuanLy/OrderList/Index';
                 }
-            });            
+            });
         },
         error: function () {
             swal({
@@ -246,7 +270,7 @@ function saveOrder() {
 
 function cancelOrder() {
     $.ajax({
-        url: '/QuanLy/ChiTietPhieu/cancelOrder',
+        url: '/QuanLy/LapPhieu/cancelOrder',
         dataType: 'json',
         data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
         success: function () {
@@ -258,56 +282,12 @@ function cancelOrder() {
                 if (result.value) {
                     window.location.href = '/QuanLy/Home/Index';
                 }
-            });            
+            });
         },
         error: function () {
             swal({
                 title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
                 type: 'error'
-            });
-        }
-    });
-}
-
-function previewOrder() {
-    var data = JSON.stringify(getAllData());
-    $.ajax({
-        url: '/QuanLy/Preview/Index',
-        type: 'GET',
-        dataType: 'json',
-        data: JSON.stringify({model: data})
-    });
-}
-
-function doneOrder() {
-    var data = JSON.stringify(getAllData());
-    $.ajax({
-        url: '/QuanLy/Preview/CheckOut',
-        type: 'POST',
-        dataType: 'json',
-        data: JSON.stringify({model: data}),
-        success: function () {
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-            swal({
-                title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
-                imageUrl: '/Assets/dist/img/Noti.gif',
-                imageWidth: 400,
-                imageHeight: 300,
-                imageAlt: 'Custom image',
-                animation: false
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = '/QuanLy/ProcessingOrderList/Index';
-                }
-            });            
-        },
-        error: function () {
-            swal({
-                title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
-                text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
-                type: 'error',
-                showCancelButton: false,
-                showConfirmButton: true
             });
         }
     });
@@ -494,13 +474,16 @@ function getAllData() {
                 };
                 partsItem.push(partItem);
             });
-            part = {Part_ID: i + 1, Order_part_ID: orderPartId, VAT: partVat,
+            part = {
+                Part_ID: i + 1, Order_part_ID: orderPartId, VAT: partVat,
                 Total_price: partTotal, Date_reveice_invoice: invoiceDate,
-                Order_items: partsItem};
+                Order_items: partsItem
+            };
             parts.push(part);
         }
     }
-    var data = {orderId: orderId, customerId: customerId,
+    var data = {
+        orderId: orderId, customerId: customerId,
         deliveryAddress: deliveryAddress, deliveryQtt: deliveryQtt,
         invoiceAddress: invoiceAddress, rate: rate, taxCode: taxCode,
         subTotal: subTotal, vat: vat, total: total, discount: discount,
@@ -517,16 +500,24 @@ function configCai() {
             var thisRow = $(this).parents("tr");
             var conlai = parseInt(thisRow.find(".qttInven").val());
             var per = parseInt(thisRow.find(".qttBox").val());
+            if (thisRow.attr('class') === 'addingRow') {
+                var arr = $('.addingSubRow');
+                for (var i = 0; i < arr.length ; i++) {
+                    if (arr.eq(i).find('.productId').val() === thisRow.find('.productId').val()) {
+                        arr.eq(i).find('.qttInven').val(parseInt(cai));
+                    }
+                }
+            }
             if (parseInt(cai) > 0) {
                 if (parseInt(cai) > conlai) {
                     checkQtt(thisRow);
                 } else {
-                    thisRow.find(".thung").val(parseInt(parseInt(cai) / per));
+                    thisRow.find(".thung").val(parseInt(cai) / per);
                     thisRow.find(".tienchuack").autoNumeric('set', cai * parseFloat(thisRow.find(".dongia").val().replace(new RegExp(',', 'g'), '')));
                     ck(thisRow);
                 }
             } else {
-                $(this).val(0);
+                $(this).val("");
             }
             calcTotal(thisTable);
         });
@@ -541,16 +532,24 @@ function configThung() {
             var thisRow = $(this).parents("tr");
             var conlai = parseInt(thisRow.find(".qttInven").val());
             var per = parseInt(thisRow.find(".qttBox").val());
+            if (thisRow.attr('class') === 'addingRow') {
+                var arr = $('.addingSubRow');
+                for (var i = 0; i < arr.length ; i++) {
+                    if (arr.eq(i).find('.productId').val() === thisRow.find('.productId').val()) {
+                        arr.eq(i).find('.qttInven').val(parseInt(thung) * per);
+                    }
+                }
+            }
             if (parseInt(thung) * per > 0) {
                 if (parseInt(thung) * per > conlai) {
                     checkQtt(thisRow);
                 } else {
-                    thisRow.find(".cai").val(parseInt(thung) * per);
-                    thisRow.find(".tienchuack").autoNumeric('set', parseInt(thung) * per * parseFloat(thisRow.find(".dongia").val().replace(new RegExp(',', 'g'), '')));
+                    thisRow.find(".cai").val(parseInt(thung * per));
+                    thisRow.find(".tienchuack").autoNumeric('set', parseInt(thung * per) * parseFloat(thisRow.find(".dongia").val().replace(new RegExp(',', 'g'), '')));
                     ck(thisRow);
                 }
             } else {
-                $(this).val(0);
+                $(this).val("");
             }
             calcTotal(thisTable);
         });
@@ -563,10 +562,10 @@ function checkQtt(thisRow) {
         swal({
             title: '<img src="/Assets/dist/img/messagePic_4.png"/>',
             type: 'error',
-            html: '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="dist/img/xem.png"/></a></div>'
+            html: '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="/Assets/dist/img/xem.png"/></a></div>'
                     + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
                     + '<thead>'
-                    + '<tr><th style="background-color: white"><img src="dist/img/loso.png"/></th><th style="background-color: white"><img src="dist/img/soluong.png"/></th><th style="background-color: white"><img src="dist/img/ngay.png"/></th><th style="background-color: white"><img src="dist/img/soluonglay.png"/></th></tr>'
+                    + '<tr><th style="background-color: white"><img src="/Assets/dist/img/loso.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluong.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/ngay.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluonglay.png"/></th></tr>'
                     + '</thead>'
                     + '<tbody>'
                     + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl1"/></td></tr>'
@@ -580,6 +579,7 @@ function checkQtt(thisRow) {
             confirmButtonText: '<i class="fa fa-check"></i>',
             cancelButtonText: '<i class="fa fa-close"></i>'
         });
+        thisRow.find('.cai').val("");
     } else {
         swal({
             title: '<img src="/Assets/dist/img/messagePic_3.png"/>',
@@ -588,6 +588,7 @@ function checkQtt(thisRow) {
             showConfirmButton: false,
             timer: 2000
         });
+        thisRow.find('.cai').val("");
     }
 }
 
@@ -603,7 +604,7 @@ function calcTotal(thisTable) {
     }
     var arrThung = thisTable.find(".thung");
     for (var i = 0; i < arrThung.length; i++) {
-        var iThung = parseInt(arrThung.eq(i).val());
+        var iThung = parseFloat(arrThung.eq(i).val());
         if (iThung > 0) {
             tong_thung += iThung;
         }
