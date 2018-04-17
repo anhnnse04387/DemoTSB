@@ -40,5 +40,31 @@ namespace Models.DAO
             return db.Customers.OrderBy(s => s.Current_debt).Where(s => s.Status == 1).Take(10).ToList();
         }
 
+        public bool addCustomer(string cus_name, int? media_ID, string address, string deliver_address, string phone,
+            string mail, string tax_code)
+        {
+            try
+            {
+                Customer cus = new Customer();
+                cus.Customer_name = cus_name;
+                cus.Media_ID = media_ID;
+                cus.Delivery_address = address;
+                cus.Export_invoice_address = deliver_address;
+                cus.Phone = phone;
+                cus.Mail = mail;
+                cus.Tax_code = tax_code;
+                cus.Rank = "Khách mới";
+                cus.Date_Created = DateTime.Now;
+                cus.Current_debt = 0;
+                cus.Status = 1;
+                db.Customers.Add(cus);
+                db.SaveChanges();
+                return true;
+            }catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return false;
+            }
+        }
     }
 }

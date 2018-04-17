@@ -38,6 +38,34 @@ namespace Models.DAO
         {
             return db.Suppliers.SingleOrDefault(x => x.Supplier_ID == supplierId && x.Status == 1).Supplier_name;
         }
+
+        public bool addSupplier(string supp_name, int? mediaID,string supp_address, string supp_phone,
+            string supp_mail, string supp_taxCode)
+        {
+            try
+            {
+                //create new supplier
+                Supplier supp = new Supplier();
+                supp.Supplier_name = supp_name;
+                supp.Media_ID = mediaID;
+                supp.Supplier_address = supp_address;
+                supp.Phone = supp_phone;
+                supp.Mail = supp_mail;
+                supp.Tax_code = supp_taxCode;
+                supp.Current_debt = 0;
+                supp.Status = 1;
+                supp.Date_Created = DateTime.Now;
+                //insert to db
+                db.Suppliers.Add(supp);
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return false;
+            }
+        }
         
     }
 }
