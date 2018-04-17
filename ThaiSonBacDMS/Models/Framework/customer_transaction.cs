@@ -28,8 +28,6 @@ namespace Models.Framework
         public byte? VAT { get; set; }
         [Column(TypeName = "money")]
         public decimal? Total { get; set; }
-        [Column(TypeName = "money")]
-        public decimal? Total { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Pay { get; set; }

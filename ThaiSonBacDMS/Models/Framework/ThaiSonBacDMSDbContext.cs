@@ -91,13 +91,10 @@ namespace Models.Framework
 
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Sub_total)
-<<<<<<< HEAD
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Total)
-=======
->>>>>>> 7dd40a6b70b2e15e87604536a594e9b93b64b3ea
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
@@ -107,9 +104,11 @@ namespace Models.Framework
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Debt)
                 .HasPrecision(19, 4);
+
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Total)
                 .HasPrecision(19, 4);
+
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Old_debt)
                 .HasPrecision(19, 4);
@@ -424,13 +423,10 @@ namespace Models.Framework
 
             modelBuilder.Entity<Supplier_transaction>()
                 .Property(e => e.Sub_total)
-<<<<<<< HEAD
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supplier_transaction>()
                 .Property(e => e.Total)
-=======
->>>>>>> 7dd40a6b70b2e15e87604536a594e9b93b64b3ea
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supplier_transaction>()
