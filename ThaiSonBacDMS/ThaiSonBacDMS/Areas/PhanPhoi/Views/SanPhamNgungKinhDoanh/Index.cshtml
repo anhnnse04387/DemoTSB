@@ -252,7 +252,7 @@
                 toDate: $("#toDate").val()
             }
             $.ajax({
-                
+
                 type: "POST",
                 url: "SanPhamDangKinhDoanh/Index",
                 data: JSON.stringify({ mo: data }),
@@ -265,10 +265,11 @@
         $("#pCodeSearch").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: '@Url.Action("GetSearchValue","SanPhamDangKinhDoanh")',
+                    url: '/SanPhamNgungKinhDoanh/GetSearchValue',
+                    type:'POST',
                     minLength: 2,
-                    dataType: "json",
                     data: { searchValue: $("#pCodeSearch").val() },
+                    dataType: "json",                   
                     success: function (data) {
                         response($.map(data, function (item) {
                             return { label: item.pCodeSearch, value: item.pCodeSearch }

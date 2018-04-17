@@ -35,5 +35,9 @@ namespace Models.DAO
         {
             return db.Categories.Count();
         }
+        public Category getCategoryAllStatus(string cateId)
+        {
+            return db.Categories.SingleOrDefault(x => x.Category_ID == cateId);
+        }
     }
 }

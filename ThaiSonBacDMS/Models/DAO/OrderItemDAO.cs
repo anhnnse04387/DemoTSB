@@ -202,9 +202,15 @@ namespace Models.DAO
                             categoryName = c.Category_name,
                             categoryID = c.Category_ID,
                             dateCreated = ot.Date_created,
+<<<<<<< HEAD
                             nhapVon = p.CIF_VND * oi.Quantity,
                             xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
                             banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
+=======
+                            nhapVon = p.CIF * oi.Quantity,
+                            xuatVon = (p.CIF + p.CIF * (p.VAT / 100)) * oi.Quantity,
+                            banChoKhach = oi.Quantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
+>>>>>>> 7dd40a6b70b2e15e87604536a594e9b93b64b3ea
                         };
             if (category_ID != "-1")
             {

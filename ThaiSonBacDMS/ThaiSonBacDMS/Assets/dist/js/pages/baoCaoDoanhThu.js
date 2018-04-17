@@ -84,8 +84,11 @@ function changeWeek(year, month) {
 $(document).ready(function () {
     changeData();
 });
-
+var myChart;
 function changeData() {
+    if (typeof myChart != 'undefined') {
+        myChart.destroy();
+    }
     var selDay = $('#selectedWeek').val();
     var selMonth = $('#selectedMonth').val();
     var selYear = $('#selectedYear').val();
@@ -118,7 +121,7 @@ function changeData() {
             if (check != 0) {
                 $('#lineChartNoData').hide();
                 $('#lineChart').show();
-                new Chart(document.getElementById("lineChartThang1"), {
+                myChart = new Chart(document.getElementById("lineChartThang1"), {
                     type: 'line',
                     data: {
                         labels: labels,
@@ -194,6 +197,7 @@ function changeData() {
                 chart.draw(dataPie, options);
             }
             //Table
+            
             $("#tableBody").empty();
             $("#tableFoot").empty();
             var i = 1;
@@ -204,7 +208,7 @@ function changeData() {
             data.dataPieChart.forEach(function (entry) {
                 $('#tableBody').append('<tr>'
                 + '<td style="text-align:center">'+i+'</td>'
-                + '<td style="text-align:left" class="number">' + entry.categoryName + '</td>'
+                + '<td style="text-align:left">' + entry.categoryName + '</td>'
                 + '<td style="text-align:right" class="number">' + entry.nhapVon + '</td>'
                 + '<td style="text-align:right" class="number">' + entry.xuatVon + '</td>'
                 + '<td style="text-align:right" class="number">' + entry.banChoKhach + '</td>'
@@ -223,8 +227,10 @@ function changeData() {
                 + '<td style="text-align:right" class="number">' + tongXuatVon + '</td>'
                 + '<td style="text-align:right" class="number">' + tongBanChoKhach + '</td>'
                 + '<td style="text-align:right" class="number">' + tongLoiNhuan + '</td>'
-                + '</tr>');                                 
-        }
+                + '</tr>');
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
+        },
+        async: false
     });
 }
 

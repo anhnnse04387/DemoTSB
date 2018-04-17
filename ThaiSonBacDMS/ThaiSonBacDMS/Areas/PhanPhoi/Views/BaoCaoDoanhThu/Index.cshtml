@@ -252,7 +252,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-offset-3" style="padding-bottom: 15px; padding-right: 9px; padding-top: 15px; display: inline-flex">
-                                                            <label style="padding-right: 3px; padding-top: 7px; padding-left: 15px; width: 130px;">Danh mục: </label>
+                                                            <label style="padding-right: 3px; padding-top: 7px; padding-left: 15px; width: 130px; margin-left: -20px;">Danh mục: </label>
                                                             @Html.DropDownListFor(model => model.selectedCategory, @Model.listCategory, new { @class = "form-control select2", @style = "width: 100%;margin-left: 10px", @id = "selectedCate", @onchange = "changeData()" })
                                                         </div>
                                                     </div>
@@ -373,6 +373,9 @@
     <script src='/Assets/dist/js/pages/cong-no/bootstrap-datepicker.js'></script>
     <script src='/Assets/dist/js/pages/cong-no/moment.js'></script>
     <script src="/Assets/dist/js/loader.js"></script>
+    <!-- Auto Numberic-->
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <!-- momentJS -->
     <script src="~/Assets/bower_components/moment/moment.js"></script>
     <!--page js-->

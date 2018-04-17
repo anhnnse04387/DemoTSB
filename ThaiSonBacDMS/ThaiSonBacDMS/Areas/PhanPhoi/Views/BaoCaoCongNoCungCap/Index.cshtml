@@ -215,7 +215,7 @@
                                             <fieldset>
                                                 <legend style="font-size:17px"><b>Chi Tiết Nhập Hàng</b></legend>
                                                 <span class="pull-left">
-                                                    <a href="phanphoi_congno_chi-tiet-no-cung-cap.html">Xem chi tiết </a>
+                                                    @Html.ActionLink("Xem chi tiết", "Index", "BaoCaoChiTietCongNo", new { supplierID = 2}, null)
                                                     <i class="fa fa-info-circle text-blue"></i>
                                                 </span>
                                                 <table class="table table-bordered table-striped">
@@ -258,7 +258,7 @@
                                     <div class="box-footer">
                                         <div class="row">
                                             <div class="description-block">
-                                                <h5 class="description-header">4,206,475,213</h5>
+                                                <h5 class="description-header number" id="sumLS"></h5>
                                                 <span class="description-text">TỔNG CÔNG NỢ</span>
                                             </div>
                                             <!-- /.description-block -->
@@ -271,7 +271,7 @@
                                             <fieldset>
                                                 <legend style="font-size:17px"><b>Chi Tiết Nhập Hàng</b></legend>
                                                 <span class="pull-left">
-                                                    <a href="phanphoi_congno_chi-tiet-no-cung-cap.html">Xem chi tiết </a>
+                                                    @Html.ActionLink("Xem chi tiết", "Index", "BaoCaoChiTietCongNo", new { supplierID = 3 }, null)
                                                     <i class="fa fa-info-circle text-blue"></i>
                                                 </span>
                                                 <table id="example2" class="table table-bordered table-striped">
@@ -283,41 +283,15 @@
                                                             <th>Tổng cộng</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="bodyLS">
                                                         <tr>
                                                             <td>1</td>
                                                             <td>CB - Aptomat</td>
                                                             <td>0</td>
                                                             <td>0</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>
-                                                                Inverter: Biến tần
-                                                            </td>
-                                                            <td>262,620,000</td>
-                                                            <td>0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Cáp thông tina</td>
-                                                            <td>626,200,000</td>
-                                                            <td>0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>Công tắc ổ cắm</td>
-                                                            <td>0</td>
-                                                            <td>12,225,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
-                                                            <td>(11,880,720)</td>
-                                                            <td>343,325,046</td>
-                                                        </tr>
                                                     </tbody>
-                                                    <tfoot>
+                                                    <tfoot id="footLS">
                                                         <tr style="background-color: #544d61; color: white; font-weight: bold;">
                                                             <td colspan="2">Tổng cộng</td>
                                                             <td>900,700,720</td>
@@ -341,7 +315,7 @@
                                     <div class="box-footer">
                                         <div class="row">
                                             <div class="description-block">
-                                                <h5 class="description-header">4,206,475,213</h5>
+                                                <h5 class="description-header number" id="sumHQ">0</h5>
                                                 <span class="description-text">TỔNG CÔNG NỢ</span>
                                             </div>
                                             <!-- /.description-block -->
@@ -354,7 +328,7 @@
                                             <fieldset>
                                                 <legend style="font-size:17px"><b>Chi Tiết Nhập Hàng</b></legend>
                                                 <span class="pull-left">
-                                                    <a href="phanphoi_congno_chi-tiet-no-cung-cap.html">Xem chi tiết </a>
+                                                    @Html.ActionLink("Xem chi tiết", "Index", "BaoCaoChiTietCongNo", new { supplierID = 4 }, null)
                                                     <i class="fa fa-info-circle text-blue"></i>
                                                 </span>
                                                 <table id="example3" class="table table-bordered table-striped">
@@ -366,41 +340,15 @@
                                                             <th>Tổng cộng</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="bodyHQ">
                                                         <tr>
                                                             <td>1</td>
                                                             <td>CB - Aptomat</td>
                                                             <td>0</td>
                                                             <td>0</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>
-                                                                Inverter: Biến tần
-                                                            </td>
-                                                            <td>262,620,000</td>
-                                                            <td>0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Cáp thông tina</td>
-                                                            <td>626,200,000</td>
-                                                            <td>0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>Công tắc ổ cắm</td>
-                                                            <td>0</td>
-                                                            <td>12,225,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>Busway - Thanh cái dẫn điện & MTR - Máy biến áp & RMU - Tủ trung thế</td>
-                                                            <td>(11,880,720)</td>
-                                                            <td>343,325,046</td>
-                                                        </tr>
                                                     </tbody>
-                                                    <tfoot>
+                                                    <tfoot id="footHQ">
                                                         <tr style="background-color: #544d61; color: white; font-weight: bold;">
                                                             <td colspan="2">Tổng cộng</td>
                                                             <td>900,700,720</td>

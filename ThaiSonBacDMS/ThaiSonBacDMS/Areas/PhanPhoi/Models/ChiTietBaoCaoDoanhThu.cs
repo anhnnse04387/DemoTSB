@@ -24,6 +24,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public string doanhThuFrom { set; get; }
         public string doanhThuTo { set; get; }
         public Dictionary<string, List<DataChiTietDoanhThu>> data { set; get; }
-
+        public string errorString { set; get; }
     }
 }

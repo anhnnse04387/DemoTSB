@@ -18,5 +18,20 @@ namespace Models.DAO
         {
             return context.Media.Count();
         }
+        public Medium getMediaByID(int mediaID)
+        {
+            return context.Media.SingleOrDefault(x => x.Media_ID == mediaID);
+        }
+        public int insertMedia(string m_name, string m_location, string upload_by)
+        {
+            Medium m = new Medium();
+            m.Media_name = m_name;
+            m.Location = m_location;
+            m.Upload_by = upload_by;
+            m.Date_upload = DateTime.Now;
+            context.Media.Add(m);
+            context.SaveChanges();
+            return m.Media_ID;
+        }
     }
 }
