@@ -699,7 +699,11 @@
                     <h4 class="modal-title"><b>Thanh Toán</b></h4>
                 </div>
                 <div class="modal-body">
-                    <table style="margin-left:20%;height:250px">
+                    <table style="margin-left:20%;height:400px">
+					<tr>
+                            <td><i class="fa fa-money"><b>  Nợ cũ: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input readonly type="text" class="form-control"/></td>
+                        </tr>
                         <tr style="margin-bottom : 15px;">
                             <td><i class="fa fa-pencil"><b>  Diễn giải: </b></td>
                             <td  style="width: 250px; padding-left:15px">
@@ -714,14 +718,28 @@
                             <td><i class="fa fa-money"><b>  VAT: </b></td>
                             <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
                         </tr>
+						<tr>
+                            <td><i class="fa fa-money"><b>  Tổng cộng: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input readonly type="text" class="form-control"/></td>
+                        </tr>
                         <tr>
                             <td><i class="fa fa-money"><b>  Thanh toán: </b></td>
                             <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input type="text" class="form-control"/></td>
                         </tr>
-                        <tr>
+						<tr>
+                            <td><i class="fa fa-money"><b>  Dư nợ: </b></td>
+                            <td onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="padding-left:15px;width:250px"><input readonly type="text" class="form-control"/></td>
+                        </tr>
+						<tr style="margin-bottom : 15px;">
+                            <td><i class="fa fa-pencil"><b>  Ghi chú: </b></td>
+                            <td  style="width: 250px; padding-left:15px">
+                                <textarea style="width: 100%" rows="1" class="form-control"></textarea>
+                            </td>
+                        </tr>
+                        <!-- <tr>
                             <td><i class="fa fa-yelp"><b>  CKTT: </b></td>
                             <td style="padding-left:15px"><input type="checkbox" value="true" id="ckttCheckbox"/></td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
                 <div class="modal-footer">
