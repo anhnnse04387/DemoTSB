@@ -63,7 +63,24 @@ namespace Models.DAO
             List<DanhSachNguoiDung> lst = new List<DanhSachNguoiDung>();
 
             var query = from user in context.Users
+                        join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
+                        //where user
+                        select new
+                        {
+                            user,
+                            media.Location
+                        };
+            if (query != null)
+            {
+                foreach(var item in query)
+                {
+                    DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
+
+                    ds.tenNguoiDung = item.user.User_name;
+                    ds.
+                }
+            }
             return lst;
         }
     }
