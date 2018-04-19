@@ -27,7 +27,7 @@ namespace Models.Framework
 
         public byte? Discount { get; set; }
 
-        public byte? Box { get; set; }
+        public float? Box { get; set; }
 
         [StringLength(1)]
         public string Note { get; set; }

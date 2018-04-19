@@ -11,7 +11,7 @@ namespace Models.Framework
         [Key]
         public byte Status_ID { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         public string Status_name { get; set; }
     }
 }

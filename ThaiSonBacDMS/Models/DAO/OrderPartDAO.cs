@@ -25,12 +25,7 @@ namespace Models.DAO
                 return orderPart.Order_part_ID;
             }
             return null;
-        }
-
-        public void deleteOrderPart(String id)
-        {
-            db.Order_part.RemoveRange(db.Order_part.Where(x => x.Order_ID.Equals(id)).ToList());
-        }
+        }        
 
     }
 }

@@ -13,7 +13,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public int? Quantity { get; set; }
         public decimal? Price { get; set; }
         public byte? Discount { get; set; }
-        public byte? Box { get; set; }
+        public float? Box { get; set; }
         public decimal? per { get; set; }
         public decimal? priceBeforeDiscount { get; set; }
 

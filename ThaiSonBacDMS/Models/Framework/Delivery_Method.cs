@@ -11,7 +11,7 @@ namespace Models.Framework
         [Key]
         public byte Method_ID { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         public string Method_name { get; set; }
     }
 }

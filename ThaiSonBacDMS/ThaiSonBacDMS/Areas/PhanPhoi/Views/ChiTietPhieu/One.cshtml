@@ -1,0 +1,432 @@
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.OrderTotalModel
+@{
+    ViewBag.Title = "One";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+}
+<link rel="stylesheet" href="/Assets/dist/css/pages/detail_progress.css">
+<style>
+    .label-medium {
+        vertical-align: super;
+        font-size: medium;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .accountant-view-box-body-custom {
+        font-size: 20px;
+    }
+
+    .mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+    .number {
+        text-align: right;
+    }
+
+    .mainTable thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
+
+    .mainTable tbody tr td:nth-child(1) {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .mainTable tbody tr td:nth-child(4), .mainTable tbody tr td:nth-child(5),
+    .mainTable tbody tr td:nth-child(6), .mainTable tbody tr td:nth-child(7),
+    .mainTable tbody tr td:nth-child(8), .mainTable tbody tr td:nth-child(9) {
+        text-align: right;
+    }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
+
+    .textCursor {
+        cursor: text;
+    }
+
+    .noDisplay {
+        display: none !important;
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Đơn hàng</li>
+        <li>Phiếu đang xử lý</li>
+        <li class="active">Chi tiết phiếu</li>
+    </ol>
+</section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>Đơn hàng lô số @Model.orderId</b>
+                                <input type="hidden" value="@Model.orderId" id="orderId" />
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" href="@Url.Action("Index","LapPhieu")" target="_blank">
+                                <i class="fa fa-plus-square text-green"></i>
+                                <span><strong>Tạo Mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-edit text-gray"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <button class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-save text-gray"></i>
+                                <span><strong>Lưu</strong></span>
+                            </button>
+                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirmCancel">
+                                <i class="fa fa-close text-red"></i>
+                                <span><strong>Hủy</strong></span>
+                            </a>
+                            <button class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-check-circle text-gray"></i>
+                                <span><strong>Giao hàng</strong></span>
+                            </button>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-exchange text-gray"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                <i class="fa fa-eye text-black"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-download text-gray"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-file-excel-o text-gray"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-file-pdf-o text-gray"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="stepper">
+                                <div class="stepper__step stepper__step--finish" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="@Model.dict[1].name">
+                                    <div class="stepper__step-icon stepper__step-icon--finish"><svg class="shopee-svg-icon icon-order-order" enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0"><g><path d="m5 3.4v23.7c0 .4.3.7.7.7.2 0 .3 0 .3-.2.5-.4 1-.5 1.7-.5.9 0 1.7.4 2.2 1.1.2.2.3.4.5.4s.3-.2.5-.4c.5-.7 1.4-1.1 2.2-1.1s1.7.4 2.2 1.1c.2.2.3.4.5.4s.3-.2.5-.4c.5-.7 1.4-1.1 2.2-1.1.9 0 1.7.4 2.2 1.1.2.2.3.4.5.4s.3-.2.5-.4c.5-.7 1.4-1.1 2.2-1.1.7 0 1.2.2 1.7.5.2.2.3.2.3.2.3 0 .7-.4.7-.7v-23.7z" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></path><g><line fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" x1="10" x2="22" y1="11.5" y2="11.5"></line><line fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" x1="10" x2="22" y1="18.5" y2="18.5"></line></g></g></svg></div>
+                                    <div class="stepper__step-text">Lập Phiếu</div>
+                                    <div class="stepper__step-date">@Model.dict[1].date</div>
+                                </div>
+                                <div class="stepper__step stepper__step--finish" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="@Model.dict[3].name">
+                                    <div class="stepper__step-icon @Model.dict[3].classAttr">
+                                        <svg class="shopee-svg-icon icon-order-paid" enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0">
+                                            <g><path clip-rule="evenodd" d="m24 22h-21c-.5 0-1-.5-1-1v-15c0-.6.5-1 1-1h21c .5 0 1 .4 1 1v15c0 .5-.5 1-1 1z" fill="none" fill-rule="evenodd" stroke-miterlimit="10" stroke-width="3"></path><path clip-rule="evenodd" d="m24.8 10h4.2c.5 0 1 .4 1 1v15c0 .5-.5 1-1 1h-21c-.6 0-1-.4-1-1v-4" fill="none" fill-rule="evenodd" stroke-miterlimit="10" stroke-width="3"></path><path d="m12.9 17.2c-.7-.1-1.5-.4-2.1-.9l.8-1.2c.6.5 1.1.7 1.7.7.7 0 1-.3 1-.8 0-1.2-3.2-1.2-3.2-3.4 0-1.2.7-2 1.8-2.2v-1.3h1.2v1.2c.8.1 1.3.5 1.8 1l-.9 1c-.4-.4-.8-.6-1.3-.6-.6 0-.9.2-.9.8 0 1.1 3.2 1 3.2 3.3 0 1.2-.6 2-1.9 2.3v1.2h-1.2z" stroke="none"></path></g>
+                                        </svg>
+                                    </div>
+                                    <div class="stepper__step-text">Xuất Hóa Đơn</div>
+                                    <div class="stepper__step-date">@Model.dict[3].date</div>
+                                </div>
+                                <div class="stepper__step stepper__step--pending" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="@Model.dict[5].name">
+                                    <div class="stepper__step-icon @Model.dict[5].classAttr">
+                                        <svg class="shopee-svg-icon icon-order-received" enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0">
+                                            <g>
+                                                <polygon fill="none" points="2 28 2 19.2 10.6 19.2 11.7 21.5 19.8 21.5 20.9 19.2 30 19.1 30 28" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></polygon>
+                                                <polyline fill="none" points="21 8 27 8 30 19.1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></polyline>
+                                                <polyline fill="none" points="2 19.2 5 8 11 8" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></polyline>
+                                                <line fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" x1="16" x2="16" y1="4" y2="14"></line>
+                                                <path d="m20.1 13.4-3.6 3.6c-.3.3-.7.3-.9 0l-3.6-3.6c-.4-.4-.1-1.1.5-1.1h7.2c.5 0 .8.7.4 1.1z" stroke="none"></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="stepper__step-text">Xuất kho</div>
+                                    <div class="stepper__step-date">@Model.dict[5].date</div>
+                                </div>
+                                <div class="stepper__step" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="@Model.dict[6].name">
+                                    <div class="stepper__step-icon @Model.dict[6].classAttr">
+                                        <svg class="shopee-svg-icon icon-order-shipping" enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0">
+                                            <g>
+                                                <line fill="none" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" x1="18.1" x2="9.6" y1="20.5" y2="20.5"></line>
+                                                <circle cx="7.5" cy="23.5" fill="none" r="4" stroke-miterlimit="10" stroke-width="3"></circle>
+                                                <circle cx="20.5" cy="23.5" fill="none" r="4" stroke-miterlimit="10" stroke-width="3"></circle>
+                                                <line fill="none" stroke-miterlimit="10" stroke-width="3" x1="19.7" x2="30" y1="15.5" y2="15.5"></line>
+                                                <polyline fill="none" points="4.6 20.5 1.5 20.5 1.5 4.5 20.5 4.5 20.5 18.4" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></polyline>
+                                                <polyline fill="none" points="20.5 9 29.5 9 30.5 22 24.7 22" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></polyline>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="stepper__step-text">Giao hàng</div>
+                                    <div class="stepper__step-date">@Model.dict[6].date</div>
+                                </div>
+                                <div class="stepper__step" title="Người phụ trách" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="@Model.dict[7].name">
+                                    <div class="stepper__step-icon @Model.dict[7].classAttr">
+                                        <svg class="shopee-svg-icon icon-order-rating" enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0">
+                                            <polygon fill="none" points="16 3.2 20.2 11.9 29.5 13 22.2 19 24.3 28.8 16 23.8 7.7 28.8 9.8 19 2.5 13 11.8 11.9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></polygon>
+                                        </svg>
+                                    </div>
+                                    <div class="stepper__step-text">Nhận hàng</div>
+                                    <div class="stepper__step-date">@Model.dict[7].date</div>
+                                    </div>
+                                    <div class="stepper__line">
+                                        <div class="stepper__line-background" style="background: rgb(224, 224, 224);"></div>
+                                        <div class="stepper__line-foreground" style="width: @Model.lineStatus; background: rgb(45, 194, 88);"></div>
+                                    </div>
+                                </div>
+                                <span class="pull-right" style="margin-right: 50px;"><a href="">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
+                            </div>
+                        </div>
+                        <form style="margin-top: 25px;">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                            <div class="box-header">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Đơn vị</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                            <input class="form-control" disabled value="@Model.customerName" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Mã số thuế</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                            <input class="form-control" disabled value="@Model.taxCode" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Nơi xuất HĐ</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                                            <input class="form-control" disabled value="@Model.invoiceAddress" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-md-4">
+                                                        <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                            <input class="form-control" disabled value="@Model.deliveryAddress" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Số hóa đơn</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                                            <input class="form-control" disabled value="@Model.deliveryQtt" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>VAT khách hàng</label><span style="color: red;">*</span>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            <input class="form-control" disabled />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-header">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-xs-12 table-responsive">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+                                            <table class="table table-striped mainTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="2" style="width: 30px;">STT</th>
+                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
+                                                        <th colspan="2">Số lượng</th>
+                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width: 70px;">Cái</th>
+                                                        <th style="width: 70px;">Thùng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (int i = 0; i < Model.readItems.Count; i++)
+                                                    {
+                                                        <tr>
+                                                            <td>@(i + 1)</td>
+                                                            <td style="vertical-align: middle; width: 24.7%;">
+                                                                <input type="text" value="@Model.readItems[i].code" disabled class="form-control" />
+                                                            </td>
+                                                            <td style="vertical-align: middle;"><input type="text" value="@Model.readItems[i].param" disabled class="form-control" /></td>
+                                                            <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" disabled class="form-control" /></td>
+                                                            <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" disabled class="form-control" /></td>
+                                                            <td><output class="number">@Model.readItems[i].per</output></td>
+                                                            <td><output class="number">@Model.readItems[i].priceBeforeDiscount</output></td>
+                                                            <td><input type="text" value="@Model.readItems[i].Discount" disabled class="form-control number" /></td>
+                                                            <td><output class="number">@Model.readItems[i].Price</output></td>
+                                                        </tr>
+                                                    }
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.qttTotal</output></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.boxTotal</output></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.subTotal</output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" value="@Model.discount" class="form-control number" disabled style="text-align: right; float: right; font-weight: bold;" />
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.discountMoney</output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.afterDiscountMoney</output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="text" disabled class="form-control number" value="@Model.vat" style="text-align: right; float: right; font-weight: bold;">
+                                                        </td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
+                                                    </tr>
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.total</output></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                            <div id="sound"></div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-->
+            </div>
+            <!-- ./row -->
+        </section>
+        <div class="modal fade" id="confirmCancel" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận hủy đơn hàng</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn muốn hủy đơn hàng?</label>
+                        <br />
+                        <p>Lý do</p>
+                        <textarea style="width: 100%" rows="10" id="reason"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
+                        <button type="button" class="btn btn-danger btn-ok" data-dismiss="modal" onclick="cancelOrder();">Đồng ý</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- /.content -->
+}
+@section ChiTietPhieu
+{
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+        });
+        function cancelOrder() {
+            $.ajax({
+                url: '/PhanPhoi/ChiTietPhieu/cancelOrder',
+                dataType: 'json',
+                data: { orderId: $('#orderId').val(), note: $('#reason').val() },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_10.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/PhanPhoi/Home/Index';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
+                        type: 'error'
+                    });
+                }
+            });
+        }
+    </script>
+}
+

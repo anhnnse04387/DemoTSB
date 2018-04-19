@@ -1,4 +1,5 @@
-﻿using Models.Framework;
+﻿using Models.DAO_Model;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,41 @@ namespace Models.DAO
         public string getOffice(int officeID)
         {
             return context.Offices.SingleOrDefault(x => x.Office_ID == officeID).Office_name;
+        }
+        //thuongtx
+        public byte getRoleId()
+        {
+            return context.Role_detail.SingleOrDefault(x => x.Role_name.ToLower().Equals("quản trị")).Role_ID;
+        }
+
+        public byte? getRoleIdByCurrentAcc(string userId)
+        {
+            return context.Accounts.SingleOrDefault(x => x.User_ID.Equals(userId)).Role_ID;
+        }
+        public List<DanhSachNguoiDung> getAllUsersActive()
+        {
+            List<DanhSachNguoiDung> lst = new List<DanhSachNguoiDung>();
+
+            var query = from user in context.Users
+                        join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
+                        //where user
+                        select new
+                        {
+                            user,
+                            media.Location
+                        };
+            if (query != null)
+            {
+                foreach(var item in query)
+                {
+                    DanhSachNguoiDung ds = new DanhSachNguoiDung();
+
+
+                    ds.tenNguoiDung = item.user.User_name;
+                    ds.
+                }
+            }
+            return lst;
         }
     }
 }

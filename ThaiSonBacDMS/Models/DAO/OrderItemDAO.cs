@@ -25,11 +25,6 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
-        public void deleteOrderItems(String id)
-        {
-            db.Order_items.RemoveRange(db.Order_items.Where(x => x.Order_ID.Equals(id)).ToList());
-        }
-
         public List<Order_items> getOrderItem(String orderId)
         {
             return db.Order_items.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID == null).ToList();
@@ -207,9 +202,9 @@ namespace Models.DAO
                             categoryName = c.Category_name,
                             categoryID = c.Category_ID,
                             dateCreated = ot.Date_created,
-                            nhapVon = p.CIF * oi.Quantity,
-                            xuatVon = (p.CIF + p.CIF * (p.VAT / 100)) * oi.Quantity,
-                            banChoKhach = oi.Quantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
+                            nhapVon = p.CIF_VND * oi.Quantity,
+                            xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
+                            banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
                         };
             if (category_ID != "-1")
             {
@@ -263,8 +258,8 @@ namespace Models.DAO
                             categoryName = c.Category_name,
                             categoryID = c.Category_ID,
                             quantity = oi.Quantity,
-                            nhapVon = p.CIF * oi.Quantity,
-                            xuatVon = (p.CIF + p.CIF * (p.VAT / 100)) * oi.Quantity,
+                            nhapVon = p.CIF_VND * oi.Quantity,
+                            xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
                             banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
                         };
             foreach (var item in query)
@@ -286,7 +281,7 @@ namespace Models.DAO
             decimal? priceTo, decimal? doanhThuFrom, decimal? doanhThuTo)
         {
             List<DataChiTietDoanhThu> dataList = new List<DataChiTietDoanhThu>();
-             var query = from oi in db.Order_items
+            var query = from oi in db.Order_items
                         join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
                         where ot.Date_created >= beginDate && ot.Date_created <= endDate
                         && oi.Order_part_ID == null
@@ -297,22 +292,22 @@ namespace Models.DAO
                             totalQuantity = sumQuantity.Sum(x => x.Quantity),
                         };
             var handleQuery = (from oi in db.Order_items
-                              join p in db.Products on oi.Product_ID equals p.Product_ID
-                              join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
-                              join c in db.Categories on p.Category_ID equals c.Category_ID
-                              join q in query on oi.Product_ID equals q.productID
-                              where ot.Date_created >= beginDate && ot.Date_created <= endDate
-                              && oi.Order_part_ID == null
-                              select new
-                              {
-                                  productCode = p.Product_code,
-                                  productID = p.Product_ID,
-                                  categoryID = c.Category_ID,
-                                  price = p.Price_before_VAT_VND + p.Price_before_VAT_VND*(p.VAT/100),
-                                  totalQuantity = q.totalQuantity,
-                                  doanhThu = q.totalQuantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
-                              }).Distinct();
-            if(!string.IsNullOrEmpty(productCode))
+                               join p in db.Products on oi.Product_ID equals p.Product_ID
+                               join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                               join c in db.Categories on p.Category_ID equals c.Category_ID
+                               join q in query on oi.Product_ID equals q.productID
+                               where ot.Date_created >= beginDate && ot.Date_created <= endDate
+                               && oi.Order_part_ID == null
+                               select new
+                               {
+                                   productCode = p.Product_code,
+                                   productID = p.Product_ID,
+                                   categoryID = c.Category_ID,
+                                   price = p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100),
+                                   totalQuantity = q.totalQuantity,
+                                   doanhThu = q.totalQuantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * (p.VAT / 100))
+                               }).Distinct();
+            if (!string.IsNullOrEmpty(productCode))
             {
                 handleQuery = handleQuery.Where(x => x.productCode.Contains(productCode));
             }
@@ -344,7 +339,7 @@ namespace Models.DAO
             {
                 handleQuery = handleQuery.Where(x => x.doanhThu <= doanhThuTo);
             }
-            foreach(var item in handleQuery)
+            foreach (var item in handleQuery)
             {
                 try
                 {
@@ -357,12 +352,12 @@ namespace Models.DAO
                     data.doanhThu = (decimal)item.doanhThu;
                     dataList.Add(data);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e);
                 }
-                
-                
+
+
             }
             return dataList;
         }
@@ -383,29 +378,29 @@ namespace Models.DAO
                                 where p.Category_ID.Contains(categoryID)
                                 group oi by p.Category_ID)
                                group group_category by group_customer.Key;
-            
-            foreach(var item in tested_query)
+
+            foreach (var item in tested_query)
             {
                 try
                 {
                     var listCategory = new List<DataCongNoKhachHang>();
-                    foreach(var i in item)
+                    foreach (var i in item)
                     {
                         DataCongNoKhachHang data = new DataCongNoKhachHang();
                         data.categoryName = new CategoryDAO().getCategoryById(i.Key).Category_name;
-                        data.totalQuantity = (int) i.Sum(x => x.Quantity);
-                        data.totalPrice = i.Sum(x=>x.Discount==null ? (decimal)x.Price 
-                        : (decimal)x.Price - (decimal)x.Price*((decimal)x.Discount/100));
+                        data.totalQuantity = (int)i.Sum(x => x.Quantity);
+                        data.totalPrice = i.Sum(x => x.Discount == null ? (decimal)x.Price
+                        : (decimal)x.Price - (decimal)x.Price * ((decimal)x.Discount / 100));
                         listCategory.Add(data);
                     }
                     var cusName = new CustomerDAO().getCustomerById(item.Key).Customer_name;
                     listData.Add(cusName, listCategory);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e);
                 }
-            }                
+            }
             return listData;
         }
 
@@ -433,12 +428,12 @@ namespace Models.DAO
                         select oi;
             if (query.Count() != 0)
             {
-                foreach(var orderItem in query)
+                foreach (var orderItem in query)
                 {
                     lstOrderItem.Add(orderItem);
                 }
             }
-            
+
             return lstOrderItem;
         }
     }

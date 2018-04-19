@@ -32,6 +32,23 @@ namespace Models.DAO
             return null;
         }
 
+        public void deleteContent(String orderId)
+        {
+            foreach (Order_detail_status s in db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID.Contains(orderId)).ToList())
+            {
+                db.Order_detail_status.Remove(s);
+            }
+            foreach (Order_items i in db.Order_items.Where(x => x.Order_ID.Equals(orderId)).ToList())
+            {
+                db.Order_items.Remove(i);
+            }
+            foreach (Order_part p in db.Order_part.Where(x => x.Order_ID.Equals(orderId)).ToList())
+            {
+                db.Order_part.Remove(p);
+            }
+            db.SaveChanges();
+        }
+
         public void updateOrder(Order_total order)
         {
             var record = db.Order_total.Where(x => x.Order_ID.Equals(order.Order_ID)).SingleOrDefault();

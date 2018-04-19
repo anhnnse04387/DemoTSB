@@ -215,7 +215,7 @@
                                             <th style="width: 4%">Tổng nhập</th>
                                             <th style="width: 4%">Tổng xuất</th>
                                             <th style="width: 3%">Tổng tồn</th>
-                                            <th rowspan="2" style="width:3%">Thay đổi</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -238,7 +238,7 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>
+
                                                 </tr>
                                                 foreach (var items in itemCate.Value.ToList())
                                                 {
@@ -249,88 +249,89 @@
                                                         <td class="right nhap_@j">@items.TongNhap</td>
                                                         <td class="right xuat_@j">@items.TongXuat</td>
                                                         <td class="right ton_@j">@items.TongTon</td>
-                                                        <td style="text-align:center">
-                                                            <a id="btn_row_@i" onclick="showHide('@i')" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                                <i class="fa fa-edit text-blue"></i>
-                                                            </a>
-                                                        </td>
                                                     </tr>
-                                                    <tr id="row_@i">
-                                                        <td colspan="10">
-                                                            <div class="container-fluid">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label>Tổng nhập</label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                            </span>
-                                                                            <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongNhap" id="editNhap_@i" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label>Tổng xuất</label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                            </span>
-                                                                            <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongXuat" id="editXuat_@i" />
+                                                        @*<td style="text-align:center">
+                                                                    <a id="btn_row_@i" onclick="showHide('@i')" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                        <i class="fa fa-edit text-blue"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="row_@i">
+                                                                <td colspan="10">
+                                                                    <div class="container-fluid">
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <label>Tổng nhập</label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                    </span>
+                                                                                    <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongNhap" id="editNhap_@i" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label>Tổng xuất</label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                    </span>
+                                                                                    <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongXuat" id="editXuat_@i" />
 
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <label>Tổng tồn</label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                                    </span>
+                                                                                    <output class="form-control" id="editTon_@i">@items.TongTon</output>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row hidden">
+                                                                            <div class="col-md-6">
+                                                                                <label>Tổng tồn</label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                    </span>
+                                                                                    <input type="text" class="form-control" value="@items.product.Product_ID" id="productId_@i" />
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
 
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label>Tổng tồn</label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-money" aria-hidden="true"></i>
-                                                                            </span>
-                                                                            <output class="form-control" id="editTon_@i">@items.TongTon</output>
+                                                                        <br>
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <div class="col-md-10"></div>
+                                                                                <div class="col-md-1">
+                                                                                    <a href="" id="cancel_btn_@i" onclick="closePannel('@i')" class="btn btn-default btn-block">Hủy</a>
+                                                                                </div>
+                                                                                <div class="col-md-1">
+                                                                                    <a href="" class="btn btn-danger btn-block" onclick="validate('@i')">Sửa</a>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row hidden">
-                                                                    <div class="col-md-6">
-                                                                        <label>Tổng tồn</label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                            </span>
-                                                                            <input type="text" class="form-control" value="@items.product.Product_ID" id="productId_@i" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <br>
-                                                                <div class="row">
-                                                                    <div class="">
-                                                                        <div class="col-md-10"></div>
-                                                                        <div class="col-md-1">
-                                                                            <a href="" id="cancel_btn_@i" onclick="closePannel('@i')" class="btn btn-default btn-block">Hủy</a>
-                                                                        </div>
-                                                                        <div class="col-md-1">
-                                                                            <a href="" class="btn btn-danger btn-block" onclick="validate('@i')">Sửa</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    i++;
-                                                }
-                                                if (Model.lstProduct.Count != 0)
-                                                {
-                                                    <tr style="background-color: #00b3b3;font-weight: bold">
-                                                        <td></td>
-                                                        <td style="border-right: none"></td>
-                                                        <td style="text-align: left;border-left: none;color: white">Tổng</td>
-                                                        <td class="right" id="sumNhap_@j"></td>
-                                                        <td class="right" id="sumXuat_@j"></td>
-                                                        <td class="right" id="sumTon_@j"></td>
-                                                        <td></td>
-                                                    </tr>
+                                                                </td>
+                                                            </tr>*@
+                                            i++;
+                                        }
+                                        if (Model.lstProduct.Count != 0)
+                                        {
+                                            <tr style="background-color: #00b3b3;font-weight: bold">
+                                                @*<td></td>*@
+                                                <td style="border-right: none"></td>
+                                                <td style="text-align: left;border-left: none;color: white">Tổng</td>
+                                                <td class="right" id="sumNhap_@j"></td>
+                                                <td class="right" id="sumXuat_@j"></td>
+                                                <td class="right" id="sumTon_@j"></td>
+                                                <td></td>
+                                            </tr>
                                                 }
                                                 j++;
                                             }
@@ -345,7 +346,7 @@
                                             <td class="right" id="totalNhap"></td>
                                             <td class="right" id="totalXuat"></td>
                                             <td class="right" id="totalTon"></td>
-                                            <td></td>
+                                            @*<td></td>*@
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -548,7 +549,7 @@
                                     title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
                                     type: 'success',
                                     timer: 5000,
-                                    showConfirmButton:false
+                                    showConfirmButton: false
                                 }).then((result) => {
                                     if (result.value) {
                                         window.location.reload();

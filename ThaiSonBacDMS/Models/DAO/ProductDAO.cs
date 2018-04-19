@@ -82,7 +82,7 @@ namespace Models.DAO
         //autocomplete
         public List<Product> getLstProductSearch(string value)
         {
-            return db.Products.Where((x => (x.Product_code.Contains(value) || x.Product_name.Contains(value)) && x.Status == 1)).ToList();
+            return db.Products.Where((x => x.Product_name.Contains(value) && x.Status == 1)).ToList();
         }
 
         public List<Product> getLstSearch(Product product)

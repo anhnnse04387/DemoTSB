@@ -28,12 +28,15 @@
         public byte? VAT { get; set; }
         [Column(TypeName = "money")]
         public decimal? Total { get; set; }
+
         [Column(TypeName = "money")]
         public decimal? Pay { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Debt { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal? Old_debt { get; set; }
         [StringLength(10)]
         public string User_ID { get; set; }
 
@@ -41,6 +44,6 @@
 
         public virtual Customer Customer { get; set; }
 
-        public virtual Order_total Order_total1 { get; set; }
+        public virtual Order_total Order_total { get; set; }
     }
 }

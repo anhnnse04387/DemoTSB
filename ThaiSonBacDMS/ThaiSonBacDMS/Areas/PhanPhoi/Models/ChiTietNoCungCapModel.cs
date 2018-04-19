@@ -5,7 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b3e3bf584070b98644270ccd33911ac4a0d6f3ac
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
@@ -39,5 +42,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public decimal? noCu { get; set; }
         public string ghiChu { get; set; }
         public string ngay { get; set; }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> b3e3bf584070b98644270ccd33911ac4a0d6f3ac
     }
 }

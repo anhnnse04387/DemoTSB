@@ -147,7 +147,7 @@ function doneOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/PhanPhoi/POHistory/Index';
+                    window.location.href = '/PhanPhoi/PO/History';
                 }
             });            
         },

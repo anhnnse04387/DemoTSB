@@ -9,7 +9,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
     {
 
         public String code { get; set; }
-        public byte? Box { get; set; }
+        public float? Box { get; set; }
         public int? Quantity { get; set; }
 
     }
