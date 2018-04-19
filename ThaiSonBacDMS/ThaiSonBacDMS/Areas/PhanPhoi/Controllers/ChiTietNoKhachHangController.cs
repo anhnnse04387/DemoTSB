@@ -65,7 +65,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 Customer_transactionDAO dao = new Customer_transactionDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 int userId = session.accountID;
-                int rowInserted = dao.insertData(Convert.ToInt32(customerId), tienHang, vat, thanhToan, duNo, dienGiai, userId,tongCong);
+                int rowInserted = dao.insertData(Convert.ToInt32(customerId), tienHang, vat, thanhToan, duNo, dienGiai, userId.ToString(),tongCong);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -152,21 +152,197 @@ namespace Models.DAO
             }
             return debt;
         }
-        public int insertData(int customerId, string tienHang, string vat, string thanhToan, string duNo,string dienGiai,int userId,string tongCong)
+        public int insertData(int customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai, string userId, string tongCong)
         {
             Customer_transaction ct = new Customer_transaction();
             ct.Customer_ID = customerId;
-            ct.Date_Created = DateTime.Now;           
+            ct.Date_Created = DateTime.Now;
             ct.Description = dienGiai;
             ct.Sub_total = Convert.ToDecimal(tienHang);
             ct.Pay = Convert.ToDecimal(thanhToan);
             ct.VAT = Convert.ToByte(vat);
             ct.Debt = Convert.ToDecimal(duNo);
-            ct.User_ID = userId.ToString();
+            ct.User_ID = userId;
             ct.Total = Convert.ToDecimal(tongCong);
             db.Customer_transaction.Add(ct);
             int rowInserted = db.SaveChanges();
             return rowInserted;
+        }
+        public List<DanhSachNoKhachHang> danhSachKhachHang()
+        {
+            List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
+            var query1 = from cus in db.Customer_transaction
+                         group cus by cus.Customer_ID into q
+                         select new
+                         {
+                             maxDate = q.Max(x => x.Date_Created)
+                         };
+            var query2 = from order in db.Order_items
+                         group order by order.Order_ID into o
+                         select new
+                         {
+                             quantity = o.Sum(x => x.Quantity),
+                             orderId = o.Key
+                         };
+            var query3 = from transaction in db.Customer_transaction
+                         join maxDate in query1 on transaction.Date_Created equals maxDate.maxDate
+                         join order in query2 on transaction.Order_ID equals order.orderId
+                         join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID
+                         select new
+                         {
+                             tenKhachHang = cus.Customer_name,
+                             transaction,
+                             order.quantity,
+
+                         };
+            if (query3.Count() != 0)
+            {
+                foreach (var item in query3)
+                {
+                    DanhSachNoKhachHang ds = new DanhSachNoKhachHang();
+
+                    ds.customerId = item.transaction.Customer_ID;
+                    ds.tenKhachHang = item.tenKhachHang;
+                    ds.noCu = item.transaction.Old_debt;
+                    ds.soLuong = item.quantity;
+                    ds.tienHang = item.transaction.Sub_total;
+                    ds.vat = item.transaction.VAT;
+                    ds.tongCong = item.transaction.Total;
+                    ds.thanhToan = item.transaction.Pay;
+                    ds.conNo = item.transaction.Debt;
+                    ds.id = item.transaction.Transaction_ID;
+
+                    lst.Add(ds);
+                }
+            }
+            return lst;
+        }
+        public List<Autocomplete> getListAuto(string valueSearch)
+        {
+            var query1 = from cus in db.Customer_transaction
+                         group cus by cus.Customer_ID into q
+                         select new
+                         {
+                             maxDate = q.Max(x => x.Date_Created)
+                         };
+            var query2 = from order in db.Order_items
+                         group order by order.Order_ID into o
+                         select new
+                         {
+                             quantity = o.Sum(x => x.Quantity),
+                             orderId = o.Key
+                         };
+            var query3 = from transaction in db.Customer_transaction
+                         join maxDate in query1 on transaction.Date_Created equals maxDate.maxDate
+                         join order in query2 on transaction.Order_ID equals order.orderId
+                         join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID
+                         where cus.Customer_name.Contains(valueSearch)
+                         select new
+                         {
+                             id = cus.Customer_ID,
+                             tenKhachHang = cus.Customer_name
+                         };
+            List<Autocomplete> lst = new List<Autocomplete>();
+            if (query3.Count() != 0)
+            {
+                foreach(var item in query3)
+                {
+                    Autocomplete obj = new Autocomplete();
+
+                    obj.key = item.tenKhachHang;
+                    obj.value = item.id;
+
+                    lst.Add(obj);
+                }
+            }
+            return lst;
+        }
+        public List<DanhSachNoKhachHang> getListSearchCustomer(string customerName,string noTu,string noDen)
+        {
+            List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
+
+            var query1 = from cus in db.Customer_transaction
+                         group cus by cus.Customer_ID into q
+                         select new
+                         {
+                             maxDate = q.Max(x => x.Date_Created)
+                         };
+            var query2 = from order in db.Order_items
+                         group order by order.Order_ID into o
+                         select new
+                         {
+                             quantity = o.Sum(x => x.Quantity),
+                             orderId = o.Key
+                         };
+            var query3 = from transaction in db.Customer_transaction
+                         join maxDate in query1 on transaction.Date_Created equals maxDate.maxDate
+                         join order in query2 on transaction.Order_ID equals order.orderId
+                         join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID                        
+                         select new
+                         {
+                             tenKhachHang = cus.Customer_name,
+                             transaction,
+                             order.quantity
+                         };
+            if (!string.IsNullOrEmpty(customerName))
+            {
+                query3 = query3.Where(x => x.tenKhachHang.Equals(customerName));
+            }
+            if(!string.IsNullOrEmpty(noTu) && string.IsNullOrEmpty(noDen))
+            {
+                Decimal value = Convert.ToDecimal(noTu);
+                query3 = query3.Where(x => x.transaction.Debt >= value);
+            }
+            if(!string.IsNullOrEmpty(noDen) && string.IsNullOrEmpty(noTu))
+            {
+                Decimal value = Convert.ToDecimal(noDen);
+                query3 = query3.Where(x => x.transaction.Debt <= value);
+            }
+            if(!string.IsNullOrEmpty(noTu) && !string.IsNullOrEmpty(noDen))
+            {
+                Decimal fromValue = Convert.ToDecimal(noTu);
+                Decimal toValue = Convert.ToDecimal(noDen);
+                query3 = query3.Where(x => x.transaction.Debt >= fromValue && x.transaction.Debt <= toValue);
+            }
+            if (query3.Count() != 0)
+            {
+                foreach (var item in query3)
+                {
+                    DanhSachNoKhachHang ds = new DanhSachNoKhachHang();
+
+                    ds.customerId = item.transaction.Customer_ID;
+                    ds.tenKhachHang = item.tenKhachHang;
+                    ds.noCu = item.transaction.Old_debt;
+                    ds.soLuong = item.quantity;
+                    ds.tienHang = item.transaction.Sub_total;
+                    ds.vat = item.transaction.VAT;
+                    ds.tongCong = item.transaction.Total;
+                    ds.thanhToan = item.transaction.Pay;
+                    ds.conNo = item.transaction.Debt;
+                    ds.customerId = item.transaction.Customer_ID;
+                    ds.dienGiai = item.transaction.Description;
+
+                    lst.Add(ds);
+                }
+            }
+            return lst;
+        }
+        public int insertData(string noCu,string nhapTrongKy,string thanhToan,string vat,string conNo,string dienGiai,string customerId,string userId)
+        {
+            Customer_transaction cus = new Customer_transaction();
+
+            cus.Date_Created = DateTime.Now;
+            cus.Customer_ID = Convert.ToInt32(customerId);
+            cus.VAT = Convert.ToByte(vat);
+            cus.Sub_total = Convert.ToDecimal(nhapTrongKy);
+            cus.Description = dienGiai;
+            cus.Pay = Convert.ToDecimal(thanhToan);
+            cus.Old_debt = Convert.ToDecimal(noCu);
+            cus.Debt = Convert.ToDecimal(conNo);
+            cus.User_ID = userId;
+
+            db.Customer_transaction.Add(cus);
+            return db.SaveChanges();
         }
     }
 }

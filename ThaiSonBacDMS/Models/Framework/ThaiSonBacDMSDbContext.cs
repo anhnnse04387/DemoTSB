@@ -106,6 +106,9 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
+              .Property(e => e.Old_debt)
+              .HasPrecision(19, 4);
+            modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Total)
                 .HasPrecision(19, 4);
 
