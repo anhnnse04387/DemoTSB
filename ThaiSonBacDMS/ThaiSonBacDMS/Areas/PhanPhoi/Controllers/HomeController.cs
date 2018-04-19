@@ -93,10 +93,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var firstMonthPrevious = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
             var lastMonthPrevious = firstMonthPrevious.AddMonths(1).AddDays(-1);
             var listTotalPrevious = totalDAO.getOrderByDateCreated(firstMonthPrevious, lastMonthPrevious);
-            if (listTotal.Count != 0 && listTotalPrevious.First().Date_created.Day != 1)
+            if(listTotalPrevious.Count==0)
+            {
+                dataLineChartPreviousOrderMonth.Add(1, 0);
+            }
+            else if (listTotalPrevious.First().Date_created.Day != 1)
+            {
+                dataLineChartPreviousOrderMonth.Add(1, 0);
+            }
+            if(listTotal.Count != 0)
             {
                 dataLineChartPreviousMonth.Add(1, 0);
-                dataLineChartPreviousOrderMonth.Add(1, 0);
             }
             
             foreach (var item in listTotalPrevious)

@@ -47,7 +47,6 @@ namespace Models.Framework
 
         [StringLength(10)]
         public string Avatar_ID { get; set; }
-        public byte Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
