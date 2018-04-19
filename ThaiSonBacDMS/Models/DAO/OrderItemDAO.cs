@@ -409,6 +409,20 @@ namespace Models.DAO
             return listData;
         }
 
+        public Dictionary<string, int?> getProductCustomerBought(int customerID)
+        {
+            var query = (from oi in db.Order_items
+                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                        join p in db.Products on oi.Product_ID equals p.Product_ID
+                        where oi.Order_part_ID == null && ot.Customer_ID == customerID
+                        group oi by p.Product_name into g
+                        select new
+                        {
+                            productName = g.Key,
+                            totalQuantity = g.Sum(x => x.Quantity)
+                        }).ToDictionary(x=>x.productName, x=>x.totalQuantity);
+            return query;
+        }
         //thuongtx
         public List<Order_items> getLstOrderItems(int productId)
         {

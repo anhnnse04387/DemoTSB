@@ -1,22 +1,16 @@
 ﻿using Models.DAO_Model;
-<<<<<<< HEAD
 using Models.Framework;
-=======
->>>>>>> c3ff04e2322ca5b166f243aeb4318c685d7415a4
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-<<<<<<< HEAD
 using System.Web.Mvc;
-=======
->>>>>>> c3ff04e2322ca5b166f243aeb4318c685d7415a4
+
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class ChiTietNoCungCapModel
     {
-<<<<<<< HEAD
         public List<SelectListItem> lstCategorySearch { get; set; }
         public IList<SelectListItem> listShowYear { get; set; }
         public string selectedYear { set; get; }
@@ -31,7 +25,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public Supplier supp { set; get; }
         public Dictionary<string, List<DataCongNoCungCap>> data { set; get; }
         public string errorString { set; get; }
-=======
         public List<ChiTietNoCungCap> lstDisplay { get; set; }
         public string supplierName{ get; set; }
         public int supplierId { get; set; }
@@ -46,7 +39,5 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public decimal? noCu { get; set; }
         public string ghiChu { get; set; }
         public string ngay { get; set; }
-
->>>>>>> c3ff04e2322ca5b166f243aeb4318c685d7415a4
     }
 }

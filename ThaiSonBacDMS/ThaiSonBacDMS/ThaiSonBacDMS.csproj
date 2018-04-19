@@ -125,11 +125,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\dist\css\pages\datatable\jquery.dataTables.min.css" />
+    <Content Include="Assets\dist\css\pages\images\sort_asc.png" />
+    <Content Include="Assets\dist\css\pages\images\sort_both.png" />
+    <Content Include="Assets\dist\css\pages\images\sort_desc.png" />
     <Content Include="Assets\dist\js\ChiTietPhieu.js" />
     <Content Include="Assets\dist\css\pages\hanghoa_index.css" />
     <Content Include="Assets\dist\css\pages\ketoan_index.css" />
     <Content Include="Assets\dist\css\pages\NoteSrcoll.css" />
     <Content Include="Assets\dist\js\chiTietPhieuQuanLy.js" />
+    <Content Include="Assets\dist\js\datatable\jquery.dataTables.min.js" />
     <Content Include="Assets\dist\js\lapPhieuQuanLy.js" />
     <Content Include="Assets\dist\js\orderListQuanLy.js" />
     <Content Include="Assets\dist\js\OrderList.js" />
@@ -178,6 +183,8 @@
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietNoKhachHangController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\DanhSachKhachHangController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\DanhSachNhaCungCapController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ErrorPageController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\GiaSanPhamController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
@@ -186,15 +193,16 @@
     <Compile Include="Areas\PhanPhoi\Controllers\POController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\SanPhamNgungKinhDoanhController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\StockController.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\TaoKhachHangController.cs" />
-    <Compile Include="Areas\PhanPhoi\Controllers\TaoNhaCungCapController.cs" />
     <Compile Include="Areas\PhanPhoi\Models\BaoCaoCongNoCungCapModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\BaoCaoCongNoKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\BaoCaoDoanhThuModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietBaoCaoDoanhThu.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\ChiTietKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietNoCungCapModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietNoKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\CongNoKhachHangModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\DanhSachCungCapModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\DanhSachKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\HomeModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ListItemModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ListModel.cs" />
@@ -309,10 +317,6 @@
     <Content Include="Areas\QuanLy\Views\Stock\Index.cshtml" />
     <Content Include="Areas\HangHoa\Views\ChiTietPhieu\Index.cshtml" />
     <Content Include="Areas\HangHoa\Views\ChiTietPhieu\Delivery.cshtml" />
-<<<<<<< HEAD
-=======
-
->>>>>>> c3ff04e2322ca5b166f243aeb4318c685d7415a4
     <Content Include="Areas\PhanPhoi\Views\OrderList\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\OrderList\_searchPartialNormal.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\OrderList\Complete.cshtml" />
@@ -332,15 +336,15 @@
     <Content Include="Areas\QuanLy\Views\OrderList\Store.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoCongNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoCongNoCungCap\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\TaoNhaCungCap\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\TaoKhachHang\Index.cshtml" />
-=======
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
->>>>>>> c3ff04e2322ca5b166f243aeb4318c685d7415a4
+    <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\TaoMoi.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\TaoMoi.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\ChiTiet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -350,11 +354,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\" />
-<<<<<<< HEAD
-=======
-    <Folder Include="Areas\PhanPhoi\Views\OrderList\" />
->>>>>>> c3ff04e2322ca5b166f243aeb4318c685d7415a4
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />
     <Folder Include="Views\Base\" />

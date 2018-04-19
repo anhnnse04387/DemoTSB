@@ -40,7 +40,7 @@ namespace Models.DAO
             return db.Customers.OrderBy(s => s.Current_debt).Where(s => s.Status == 1).Take(10).ToList();
         }
 
-        public bool addCustomer(string cus_name, int? media_ID, string address, string deliver_address, string phone,
+        public int addCustomer(string cus_name, int? media_ID, string address, string deliver_address, string phone,
             string mail, string tax_code)
         {
             try
@@ -59,11 +59,34 @@ namespace Models.DAO
                 cus.Status = 1;
                 db.Customers.Add(cus);
                 db.SaveChanges();
-                return true;
+                return cus.Customer_ID;
             }catch(Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return false;
+                return -1;
+            }
+        }
+
+        public int editCustomer(string cus_name, int? media_ID, string address, string deliver_address, string phone,
+            string mail, string tax_code, int customerID)
+        {
+            try
+            {
+                var query = db.Customers.SingleOrDefault(x=>x.Customer_ID == customerID);
+                query.Customer_name = cus_name;
+                query.Media_ID = media_ID;
+                query.Delivery_address = address;
+                query.Export_invoice_address = deliver_address;
+                query.Phone = phone;
+                query.Mail = mail;
+                query.Tax_code = tax_code;
+                db.SaveChanges();
+                return 1;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return -1;
             }
         }
     }

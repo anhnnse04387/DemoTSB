@@ -198,6 +198,25 @@ namespace Models.DAO
             }
             return listYear;
         }
+        public List<Order_total> getListByCustomerID(int cusID)
+        {
+            return db.Order_total.Where(x => x.Customer_ID == cusID).ToList();
+        }
+
+        public decimal getDataKhachHangByID(DateTime beginDate, DateTime endDate, int customerID)
+        {
+            var query = from ot in db.Order_total
+                        where ot.Date_created >= beginDate && ot.Date_created <= endDate
+                        && ot.Customer_ID == customerID
+                        select ot;
+            return query.Sum(x => x.Total_price) == null ? 0 : (decimal) query.Sum(x => x.Total_price);
+        }
+
+        public List<Order_total> getOrderByCustomerID(DateTime dateBegin, DateTime dateEnd, int customerID)
+        {
+            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd 
+            && s.Customer_ID == customerID).ToList();
+        }
         //thuongtx
         public DateTime? getDate(string orderId)
         {
