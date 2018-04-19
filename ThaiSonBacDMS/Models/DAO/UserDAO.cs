@@ -78,7 +78,6 @@ namespace Models.DAO
 
 
                     ds.tenNguoiDung = item.user.User_name;
-                    ds.
                 }
             }
             return lst;
