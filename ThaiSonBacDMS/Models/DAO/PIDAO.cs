@@ -17,7 +17,11 @@ namespace Models.DAO
         {
             db = new ThaiSonBacDMSDbContext();
         }
-
+        public void createPI(Purchase_invoice pi)
+        {
+            db.Purchase_invoice.Add(pi);
+            db.SaveChanges();
+        }
         public List<Purchase_invoice> getLstPI()
         {
             return db.Purchase_invoice.ToList();

@@ -25,7 +25,9 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? Sub_total { get; set; }
 
-        public byte? VAT { get; set; }
+        [Column(TypeName = "money")]
+        public decimal? VAT { get; set; }
+
         [Column(TypeName = "money")]
         public decimal? Total { get; set; }
 

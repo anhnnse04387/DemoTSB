@@ -10,6 +10,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class OrderTotalModel
     {
+        public String dayCreated { get; set; }
         public Dictionary<int, StatusDetailModel> dict { get; set; }
         public String lineStatus { get; set; }
         public String orderId { get; set; }
@@ -35,7 +36,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public List<Order_part> part { get; set; }
         public List<Order_items> items { get; set; }
         public List<OrderItemModel> readItems { get; set; }
+        public List<OrderItemModel> leftItems { get; set; }
         public IList<SelectListItem> lstCustomer { get; set; }
         public List<OrderPartModel> readPart { get; set; }
+        public decimal? leftSubTotal { get; set; }
+        public decimal? leftTotal { get; set; }
+        public int? leftQttTotal { get; set; }
+        public float? leftBoxTotal { get; set; }
+        public decimal? leftDiscountMoney { get; set; }
+        public decimal? leftAfterDiscountMoney { get; set; }
+        public decimal? leftVatMoney { get; set; }
     }
 }

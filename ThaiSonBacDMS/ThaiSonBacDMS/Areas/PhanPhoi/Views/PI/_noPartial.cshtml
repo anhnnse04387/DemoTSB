@@ -1,0 +1,47 @@
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.PIModel
+@{
+    Layout = null;
+}
+<div class="row" style="margin-top: 10px;">
+    <div class="col-xs-12 table-responsive">
+        <fieldset>
+            <legend><b style="font-size: 17px;">Order's Detail</b></legend>
+            <table class="table table-striped mainTable">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">No.</th>
+                        <th style="width: 300px;">Product</th>
+                        <th style="width: 100px;">Quantity</th>
+                        <th style="width: 100px;">Price (USD)</th>
+                        <th style="width: 100px;">Subtotal (USD)</th>
+                        <th>Note</th>
+                </thead>
+                <tbody>
+                    @if (Model.readItems != null)
+                    {
+                        for (int i = 0; i < Model.readItems.Count; i++)
+                        {
+                            <tr class="item">
+                                <td>@(i + 1)</td>
+                                <td><input type="hidden" class="productId" value="@Model.readItems[i].Product_ID" />@Model.readItems[i].product</td>
+                                <td>@Model.readItems[i].Quantity</td>
+                                <td class="number">@Model.readItems[i].per</td>
+                                <td class="number">@Model.readItems[i].Price</td>
+                                <td>@Model.readItems[i].NOTE</td>
+                            </tr>
+                        }                    
+                    <tr style="background-color: #544d61;color: #fff;">
+                        <td></td>
+                        <td style="vertical-align: middle;"><b>Total</b></td>
+                        <td></td>
+                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.qttAll</output></td>
+                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;" id="total">@Model.pi.Total_price</output></td>
+                        <td><input type="hidden" value="@Model.pi.Supplier_ID" id="supplier" /></td>
+                    </tr>
+                    }
+                </tbody>                    
+            </table>
+        </fieldset>
+    </div>
+    <!-- /.col -->
+</div>

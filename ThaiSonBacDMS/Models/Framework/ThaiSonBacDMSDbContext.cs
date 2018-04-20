@@ -94,6 +94,10 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
+                .Property(e => e.VAT)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Total)
                 .HasPrecision(19, 4);
 
@@ -103,10 +107,6 @@ namespace Models.Framework
 
             modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Debt)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Customer_transaction>()
-                .Property(e => e.Total)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
@@ -278,6 +278,10 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Order_total>()
+                .Property(e => e.VAT)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Order_total>()
                 .Property(e => e.Total_price)
                 .HasPrecision(19, 4);
 
@@ -342,19 +346,11 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.TAX)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Product>()
                 .Property(e => e.Price_before_VAT_VND)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Price_before_VAT_USD)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.VAT)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Purchase_invoice>()

@@ -27,6 +27,11 @@ namespace Models.DAO
             return 0;
         }
 
+        public List<PO> getLstPO()
+        {
+            return db.POes.ToList();
+        }
+
         public PO getPO(int id)
         {
             return db.POes.Where(x => x.PO_ID == id).SingleOrDefault();

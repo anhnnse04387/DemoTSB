@@ -25,7 +25,7 @@ namespace Models.Framework
         public string Account_name { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         public string Password { get; set; }
 
         [StringLength(10)]

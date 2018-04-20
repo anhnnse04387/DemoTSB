@@ -183,6 +183,7 @@
     <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\OrderListController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\PIController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\POController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\SanPhamNgungKinhDoanhController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\StockController.cs" />
@@ -200,6 +201,8 @@
     <Compile Include="Areas\PhanPhoi\Models\ListModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderItemModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\PIItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\PIModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\POItemModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\POModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\StatusDetailModel.cs" />
@@ -219,6 +222,7 @@
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\LapPhieuController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\OrderListController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\PIController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\POController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\StockController.cs" />
     <Compile Include="Areas\QuanLy\Models\ListItemModel.cs" />
@@ -226,6 +230,8 @@
     <Compile Include="Areas\QuanLy\Models\OrderItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderPartModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderTotalModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\PIItemModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\PIModel.cs" />
     <Compile Include="Areas\QuanLy\Models\POItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\POModel.cs" />
     <Compile Include="Areas\QuanLy\Models\StatusDetailModel.cs" />
@@ -330,14 +336,22 @@
     <Content Include="Areas\QuanLy\Views\OrderList\Store.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoCongNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoCongNoCungCap\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\One.cshtml" />
-    <Content Include="Areas\QuanLy\Views\ChiTietPhieu\One.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\TaoNhaCungCap\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\TaoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PI\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PI\_noPartial.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PI\Detail.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PI\_noPartial.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PI\Detail.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PI\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\MultipleDelivery.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ChiTietPhieu\MultipleDelivery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -347,8 +361,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\" />
-    <Folder Include="Areas\PhanPhoi\Views\OrderList\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />
     <Folder Include="Views\Base\" />

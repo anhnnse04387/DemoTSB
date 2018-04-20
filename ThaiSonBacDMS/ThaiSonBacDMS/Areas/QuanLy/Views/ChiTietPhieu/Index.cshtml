@@ -4,6 +4,11 @@
     Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
 <style>
+    .label-medium {
+        vertical-align: super;
+        font-size: medium;
+    }
+
     .menu-button {
         background-color: #fcf9f9;
         margin-top: 20px;
@@ -185,9 +190,8 @@
                                                     <div class="col-md-6">
                                                         <label>Trạng Thái</label>
                                                         <div class="input-group">
-                                                            <span class="label label-info label-medium">
-                                                                @Model.status
-                                                                <!-- <a href="phanphoi_donhang_tien-trinh-don-hang.html" class="a-custom-label">Đã xuất phiếu</a> -->
+                                                            <span class="label label-primary label-medium">
+                                                                @Model.status                                                                
                                                             </span>
                                                         </div>
                                                     </div>
