@@ -35,7 +35,7 @@ namespace Models.DAO
                 }
                 else
                 {
-                    if (data.Password == password)
+                    if (data.Password.Trim().ToLower() == password.Trim().ToLower())
                         return 1;
                     else
                         return -2;

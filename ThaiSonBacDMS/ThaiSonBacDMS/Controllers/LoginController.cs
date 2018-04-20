@@ -31,8 +31,8 @@ namespace ThaiSonBacDMS.Controllers
                 var accDAO = new AccountDAO();
                 var roleDAO = new RoleDAO();
                 var userDAO = new UserDAO();
-                //var encryptor = Encryptor.MD5Hash(model.password);
-                var result = accDAO.Login(username, password);
+                var encryptor = Encryptor.MD5Hash(password);
+                var result = accDAO.Login(username, encryptor);
                 if (result == 1)
                 {
                     var account = accDAO.GetByName(username);
@@ -112,13 +112,13 @@ namespace ThaiSonBacDMS.Controllers
                     var accDAO = new AccountDAO();
                     var roleDAO = new RoleDAO();
                     var userDAO = new UserDAO();
-                    //var encryptor = Encryptor.MD5Hash(model.password);
-                    if(string.IsNullOrEmpty(model.accountName) || string.IsNullOrEmpty(model.password))
+                    var encryptor = Encryptor.MD5Hash(model.password);
+                    if(string.IsNullOrEmpty(model.accountName) || string.IsNullOrEmpty(encryptor))
                     {
                         ModelState.AddModelError("", "Xin hãy điền đầy đủ tài khoản và mật khẩu");
                         return View();
                     }
-                    var result = accDAO.Login(model.accountName, model.password);
+                    var result = accDAO.Login(model.accountName, encryptor);
                     if (result == 1)
                     {
                         var account = accDAO.GetByName(model.accountName);

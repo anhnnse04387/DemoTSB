@@ -25,7 +25,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
         public String taxCode { get; set; }
         public decimal subTotal { get; set; }
         public decimal? total { get; set; }
-        public byte? vat { get; set; }
+        public decimal? vat { get; set; }
         public int? qttTotal { get; set; }
         public float? boxTotal { get; set; }
         public byte? discount { get; set; }
