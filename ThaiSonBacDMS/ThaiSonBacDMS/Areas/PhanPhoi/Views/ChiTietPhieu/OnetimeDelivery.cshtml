@@ -1,7 +1,7 @@
-﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.OrderTotalModel
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.OrderTotalModel
 @{
     ViewBag.Title = "One";
-    Layout = "~/Areas/QuanLy/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 <link rel="stylesheet" href="/Assets/dist/css/pages/detail_progress.css">
 <style>
@@ -197,180 +197,173 @@
                                     </div>
                                     <div class="stepper__step-text">Nhận hàng</div>
                                     <div class="stepper__step-date">@Model.dict[7].date</div>
-                                    </div>
-                                    <div class="stepper__line">
-                                        <div class="stepper__line-background" style="background: rgb(224, 224, 224);"></div>
-                                        <div class="stepper__line-foreground" style="width: @Model.lineStatus; background: rgb(45, 194, 88);"></div>
-                                    </div>
                                 </div>
-                                <span class="pull-right" style="margin-right: 50px;"><a href="">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
+                                <div class="stepper__line">
+                                    <div class="stepper__line-background" style="background: rgb(224, 224, 224);"></div>
+                                    <div class="stepper__line-foreground" style="width: @Model.lineStatus; background: rgb(45, 194, 88);"></div>
+                                </div>
                             </div>
+                            <span class="pull-right" style="margin-right: 50px;"><a href="#">Xem chi tiết </a><i class="fa fa-info-circle text-blue"></i></span>
                         </div>
-                        <form style="margin-top: 25px;">
-                            <div class="box-header">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <fieldset>
-                                            <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
-                                            <div class="box-header">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <label>Đơn vị</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                            <input class="form-control" disabled value="@Model.customerName" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label>Mã số thuế</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-                                                            <input class="form-control" disabled value="@Model.taxCode" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label>Nơi xuất HĐ</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                                            <input class="form-control" disabled value="@Model.invoiceAddress" />
-                                                        </div>
+                    </div>
+                    <form style="margin-top: 25px;">
+                        <div class="box-header">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <fieldset>
+                                        <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                        <div class="box-header">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Đơn vị</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                        <input class="form-control" disabled value="@Model.customerName" />
                                                     </div>
                                                 </div>
-                                                <div class="row" style="margin-top: 15px;">
-                                                    <div class="col-md-4">
-                                                        <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                            <input class="form-control" disabled value="@Model.deliveryAddress" />
-                                                        </div>
+                                                <div class="col-md-4">
+                                                    <label>Mã số thuế</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                        <input class="form-control" disabled value="@Model.taxCode" />
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label>Số hóa đơn</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                                            <input class="form-control" disabled value="@Model.deliveryQtt" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label>VAT khách hàng</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input class="form-control" disabled />
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Nơi xuất HĐ</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                                        <input class="form-control" disabled value="@Model.invoiceAddress" />
                                                     </div>
                                                 </div>
                                             </div>
-                                        </fieldset>
-                                    </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-4">
+                                                    <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                        <input class="form-control" disabled value="@Model.deliveryAddress" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Số hóa đơn</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                                        <input class="form-control" disabled value="@Model.deliveryQtt" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>VAT khách hàng</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input class="form-control" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
                             </div>
-                            <div class="box-header">
-                                <div class="row" style="margin-top: 10px;">
-                                    <div class="col-xs-12 table-responsive">
-                                        <fieldset>
-                                            <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
-                                            <table class="table table-striped mainTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th rowspan="2" style="width: 30px;">STT</th>
-                                                        <th rowspan="2" colspan="2" style="width: 400px;">Sản phẩm</th>
-                                                        <th colspan="2">Số lượng</th>
-                                                        <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
-                                                        <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
-                                                        <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
-                                                        <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width: 70px;">Cái</th>
-                                                        <th style="width: 70px;">Thùng</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @for (int i = 0; i < Model.readItems.Count; i++)
+                        </div>
+                        <div class="box-header">
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-xs-12 table-responsive">
+                                    <fieldset>
+                                        <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+                                        <table class="table table-striped mainTable">
+                                            <thead>
+                                                <tr>
+                                                    <th rowspan="2" style="width: 30px;">STT</th>
+                                                    <th rowspan="2" style="width: 400px;">Sản phẩm</th>
+                                                    <th colspan="2">Số lượng</th>
+                                                    <th rowspan="2" style="width: 150px;">Đơn giá (VNĐ)</th>
+                                                    <th rowspan="2" style="width: 150px;">Thành tiền trước chiết khấu (VNĐ)</th>
+                                                    <th rowspan="2" style="width: 70px;">Chiết khấu (%)</th>
+                                                    <th rowspan="2" style="width: 150px;">Thành tiền sau chiết khấu (VNĐ)</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 70px;">Cái</th>
+                                                    <th style="width: 70px;">Thùng</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @for (int i = 0; i < Model.readItems.Count; i++)
                                                     {
-                                                        <tr>
-                                                            <td>@(i + 1)</td>
-                                                            <td style="vertical-align: middle; width: 24.7%;">
-                                                                <input type="text" value="@Model.readItems[i].code" disabled class="form-control" />
-                                                            </td>
-                                                            <td style="vertical-align: middle;"><input type="text" value="@Model.readItems[i].param" disabled class="form-control" /></td>
-                                                            <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" disabled class="form-control" /></td>
-                                                            <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" disabled class="form-control" /></td>
-                                                            <td><output class="number">@Model.readItems[i].per</output></td>
-                                                            <td><output class="number">@Model.readItems[i].priceBeforeDiscount</output></td>
-                                                            <td><input type="text" value="@Model.readItems[i].Discount" disabled class="form-control number" /></td>
-                                                            <td><output class="number">@Model.readItems[i].Price</output></td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td>@(i + 1)</td>
+                                                        <td style="vertical-align: middle; width: 24.7%;">@Model.readItems[i].code</td>
+                                                        <td>@Model.readItems[i].Quantity</td>
+                                                        <td>@Model.readItems[i].Box</td>
+                                                        <td><output class="number">@Model.readItems[i].per</output></td>
+                                                        <td><output class="number">@Model.readItems[i].priceBeforeDiscount</output></td>
+                                                        <td>@Model.readItems[i].Discount</td>
+                                                        <td><output class="number">@Model.readItems[i].Price</output></td>
+                                                    </tr>
                                                     }
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Cộng</b></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.qttTotal</output></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.boxTotal</output></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.subTotal</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            <input type="text" value="@Model.discount" class="form-control number" disabled style="text-align: right; float: right; font-weight: bold;" />
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.discountMoney</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Còn lại</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.afterDiscountMoney</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            <input type="text" disabled class="form-control number" value="@Model.vat" style="text-align: right; float: right; font-weight: bold;">
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
-                                                    </tr>
-                                                    <tr style="background-color: #544d61;color: #fff;">
-                                                        <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>Tổng cộng</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.total</output></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </fieldset>
-                                    </div>
-                                    <!-- /.col -->
+                                                <tr style="background-color: #544d61;color: #fff;">
+                                                    <td></td>
+                                                    <td style="vertical-align: middle;"><b>Cộng</b></td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.qttTotal</output></td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output style="color: #fff; font-weight: bold;">@Model.boxTotal</output></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.subTotal</output></td>
+                                                </tr>
+                                                <tr style="background-color: #544d61;color: #fff;">
+                                                    <td></td>
+                                                    <td style="vertical-align: middle;"><b>Chiết khấu (%)</b></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>@Model.discount</td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.discountMoney</output></td>
+                                                </tr>
+                                                <tr style="background-color: #544d61;color: #fff;">
+                                                    <td></td>
+                                                    <td style="vertical-align: middle;"><b>Còn lại</b></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.afterDiscountMoney</output></td>
+                                                </tr>
+                                                <tr style="background-color: #544d61;color: #fff;">
+                                                    <td></td>
+                                                    <td style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>@Model.vat</td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
+                                                </tr>
+                                                <tr style="background-color: #544d61;color: #fff;">
+                                                    <td></td>
+                                                    <td style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.total</output></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
                                 </div>
+                                <!-- /.col -->
                             </div>
-                            <div id="sound"></div>
-                        </form>
-                    </div>
+                        </div>
+                        <div id="sound"></div>
+                    </form>
                 </div>
-                <!-- /.col-->
             </div>
-            <!-- ./row -->
-        </section>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+    </section>
         <div class="modal fade" id="confirmCancel" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -405,7 +398,7 @@
         });
         function cancelOrder() {
             $.ajax({
-                url: '/QuanLy/ChiTietPhieu/cancelOrder',
+                url: '/PhanPhoi/ChiTietPhieu/CancelOrder',
                 dataType: 'json',
                 data: { orderId: $('#orderId').val(), note: $('#reason').val() },
                 success: function () {
@@ -415,7 +408,7 @@
                         type: 'success'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/QuanLy/Home/Index';
+                            window.location.href = '/PhanPhoi/Home/Index';
                         }
                     });
                 },

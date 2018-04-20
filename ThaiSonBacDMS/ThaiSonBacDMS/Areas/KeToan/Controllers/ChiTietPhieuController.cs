@@ -71,7 +71,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.keToan_checkOut(orderId, session.user_id);
+                dao.keToan_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

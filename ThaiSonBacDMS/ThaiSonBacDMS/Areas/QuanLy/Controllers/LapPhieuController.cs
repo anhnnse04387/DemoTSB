@@ -86,13 +86,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     }
                     if (result > 0)
                     {
-                        orderStatusDAO.createOrderStatus(new Order_detail_status
-                        {
-                            Order_ID = model.orderId,
-                            Status_ID = 1,
-                            Date_change = DateTime.Now,
-                            User_ID = session.user_id
-                        });
                         foreach (Order_items o in model.items)
                         {
                             o.Order_ID = model.orderId;
@@ -106,17 +99,15 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 o.Date_created = DateTime.Now;
                                 o.Status_ID = 1;
                                 o.Customer_ID = model.customerId;
-                                if (orderPartDAO.createOrderPart(o) != null)
+                                orderPartDAO.createOrderPart(o);
+                                orderStatusDAO.createOrderStatus(new Order_detail_status
                                 {
-                                    orderStatusDAO.createOrderStatus(new Order_detail_status
-                                    {
-                                        Order_ID = model.orderId,
-                                        Order_part_ID = o.Order_part_ID,
-                                        Status_ID = 1,
-                                        Date_change = DateTime.Now,
-                                        User_ID = session.user_id
-                                    });
-                                }
+                                    Order_ID = model.orderId,
+                                    Order_part_ID = o.Order_part_ID,
+                                    Status_ID = 1,
+                                    Date_change = DateTime.Now,
+                                    User_ID = session.user_id
+                                });
                             }
                         }
                         else
@@ -132,6 +123,14 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 VAT = model.vat,
                                 Status_ID = 1,
                                 Total_price = model.total
+                            });
+                            orderStatusDAO.createOrderStatus(new Order_detail_status
+                            {
+                                Order_ID = model.orderId,
+                                Order_part_ID = model.orderId + "-1",
+                                Status_ID = 1,
+                                Date_change = DateTime.Now,
+                                User_ID = session.user_id
                             });
                             foreach (Order_items o in model.items)
                             {
@@ -245,6 +244,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 }
             }
             model.discount = data.Order_discount;
+            model.vat = data.VAT;
             model.subTotal = data.Sub_total;
             model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount) / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
@@ -354,13 +354,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     }
                     if (result > 0)
                     {
-                        orderStatusDAO.createOrderStatus(new Order_detail_status
-                        {
-                            Order_ID = model.orderId,
-                            Status_ID = 3,
-                            Date_change = DateTime.Now,
-                            User_ID = session.user_id
-                        });
                         foreach (Order_items o in model.items)
                         {
                             o.Order_ID = model.orderId;
@@ -374,17 +367,15 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 o.Date_created = DateTime.Now;
                                 o.Status_ID = 3;
                                 o.Customer_ID = model.customerId;
-                                if (orderPartDAO.createOrderPart(o) != null)
+                                orderPartDAO.createOrderPart(o);
+                                orderStatusDAO.createOrderStatus(new Order_detail_status
                                 {
-                                    orderStatusDAO.createOrderStatus(new Order_detail_status
-                                    {
-                                        Order_ID = model.orderId,
-                                        Order_part_ID = o.Order_part_ID,
-                                        Status_ID = 3,
-                                        Date_change = DateTime.Now,
-                                        User_ID = session.user_id
-                                    });
-                                }
+                                    Order_ID = model.orderId,
+                                    Order_part_ID = o.Order_part_ID,
+                                    Status_ID = 3,
+                                    Date_change = DateTime.Now,
+                                    User_ID = session.user_id
+                                });
                             }
                         }
                         else
@@ -400,6 +391,14 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 Status_ID = 3,
                                 Date_reveice_invoice = DateTime.Now,
                                 Total_price = model.total
+                            });
+                            orderStatusDAO.createOrderStatus(new Order_detail_status
+                            {
+                                Order_ID = model.orderId,
+                                Order_part_ID = model.orderId + "-1",
+                                Status_ID = 3,
+                                Date_change = DateTime.Now,
+                                User_ID = session.user_id
                             });
                             foreach (Order_items o in model.items)
                             {
@@ -420,13 +419,13 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult cancelOrder(String orderId, String note)
+        public JsonResult CancelOrder(String orderId, String note)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.cancelOrder(orderId, note, session.user_id);
+                dao.cancelOrder(orderId, note, session.user_id, dao.getOrder(orderId).Order_part.Count);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -35,7 +35,7 @@ namespace Models.DAO
                 }
                 else
                 {
-                    if (data.Password == password)
+                    if (data.Password.Trim().ToLower() == password.Trim().ToLower())
                         return 1;
                     else
                         return -2;
@@ -47,6 +47,11 @@ namespace Models.DAO
         public int accountCount()
         {
             return context.Accounts.Count();
+        }
+        //thuongtx
+        public int getRoleIdByCurrentAcc(string accountId)
+        {
+            return Convert.ToInt32(context.Accounts.SingleOrDefault(x => x.Account_ID.ToString().Equals(accountId)).Role_ID);
         }
     }
 }

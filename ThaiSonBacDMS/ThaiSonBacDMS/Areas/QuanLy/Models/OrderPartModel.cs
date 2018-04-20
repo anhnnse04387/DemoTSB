@@ -8,7 +8,8 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
 {
     public class OrderPartModel
     {
-
+        public String lineStatus { get; set; }
+        public Dictionary<int, StatusDetailModel> dict { get; set; }
         public string Order_part_ID { get; set; }
         public decimal? subTotal { get; set; }
         public decimal? total { get; set; }

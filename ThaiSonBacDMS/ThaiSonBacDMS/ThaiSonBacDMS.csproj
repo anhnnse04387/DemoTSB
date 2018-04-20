@@ -191,6 +191,7 @@
     <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\OrderListController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\PIController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\POController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\SanPhamNgungKinhDoanhController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\StockController.cs" />
@@ -210,6 +211,8 @@
     <Compile Include="Areas\PhanPhoi\Models\ListModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderItemModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\PIItemModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\PIModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\POItemModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\POModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\StatusDetailModel.cs" />
@@ -225,24 +228,31 @@
     <Compile Include="Areas\PhanPhoi\Models\TonKhoModel.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ChiTietPhieuController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\DanhSachNguoiDungHoatDongController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ErrorPageController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\LapPhieuController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\OrderListController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\PIController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\POController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\StockController.cs" />
+    <Compile Include="Areas\QuanLy\Models\DanhSachNguoiDungHoatDongModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ListItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ListModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderPartModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderTotalModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\PIItemModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\PIModel.cs" />
     <Compile Include="Areas\QuanLy\Models\POItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\POModel.cs" />
     <Compile Include="Areas\QuanLy\Models\StatusDetailModel.cs" />
     <Compile Include="Areas\QuanLy\Models\StockItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\StockModel.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\QuanTri\Controllers\DanhSachNguoiDungHoatDongController.cs" />
     <Compile Include="Areas\QuanTri\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QuanTri\Models\DanhSachNguoiDungHoatDongModel.cs" />
     <Compile Include="Areas\QuanTri\Models\HomeModel.cs" />
     <Compile Include="Areas\QuanTri\QuanTriAreaRegistration.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -340,6 +350,8 @@
     <Content Include="Areas\QuanLy\Views\OrderList\Store.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoCongNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoCongNoCungCap\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
@@ -357,7 +369,17 @@
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PI\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PI\_noPartial.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\PI\Detail.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PI\_noPartial.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PI\Detail.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PI\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\MultipleDelivery.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ChiTietPhieu\MultipleDelivery.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachCongNoKhachHang\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\DanhSachNguoiDungHoatDong\Index.cshtml" />
+    <Content Include="Areas\QuanTri\Views\DanhSachNguoiDungHoatDong\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

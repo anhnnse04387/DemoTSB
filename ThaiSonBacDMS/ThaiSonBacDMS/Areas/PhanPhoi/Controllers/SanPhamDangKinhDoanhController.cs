@@ -121,7 +121,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 //search products by product code
                 if (mo.categorySearch == null && mo.pCodeSearch != null)
                 {
-                    var cateId = daoProduct.getCateIdByProductCode(mo.pCodeSearch);
+                    var cateId = daoProduct.getCateIdByProductName(mo.pCodeSearch);
                     model.lstCategory = daoCategory.getLstCateSearch(cateId);
                 }
                 //search products by supplier 
@@ -202,7 +202,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var lstProduct = daoProduct.getLstProductSearch(searchValue);
             List<ProductPhanPhoiModel> allSearch = lstProduct.Select(x => new ProductPhanPhoiModel()
             {
-                pCodeSearch = x.Product_code,
+                pCodeSearch = x.Product_name,
                 pNameSearch = x.Product_name,
 
 

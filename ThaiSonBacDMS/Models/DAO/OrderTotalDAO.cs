@@ -75,49 +75,61 @@ namespace Models.DAO
             return db.Order_total.Where(x => x.Order_ID.Equals(orderId)).SingleOrDefault();
         }
 
-        public void checkOut(String orderId, String userId)
+        public void checkOut(String orderId, String userId, int deliveryQtt)
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 3);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 3);
-            db.Order_detail_status.Add(new Order_detail_status
+            for (int i = 0; i < deliveryQtt; i++)
             {
-                Status_ID = 3,
-                User_ID = userId,
-                Date_change = DateTime.Now,
-                Order_ID = orderId
-            });
+                db.Order_detail_status.Add(new Order_detail_status
+                {
+                    Status_ID = 3,
+                    User_ID = userId,
+                    Date_change = DateTime.Now,
+                    Order_ID = orderId,
+                    Order_part_ID = orderId + "-" + (i + 1)
+                });
+            }
             db.SaveChanges();
         }
 
-        public void keToan_checkOut(String orderId, String userId)
+        public void keToan_checkOut(String orderId, String userId, int deliveryQtt)
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 4);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 4);
-            db.Order_detail_status.Add(new Order_detail_status
+            for (int i = 0; i < deliveryQtt; i++)
             {
-                Status_ID = 4,
-                User_ID = userId,
-                Date_change = DateTime.Now,
-                Order_ID = orderId
-            });
+                db.Order_detail_status.Add(new Order_detail_status
+                {
+                    Status_ID = 4,
+                    User_ID = userId,
+                    Date_change = DateTime.Now,
+                    Order_ID = orderId,
+                    Order_part_ID = orderId + "-" + (i + 1)
+                });
+            }
             db.SaveChanges();
         }
 
-        public void kho_checkOut(String orderId, String userId)
+        public void kho_checkOut(String orderId, String userId, int deliveryQtt)
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 5);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 5);
-            db.Order_detail_status.Add(new Order_detail_status
+            for (int i = 0; i < deliveryQtt; i++)
             {
-                Status_ID = 5,
-                User_ID = userId,
-                Date_change = DateTime.Now,
-                Order_ID = orderId
-            });
+                db.Order_detail_status.Add(new Order_detail_status
+                {
+                    Status_ID = 5,
+                    User_ID = userId,
+                    Date_change = DateTime.Now,
+                    Order_ID = orderId,
+                    Order_part_ID = orderId + "-" + (i + 1)
+                });
+            }
             db.SaveChanges();
         }
 
-        public void delivery_checkOut(String orderId, String userId, byte? DeliverMethod_ID, string Driver_ID, string Shiper_ID)
+        public void delivery_checkOut(String orderId, String userId, byte? DeliverMethod_ID, string Driver_ID, string Shiper_ID, int deliveryQtt)
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 6);
             var part = (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList();
@@ -128,17 +140,21 @@ namespace Models.DAO
                 p.DeliverMethod_ID = DeliverMethod_ID;
                 p.Driver_ID = Driver_ID;
             }
-            db.Order_detail_status.Add(new Order_detail_status
+            for (int i = 0; i < deliveryQtt; i++)
             {
-                Status_ID = 3,
-                User_ID = userId,
-                Date_change = DateTime.Now,
-                Order_ID = orderId
-            });
+                db.Order_detail_status.Add(new Order_detail_status
+                {
+                    Status_ID = 6,
+                    User_ID = userId,
+                    Date_change = DateTime.Now,
+                    Order_ID = orderId,
+                    Order_part_ID = orderId + "-" + (i + 1)
+                });
+            }
             db.SaveChanges();
         }
 
-        public void cancelOrder(String orderId, String reason, String userId)
+        public void cancelOrder(String orderId, String reason, String userId, int deliveryQtt)
         {
             var order = (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).SingleOrDefault();
             order.Status_ID = 8;
@@ -149,13 +165,17 @@ namespace Models.DAO
                 p.Status_ID = 8;
                 p.Note = reason;
             }
-            db.Order_detail_status.Add(new Order_detail_status
+            for (int i = 0; i < deliveryQtt; i++)
             {
-                Status_ID = 8,
-                User_ID = userId,
-                Date_change = DateTime.Now,
-                Order_ID = orderId
-            });
+                db.Order_detail_status.Add(new Order_detail_status
+                {
+                    Status_ID = 8,
+                    User_ID = userId,
+                    Date_change = DateTime.Now,
+                    Order_ID = orderId,
+                    Order_part_ID = orderId + "-" + (i + 1)
+                });
+            }
             db.SaveChanges();
         }
 

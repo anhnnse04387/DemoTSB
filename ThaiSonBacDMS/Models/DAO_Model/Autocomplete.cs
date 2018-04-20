@@ -10,5 +10,6 @@ namespace Models.DAO_Model
     {
         public string key { get; set; }
         public int value { get; set; }
+        public string strValue { get; set; }
     }
 }

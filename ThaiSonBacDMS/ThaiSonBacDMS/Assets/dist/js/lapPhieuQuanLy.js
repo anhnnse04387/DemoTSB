@@ -270,7 +270,7 @@ function saveOrder() {
 
 function cancelOrder() {
     $.ajax({
-        url: '/QuanLy/LapPhieu/cancelOrder',
+        url: '/QuanLy/LapPhieu/CancelOrder',
         dataType: 'json',
         data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
         success: function () {
