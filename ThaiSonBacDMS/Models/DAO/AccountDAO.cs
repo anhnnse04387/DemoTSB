@@ -48,5 +48,10 @@ namespace Models.DAO
         {
             return context.Accounts.Count();
         }
+        //thuongtx
+        public int getRoleIdByCurrentAcc(string accountId)
+        {
+            return Convert.ToInt32(context.Accounts.SingleOrDefault(x => x.Account_ID.ToString().Equals(accountId)).Role_ID);
+        }
     }
 }

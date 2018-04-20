@@ -152,11 +152,11 @@
                                                 <th>STT</th>
                                                 <th colspan="2">Mã hàng</th>
                                                 <th>Danh Mục</th>
-                                                <th>CIF</th>
-                                                <th>Giá Trước (VAT)</th>
-                                                <th>% Thuế NK</th>
+                                                <th>Giá Trước VAT (USD)</th>
+                                                <th>Giá Trước VAT (VND)</th>
                                                 <th>VAT</th>
-                                                <th>Giá sau (VAT)</th>
+                                                <th>Giá sau VAT (USD)</th>
+                                                <th>Giá sau VAT (VND)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -189,11 +189,11 @@
                                                             <td style="border-right: none;text-align:left"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">@items.product.Product_name</a></td>
                                                             <td style="border-left: none;text-align:left">@items.product.Product_parameters</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
-                                                            <td class="right">@Convert.ToDouble(@items.product.CIF)</td>
+                                                            <td class="right">@Convert.ToDouble(@items.product.Price_before_VAT_USD)</td>
                                                             <td class="right number">@items.product.Price_before_VAT_VND</td>
-                                                            <td class="right">@items.product.TAX <span>%</span></td>
-                                                            <td class="right number">@items.product.VAT</td>
-                                                            <td class="right number">@items.price</td>
+                                                            <td class="text-center number">@items.product.VAT</td>
+                                                            <td class="right number">@items.Price_after_VAT_VND</td>
+                                                            <td class="right number">@items.Price_after_VAT_USD</td>
                                                         </tr>
                                                         i++;
                                                     }

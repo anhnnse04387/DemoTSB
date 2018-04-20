@@ -39,9 +39,19 @@
         min-width: 60px;
         height: 40px;
     }
+
+    .ui-autocomplete {
+        position: absolute;
+        cursor: default;
+        z-index: 1001 !important;
+    }
+
+    .date {
+        width: 150px;
+    }
 </style>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "DanhSachNguoiDungHoatDong", FormMethod.Post))
 {
     <section class="content">
         <div class="row">
@@ -104,6 +114,7 @@
                             </a>
                         </div>
                     </div>
+                    <p id="msgs" style="margin-left:30%;font-size:17px;color:red"></p>
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -120,7 +131,7 @@
                                                     <td width="35%">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                            <input type="text" class="form-control" placeholder="Tên...">
+                                                            <input type="text" class="form-control" id="nameSearch" placeholder="Tên...">
                                                         </div>
                                                     </td>
                                                     <td style="padding-left: 100px;">Ngày tạo</td>
@@ -128,13 +139,13 @@
                                                         <div class="col-sm-5 no-padding">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                <input style="width: 150px" type="text" class="form-control" id="datepicker" placeholder="Từ...">
+                                                                @Html.TextBoxFor(model => model.fromDate, new { @class = "form-control date", @id = "fromDate", @placeholder = "Từ.." })
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-sm-offset-1 no-padding">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                <input style="width: 150px" type="text" class="form-control" id="datepicker2" placeholder="Đến...">
+                                                                @Html.TextBoxFor(model => model.toDate, new { @class = "form-control date", @id = "toDate", @placeholder = "Đến.." })
                                                             </div>
                                                         </div>
                                                     </td>
@@ -142,12 +153,7 @@
                                                 <tr>
                                                     <td>Phân hệ</td>
                                                     <td>
-                                                        <select class="form-control select2">
-                                                            <option>Quản lý</option>
-                                                            <option>Phân phối</option>
-                                                            <option>Kế toán</option>
-                                                            <option>Hàng hóa</option>
-                                                        </select>
+                                                        @Html.DropDownListFor(model => model.roleIdSearch, Model.lstRole, "Tất cả các phân hệ", new { @class = "form-control", @id = "roleIdSearch" })
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -155,7 +161,7 @@
                                     </div>
                                     <div class="box-footer clearfix">
                                         <div class="pagination pagination-sm no-margin pull-right" style="padding-right: 20px">
-                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                            <button type="submit" id="searchBtn" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -172,104 +178,40 @@
                                         <thead>
                                             <tr>
                                                 <th style="width: 3%">STT</th>
-                                                <th style="width: 10%">Tên</th>
-                                                <th style="width: 12%">Ảnh đại diện</th>
-                                                <th style="width: 3%">Giới tính</th>
+                                                <th style="width: 7%">Tên</th>
+                                                <th style="width: 7%">Ảnh đại diện</th>
                                                 <th style="width: 5%">Ngày tạo</th>
                                                 <th style="width: 5%">Phân hệ</th>
-                                                <th style="width: 7%">Trạng thái</th>
-                                                <th style="width: 5%">Thay đổi</th>
+                                                <th style="width: 4%">Số điện thoại</th>
+                                                <th style="width: 15%">Địa chỉ</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td><a href="quanly_nhanvien_chi-tiet-nhan-vien.html">Hoàng Văn Bách</a></td>
-                                                <td class="text-center">
-                                                    <image src="dist/img/user2-160x160.jpeg" alt="User Image" style="height: 60px;height: 60px" />
-                                                </td>
-                                                <td>Nam</td>
-                                                <td class="text-center">28-01-2015</td>
-                                                <td class="text-left">Quản lý</td>
-                                                <td class="text-left">Đang hoạt động</td>
-                                                <td class="text-center">
-                                                    <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                        <i class="fa fa-edit text-blue"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr id="row1">
-                                                <td colspan="8">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Tên</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <input type="text" class="form-control" value="Hoàng Văn Bách" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Giới tính</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-user-o" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <select class="form-control select2">
-                                                                        <option selected>Nam</option>
-                                                                        <option>Nữ</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label>Phân hệ</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-group" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <select class="form-control select2">
-
-                                                                        <option>Kế toán</option>
-                                                                        <option>Phân phối</option>
-                                                                        <option selected>Hàng hóa</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Trạng thái</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon">
-                                                                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <select class="form-control select2">
-                                                                        <option>Đang hoạt động</option>
-                                                                        <option>Ngừng hoạt động</option>
-
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" id="cancel_btn1" class="btn btn-default btn-block">Hủy</a>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
+                                        <tbody id="tbody">
+                                            @if (Model.lstDisplay.Count == 0)
+                                            {
+                                                <tr>
+                                                    <td colspan="7" style="font-size:17px">Không tìm thấy bản ghi nào!</td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                int i = 1;
+                                                foreach (var item in Model.lstDisplay)
+                                                {
+                                                    <tr>
+                                                        <td class="text-center length">@i</td>
+                                                        <td><a href="quanly_nhanvien_chi-tiet-nhan-vien.html">@item.tenNguoiDung</a></td>
+                                                        <td class="text-center">
+                                                            <image src="@item.anhDaiDien" alt="User Image" style="height: 60px;height: 60px" />
+                                                        </td>
+                                                        <td class="text-center">@item.ngayTao.ToString("dd-MM-yyyy")</td>
+                                                        <td class="text-center">@item.phanHe</td>
+                                                        <td class="text-center">@item.soDienThoai</td>
+                                                        <td class="text-left">@item.diaChi</td>
+                                                    </tr>
+                                                    i++;
+                                                }
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -280,4 +222,88 @@
             </div>
         </div>
     </section>
+    @section Index{
+        <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+        <script src="~/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="~/Assets/dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                init();
+            });
+            function init() {
+                for (var i = 1; i <= $(".length").length; i++) {
+                    $("#row_" + i).hide();
+                };
+
+                $("#fromDate").datepicker({
+                    format: 'dd-mm-yyyy'
+                });
+
+                $("#toDate").datepicker({
+                    format: 'dd-mm-yyyy'
+                });
+                $("#nameSearch").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'autoCompleteNameSearch',
+                            minLength: 2,
+                            dataType: "json",
+                            data: { searchValue: $("#nameSearch").val() },
+                            success: function (data) {
+                                response($.map(data, function (item) {
+                                    return { label: item.key, value: item.strValue }
+                                }))
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Error");
+                            }
+                        });
+                    }
+                });
+            }
+
+            $("#fromDate, #toDate").change(function () {
+                if ($("#fromDate").val() && $("#toDate").val()) {
+                    var fromDate = $("#fromDate").val().split("-");
+                    var toDate = $("#toDate").val().split("-");
+                    var date1 = new Date(fromDate[2], fromDate[1] - 1, fromDate[0]);
+                    var date2 = new Date(toDate[2], toDate[1] - 1, toDate[0]);
+                    if (date2.getTime() < date1.getTime()) {
+                        swal({
+                            title: 'Ngày nhập không đúng định dạng!',
+                            type: 'error',
+                            timer: 5000,
+                            showConfirmButton: true
+                        });
+                        $("#searchBtn").prop('disabled', true);
+                    } else {
+                        $("#searchBtn").prop('disabled', false);
+                    }
+                }
+                else {
+                    $("#searchBtn").prop('disabled', false);
+                }
+            });
+            //$("#searchBtn").click(function () {
+            //    //event.preventDefault();
+            //    $.ajax({
+            //        type: 'POST',
+            //        url: 'Search',
+            //        data: {
+            //            nameSearch: $("#nameSearch").val(),
+            //            roleSearch: $("#roleIdSearch").val(),
+            //            fromDate: $("#fromDate").val(),
+            //            toDate: $("#toDate").val()
+            //        },
+            //        dataType: 'html',
+            //        success: function (data) {
+            //            $("#showData").html(data);
+            //        }
+
+            //    });
+            //});
+
+        </script>
+    }
 }

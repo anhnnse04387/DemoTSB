@@ -2,6 +2,7 @@
 using Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,10 +52,10 @@ namespace Models.DAO
         //thuongtx
 
 
-        public int getRoleIdByCurrentAcc(string userId)
-        {
-            return Convert.ToInt32(context.Users.SingleOrDefault(x => x.User_ID.Equals(userId)).Role_ID);
-        }
+        //public int getRoleIdByCurrentAcc(string userId)
+        //{
+        //    return Convert.ToInt32(context.Users.SingleOrDefault(x => x.User_ID.Equals(userId)).Role_ID);
+        //}
         public int getRoleQuanTri()
         {
             return context.Role_detail.SingleOrDefault(x => x.Role_name.ToLower().Equals("quản trị")).Role_ID;
@@ -86,7 +87,8 @@ namespace Models.DAO
             var query = from user in context.Users
                         join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
                         join role in context.Role_detail on user.Role_ID equals role.Role_ID
-                        where user.Status == 1
+                        //where user.Status == 1
+                        orderby user.Date_created ascending
                         select new
                         {
                             user,
@@ -105,7 +107,69 @@ namespace Models.DAO
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
                     ds.phanHe = item.Role_name;
-                    ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
+                    ds.soDienThoai = item.user.Phone;
+                    ds.diaChi = item.user.User_Address;
+                    //ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
+
+                    lst.Add(ds);
+                }
+            }
+            return lst;
+        }
+        public List<DanhSachNguoiDung> getAllUsersActiveByQuanTri(string nameSearch,string roleSearch,string fromDate,string toDate)
+        {
+            List<DanhSachNguoiDung> lst = new List<DanhSachNguoiDung>();
+
+            var query = from user in context.Users
+                        join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
+                        join role in context.Role_detail on user.Role_ID equals role.Role_ID
+                        //where user.Status == 1
+                        orderby user.Date_created ascending
+                        select new
+                        {
+                            user,
+                            media.Location,
+                            role.Role_name
+
+                        };
+            if (!string.IsNullOrEmpty(nameSearch))
+            {
+                query = query.Where(x => x.user.User_name.Equals(nameSearch));
+            }
+            if (!string.IsNullOrEmpty(roleSearch))
+            {
+                query = query.Where(x => x.user.Role_ID.ToString().Equals(roleSearch));
+            }
+            if(!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
+            {
+                DateTime fromDateValue = DateTime.ParseExact(fromDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x => x.user.Date_created >= fromDateValue);
+            }
+            if (string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime toDateValue = DateTime.ParseExact(toDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x => x.user.Date_created <= toDateValue);
+            }
+            if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime fromDateValue = DateTime.ParseExact(fromDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                DateTime toDateValue = DateTime.ParseExact(toDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x => x.user.Date_created >= fromDateValue && x.user.Date_created <= toDateValue);
+            }
+            if (query != null)
+            {
+                foreach (var item in query)
+                {
+                    DanhSachNguoiDung ds = new DanhSachNguoiDung();
+
+
+                    ds.tenNguoiDung = item.user.User_name;
+                    ds.anhDaiDien = item.Location;
+                    ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
+                    ds.phanHe = item.Role_name;
+                    ds.soDienThoai = item.user.Phone;
+                    ds.diaChi = item.user.User_Address;
+                    //ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
 
                     lst.Add(ds);
                 }
@@ -124,10 +188,11 @@ namespace Models.DAO
             var query = from user in context.Users
                         join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
                         join role in context.Role_detail on user.Role_ID equals role.Role_ID
-                        where user.Status == 1 && (user.Role_ID.ToString().Equals(roleQuanly)
+                        where /*user.Status == 1 && */ (user.Role_ID.ToString().Equals(roleQuanly)
                         || user.Role_ID.ToString().Equals(roleHangHoa)
                         || user.Role_ID.ToString().Equals(roleKeToan)
                         || user.Role_ID.ToString().Equals(rolePhanPhoi))
+                        orderby user.Date_created ascending
                         select new
                         {
                             user,
@@ -146,7 +211,122 @@ namespace Models.DAO
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
                     ds.phanHe = item.Role_name;
-                    ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
+                    ds.soDienThoai = item.user.Phone;
+                    ds.diaChi = item.user.User_Address;
+                    //ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
+
+                    lst.Add(ds);
+                }
+            }
+
+            return lst;
+        }
+        public List<DanhSachNguoiDung> getAllUsersActiveByQuanLy(string valueSearch)
+        {
+            string roleQuanly = getRoleQuanLy();
+            string roleHangHoa = getRoleHangHoa();
+            string roleKeToan = getRoleKeToan();
+            string rolePhanPhoi = getRolePhanPhoi();
+
+            List<DanhSachNguoiDung> lst = new List<DanhSachNguoiDung>();
+
+            var query = from user in context.Users
+                        join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
+                        join role in context.Role_detail on user.Role_ID equals role.Role_ID
+                        where /*user.Status == 1 && */ (user.Role_ID.ToString().Equals(roleQuanly)
+                        || user.Role_ID.ToString().Equals(roleHangHoa)
+                        || user.Role_ID.ToString().Equals(roleKeToan)
+                        || user.Role_ID.ToString().Equals(rolePhanPhoi)) && user.User_name.Contains(valueSearch)
+                        select new
+                        {
+                            user,
+                            media.Location,
+                            role.Role_name
+
+                        };
+            if (query != null)
+            {
+                foreach (var item in query)
+                {
+                    DanhSachNguoiDung ds = new DanhSachNguoiDung();
+
+
+                    ds.tenNguoiDung = item.user.User_name;
+                    ds.anhDaiDien = item.Location;
+                    ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
+                    ds.phanHe = item.Role_name;
+                    ds.soDienThoai = item.user.Phone;
+                    ds.diaChi = item.user.User_Address;
+                    //ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
+
+                    lst.Add(ds);
+                }
+            }
+
+            return lst;
+        }
+        public List<DanhSachNguoiDung> getAllUsersActiveByQuanLy(string nameSearch, string roleSearch, string fromDate, string toDate)
+        {
+            string roleQuanly = getRoleQuanLy();
+            string roleHangHoa = getRoleHangHoa();
+            string roleKeToan = getRoleKeToan();
+            string rolePhanPhoi = getRolePhanPhoi();
+
+            List<DanhSachNguoiDung> lst = new List<DanhSachNguoiDung>();
+
+            var query = from user in context.Users
+                        join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
+                        join role in context.Role_detail on user.Role_ID equals role.Role_ID
+                        where /*user.Status == 1 && */ (user.Role_ID.ToString().Equals(roleQuanly)
+                        || user.Role_ID.ToString().Equals(roleHangHoa)
+                        || user.Role_ID.ToString().Equals(roleKeToan)
+                        || user.Role_ID.ToString().Equals(rolePhanPhoi))
+                        orderby user.Date_created ascending
+                        select new
+                        {
+                            user,
+                            media.Location,
+                            role.Role_name
+
+                        };
+            if (!string.IsNullOrEmpty(nameSearch))
+            {
+                query = query.Where(x => x.user.User_name.Equals(nameSearch));
+            }
+            if (!string.IsNullOrEmpty(roleSearch))
+            {
+                query = query.Where(x => x.user.Role_ID.ToString().Equals(roleSearch));
+            }
+            if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
+            {
+                DateTime fromDateValue = DateTime.ParseExact(fromDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x => x.user.Date_created >= fromDateValue);
+            }
+            if(string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime toDateValue = DateTime.ParseExact(toDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x => x.user.Date_created <= toDateValue);
+            }
+            if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime fromDateValue = DateTime.ParseExact(fromDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                DateTime toDateValue = DateTime.ParseExact(toDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x =>x.user.Date_created >= fromDateValue && x.user.Date_created <= toDateValue);
+            }
+            if (query != null)
+            {
+                foreach (var item in query)
+                {
+                    DanhSachNguoiDung ds = new DanhSachNguoiDung();
+
+
+                    ds.tenNguoiDung = item.user.User_name;
+                    ds.anhDaiDien = item.Location;
+                    ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
+                    ds.phanHe = item.Role_name;
+                    ds.soDienThoai = item.user.Phone;
+                    ds.diaChi = item.user.User_Address;
+                    //ds.trangThai = item.user.Status == 1 ? "Đang hoạt động" : "";
 
                     lst.Add(ds);
                 }
