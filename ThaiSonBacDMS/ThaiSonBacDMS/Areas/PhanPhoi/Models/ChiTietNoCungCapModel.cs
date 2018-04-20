@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class ChiTietNoCungCapModel
@@ -38,6 +39,5 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public decimal? noCu { get; set; }
         public string ghiChu { get; set; }
         public string ngay { get; set; }
-        
     }
 }

@@ -1,0 +1,283 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.DanhSachNguoiDungHoatDongModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #example1 {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .custom-chk {
+        padding-left: 15px;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>Danh sách nhân viên</b>
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button">
+
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" href="quanly_nhanvien_tao-nhan-vien.html" target="_blank" title="Tạo Mới" data-placement="bottom">
+                                <i class="fa fa-plus-square text-green"></i>
+                                <span><strong>Tạo Mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                <i class="fa fa-edit text-grey"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                <i class="fa fa-save text-grey"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                <i class="fa fa-close text-grey"></i>
+                                <span><strong>Hủy</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                <i class="fa fa-check-circle text-grey"></i>
+                                <span><strong>Chốt đơn</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                <i class="fa fa-exchange text-grey"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                <i class="fa fa-eye text-grey"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                <i class="fa fa-download text-grey"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-green"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-red"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tên</td>
+                                                    <td width="35%">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                            <input type="text" class="form-control" placeholder="Tên...">
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-left: 100px;">Ngày tạo</td>
+                                                    <td>
+                                                        <div class="col-sm-5 no-padding">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input style="width: 150px" type="text" class="form-control" id="datepicker" placeholder="Từ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input style="width: 150px" type="text" class="form-control" id="datepicker2" placeholder="Đến...">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phân hệ</td>
+                                                    <td>
+                                                        <select class="form-control select2">
+                                                            <option>Quản lý</option>
+                                                            <option>Phân phối</option>
+                                                            <option>Kế toán</option>
+                                                            <option>Hàng hóa</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="box-footer clearfix">
+                                        <div class="pagination pagination-sm no-margin pull-right" style="padding-right: 20px">
+                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row search form -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <legend style="font-size: 17px"><b>Danh sách người dùng đang hoạt động</b></legend>
+                                    </fieldset>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 3%">STT</th>
+                                                <th style="width: 10%">Tên</th>
+                                                <th style="width: 12%">Ảnh đại diện</th>
+                                                <th style="width: 3%">Giới tính</th>
+                                                <th style="width: 5%">Ngày tạo</th>
+                                                <th style="width: 5%">Phân hệ</th>
+                                                <th style="width: 7%">Trạng thái</th>
+                                                <th style="width: 5%">Thay đổi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td><a href="quanly_nhanvien_chi-tiet-nhan-vien.html">Hoàng Văn Bách</a></td>
+                                                <td class="text-center">
+                                                    <image src="dist/img/user2-160x160.jpeg" alt="User Image" style="height: 60px;height: 60px" />
+                                                </td>
+                                                <td>Nam</td>
+                                                <td class="text-center">28-01-2015</td>
+                                                <td class="text-left">Quản lý</td>
+                                                <td class="text-left">Đang hoạt động</td>
+                                                <td class="text-center">
+                                                    <a id="btn_row1" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                        <i class="fa fa-edit text-blue"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr id="row1">
+                                                <td colspan="8">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Tên</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" value="Hoàng Văn Bách" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Giới tính</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <select class="form-control select2">
+                                                                        <option selected>Nam</option>
+                                                                        <option>Nữ</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Phân hệ</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-group" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <select class="form-control select2">
+
+                                                                        <option>Kế toán</option>
+                                                                        <option>Phân phối</option>
+                                                                        <option selected>Hàng hóa</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Trạng thái</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                                                    </span>
+                                                                    <select class="form-control select2">
+                                                                        <option>Đang hoạt động</option>
+                                                                        <option>Ngừng hoạt động</option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" id="cancel_btn1" class="btn btn-default btn-block">Hủy</a>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <a href="" class="btn btn-danger btn-block" data-toggle="modal" data-target="#popupConfirm">Sửa</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

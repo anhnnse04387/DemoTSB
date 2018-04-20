@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TaoMoi";
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
@@ -60,8 +60,8 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-        <li>Danh sách nhà cung cấp</li>
-        <li><a href="phanphoi_cungcap_tao-nha-cung-cap.html">Thêm nhà cung cấp</a></li>
+        <li>Danh sách khách hàng</li>
+        <li><a href="phanphoi_cungcap_tao-nha-cung-cap.html">Thêm khách hàng</a></li>
     </ol>
 </section>
 
@@ -140,7 +140,7 @@
 
                 <hr>
 
-                <h3 style="text-align: center; font-weight: 600;">THÊM NHÀ CUNG CẤP</h3>
+                <h3 style="text-align: center; font-weight: 600;">THÊM MỚI KHÁCH HÀNG</h3>
 
                 <div class="box-body" style="padding-bottom: 50px">
                     <div class="row">
@@ -161,7 +161,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Tên nhà cung cấp..." id="supplier_name">
+                                                    <input class="form-control" placeholder="Tên khách hàng..." id="supplier_name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -185,6 +185,18 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
+                                                <label>Địa chỉ giao hàng</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-address-book"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Địa chỉ giao hàng..." type="text" id="deliver_address">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-6">
                                                 <label>Email</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
@@ -193,9 +205,6 @@
                                                     <input class="form-control" placeholder="Email..." type="text" id="supplier_email">
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="row" style="margin-top: 10px;">
                                             <div class="col-md-6">
                                                 <label>MST</label>
                                                 <div class="input-group">
@@ -276,11 +285,13 @@
                             var supp_name = $("#supplier_name").val();
                             var supp_phone = $("#phone").val();
                             var supp_address = $("#address").val();
+                            var supp_d_address = $("#deliver_address").val();
                             var supp_email = $("#supplier_email").val();
                             var supp_mst = $("#mst").val();
                             fileData.append('supplierName', supp_name);
                             fileData.append('supplierPhone', supp_phone);
                             fileData.append('address', supp_address);
+                            fileData.append('deliver_address', supp_d_address);
                             fileData.append('email', supp_email);
                             fileData.append('mst', supp_mst);
                             if (isEmpty(supp_name)) {
@@ -299,6 +310,11 @@
                                     type: 'warning'
                                 });
 
+                            } else if (isEmpty(supp_d_address)) {
+                                swal({
+                                    title: 'Địa chỉ giao hàng không được bỏ trống',
+                                    type: 'warning'
+                                });
                             } else if (!validateEmail(supp_email)) {
                                 swal({
                                     title: 'Sai Email',
@@ -311,26 +327,33 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/TaoNhaCungCap/UploadFiles',
+                                    url: '/DanhSachKhachHang/UploadFiles',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data
                                     data: fileData,
                                     success: function (result) {
-                                        if (result == "1") {
+                                        if (result == "-1") {
                                             swal(
-                                                 result,
-                                                 'Bạn đã thêm nhà cung cấp thành công.',
-                                                 'success'
+                                                 'Lỗi',
+                                                 'Có lỗi xảy ra khi tạo',
+                                                 'warning'
+                                            );
+                                        } else if (result == "-2") {
+                                            swal(
+                                                 'Lỗi',
+                                                 'Chưa chọn ảnh',
+                                                 'warning'
                                             );
                                         } else {
                                             swal(
-                                                 'Lỗi',
-                                                 result,
-                                                 'warning'
-                                            );
-                                        }
-                                        
+                                                 'Thành công',
+                                                 'Bạn đã thêm khách hàng thành công.',
+                                                 'success'
+                                            ).then(function () {
+                                                window.location.href = 'PhanPhoi/DanhSachKhachHang/ChiTiet?customerID=' + result;
+                                            });;
+                                        }   
                                     },
                                     error: function (err) {
                                         swal({
@@ -361,3 +384,7 @@
         }
     </script>
 }
+
+
+
+

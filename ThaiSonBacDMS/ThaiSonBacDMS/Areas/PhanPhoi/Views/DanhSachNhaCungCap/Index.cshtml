@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+}
+@model ThaiSonBacDMS.Areas.PhanPhoi.Models.DanhSachCungCapModel
+
+@section IndexStyle{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Datepicker -->
+    <link href="~/Assets/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <style>
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            #example1 tbody td:nth-child(6), #example1 tbody td:nth-child(7),
+            #example1 tbody td:nth-child(9) {
+                text-align: right;
+            }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 80px;
+            height: 55px;
+        }
+
+        .edit-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+    </style>
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("Index", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                    <div class="col-md-12">
+                        <h4>
+                            <b>Danh sách nhà cung cấp</b>
+                        </h4>
+                    </div>
+                </div>
+                <!--end box header-->
+                <div class="box">
+                    <div class="box-header with-border text-center menu-button">
+
+                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")" target="_blank" title="Tạo Mới" data-placement="bottom">
+                            <i class="fa fa-plus-square text-green"></i>
+                            <span><strong>Tạo Mới</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                            <i class="fa fa-edit text-grey"></i>
+                            <span><strong>Sửa</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                            <i class="fa fa-save text-grey"></i>
+                            <span><strong>Lưu</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <i class="fa fa-close text-grey"></i>
+                            <span><strong>Hủy</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                            <i class="fa fa-check-circle text-grey"></i>
+                            <span><strong>Chốt đơn</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                            <i class="fa fa-exchange text-grey"></i>
+                            <span><strong>Đổi trả</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <i class="fa fa-eye text-grey"></i>
+                            <span><strong>Xem Trước</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <i class="fa fa-print text-blue"></i>
+                            <span><strong>In</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <i class="fa fa-download text-grey"></i>
+                            <span><strong>Import Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <i class="fa fa-file-excel-o text-green"></i>
+                            <span><strong>Xuất Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <i class="fa fa-file-pdf-o text-red"></i>
+                            <span><strong>Xuất PDF</strong></span>
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        @using (Html.BeginForm("Index", "DanhSachNhaCungCap", FormMethod.Post))
+                                        {
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="70px">Tên</td>
+                                                        <td width="35%">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                <input type="text" class="form-control" placeholder="Tên..." name="supp_name">
+                                                            </div>
+                                                        </td>
+                                                        <td style="padding-left: 90px;">Ngày tạo</td>
+                                                        <td>
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input style="width: 150px" type="text" class="form-control datepicker" name="dateFrom" placeholder="Từ...">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input style="width: 155px" type="text" class="form-control datepicker" name="dateTo" placeholder="Đến...">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        
+                                            <div class="box-footer clearfix">
+                                                <div class="pagination pagination-sm no-margin pull-right" style="padding-right: 19px">
+                                                    <button type="submit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <!--end box search-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 2%">STT</th>
+                                                    <th style="width: 5%">Tên</th>
+                                                    <th style="width: 15%">Địa chỉ</th>
+                                                    <th style="width: 5%">Mã số thuế</th>
+                                                    <th style="width: 5%">Ngày tạo</th>
+                                                    <th style="width: 5%">Thay đổi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{ var i = 1; }
+                                                @foreach (var item in Model.lstSupp)
+                                                {
+                                                    <tr>
+                                                        <td class="text-center">@i</td>
+                                                        <td class="text-left">
+                                                            @Html.ActionLink(@item.Supplier_name, "ChiTietCungCap", new { supplierId = item.Supplier_ID })
+                                                        </td>
+                                                        <td class="text-left">@item.Supplier_address</td>
+                                                        <td class="text-left">@item.Tax_code</td>
+                                                        <td class="text-center">@item.Date_Created.Value.ToString("dd/MM/yyyy")</td>
+                                                        <td style="text-align: center">
+                                                            <a class="btn btn-app custom-btn edit-btn" href="@Url.Action("ChinhSuaCungCap", "DanhSachNhaCungCap", new {  supplierId=item.Supplier_ID } )" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    i++;
+                                                }
+                                                
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!--end main box-->
+        </div>
+        <!--end main col-->
+    </div>
+    <!--end main row-->
+    <div id="errorMgs" hidden>@Model.error</div>
+</section>
+<!-- /.content -->
+@section Index {
+    <!-- DataTables -->
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- Datepicker -->
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <script>
+        function isEmpty(str) {
+            return (!str || 0 === str.length);
+        }
+        var x = $('#errorMgs').html();
+        if (!isEmpty(x)) {
+            swal({
+                title: 'Cảnh báo',
+                text: x,
+                type: 'warning'
+            });
+        }
+
+        $(document).ready(function () {
+
+            var table = $('#example1').dataTable({
+                "searching": false,
+                "info": false,
+                "lengthChange": false,
+                "language": {
+                    "zeroRecords": "Không tìm được giá trị phù hợp",
+                    "paginate": {
+                        "first": "Đầu",
+                        "last": "Cuối",
+                        "next": "Tiếp",
+                        "previous": "Sau"
+                    }
+                }
+            });
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+
+        $('.construct').click(function() {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+
+    </script>
+}

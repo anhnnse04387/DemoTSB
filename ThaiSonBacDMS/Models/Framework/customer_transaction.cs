@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -39,7 +39,6 @@ namespace Models.Framework
 
         [Column(TypeName = "money")]
         public decimal? Old_debt { get; set; }
-
         [StringLength(10)]
         public string User_ID { get; set; }
 
