@@ -37,7 +37,7 @@ function doneOrder() {
 
 function cancelOrder() {
     $.ajax({
-        url: '/QuanLy/ChiTietPhieu/cancelOrder',
+        url: '/QuanLy/ChiTietPhieu/CancelOrder',
         dataType: 'json',
         data: { orderId: $('#orderId').val(), note: $('#reason').val() },
         success: function () {

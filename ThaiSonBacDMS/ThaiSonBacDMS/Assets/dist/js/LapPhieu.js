@@ -270,7 +270,7 @@ function saveOrder() {
 
 function cancelOrder() {
     $.ajax({
-        url: '/PhanPhoi/LapPhieu/cancelOrder',
+        url: '/PhanPhoi/LapPhieu/CancelOrder',
         dataType: 'json',
         data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
         success: function () {

@@ -372,7 +372,7 @@
         }
         function cancelOrder() {
             $.ajax({
-                url: '/HangHoa/ChiTietPhieu/cancelOrder',
+                url: '/HangHoa/ChiTietPhieu/CancelOrder',
                 dataType: 'json',
                 data: { orderId: $('#orderId').val(), note: $('#reason').val() },
                 success: function () {

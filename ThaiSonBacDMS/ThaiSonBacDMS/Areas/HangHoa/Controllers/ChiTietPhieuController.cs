@@ -97,7 +97,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID);
+                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, dao.getOrder(orderId).Order_part.Count);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -113,7 +113,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.kho_checkOut(orderId, session.user_id);
+                dao.kho_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -123,13 +123,13 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             }
         }
 
-        public JsonResult cancelOrder(String orderId, String note)
+        public JsonResult CancelOrder(String orderId, String note)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.cancelOrder(orderId, note, session.user_id);
+                dao.cancelOrder(orderId, note, session.user_id, dao.getOrder(orderId).Order_part.Count);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

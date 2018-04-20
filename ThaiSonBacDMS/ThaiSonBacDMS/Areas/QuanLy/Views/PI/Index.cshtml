@@ -1,0 +1,431 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.PIModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .number {
+        text-align: right;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        .mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        .mainTable tbody td:nth-child(6), .mainTable tbody td:nth-child(7),
+        .mainTable tbody td:nth-child(9) {
+            text-align: right;
+        }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
+
+    .textCursor {
+        cursor: text;
+    }
+
+    .noDisplay {
+        display: none !important;
+    }
+</style>
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Hàng hóa</li>
+        <li>Yêu cầu nhập</li>
+        <li class="active">Nhập hóa đơn</li>
+    </ol>
+</section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header" style="text-align: center;margin-top: 30px;">
+                        <h3 class="box-title with-border"><b style="font-size: 25px;">Purchase Invoice</b></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                        <div class="row">
+                            <div class="box-header with-border text-center menu-button" style="margin-left: 5px; margin-right: 5px;">
+                                <a class="btn btn-app custom-btn" href="@Url.Action("Index", "PI")" target="_blank" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                    <i class="fa fa-plus-square text-green"></i>
+                                    <span><strong>Tạo Mới</strong></span>
+                                </a>
+
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-edit text-gray"></i>
+                                    <span><strong>Sửa</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-save text-gray"></i>
+                                    <span><strong>Lưu</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-close text-gray"></i>
+                                    <span><strong>Hủy</strong></span>
+                                </a>
+                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" id="btnSubmit" data-placement="bottom">
+                                    <i class="fa fa-check-circle text-green"></i>
+                                    <span><strong>Chốt đơn</strong></span>
+                                </button>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-exchange text-gray"></i>
+                                    <span><strong>Đổi trả</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                    <i class="fa fa-eye text-black"></i>
+                                    <span><strong>Xem Trước</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                    <i class="fa fa-print text-blue"></i>
+                                    <span><strong>In</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-download text-gray"></i>
+                                    <span><strong>Import Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-excel-o text-gray"></i>
+                                    <span><strong>Xuất Excel</strong></span>
+                                </a>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-file-pdf-o text-gray"></i>
+                                    <span><strong>Xuất PDF</strong></span>
+                                </a>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="box-header" style="margin-top: 25px;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Order's Information</b></legend>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>PI No.</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
+                                                        <input type="text" class="form-control" id="no" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Date</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker" id="date" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>PO No.</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                        @Html.DropDownListFor(model => model.pi.PO_ID, @Model.lstPO, "--Select--", new { @class = "form-control", @id = "poNo", @required = "required" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Commodity</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                        <input type="text" class="form-control" id="commodity" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Payment term</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                        <input type="text" class="form-control" id="payment" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Price term</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <input type="text" class="form-control" id="price" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Port of loading</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                                        <input type="text" class="form-control" id="port" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Final destination</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                                        <input type="text" class="form-control" id="destination" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Shipment date</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker" id="shipment" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Packing</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-dropbox"></i></span>
+                                                        <input type="text" class="form-control" id="package" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Inspection</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                                                        <input type="text" class="form-control" id="inspection" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Country of origin</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                                                        <input type="text" class="form-control" id="origin" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-md-6">
+                                                    <label>Validity</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+                                                        <input type="text" class="form-control" required id="validity" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Remarks</label><span style="color: red;">*</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-info"></i></span>
+                                                        <input type="text" class="form-control" id="remark" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-header" id="lstItem">
+                                @Html.Partial("_noPartial", Model)
+                            </div>
+                            <div id="sound"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+    </section>
+    <div class="modal fade" id="confirmSubmit" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận chốt đơn ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="doneOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.content -->
+}
+@section PI
+{
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            init();
+            $("#btnSubmit").click(function (event) {
+                if (validate() === 0) {
+                    event.preventDefault();
+                    $('#confirmSubmit').modal();
+                } else {
+                    $('form')[0].checkValidity();
+                }
+            });
+            $('#poNo').on('change', function () {
+                $.ajax({
+                    url: "/QuanLy/PI/ChooseNo",
+                    data: { no: $(this).val() },
+                    datatype: "html",
+                    success: function (data) {
+                        $("#lstItem").html(data);
+                        init();
+                    }
+                });
+            });
+        });
+
+        function init() {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+            $('.datepicker').datepicker();
+        }
+
+        function getAllData() {
+            var items = [];
+            var date = $('#date').val();
+            var no = $('#no').val();
+            var poNo = $('#poNo').val();
+            var commodity = $('#commodity').val();
+            var supplier = $('#supplier').val();
+            var total = parseFloat($('#total').val().replace(new RegExp(',', 'g'), ''));
+            var payment = $('#payment').val();
+            var destination = $('#destination').val();
+            var price = $('#price').val();
+            var port = $('#port').val();
+            var inspection = $('#inspection').val();
+            var shipment = $('#shipment').val();
+            var pk = $('#package').val();
+            var validity = $('#validity').val();
+            var origin = $('#origin').val();
+            var remark = $('#remark').val();
+            var pi = {
+                Purchase_invoice_no: no, PO_ID: poNo, Date_requested: date,
+                Commodity: commodity, Payment_term: payment, Price_term: price,
+                Shipment_date: shipment, Post_of_Loading: port, Final_destination: destination,
+                Packing: pk, Inspection: inspection, Country_of_origin: origin,
+                Validity: validity, Remarks: remark, Supplier_ID: supplier, Total_price: total
+            };
+            $('.item').each(function () {
+                var price = parseFloat($(this).find('.subtotal').val().replace(new RegExp(',', 'g'), ''));
+                var productId = $(this).find('.productId').val();
+                var qtt = $(this).find('.qtt').val();
+                var note = $(this).find('.note').val();
+                var item = {
+                    Price: price,
+                    Quantity: qtt,
+                    Product_ID: productId,
+                    NOTE: note
+                };
+                items.push(item);
+            });
+            var data = {
+                pi: pi, items: items
+            };
+            return data;
+        }
+
+        function doneOrder() {
+            $.ajax({
+                url: '/QuanLy/PI/CheckOut',
+                type: 'POST',
+                dataType: 'json',
+                data: { model: getAllData() },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/QuanLy/PI/History';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
+                        text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
+                        type: 'error',
+                        showCancelButton: false,
+                        showConfirmButton: true
+                    });
+                }
+            });
+        }
+
+        function validate() {
+            var count = 0;
+            if ($('#price').val() === "") {
+                count++;
+            }
+            if ($('#destination').val() === "") {
+                count++;
+            }
+            if ($('#date').val() === "") {
+                count++;
+            }
+            if ($('#no').val() === "") {
+                count++;
+            }
+            if ($('#poNo').val() === "") {
+                count++;
+            }
+            if ($('#commodity').val() === "") {
+                count++;
+            }
+            if ($('#remark').val() === "") {
+                count++;
+            }
+            if ($('#payment').val() === "") {
+                count++;
+            }
+            if ($('#origin').val() === "") {
+                count++;
+            }
+            if ($('#validity').val() === "") {
+                count++;
+            }
+            if ($('#package').val() === "") {
+                count++;
+            }
+            if ($('#shipment').val() === "") {
+                count++;
+            }
+            if ($('#inspection').val() === "") {
+                count++;
+            }
+            if ($('#port').val() === "") {
+                count++;
+            }
+            return count;
+        }
+    </script>
+}
+
+
+

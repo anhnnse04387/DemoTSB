@@ -43,6 +43,12 @@
     .table1 {
         padding-bottom: 35px;
     }
+
+    .ui-autocomplete-input {
+        max-height: 200px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
 </style>
 <section class="content-header">
     <ol class="breadcrumb">
@@ -81,13 +87,13 @@
                                     <table class="table">
                                         <tbody>
                                             <tr>
-                                                <td style="width:80px">Mã hàng</td>
+                                                <td style="width:90px">Tên sản phẩm</td>
                                                 <td style="width:400px">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-file"></i>
                                                         </span>
-                                                        @Html.TextBoxFor(model => model.pCodeSearch, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "pCodeSearch" })
+                                                        @Html.TextBoxFor(model => model.pCodeSearch, new { @class = "form-control", @placeholder = "Tên sản phẩm...", @id = "pCodeSearch" })
                                                     </div>
                                                 </td>
 
@@ -97,7 +103,7 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-tree"></i>
                                                         </span>
-                                                        @Html.DropDownListFor(model => model.categorySearch, Model.lstCateSearch, "", new { @class = "form-control" })
+                                                        @Html.DropDownListFor(model => model.categorySearch, Model.lstCateSearch, "Tất cả danh mục", new { @class = "form-control" })
                                                     </div>
                                                 </td>
                                             </tr>
@@ -107,13 +113,13 @@
                                                     <div class="col-sm-5 no-padding">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">Từ</span>
-                                                            @Html.TextBoxFor(model => model.priceFrom, new { @class = "form-control", @id = "priceFrom", @placeholder = "100,000" })
+                                                            @Html.TextBoxFor(model => model.priceFrom, new { @class = "form-control", @onchange = "checkData()", @id = "priceFrom", @placeholder = "100,000" })
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-sm-offset-1 no-padding">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">Đến</span>
-                                                            @Html.TextBoxFor(model => model.priceTo, new { @class = "form-control", @id = "priceTo", @placeholder = "999,999,999" })
+                                                            @Html.TextBoxFor(model => model.priceTo, new { @class = "form-control", @onchange = "checkData()", @id = "priceTo", @placeholder = "999,999,999" })
                                                         </div>
                                                     </div>
                                                 </td>
@@ -134,7 +140,7 @@
                                     <!-- /.box-body -->
                                     <div class="box-footer clearfix">
                                         <div class="pagination pagination-sm no-margin pull-right">
-                                            <button type="submit" class="btn btn-block btn-primary" onclick="setData()">Tìm kiếm <i class="fa fa-search"></i></button>
+                                            <button type="submit" class="btn btn-block btn-primary" id="btnSearch" onclick="setData()">Tìm kiếm <i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +156,7 @@
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
-                                                <th colspan="2">Mã hàng</th>
+                                                <th colspan="2">Tên sản phẩm</th>
                                                 <th>Danh Mục</th>
                                                 <th>Giá Trước VAT (USD)</th>
                                                 <th>Giá Trước VAT (VND)</th>
@@ -163,7 +169,7 @@
                                             @if (Model.lstDisplay.Count == 0)
                                             {
                                                 <tr>
-                                                    <td style="font-size:15px" colspan="8"> Không tìm thấy sản phẩm! </td>
+                                                    <td style="font-size:17px" colspan="9"> Không tìm thấy sản phẩm! </td>
                                                 </tr>
                                             }
                                             else
@@ -186,8 +192,8 @@
                                                     {
                                                         <tr>
                                                             <td style="text-align: left">@i</td>
-                                                            <td style="border-right: none;text-align:left"><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">@items.product.Product_name</a></td>
-                                                            <td style="border-left: none;text-align:left">@items.product.Product_parameters</td>
+                                                            <td style="border-right: none;text-align:left">@Html.ActionLink(@items.product.Product_name, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)
+                                                            <td style="border-left: none;text-align:left">@Html.ActionLink(@items.product.Product_parameters, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
                                                             <td class="right">@Convert.ToDouble(@items.product.Price_before_VAT_USD)</td>
                                                             <td class="right number">@items.product.Price_before_VAT_VND</td>
@@ -226,6 +232,7 @@
 
     </section>
     @section Index{
+        <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
         <script src="/Assets/dist/js/autoNumeric.js"></script>
         <script src="/Assets/dist/js/autoNumeric.min.js"></script>
         <script>
@@ -260,13 +267,20 @@
                         data: { searchValue: $("#pCodeSearch").val() },
                         success: function (data) {
                             response($.map(data, function (item) {
-                                return { label: item.pCodeSearch, value: item.pCodeSearch }
+                                return { label: item.pNameSearch, value: item.pNameSearch }
                             }))
                         },
+
                         error: function (xhr, status, error) {
                             alert("Error");
                         }
                     });
+                }
+            });
+            $('#pCodeSearch').on('blur', function () {
+                if ($(this).val().length === 1) {  //check for no. of characters entered
+                    $(this).val('');  // clear the textbox
+                    $(this).text('');
                 }
             });
             $(document).ready(function () {
@@ -290,6 +304,29 @@
                     $('#priceTo').val(priceTo);
                 }
 
+            };
+
+            function checkData() {
+                var value1 = $("#priceFrom").val();
+                var value2 = $("#priceTo").val();
+
+                if (value1 && value2) {
+                    value1 = parseInt(value1.replace(/,/g, ''));
+                    value2 = parseInt(value2.replace(/,/g, ''));
+                    if (value2 < value1) {
+                        swal({
+                            title: 'Giá đến phải lớn hơn giá từ!',
+                            type: 'error',
+                            timer: 5000,
+                            showConfirmButton: true
+                        });
+                        $("#btnSearch").prop('disabled', true);
+                    } else {
+                        $("#btnSearch").prop('disabled', false);
+                    }
+                } else {
+                    $("#btnSearch").prop('disabled', false);
+                }
             }
         </script>
     }

@@ -31,24 +31,9 @@
             folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Assets/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="/Assets/dist/css/font/GoogleFont.css">
-    <style>
-        #scrollContainer p {
-            margin: 0;
-            line-height: 30px;
-            font-size: 20px;
-            color: white;
-        }
-
-        #scrollContainer {
-            height: 30px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        #scrollBox {
-            position: relative;
-        }
-    </style>
+    <!-- page css -->
+    <!-- note srcoll -->
+    <link href="~/Assets/dist/css/pages/NoteSrcoll.css" rel="stylesheet" />
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini fixed">
     <div class="wrapper">
@@ -393,13 +378,12 @@
             <a href="#0" class="cd-top">Top</a>
         </footer>
     </div>
-    <!-- ./wrapper -->
-    <!-- jQuery 3 -->
     <script src="/Assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/Assets/dist/js/jquery-1.12.4.js"></script>
     <script src="/Assets/dist/js/jquery-ui.js"></script>
     @RenderSection("LapPhieu", false/*required*/)
     @RenderSection("PO", false)
+    @RenderSection("PI", false)
     @RenderSection("Stock", false)
     @RenderSection("ChiTietPhieu", false);
     @RenderSection("List", false);
@@ -415,7 +399,6 @@
     <script src="/Assets/dist/js/back-to-top.js"></script>
     <!--pagejs-->
     <script src="/Assets/dist/js/pages/index.js"></script>
-    @RenderSection("Index", false)
     @*@{ Html.RenderAction("NoteEdit", "Home"); }*@
     <!-- add script -->
     <script src="~/Assets/dist/js/pages/addNote.js"></script>

@@ -49,8 +49,7 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? CIF_VND { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? TAX { get; set; }
+        public float? TAX { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Price_before_VAT_VND { get; set; }
@@ -58,8 +57,7 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? Price_before_VAT_USD { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? VAT { get; set; }
+        public int? VAT { get; set; }
 
         public int? Quantities_in_inventory { get; set; }
 

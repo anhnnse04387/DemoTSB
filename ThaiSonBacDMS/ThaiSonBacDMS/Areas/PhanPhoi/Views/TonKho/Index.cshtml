@@ -155,7 +155,7 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td style="width:80px">Mã hàng</td>
+                                    <td style="width:90px">Tên sản phẩm</td>
                                     <td style="width:400px">
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -171,7 +171,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-sliders"></i>
                                             </span>
-                                            @Html.DropDownListFor(model => model.categorySearch, Model.lstCategorySearch, "", new { @class = "form-control select2", @id = "categorySearch" })
+                                            @Html.DropDownListFor(model => model.categorySearch, Model.lstCategorySearch, "Tất cả các danh mục", new { @class = "form-control select2", @id = "categorySearch" })
                                         </div>
                                     </td>
                                 </tr>
@@ -508,7 +508,7 @@
                     data: { mo: data },
                     dataType: "json",
                     success: function (result) {
-
+                        setData();
                     }
                 })
             });

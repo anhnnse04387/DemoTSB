@@ -115,7 +115,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     if (mo.pCodeSearch != null)
                     {
                         model.lstCategory = new List<Category>();
-                        var cateId = productDAO.getCateIdByProductCode(mo.pCodeSearch);
+                        var cateId = productDAO.getCateIdByProductName(mo.pCodeSearch);
                         model.lstCategory = daoCategory.getLstCateSearch(cateId);
                     }
                     if (mo.categorySearch != null)

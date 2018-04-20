@@ -103,10 +103,10 @@ namespace Models.DAO
 
             return result.ToList();
         }
-        public string getCateIdByProductCode(string pCode)
+        public string getCateIdByProductName(string productName)
         {
             var cateId = "";
-            List<Product> productList = db.Products.Where(x => x.Product_code.Equals(pCode) && x.Status == 1).ToList();
+            List<Product> productList = db.Products.Where(x => x.Product_name.Equals(productName) && x.Status == 1).ToList();
             foreach (Product item in productList)
             {
                 cateId = item.Category_ID;
@@ -145,7 +145,7 @@ namespace Models.DAO
             }
             if (product.Product_code != null)
             {
-                result = result.Where(x => x.Product_code.Equals(product.Product_code) && x.Status == 1);
+                result = result.Where(x => x.Product_name.Equals(product.Product_code) && x.Status == 1);
             }
 
             if (priceFrom != 0 && checkboxValue)
