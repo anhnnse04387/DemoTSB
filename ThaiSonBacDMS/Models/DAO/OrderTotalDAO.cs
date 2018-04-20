@@ -166,8 +166,7 @@ namespace Models.DAO
 
         public List<Order_total> getOrderByDateCreated(DateTime dateBegin, DateTime dateEnd)
         {
-            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).ToList() == null ? 
-                new List<Order_total>() : db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).ToList();
+            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).OrderBy(x=>x.Date_created).ToList();
         }
 
         public List<Order_total> showNewestOrder(int user_id)

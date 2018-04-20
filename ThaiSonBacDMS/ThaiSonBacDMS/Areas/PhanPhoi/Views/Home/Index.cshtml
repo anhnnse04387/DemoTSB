@@ -426,13 +426,13 @@
             type: 'line',
             data: {
                 datasets: [{
-                    data: [@Html.Raw(String.Join(",", Model.dataLineChartCurrentMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value/10000000 +"}")))],
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartCurrentMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value +"}")))],
                     label: "Tháng @DateTime.Now.Month",
                     borderColor: "#33FF33",
                     backgroundColor: "#33FF33",
                     fill: false
                 }, {
-                    data: [@Html.Raw(String.Join(",", Model.dataLineChartPreviousMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value / 10000000 + "}")))],
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChartPreviousMonth.Select(x => "{ x:" + x.Key + ", y: " + x.Value + "}")))],
                     label: "Tháng @(DateTime.Now.Month-1)",
                     borderColor: "#EE0000",
                     backgroundColor: "#EE0000",
@@ -456,7 +456,6 @@
                         ticks: {
                             min: 0,
                             stepSize: 1,
-                            max: 5
                         }
                     }],
                     xAxes: [{

@@ -39,5 +39,9 @@ namespace Models.DAO
         {
             return db.Categories.SingleOrDefault(x => x.Category_ID == cateId);
         }
+        public List<Sub_category> getSubCategory()
+        {
+            return db.Sub_category.Where(x => x.Status == 1).ToList();
+        }
     }
 }

@@ -353,6 +353,33 @@ namespace Models.DAO
             }
             return lst;
         }
+
+        public int insertProduct(string pCode, string pName, 
+            string pParam, string pSupplier, string pCategory, string pSubCate, 
+            int quantity_Carton, string pDescription, string pDetail, 
+            decimal cifVND, decimal cifUSD, decimal beforeVatVND, decimal beforeVATUSD, decimal vat)
+        {
+            Product p = new Product();
+            p.Product_code = pCode;
+            p.Product_name = pName;
+            p.Product_parameters = pParam;
+            p.Supplier_ID = pSupplier;
+            p.Category_ID = p.Category_ID;
+            p.Sub_category_ID = pSubCate;
+            p.Quantity_in_carton = quantity_Carton;
+            p.Overview = pDescription;
+            p.Specification = pDetail;
+            p.CIF_USD = cifUSD;
+            p.CIF_VND = cifVND;
+            p.Price_before_VAT_USD = beforeVATUSD;
+            p.Price_before_VAT_VND = beforeVatVND;
+            p.VAT = vat;
+            p.Quantities_in_inventory = 0;
+            p.Status = 1;
+            db.Products.Add(p);
+            db.SaveChanges();
+            return p.Product_ID;
+        }
       
     }
 }

@@ -33,5 +33,25 @@ namespace Models.DAO
             context.SaveChanges();
             return m.Media_ID;
         }
+
+        public int insertProductMedia(int productID, int mediaID)
+        {
+            try
+            {
+                Product_media pm = new Product_media();
+                pm.Product_ID = productID;
+                pm.Media_ID = mediaID;
+                context.Product_media.Add(pm);
+                context.SaveChanges();
+                return 1;
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return 0;
+            } 
+            
+            
+        }
     }
 }

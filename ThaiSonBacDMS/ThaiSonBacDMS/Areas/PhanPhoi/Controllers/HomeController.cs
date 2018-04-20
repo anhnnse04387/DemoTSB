@@ -31,11 +31,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var orderInMonth = listTotal.Count;
             model.orderInMonth = orderInMonth;
             //return value in month
-            int valueInMonth = 0;
-            foreach(var item in listTotal)
-            {
-                valueInMonth += (int) item.Total_price;
-            }
+            decimal valueInMonth = (decimal) listTotal.Sum(x=>x.Total_price);
             model.valueInMonth = valueInMonth;
             //return total product in month
             var prodInMonth = orderItemDAO.countNumberProductSoldMonth(firstDayOfMonth, lastDayOfMonth);
@@ -62,96 +58,63 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //line chart
             Dictionary<int, decimal> dataLineChartCurrentMonth = new Dictionary<int, decimal>();
             Dictionary<int, int> dataLineChartOrderCurrentMonth = new Dictionary<int, int>();
-            if(listTotal.Count != 0 && listTotal.First().Date_created.Day != 1)
+
+            dataLineChartCurrentMonth = listTotal.GroupBy(x => x.Date_created).ToDictionary(x => x.Key.Day, x => Math.Round( (decimal)x.Sum(s => s.Total_price)/ 10000000,2));
+            dataLineChartOrderCurrentMonth = listTotal.GroupBy(x => x.Date_created).ToDictionary(x => x.Key.Day, x => (int)x.Count());
+            //
+            if(listTotal.Count ==0)
+            {
+                dataLineChartCurrentMonth.Add(1, 0);
+                dataLineChartOrderCurrentMonth.Add(1, 0);
+                dataLineChartCurrentMonth.Add(lastDayOfMonth.Day, 0);
+                dataLineChartOrderCurrentMonth.Add(lastDayOfMonth.Day, 0);
+            }
+            else if(listTotal.First().Date_created.Day != 1)
             {
                 dataLineChartCurrentMonth.Add(1, 0);
                 dataLineChartOrderCurrentMonth.Add(1, 0);
             }
-            foreach(var item in listTotal)
-            {
-                if(dataLineChartCurrentMonth.ContainsKey(item.Date_created.Day))
-                {
-                    dataLineChartCurrentMonth[item.Date_created.Day] += (decimal)item.Total_price;
-                }else
-                {
-                    dataLineChartCurrentMonth.Add(item.Date_created.Day, (decimal)item.Total_price);
-                }
-
-                if(dataLineChartOrderCurrentMonth.ContainsKey(item.Date_created.Day))
-                {
-                    dataLineChartOrderCurrentMonth[item.Date_created.Day] += 1;
-                }else
-                {
-                    dataLineChartOrderCurrentMonth.Add(item.Date_created.Day, 1);
-                }
-            }
             model.dataLineChartCurrentMonth = dataLineChartCurrentMonth;
             model.dataLineChartOrderCurrentMonth = dataLineChartOrderCurrentMonth;
+            //
 
             Dictionary<int, decimal> dataLineChartPreviousMonth = new Dictionary<int, decimal>();
             Dictionary<int, int> dataLineChartPreviousOrderMonth = new Dictionary<int, int>();
             var firstMonthPrevious = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
             var lastMonthPrevious = firstMonthPrevious.AddMonths(1).AddDays(-1);
             var listTotalPrevious = totalDAO.getOrderByDateCreated(firstMonthPrevious, lastMonthPrevious);
-            if(listTotalPrevious.Count==0)
+
+            dataLineChartPreviousMonth = listTotalPrevious.GroupBy(x => x.Date_created).ToDictionary(x => x.Key.Day, x => Math.Round((decimal)x.Sum(s => s.Total_price) / 10000000, 2));
+            dataLineChartPreviousOrderMonth = listTotalPrevious.GroupBy(x => x.Date_created).ToDictionary(x => x.Key.Day, x => (int)x.Count());
+            if(listTotalPrevious.Count == 0)
             {
                 dataLineChartPreviousOrderMonth.Add(1, 0);
+                dataLineChartPreviousMonth.Add(1, 0);
+                dataLineChartPreviousOrderMonth.Add(lastMonthPrevious.Day, 0);
+                dataLineChartPreviousMonth.Add(lastMonthPrevious.Day, 0);
             }
             else if (listTotalPrevious.First().Date_created.Day != 1)
             {
                 dataLineChartPreviousOrderMonth.Add(1, 0);
-            }
-            if(listTotal.Count != 0)
-            {
                 dataLineChartPreviousMonth.Add(1, 0);
             }
             
-            foreach (var item in listTotalPrevious)
-            {
-                if (dataLineChartPreviousMonth.ContainsKey(item.Date_created.Day))
-                {
-                    dataLineChartPreviousMonth[item.Date_created.Day] += (decimal)item.Total_price;
-                }
-                else
-                {
-                    dataLineChartPreviousMonth.Add(item.Date_created.Day, (decimal)item.Total_price);
-                }
-
-                if (dataLineChartPreviousOrderMonth.ContainsKey(item.Date_created.Day))
-                {
-                    dataLineChartPreviousOrderMonth[item.Date_created.Day] += 1;
-                }
-                else
-                {
-                    dataLineChartPreviousOrderMonth.Add(item.Date_created.Day, 1);
-                }
-            }
-            if(!dataLineChartPreviousMonth.ContainsKey(lastMonthPrevious.Day))
-            {
-                dataLineChartPreviousMonth.Add(lastMonthPrevious.Day, 0);
-            }
-            if (!dataLineChartPreviousOrderMonth.ContainsKey(lastMonthPrevious.Day))
-            {
-                dataLineChartPreviousOrderMonth.Add(lastMonthPrevious.Day, 0);
-            }
             model.dataLineChartPreviousMonth = dataLineChartPreviousMonth;
             model.dataLineChartOrderPreviousMonth = dataLineChartPreviousOrderMonth;
 
             //count value in previous month
-            int valueInPreviousMonth = 0;
-            foreach (var item in listTotalPrevious)
-            {
-                valueInPreviousMonth += (int)item.Total_price;
-            }
+            decimal valueInPreviousMonth = 0;
+
+            valueInPreviousMonth = (decimal) listTotalPrevious.Sum(x=>x.Total_price);
             model.diffrentValueMonth = 0;
             model.valueFlag = false;
             if (valueInMonth >= valueInPreviousMonth)
             {
                 model.valueFlag = true;
-                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : valueInMonth;
+                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : 100;
             }else
             {
-                model.diffrentValueMonth = valueInMonth > 0 ? (valueInPreviousMonth - valueInMonth) / valueInMonth * 100 : valueInPreviousMonth;
+                model.diffrentValueMonth = valueInMonth > 0 ? (valueInPreviousMonth - valueInMonth) / valueInMonth * 100 : 100;
             }
             //different order of month
             model.diffrentOrderMonth = 0;
@@ -161,11 +124,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             if (totalInMonth >= orderInPreviousMonth)
             {
                 model.orderFlag = true;
-                model.diffrentValueMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : 0;
+                model.diffrentOrderMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : 100;
             }
             else
             {
-                model.diffrentValueMonth = valueInMonth > 0 ? ((valueInPreviousMonth - valueInMonth) / valueInPreviousMonth * 100) : 0;
+                model.diffrentOrderMonth = valueInMonth > 0 ? ((valueInPreviousMonth - valueInMonth) / valueInPreviousMonth * 100) : 100;
             }
 
             //Top Selling Product
