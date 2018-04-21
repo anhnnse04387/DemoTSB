@@ -282,7 +282,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var part = new OrderPartModel
                 {
                     Order_part_ID = op.Order_part_ID,
-                    dateShow = op.Date_reveice_invoice.ToString().Substring(0, 10),
+                    dateShow = op.Date_reveice_invoice.Value.ToString("dd/MM/yyyy"),
                     items = partItems,
                     vat = op.VAT,
                     total = op.Total_price,

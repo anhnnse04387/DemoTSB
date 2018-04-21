@@ -62,7 +62,8 @@
         <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
         <li>Hàng hóa</li>
         <li>Nhập hàng</li>
-        <li class="active">Tạo đợt nhập mới</li>
+        <li>Lịch sử đợt nhập</li>
+        <li class="active">Chi tiết đợt nhập hàng</li>
     </ol>
 </section>
 @using (Html.BeginForm())
@@ -73,7 +74,7 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header" style="text-align: center;margin-top: 30px;">
-                        <h3 class="box-title with-border"><b style="font-size: 25px;">Nhập hàng vào kho</b></h3>
+                        <h3 class="box-title with-border"><b style="font-size: 25px;">Chi tiết đợt nhập hàng</b></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body pad">
@@ -95,10 +96,10 @@
                                     <i class="fa fa-close text-gray"></i>
                                     <span><strong>Hủy</strong></span>
                                 </a>
-                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt" data-placement="bottom" id="btnSubmit">
-                                    <i class="fa fa-check-circle text-green"></i>
+                                <a class="btn btn-app custom-btn disabled">
+                                    <i class="fa fa-check-circle text-gray"></i>
                                     <span><strong>Chốt</strong></span>
-                                </button>
+                                </a>
                                 <a class="btn btn-app custom-btn disabled">
                                     <i class="fa fa-exchange text-gray"></i>
                                     <span><strong>Đổi trả</strong></span>
@@ -136,7 +137,7 @@
                                                     <label>Nhập hàng / Đổi trả</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-exchange"></i></span>
-                                                        <input type="checkbox" id="status" checked data-toggle="toggle" data-on="Nhập hàng" data-off="Đổi trả">
+                                                        <input type="checkbox" id="status" checked disabled data-toggle="toggle" data-on="Nhập hàng" data-off="Đổi trả">                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,15 +147,15 @@
                                                     <label id="nameLo" style="font-weight: bold;" class="noDisplay"> Lô số</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-                                                        @Html.DropDownListFor(model => model.no, @Model.lstPi, "--Select--", new { @class = "form-control", @id = "valuePi", @required = "required" })
-                                                        @Html.DropDownListFor(model => model.no, @Model.lstLo, "--Select--", new { @class = "form-control noDisplay", @id = "valueLo" })
+                                                        @Html.DropDownListFor(model => model.no, @Model.lstPi, "--Select--", new { @class = "form-control", @id = "valuePi", @disabled = "disabled" })
+                                                        @Html.DropDownListFor(model => model.no, @Model.lstLo, "--Select--", new { @class = "form-control noDisplay", @id = "valueLo", @disabled = "disabled" })
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Đơn vị</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-                                                        <input type="text" class="form-control" id="donVi" required>
+                                                        <input type="text" class="form-control" value="@Model.customer" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,14 +164,14 @@
                                                     <label>Địa chỉ</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-                                                        <input type="text" class="form-control" id="address" required>
+                                                        <input type="text" class="form-control" value="@Model.address" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Số điện thoại</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                        <input type="text" class="form-control" id="tel" required>
+                                                        <input type="text" class="form-control" value="@Model.tel" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,14 +180,14 @@
                                                     <label>Ngày yêu cầu</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control datepicker" required id="dayRequested" style="padding-left: 12px;">
+                                                        <input type="text" class="form-control" disabled value="@Model.dateRequested" style="padding-left: 12px;">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Ngày nhập</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control datepicker" required id="dayImported" style="padding-left: 12px;">
+                                                        <input type="text" class="form-control" disabled value="@Model.dateImportedToShow" style="padding-left: 12px;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -194,8 +195,49 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="box-header" id="lstItem">
-                                @Html.Partial("_chooseNoPartial", Model)
+                            <div class="box-header">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-xs-12 table-responsive">
+                                        <fieldset>
+                                            <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+                                            <table class="table table-striped mainTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 30px;">STT</th>
+                                                        <th style="width: 300px;">Sản phẩm</th>
+                                                        <th style="width: 100px;">Số lượng</th>
+                                                        <th style="width: 100px;">Số lượng nhập kho</th>
+                                                        <th>Lý do</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.items != null)
+                                                    {
+                                                        for (int i = 0; i < Model.items.Count; i++)
+                                                        {
+                                                            <tr class="item">
+                                                                <td style="vertical-align: middle">@(i + 1)</td>
+                                                                <td style="vertical-align: middle">@Model.items[i].productName</td>
+                                                                <td style="vertical-align: middle">@Model.items[i].orderQtt</td>
+                                                                <td><input type="text" class="form-control qtt" value="@Model.items[i].Quantities" disabled /></td>
+                                                                <td><input type="text" class="form-control note" value="@Model.items[i].Note" disabled/></td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                    <tr style="background-color: #544d61;color: #fff;">
+                                                        <td></td>
+                                                        <td style="vertical-align: middle;"><b>Tổng cộng</b></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output id="qttAll" class="number" style="color: #fff; font-weight: bold;"></output></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+
                             </div>
                             <div id="sound"></div>
                         </form>
@@ -206,29 +248,36 @@
         </div>
         <!-- ./row -->
     </section>
-    <div class="modal fade" id="confirmSubmit" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Xác nhận chốt đơn ?</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="doneOrder();">Đồng ý</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
 }
 @section Stock
 {
     <script src="/Assets/dist/js/bootstrap-toggle.min.js"></script>
-    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
-    <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
-    <script src="/Assets/dist/js/Stock.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+            if ($('#valuePi') !== "") {
+                $('#namePi').removeClass('noDisplay');
+                $('#nameLo').addClass('noDisplay');
+                $('#valueLo').addClass("noDisplay");
+                $('#valuePi').removeClass('noDisplay');
+                $('#status').prop("checked", true);
+            } else {
+                $('#nameLo').removeClass('noDisplay');
+                $('#namePi').addClass('noDisplay');
+                $('#valuePi').addClass("noDisplay");
+                $('#valueLo').removeClass('noDisplay');
+                $('#status').prop("checked", false);
+            }
+            var qttAll = 0;
+            var lst = $('.qtt');
+            for (var i = 0; i < lst.length; i++) {
+                if (lst.eq(i).val() !== "") {
+                    qttAll += parseInt(lst.eq(i).val());
+                }
+            }
+            $('#qttAll').val(qttAll);
+        });
+    </script>
 }
 

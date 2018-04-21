@@ -35,6 +35,81 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return View(model);
         }
 
+        public ActionResult Detail(int id)
+        {            
+            var model = new StockModel();
+            var orderDAO = new OrderTotalDAO();
+            var supplierDAO = new SupplierDAO();
+            var piDAO = new PIDAO();
+            var productDAO = new ProductDAO();
+            var dao = new StockInDAO();
+            var customerDAO = new CustomerDAO();
+            var data = dao.getStockInById(id);
+            var ddlOrder = new List<SelectListItem>();
+            var lstOrder = orderDAO.getLstOrder();
+            lstOrder.ForEach(x =>
+            {
+                ddlOrder.Add(new SelectListItem { Text = x.Order_ID, Value = x.Order_ID });
+            });
+            var ddlPI = new List<SelectListItem>();
+            var lstPI = piDAO.getLstPI();
+            lstPI.ForEach(x =>
+            {
+                ddlPI.Add(new SelectListItem { Text = x.Purchase_invoice_no, Value = x.Purchase_invoice_ID.ToString() });
+            });
+            model.lstLo = ddlOrder;
+            model.lstPi = ddlPI;
+            if (!String.IsNullOrEmpty(data.Order_part_ID))
+            {
+                var order = orderDAO.getOrder(data.Order_part_ID.Substring(0, data.Order_part_ID.IndexOf("-")));
+                var customer = customerDAO.getCustomerById(order.Customer_ID);
+                var list = new List<StockItemModel>();
+                model.address = order.Address_delivery;
+                model.customer = customer.Customer_name;
+                model.dateImportedToShow = data.Date_import.Value.ToString("dd/MM/yyyy");
+                model.dateRequested = order.Date_created.ToString("dd/MM/yyyy");
+                model.no = data.Order_part_ID;
+                model.tel = customer.Phone;
+                foreach(Detail_stock_in i in data.Detail_stock_in)
+                {
+                    var product = productDAO.getProductById(i.Product_ID);
+                    var item = new StockItemModel {
+                        productName = product.Product_name,
+                        Quantities = order.Order_items.Where(x => x.Product_ID == i.Product_ID).SingleOrDefault().Quantity,
+                        orderQtt = i.Quantities,
+                        Note = i.Note
+                    };
+                    list.Add(item);
+                }
+                model.items = list;
+            } else
+            {
+                var pi = piDAO.getPI(data.Purchase_invoice_ID);
+                var supplier = supplierDAO.getSupplierById(pi.Supplier_ID);
+                var list = new List<StockItemModel>();
+                model.address = supplier.Supplier_address;
+                model.customer = supplier.Supplier_name;
+                model.dateImportedToShow = data.Date_import.Value.ToString("dd/MM/yyyy");
+                model.dateRequested = pi.Date_requested.Value.ToString("dd/MM/yyyy");
+                model.no = data.Purchase_invoice_ID + "";
+                model.tel = supplier.Phone;
+                foreach (Detail_stock_in i in data.Detail_stock_in)
+                {
+                    var product = productDAO.getProductById(i.Product_ID);
+                    var item = new StockItemModel
+                    {
+                        productName = product.Product_name,
+                        Quantities = pi.Purchase_invoice_Items.Where(x=>x.Product_ID == i.Product_ID).SingleOrDefault().Quantity,
+                        orderQtt = i.Quantities,
+                        Note = i.Note
+                    };
+                    list.Add(item);
+                }
+                model.items = list;
+            }
+            return View(model);
+        }
+
         public ActionResult ChooseNo(String no, bool status)
         {
             try

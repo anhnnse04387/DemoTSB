@@ -370,7 +370,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var part = new OrderPartModel
                 {
                     Order_part_ID = op.Order_part_ID,
-                    dateShow = op.Date_reveice_invoice.ToString().Substring(0, 10),
+                    dateShow = op.Date_reveice_invoice.Value.ToString("dd/MM/yyyy"),
                     items = partItems,
                     vat = op.VAT,
                     total = op.Total_price,
@@ -386,7 +386,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 part.dict = dict;
                 parts.Add(part);
             }
-            model.dayCreated = data.Date_created.ToString().Substring(0, 10);
+            model.dayCreated = data.Date_created.ToString("dd/MM/yyyy");
             model.readPart = parts;
             return View(model);
         }

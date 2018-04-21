@@ -27,7 +27,7 @@ namespace Models.DAO
             return db.Purchase_invoice.ToList();
         }
 
-        public Purchase_invoice getPI(int id)
+        public Purchase_invoice getPI(int? id)
         {
             return db.Purchase_invoice.Where(x => x.Purchase_invoice_ID == id).SingleOrDefault();
         }
