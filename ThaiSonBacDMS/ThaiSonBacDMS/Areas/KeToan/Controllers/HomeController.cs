@@ -7,7 +7,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.KeToan.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : KeToanBaseController
     {
         // GET: KeToan/Home
         public ActionResult Index()

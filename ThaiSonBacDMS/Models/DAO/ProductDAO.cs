@@ -357,7 +357,7 @@ namespace Models.DAO
         public int insertProduct(string pCode, string pName, 
             string pParam, string pSupplier, string pCategory, string pSubCate, 
             int quantity_Carton, string pDescription, string pDetail, 
-            decimal cifVND, decimal cifUSD, decimal beforeVatVND, decimal beforeVATUSD, decimal vat)
+            decimal cifVND, decimal cifUSD, decimal beforeVatVND, decimal beforeVATUSD, int vat)
         {
             Product p = new Product();
             p.Product_code = pCode;

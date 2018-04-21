@@ -156,5 +156,24 @@ namespace Models.DAO
             return lstData;
         }
 
+        public List<Purchase_invoice> getPIbySupllierID(int supplierID)
+        {
+            return db.Purchase_invoice.Where(x => x.Supplier_ID == supplierID).ToList();
+        }
+
+        public decimal getDataCungCapByID(DateTime beginDate, DateTime endDate, int supplierID)
+        {
+            var query = from pi in db.Purchase_invoice
+                        where pi.Shipment_date >= beginDate && pi.Shipment_date <= endDate
+                        && pi.Supplier_ID == supplierID
+                        select pi;
+            return query.Sum(x => x.Total_price) == null ? 0 : (decimal)query.Sum(x => x.Total_price);
+        }
+
+        public List<Purchase_invoice> getPIbySupplierID(DateTime dateBegin, DateTime dateEnd, int supplierID)
+        {
+            return db.Purchase_invoice.Where(s => s.Shipment_date >= dateBegin && s.Shipment_date <= dateEnd
+            && s.Supplier_ID == supplierID).ToList();
+        }
     }
 }

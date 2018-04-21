@@ -107,7 +107,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     }
                     int pID = new ProductDAO().insertProduct(pCode, pName, pParam,
                         pSupplier, pCategory, pSubCategory, int.Parse(pNumberCarton),
-                        pDescription, pDetail, decimal.Parse(cifVND), decimal.Parse(cifUSD), decimal.Parse(pBeforeVatVND), decimal.Parse(pBeforeVatUSD), decimal.Parse(vat));
+                        pDescription, pDetail, decimal.Parse(cifVND), decimal.Parse(cifUSD), decimal.Parse(pBeforeVatVND), decimal.Parse(pBeforeVatUSD), int.Parse(vat));
                     foreach(var item in listMedia)
                     {
                         int check = new MediaDAO().insertProductMedia(pID, item);
