@@ -11,10 +11,11 @@ using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 using ThaiSonBacDMS.Common;
+using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class DanhSachNhaCungCapController : Controller
+    public class DanhSachNhaCungCapController : BaseController
     {
         // GET: PhanPhoi/DanhSachNhaCungCap
         [HttpGet]
@@ -151,6 +152,121 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 System.Diagnostics.Debug.WriteLine(e);
                 return Json("Có lỗi xảy ra khi tạo");
+            }
+        }
+
+        public ActionResult ChiTiet(int supllierID)
+        {
+            ChiTietCungCapModel model = new ChiTietCungCapModel();
+            //get supllier
+            model.supllier = new SupplierDAO().getSupplierById(supllierID);
+            model.avatar_str = new MediaDAO().getMediaByID((int) model.supllier.Media_ID).Location;
+            //get product of suppllier
+            model.lstProduct = new ProductDAO().lstProductBySupplierId(supllierID.ToString());
+            //get PI
+            model.lstTotal = new PIDAO().getPIbySupllierID(supllierID).Take(10).ToList();
+            //get data line chart
+            int currentMonth = DateTime.Now.Month;
+            DateTime beginDate = new DateTime(DateTime.Now.Year, currentMonth, 1);
+            DateTime endDate = beginDate.AddMonths(1).AddDays(-1);
+            model.dataLineChart = new Dictionary<string, decimal>();
+            for (var i = 0; i < 6; i++)
+            {
+                model.dataLineChart.Add(beginDate.ToString("MM/yyyy"), Math.Round(new PIDAO().getDataCungCapByID(beginDate, endDate, supllierID),2));
+                beginDate = beginDate.AddMonths(-1);
+                endDate = endDate.AddMonths(-1);
+            }
+            model.dataLineChart = model.dataLineChart.Reverse().ToDictionary(x => x.Key, x => x.Value);
+            //get current PI
+            model.numberOrder = new PIDAO().getPIbySupplierID(DateTime.Now.AddMonths(-6), DateTime.Now, supllierID).Count;
+            //get current PI total price
+            model.priceOrder = (decimal) new PIDAO().getPIbySupplierID(DateTime.Now.AddMonths(-6), DateTime.Now, supllierID).Sum(x => x.Total_price);
+            //get current debt
+            model.currentDebt = (decimal) model.supllier.Current_debt;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSupplier()
+        {
+            try
+            {
+                // Checking no of files injected in Request object  
+                if (Request.Files.Count > 0)
+                {
+                    var session = (UserSession)Session[CommonConstants.USER_SESSION];
+
+                    var supplierName = Request.Form.GetValues("supplierName")[0];
+                    var supplierPhone = Request.Form.GetValues("supplierPhone")[0];
+                    var address = Request.Form.GetValues("address")[0];
+                    var email = Request.Form.GetValues("email")[0];
+                    var mst = Request.Form.GetValues("mst")[0];
+                    var supplierID = Request.Form.GetValues("supplierID")[0];
+                    Regex phoneRegex = new Regex(CommonConstants.PHONE_REGEX, RegexOptions.IgnoreCase);
+                    Regex mstRegex = new Regex(CommonConstants.MST_REGEX, RegexOptions.IgnoreCase);
+                    MailAddress m = new MailAddress(email);
+                    if (string.IsNullOrEmpty(supplierName))
+                    {
+                        return Json("-1");
+                    }
+                    else if (!phoneRegex.Match(supplierPhone).Success)
+                    {
+                        return Json("-1");
+                    }
+                    else if (string.IsNullOrEmpty(address))
+                    {
+                        return Json("-1");
+                    }
+                    else if (!mstRegex.Match(mst).Success)
+                    {
+                        return Json("-1");
+                    }
+
+                    int? lastIDMedia = null;
+                    //  Get all files from Request object  
+                    HttpFileCollectionBase files = Request.Files;
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        //string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/";  
+                        //string filename = Path.GetFileName(Request.Files[i].FileName);  
+
+                        HttpPostedFileBase file = files[i];
+                        string fname;
+
+                        // Checking for Internet Explorer  
+                        if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
+                        {
+                            string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                            fname = testfiles[testfiles.Length - 1];
+                        }
+                        else
+                        {
+                            fname = file.FileName;
+                        }
+                        // Get the complete folder path and store the file inside it. 
+                        string newFname = fname;
+                        fname = Path.Combine(Server.MapPath("~/Assets/dist/img/Resource"), fname);
+                        file.SaveAs(fname);
+                        lastIDMedia = new MediaDAO().insertMedia(newFname, "/Assets/dist/img/Resource/" + newFname, session.accountID.ToString());
+
+                    }
+                    bool supID = new SupplierDAO().editSupplier(supplierName, lastIDMedia, address, supplierPhone, email, mst, int.Parse(supplierID));
+                    if (!supID)
+                    {
+                        return Json("-1");
+                    }
+
+                    return Json(supID);
+                }
+                else
+                {
+                    return Json("-2");
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json("-1");
             }
         }
     }

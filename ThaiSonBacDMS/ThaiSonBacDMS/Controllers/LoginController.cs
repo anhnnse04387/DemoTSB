@@ -73,7 +73,7 @@ namespace ThaiSonBacDMS.Controllers
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "KeToan/Home");
                         }
-                        else if (roleID == 5)
+                        else if (roleID == 6)
                         {
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "GiaoHang/Home");

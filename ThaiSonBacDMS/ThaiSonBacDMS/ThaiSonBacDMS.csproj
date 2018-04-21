@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\HangHoa\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\ErrorPageController.cs" />
+    <Compile Include="Areas\HangHoa\Controllers\HangHoaBaseController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\HomeController.cs" />
     <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
     <Compile Include="Areas\HangHoa\Models\OrderDeliveryModel.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Areas\HangHoa\Models\OrderTotalModel.cs" />
     <Compile Include="Areas\KeToan\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\KeToan\Controllers\HomeController.cs" />
+    <Compile Include="Areas\KeToan\Controllers\KeToanBaseController.cs" />
     <Compile Include="Areas\KeToan\Controllers\OrderListController.cs" />
     <Compile Include="Areas\KeToan\KeToanAreaRegistration.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\BaoCaoChiTietCongNoController.cs" />
@@ -191,6 +193,7 @@
     <Compile Include="Areas\PhanPhoi\Controllers\HomeController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\OrderListController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\PhanPhoiBaseController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\PIController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\POController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\SanPhamNgungKinhDoanhController.cs" />
@@ -199,6 +202,7 @@
     <Compile Include="Areas\PhanPhoi\Models\BaoCaoCongNoKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\BaoCaoDoanhThuModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietBaoCaoDoanhThu.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\ChiTietCungCapModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietNoCungCapModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietNoKhachHangModel.cs" />
@@ -235,6 +239,7 @@
     <Compile Include="Areas\QuanLy\Controllers\OrderListController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\PIController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\POController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\QuanLyBaseController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\StockController.cs" />
     <Compile Include="Areas\QuanLy\Models\DanhSachNguoiDungHoatDongModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ListItemModel.cs" />
@@ -250,7 +255,10 @@
     <Compile Include="Areas\QuanLy\Models\StockItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\StockModel.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\QuanTri\Controllers\DanhSachNguoiDungHoatDongController.cs" />
     <Compile Include="Areas\QuanTri\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QuanTri\Controllers\QuanTriBaseController.cs" />
+    <Compile Include="Areas\QuanTri\Models\DanhSachNguoiDungHoatDongModel.cs" />
     <Compile Include="Areas\QuanTri\Models\HomeModel.cs" />
     <Compile Include="Areas\QuanTri\QuanTriAreaRegistration.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -378,6 +386,8 @@
     <Content Include="Areas\QuanLy\Views\DanhSachNguoiDungHoatDong\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Stock\Detail.cshtml" />
     <Content Include="Areas\QuanLy\Views\Stock\Detail.cshtml" />
+    <Content Include="Areas\QuanTri\Views\DanhSachNguoiDungHoatDong\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\ChiTiet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -389,7 +399,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

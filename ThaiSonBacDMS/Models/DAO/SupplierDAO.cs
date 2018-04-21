@@ -66,6 +66,30 @@ namespace Models.DAO
                 return false;
             }
         }
+
+        public bool editSupplier(string supp_name, int? mediaID, string supp_address, string supp_phone,
+            string supp_mail, string supp_taxCode, int supplierID)
+        {
+            try
+            {
+                //find supplier
+                Supplier supp = db.Suppliers.SingleOrDefault(x => x.Supplier_ID == supplierID);
+                supp.Supplier_name = supp_name;
+                supp.Media_ID = mediaID;
+                supp.Supplier_address = supp_address;
+                supp.Phone = supp_phone;
+                supp.Mail = supp_mail;
+                supp.Tax_code = supp_taxCode;
+                //update to db
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return false;
+            }
+        }
         
     }
 }

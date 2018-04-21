@@ -13,6 +13,8 @@ namespace Models.DAO_Model
         public string gioiTinh { get; set; }
         public DateTime ngayTao { get; set; }
         public string phanHe { get; set; }
+        public string soDienThoai { get; set; }
+        public string diaChi { get; set; }
         public string trangThai { get; set; }
     }
 }

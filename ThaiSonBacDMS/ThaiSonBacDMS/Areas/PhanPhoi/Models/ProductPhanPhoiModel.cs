@@ -53,11 +53,18 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
                 return supplierName;
             }
         }
-        public decimal price
+        public decimal Price_after_VAT_VND
         {
             get
             {
                 return (decimal)(product.Price_before_VAT_VND + (product.Price_before_VAT_VND * (product.VAT / 100)));
+            }
+        }
+        public decimal Price_after_VAT_USD
+        {
+            get
+            {
+                return (decimal)(product.Price_before_VAT_USD + (product.Price_before_VAT_USD * (product.VAT / 100)));
             }
         }
     }

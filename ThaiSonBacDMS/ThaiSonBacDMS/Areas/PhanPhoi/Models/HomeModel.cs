@@ -18,9 +18,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public Dictionary<int, decimal> dataLineChartPreviousMonth { get; set; }
         public Dictionary<int, int> dataLineChartOrderPreviousMonth { get; set; }
         public bool valueFlag { get; set; }
-        public double diffrentValueMonth {get;set;}
+        public decimal diffrentValueMonth {get;set;}
         public bool orderFlag { get; set; }
-        public double diffrentOrderMonth { get; set; }
+        public decimal diffrentOrderMonth { get; set; }
         public Dictionary<string, int> topSellingCurrentMonth { get; set; }
         public Dictionary<string, int> topSellingPreviousMonth { get; set; }    
         public List<TopSellingCategory> listTopSellingCate { get; set; }    
