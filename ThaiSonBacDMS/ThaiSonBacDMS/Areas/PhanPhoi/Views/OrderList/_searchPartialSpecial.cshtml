@@ -26,7 +26,7 @@
                         @if (Model.items[i].delivery == 1)
                         {
                             <td>
-                                <a href="/PhanPhoi/ChiTietPhieu/One?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                <a href="/PhanPhoi/ChiTietPhieu/OnetimeDelivery?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
                                 @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
                                 {
                                     <span class="custom-span">
@@ -38,7 +38,7 @@
                         else
                         {
                             <td>
-                                <a href="/PhanPhoi/ChiTietPhieu/Many?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                <a href="/PhanPhoi/ChiTietPhieu/MultipleDelivery?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
                                 @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
                                 {
                                     <span class="custom-span">

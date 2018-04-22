@@ -23,5 +23,10 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
+        public Stock_in getStockInById(int id)
+        {
+            return db.Stock_in.Where(x => x.Stock_in_ID == id).SingleOrDefault();
+        }
+
     }
 }

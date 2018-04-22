@@ -16,14 +16,14 @@
             $('#valueLo').addClass("noDisplay");
             $('#valueLo').removeAttr("required");
             $('#valuePi').removeClass('noDisplay');
-            $('#valuePi').attr("required");
+            $('#valuePi').prop("required", true);
         } else {
             $('#nameLo').removeClass('noDisplay');
             $('#namePi').addClass('noDisplay');
             $('#valuePi').addClass("noDisplay");
             $('#valuePi').removeAttr("required");
             $('#valueLo').removeClass('noDisplay');
-            $('#valueLo').attr("required");
+            $('#valueLo').prop("required", true);
         }
     });
     $('#valuePi').on('change', function () {
@@ -56,14 +56,19 @@
     });
 });
 
-function calc() {
+function calc(thisQtt) {
+    if (parseInt($(thisQtt).val()) > parseInt($(thisQtt).closest("tr").find(".qttInven").val())) {
+        $(thisQtt).closest("tr").find(".note").prop("required", true);
+    } else {
+        $(thisQtt).closest("tr").find(".note").prop("required", false);
+    }
     var qttAll = 0;
     var lst = $('.qtt');
     for (var i = 0; i < lst.length; i++) {
         if (lst.eq(i).val() !== "") {
             qttAll += parseInt(lst.eq(i).val());
         }
-    }    
+    }
     $('#qttAll').val(qttAll);
 }
 
@@ -149,10 +154,18 @@ function validate() {
     if ($('#dayImported').val() === "") {
         count++;
     }
-    arr = $(".qtt");
+    var arr = $(".qtt");
     for (var i = 0; i < arr.length; i++) {
         if (arr.eq(i).val() === "") {
             count++;
+        }
+    }
+    var arrNote = $('.note');
+    for (var i = 0; i < arrNote.length; i++) {
+        if (arrNote.eq(i).attr('required') === 'required') {
+            if (arrNote.eq(i).val() === "") {
+                count++;
+            }
         }
     }
     return count;

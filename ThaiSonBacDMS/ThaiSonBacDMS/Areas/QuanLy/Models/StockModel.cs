@@ -18,6 +18,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
         public IList<SelectListItem> lstLo { get; set; }
         public IList<SelectListItem> lstPi { get; set; }
         public String dateRequested { get; set; }
+        public String dateImportedToShow { get; set; }
         public DateTime? dateImported { get; set; }
         public List<StockItemModel> items { get; set; }
 
