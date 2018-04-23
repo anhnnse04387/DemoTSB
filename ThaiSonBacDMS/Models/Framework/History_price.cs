@@ -32,8 +32,7 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? VAT { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         public virtual Product Product { get; set; }
     }

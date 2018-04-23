@@ -118,7 +118,7 @@ namespace Models.DAO
             item.Pay = Convert.ToDecimal(thanhToan);
             item.Debt = Convert.ToDecimal(duNo);
             item.Note = ghiChu;
-            item.User_ID = userId.ToString();
+            item.User_ID = userId;
 
             db.Supplier_transaction.Add(item);
             return db.SaveChanges();

@@ -198,7 +198,7 @@
                                                         <label>Số hóa đơn</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                                            <input class="form-control" disabled value="@Model.deliveryQtt" />
+                                                            <input class="form-control" disabled value="@Model.invoiceNumber" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -207,7 +207,8 @@
                                                                 Đã lấy hóa đơn
                                                             </label>
                                                             <span class="custom-span">
-                                                                <input type="checkbox" required>
+                                                                <input type="checkbox" id="takeInvoice">
+                                                                <input type="hidden" id="dateTakeInvoice" value="@Model.dateTakeInvoice"/>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -217,7 +218,8 @@
                                                                 Đã lấy phiếu
                                                             </label>
                                                             <span class="custom-span">
-                                                                <input type="checkbox" required>
+                                                                <input type="checkbox" id="takeBallot">
+                                                                <input type="hidden" id="dateTakeBallot" value="@Model.dateTakeBallot" />
                                                             </span>
                                                         </div>
                                                     </div>
@@ -334,25 +336,35 @@
                     $('form')[0].checkValidity();
                 }
             });
+            if ($('#dateTakeInvoice').val() !== "") {
+                $('#takeInvoice').prop("checked", true);
+            }
+            if ($('#dateTakeBallot').val() !== "") {
+                $('#takeBallot').prop("checked", true);
+            }
             $("#checkAll").click(function () {
                 $('.checkPer').prop('checked', this.checked);
             });
         });
         function doneOrder() {
+            var takeInvoice = false;
+            var takeBallot = false;
+            if ($('#takeInvoice').prop("checked")) {
+                takeInvoice = true;
+            }
+            if ($('#takeBallot').prop("checked")) {
+                takeBallot = true;
+            }
             $.ajax({
                 url: '/HangHoa/ChiTietPhieu/CheckOut',
                 type: 'POST',
                 dataType: 'json',
-                data: { orderId: $('#orderId').val() },
+                data: { orderId: $('#orderId').val(), takeInvoice: takeInvoice, takeBallot: takeBallot },
                 success: function () {
-                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="/Assets/dist/facebook_sound.mp3" /></audio>';
                     swal({
-                        title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
-                        imageUrl: '/Assets/dist/img/Noti.gif',
-                        imageWidth: 400,
-                        imageHeight: 300,
-                        imageAlt: 'Custom image',
-                        animation: false
+                        title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
+                        type: 'success'
                     }).then((result) => {
                         if (result.value) {
                             window.location.href = '/HangHoa/Home/Index';

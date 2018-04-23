@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class ChiTietPhieuController : Controller
+    public class ChiTietPhieuController : QuanLyBaseController
     {
         // GET: QuanLy/ChiTietPhieu
         public ActionResult Index(String orderId)
@@ -24,11 +24,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             model.deliveryAddress = data.Address_delivery;
-            model.deliveryQtt = data.Order_part.Count;
+            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             var items = new List<OrderItemModel>();
             model.qttTotal = 0;
             model.boxTotal = 0;
@@ -58,7 +58,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.subTotal = data.Sub_total;
             model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * data.Order_discount / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * data.VAT / 100) : 0;
             model.total = data.Total_price;
             model.readItems = items;
             return View(model);
@@ -76,9 +75,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             var count = 0;
             var lineStatus = "calc((40% -140px) * 0.5)";
             var dict = new Dictionary<int, StatusDetailModel>();
-            var statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 1).OrderByDescending(x => x.Date_change).First();
+            var statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 1).OrderByDescending(x => x.Date_change).FirstOrDefault();
             dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3).SingleOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3).OrderByDescending(x => x.Date_change).FirstOrDefault();
             if (statusDetail != null)
             {
                 dict.Add(3, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
@@ -89,7 +88,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 5).SingleOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 5).OrderByDescending(x => x.Date_change).FirstOrDefault();
             if (count == 1)
             {
                 if (statusDetail != null)
@@ -107,7 +106,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 dict.Add(5, new StatusDetailModel { });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 6).SingleOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 6).OrderByDescending(x => x.Date_change).FirstOrDefault();
             if (count == 2)
             {
                 if (statusDetail != null)
@@ -125,7 +124,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 dict.Add(6, new StatusDetailModel { });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 7).SingleOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 7).OrderByDescending(x => x.Date_change).FirstOrDefault();
             if (count == 3)
             {
                 if (statusDetail != null)
@@ -146,11 +145,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             model.deliveryAddress = data.Address_delivery;
-            model.deliveryQtt = data.Order_part.Count;
+            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             model.qttTotal = 0;
             model.boxTotal = 0;
             var items = new List<OrderItemModel>();
@@ -180,7 +179,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.subTotal = data.Sub_total;
             model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * data.Order_discount / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * data.VAT / 100) : 0;
             model.total = data.Total_price;
             model.readItems = items;
             return View(model);
@@ -188,6 +186,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 
         public ActionResult MultipleDelivery(String orderId)
         {
+            var detailStatusDAO = new OrderDetailStatusDAO();
             var userDAO = new UserDAO();
             var dao = new OrderTotalDAO();
             var customerDAO = new CustomerDAO();
@@ -198,10 +197,10 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             var customer = customerDAO.getCustomerById(data.Customer_ID);
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             model.deliveryAddress = data.Address_delivery;
             model.customerName = customer.Customer_name;
-            model.deliveryQtt = data.Order_part.Count;
+            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             var items = new List<OrderItemModel>();
             var leftItems = new List<OrderItemModel>();
             model.qttTotal = 0;
@@ -209,34 +208,53 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.leftQttTotal = 0;
             model.leftBoxTotal = 0;
             model.leftSubTotal = 0;
-            foreach (Order_part o in data.Order_part.Where(x => x.Status_ID != 7))
+            model.leftVatMoney = 0;
+            var lstItemToGet = new List<Order_items>();
+            var lstItemToSet = data.Order_items.Where(x => x.Order_part_ID == null).ToList();
+            foreach (Order_items o in data.Order_items.Where(x => x.Order_part_ID == null).ToList())
             {
-                foreach (Order_items i in o.Order_items)
+                foreach (Order_items i in data.Order_items.Where(x => x.Order_part_ID != null).ToList())
                 {
-                    var product = productDAO.getProductById(i.Product_ID);
-                    var item = new OrderItemModel
+                    if (o.Product_ID == i.Product_ID && i.Quantity == o.Quantity)
                     {
-                        code = product.Product_code,
-                        param = product.Product_parameters,
-                        Box = i.Box,
-                        Discount = i.Discount,
-                        Price = i.Price,
-                        Quantity = i.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
-                        priceBeforeDiscount = i.Discount > 0 ? (i.Price * 100 / (100 + i.Discount)) : i.Price,
-                        productId = i.Product_ID,
-                        qttBox = product.Quantity_in_carton,
-                        qttInven = product.Quantities_in_inventory
-                    };
-                    leftItems.Add(item);
-                    model.leftQttTotal += i.Quantity;
-                    model.leftBoxTotal += i.Box;
-                    model.leftSubTotal += i.Price;
+                        lstItemToSet.Remove(o);
+                    }
+                    if (o.Product_ID == i.Product_ID && i.Quantity < o.Quantity)
+                    {
+                        o.Quantity = o.Quantity - i.Quantity;
+                        lstItemToGet.Add(o);
+                    }
                 }
+            }
+            foreach (Order_items i in lstItemToSet)
+            {
+                lstItemToGet.Add(i);
+            }
+            foreach (Order_items i in lstItemToGet)
+            {
+                var product = productDAO.getProductById(i.Product_ID);
+                var item = new OrderItemModel
+                {
+                    code = product.Product_code,
+                    param = product.Product_parameters,
+                    Box = i.Box,
+                    Discount = i.Discount,
+                    Price = i.Price,
+                    Quantity = i.Quantity,
+                    per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                    priceBeforeDiscount = i.Discount > 0 ? (i.Price * 100 / (100 + i.Discount)) : i.Price,
+                    productId = i.Product_ID,
+                    qttBox = product.Quantity_in_carton,
+                    qttInven = product.Quantities_in_inventory
+                };
+                leftItems.Add(item);
+                model.leftVatMoney += product.Price_before_VAT_VND * product.VAT / 100;
+                model.leftQttTotal += i.Quantity;
+                model.leftBoxTotal += i.Box;
+                model.leftSubTotal += i.Price;
             }
             model.leftDiscountMoney = data.Order_discount > 0 ? (model.leftSubTotal * (100 - data.Order_discount) / 100) : 0;
             model.leftAfterDiscountMoney = data.Order_discount > 0 ? model.leftSubTotal - model.leftDiscountMoney : model.leftSubTotal;
-            model.leftVatMoney = data.VAT > 0 ? (model.leftAfterDiscountMoney * (100 + data.VAT) / 100) : 0;
             model.leftTotal = data.VAT > 0 ? model.leftAfterDiscountMoney + model.leftVatMoney : model.leftAfterDiscountMoney;
             model.leftItems = leftItems;
             foreach (Order_items o in data.Order_items)
@@ -268,7 +286,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.subTotal = data.Sub_total;
             model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount) / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * (100 + data.VAT) / 100) : 0;
             model.total = data.Total_price;
             model.readItems = items;
             var parts = new List<OrderPartModel>();
@@ -277,9 +294,10 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 var count = 0;
                 var lineStatus = "calc((40% -140px) * 0.5)";
                 var dict = new Dictionary<int, StatusDetailModel>();
-                var statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 1).OrderByDescending(x => x.Date_change).First();
+                var lstStatus = detailStatusDAO.getStatus(op.Order_part_ID);
+                var statusDetail = lstStatus.Where(x => x.Status_ID == 1).OrderByDescending(x => x.Date_change).FirstOrDefault();
                 dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
-                statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3).SingleOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 3).OrderByDescending(x => x.Date_change).FirstOrDefault();
                 if (statusDetail != null)
                 {
                     dict.Add(3, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
@@ -290,7 +308,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
                 }
-                statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 5).SingleOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 5).OrderByDescending(x => x.Date_change).FirstOrDefault(); lstStatus.Where(x => x.Status_ID == 5).SingleOrDefault();
                 if (count == 1)
                 {
                     if (statusDetail != null)
@@ -308,7 +326,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     dict.Add(5, new StatusDetailModel { });
                 }
-                statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 6).SingleOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 6).OrderByDescending(x => x.Date_change).FirstOrDefault();
                 if (count == 2)
                 {
                     if (statusDetail != null)
@@ -326,7 +344,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     dict.Add(6, new StatusDetailModel { });
                 }
-                statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 7).SingleOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 7).OrderByDescending(x => x.Date_change).FirstOrDefault();
                 if (count == 3)
                 {
                     if (statusDetail != null)
@@ -346,7 +364,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 int? qttTotal = 0;
                 float? boxTotal = 0;
                 decimal? subTotal = 0;
-                foreach (Order_items o in op.Order_items)
+                foreach (Order_items o in data.Order_items.Where(x => x.Order_part_ID != null && x.Order_part_ID.Equals(op.Order_part_ID)).ToList())
                 {
                     var product = productDAO.getProductById(o.Product_ID);
                     var item = new OrderItemModel
@@ -370,7 +388,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 var part = new OrderPartModel
                 {
                     Order_part_ID = op.Order_part_ID,
-                    dateShow = op.Date_reveice_invoice.Value.ToString("dd/MM/yyyy"),
+                    dateShow = op.Date_created.ToString("dd/MM/yyyy"),
                     items = partItems,
                     vat = op.VAT,
                     total = op.Total_price,
@@ -379,8 +397,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     subTotal = subTotal,
                     discount = data.Order_discount,
                     discountMoney = data.Order_discount > 0 ? (subTotal * (100 - data.Order_discount) / 100) : 0,
-                    afterDiscountMoney = data.Order_discount > 0 ? (subTotal - (subTotal * (100 - data.Order_discount) / 100)) : subTotal,
-                    vatMoney = op.VAT > 0 ? ((subTotal - (subTotal * (100 - data.Order_discount) / 100)) * (100 + data.VAT) / 100) : 0
+                    afterDiscountMoney = data.Order_discount > 0 ? (subTotal - (subTotal * (100 - data.Order_discount) / 100)) : subTotal
                 };
                 part.lineStatus = lineStatus;
                 part.dict = dict;

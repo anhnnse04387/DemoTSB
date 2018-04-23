@@ -61,10 +61,6 @@ namespace Models.Framework
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Category>()
                 .Property(e => e.Category_ID)
                 .IsUnicode(false);
@@ -110,31 +106,11 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Customer_transaction>()
-            .Property(e => e.Old_debt)
-              .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Customer_transaction>()
-                .Property(e => e.Total)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Customer_transaction>()
                 .Property(e => e.Old_debt)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<Customer_transaction>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Edit_history>()
                 .Property(e => e.Order_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Edit_history>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Exchange_rate>()
-                .Property(e => e.User_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Exchange_rate>()
@@ -169,10 +145,6 @@ namespace Models.Framework
                 .Property(e => e.VAT)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<History_price>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<KPI_customer>()
                 .Property(e => e.KPI_ID)
                 .IsUnicode(false);
@@ -186,10 +158,6 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<KPI_emp>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KPI_emp>()
                 .Property(e => e.Target_detail)
                 .HasPrecision(19, 4);
 
@@ -200,14 +168,6 @@ namespace Models.Framework
             modelBuilder.Entity<KPI_supplier>()
                 .Property(e => e.Target_detail)
                 .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Medium>()
-                .Property(e => e.Upload_by)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Notification>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Order_detail_status>()
                 .Property(e => e.Order_ID)
@@ -215,10 +175,6 @@ namespace Models.Framework
 
             modelBuilder.Entity<Order_detail_status>()
                 .Property(e => e.Order_part_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order_detail_status>()
-                .Property(e => e.User_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order_items>()
@@ -254,18 +210,6 @@ namespace Models.Framework
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Order_part>()
-                .Property(e => e.Sales_user_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order_part>()
-                .Property(e => e.Stocker_user_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order_part>()
-                .Property(e => e.Shiper_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order_part>()
                 .Property(e => e.Driver_ID)
                 .IsUnicode(false);
 
@@ -275,10 +219,6 @@ namespace Models.Framework
 
             modelBuilder.Entity<Order_total>()
                 .Property(e => e.Tax_code)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Order_total>()
-                .Property(e => e.User_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order_total>()
@@ -299,11 +239,6 @@ namespace Models.Framework
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Order_total>()
-                .HasMany(e => e.Order_detail_status)
-                .WithRequired(e => e.Order_total)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Order_total>()
                 .HasMany(e => e.Order_items)
                 .WithRequired(e => e.Order_total)
                 .WillCascadeOnDelete(false);
@@ -315,10 +250,6 @@ namespace Models.Framework
 
             modelBuilder.Entity<PO>()
                 .Property(e => e.PO_no)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<PO>()
-                .Property(e => e.User_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PO>()
@@ -385,16 +316,8 @@ namespace Models.Framework
                 .Property(e => e.Order_part_ID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Stock_in>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Stock_out>()
                 .Property(e => e.Order_part_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Stock_out>()
-                .Property(e => e.User_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Sub_category>()
@@ -440,14 +363,6 @@ namespace Models.Framework
             modelBuilder.Entity<Supplier_transaction>()
                 .Property(e => e.Debt)
                 .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Supplier_transaction>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.User_ID)
-                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Phone)

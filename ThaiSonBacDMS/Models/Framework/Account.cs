@@ -28,8 +28,7 @@ namespace Models.Framework
         [StringLength(50)]
         public string Password { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         public byte? Role_ID { get; set; }
 

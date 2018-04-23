@@ -9,16 +9,14 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
 {
     public class OrderTotalModel
     {
-
+        public String invoiceNumber { get; set; }
         public String orderId { get; set; }
         public int customerId { get; set; }
         public String customerName { get; set; }
         public String deliveryAddress { get; set; }
-        public int deliveryQtt { get; set; }
         public String invoiceAddress { get; set; }
         public String status { get; set; }
         public int? rate { get; set; }
-        public int statusId { get; set; }
         public String taxCode { get; set; }
         public decimal subTotal { get; set; }
         public decimal? total { get; set; }
@@ -28,7 +26,6 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public decimal? discount { get; set; }
         public decimal? discountMoney { get; set; }
         public decimal? afterDiscountMoney { get; set; }
-        public decimal? vatMoney { get; set; }
         public IList<SelectListItem> lstStatus { get; set; }
         public List<Order_part> part { get; set; }
         public List<Order_items> items { get; set; }

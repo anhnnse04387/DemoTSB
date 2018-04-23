@@ -32,7 +32,15 @@ namespace Models.DAO
 
         public List<Order_items> getReturnOrderItem(String orderId)
         {
-            return db.Order_items.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID != null && x.Order_part.Status_ID == 9).ToList();
+            var lst = new List<Order_items>();
+            foreach(Order_part o in db.Order_part.Where(x=>x.Order_ID.Equals(orderId) && x.Status_ID == 9).ToList())
+            {
+                foreach(Order_items i in db.Order_items.Where(x=>x.Order_part_ID.Equals(o.Order_part_ID)))
+                {
+                    lst.Add(i);
+                }
+            }
+            return lst;
         }
 
         public int countNumberProductSoldMonth(DateTime dateBegin, DateTime dateEnd)

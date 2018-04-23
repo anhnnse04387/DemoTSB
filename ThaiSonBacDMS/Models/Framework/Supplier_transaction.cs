@@ -38,8 +38,7 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? Debt { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         [StringLength(1)]
         public string Note { get; set; }

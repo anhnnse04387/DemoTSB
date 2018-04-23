@@ -134,7 +134,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         string newFname = fname;
                         fname = Path.Combine(Server.MapPath("~/Assets/dist/img/Resource"), fname);
                         file.SaveAs(fname);
-                        lastIDMedia = new MediaDAO().insertMedia(newFname, "/Assets/dist/img/Resource/" + newFname, session.accountID.ToString());
+                        lastIDMedia = new MediaDAO().insertMedia(newFname, "/Assets/dist/img/Resource/" + newFname, session.accountID);
 
                     }
                     if (!new SupplierDAO().addSupplier(supplierName, lastIDMedia, address, supplierPhone, email, mst))
@@ -247,7 +247,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         string newFname = fname;
                         fname = Path.Combine(Server.MapPath("~/Assets/dist/img/Resource"), fname);
                         file.SaveAs(fname);
-                        lastIDMedia = new MediaDAO().insertMedia(newFname, "/Assets/dist/img/Resource/" + newFname, session.accountID.ToString());
+                        lastIDMedia = new MediaDAO().insertMedia(newFname, "/Assets/dist/img/Resource/" + newFname, session.accountID);
 
                     }
                     bool supID = new SupplierDAO().editSupplier(supplierName, lastIDMedia, address, supplierPhone, email, mst, int.Parse(supplierID));

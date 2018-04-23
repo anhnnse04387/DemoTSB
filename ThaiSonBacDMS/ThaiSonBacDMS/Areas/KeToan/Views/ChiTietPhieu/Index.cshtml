@@ -104,7 +104,7 @@
                                 <i class="fa fa-close text-gray"></i>
                                 <span><strong>Hủy</strong></span>
                             </a>
-                            <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmComplete" onclick="return false;">
+                            <button class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" id="btnSubmit">
                                 <i class="fa fa-check-circle text-green"></i>
                                 <span><strong>Chốt đơn</strong></span>
                             </button>
@@ -177,14 +177,14 @@
                                                         <label>Số hóa đơn</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                                            <input class="form-control" disabled value="@Model.deliveryQtt" />
+                                                            <input class="form-control" id="invoiceNumber" value="@Model.invoiceNumber" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>VAT khách hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input class="form-control" disabled />
+                                                            <input class="form-control number" style="text-align: left;" value="@Model.vat" id="vat" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,15 +277,13 @@
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <input type="text" disabled class="form-control number" value="@Model.vat" style="text-align: right; float: right; font-weight: bold;">
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vat</output></td>
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
@@ -337,22 +335,29 @@
     <script>
         $(document).ready(function () {
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+            $("#btnSubmit").click(function (event) {
+                if (validate() === 0) {
+                    event.preventDefault();
+                    $('#confirmComplete').modal();
+                } else {
+                    $('form')[0].checkValidity();
+                }
+            });
         });
         function doneOrder() {
             $.ajax({
                 url: '/KeToan/ChiTietPhieu/CheckOut',
                 type: 'POST',
                 dataType: 'json',
-                data: { orderId: $('#orderId').val() },
+                data: { orderId: $('#orderId').val(), vat: parseFloat($('#vat').val().replace(new RegExp(',', 'g'), '')), invoiceNumber: $('#invoiceNumber').val() },
                 success: function () {
-                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="/Assets/dist/facebook_sound.mp3" /></audio>';
                     swal({
                         title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
                         type: 'success'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/KeToan/Home/Index';
+                            window.location.reload();
                         }
                     });
                 },
@@ -366,6 +371,16 @@
                     });
                 }
             });
+        }
+        function validate() {
+            var count = 0;
+            if ($('#vat').val() === "") {
+                count++;
+            }
+            if ($('#invoiceNumber').val() === "") {
+                count++;
+            }
+            return count;
         }
     </script>
 }

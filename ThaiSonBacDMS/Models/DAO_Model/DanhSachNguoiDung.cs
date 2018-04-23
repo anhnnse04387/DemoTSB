@@ -16,5 +16,9 @@ namespace Models.DAO_Model
         public string soDienThoai { get; set; }
         public string diaChi { get; set; }
         public string trangThai { get; set; }
+        public string chucVu { get; set; }
+        public string ngaySinh { get; set; }
+        public string BHYT { get; set; }
+        public string email { get; set; }
     }
 }

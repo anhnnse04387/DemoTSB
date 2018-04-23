@@ -19,7 +19,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public decimal? discount { get; set; }
         public decimal? discountMoney { get; set; }
         public decimal? afterDiscountMoney { get; set; }
-        public decimal? vatMoney { get; set; }
         public DateTime? Date_reveice_invoice { get; set; }
         public String dateShow { get; set; }
         public List<OrderItemModel> items { get; set; }

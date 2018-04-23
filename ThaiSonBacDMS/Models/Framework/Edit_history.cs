@@ -24,8 +24,7 @@ namespace Models.Framework
         [Column(TypeName = "date")]
         public DateTime? Date_change { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         public virtual Order_total Order_total { get; set; }
     }

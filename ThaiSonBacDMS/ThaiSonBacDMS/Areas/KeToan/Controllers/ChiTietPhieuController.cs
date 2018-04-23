@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.KeToan.Controllers
 {
-    public class ChiTietPhieuController : Controller
+    public class ChiTietPhieuController : KeToanBaseController
     {
         // GET: KeToan/ChiTietPhieu
         public ActionResult Index(String orderId)
@@ -24,11 +24,11 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             model.deliveryAddress = data.Address_delivery;
-            model.deliveryQtt = data.Order_part.Count;
+            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             var items = new List<OrderItemModel>();
             model.qttTotal = 0;
             model.boxTotal = 0;
@@ -58,20 +58,19 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             model.subTotal = data.Sub_total;
             model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * data.Order_discount / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * data.VAT / 100) : 0;
             model.total = data.Total_price;
             model.readItems = items;
             return View(model);
         }
 
         [HttpPost]
-        public JsonResult CheckOut(String orderId)
+        public JsonResult CheckOut(String orderId, decimal? vat, String invoiceNumber)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.keToan_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count);
+                dao.keToan_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count, vat, invoiceNumber);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

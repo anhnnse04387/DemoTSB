@@ -204,8 +204,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 pCodeSearch = x.Product_name,
                 pNameSearch = x.Product_name,
-
-
             }).ToList();
             return new JsonResult { Data = allSearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }

@@ -11,7 +11,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class LapPhieuController : Controller
+    public class LapPhieuController : QuanLyBaseController
     {
         // GET: QuanLy/LapPhieu
         public ActionResult Index()
@@ -56,6 +56,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             Customer_ID = model.customerId,
                             Date_created = DateTime.Now,
                             Rate = model.rate,
+                            Tax_code = model.taxCode,
                             User_ID = session.user_id,
                             Sub_total = model.subTotal,
                             VAT = model.vat,
@@ -74,6 +75,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             Address_invoice_issuance = model.invoiceAddress,
                             Customer_ID = model.customerId,
                             Rate = model.rate,
+                            Tax_code = model.taxCode,
                             User_ID = session.user_id,
                             Sub_total = model.subTotal,
                             VAT = model.vat,
@@ -88,8 +90,10 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     {
                         foreach (Order_items o in model.items)
                         {
-                            o.Order_ID = model.orderId;
-                            orderItemDAO.createOrderItem(o);
+                            if (o.Order_part_ID == null)
+                            {
+                                orderItemDAO.createOrderItem(o);
+                            }
                         }
                         if (model.deliveryQtt > 1)
                         {
@@ -108,6 +112,12 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                     Date_change = DateTime.Now,
                                     User_ID = session.user_id
                                 });
+                                foreach (Order_items i in model.items.Where(x => x.Order_part_ID != null && x.Order_part_ID.Equals(o.Order_part_ID)).ToList())
+                                {
+                                    i.Order_ID = model.orderId;
+                                    i.Order_part_ID = o.Order_part_ID;
+                                    orderItemDAO.createOrderItem(i);
+                                }
                             }
                         }
                         else
@@ -115,11 +125,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             orderPartDAO.createOrderPart(new Order_part
                             {
                                 Order_ID = model.orderId,
-                                Part_ID = 1,
-                                Order_part_ID = model.orderId + "-1",
+                                Order_part_ID = model.orderId,
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
-                                Date_reveice_invoice = DateTime.Now,
                                 VAT = model.vat,
                                 Status_ID = 1,
                                 Total_price = model.total
@@ -127,17 +135,10 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             orderStatusDAO.createOrderStatus(new Order_detail_status
                             {
                                 Order_ID = model.orderId,
-                                Order_part_ID = model.orderId + "-1",
                                 Status_ID = 1,
                                 Date_change = DateTime.Now,
                                 User_ID = session.user_id
                             });
-                            foreach (Order_items o in model.items)
-                            {
-                                o.Order_ID = model.orderId;
-                                o.Order_part_ID = model.orderId + "-1";
-                                orderItemDAO.createOrderItem(o);
-                            }
                         }
                     }
                     return Json(new { success = true }, JsonRequestBehavior.AllowGet);
@@ -201,13 +202,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             var productDAO = new ProductDAO();
             model.lstCustomer = ddl;
             model.orderId = orderId;
-            ddl = new List<SelectListItem>();
-            var lstStatus = statusDAO.getLstStatus();
-            lstStatus.ForEach(x =>
-            {
-                ddl.Add(new SelectListItem { Text = x.Status_name, Value = x.Status_ID.ToString() });
-            });
-            model.lstStatus = ddl;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.invoiceAddress = data.Address_invoice_issuance;
@@ -215,7 +209,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.deliveryQtt = data.Order_part.Count;
             model.customerId = data.Customer_ID;
             model.rate = data.Rate;
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             var items = new List<OrderItemModel>();
             model.qttTotal = 0;
             model.boxTotal = 0;
@@ -234,6 +228,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         Quantity = o.Quantity,
                         per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
+                        priceBeforeVat = product.Price_before_VAT_VND * product.VAT / 100,
                         productId = o.Product_ID,
                         qttBox = product.Quantity_in_carton,
                         qttInven = product.Quantities_in_inventory
@@ -248,53 +243,54 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.subTotal = data.Sub_total;
             model.discountMoney = data.Order_discount > 0 ? (data.Sub_total * (100 - data.Order_discount) / 100) : 0;
             model.afterDiscountMoney = data.Order_discount > 0 ? data.Sub_total - model.discountMoney : data.Sub_total;
-            model.vatMoney = data.VAT > 0 ? (model.afterDiscountMoney * (100 + data.VAT) / 100) : 0;
             model.total = data.Total_price;
             model.readItems = items;
             var parts = new List<OrderPartModel>();
-            foreach (Order_part op in data.Order_part)
+            if (data.Order_part.Count > 1)
             {
-                var partItems = new List<OrderItemModel>();
-                int? qttTotal = 0;
-                float? boxTotal = 0;
-                decimal? subTotal = 0;
-                foreach (Order_items o in op.Order_items)
+                foreach (Order_part op in data.Order_part)
                 {
-                    var product = productDAO.getProductById(o.Product_ID);
-                    var item = new OrderItemModel
+                    var partItems = new List<OrderItemModel>();
+                    int? qttTotal = 0;
+                    float? boxTotal = 0;
+                    decimal? subTotal = 0;
+                    foreach (Order_items o in data.Order_items.Where(x => x.Order_part_ID != null && x.Order_part_ID.Equals(op.Order_part_ID)).ToList())
                     {
-                        code = product.Product_code,
-                        param = product.Product_parameters,
-                        Box = o.Box,
-                        Discount = o.Discount,
-                        Price = o.Price,
-                        Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
-                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
-                        productId = o.Product_ID,
-                        qttBox = product.Quantity_in_carton
+                        var product = productDAO.getProductById(o.Product_ID);
+                        var item = new OrderItemModel
+                        {
+                            code = product.Product_code,
+                            param = product.Product_parameters,
+                            Box = o.Box,
+                            Discount = o.Discount,
+                            Price = o.Price,
+                            Quantity = o.Quantity,
+                            per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                            priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
+                            productId = o.Product_ID,
+                            qttBox = product.Quantity_in_carton
+                        };
+                        partItems.Add(item);
+                        qttTotal += o.Quantity;
+                        boxTotal += o.Box;
+                        subTotal += o.Price;
+                    }
+                    var part = new OrderPartModel
+                    {
+                        Order_part_ID = op.Order_part_ID,
+                        dateShow = op.Date_created.ToString("MM/dd/yyyy"),
+                        items = partItems,
+                        vat = op.VAT,
+                        total = op.Total_price,
+                        qttTotal = qttTotal,
+                        boxTotal = boxTotal,
+                        subTotal = subTotal,
+                        discount = data.Order_discount,
+                        discountMoney = data.Order_discount > 0 ? (subTotal * (100 - data.Order_discount) / 100) : 0,
+                        afterDiscountMoney = data.Order_discount > 0 ? (subTotal - (subTotal * (100 - data.Order_discount) / 100)) : subTotal
                     };
-                    partItems.Add(item);
-                    qttTotal += o.Quantity;
-                    boxTotal += o.Box;
-                    subTotal += o.Price;
+                    parts.Add(part);
                 }
-                var part = new OrderPartModel
-                {
-                    Order_part_ID = op.Order_part_ID,
-                    dateShow = op.Date_reveice_invoice.Value.ToString("dd/MM/yyyy"),
-                    items = partItems,
-                    vat = op.VAT,
-                    total = op.Total_price,
-                    qttTotal = qttTotal,
-                    boxTotal = boxTotal,
-                    subTotal = subTotal,
-                    discount = data.Order_discount,
-                    discountMoney = data.Order_discount > 0 ? (subTotal * (100 - data.Order_discount) / 100) : 0,
-                    afterDiscountMoney = data.Order_discount > 0 ? (subTotal - (subTotal * (100 - data.Order_discount) / 100)) : subTotal,
-                    vatMoney = op.VAT > 0 ? ((subTotal - (subTotal * (100 - data.Order_discount) / 100)) * (100 + data.VAT) / 100) : 0
-                };
-                parts.Add(part);
             }
             model.readPart = parts;
             return View(model);
@@ -324,6 +320,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             Customer_ID = model.customerId,
                             Date_created = DateTime.Now,
                             Rate = model.rate,
+                            Tax_code = model.taxCode,
                             User_ID = session.user_id,
                             Sub_total = model.subTotal,
                             VAT = model.vat,
@@ -342,6 +339,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             Address_invoice_issuance = model.invoiceAddress,
                             Customer_ID = model.customerId,
                             Rate = model.rate,
+                            Tax_code = model.taxCode,
                             User_ID = session.user_id,
                             Sub_total = model.subTotal,
                             VAT = model.vat,
@@ -354,13 +352,15 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     }
                     if (result > 0)
                     {
-                        foreach (Order_items o in model.items)
-                        {
-                            o.Order_ID = model.orderId;
-                            orderItemDAO.createOrderItem(o);
-                        }
                         if (model.deliveryQtt > 1)
                         {
+                            foreach (Order_items o in model.items)
+                            {
+                                if (o.Order_part_ID == null)
+                                {
+                                    orderItemDAO.createOrderItem(o);
+                                }
+                            }
                             foreach (Order_part o in model.part)
                             {
                                 o.Order_ID = model.orderId;
@@ -376,6 +376,12 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                     Date_change = DateTime.Now,
                                     User_ID = session.user_id
                                 });
+                                foreach (Order_items i in model.items.Where(x => x.Order_part_ID != null && x.Order_part_ID.Equals(o.Order_part_ID)).ToList())
+                                {
+                                    i.Order_ID = model.orderId;
+                                    i.Order_part_ID = o.Order_part_ID;
+                                    orderItemDAO.createOrderItem(i);
+                                }
                             }
                         }
                         else
@@ -383,29 +389,20 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             orderPartDAO.createOrderPart(new Order_part
                             {
                                 Order_ID = model.orderId,
-                                Part_ID = 1,
-                                Order_part_ID = model.orderId + "-1",
+                                Order_part_ID = model.orderId,
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
                                 VAT = model.vat,
                                 Status_ID = 3,
-                                Date_reveice_invoice = DateTime.Now,
                                 Total_price = model.total
                             });
                             orderStatusDAO.createOrderStatus(new Order_detail_status
                             {
                                 Order_ID = model.orderId,
-                                Order_part_ID = model.orderId + "-1",
                                 Status_ID = 3,
                                 Date_change = DateTime.Now,
                                 User_ID = session.user_id
                             });
-                            foreach (Order_items o in model.items)
-                            {
-                                o.Order_ID = model.orderId;
-                                o.Order_part_ID = model.orderId + "-1";
-                                orderItemDAO.createOrderItem(o);
-                            }
                         }
                     }
                     return Json(new { success = true }, JsonRequestBehavior.AllowGet);

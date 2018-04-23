@@ -96,19 +96,19 @@
                                 <i class="fa fa-eye text-grey"></i>
                                 <span><strong>Xem Trước</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="In" data-placement="bottom">
                                 <i class="fa fa-print text-blue"></i>
                                 <span><strong>In</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn disable" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
                                 <i class="fa fa-download text-grey"></i>
                                 <span><strong>Import Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" title="Xuất Excel" data-placement="bottom">
                                 <i class="fa fa-file-excel-o text-green"></i>
                                 <span><strong>Xuất Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
                                 <i class="fa fa-file-pdf-o text-red"></i>
                                 <span><strong>Xuất PDF</strong></span>
                             </a>
@@ -131,7 +131,7 @@
                                                     <td width="35%">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                            <input type="text" class="form-control" id="nameSearch" placeholder="Tên...">
+                                                            @Html.TextBoxFor(model => model.nameSearch, new { @class = "form-control", @id = "nameSearch", @placeholder = "Tên..." })
                                                         </div>
                                                     </td>
                                                     <td style="padding-left: 100px;">Ngày tạo</td>
@@ -242,26 +242,26 @@
                 $("#toDate").datepicker({
                     format: 'dd-mm-yyyy'
                 });
-                $("#nameSearch").autocomplete({
-                    source: function (request, response) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'autoCompleteNameSearch',
-                            minLength: 2,
-                            dataType: "json",
-                            data: { searchValue: $("#nameSearch").val() },
-                            success: function (data) {
-                                response($.map(data, function (item) {
-                                    return { label: item.key, value: item.strValue }
-                                }))
-                            },
-                            error: function (xhr, status, error) {
-                                alert("Error");
-                            }
-                        });
-                    }
-                });
-            }
+
+            };
+            $("#nameSearch").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '@Url.Action("autoCompleteNameSearch", "DanhSachNguoiDungHoatDong")',
+                        minLength: 2,
+                        dataType: "json",
+                        data: { searchValue: $("#nameSearch").val() },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.key, value: item.key }
+                            }))
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error");
+                        }
+                    });
+                }
+            });
 
             $("#fromDate, #toDate").change(function () {
                 if ($("#fromDate").val() && $("#toDate").val()) {
@@ -303,7 +303,14 @@
 
             //    });
             //});
-
+            function inProgressing() {
+                swal({
+                    title: 'Chức năng đang phát triển',
+                    type: 'warning',
+                    timer: 5000,
+                    showConfirmButton: true
+                })
+            }
         </script>
     }
 }

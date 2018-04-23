@@ -12,8 +12,7 @@ namespace Models.Framework
         [Key]
         public int Change_ID { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }

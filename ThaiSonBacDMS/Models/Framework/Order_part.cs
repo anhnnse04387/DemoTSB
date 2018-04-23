@@ -8,18 +8,11 @@ namespace Models.Framework
 
     public partial class Order_part
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order_part()
-        {
-            Order_detail_status = new HashSet<Order_detail_status>();
-            Order_items = new HashSet<Order_items>();
-        }
-
         [Required]
         [StringLength(10)]
         public string Order_ID { get; set; }
 
-        public byte Part_ID { get; set; }
+        public byte? Part_ID { get; set; }
 
         [Key]
         [StringLength(10)]
@@ -44,14 +37,11 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? Total_price { get; set; }
 
-        [StringLength(10)]
-        public string Sales_user_ID { get; set; }
+        public int? Sales_user_ID { get; set; }
 
-        [StringLength(10)]
-        public string Stocker_user_ID { get; set; }
+        public int? Stocker_user_ID { get; set; }
 
-        [StringLength(10)]
-        public string Shiper_ID { get; set; }
+        public int? Shiper_ID { get; set; }
 
         public byte? DeliverMethod_ID { get; set; }
 
@@ -72,12 +62,6 @@ namespace Models.Framework
 
         [StringLength(1)]
         public string Note { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_detail_status> Order_detail_status { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_items> Order_items { get; set; }
 
         public virtual Order_total Order_total { get; set; }
     }

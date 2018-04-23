@@ -103,25 +103,16 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 return RedirectToAction("Index");
             }
         }
-        [HttpPost]
-        public ActionResult autoCompleteNameSearch(string searchValue)
+        public JsonResult autoCompleteNameSearch(string searchValue)
         {
-            try
+            UserDAO dao = new UserDAO();
+            var lstAll = dao.getAllUsersActiveByQuanLy(searchValue);
+            List<Autocomplete> lstSearch = lstAll.Select(x => new Autocomplete
             {
-                UserDAO dao = new UserDAO();
-                List<DanhSachNguoiDung> lstAll = dao.getAllUsersActiveByQuanLy(searchValue);
-                List<Autocomplete> lstSearch = lstAll.Select(x => new Autocomplete
-                {
-                    key = x.tenNguoiDung,
-                    strValue = x.tenNguoiDung
-                }).ToList();
-                return Json(new { Data = lstSearch, JsonRequestBehavior.AllowGet });
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
-            }
+                key = x.tenNguoiDung,
+            }).ToList();
+            return new JsonResult { Data = lstSearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
         }
     }
 }

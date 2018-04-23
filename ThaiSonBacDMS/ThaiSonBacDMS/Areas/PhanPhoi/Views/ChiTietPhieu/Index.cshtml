@@ -173,15 +173,15 @@
                                                     <div class="col-md-6">
                                                         <label>Số hóa đơn</label><span style="color: red;">*</span>
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                                            <input class="form-control" disabled value="@Model.deliveryQtt" />
+                                                            <span class="input-group-addon"><i class="fa fa-handshake-o"></i></span>
+                                                            <input class="form-control" disabled value="@Model.invoiceNumber" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>VAT khách hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input class="form-control" disabled />
+                                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                            <input class="form-control number" style="text-align: left;" disabled value="@Model.vat"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -273,15 +273,13 @@
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <input type="text" disabled class="form-control number" value="@Model.vat" style="text-align: right; float: right; font-weight: bold;">
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number" style="color: #fff; font-weight: bold;">@Model.vat</output></td>
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>

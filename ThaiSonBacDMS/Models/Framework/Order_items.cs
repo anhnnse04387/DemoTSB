@@ -32,8 +32,6 @@ namespace Models.Framework
         [StringLength(1)]
         public string Note { get; set; }
 
-        public virtual Order_part Order_part { get; set; }
-
         public virtual Order_total Order_total { get; set; }
     }
 }

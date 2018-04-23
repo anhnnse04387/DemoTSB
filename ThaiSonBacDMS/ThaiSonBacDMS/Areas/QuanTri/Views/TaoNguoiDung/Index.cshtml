@@ -1,0 +1,446 @@
+﻿@model ThaiSonBacDMS.Areas.QuanTri.Models.TaoNguoiDungModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanTri/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" / > .table-condensed tbody tr td {
+        cursor: pointer;
+    }
+
+
+    table {
+        background-color: rgb(240, 240, 240);
+    }
+
+    thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .custom-chk {
+        padding-left: 15px;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    #image-preview {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        color: #ecf0f1;
+        margin-left: 30px;
+        background-image: url('/Assets/dist/img/default_avatar_male.jpg');
+        background-repeat: no-repeat;
+        background-position: 20px 30px;
+        border: solid 1px;
+    }
+
+        #image-preview input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        #image-preview label {
+            position: absolute;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: auto;
+            margin-top: 160px;
+            margin-left: -18px;
+            text-align: center;
+            font-size: 10px;
+        }
+</style>
+@using (Html.BeginForm())
+{
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="quantri_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li>Người dùng</li>
+            <li><a href="quantri_nguoidung_tao-nguoi-dung.html">Thêm người dùng</a></li>
+        </ol>
+    </section>
+     <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+
+                    <div class="box-header" style="text-align: center;margin-top: 30px;">
+                        <h3 class="box-title with-border"><b style="font-size: 25px;">TẠO NGƯỜI DÙNG</b></h3>
+                    </div>
+
+                    <div class="box-header with-border text-center menu-button">
+
+                        <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quantri_nguoidung_tao-nguoi-dung.html" title="Tạo Mới" data-placement="bottom">
+                            <i class="fa fa-plus-square text-green"></i>
+                            <span><strong>Tạo Mới</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                            <i class="fa fa-edit text-grey"></i>
+                            <span><strong>Sửa</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn" id="btnSave" title="Lưu" data-placement="bottom">
+                            <i class="fa fa-save text-yellow"></i>
+                            <span><strong>Lưu</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <i class="fa fa-close text-grey"></i>
+                            <span><strong>Hủy</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                            <i class="fa fa-check-circle text-grey"></i>
+                            <span><strong>Chốt đơn</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                            <i class="fa fa-exchange text-grey"></i>
+                            <span><strong>Đổi trả</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <i class="fa fa-eye text-grey"></i>
+                            <span><strong>Xem Trước</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <i class="fa fa-print text-grey"></i>
+                            <span><strong>In</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <i class="fa fa-download text-black"></i>
+                            <span><strong>Import Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <i class="fa fa-file-excel-o text-grey"></i>
+                            <span><strong>Xuất Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <i class="fa fa-file-pdf-o text-grey"></i>
+                            <span><strong>Xuất PDF</strong></span>
+                        </a>
+
+                    </div>
+
+                    <div class="box-body" style="padding-top: 50px; padding-bottom:50px">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!--                                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>-->
+                                <form class="form form-vertical">
+                                    <div class="row">
+                                        <div class="col-md-3 text-center">
+                                            <div id="image-preview">
+                                                <label for="image-upload" id="image-label">Chọn hình ảnh</label>
+                                                <input type="file" name="image" id="image-upload" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Tên</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.name, new { @class = "form-control", @id = "name", @placeholder = "Tên..." })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Chức vụ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user-circle"></i>
+                                                        </span>
+                                                        @Html.DropDownListFor(model => model.officeId, Model.lstOffice, "Chọn chức vụ", new { @id = "office", @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Phân hệ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-group"></i>
+                                                        </span>
+                                                        @Html.DropDownListFor(model => model.roleId, Model.lstRole, "Chọn phân hệ", new { @id = "role", @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Ngày sinh</label>
+                                                    <div class="input-group week-select">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.dob, new { @class = "form-control", @id = "dob", @placeholder = "Ngày sinh..." })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Email</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", @id = "email", @placeholder = "Email..." })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Số điện thoại</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-phone"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.phoneNumber, new { @class = "form-control", @id = "phoneNumber", @placeholder = "Số điện thoại..." })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Số BHYT</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-eercast"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.insuranceNo, new { @class = "form-control", @id = "insuranceNo", @placeholder = "Số BHYT..." })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label>Địa chỉ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-book"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.address, new { @id = "address", @class = "form-control", @placeholder = "Địa chỉ..." })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--main box-->
+            </div>
+            <!--main col-->
+        </div>
+        <!--main row-->
+        <div class="modal fade" id="popupConfirm" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận tạo người dùng mới</h4>
+                    </div>
+
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnOk" type="button" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+    @section Index{
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="/Assets/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/Assets/dist/js/autoNumeric.js"></script>
+        <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script src="/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#dob").datepicker({
+                    endDate: new Date(),
+                    format:'dd-mm-yyyy'
+                });
+                var label_selected = "<span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>";
+                var label_default = "<span class='glyphicon glyphicon-open' aria-hidden='true'></span>";
+                $.uploadPreview({
+                    input_field: "#image-upload",
+                    preview_box: "#image-preview",
+                    label_field: "#image-label",
+                    label_default: label_default,
+                    label_selected: label_selected
+                });
+
+                $("#image-preview label").addClass("btn btn-success");
+                $("#image-preview label").empty();
+                $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
+            });
+
+            $("#btnSave").click(function (event) {
+                event.preventDefault();
+                var name = $("#name").val();
+                var office = $("#office").val();
+                var role = $("#role").val();
+                var dob = $("#dob").val();
+                var email = $("#email").val();
+                var phoneNumber = $("#phoneNumber").val();
+                var insuranceNo = $("#insuranceNo").val();
+                var address = $("#address").val();
+                var image = $("#image-upload").val();
+                if (!name) {
+                    swal({
+                        title: 'Vui lòng nhập tên người dùng!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!office) {
+                    swal({
+                        title: 'Vui lòng chọn chức vụ!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!role) {
+                    swal({
+                        title: 'Vui lòng chọn phân hệ!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!dob) {
+                    swal({
+                        title: 'Vui lòng chọn ngày sinh!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!email) {
+                    swal({
+                        title: 'Vui lòng nhập email!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!validateEmail(email)) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng email!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!phoneNumber) {
+                    swal({
+                        title: 'Vui lòng nhập số điện thoại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!validatePhoneNumber(phoneNumber)) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng số điện thoại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!insuranceNo) {
+                    swal({
+                        title: 'Vui lòng nhập số bảo hiểm y tế!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                    //} else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(insuranceNo)) {
+                    //    swal({
+                    //        title: 'Vui lòng chỉ nhập số cho số BHYT!',
+                    //        type: 'warning',
+                    //        timer: 5000,
+                    //        showConfirmButton: true
+                    //    });
+                } else if (!address) {
+                    swal({
+                        title: 'Vui lòng nhập tên địa chỉ!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else if (!image) {
+                    swal({
+                        title: 'Vui lòng chọn ảnh!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                } else {
+                    $("#popupConfirm").modal('show');
+                    $("#btnOk").click(function () {
+                        var fileUpload = $("#image-upload").get(0);
+                        var files = fileUpload.files;
+
+                        // Create FormData object
+                        var fileData = new FormData();
+
+                        // Looping over all files and add it to FormData object
+                        for (var i = 0; i < files.length; i++) {
+                            fileData.append(files[i].name, files[i]);
+                        }
+                        fileData.append('name', name);
+                        fileData.append('dob', dob);
+                        fileData.append("office", office);
+                        fileData.append("role", role);
+                        fileData.append("email", email);
+                        fileData.append("phoneNumber", phoneNumber);
+                        fileData.append("insuranceNo", insuranceNo);
+                        fileData.append("address", address);
+                        $.ajax({
+                            url: '/TaoNguoiDung/UploadFiles',
+                            type: "POST",
+                            contentType: false, // Not to set any content header
+                            processData: false, // Not to process data
+                            data: fileData,
+                            success: function () {
+
+                            }
+                        });
+                    });
+                }
+
+            });
+
+            function validateEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+            function validatePhoneNumber(phoneNumber) {
+                var reg = "(\\+84|0)\\d{9,10}";
+                if (phoneNumber.match(reg)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
+    }
+}

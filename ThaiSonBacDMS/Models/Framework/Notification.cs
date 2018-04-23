@@ -15,8 +15,9 @@ namespace Models.Framework
 
         public DateTime? Notif_date { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
+
+        public byte? Role_ID { get; set; }
 
         public string Content { get; set; }
 

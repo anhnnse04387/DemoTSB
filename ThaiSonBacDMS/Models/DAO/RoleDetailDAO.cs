@@ -17,7 +17,7 @@ namespace Models.DAO
         }
         public List<Role_detail> lstAllRole()
         {
-            return db.Role_detail.ToList();
+            return db.Role_detail.Where(x=>!x.Role_name.ToLower().Equals("giao hàng") && !x.Role_name.ToLower().Equals("quản trị")).ToList();
         }
     }
 }

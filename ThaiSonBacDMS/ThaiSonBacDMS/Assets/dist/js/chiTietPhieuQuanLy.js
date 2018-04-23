@@ -47,7 +47,7 @@ function cancelOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/Home/Index';
+                    window.location.href = '/QuanLy/OrderList/Cancel';
                 }
             });
         },

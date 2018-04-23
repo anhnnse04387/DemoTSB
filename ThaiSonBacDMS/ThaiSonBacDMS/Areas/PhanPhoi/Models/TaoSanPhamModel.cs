@@ -11,6 +11,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public IList<SelectListItem> supplierList { get; set; }
         public IList<SelectListItem> categoryList { get; set; }
         public IList<SelectListItem> subCategoryList { get; set; }
-        public string  userID { get; set; }
+        public int userID { get; set; }
     }
 }

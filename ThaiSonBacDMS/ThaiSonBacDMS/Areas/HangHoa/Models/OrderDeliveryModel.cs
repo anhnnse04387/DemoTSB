@@ -8,11 +8,12 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
 {
     public class OrderDeliveryModel
     {
-
+        public String dateReceiveBallot { get; set; }
+        public String dateReceiveInvoice { get; set; }
         public String orderId { get; set; }
         public String customerName { get; set; }
         public String deliveryAddress { get; set; }
-        public int deliveryQtt { get; set; }
+        public String invoiceNumber { get; set; }
         public String invoiceAddress { get; set; }
         public String taxCode { get; set; }
         public String status { get; set; }
