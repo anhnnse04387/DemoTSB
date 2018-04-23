@@ -12,7 +12,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
         public String orderId { get; set; }
         public String customerName { get; set; }
         public String deliveryAddress { get; set; }
-        public int deliveryQtt { get; set; }
+        public String invoiceNumber { get; set; }
         public String invoiceAddress { get; set; }
         public String taxCode { get; set; }
         public String status { get; set; }

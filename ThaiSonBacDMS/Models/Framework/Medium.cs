@@ -23,8 +23,7 @@ namespace Models.Framework
 
         public string Location { get; set; }
 
-        [StringLength(10)]
-        public string Upload_by { get; set; }
+        public int? Upload_by { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Date_upload { get; set; }

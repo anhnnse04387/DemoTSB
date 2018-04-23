@@ -22,7 +22,7 @@ namespace Models.DAO
         {
             return context.Media.SingleOrDefault(x => x.Media_ID == mediaID);
         }
-        public int insertMedia(string m_name, string m_location, string upload_by)
+        public int insertMedia(string m_name, string m_location, int upload_by)
         {
             Medium m = new Medium();
             m.Media_name = m_name;

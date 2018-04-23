@@ -1,218 +1,216 @@
-﻿
+﻿@model ThaiSonBacDMS.Areas.KeToan.Models.ListModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/KeToan/Views/Shared/_Layout.cshtml";
 }
+<style>
+    #dtTable {
+        background-color: rgb(240, 240, 240);
+    }
 
+        #dtTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #dtTable tbody td:nth-child() {
+            text-align: left;
+        }
+
+        #dtTable tbody td:nth-child() {
+            text-align: right;
+        }
+</style>
 <section class="content-header">
     <ol class="breadcrumb">
-        <li>
-            <a href="#">
-                <i class="fa fa-dashboard"></i> Trang Chủ
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class=""></i> Phiếu đang chờ
-            </a>
-        </li>
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Đơn hàng</li>
+        <li class="active">Phiếu đã xuất</li>
     </ol>
 </section>
-<br>
-<section class="content">
-    <div class="box">
-        <div class="box-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>
-                        <b>DANH SÁCH ĐƠN HÀNG</b>
-                    </h4>
-                </div>
-            </div>
-            <div class="box">
-                <div class="row" style="margin-left :0px; margin-right:0px">
-                    <div class="col-md-12">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Tìm kiếm theo</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    <b>DANH SÁCH PHIẾU ĐÃ XUẤT</b>
+                                </h4>
+                            </div>
+                            <div class="row" style="margin-left:0px; margin-right:0px">
+                                <div class="col-md-12">
+                                    <div class="box">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Tìm kiếm theo</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="text-align:left; width: 10%">Lô số</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                                <input type="text" id="orderId" class="form-control" placeholder="Lô số...">
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 10%">Khách</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                <input type="text" id="customer" class="form-control" placeholder="Khách...">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:left">Ngày </td>
+                                                        <td>
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group date">
+                                                                    <span class="input-group-addon">Từ</span>
+                                                                    <input type="text" class="form-control datepicker" id="fromDate">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group date">
+                                                                    <span class="input-group-addon">Đến</span>
+                                                                    <input type="text" class="form-control datepicker" id="toDate">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>Tổng tiền</td>
+                                                        <td>
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Từ</span>
+                                                                    <input type="number" class="form-control" id="fromTotal">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Đến</span>
+                                                                    <input type="number" class="form-control" id="toTotal">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:left">Trạng thái</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                                <select class="form-control" id="status">
+                                                                    <option value="12">--Select--</option>
+                                                                    <option value="4">Kế toán đã xử lý</option>
+                                                                    <option value="5">Đã xuất kho</option>
+                                                                    <option value="6">Đang giao hàng</option>
+                                                                    <option value="7">Hoàn thành</option>
+                                                                    <option value="8">Đã hủy</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            Loại phiếu
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                                                <select class="form-control" id="type">
+                                                                    <option value="0">--Select--</option>
+                                                                    <option value="1">Giao một lần</option>
+                                                                    <option value="2">Giao nhiều lần</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer clearfix">
+                                            <div class="pagination pagination-sm no-margin pull-right">
+                                                <button type="button" class="btn btn-block btn-primary" id="btnSearch">Tìm kiếm <i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-2">Lô số</div>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-codepen"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Lô số">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">Số hóa đơn</div>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-codepen"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Số hóa đơn">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-2">Ngày</div>
-                                <div class="col-md-2">
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input placeholder="Từ ngày" type="text" class="form-control" id="datepicker1">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input placeholder="Đến ngày" type="text" class="form-control" id="datepicker2">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">Tổng tiền</div>
-                                <div class="col-md-2">
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-money"></i>
-                                        </div>
-                                        <input placeholder="Từ" type="text" class="form-control" id="datepicker">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-money"></i>
-                                        </div>
-                                        <input placeholder="Đến" type="text" class="form-control" id="datepicker">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-2">Tên khách hàng</div>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Tên khách hàng">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row" id="item">
+                            @Html.Partial("_searchPartial", Model)
                         </div>
                     </div>
-
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <div class="pagination pagination-sm no-margin pull-right">
-                            <button type="button" class="btn btn-block btn-primary">
-                                Tìm kiếm
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="example1" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Lô số</th>
-                                <th>Số hóa đơn</th>
-                                <th>Khách hàng</th>
-                                <th>Ngày</th>
-                                <th>Tổng tiền</th>
-                                <th>Trạng thái</th>
-                                <th>Ghi chú</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="ketoan_chi-tiet-don-hang.html">81264-0</a>
-                                </td>
-                                <td>24324</td>
-                                <td>Công ty Phú An</td>
-                                <td>20-12-2017</td>
-                                <td>15,069,500</td>
-                                <td>
-                                    <span class="label label-primary">Đã xuất phiếu</span>
-                                </td>
-                                <td>Chốt TT T9</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="ketoan_chi-tiet-don-hang.html">81263-0</a>
-                                </td>
-                                <td>24323</td>
-                                <td>Công ty HPH</td>
-                                <td>20-12-2017</td>
-                                <td>82,735,872</td>
-                                <td>
-                                    <span class="label label-primary">Đã xuất phiếu</span>
-                                </td>
-                                <td>Chốt TT T12</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <a href="ketoan_chi-tiet-don-hang.html">81262-1</a>
-                                </td>
-                                <td>24322</td>
-                                <td>Công ty HPH</td>
-                                <td>19-12-2017</td>
-                                <td>41,735,872</td>
-                                <td>
-                                    <span class="label label-warning">Đang giao hàng</span>
-                                </td>
-                                <td>Chốt TT T12</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    <a href="ketoan_chi-tiet-don-hang.html">81261-1</a>
-                                </td>
-                                <td>24321</td>
-                                <td>Công ty Invico - Sắn</td>
-                                <td>18-12-2017</td>
-                                <td>5,990,800</td>
-                                <td>
-                                    <span class="label label-primary">Đã xuất phiếu</span>
-                                </td>
-                                <td>Chốt TT T10</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    <a href="ketoan_chi-tiet-don-hang.html">81260-0</a>
-                                </td>
-                                <td>24320</td>
-                                <td>Công ty Sáng Hà</td>
-                                <td>11-12-2017</td>
-                                <td>17,590,000</td>
-                                <td>
-                                    <span class="label label-warning">Đã xuất kho</span>
-                                </td>
-                                <td>Chốt TT T11</td>
-                            </tr>
-                        </tbody>
-                        <tfoot></tfoot>
-                    </table>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+@section List {
+    <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btnSearch').click(function () {
+                $.ajax({
+                    url: "/KeToan/OrderList/Search",
+                    contentType: 'application/json; charset=utf-8',
+                    datatype: 'json',
+                    data: getData(),
+                    success: function (data) {
+                        $('#item').html(data);
+                        setTable();
+                    }
+                });
+            });
+            setTable();
+        });
+        function setTable() {
+            $('#dtTable').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'language': {
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "lengthMenu": "Hiển thị _MENU_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước"
+                    }
+                }
+            });
+            $('.datepicker').datepicker();
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+        }
+        function getData() {
+            var orderId = $('#orderId').val();
+            var customer = $('#customer').val();
+            var fromDate = $('#fromDate').val();
+            var toDate = $('#toDate').val();
+            var status = $('#status').val();
+            var type = $('#type').val();
+            var fromTotal = $('#fromTotal').val();
+            var toTotal = $('#toTotal').val();
+            var model = {
+                orderId: orderId, customer: customer, fromDate: fromDate, toDate: toDate,
+                fromTotal: fromTotal, toTotal: toTotal, statusId: status, orderType: type
+            };
+            return model;
+        }
+    </script>
+}
 

@@ -37,9 +37,7 @@ namespace Models.Framework
 
         public byte? Status_ID { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int User_ID { get; set; }
 
         [Required]
         public string Address_delivery { get; set; }

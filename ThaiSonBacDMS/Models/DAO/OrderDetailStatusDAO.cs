@@ -28,5 +28,10 @@ namespace Models.DAO
             return 0;
         }
 
+        public List<Order_detail_status> getStatus(String orderPartId)
+        {
+            return db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderPartId)).ToList();
+        }
+
     }
 }

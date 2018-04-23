@@ -28,8 +28,7 @@ namespace Models.Framework
         [Column(TypeName = "date")]
         public DateTime? Date_import { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         public string Note { get; set; }
 

@@ -34,8 +34,7 @@ namespace Models.Framework
         [StringLength(50)]
         public string Payment { get; set; }
 
-        [StringLength(10)]
-        public string User_ID { get; set; }
+        public int? User_ID { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Total_price { get; set; }

@@ -14,7 +14,7 @@ namespace Models.DAO
         {
             context = new ThaiSonBacDMSDbContext();
         }
-        public List<Notification> getByUserID(string user_id)
+        public List<Notification> getByUserID(int user_id)
         {
             return context.Notifications.Where(x => x.User_ID == user_id).ToList();
         }

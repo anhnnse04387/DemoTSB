@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
 {
-    public class ChiTietPhieuController : Controller
+    public class ChiTietPhieuController : HangHoaBaseController
     {
         // GET: PhanPhoi/ChiTietPhieu
         public ActionResult Index(String orderId)
@@ -24,11 +24,11 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             model.deliveryAddress = data.Address_delivery;
-            model.deliveryQtt = data.Order_part.Count;
+            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             var items = new List<OrderItemModel>();
             foreach (Order_items o in data.Order_items)
             {
@@ -79,11 +79,11 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             model.deliveryAddress = data.Address_delivery;
-            model.deliveryQtt = data.Order_part.Count;
+            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.taxCode = customer.Tax_code;
+            model.taxCode = data.Tax_code;
             model.shipper = shipper;
             model.deliveryMethod = delivery;
             model.driver = driver;
@@ -91,13 +91,13 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         }
 
         [HttpPost]
-        public JsonResult DeliveryCheckOut(String orderId, byte? DeliverMethod_ID, string Driver_ID, string Shiper_ID)
+        public JsonResult DeliveryCheckOut(String orderId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool receiveInvoice, bool receiveBallot)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, dao.getOrder(orderId).Order_part.Count);
+                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, dao.getOrder(orderId).Order_part.Count, receiveInvoice, receiveBallot);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -107,13 +107,13 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             }
         }
 
-        public JsonResult CheckOut(String orderId)
+        public JsonResult CheckOut(String orderId, bool takeInvoice, bool takeBallot)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.kho_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count);
+                dao.kho_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count, takeInvoice, takeBallot);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

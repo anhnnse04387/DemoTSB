@@ -13,7 +13,7 @@ namespace ThaiSonBacDMS.Common
         public User user_info;
         public bool roleSelectFlag;
         public string account_name;
-        public string user_id;
+        public int user_id;
         public string user_name;
         public string role_name;
     }

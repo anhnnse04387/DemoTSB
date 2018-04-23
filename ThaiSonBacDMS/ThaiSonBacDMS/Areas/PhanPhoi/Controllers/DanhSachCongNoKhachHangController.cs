@@ -72,7 +72,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 Customer_transactionDAO dao = new Customer_transactionDAO();
                 //var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 //int userId = session.accountID;
-                dao.insertData(customerId, nhapTrongKy, vat, thanhToan, conNo, dienGiai, 1.ToString(), tongCong);
+                dao.insertData(customerId, nhapTrongKy, vat, thanhToan, conNo, dienGiai, 1, tongCong);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

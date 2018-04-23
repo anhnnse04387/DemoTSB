@@ -9,7 +9,7 @@ using ThaiSonBacDMS.Areas.QuanLy.Models;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class OrderListController : Controller
+    public class OrderListController : QuanLyBaseController
     {
         // GET: QuanLy/OrderList
         public ActionResult Index()

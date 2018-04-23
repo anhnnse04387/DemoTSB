@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class StockController : Controller
+    public class StockController : QuanLyBaseController
     {
         // GET: QuanLy/Stock
         public ActionResult Index()

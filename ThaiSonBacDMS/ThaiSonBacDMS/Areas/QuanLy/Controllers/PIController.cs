@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class PIController : Controller
+    public class PIController : QuanLyBaseController
     {
         // GET: QuanLy/PI
         public ActionResult Index()

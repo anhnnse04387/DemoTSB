@@ -1,6 +1,6 @@
 ﻿@model ThaiSonBacDMS.Areas.KeToan.Models.ListModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Release";
     Layout = "~/Areas/KeToan/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -27,7 +27,7 @@
     <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
         <li>Đơn hàng</li>
-        <li class="active">Phiếu đã xuất</li>
+        <li class="active">Phiếu đang chờ</li>
     </ol>
 </section>
 @using (Html.BeginForm())
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h4>
-                                    <b>DANH SÁCH PHIẾU ĐÃ XUẤT</b>
+                                    <b>DANH SÁCH PHIẾU ĐANG CHỜ</b>
                                 </h4>
                             </div>
                             <div class="row" style="margin-left:0px; margin-right:0px">
@@ -110,12 +110,10 @@
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
                                                                 <select class="form-control" id="status">
-                                                                    <option value="12">--Select--</option>
-                                                                    <option value="4">Kế toán đã xử lý</option>
-                                                                    <option value="5">Đã xuất kho</option>
-                                                                    <option value="6">Đang giao hàng</option>
-                                                                    <option value="7">Hoàn thành</option>
-                                                                    <option value="8">Đã hủy</option>
+                                                                    <option value="13">--Select--</option>
+                                                                    <option value="3">Đã xuất phiếu</option>
+                                                                    <option value="10" class="text-yellow">Đã xuất kho</option>
+                                                                    <option value="11" class="text-yellow">Đang giao hàng</option>
                                                                 </select>
                                                             </div>
                                                         </td>
@@ -194,6 +192,7 @@
                 }
             });
             $('.datepicker').datepicker();
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
         }
         function getData() {
             var orderId = $('#orderId').val();

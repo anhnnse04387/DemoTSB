@@ -16,7 +16,7 @@ namespace Models.DAO
         {
             context = new ThaiSonBacDMSDbContext();
         }
-        public User getByID(string user_id)
+        public User getByID(int? user_id)
         {
             return context.Users.SingleOrDefault(s => s.User_ID == user_id);
         }

@@ -152,7 +152,7 @@ namespace Models.DAO
             }
             return debt;
         }
-        public int insertData(int customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai, string userId, string tongCong)
+        public int insertData(int customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai, int userId, string tongCong)
         {
             Customer_transaction ct = new Customer_transaction();
             ct.Customer_ID = customerId;
@@ -327,7 +327,7 @@ namespace Models.DAO
             }
             return lst;
         }
-        public int insertData(string noCu,string nhapTrongKy,string thanhToan,string vat,string conNo,string dienGiai,string customerId,string userId)
+        public int insertData(string noCu,string nhapTrongKy,string thanhToan,string vat,string conNo,string dienGiai,string customerId,int userId)
         {
             Customer_transaction cus = new Customer_transaction();
 

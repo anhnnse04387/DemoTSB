@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class PIController : Controller
+    public class PIController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/PI
         public ActionResult Index()

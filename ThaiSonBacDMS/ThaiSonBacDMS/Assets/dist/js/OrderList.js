@@ -33,6 +33,7 @@ function setTable() {
         }
     });
     $('.datepicker').datepicker();
+    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
 }
 function getData() {
     var orderId = $('#orderId').val();

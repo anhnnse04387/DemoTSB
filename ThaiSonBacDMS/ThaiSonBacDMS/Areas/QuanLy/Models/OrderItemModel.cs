@@ -7,7 +7,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
 {
     public class OrderItemModel
     {
-
+        public decimal? priceBeforeVat { get; set; }
         public int? productId { get; set; }
         public int? qttInven { get; set; }
         public int? qttBox { get; set; }

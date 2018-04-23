@@ -99,7 +99,6 @@ function initMain() {
     configCai();
     configThung();
     configCk();
-    vat();
     productATC();
     productSubATC();
     configCkAll();
@@ -203,7 +202,7 @@ function addLstItem(e) {
             + '<td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>'
             + '<td><input type="text" class="form-control cai" style="text-align: right;" required/></td>'
             + '<td><input type="text" class="form-control thung" style="text-align: right;" required /></td>'
-            + '<td><output class="dongia number"></output></td>'
+            + '<td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT" /></td>'
             + '<td><output class="tienchuack number"></output></td>'
             + '<td><input type="text" class="form-control ck number"/></td>'
             + '<td><output class="tiendack number"></output></td>'
@@ -227,7 +226,7 @@ function addLstSubItem(e) {
             + '<td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>'
             + '<td><input type="text" class="form-control cai" style="text-align: right;" required/></td>'
             + '<td><input type="text" class="form-control thung" style="text-align: right;" required /></td>'
-            + '<td><output class="dongia number"></output></td>'
+            + '<td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT" /></td>'
             + '<td><output class="tienchuack number"></output></td>'
             + '<td><input type="text" class="form-control ck number"/></td>'
             + '<td><output class="tiendack number"></output></td>'
@@ -272,7 +271,7 @@ function cancelOrder() {
     $.ajax({
         url: '/QuanLy/LapPhieu/CancelOrder',
         dataType: 'json',
-        data: JSON.stringify({ orderId: $('#orderId').val(), note: $('#reason').val() }),
+        data: { orderId: $('#orderId').val(), note: $('#reason').val() },
         success: function () {
             document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
@@ -280,7 +279,7 @@ function cancelOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/Home/Index';
+                    window.location.href = '/QuanLy/OrderList/Cancel';
                 }
             });
         },
@@ -314,7 +313,8 @@ function productATC() {
                                     param: m.Product_parameters,
                                     qttInven: m.Quantities_in_inventory,
                                     qttBox: m.Quantity_in_carton,
-                                    price: parseFloat(m.Price_before_VAT_VND) * (100 + parseFloat(m.VAT)) / 100
+                                    price: parseFloat(m.Price_before_VAT_VND) * (100 + parseFloat(m.VAT)) / 100,
+                                    priceBeforeVAT: parseFloat(m.Price_before_VAT_VND) * parseFloat(m.VAT) / 100
                                 };
                             });
                             responseFn(array);
@@ -330,6 +330,8 @@ function productATC() {
                 thisRow.find(".qttInven").val(ui.item.qttInven);
                 thisRow.find(".qttBox").val(ui.item.qttBox);
                 thisRow.find(".dongia").autoNumeric('set', ui.item.price);
+                thisRow.find(".priceBeforeVAT").val(ui.item.priceBeforeVAT);
+                calcVAT(thisRow);
             }, change: function (event, ui) {
                 if (ui.item) {
                     event.preventDefault();
@@ -339,6 +341,8 @@ function productATC() {
                     thisRow.find(".qttInven").val(ui.item.qttInven);
                     thisRow.find(".qttBox").val(ui.item.qttBox);
                     thisRow.find(".dongia").autoNumeric('set', ui.item.price);
+                    thisRow.find(".priceBeforeVAT").val(ui.item.priceBeforeVAT);
+                    calcVAT(thisRow);
                 } else {
                     thisRow.find(".code").val("");
                 }
@@ -348,6 +352,18 @@ function productATC() {
             }
         }).autocomplete("widget").addClass("fixed-height");
     });
+}
+
+function calcVAT(thisRow) {
+    var arr = thisRow.closest("table").find(".priceBeforeVAT");
+    var tienVat = 0;
+    for (var i = 0; i < arr.length; i++) {
+        var per = parseInt(arr.eq(i).val().replace(new RegExp(',', 'g'), ''));
+        if (per > 0) {
+            tienVat += per;
+        }
+    }
+    thisRow.closest("table").find(".tienvat").autoNumeric('set', tienVat);
 }
 
 function productSubATC() {
@@ -362,6 +378,7 @@ function productSubATC() {
                     var subCode = arr.eq(i).find('.code').val();
                     var productId = arr.eq(i).find('.productId').val();
                     var param = arr.eq(i).find('.param').val();
+                    var priceBeforeVAT = arr.eq(i).find(".priceBeforeVAT").val();
                     var dongia = arr.eq(i).find('.dongia').val();
                     var qttBox = arr.eq(i).find('.qttBox').val();
                     var qttInven = arr.eq(i).find('.cai').val();
@@ -372,7 +389,8 @@ function productSubATC() {
                             param: param,
                             price: dongia,
                             qttBox: qttBox,
-                            qttInven: qttInven
+                            qttInven: qttInven,
+                            priceBeforeVAT: priceBeforeVAT
                         };
                         data.push(items);
                     }
@@ -385,7 +403,9 @@ function productSubATC() {
                             param: m.param,
                             qttInven: m.qttInven,
                             qttBox: m.qttBox,
-                            price: m.price
+                            price: m.price,
+                            priceBeforeVAT: m.priceBeforeVAT
+
                         };
                     }));
                 }
@@ -398,6 +418,8 @@ function productSubATC() {
                 thisRow.find(".qttInven").val(ui.item.qttInven);
                 thisRow.find(".qttBox").val(ui.item.qttBox);
                 thisRow.find(".dongia").val(ui.item.price);
+                thisRow.find(".priceBeforeVAT").val(ui.item.priceBeforeVAT);
+                calcVAT(thisRow);
             }, change: function (event, ui) {
                 if (ui.item) {
                     event.preventDefault();
@@ -407,6 +429,8 @@ function productSubATC() {
                     thisRow.find(".qttInven").val(ui.item.qttInven);
                     thisRow.find(".qttBox").val(ui.item.qttBox);
                     thisRow.find(".dongia").val(ui.item.price);
+                    thisRow.find(".priceBeforeVAT").val(ui.item.priceBeforeVAT);
+                    calcVAT(thisRow);
                 } else {
                     thisRow.find(".subCode").val("");
                 }
@@ -430,7 +454,7 @@ function getAllData() {
     var taxCode = $('#taxCode').val();
     var deliveryQtt = parseInt($('#deliveryQtt').val());
     var subTotal = parseFloat($('.tongtienchuack').eq(0).val().replace(new RegExp(',', 'g'), ''));
-    var vat = parseFloat($('.vat').eq(0).val());
+    var vat = parseFloat($('.tienvat').eq(0).val().replace(new RegExp(',', 'g'), ''));
     var total = parseFloat($('.tongtiendack').eq(0).val().replace(new RegExp(',', 'g'), ''));
     var discount = parseFloat($('.tongck').eq(0).val());
     $('.addingRow').each(function () {
@@ -440,6 +464,7 @@ function getAllData() {
         var ck = $(this).find('.ck').val();
         var thung = $(this).find('.thung').val();
         var item = {
+            Order_ID: orderId,
             Price: tiendack,
             Quantity: cai,
             Product_ID: productId,
@@ -451,11 +476,10 @@ function getAllData() {
     if (deliveryQtt > 1) {
         for (var i = 0; i < arr.length; i++) {
             var part = [];
-            var partsItem = [];
             var orderPartId = arr.eq(i).find('.orderPartId').val();
-            var invoiceDate = arr.eq(i).find('.invoiceDate').val();
+            var Date_created = arr.eq(i).find('.invoiceDate').val();
             var table = arr.eq(i).find('.mainTable');
-            var partVat = parseFloat(table.find('.vat').val());
+            var partVat = parseFloat(table.find('.tienvat').val().replace(new RegExp(',', 'g'), ''));
             var partTotal = parseFloat(table.find('.tongtiendack').val().replace(new RegExp(',', 'g'), ''));
             table.find('.addingSubRow').each(function () {
                 var tiendack = parseFloat($(this).find('.tiendack').val().replace(new RegExp(',', 'g'), ''));
@@ -472,12 +496,11 @@ function getAllData() {
                     Box: thung,
                     Discount: ck
                 };
-                partsItem.push(partItem);
+                items.push(partItem);
             });
             part = {
                 Part_ID: i + 1, Order_part_ID: orderPartId, VAT: partVat,
-                Total_price: partTotal, Date_reveice_invoice: invoiceDate,
-                Order_items: partsItem
+                Total_price: partTotal, Date_created: Date_created
             };
             parts.push(part);
         }
@@ -637,19 +660,9 @@ function ck(thisRow) {
     }
 }
 
-function vat() {
-    $('.vat').each(function () {
-        $(this).keyup(function () {
-            var thisTable = $(this).closest("table");
-            total(thisTable);
-        });
-    });
-}
-
 function total(thisTable) {
     var tongck = parseFloat(thisTable.find('.tongck').val());
     var tienck = 0;
-    var vat = parseFloat(thisTable.find('.vat').val());
     var tienvat = 0;
     var tongtienchuack = 0;
     var tongtiendack = 0;
@@ -668,13 +681,6 @@ function total(thisTable) {
             thisTable.find('.tienck').val(0);
         }
         thisTable.find('.conlai').autoNumeric('set', tongtiendack);
-        if (vat > 0) {
-            tienvat = tongtiendack * vat / 100;
-            tongtiendack += tienvat;
-            thisTable.find('.tienvat').autoNumeric('set', tienvat);
-        } else {
-            thisTable.find('.tienvat').val(0);
-        }
         thisTable.find('.tongtiendack').autoNumeric('set', tongtiendack);
     }
 }

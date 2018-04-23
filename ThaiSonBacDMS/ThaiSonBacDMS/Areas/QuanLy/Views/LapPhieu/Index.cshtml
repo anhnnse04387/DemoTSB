@@ -103,11 +103,11 @@
                                     <i class="fa fa-exchange text-gray"></i>
                                     <span><strong>Đổi trả</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom" onclick="openNewTab();">
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                     <i class="fa fa-eye text-black"></i>
                                     <span><strong>Xem Trước</strong></span>
                                 </a>
-                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom" onclick="openNewTab();">
+                                <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
                                     <i class="fa fa-print text-blue"></i>
                                     <span><strong>In</strong></span>
                                 </a>
@@ -278,7 +278,7 @@
                                                         <td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>
                                                         <td><input type="text" class="form-control cai" style="text-align: right;" required /></td>
                                                         <td><input type="text" class="form-control thung" style="text-align: right;" required /></td>
-                                                        <td><output class="dongia number"></output></td>
+                                                        <td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT"/></td>
                                                         <td><output class="tienchuack number"></output></td>
                                                         <td><input type="text" class="form-control ck number" /></td>
                                                         <td><output class="tiendack number"></output></td>
@@ -337,14 +337,12 @@
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" />
-                                                        </td>
+                                                        <td></td>
                                                         <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;"></output></td>
                                                         <td></td>
                                                     </tr>
@@ -409,7 +407,7 @@
                                                         <td style="vertical-align: middle;"><input type="text" --req-- class="form-control param" /></td>
                                                         <td><input type="text" class="form-control cai" style="text-align: right;" --req-- /></td>
                                                         <td><input type="text" class="form-control thung" style="text-align: right;" --req-- /></td>
-                                                        <td><output class="dongia number"></output></td>
+                                                        <td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT" /></td>
                                                         <td><output class="tienchuack number"></output></td>
                                                         <td><input type="text" class="form-control ck number" /></td>
                                                         <td><output class="tiendack number"></output></td>
@@ -468,14 +466,12 @@
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" />
-                                                        </td>
+                                                        <td></td>
                                                         <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;"></output></td>
                                                         <td></td>
                                                     </tr>

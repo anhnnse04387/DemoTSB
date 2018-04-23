@@ -34,10 +34,6 @@ namespace Models.DAO
 
         public void deleteContent(String orderId)
         {
-            foreach (Order_detail_status s in db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && x.Order_part_ID.Contains(orderId)).ToList())
-            {
-                db.Order_detail_status.Remove(s);
-            }
             foreach (Order_items i in db.Order_items.Where(x => x.Order_ID.Equals(orderId)).ToList())
             {
                 db.Order_items.Remove(i);
@@ -54,6 +50,7 @@ namespace Models.DAO
             var record = db.Order_total.Where(x => x.Order_ID.Equals(order.Order_ID)).SingleOrDefault();
             record.Address_delivery = order.Address_delivery;
             record.Address_invoice_issuance = order.Address_invoice_issuance;
+            record.Tax_code = order.Tax_code;
             record.Customer_ID = order.Customer_ID;
             record.Rate = order.Rate;
             record.User_ID = order.User_ID;
@@ -75,7 +72,7 @@ namespace Models.DAO
             return db.Order_total.Where(x => x.Order_ID.Equals(orderId)).SingleOrDefault();
         }
 
-        public void checkOut(String orderId, String userId, int deliveryQtt)
+        public void checkOut(String orderId, int userId, int deliveryQtt)
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 3);
             (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 3);
@@ -87,16 +84,23 @@ namespace Models.DAO
                     User_ID = userId,
                     Date_change = DateTime.Now,
                     Order_ID = orderId,
-                    Order_part_ID = orderId + "-" + (i + 1)
+                    Order_part_ID = deliveryQtt > 1 ? orderId + "-" + (i + 1) : ""
                 });
             }
             db.SaveChanges();
         }
 
-        public void keToan_checkOut(String orderId, String userId, int deliveryQtt)
+        public void keToan_checkOut(String orderId, int userId, int deliveryQtt, decimal? vat, String invoiceNumber)
         {
-            (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 4);
-            (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 4);
+            var order = db.Order_total.Where(x => x.Order_ID.Equals(orderId)).SingleOrDefault();
+            order.Status_ID = 4;
+            order.VAT = vat;
+            var parts = db.Order_part.Where(x => x.Order_ID.Equals(orderId)).ToList();
+            foreach (Order_part p in parts)
+            {
+                p.Status_ID = 4;
+                p.Invoice_number = invoiceNumber;
+            }
             for (int i = 0; i < deliveryQtt; i++)
             {
                 db.Order_detail_status.Add(new Order_detail_status
@@ -105,16 +109,28 @@ namespace Models.DAO
                     User_ID = userId,
                     Date_change = DateTime.Now,
                     Order_ID = orderId,
-                    Order_part_ID = orderId + "-" + (i + 1)
+                    Order_part_ID = deliveryQtt > 1 ? orderId + "-" + (i + 1) : ""
                 });
             }
             db.SaveChanges();
         }
 
-        public void kho_checkOut(String orderId, String userId, int deliveryQtt)
+        public void kho_checkOut(String orderId, int userId, int deliveryQtt, bool takeInvoice, bool takeBallot)
         {
+            var parts = db.Order_part.Where(x => x.Order_ID.Equals(orderId)).ToList();
+            foreach (Order_part p in parts)
+            {
+                if (takeInvoice)
+                {
+                    p.Date_take_invoice = DateTime.Now;
+                }
+                if (takeBallot)
+                {
+                    p.Date_take_ballot = DateTime.Now;
+                }
+                p.Status_ID = 5;
+            }
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 5);
-            (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList().ForEach(x => x.Status_ID = 5);
             for (int i = 0; i < deliveryQtt; i++)
             {
                 db.Order_detail_status.Add(new Order_detail_status
@@ -123,18 +139,26 @@ namespace Models.DAO
                     User_ID = userId,
                     Date_change = DateTime.Now,
                     Order_ID = orderId,
-                    Order_part_ID = orderId + "-" + (i + 1)
+                    Order_part_ID = deliveryQtt > 1 ? orderId + "-" + (i + 1) : ""
                 });
             }
             db.SaveChanges();
         }
 
-        public void delivery_checkOut(String orderId, String userId, byte? DeliverMethod_ID, string Driver_ID, string Shiper_ID, int deliveryQtt)
+        public void delivery_checkOut(String orderId, int userId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, int deliveryQtt, bool receiveInvoice, bool receiveBallot)
         {
             (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).ToList().ForEach(x => x.Status_ID = 6);
             var part = (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).ToList();
             foreach (Order_part p in part)
             {
+                if (receiveInvoice)
+                {
+                    p.Date_reveice_invoice = DateTime.Now;
+                }
+                if (receiveBallot)
+                {
+                    p.Date_reveice_ballot = DateTime.Now;
+                }
                 p.Status_ID = 6;
                 p.Shiper_ID = Shiper_ID;
                 p.DeliverMethod_ID = DeliverMethod_ID;
@@ -148,13 +172,13 @@ namespace Models.DAO
                     User_ID = userId,
                     Date_change = DateTime.Now,
                     Order_ID = orderId,
-                    Order_part_ID = orderId + "-" + (i + 1)
+                    Order_part_ID = deliveryQtt > 1 ? orderId + "-" + (i + 1) : ""
                 });
             }
             db.SaveChanges();
         }
 
-        public void cancelOrder(String orderId, String reason, String userId, int deliveryQtt)
+        public void cancelOrder(String orderId, String reason, int userId, int deliveryQtt)
         {
             var order = (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).SingleOrDefault();
             order.Status_ID = 8;
@@ -173,7 +197,7 @@ namespace Models.DAO
                     User_ID = userId,
                     Date_change = DateTime.Now,
                     Order_ID = orderId,
-                    Order_part_ID = orderId + "-" + (i + 1)
+                    Order_part_ID = deliveryQtt > 1 ? orderId + "-" + (i + 1) : ""
                 });
             }
             db.SaveChanges();
@@ -186,7 +210,7 @@ namespace Models.DAO
 
         public List<Order_total> getOrderByDateCreated(DateTime dateBegin, DateTime dateEnd)
         {
-            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).OrderBy(x=>x.Date_created).ToList();
+            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd).OrderBy(x => x.Date_created).ToList();
         }
 
         public List<Order_total> showNewestOrder(int user_id)
@@ -246,12 +270,12 @@ namespace Models.DAO
                         where ot.Date_created >= beginDate && ot.Date_created <= endDate
                         && ot.Customer_ID == customerID
                         select ot;
-            return query.Sum(x => x.Total_price) == null ? 0 : (decimal) query.Sum(x => x.Total_price);
+            return query.Sum(x => x.Total_price) == null ? 0 : (decimal)query.Sum(x => x.Total_price);
         }
 
         public List<Order_total> getOrderByCustomerID(DateTime dateBegin, DateTime dateEnd, int customerID)
         {
-            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd 
+            return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd
             && s.Customer_ID == customerID).ToList();
         }
         //thuongtx

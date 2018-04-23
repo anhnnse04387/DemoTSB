@@ -4,6 +4,10 @@
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 <style>
+    .label-medium {
+        vertical-align: super;
+        font-size: medium;
+    }
     .menu-button {
         background-color: #fcf9f9;
         margin-top: 20px;
@@ -194,10 +198,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label>Trạng thái</label><span style="color: red;">*</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
-                                                            @Html.DropDownListFor(model => model.statusId, @Model.lstStatus, new { @class = "form-control", @id = "statusId" })
+                                                        <label>Trạng thái</label>
+                                                        <div class="input-group" style="margin-top: 7px;">
+                                                            <span class="label label-primary label-medium">
+                                                                @Model.status
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -243,7 +248,7 @@
                                                             <td style="vertical-align: middle;"><input type="text" value="@Model.readItems[i].param" class="form-control param" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" class="form-control cai" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" class="form-control thung" /></td>
-                                                            <td><output class="number dongia">@Model.readItems[i].per</output></td>
+                                                            <td><output class="number dongia">@Model.readItems[i].per</output><input type="hidden" class="priceBeforeVAT" value="@Model.readItems[i].priceBeforeVat"/></td>
                                                             <td><output class="number tienchuack">@Model.readItems[i].priceBeforeDiscount</output></td>
                                                             <td><input type="text" value="@Model.readItems[i].Discount" class="form-control number ck" /></td>
                                                             <td><output class="number tiendack">@Model.readItems[i].Price</output></td>
@@ -310,15 +315,13 @@
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" value="@Model.vat"/>
-                                                        </td>
-                                                        <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;">@Model.vatMoney</output></td>
+                                                        <td></td>
+                                                        <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;">@Model.vat</output></td>
                                                         <td></td>
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
@@ -382,7 +385,7 @@
                                                         <td style="vertical-align: middle;"><input type="text" --req-- class="form-control param" /></td>
                                                         <td><input type="text" class="form-control cai" style="text-align: right;" --req-- /></td>
                                                         <td><input type="text" class="form-control thung" style="text-align: right;" --req-- /></td>
-                                                        <td><output class="dongia number"></output></td>
+                                                        <td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT" /></td>
                                                         <td><output class="tienchuack number"></output></td>
                                                         <td><input type="text" class="form-control ck number" /></td>
                                                         <td><output class="tiendack number"></output></td>
@@ -441,14 +444,12 @@
                                                     </tr>
                                                     <tr style="background-color: #544d61;color: #fff;">
                                                         <td></td>
-                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                        <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" />
-                                                        </td>
+                                                        <td></td>
                                                         <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;"></output></td>
                                                         <td></td>
                                                     </tr>
@@ -521,7 +522,7 @@
                                                                         <td style="vertical-align: middle;"><input type="text" required class="form-control param" value="@Model.readPart[j].items[k].param"/></td>
                                                                         <td><input type="text" class="form-control cai" style="text-align: right;" required value="@Model.readPart[j].items[k].Quantity"/></td>
                                                                         <td><input type="text" class="form-control thung" style="text-align: right;" required value="@Model.readPart[j].items[k].Box"/></td>
-                                                                        <td><output class="dongia number">@Model.readPart[j].items[k].per</output></td>
+                                                                        <td><output class="dongia number">@Model.readPart[j].items[k].per</output><input type="hidden" class="priceBeforeVAT" value="@Model.readPart[j].items[k].priceBeforeVat" /></td>
                                                                         <td><output class="tienchuack number">@Model.readPart[j].items[k].priceBeforeDiscount</output></td>
                                                                         <td><input type="text" class="form-control ck number" value="@Model.readPart[j].items[k].Discount"/></td>
                                                                         <td><output class="tiendack number">@Model.readPart[j].items[k].Price</output></td>
@@ -588,15 +589,13 @@
                                                                 </tr>
                                                                 <tr style="background-color: #544d61;color: #fff;">
                                                                     <td></td>
-                                                                    <td colspan="2" style="vertical-align: middle;"><b>VAT (%)</b></td>
+                                                                    <td colspan="2" style="vertical-align: middle;"><b>VAT</b></td>
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
-                                                                    <td>
-                                                                        <input type="text" class="form-control vat number" style="text-align: right; float: right; font-weight: bold;" value="@Model.readPart[j].vat"/>
-                                                                    </td>
-                                                                    <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;">@Model.readPart[j].vatMoney</output></td>
+                                                                    <td></td>
+                                                                    <td style="text-align: right; vertical-align: middle;"><output class="number tienvat" style="color: #fff; font-weight: bold;">@Model.readPart[j].vat</output></td>
                                                                     <td></td>
                                                                 </tr>
                                                                 <tr style="background-color: #544d61;color: #fff;">

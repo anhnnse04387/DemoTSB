@@ -47,7 +47,7 @@ function cancelOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/PhanPhoi/Home/Index';
+                    window.location.href = '/PhanPhoi/OrderList/Cancel';
                 }
             });            
         },
