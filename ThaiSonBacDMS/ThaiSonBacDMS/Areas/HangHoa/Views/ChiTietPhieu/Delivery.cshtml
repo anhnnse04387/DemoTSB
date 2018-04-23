@@ -251,6 +251,8 @@
                                 <div class="row">
                                     <div class="col-md-4"><input type="checkbox" id="receiveInvoice">&nbsp;<label>Đã nhận hoá đơn từ công ty</label></div>
                                     <div class="col-md-4"><input type="checkbox" id="receiveBallot">&nbsp;<label>Đã nhận phiếu từ công ty</label></div>
+                                    <input type="hidden" id="dateReceiveInvoice" value="@Model.dateReceiveInvoice"/>
+                                    <input type="hidden" id="dateReceiveBallot" value="@Model.dateReceiveBallot" />
                                 </div>
                                 <hr>
                             </div>
@@ -313,6 +315,12 @@
                     $('form')[0].checkValidity();
                 }
             });
+            if ($('#dateReceiveInvoice').val() !== "") {
+                $('#receiveInvoice').prop("checked", true);
+            }
+            if ($('#dateReceiveBallot').val() !== "") {
+                $('#receiveBallot').prop("checked", true);
+            }
         });
         function validate() {
             var count = 0;

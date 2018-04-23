@@ -171,13 +171,13 @@ namespace Models.DAO
         public List<DanhSachNoKhachHang> danhSachKhachHang()
         {
             List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
-            var query1 = from cus in db.Customer_transaction
-                         group cus by cus.Customer_ID into q
-                         select new
-                         {
-                             maxDate = q.Max(x => x.Date_Created),
-                             customerId = q.Key
-                         };
+            var lstCustomer = db.Customers.Distinct().ToList();
+            foreach(Customer c in lstCustomer)
+            {
+                var data = db.Customer_transaction.Where(x => x.Customer_ID == c.Customer_ID).OrderByDescending(x => x.Date_Created).FirstOrDefault();
+                var item = new DanhSachNoKhachHang { };
+                lst.Add(item);
+            }
             var query3 = from transaction in db.Customer_transaction
                          join maxDate in query1 on transaction.Date_Created.Value.TimeOfDay equals maxDate.maxDate.Value.TimeOfDay
                          //join order in query2 on transaction.Order_ID equals order.orderId

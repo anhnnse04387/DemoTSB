@@ -9,6 +9,8 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
 {
     public class OrderTotalModel
     {
+        public String dateTakeInvoice { get; set; }
+        public String dateTakeBallot { get; set; }
         public String orderId { get; set; }
         public String customerName { get; set; }
         public String deliveryAddress { get; set; }

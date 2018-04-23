@@ -28,6 +28,8 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
+            model.dateTakeInvoice = data.Order_part.FirstOrDefault().Date_take_invoice.ToString();
+            model.dateTakeBallot = data.Order_part.FirstOrDefault().Date_take_ballot.ToString();
             model.taxCode = data.Tax_code;
             var items = new List<OrderItemModel>();
             foreach (Order_items o in data.Order_items)
@@ -86,6 +88,8 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             model.taxCode = data.Tax_code;
             model.shipper = shipper;
             model.deliveryMethod = delivery;
+            model.dateReceiveInvoice = data.Order_part.FirstOrDefault().Date_reveice_invoice.ToString();
+            model.dateReceiveBallot = data.Order_part.FirstOrDefault().Date_reveice_ballot.ToString();
             model.driver = driver;
             return View(model);
         }
