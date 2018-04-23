@@ -715,7 +715,7 @@ namespace Models.DAO
                     item.soDienThoai = user.user.Phone;
                     item.trangThai = user.user.Status == 1 ? "Active" : "Deactive";
                     item.chucVu = user.office;
-                    item.ngaySinh = Convert.ToDateTime(user.user.Date_of_birth);
+                    item.ngaySinh = Convert.ToDateTime(user.user.Date_of_birth).ToString();
                     item.BHYT = user.user.Insurance_Code;
                     item.email = user.user.Mail;
 
