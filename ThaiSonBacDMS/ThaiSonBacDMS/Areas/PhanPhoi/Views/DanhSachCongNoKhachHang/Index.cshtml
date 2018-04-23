@@ -89,8 +89,8 @@
 
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
-                            <a id="btnAdd" href="#" class="btn btn-app custom-btn" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
-                                <i class="fa fa-plus-square text-green"></i>
+                            <a id="btnAdd" href="#" class="btn btn-app custom-btn disabled" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                <i class="fa fa-plus-square text-grey"></i>
                                 <span><strong>Tạo mới</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -114,11 +114,11 @@
                                 <i class="fa fa-exchange text-grey"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
-                                <i class="fa fa-eye text-black"></i>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                <i class="fa fa-eye text-grey"></i>
                                 <span><strong>Xem Trước</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing(); return false;" title="In" data-placement="bottom">
                                 <i class="fa fa-print text-blue"></i>
                                 <span><strong>In</strong></span>
                             </a>
@@ -126,11 +126,11 @@
                                 <i class="fa fa-download text-grey"></i>
                                 <span><strong>Import Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip"  onclick="inProgressing(); return false;" title="Xuất Excel" data-placement="bottom">
                                 <i class="fa fa-file-excel-o text-green"></i>
                                 <span><strong>Xuất Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip"  onclick="inProgressing(); return false;" title="Xuất PDF" data-placement="bottom">
                                 <i class="fa fa-file-pdf-o text-red"></i>
                                 <span><strong>Xuất PDF</strong></span>
                             </a>
@@ -161,7 +161,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-money"></i>
                                                     </div>
-                                                    @Html.TextBoxFor(model => model.noTu, new { @class = "form-control number", @id = "noTu", @placeholder = "Từ" })
+                                                    @Html.TextBoxFor(model => model.noTu, new { @class = "form-control number", @id = "noTu", @onchange = "checkData()", @placeholder = "Từ" })
 
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-money"></i>
                                                     </div>
-                                                    @Html.TextBoxFor(model => model.noDen, new { @class = "form-control number", @id = "noDen", @placeholder = "Đến" })
+                                                    @Html.TextBoxFor(model => model.noDen, new { @class = "form-control number", @id = "noDen", @onchange = "checkData()", @placeholder = "Đến" })
                                                 </div>
                                             </div>
 
@@ -191,14 +191,13 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p style="margin-left:35%;font-size:17px;color:red" id="msgs"></p>
+
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th style="width: 1%">STT</th>
                                                 <th style="width: 12%">KHÁCH HÀNG</th>
                                                 <th style="width: 7%">NỢ CŨ</th>
-                                                <th style="width: 7%">SL (cái)</th>
                                                 <th style="width: 7%">TIỀN HÀNG</th>
                                                 <th style="width: 7%">VAT</th>
                                                 <th style="width: 7%">TỔNG CỘNG</th>
@@ -223,9 +222,9 @@
                                                         <td class="text-center length">@i</td>
                                                         <td><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">@item.tenKhachHang</a></td>
                                                         <td class="right number" id="noCu_@i">@item.noCu</td>
-                                                        <td class="text-center number" id="soLuong_@i">@item.soLuong</td>
+                                                        @*<td class="text-center number" id="soLuong_@i">@item.soLuong</td>*@
                                                         <td class="right number" id="tienHang_@i">@item.tienHang</td>
-                                                        <td class="text-center" id="vat_@i">@item.vat</td>
+                                                        <td class="text-center number" id="vat_@i">@item.vat</td>
                                                         <td class="highlight text-right number" id="tongCong_@i">@item.tongCong</td>
                                                         <td class="right number" id="thanhToan_@i">@item.thanhToan</td>
                                                         <td class="highlight text-right number" id="conNo_@i">@item.conNo</td>
@@ -322,7 +321,7 @@
                                                                     <div class="">
                                                                         <div class="col-md-10"></div>
                                                                         <div class="col-md-1">
-                                                                            <a href="" id="cancel_btn_@i" class="btn btn-default btn-block">Hủy</a>
+                                                                            <a href="" id="cancel_btn_@i" onclick="closePannel('@i')" class="btn btn-default btn-block">Hủy</a>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <a href="" class="btn btn-danger btn-block" onclick="validateData('@i');return false;">Sửa</a>
@@ -342,7 +341,7 @@
                                                 <tr style="text-align:right;font-weight:bold">
                                                     <td colspan="2"></td>
                                                     <td class="number" id="noCu"></td>
-                                                    <td class="number text-center" id="soLuong"></td>
+                                                    @*<td class="number text-center" id="soLuong"></td>*@
                                                     <td class="number" id="tienHang"></td>
                                                     <td class="number text-center" id="vat"></td>
                                                     <td class="number" id="tongCong"></td>
@@ -431,9 +430,9 @@
                 var tongCong = 0;
                 var conNo = 0;
 
-                for (var i = 1; i < $(".length").length; i++) {
+                for (var i = 1; i <= $(".length").length; i++) {
                     noCu += parseFloat($("#noCu_" + i).text());
-                    soLuong += parseFloat($("#soLuong_" + i).text());
+                    //soLuong += parseFloat($("#soLuong_" + i).text());
                     tienHang += parseFloat($("#tienHang_" + i).text());
                     vat += parseFloat($("#vat_" + i).text());
                     thanhToan += parseFloat($("#thanhToan_" + i).text());
@@ -441,7 +440,7 @@
                     conNo += parseFloat($("#conNo_" + i).text());
                 }
                 $("#noCu").text(noCu);
-                $("#soLuong").text(soLuong);
+                //$("#soLuong").text(soLuong);
                 $("#tienHang").text(tienHang);
                 $("#vat").text(vat);
                 $("#thanhToan").text(thanhToan);
@@ -515,24 +514,27 @@
                 var nhapTrongKy = $("#nhapTrongKyNew_" + i).val().replace(/,/g, '');
                 var thanhToan = $("#thanhToanNew_" + i).val().replace(/,/g, '');
                 var conNo = 0;
-                var msgs = "";
-
+                var count1 = 0;
+               
                 if (!nhapTrongKy) {
-                    msgs += "Vui lòng nhập dữ liệu nhập trong kỳ!<br/>";
+                    count1 = 1;
                 }
-                if (!thanhToan) {
-                    msgs += "Vui lòng nhập dữ liệu thanh toán!<br/>";
-                }
-                if (msgs !== "") {
-                    $("#msgs").html(msgs);
+               
+                if (count1 != 0) {
+                    swal({
+                        title: 'Vui lòng nhập đầy đủ dữ liệu!',
+                        type: 'error',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
                 }
                 else {
                     $("#popupConfirm").modal('show');
-                    $("#btnUpdate").click(function (event) {
-                        event.preventDefault();
+                    $("#btnUpdate").click(function () {
+                        //event.preventDefault();
                         $.ajax({
                             type: 'POST',
-                            url: 'DanhSachCongNoKhachHang/UpdateData',
+                            url: 'UpdateData',
                             dataType: 'JSON',
                             data: {
                                 customerId: $("#transactionId_" + i).val(),
@@ -560,6 +562,37 @@
                     });
 
                 }
+            }
+            function checkData() {
+                var value1 = $("#noTu").val();
+                var value2 = $("#noDen").val();
+                if (value1 && value2) {
+                    if (parseFloat(value2.replace(/,/, '')) < parseFloat(value1.replace(/,/, ''))) {
+                        swal({
+                            title: 'Còn nợ đến không thể nhỏ hơn còn nợ từ!',
+                            type: 'error',
+                            timer: 5000,
+                            showConfirmButton: true
+                        });
+                        $("#btnSearch").prop('disabled', true);
+                    } else {
+                        $("#btnSearch").prop('disabled', false);
+                    }
+                } else {
+                    $("#btnSearch").prop('disabled', false);
+                }
+            }
+            function closePannel(i) {
+                $("#row_" + i).toggle();
+                event.preventDefault();
+            }
+            function inProgressing() {
+                swal({
+                    title: 'Chức năng đang phát triển',
+                    type: 'warning',
+                    timer: 5000,
+                    showConfirmButton:true
+                })
             }
         </script>
     }

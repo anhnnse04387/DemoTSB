@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.QuanLy.Models;
+using ThaiSonBacDMS.Areas.QuanTri.Models;
 using ThaiSonBacDMS.Common;
 
-namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
+namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
 {
-    public class DanhSachNguoiDungHoatDongController : Controller
+    public class DanhSachNguoiDungNgungHoatDongController : Controller
     {
-        // GET: QuanLy/DanhSachNguoiDungHoatDong
+        // GET: QuanTri/NguoiDungNgungHoatDong
         public ActionResult Index()
         {
             try
@@ -32,9 +32,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 int roleQuanTri = userDao.getRoleQuanTri();
                 int roleQuanLy = Convert.ToInt32(userDao.getRoleQuanLy());
 
-                if (currentRole == roleQuanLy)
+                if (currentRole == roleQuanTri)
                 {
-                    model.lstDisplay = userDao.getAllUsersActiveByQuanLy();
+                    model.lstDisplay = userDao.getAllUsersDeActiveByQuanTri();
                 }
 
 
@@ -56,8 +56,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-
         [HttpPost]
         public ActionResult Index(DanhSachNguoiDungHoatDongModel model)
         {
@@ -76,12 +74,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 int roleQuanTri = userDao.getRoleQuanTri();
                 int roleQuanLy = Convert.ToInt32(userDao.getRoleQuanLy());
 
-                if (currentRole == roleQuanLy)
+                if (currentRole == roleQuanTri)
                 {
-                    model.lstDisplay = userDao.getAllUsersActiveByQuanLy(model.nameSearch, model.roleIdSearch, model.fromDate, model.toDate);
+                    model.lstDisplay = userDao.getAllUsersDeActiveByQuanTri(model.nameSearch, model.roleIdSearch, model.fromDate, model.toDate);
+
                 }
-
-
                 lstRole = roleDao.lstAllRole();
                 //khoi tao list role
                 if (lstRole.Count() != 0)
@@ -91,10 +88,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         model.lstRole.Add(new SelectListItem { Text = item.Role_name, Value = item.Role_ID.ToString() });
                     }
                 }
-
-
-                //return Json(new { Data = model, JsonRequestBehavior.AllowGet });
-                //return PartialView("_searchUsers",model);
                 return View(model);
             }
             catch (Exception e)
@@ -106,7 +99,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
         public JsonResult autoCompleteNameSearch(string searchValue)
         {
             UserDAO dao = new UserDAO();
-            var lstAll = dao.getAllUsersActiveByQuanLy(searchValue);
+            var lstAll = dao.getAllUsersDeActiveByQuanTri(searchValue);
             List<Autocomplete> lstSearch = lstAll.Select(x => new Autocomplete
             {
                 key = x.tenNguoiDung,

@@ -160,7 +160,7 @@ namespace Models.DAO
             ct.Description = dienGiai;
             ct.Sub_total = Convert.ToDecimal(tienHang);
             ct.Pay = Convert.ToDecimal(thanhToan);
-            ct.VAT = Convert.ToByte(vat);
+            ct.VAT = string.IsNullOrEmpty(vat) ? 0 : Convert.ToDecimal(vat);
             ct.Debt = Convert.ToDecimal(duNo);
             ct.User_ID = userId;
             ct.Total = Convert.ToDecimal(tongCong);
@@ -175,26 +175,20 @@ namespace Models.DAO
                          group cus by cus.Customer_ID into q
                          select new
                          {
-                             maxDate = q.Max(x => x.Date_Created)
-                         };
-            var query2 = from order in db.Order_items
-                         group order by order.Order_ID into o
-                         select new
-                         {
-                             quantity = o.Sum(x => x.Quantity),
-                             orderId = o.Key
+                             maxDate = q.Max(x => x.Date_Created),
+                             customerId = q.Key
                          };
             var query3 = from transaction in db.Customer_transaction
-                         join maxDate in query1 on transaction.Date_Created equals maxDate.maxDate
-                         join order in query2 on transaction.Order_ID equals order.orderId
+                         join maxDate in query1 on transaction.Date_Created.Value.TimeOfDay equals maxDate.maxDate.Value.TimeOfDay
+                         //join order in query2 on transaction.Order_ID equals order.orderId
                          join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID
                          select new
                          {
                              tenKhachHang = cus.Customer_name,
                              transaction,
-                             order.quantity,
-
                          };
+                       
+          
             if (query3.Count() != 0)
             {
                 foreach (var item in query3)
@@ -204,7 +198,7 @@ namespace Models.DAO
                     ds.customerId = item.transaction.Customer_ID;
                     ds.tenKhachHang = item.tenKhachHang;
                     ds.noCu = item.transaction.Old_debt;
-                    ds.soLuong = item.quantity;
+                    //ds.soLuong = item.quantity;
                     ds.tienHang = item.transaction.Sub_total;
                     ds.vat = item.transaction.VAT;
                     ds.tongCong = item.transaction.Total;
@@ -223,18 +217,19 @@ namespace Models.DAO
                          group cus by cus.Customer_ID into q
                          select new
                          {
-                             maxDate = q.Max(x => x.Date_Created)
+                             maxDate = q.Max(x => x.Date_Created),
+                             customerId = q.Key
                          };
-            var query2 = from order in db.Order_items
-                         group order by order.Order_ID into o
-                         select new
-                         {
-                             quantity = o.Sum(x => x.Quantity),
-                             orderId = o.Key
-                         };
+            //var query2 = from order in db.Order_items
+            //             group order by order.Order_ID into o
+            //             select new
+            //             {
+            //                 quantity = o.Sum(x => x.Quantity),
+            //                 orderId = o.Key
+            //             };
             var query3 = from transaction in db.Customer_transaction
                          join maxDate in query1 on transaction.Date_Created equals maxDate.maxDate
-                         join order in query2 on transaction.Order_ID equals order.orderId
+                         //join order in query2 on transaction.Order_ID equals order.orderId
                          join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID
                          where cus.Customer_name.Contains(valueSearch)
                          select new
@@ -245,7 +240,7 @@ namespace Models.DAO
             List<Autocomplete> lst = new List<Autocomplete>();
             if (query3.Count() != 0)
             {
-                foreach(var item in query3)
+                foreach (var item in query3)
                 {
                     Autocomplete obj = new Autocomplete();
 
@@ -257,7 +252,7 @@ namespace Models.DAO
             }
             return lst;
         }
-        public List<DanhSachNoKhachHang> getListSearchCustomer(string customerName,string noTu,string noDen)
+        public List<DanhSachNoKhachHang> getListSearchCustomer(string customerName, string noTu, string noDen)
         {
             List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
 
@@ -265,40 +260,41 @@ namespace Models.DAO
                          group cus by cus.Customer_ID into q
                          select new
                          {
-                             maxDate = q.Max(x => x.Date_Created)
+                             maxDate = q.Max(x => x.Date_Created),
+                             customerId = q.Key
                          };
-            var query2 = from order in db.Order_items
-                         group order by order.Order_ID into o
-                         select new
-                         {
-                             quantity = o.Sum(x => x.Quantity),
-                             orderId = o.Key
-                         };
+            //var query2 = from order in db.Order_items
+            //             group order by order.Order_ID into o
+            //             select new
+            //             {
+            //                 quantity = o.Sum(x => x.Quantity),
+            //                 orderId = o.Key
+            //             };
             var query3 = from transaction in db.Customer_transaction
-                         join maxDate in query1 on transaction.Date_Created equals maxDate.maxDate
-                         join order in query2 on transaction.Order_ID equals order.orderId
-                         join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID                        
+                         join maxDate in query1 on transaction.Customer_ID equals maxDate.customerId
+                         //join order in query2 on transaction.Order_ID equals order.orderId
+                         join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID
                          select new
                          {
                              tenKhachHang = cus.Customer_name,
                              transaction,
-                             order.quantity
+                             //order.quantity
                          };
             if (!string.IsNullOrEmpty(customerName))
             {
                 query3 = query3.Where(x => x.tenKhachHang.Equals(customerName));
             }
-            if(!string.IsNullOrEmpty(noTu) && string.IsNullOrEmpty(noDen))
+            if (!string.IsNullOrEmpty(noTu) && string.IsNullOrEmpty(noDen))
             {
                 Decimal value = Convert.ToDecimal(noTu);
                 query3 = query3.Where(x => x.transaction.Debt >= value);
             }
-            if(!string.IsNullOrEmpty(noDen) && string.IsNullOrEmpty(noTu))
+            if (!string.IsNullOrEmpty(noDen) && string.IsNullOrEmpty(noTu))
             {
                 Decimal value = Convert.ToDecimal(noDen);
                 query3 = query3.Where(x => x.transaction.Debt <= value);
             }
-            if(!string.IsNullOrEmpty(noTu) && !string.IsNullOrEmpty(noDen))
+            if (!string.IsNullOrEmpty(noTu) && !string.IsNullOrEmpty(noDen))
             {
                 Decimal fromValue = Convert.ToDecimal(noTu);
                 Decimal toValue = Convert.ToDecimal(noDen);
@@ -313,7 +309,7 @@ namespace Models.DAO
                     ds.customerId = item.transaction.Customer_ID;
                     ds.tenKhachHang = item.tenKhachHang;
                     ds.noCu = item.transaction.Old_debt;
-                    ds.soLuong = item.quantity;
+                    //ds.soLuong = item.quantity;
                     ds.tienHang = item.transaction.Sub_total;
                     ds.vat = item.transaction.VAT;
                     ds.tongCong = item.transaction.Total;
@@ -327,7 +323,7 @@ namespace Models.DAO
             }
             return lst;
         }
-        public int insertData(string noCu,string nhapTrongKy,string thanhToan,string vat,string conNo,string dienGiai,string customerId,string userId)
+        public int insertData(string noCu, string nhapTrongKy, string thanhToan, string vat, string conNo, string dienGiai, string customerId, string userId)
         {
             Customer_transaction cus = new Customer_transaction();
 

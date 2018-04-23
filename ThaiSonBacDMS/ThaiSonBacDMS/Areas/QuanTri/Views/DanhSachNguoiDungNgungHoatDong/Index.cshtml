@@ -1,8 +1,8 @@
-﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.DanhSachNguoiDungHoatDongModel
+﻿@model ThaiSonBacDMS.Areas.QuanTri.Models.DanhSachNguoiDungHoatDongModel
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/QuanTri/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -51,7 +51,7 @@
     }
 </style>
 
-@using (Html.BeginForm("Index", "DanhSachNguoiDungHoatDong", FormMethod.Post))
+@using (Html.BeginForm("Index", "DanhSachNguoiDungNgungHoatDong", FormMethod.Post))
 {
     <section class="content">
         <div class="row">
@@ -96,19 +96,19 @@
                                 <i class="fa fa-eye text-grey"></i>
                                 <span><strong>Xem Trước</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing(); return false;" title="In" data-placement="bottom">
                                 <i class="fa fa-print text-blue"></i>
                                 <span><strong>In</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disable" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn disable" data-toggle="tooltip" onclick="inProgressing(); return false;" title="Import Excel" data-placement="bottom">
                                 <i class="fa fa-download text-grey"></i>
                                 <span><strong>Import Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" title="Xuất Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing(); return false;" title="Xuất Excel" data-placement="bottom">
                                 <i class="fa fa-file-excel-o text-green"></i>
                                 <span><strong>Xuất Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing(); return false;" title="Xuất PDF" data-placement="bottom">
                                 <i class="fa fa-file-pdf-o text-red"></i>
                                 <span><strong>Xuất PDF</strong></span>
                             </a>
@@ -172,7 +172,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <fieldset>
-                                        <legend style="font-size: 17px"><b>Danh sách người dùng đang hoạt động</b></legend>
+                                        <legend style="font-size: 17px"><b>Danh sách người ngừng đang hoạt động</b></legend>
                                     </fieldset>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -247,7 +247,7 @@
             $("#nameSearch").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: '@Url.Action("autoCompleteNameSearch", "DanhSachNguoiDungHoatDong")',
+                        url: '@Url.Action("autoCompleteNameSearch", "DanhSachNguoiDungNgungHoatDong")',
                         minLength: 2,
                         dataType: "json",
                         data: { searchValue: $("#nameSearch").val() },
@@ -314,3 +314,7 @@
         </script>
     }
 }
+
+
+
+
