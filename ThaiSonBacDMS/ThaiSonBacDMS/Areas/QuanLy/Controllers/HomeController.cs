@@ -42,7 +42,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             //table for newest order
             model.newestOrderList = new List<NewsetOrder>();
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var n = totalDAO.showNewestOrder(int.Parse(session.user_id));
+            var n = totalDAO.showNewestOrder(session.user_id);
             foreach (var item in n)
             {
                 NewsetOrder no = new NewsetOrder();

@@ -12,12 +12,8 @@ namespace ThaiSonBacDMS.Common
         public int accountID;
         public User user_info;
         public bool roleSelectFlag;
-<<<<<<< HEAD
-        public string user_id;
-=======
         public string account_name;
         public int user_id;
->>>>>>> 980fba25e97eb4c727e65e174c82033fdded907e
         public string user_name;
         public string role_name;
         public int roleSelectedID;
