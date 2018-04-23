@@ -108,7 +108,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                         file.SaveAs(fname);
 
                         int mediaId = mediaDao.insertMedia("User", fname, userId);
-                        string userID = userDao.insertNewUser(user, mediaId.ToString());
+                        int userID = userDao.insertNewUser(user, mediaId.ToString());
 
                     }
 

@@ -12,9 +12,9 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
     public class ChiTietNguoiDungController : Controller
     {
         // GET: QuanTri/ChiTietNguoiDung
-        public ActionResult Index(string userId)
+        public ActionResult Index(int userId)
         {
-            userId = "1";
+            userId = 1;
             UserDAO userDao = new UserDAO();
             ChiTietNguoiDungModel model = new ChiTietNguoiDungModel();
             model.userInfor = new DanhSachNguoiDung();
