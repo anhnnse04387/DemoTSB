@@ -12,16 +12,36 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+           var session = (UserSession)Session[CommonConstants.USER_SESSION];
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", Area = "" }));
             }
-            else if (session.user_info.Role_ID != 2)
+            else
             {
-                filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Login", action = "Index", Area = "" }));
+                switch (session.roleSelectedID)
+                {
+                    case 1:
+                        filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Home", action = "Index", Area = "QuanTri" }));
+                        break;
+                    case 3:
+                        filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Home", action = "Index", Area = "PhanPhoi" }));
+                        break;
+                    case 4:
+                        filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Home", action = "Index", Area = "HangHoa" }));
+                        break;
+                    case 5:
+                        filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Home", action = "Index", Area = "KeToan" }));
+                        break;
+                    default:
+                        break;
+                }
+                
             }
             base.OnActionExecuting(filterContext);
         }

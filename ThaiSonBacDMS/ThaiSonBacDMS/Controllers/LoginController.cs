@@ -16,6 +16,25 @@ namespace ThaiSonBacDMS.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var chkSession = (UserSession)Session[CommonConstants.USER_SESSION];
+            if(chkSession!=null)
+            {
+                switch (chkSession.roleSelectedID)
+                {
+                    case 1:
+                        return RedirectToAction("Index", "Quantri/Home");
+                    case 2:
+                        return RedirectToAction("Index", "QuanLy/Home");
+                    case 3:
+                        return RedirectToAction("Index", "PhanPhoi/Home"); ;
+                    case 4:
+                        return RedirectToAction("Index", "HangHoa/Home");
+                    case 5:
+                        return RedirectToAction("Index", "KeToan/Home");
+                    default:
+                        break;
+                }
+            }
             //set username and password if has cookie
             string username = string.Empty;
             string password = string.Empty;
@@ -39,42 +58,47 @@ namespace ThaiSonBacDMS.Controllers
                     var currentUser = userDAO.getByAccountID(account.Account_ID);
                     var userSession = new UserSession();
                     userSession.role_name = new UserDAO().getOffice((byte)currentUser.Office_ID);
-                    userSession.account_name = account.Account_name;
                     userSession.accountID = account.Account_ID;
                     userSession.user_name = currentUser.User_name;
                     userSession.user_id = currentUser.User_ID;
-
+                    userSession.avatar_str = new MediaDAO().getMediaByID(int.Parse(currentUser.Avatar_ID)).Location;
                     if (roleDAO.getRoleByAccount(account.Account_ID).Count == 1)
                     {
                         var roleID = roleDAO.getRoleByAccount(account.Account_ID).SingleOrDefault().Role_ID;
                         var roleName = roleDAO.getByID(roleID).Role_name;
                         if (roleID == 1)
                         {
+                            userSession.roleSelectedID = 1;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "Quantri/Home");
                         }
                         else if (roleID == 2)
                         {
+                            userSession.roleSelectedID = 2;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "Quanly/Home");
                         }
                         else if (roleID == 3)
                         {
+                            userSession.roleSelectedID = 3;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "PhanPhoi/Home");
                         }
                         else if (roleID == 4)
                         {
+                            userSession.roleSelectedID = 4;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "HangHoa/Home");
                         }
                         else if (roleID == 5)
                         {
+                            userSession.roleSelectedID = 5;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "KeToan/Home");
                         }
                         else if (roleID == 6)
                         {
+                            userSession.roleSelectedID = 6;
                             Session.Add(CommonConstants.USER_SESSION, userSession);
                             return RedirectToAction("Index", "GiaoHang/Home");
                         }
@@ -127,10 +151,10 @@ namespace ThaiSonBacDMS.Controllers
                         userSession.user_info = currentUser;
                         userSession.role_name = new UserDAO().getOffice((byte) currentUser.Office_ID);
                         userSession.roleSelectFlag = false;
-                        userSession.account_name = account.Account_name;
                         userSession.accountID = account.Account_ID;
                         userSession.user_name = currentUser.User_name;
                         userSession.user_id = currentUser.User_ID;
+                        userSession.avatar_str = new MediaDAO().getMediaByID(int.Parse(currentUser.Avatar_ID)).Location;
 
                         //set cookie
                         if (model.rememberMe)
@@ -152,31 +176,37 @@ namespace ThaiSonBacDMS.Controllers
                             var roleName = roleDAO.getByID(roleID).Role_name;
                             if (roleID == 1)
                             {
+                                userSession.roleSelectedID = 1;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "Quantri/Home");
                             }
                             else if (roleID == 2)
                             {
+                                userSession.roleSelectedID = 2;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "Quanly/Home");
                             }
                             else if (roleID == 3)
                             {
+                                userSession.roleSelectedID = 3;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "PhanPhoi/Home");
                             }
                             else if (roleID == 4)
                             {
+                                userSession.roleSelectedID = 4;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "HangHoa/Home");
                             }
                             else if (roleID == 5)
                             {
+                                userSession.roleSelectedID = 5;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "KeToan/Home");
                             }
-                            else if (roleID == 5)
+                            else if (roleID == 6)
                             {
+                                userSession.roleSelectedID = 6;
                                 Session.Add(CommonConstants.USER_SESSION, userSession);
                                 return RedirectToAction("Index", "GiaoHang/Home");
                             }
@@ -217,6 +247,7 @@ namespace ThaiSonBacDMS.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon(); // it will clear the session at the end of request
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
             //clear cookie
             if (Response.Cookies["username"] != null)
             {
@@ -232,6 +263,7 @@ namespace ThaiSonBacDMS.Controllers
             }
             return RedirectToAction("Index", "Login");
         }
+       
 
     }
 }

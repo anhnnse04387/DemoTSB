@@ -13,7 +13,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class TaoSanPhamController : BaseController
+    public class TaoSanPhamController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/TaoSanPham
         public ActionResult Index()

@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : HangHoaBaseController
     {
         // GET: HangHoa/Home
         public ActionResult Index()

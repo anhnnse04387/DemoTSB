@@ -7,11 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.QuanTri.Models;
 using ThaiSonBacDMS.Common;
-using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : QuanTriBaseController
     {
         // GET: QuanTri/Home
         public ActionResult Index()

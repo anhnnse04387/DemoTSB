@@ -231,6 +231,10 @@
     <Compile Include="Areas\PhanPhoi\Models\TaoSanPhamModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\TonKhoModel.cs" />
     <Compile Include="Areas\PhanPhoi\PhanPhoiAreaRegistration.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\BaoCaoChiTietDoanhThuController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\BaoCaoCongNoCungCapController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\BaoCaoCongNoKhachHangController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\BaoCaoDoanhThuController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\DanhSachNguoiDungHoatDongController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ErrorPageController.cs" />
@@ -241,7 +245,14 @@
     <Compile Include="Areas\QuanLy\Controllers\POController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\QuanLyBaseController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\StockController.cs" />
+    <Compile Include="Areas\QuanLy\Models\BaoCaoCongNoCungCapModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\BaoCaoCongNoKhachHangModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\BaoCaoDoanhThuModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\ChiTietBaoCaoDoanhThu.cs" />
+    <Compile Include="Areas\QuanLy\Models\ChiTietNoCungCapModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\ChiTietNoKhachHangModel.cs" />
     <Compile Include="Areas\QuanLy\Models\DanhSachNguoiDungHoatDongModel.cs" />
+    <Compile Include="Areas\QuanLy\Models\HomeModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ListItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ListModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderItemModel.cs" />
@@ -262,6 +273,7 @@
     <Compile Include="Areas\QuanTri\Models\HomeModel.cs" />
     <Compile Include="Areas\QuanTri\QuanTriAreaRegistration.cs" />
     <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\EmailManager.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserSession.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -369,8 +381,6 @@
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\ChiTiet.cshtml" />
     <Content Include="Areas\QuanLy\Views\ChiTietPhieu\One.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\TaoNhaCungCap\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\TaoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
@@ -388,6 +398,7 @@
     <Content Include="Areas\QuanLy\Views\Stock\Detail.cshtml" />
     <Content Include="Areas\QuanTri\Views\DanhSachNguoiDungHoatDong\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\ChiTiet.cshtml" />
+    <Content Include="Areas\QuanLy\Views\Shared\NotificationHeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

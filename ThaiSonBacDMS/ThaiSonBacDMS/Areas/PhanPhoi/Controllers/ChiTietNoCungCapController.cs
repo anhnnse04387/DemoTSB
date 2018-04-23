@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class ChiTietNoCungCapController : Controller
+    public class ChiTietNoCungCapController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/ChiTietNoCungCap
         public ActionResult Index(string supplierId)

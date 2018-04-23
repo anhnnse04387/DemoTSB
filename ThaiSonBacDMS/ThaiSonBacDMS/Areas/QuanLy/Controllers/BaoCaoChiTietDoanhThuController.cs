@@ -6,18 +6,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Controllers;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class BaoCaoChiTietCongNoController : PhanPhoiBaseController
+    public class BaoCaoChiTietDoanhThuController : QuanLyBaseController
     {
         // GET: PhanPhoi/BaoCaoChiTietDoanhThu
         [HttpGet]
-        public ActionResult Index(int supplierID)
+        public ActionResult Index()
         {
-            ChiTietNoCungCapModel model = new ChiTietNoCungCapModel();
+            ChiTietBaoCaoDoanhThu model = new ChiTietBaoCaoDoanhThu();
             CategoryDAO daoCate = new CategoryDAO();
             //set year in db
             model.listShowYear = new List<SelectListItem>();
@@ -37,22 +37,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.lstCategorySearch.Add(new SelectListItem { Text = itemCate.Category_name, Value = itemCate.Category_ID });
                 }
             }
-            //get supplier
-            Supplier supp = new Supplier();
-            try
-            {
-                supp = new SupplierDAO().getSupplierById(supplierID);
-            }catch(Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index", "BaoCaoCongNoCungCap", new { area = "PhanPhoi" });
-            }
-            model.supp = supp;
             //display data
-            DateTime firstDayOfWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday);
-            var dataLst = new PIDAO().getDataNoCungCap(firstDayOfWeek, firstDayOfWeek.AddDays(6), supplierID, 
-                null, null, null, null, null, null);
-
+            var dataLst = new OrderItemDAO().getDataDoanhThu(DateTime.Now, DateTime.Now.AddDays(6), null,
+                    null, null, null, null, null, null, null);
             var returnValue = from d in dataLst
                               group d by d.categoryName into g
                               select new
@@ -60,7 +47,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                   categoryName = g.Key,
                                   data = g.ToList()
                               };
-            Dictionary<string, List<DataCongNoCungCap>> dataDic = new Dictionary<string, List<DataCongNoCungCap>>();
+            Dictionary<string, List<DataChiTietDoanhThu>> dataDic = new Dictionary<string, List<DataChiTietDoanhThu>>();
             foreach (var item in returnValue)
             {
                 dataDic.Add(item.categoryName, item.data);
@@ -70,7 +57,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(ChiTietNoCungCapModel model, int supplierID)
+        public ActionResult Index(ChiTietBaoCaoDoanhThu model)
         {
             CategoryDAO daoCate = new CategoryDAO();
 
@@ -78,9 +65,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             int? numberTo = null;
             decimal? priceFrom = null;
             decimal? priceTo = null;
+            decimal? doanhThuFrom = null;
+            decimal? doanhThuTo = null;
             model.errorString = "";
-            model.data = new Dictionary<string, List<DataCongNoCungCap>>();
-            List<DataCongNoCungCap> data = new List<DataCongNoCungCap>();
+            model.data = new Dictionary<string, List<DataChiTietDoanhThu>>();
+            List<DataChiTietDoanhThu> data = new List<DataChiTietDoanhThu>();
             //set year in db
             model.listShowYear = new List<SelectListItem>();
             foreach (var i in new OrderTotalDAO().getListYear())
@@ -99,18 +88,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.lstCategorySearch.Add(new SelectListItem { Text = itemCate.Category_name, Value = itemCate.Category_ID });
                 }
             }
-            //get supplier
-            Supplier supp = new Supplier();
-            try
-            {
-                supp = new SupplierDAO().getSupplierById(supplierID);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index", "BaoCaoCongNoCungCap", new { area = "PhanPhoi" });
-            }
-            model.supp = supp;
             try
             {
                 if (!string.IsNullOrEmpty(model.numberSoldFrom))
@@ -129,11 +106,23 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     priceTo = decimal.Parse(model.priceTo);
                 }
+                if (!string.IsNullOrEmpty(model.doanhThuFrom))
+                {
+                    doanhThuFrom = decimal.Parse(model.doanhThuFrom);
+                }
+                if (!string.IsNullOrEmpty(model.doanhThuTo))
+                {
+                    doanhThuTo = decimal.Parse(model.doanhThuTo);
+                }
                 if (numberFrom > numberTo && numberFrom != null && numberTo != null)
                 {
                     throw new Exception("Số lượng từ nhỏ hơn giá đến");
                 }
                 if (priceFrom > priceTo && priceFrom != null && priceTo != null)
+                {
+                    throw new Exception("Giá từ nhỏ hơn giá đến");
+                }
+                if (doanhThuFrom > doanhThuTo && doanhThuFrom != null && doanhThuTo != null)
                 {
                     throw new Exception("Giá từ nhỏ hơn giá đến");
                 }
@@ -198,8 +187,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 lastDate = firstDate.AddDays(6);
 
             }
-            var dataLst = new PIDAO().getDataNoCungCap(firstDate, lastDate,supplierID, model.categoryName,
-                    model.productCode, numberFrom, numberTo, priceFrom, priceTo);
+            var dataLst = new OrderItemDAO().getDataDoanhThu(firstDate, lastDate, model.categoryName,
+                    model.productCode, numberFrom, numberTo, priceFrom, priceTo, doanhThuFrom, doanhThuTo);
             var returnValue = from d in dataLst
                               group d by d.categoryName into g
                               select new
@@ -207,7 +196,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                   categoryName = g.Key,
                                   data = g.ToList()
                               };
-            Dictionary<string, List<DataCongNoCungCap>> dataDic = new Dictionary<string, List<DataCongNoCungCap>>();
+            Dictionary<string, List<DataChiTietDoanhThu>> dataDic = new Dictionary<string, List<DataChiTietDoanhThu>>();
             foreach (var item in returnValue)
             {
                 dataDic.Add(item.categoryName, item.data);

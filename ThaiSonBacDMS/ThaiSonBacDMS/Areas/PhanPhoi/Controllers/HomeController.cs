@@ -9,11 +9,10 @@ using ThaiSonBacDMS.Common;
 using ThaiSonBacDMS.Controllers;
 using Models.Framework;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/Home
         [HttpGet]

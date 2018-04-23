@@ -7,7 +7,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class WorkFlowController : BaseController
+    public class WorkFlowController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/WorkFlow
         public ActionResult Index()

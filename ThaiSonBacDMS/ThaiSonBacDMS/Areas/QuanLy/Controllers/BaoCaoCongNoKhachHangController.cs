@@ -5,17 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Controllers;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class BaoCaoCongNoCungCapController : PhanPhoiBaseController
+    public class BaoCaoCongNoKhachHangController : QuanLyBaseController
     {
-        // GET: PhanPhoi/BaoCaoCongNoCungCap
         public ActionResult Index()
         {
-            BaoCaoCongNoCungCapModel model = new BaoCaoCongNoCungCapModel();
+            BaoCaoCongNoKhachHangModel model = new BaoCaoCongNoKhachHangModel();
             //set year in db
             model.listShowYear = new List<SelectListItem>();
             foreach (var i in new OrderTotalDAO().getListYear())
@@ -31,10 +30,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var item = new SelectListItem { Text = i.Category_name.ToString(), Value = i.Category_ID.ToString() };
                 model.listCategory.Add(item);
             }
+            //set table
+            model.listCongNo = new List<CongNoKhachHang>();
+            foreach (var x in new CustomerDAO().getTop10CustomerDebt())
+            {
+                model.listCongNo.Add(new CongNoKhachHang(x.Customer_name, x.Delivery_address, (decimal)x.Current_debt));
+            }
             return View(model);
         }
 
-        public ActionResult ChangeData(BaoCaoCongNoCungCapModel model)
+        public ActionResult ChangeData(BaoCaoCongNoKhachHangModel model)
         {
             int selectYear = 0;
             int selectMonth = 0;
@@ -86,16 +91,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 firstDate = selectedDate;
                 lastDate = firstDate.AddDays(6);
             }
-            model.supp_HanQuoc = new Dictionary<string, List<DataCongNoCungCap>>();
-            model.supp_HanQuoc = new PIDAO().getDataLineChart(new DateTime(2017, 1, 1), new DateTime(2018, 1, 1), 4, model.selectedCategory);
-            model.sumHanQuoc = model.supp_HanQuoc.Sum(x=>x.Value.Sum(s=>s.totalPrice));
-            model.supp_LS = new Dictionary<string, List<DataCongNoCungCap>>();
-            model.supp_LS = new PIDAO().getDataLineChart(new DateTime(2017, 1, 1), new DateTime(2018, 1, 1), 3, model.selectedCategory);
-            model.sumLS = model.supp_LS.Sum(x => x.Value.Sum(s => s.totalPrice));
-            model.supp_TSN = new Dictionary<string, List<DataCongNoCungCap>>();
-            model.supp_TSN = new PIDAO().getDataLineChart(new DateTime(2017, 1, 1), new DateTime(2018, 1, 1), 1, model.selectedCategory);
-            model.sumTNS = model.supp_TSN.Sum(x => x.Value.Sum(s => s.totalPrice));
-
+            model.dataCongNo = new OrderItemDAO().getDataCongNoKhachHang(firstDate, lastDate, model.selectedCategory);
+            model.totalPrice = model.dataCongNo.Sum(x=>x.Value.Sum(s=>s.totalPrice));
+            
+            
             return Json(model, JsonRequestBehavior.AllowGet);
         }
     }

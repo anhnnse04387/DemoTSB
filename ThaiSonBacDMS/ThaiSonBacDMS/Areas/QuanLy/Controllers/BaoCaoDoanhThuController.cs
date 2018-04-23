@@ -1,21 +1,21 @@
 ﻿using Models.DAO;
-using Models.DAO_Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Controllers;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class BaoCaoCongNoCungCapController : PhanPhoiBaseController
+    public class BaoCaoDoanhThuController : QuanLyBaseController
     {
-        // GET: PhanPhoi/BaoCaoCongNoCungCap
+        // GET: PhanPhoi/BaoCaoDoanhThu
+        [HttpGet]
         public ActionResult Index()
         {
-            BaoCaoCongNoCungCapModel model = new BaoCaoCongNoCungCapModel();
+            BaoCaoDoanhThuModel model = new BaoCaoDoanhThuModel();
             //set year in db
             model.listShowYear = new List<SelectListItem>();
             foreach (var i in new OrderTotalDAO().getListYear())
@@ -34,14 +34,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return View(model);
         }
 
-        public ActionResult ChangeData(BaoCaoCongNoCungCapModel model)
+        [HttpPost]
+        public ActionResult Index(BaoCaoDoanhThuModel model)
         {
             int selectYear = 0;
             int selectMonth = 0;
             DateTime selectedDate = new DateTime();
             DateTime firstDate = new DateTime();
             DateTime lastDate = new DateTime();
-
+            
 
             if (model.selectedDay == "-1" && model.selectedMonth != "-1")
             {
@@ -57,20 +58,26 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     System.Diagnostics.Debug.WriteLine(e);
                     RedirectToAction("Index");
                 }
+                model.dataLineChart = returnData(firstDate, lastDate, model.selectedCategory);
+                model.dataPieChart = returnPieChartData(firstDate, lastDate);
+
+
             }
-            else if (model.selectedMonth == "-1")
+            else if(model.selectedMonth == "-1")
             {
                 try
                 {
                     selectYear = int.Parse(model.selectedYear);
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e);
                     return RedirectToAction("Index");
                 }
                 firstDate = new DateTime(selectYear, 1, 1);
                 lastDate = new DateTime(selectYear, 12, 31);
+                model.dataLineChart = returnData(firstDate, lastDate, model.selectedCategory);
+                model.dataPieChart = returnPieChartData(firstDate, lastDate);
             }
             else
             {
@@ -78,25 +85,53 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     selectedDate = DateTime.Parse(model.selectedDay);
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e);
                     return RedirectToAction("Index");
                 }
                 firstDate = selectedDate;
                 lastDate = firstDate.AddDays(6);
+                model.dataLineChart = returnData(firstDate, lastDate, model.selectedCategory);
+                model.dataPieChart = returnPieChartData(firstDate, lastDate);
             }
-            model.supp_HanQuoc = new Dictionary<string, List<DataCongNoCungCap>>();
-            model.supp_HanQuoc = new PIDAO().getDataLineChart(new DateTime(2017, 1, 1), new DateTime(2018, 1, 1), 4, model.selectedCategory);
-            model.sumHanQuoc = model.supp_HanQuoc.Sum(x=>x.Value.Sum(s=>s.totalPrice));
-            model.supp_LS = new Dictionary<string, List<DataCongNoCungCap>>();
-            model.supp_LS = new PIDAO().getDataLineChart(new DateTime(2017, 1, 1), new DateTime(2018, 1, 1), 3, model.selectedCategory);
-            model.sumLS = model.supp_LS.Sum(x => x.Value.Sum(s => s.totalPrice));
-            model.supp_TSN = new Dictionary<string, List<DataCongNoCungCap>>();
-            model.supp_TSN = new PIDAO().getDataLineChart(new DateTime(2017, 1, 1), new DateTime(2018, 1, 1), 1, model.selectedCategory);
-            model.sumTNS = model.supp_TSN.Sum(x => x.Value.Sum(s => s.totalPrice));
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+        private List<DataLineChart> returnData(DateTime firstDate, DateTime lastDate, string categoryID)
+        {
+            Dictionary<DateTime, List<decimal>> listData = new OrderItemDAO().getChartData(firstDate, lastDate, categoryID);
+            List<DataLineChart> listDataLineChart = new List<DataLineChart>();
+            foreach (var item in listData)
+            {
+                DataLineChart data = new DataLineChart();
+                data.displayTime = item.Key.ToString("dd/MM");
+                data.nhapVon = item.Value.ElementAt(0);
+                data.xuatVon = item.Value.ElementAt(1);
+                data.banChoKhach = item.Value.ElementAt(2);
+                listDataLineChart.Add(data);
+            }
+            return listDataLineChart;
+        }
+
+        private List<DataPieChart> returnPieChartData(DateTime firstDate, DateTime lastDate) 
+        {
+            List<DataPieChart> dataPieChart = new List<DataPieChart>();
+            foreach (var item in new OrderItemDAO().getPieChartData(firstDate, lastDate))
+            {
+                var pieChartData = new DataPieChart();
+                pieChartData.categoryName = item.Key;
+                pieChartData.numberSold = (int)item.Value.ElementAt(0);
+                pieChartData.nhapVon = item.Value.ElementAt(1);
+                pieChartData.xuatVon = item.Value.ElementAt(2);
+                pieChartData.banChoKhach = item.Value.ElementAt(3);
+                pieChartData.loiNhuan = item.Value.ElementAt(3) - item.Value.ElementAt(2);
+                dataPieChart.Add(pieChartData);
+            }
+            return dataPieChart;
+        }
+
+
     }
 }
