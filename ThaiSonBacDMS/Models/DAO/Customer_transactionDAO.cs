@@ -323,11 +323,8 @@ namespace Models.DAO
             }
             return lst;
         }
-<<<<<<< HEAD
+
         public int insertData(string noCu,string nhapTrongKy,string thanhToan,string vat,string conNo,string dienGiai,string customerId,int userId)
-=======
-        public int insertData(string noCu, string nhapTrongKy, string thanhToan, string vat, string conNo, string dienGiai, string customerId, string userId)
->>>>>>> e1f97931553e8ea3fbb670f64e04671e7fe30d18
         {
             Customer_transaction cus = new Customer_transaction();
 

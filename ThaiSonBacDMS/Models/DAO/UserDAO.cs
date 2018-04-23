@@ -660,7 +660,7 @@ namespace Models.DAO
 
             return lst;
         }
-        public string insertNewUser(User item, string mediaId)
+        public int insertNewUser(User item, string mediaId)
         {
             try
             {
@@ -685,10 +685,10 @@ namespace Models.DAO
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return ("-1");
+                return (-1);
             }
         }
-        public DanhSachNguoiDung getDetailUser(string userId)
+        public DanhSachNguoiDung getDetailUser(int userId)
         {
             DanhSachNguoiDung item = new DanhSachNguoiDung();
             var query = from user in context.Users
@@ -715,7 +715,7 @@ namespace Models.DAO
                     item.soDienThoai = user.user.Phone;
                     item.trangThai = user.user.Status == 1 ? "Active" : "Deactive";
                     item.chucVu = user.office;
-                    item.ngaySinh = Convert.ToDateTime(user.user.Date_of_birth);
+                    item.ngaySinh = user.user.Date_of_birth.ToString();
                     item.BHYT = user.user.Insurance_Code;
                     item.email = user.user.Mail;
 
