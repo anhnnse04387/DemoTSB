@@ -176,8 +176,17 @@ namespace Models.DAO
             foreach(Customer c in lstCustomer)
             {
                 var data = db.Customer_transaction.Where(x => x.Customer_ID == c.Customer_ID).OrderByDescending(x => x.Date_Created).FirstOrDefault();
-                var item = new DanhSachNoKhachHang { };
+                DanhSachNoKhachHang item = new DanhSachNoKhachHang();
+                item.tenKhachHang = db.Customers.SingleOrDefault(x => x.Customer_ID == data.Customer_ID).Customer_name;
+                item.customerId = data.Customer_ID;
+                item.noCu = data.Old_debt;
+                item.tienHang = data.Sub_total;
+                item.vat = data.VAT;
+                item.tongCong = data.Total;
+                item.thanhToan = data.Pay;
+                item.conNo = data.Debt;
                 lst.Add(item);
+<<<<<<< HEAD
             }
             var query3 = from transaction in db.Customer_transaction
                          join maxDate in query1 on transaction.Date_Created.Value.TimeOfDay equals maxDate.maxDate.Value.TimeOfDay
@@ -211,6 +220,9 @@ namespace Models.DAO
                 }
             }
             */
+=======
+            }          
+>>>>>>> 846a234cd9a4953a42cfd468ee61ea90f71d9a0f
             return lst;
         }
         public List<Autocomplete> getListAuto(string valueSearch)
