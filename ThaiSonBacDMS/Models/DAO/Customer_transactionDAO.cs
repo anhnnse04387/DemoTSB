@@ -171,6 +171,7 @@ namespace Models.DAO
         public List<DanhSachNoKhachHang> danhSachKhachHang()
         {
             List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
+            /*
             var lstCustomer = db.Customers.Distinct().ToList();
             foreach(Customer c in lstCustomer)
             {
@@ -209,6 +210,7 @@ namespace Models.DAO
                     lst.Add(ds);
                 }
             }
+            */
             return lst;
         }
         public List<Autocomplete> getListAuto(string valueSearch)

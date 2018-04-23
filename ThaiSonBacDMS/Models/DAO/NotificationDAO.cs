@@ -18,5 +18,9 @@ namespace Models.DAO
         {
             return context.Notifications.Where(x => x.User_ID == user_id).ToList();
         }
+        public List<Notification> getByRoleID(int roleId)
+        {
+            return context.Notifications.Where(x => x.Role_ID == roleId && x.User_ID == null).ToList();
+        }
     }
 }

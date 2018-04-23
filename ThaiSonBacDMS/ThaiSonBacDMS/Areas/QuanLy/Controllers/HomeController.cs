@@ -42,7 +42,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             //table for newest order
             model.newestOrderList = new List<NewsetOrder>();
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var n = totalDAO.showNewestOrder(int.Parse(session.user_id));
+            var n = totalDAO.showNewestOrder(session.user_id);
             foreach (var item in n)
             {
                 NewsetOrder no = new NewsetOrder();
@@ -153,15 +153,15 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 tsc.diffrentPercent = 0;
                 int valuePrevious = orderItemDAO.
                     getCategoryQuantityByDate(item.Key, firstMonthPrevious, lastMonthPrevious);
-                if (item.Value >= valuePrevious && valuePrevious != 0)
+                if (item.Value >= valuePrevious)
                 {
                     tsc.categoryFlag = true;
-                    tsc.diffrentPercent = (decimal)(item.Value - valuePrevious) / valuePrevious * 100;
+                    tsc.diffrentPercent = valuePrevious == 0 ? 100 : (decimal) (item.Value - valuePrevious) / valuePrevious * 100;
                 }
-                else if (item.Value != 0)
+                else
                 {
                     tsc.categoryFlag = false;
-                    tsc.diffrentPercent = (valuePrevious - item.Value) / item.Value * 100;
+                    tsc.diffrentPercent = item.Value == 0 ? 100 : (valuePrevious - item.Value) / item.Value * 100;
                 }
                 listTSC.Add(tsc);
             }
