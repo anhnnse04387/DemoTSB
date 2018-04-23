@@ -158,6 +158,8 @@
                                                 <th>STT</th>
                                                 <th colspan="2">Tên sản phẩm</th>
                                                 <th>Danh Mục</th>
+                                                <th>CIF(USD)</th>
+                                                <th>CIF(VND)</th>
                                                 <th>Giá Trước VAT (USD)</th>
                                                 <th>Giá Trước VAT (VND)</th>
                                                 <th>VAT</th>
@@ -169,7 +171,7 @@
                                             @if (Model.lstDisplay.Count == 0)
                                             {
                                                 <tr>
-                                                    <td style="font-size:17px" colspan="9"> Không tìm thấy sản phẩm! </td>
+                                                    <td style="font-size:17px" colspan="11"> Không tìm thấy sản phẩm! </td>
                                                 </tr>
                                             }
                                             else
@@ -186,6 +188,8 @@
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td class="right"></td>
                                                     </tr>
                                                     foreach (var items in itemCate.Value.ToList())
@@ -195,9 +199,11 @@
                                                             <td style="border-right: none;text-align:left">@Html.ActionLink(@items.product.Product_name, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)
                                                             <td style="border-left: none;text-align:left">@Html.ActionLink(@items.product.Product_parameters, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
-                                                            <td class="right">@Convert.ToDouble(@items.product.Price_before_VAT_USD)</td>
+                                                            <td class="text-center number">@items.product.CIF_USD</td>
+                                                            <td class="text-center number">@items.product.CIF_VND</td>
+                                                            <td class="right number">@Convert.ToDouble(@items.product.Price_before_VAT_USD)</td>
                                                             <td class="right number">@items.product.Price_before_VAT_VND</td>
-                                                            <td class="text-center number">@items.product.VAT</td>
+                                                            <td class="text-center">@items.product.VAT<span>%</span></td>
                                                             <td class="right number">@items.Price_after_VAT_VND</td>
                                                             <td class="right number">@items.Price_after_VAT_USD</td>
                                                         </tr>
@@ -208,19 +214,7 @@
                                             }
 
                                         </tbody>
-                                        @if (Model.lstDisplay.Count != 0)
-                                        {
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="4" style="padding: 10px;text-align: center">Tổng cộng</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </tfoot>
-                                        }
+
                                     </table>
                                 </fieldset>
                             </div>
