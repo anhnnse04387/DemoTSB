@@ -186,7 +186,6 @@ namespace Models.DAO
                 item.thanhToan = data.Pay;
                 item.conNo = data.Debt;
                 lst.Add(item);
-<<<<<<< HEAD
             }
             var query3 = from transaction in db.Customer_transaction
                          join maxDate in query1 on transaction.Date_Created.Value.TimeOfDay equals maxDate.maxDate.Value.TimeOfDay
@@ -220,9 +219,6 @@ namespace Models.DAO
                 }
             }
             */
-=======
-            }          
->>>>>>> 846a234cd9a4953a42cfd468ee61ea90f71d9a0f
             return lst;
         }
         public List<Autocomplete> getListAuto(string valueSearch)
