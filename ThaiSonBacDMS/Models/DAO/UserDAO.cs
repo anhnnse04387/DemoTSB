@@ -49,6 +49,12 @@ namespace Models.DAO
         {
             return context.Offices.SingleOrDefault(x => x.Office_ID == officeID).Office_name;
         }
+
+        public User getByAccountName(string account)
+        {
+            Account a = context.Accounts.SingleOrDefault(y => y.Account_name == account);
+            return context.Users.SingleOrDefault(x=>x.User_ID == a.User_ID);
+        }
         //thuongtx
 
 

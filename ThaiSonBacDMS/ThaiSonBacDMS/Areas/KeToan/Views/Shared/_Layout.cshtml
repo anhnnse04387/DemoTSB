@@ -36,11 +36,8 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-<<<<<<< HEAD
+
             <a href="@Url.Action("Index", "Home")" class="logo">
-=======
-            <a href="ketoan_index.html" class="logo">
->>>>>>> 980fba25e97eb4c727e65e174c82033fdded907e
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
                     <b>T</b>SB
@@ -59,99 +56,28 @@
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- Notifications: style can be found in dropdown.less -->
-<<<<<<< HEAD
                         @{ Html.RenderAction("NotificationHeader", "Home"); }
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="@session.avatar_str" class="user-image" alt="User Image">
                                 <span class="hidden-xs">@session.user_info.User_name</span>
-=======
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">6</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">Bạn có 6 thông báo mới</li>
-                                <li>
-                                    <ul class="menu">
-                                        <li>
-                                            <a href="ketoan_chi-tiet-don-hang.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89667-0 đang chờ xử lý
-                                                <div class="pull-right">3 phút trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="ketoan_index.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89664-1#1 đã bị huỷ
-                                                <div class="pull-right">40 phút trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="ketoan_chi-tiet-don-hang.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89666 đang chờ xử lý
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="ketoan_chi-tiet-don-hang.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89665 đang chờ xử lý
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="ketoan_chi-tiet-don-hang.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89664 đang chờ xử lý
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="ketoan_chi-tiet-don-hang.html">
-                                                <i class="fa fa-shopping-cart text-green"></i> Lô hàng số 89663 đang chờ xử lý
-                                                <div class="pull-right">1 giờ trước</div>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <a href="ketoan_thong-bao.html">Xem tất cả</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- User Account: style can be found in dropdown.less -->
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/Assets/dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Trần Anh Minh</span>
->>>>>>> 980fba25e97eb4c727e65e174c82033fdded907e
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="@session.avatar_str" class="img-circle" alt="User Image">
                                     <p>
-<<<<<<< HEAD
                                         @session.user_info.User_name<small>@session.role_name</small>
-=======
-                                        Trần Anh Minh
-                                        <small>Kế Toán</small>
->>>>>>> 980fba25e97eb4c727e65e174c82033fdded907e
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-<<<<<<< HEAD
                                         <a href="@Url.Action("Index", "ChiTietNguoiDung")" class="btn btn-default btn-flat">Hồ sơ</a>
-=======
-                                        <a href="ketoan_nguoidung_thong-tin-nguoi-dung.html" class="btn btn-default btn-flat">Hồ sơ</a>
->>>>>>> 980fba25e97eb4c727e65e174c82033fdded907e
                                     </div>
                                     @if (session.roleSelectFlag)
                                     {
@@ -165,11 +91,12 @@
                                 </li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
-
+                <!-- Note header-->
+                @*{ Html.RenderAction("NoteHeader", "Home"); }*@
             </nav>
+
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
@@ -199,14 +126,8 @@
                 /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-
-<<<<<<< HEAD
-                    <li class="">
-                        <a href="@Url.Action("Index", "OrderList")">
-=======
                     <li class="active">
-                        <a href="ketoan_index.html">
->>>>>>> 980fba25e97eb4c727e65e174c82033fdded907e
+                        <a href="@Url.Action("Index", "Home")">
                             <i class="fa fa-file-o"></i>
                             <span>Phiếu đang chờ</span>
                         </a>

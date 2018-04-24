@@ -31,5 +31,11 @@ namespace Models.DAO
             }
             context.SaveChanges();
         }
+
+        public void addNotification(Notification noti)
+        {
+            context.Notifications.Add(noti);
+            context.SaveChanges();
+        }
     }
 }

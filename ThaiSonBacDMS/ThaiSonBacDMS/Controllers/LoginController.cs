@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ThaiSonBacDMS.Models;
 using ThaiSonBacDMS.Common;
 using System.Web.Security;
+using Models.Framework;
 
 namespace ThaiSonBacDMS.Controllers
 {
@@ -264,6 +265,34 @@ namespace ThaiSonBacDMS.Controllers
             return RedirectToAction("Index", "Login");
         }
        
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult ForgotPassword(LoginModel model)
+        {
+            User u = new User();
+            try
+            {
+                u = new UserDAO().getByAccountName(model.accountName);
+                Notification noti = new Notification();
+                noti.Content = "Tài khoản" + model.accountName + " muốn hoàn lại mật khẩu";
+                noti.Notif_date = DateTime.Now;
+                noti.Link = "/DanhSachNguoiDungDangHoatDong/ChiTiet?=" + u.User_ID;
+                noti.User_ID = null;
+                noti.Role_ID = 1;
+                noti.Status = 1;
+                new NotificationDAO().addNotification(noti);
+                ModelState.AddModelError("", "Yêu cầu của bạn đã được gửi đi");
+            }
+            catch(Exception e)
+            {
+                ModelState.AddModelError("", "Tài khoản không tồn tại");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+            return View();
+        }
     }
 }

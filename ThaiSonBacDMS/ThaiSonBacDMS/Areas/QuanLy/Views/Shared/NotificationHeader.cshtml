@@ -7,20 +7,33 @@
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-bell-o"></i>
-        <span class="label label-warning">@Model.Count(x => x.User_ID == session.user_id)</span>
+        <span class="label label-warning">@Model.Count(x => x.Status == 1)</span>
     </a>
     <ul class="dropdown-menu">
-        <li class="header">Bạn có @Model.Count(x => x.User_ID == session.user_id) thông báo mới</li>
+        <li class="header">Bạn có @Model.Count(x => x.Status == 1) thông báo mới</li>
         <li>
             <ul class="menu">
                 @foreach (var item in Model)
                 {
-                    <li>
-                        <a href="@item.Link">
-                            <i class="fa fa-shopping-cart text-green"></i> @item.Content
-                            <div class="pull-right">@item.Notif_date</div>
-                        </a>
-                    </li>
+                    if (item.Status == 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("ChangeStatusNote", "Home", new { link = item.Link, notiID = item.Notif_ID})" style="background-color: #e0e2e5;">
+                                <i class="fa fa-shopping-cart text-green"></i> @item.Content
+                                <div class="pull-right">@item.Notif_date</div>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@item.Link">
+                                <i class="fa fa-shopping-cart text-dark"></i> @item.Content
+                                <div class="pull-right">@item.Notif_date</div>
+                            </a>
+                        </li>
+                    }
+
                 }
             </ul>
         </li>
