@@ -163,6 +163,9 @@
                             <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Nhập hàng</a>
                         </li>
                         <li class="">
+                            <a href="#mathang" data-toggle="tab" aria-expanded="false">Mặt hàng</a>
+                        </li>
+                        <li class="">
                             <a href="#chinhsua" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
                         </li>
                     </ul>
@@ -189,51 +192,6 @@
                             </div>
                         </div>
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>
-                                        <b>CÁC MẶT HÀNG CUNG CẤP</b>
-                                    </h4>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table id="mainTable" class="table table-striped customTab">
-                                        <thead>
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>Mã hàng</th>
-                                                <th>Danh mục</th>
-                                                <th>Giá tiền gốc (VNĐ)</th>
-                                                <th>VAT</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @{ var i = 1; }
-                                            @foreach(var item in Model.lstProduct) { 
-                                                <tr>
-                                                    <td>@i</td>
-                                                    <td>
-                                                        <a href="@Url.Action("Index", "ChiTietSanPham", new { product_Id = item.Product_ID })">@item.Product_name</a>
-                                                    </td>
-                                                    <td>@item.Category.Category_name</td>
-                                                    <td class="number">@item.CIF_VND</td>
-                                                    <td><span class="number">@item.VAT</span>%</td>
-                                                </tr>
-                                                i++;
-                                            }
-                                        </tbody>
-                                        <tfoot></tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <span class="label label-primary pull-right" id="attach_box">Xem tất cả</span>
-                                </div>
-                            </div>
-                            <br>
                             <div class="row">
                                 <div class="col-md-12">
                                     <h4>
@@ -278,6 +236,56 @@
                                     <span class="label label-primary pull-right" id="attach_box">
                                         <a href="@Url.Action("Index", "ErrorPage")" style="color:white">Xem tất cả</a>
                                     </span>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="active tab-pane" id="mathang">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <b>CÁC MẶT HÀNG CUNG CẤP</b>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="mainTable" class="table table-striped customTab">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Mã hàng</th>
+                                                <th>Danh mục</th>
+                                                <th>Giá tiền gốc (VNĐ)</th>
+                                                <th>VAT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ var i = 1; }
+                                            @foreach (var item in Model.lstProduct)
+                                            {
+                                                <tr>
+                                                    <td>@i</td>
+                                                    <td>
+                                                        <a href="@Url.Action("Index", "ChiTietSanPham", new { product_Id = item.Product_ID })">@item.Product_name</a>
+                                                    </td>
+                                                    <td>@item.Category.Category_name</td>
+                                                    <td class="number">@item.CIF_VND</td>
+                                                    <td><span class="number">@item.VAT</span>%</td>
+                                                </tr>
+                                                i++;
+                                            }
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <span class="label label-primary pull-right" id="attach_box">Xem tất cả</span>
                                 </div>
                             </div>
                             <br>

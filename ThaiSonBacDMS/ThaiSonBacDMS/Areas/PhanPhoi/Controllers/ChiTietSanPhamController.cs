@@ -9,7 +9,7 @@ using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class ChiTietSanPhamController : Controller
+    public class ChiTietSanPhamController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/ChiTietSanPham
         public ActionResult Index(int product_Id)

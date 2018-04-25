@@ -18,9 +18,29 @@ namespace Models.DAO
         {
             return context.Notifications.Where(x => x.User_ID == user_id).ToList();
         }
+<<<<<<< HEAD
         public void createNotification(Notification nof)
         {
             context.Notifications.Add(nof);
+=======
+        public List<Notification> getByRoleID(int roleId)
+        {
+            return context.Notifications.Where(x => x.Role_ID == roleId && x.User_ID == null).ToList();
+        }
+        public void changeStatus(int notiID)
+        {
+            Notification noti = context.Notifications.SingleOrDefault(x => x.Notif_ID == notiID);
+            if(noti.Status == 1)
+            {
+                noti.Status = 0;
+            }
+            context.SaveChanges();
+        }
+
+        public void addNotification(Notification noti)
+        {
+            context.Notifications.Add(noti);
+>>>>>>> 54b1ad8b8ed8d6a974f68eaf549b94ae38ed5277
             context.SaveChanges();
         }
     }

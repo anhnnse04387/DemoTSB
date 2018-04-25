@@ -159,7 +159,7 @@
                                                 <th colspan="2">Tên sản phẩm</th>
                                                 <th>Danh Mục</th>
                                                 <th>CIF(USD)</th>
-                                                <th>CIF(VND)</th>
+                                                @*<th>CIF(VND)</th>*@
                                                 <th>Giá Trước VAT (USD)</th>
                                                 <th>Giá Trước VAT (VND)</th>
                                                 <th>VAT</th>
@@ -184,7 +184,7 @@
                                                         <td style="border-right: none !important;border-left:none !important;text-align:right">@itemCate.Key</td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
-                                                        <td style="border-right: none !important;border-left:none !important"></td>
+                                                        @*<td style="border-right: none !important;border-left:none !important"></td>*@
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
@@ -192,6 +192,7 @@
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td class="right"></td>
                                                     </tr>
+
                                                     foreach (var items in itemCate.Value.ToList())
                                                     {
                                                         <tr>
@@ -200,13 +201,14 @@
                                                             <td style="border-left: none;text-align:left">@Html.ActionLink(@items.product.Product_parameters, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
                                                             <td class="text-center number">@items.product.CIF_USD</td>
-                                                            <td class="text-center number">@items.product.CIF_VND</td>
+                                                            @*<td class="text-center number">@items.product.CIF_VND</td>*@
                                                             <td class="right number">@Convert.ToDouble(@items.product.Price_before_VAT_USD)</td>
                                                             <td class="right number">@items.product.Price_before_VAT_VND</td>
                                                             <td class="text-center">@items.product.VAT<span>%</span></td>
                                                             <td class="right number">@items.Price_after_VAT_VND</td>
                                                             <td class="right number">@items.Price_after_VAT_USD</td>
                                                         </tr>
+
                                                         i++;
                                                     }
 

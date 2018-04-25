@@ -124,7 +124,8 @@
                 </div>
                 <label class="checkbox-inline pull-left" style="padding-bottom: 10px;">@Html.CheckBoxFor(model => model.rememberMe)<b>Ghi nhớ tài khoản</b></label>
                 <div>
-                    <button style="margin-right: 26px; width: 270px;" type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
+                    <button style="margin-right: 26px; width: 270px; margin-bottom: 15px" type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
+                    @Html.ActionLink("Quên mật khẩu", "ForgotPassword")
                 </div>
 
             }

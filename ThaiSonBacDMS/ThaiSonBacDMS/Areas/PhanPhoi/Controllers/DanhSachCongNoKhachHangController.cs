@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class DanhSachCongNoKhachHangController : Controller
+    public class DanhSachCongNoKhachHangController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/DanhSachCongNoKhachHang
         public ActionResult Index()
@@ -65,14 +65,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
         }
         [HttpPost]
-        public ActionResult UpdateData(int customerId, string noCu, string nhapTrongKy, string vat, string thanhToan, string conNo, string dienGiai, string tongCong)
+        public ActionResult UpdateData(int customerId, string nhapTrongKy, string vat, string thanhToan, string conNo, string dienGiai, string tongCong, string noCu)
         {
             try
             {
                 Customer_transactionDAO dao = new Customer_transactionDAO();
-                //var session = (UserSession)Session[CommonConstants.USER_SESSION];
-                //int userId = session.accountID;
-                dao.insertData(customerId, nhapTrongKy, vat, thanhToan, conNo, dienGiai, 1, tongCong);
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                int userId = session.accountID;
+                dao.insertNewCustomerDebt(customerId, nhapTrongKy, vat, thanhToan, conNo, dienGiai, userId, tongCong, noCu);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -164,7 +164,7 @@ namespace Models.DAO
                         topSellingCategory.Add(item.category.Category_ID, (int)item.quantity);
                     }
                 }
-                topSellingCategory = topSellingCategory.Take(5).OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+                topSellingCategory = topSellingCategory.OrderByDescending(x => x.Value).Take(8).ToDictionary(x => x.Key, x => x.Value);
             }
             return topSellingCategory;
         }

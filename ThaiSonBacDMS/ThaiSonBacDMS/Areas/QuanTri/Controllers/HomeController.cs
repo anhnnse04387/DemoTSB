@@ -7,11 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.QuanTri.Models;
 using ThaiSonBacDMS.Common;
-using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : QuanTriBaseController
     {
         // GET: QuanTri/Home
         public ActionResult Index()
@@ -113,6 +112,34 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 RedirectToAction("Index");
             }
             return PartialView(lines);
+        }
+
+        public ActionResult ChangeStatusNote(string link, int notiID)
+        {
+            link = "/ChiTietPhieu/Index?orderId=O1";
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            new NotificationDAO().changeStatus(notiID);
+            switch (session.roleSelectedID)
+            {
+                case 1:
+                    link = "/QuanTri" + link;
+                    break;
+                case 2:
+                    link = "/QuanLy" + link;
+                    break;
+                case 3:
+                    link = "/PhanPhoi" + link;
+                    break;
+                case 4:
+                    link = "/HangHoa" + link;
+                    break;
+                case 5:
+                    link = "/KeToan" + link;
+                    break;
+                default:
+                    break;
+            }
+            return Redirect(link);
         }
     }
 }

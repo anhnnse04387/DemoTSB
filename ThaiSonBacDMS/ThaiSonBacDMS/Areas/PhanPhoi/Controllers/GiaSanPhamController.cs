@@ -9,7 +9,7 @@ using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class GiaSanPhamController : Controller
+    public class GiaSanPhamController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/GiaSanPham
         [HttpGet]
@@ -65,6 +65,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         }
                         model.map.Add(item.Category_name, lstProductAdd);
                     }
+                    model.map = model.map.Where(x => x.Value.Count != 0).ToDictionary(x => x.Key, x => x.Value);
                 }
                 return View(model);
             }

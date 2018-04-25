@@ -7,7 +7,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class ErrorPageController : BaseController
+    public class ErrorPageController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/ErrorPage
         public ActionResult Index()

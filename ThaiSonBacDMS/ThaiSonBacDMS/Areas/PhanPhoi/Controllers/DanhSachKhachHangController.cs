@@ -14,7 +14,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class DanhSachKhachHangController : BaseController
+    public class DanhSachKhachHangController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/DanhSachKhachHang
         public ActionResult Index()

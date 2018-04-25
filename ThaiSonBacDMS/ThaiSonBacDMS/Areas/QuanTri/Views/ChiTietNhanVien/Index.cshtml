@@ -6,6 +6,11 @@
 }
 
 <style>
+    #email {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
     .custom-btn {
         padding: 10px 5px;
         min-width: 60px;
@@ -125,12 +130,9 @@
                                 <a class="pull-right">@Model.userInfor.email</a>
                             </li>
                             <li class="list-group-item">
-                                <div class="form-group row" style="margin-bottom: -5px;">
-                                    <label for="dateCreate" class="col-sm-9 col-form-label"><i class="fa fa-calendar"></i> Ngày sinh</label>
-                                    <div class="col-sm-3">
-                                        <a class="pull-right" id='dateCreate'>@Model.userInfor.ngaySinh.ToString()</a>
-                                    </div>
-                                </div>
+                                <i class="fa fa-envelope"></i>
+                                <b>Ngày sinh</b>
+                                <a class="pull-right">@Model.userInfor.ngaySinh</a>
                             </li>
                             <li class="list-group-item">
                                 <i class="fa fa-address-book"></i>
@@ -150,7 +152,7 @@
                                 <div class="form-group row" style="margin-bottom: -5px;">
                                     <label class="col-sm-6 col-form-label"><i class="fa fa-address-book"></i> Trạng thái</label>
                                     <div class="col-sm-6">
-                                        <a class="pull-right text-green"><span class="label label-success">@Model.userInfor.trangThai</span></a>
+                                        <a class="pull-right text-green"><span class="label label-success" id="isActive">@Model.userInfor.trangThai</span></a>
                                     </div>
                                 </div>
                             </li>
@@ -206,6 +208,14 @@
                                 <div class="col-sm-12">
                                     <fieldset>
                                         <legend><b style="font-size: 17px;">Thông tin cá nhân</b></legend>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Trạng thái</label>
+                                                <div class="input-group">
+                                                    <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-6">
@@ -219,11 +229,12 @@
                                                 <label>Chức vụ</label><span style="color: red;">*</span>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-codepen"></i></span>
-                                                    <select class='form-control' id='Typerole' disabled>
-                                                        <option>Giám đốc</option>
-                                                        <option>Nhân viên bán hàng</option>
-                                                        <option>Nhân viên kế toán</option>
-                                                    </select>
+                                                    @*<select class='form-control' id='Typerole' disabled>
+                                                            <option>Giám đốc</option>
+                                                            <option>Nhân viên bán hàng</option>
+                                                            <option>Nhân viên kế toán</option>
+                                                        </select>*@
+                                                    @Html.DropDownListFor(model => model.roleId, Model.lstRole, new { @class = "form-control", @id = "Typerole", @disabled = "true" })
                                                 </div>
                                             </div>
                                         </div>
@@ -232,12 +243,13 @@
                                                 <label>Phân hệ</label><span style="color: red;">*</span>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-diamond"></i></span>
-                                                    <select class="form-control" id="roleLevel" disabled>
-                                                        <option>Quản lý</option>
-                                                        <option>Phân phối</option>
-                                                        <option> Kế toán </option>
-                                                        <option> Hàng hóa </option>
-                                                    </select>
+                                                    @*<select class="form-control" id="roleLevel" disabled>
+                                                            <option>Quản lý</option>
+                                                            <option>Phân phối</option>
+                                                            <option> Kế toán </option>
+                                                            <option> Hàng hóa </option>
+                                                        </select>*@
+                                                    @Html.DropDownListFor(model => model.officeId, Model.lstOffice, new { @class = "form-control", @id = "roleLevel", @disabled = "true" })
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -276,7 +288,25 @@
                                                 <label>Ngày sinh</label><span style="color: red;">*</span>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input id="birthDate" type="text" class="form-control" value="20/12/1990" disabled>
+                                                    <input id="birthDate" type="text" class="form-control" value="@Model.userInfor.ngaySinh" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 hide">
+                                                <label>List Email</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    @{ int i = 0;}
+                                                    @foreach (var item in Model.lstAllEmail)
+                                                    {
+                                                        <input type="text" id="email_@i" class="form-control email" value="@item" disabled>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 hide">
+                                                <label>Mã BHYT</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                                    <input id="userId" type="text" class="form-control" value="@Model.userInfor.userId" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,30 +326,18 @@
                                                 <label>Tên tài khoản</label><span style="color: red;">*</span>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                    <input type="text" class="form-control" id="account_name" value="CongNT@gmail.com" disabled>
+                                                    <input type="text" class="form-control" id="account_name" value="@Model.userInfor.account" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Ngày tạo</label><span style="color: red;"></span>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input id="birthDate" type="text" class="form-control" value="20/12/1990" disabled>
+                                                    <input id="birthDate" type="text" class="form-control" value="@Model.userInfor.accountDateCreated" disabled>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!--													 <div class="row">
-
-                                                                                                <div class="col-md-6">
-                                                                                                    <label>Trạng thái</label>
-                                                                                                    <div class="input-group">
-                                                                                                        <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200" disabled>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div> -->
-                                        <a id="btnEditSettingAccount" class="btn btn-danger btn-block pull-right" onclick="doEditSettingAccount();" style="width: 15%; margin : 25px 0px 25px 15px; padding : 5px;">
-                                            <b>Ngưng hoạt động</b>
-                                        </a>
                                         <a id="btnEditSettingAccount" class="btn btn-warning btn-block pull-right" onclick="doEditSettingAccount();" style="width: 15%; margin : 25px 0px 25px 15px; padding : 5px;">
                                             <b>Reset mật khẩu</b>
                                         </a>
@@ -332,5 +350,248 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa đổi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn sửa đổi?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        <input type="button" class="btn btn-success" id="btnSubmit" value="Đồng ý" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-}
+    @section Index{
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="/Assets/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/Assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script src="/Assets/dist/js/bootstrap-toggle.min.js"></script>
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script>
+
+
+
+            var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' onclick='validateData();' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
+            var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block pull-right' onclick='doEdit();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
+            function doEdit() {
+                $('#status').bootstrapToggle('enable');
+                $('#Typerole').removeAttr('disabled');
+                $('#roleLevel').removeAttr('disabled');
+                $('#empName').removeAttr('disabled');
+                $('#bhyt').removeAttr('disabled');
+                $('#phone').removeAttr('disabled');
+                $('#address').removeAttr('disabled');
+                $('#email').removeAttr('disabled');
+                $('#birthDate').removeAttr('disabled');
+                $("#birthDate").datepicker({
+                    //endDate: new Date(),
+                    format: 'dd-mm-yyyy'
+                });
+
+                $('#btnEdit').replaceWith(buttonSave);
+
+            };
+            function doSave() {
+                $('#status').bootstrapToggle('disable');
+                $('#Typerole').prop('disabled', true);
+                $('#roleLevel').prop('disabled', true);
+                $('#empName').prop('disabled', true);
+                $('#bhyt').prop('disabled', true);
+                $('#phone').prop('disabled', true);
+                $('#address').prop('disabled', true);
+                $('#email').prop('disabled', true);
+                $('#birthDate').prop('disabled', true);
+                $('#btnSave').replaceWith(buttonEdit);
+            };
+            function validateData() {
+                var ten = $("#empName").val();
+                var chucVu = $("#Typerole").val();
+                var phanHe = $("#roleLevel").val();
+                var bhyt = $("#bhyt").val();
+                var diaChi = $("#address").val();
+                var ngaySinh = $("#birthDate").val();
+                var soDienThoai = $("#phone").val();
+                var email = $("#email").val();
+
+                if (!ten) {
+                    swal({
+                        title: 'Vui lòng nhập tên!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!checkName(ten)) {
+                    swal({
+                        title: 'Vui lòng nhập họ tên!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+
+                } else if (!soDienThoai) {
+                    swal({
+                        title: 'Vui lòng nhập số điện thoại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(soDienThoai)) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng số điện thoại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!email) {
+                    swal({
+                        title: 'Vui lòng nhập email!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!validateEmail(email)) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng email!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!testExistedMail(email)) {
+                    swal({
+                        title: 'Email đã tồn tại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!bhyt) {
+                    swal({
+                        title: 'Vui lòng nhập số bảo hiểm y tế!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (bhyt.length < 13) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng số bảo hiểm y tế!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!ngaySinh) {
+                    swal({
+                        title: 'Vui lòng nhập ngày sinh!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else {
+                    $("#confirm-process").modal("show");
+                    event.preventDefault();
+                }
+            }
+            function validateEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            };
+            function checkName(name) {
+                name = name.trim();
+                var nameStr = name.split(" ");
+                if (nameStr.length < 2) {
+                    return false;
+                }
+                return true;
+            };
+            function testExistedMail(email) {
+                for (var i = 0; i < $(".email").length; i++) {
+                    if (email === $("#email_" + i).val()) {
+                        return false;
+                        break;
+                    }
+                }
+                return true;
+            }
+            $("#empName").change(function () {
+                upperName($("#empName").val());
+                var name = $("#empName").val().trim().split(" ");
+                var account = "";
+                for (var i = 0; i < name.length; i++) {
+                    account = name[name.length - 1];
+                }
+                for (var i = 0; i < name.length - 1; i++) {
+                    account += name[i].charAt(0);
+                }
+                $.ajax({
+                    url: 'ChiTietNhanVien/checkExistedAcc',
+                    type: 'POST',
+                    data: {
+                        account: account
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $("#account_name").val(data);
+                        $("#account_name").text(data);
+                    }
+                })
+            })
+            function upperName(ten) {
+                var result = "";
+                //var nameStr = name.replace("/(\s+)/", " ");
+                var nameStr = ten.split(" ");
+                for (var i = 0; i < nameStr.length; i++) {
+                    nameStr[i] = nameStr[i].charAt(0).toUpperCase() + nameStr[i].substring(1).toLowerCase();
+                    result += nameStr[i] + " ";
+                }
+                $("#empName").text(result);
+                $("#empName").val(result);
+            };
+            $(document).ready(function () {
+                var isActive = $("#isActive").val();
+                if (isActive == 'Active') {
+                    $("#status").prop("checked", true);
+                } else {
+                    $("#status").prop("checked", false);
+                }
+            });
+            $("#btnSubmit").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'ChiTietNhanVien/UpdateData',
+                    data: {
+                        userId:$("#userId").val(),
+                        ten: $("#empName").val(),
+                        chucVu: $("#Typerole").val(),
+                        phanHe: $("#roleLevel").val(),
+                        bhyt: $("#bhyt").val(),
+                        diaChi: $("#address").val(),
+                        ngaySinh: $("#birthDate").val(),
+                        soDienThoai: $("#phone").val(),
+                        email: $("#email").val(),
+                        isActive: $("#status").is(':checked')
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        swal({
+                            title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                            type: 'success',
+                            timer: 5000,
+                            showConfirmButton: true
+                        }).then(function (result) {
+                            if (result) {
+                                window.location.href = 'QuanTri/ChiTietNhanVien?userId=' + $("#userId").val();
+                            }
+                        })
+                    }
+                })
+
+            });
+        </script>
+    }
+                                                        }

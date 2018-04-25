@@ -11,7 +11,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class BaoCaoChiTietCongNoController : BaseController
+    public class BaoCaoChiTietCongNoController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/BaoCaoChiTietDoanhThu
         [HttpGet]

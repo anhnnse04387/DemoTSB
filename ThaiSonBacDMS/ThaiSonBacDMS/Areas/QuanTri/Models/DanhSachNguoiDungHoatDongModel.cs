@@ -15,5 +15,6 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Models
         public string nameSearch { get; set; }
         public string fromDate { get; set; }
         public string toDate { get; set; }
+        
     }
 }

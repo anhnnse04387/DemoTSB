@@ -22,10 +22,14 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 RoleDetailDAO roleDao = new RoleDetailDAO();
                 OfficeDAO officeDao = new OfficeDAO();
                 RoleDetailDAO roleDeDao = new RoleDetailDAO();
+                UserDAO userDao = new UserDAO();
+
                 TaoNguoiDungModel model = new TaoNguoiDungModel();
 
+                model.lstEmail = userDao.getAllEmail();
                 model.lstOffice = new List<SelectListItem>();
                 model.lstRole = new List<SelectListItem>();
+
                 var lstOffice = officeDao.getListOffice();
                 var lstRole = roleDeDao.lstAllRole();
 
@@ -58,6 +62,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             {
                 UserDAO userDao = new UserDAO();
                 MediaDAO mediaDao = new MediaDAO();
+                AccountDAO accDao = new AccountDAO();
 
                 if (Request.Files.Count > 0)
                 {
@@ -71,6 +76,30 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                     var insuranceNo = Request.Form.GetValues("insuranceNo")[0];
                     var role = Request.Form.GetValues("role")[0];
                     var phoneNumber = Request.Form.GetValues("phoneNumber")[0];
+                    var nameWithoutSign = Common.RemoveVietNameseSign.RemoveSign(name);
+                    var st = nameWithoutSign.Trim().Split(' ');
+                    var account = st[st.Length - 1];
+                    for (var i = 0; i < st.Length - 1; i++)
+                    {
+                        account += st[i].ToCharArray()[0];
+                    }
+                    int isExsit = accDao.checkExistAcc(account);
+                    if (isExsit != 0)
+                    {
+                        int accountId = accDao.getMaxId(account);
+                        string existedAcc = accDao.getExistingAcc(accountId);
+                        string c = existedAcc.Substring(existedAcc.Length - 1);
+                        if (!Char.IsNumber(Convert.ToChar(c)))
+                        {
+                            account += "1";
+                        }
+                        else
+                        {
+                            account += Convert.ToInt32(c) + 1;
+                        }
+                    }
+
+                    var isActive = Request.Form.GetValues("active")[0];
 
                     User user = new User();
                     user.User_name = name;
@@ -105,11 +134,13 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                         // Get the complete folder path and store the file inside it. 
                         string newFname = fname;
                         fname = Path.Combine(Server.MapPath("~/Assets/dist/img/Resource"), fname);
+                        string path = "/Assets/dist/img/Resource/" + file.FileName;
                         file.SaveAs(fname);
 
-                        int mediaId = mediaDao.insertMedia("User", fname, userId);
+                        int mediaId = mediaDao.insertMedia("User", path, userId);
                         int userID = userDao.insertNewUser(user, mediaId.ToString());
-
+                        string passWord = Common.Encryptor.MD5Hash("123@123");
+                        accDao.insertNewAccount(account, passWord, userID, role, isActive);
                     }
 
                 }
@@ -120,6 +151,13 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index");
             }
+        }
+        [HttpPost]
+        public JsonResult checkExsitedMail(string email)
+        {
+            UserDAO dao = new UserDAO();
+            int result = dao.checkExsitedEmail(email);
+            return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

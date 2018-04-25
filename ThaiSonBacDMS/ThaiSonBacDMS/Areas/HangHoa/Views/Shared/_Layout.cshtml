@@ -38,7 +38,7 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="phanphoi_index.html" class="logo">
+            <a href="@Url.Action("Index", "Home")" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>T</b>SB</span>
                 <!-- logo for regular state and mobile devices -->
@@ -60,23 +60,28 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/Assets/dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">@session.user_name</span>
+                                <img src="@session.avatar_str" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@session.user_info.User_name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/Assets/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
-
+                                    <img src="@session.avatar_str" class="img-circle" alt="User Image">
                                     <p>
-                                        @session.user_name<small>@session.role_name</small>
+                                        @session.user_info.User_name<small>@session.role_name</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="phanphoi_nguoidung_thong-tin-nguoi-dung.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        <a href="@Url.Action("Index", "ChiTietNguoiDung")" class="btn btn-default btn-flat">Hồ sơ</a>
                                     </div>
+                                    @if (session.roleSelectFlag)
+                                    {
+                                        <div class="pull-left" style="margin-left: 22px;">
+                                            @Html.ActionLink("Đổi phân hệ", "ConfirmRole", new { area = "", controller = "ConfirmRole" }, new { @class = "btn btn-default btn-flat", })
+                                        </div>
+                                    }
                                     <div class="pull-right">
                                         @Html.ActionLink("Thoát", "Logout", new { area = "", controller = "Login" }, new { @class = "btn btn-default btn-flat" })
                                     </div>
@@ -85,7 +90,7 @@
                         </li>
                     </ul>
                 </div>
-                @{ Html.RenderAction("NoteHeader", "Home"); }
+                @*@{ Html.RenderAction("NoteHeader", "Home"); }*@
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
@@ -95,7 +100,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/Assets/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                        <img src="@session.avatar_str" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>@session.user_name</p>
@@ -104,7 +109,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- search form -->
+                <!-- search form 
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
@@ -115,7 +120,7 @@
                         </span>
                     </div>
                 </form>
-                <!-- /.search form -->
+                /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="treeview">
@@ -127,31 +132,31 @@
                         </a>
                         <ul class="treeview-menu ">
                             <li class="">
-                                <a href="hanghoa_index.html">
+                                <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Chờ xuất kho</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="hanghoa_donhang_danh-sach-da-chuan-bi-hang.html">
+                                <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Đã chuẩn bị hàng</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="hanghoa_donhang_danh-sach-dang-giao-hang.html">
+                                <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Đang giao hàng</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="hanghoa_donhang_danh-sach-doi-tra.html">
+                                <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Đổi trả</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="hanghoa_donhang_danh-sach-hoan-thanh.html">
+                                <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Hoàn thành</span>
                                 </a>
@@ -175,7 +180,7 @@
                     </li>
 
                     <li class="menu-open">
-                        <a href="hanghoa_ton-kho.html">
+                        <a href="@Url.Action("Index", "ErrorPage")">
                             <i class="fa fa-archive"></i> <span>Hàng tồn kho</span>
                         </a>
                     </li>

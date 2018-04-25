@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class ChiTietNoCungCapController : Controller
+    public class ChiTietNoCungCapController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/ChiTietNoCungCap
         public ActionResult Index(string supplierId)
@@ -22,10 +22,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 SupplierDAO supplierDao = new SupplierDAO();
 
                 model.lstDisplay = new List<ChiTietNoCungCap>();
-                model.lstDisplay = dao.getLst(4);
-                model.supplierName = supplierDao.getSupplierName(4);
-                model.supplierId = 4;
-                model.lastedDebt = dao.getLastestDebt(4);
+                model.lstDisplay = dao.getLst(Convert.ToInt32(supplierId));
+                model.supplierName = supplierDao.getSupplierName(Convert.ToInt32(supplierId));
+                model.supplierId = Convert.ToInt32(supplierId);
+                model.lastedDebt = dao.getLastestDebt(Convert.ToInt32(supplierId));
 
                 return View(model);
             }
@@ -42,9 +42,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             Supplier_transactionDAO dao = new Supplier_transactionDAO();
             SupplierDAO supplierDao = new SupplierDAO();
 
-            model.supplierName = supplierDao.getSupplierName(4);
-            model.supplierId = 4;
-            model.lastedDebt = dao.getLastestDebt(4);
+            model.supplierName = supplierDao.getSupplierName(Convert.ToInt32(supplierId));
+            model.supplierId = Convert.ToInt32(supplierId);
+            model.lastedDebt = dao.getLastestDebt(Convert.ToInt32(supplierId));
             return Json(model, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]

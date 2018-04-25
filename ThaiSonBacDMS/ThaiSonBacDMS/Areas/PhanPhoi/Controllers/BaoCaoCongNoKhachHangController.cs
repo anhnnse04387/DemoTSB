@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class BaoCaoCongNoKhachHangController : BaseController
+    public class BaoCaoCongNoKhachHangController : PhanPhoiBaseController
     {
         public ActionResult Index()
         {

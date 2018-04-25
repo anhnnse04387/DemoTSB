@@ -30,6 +30,8 @@
             folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Assets/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="/Assets/dist/css/font/GoogleFont.css">
+    <!-- bootstrap toggle -->
+    <link href="/Assets/dist/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- page css -->
     @RenderSection("IndexStyle", false/*required*/)
     <!-- note srcoll -->
@@ -77,8 +79,14 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="phanphoi_nguoidung_thong-tin-nguoi-dung.html" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        <a href="@Url.Action("Index", "ChiTietNguoiDung")" class="btn btn-default btn-flat">Hồ sơ</a>
                                     </div>
+                                    @if (session.roleSelectFlag)
+                                    {
+                                        <div class="pull-left" style="margin-left: 22px;">
+                                            @Html.ActionLink("Đổi phân hệ", "ConfirmRole", new { area = "", controller = "ConfirmRole" }, new { @class = "btn btn-default btn-flat", })
+                                        </div>
+                                    }
                                     <div class="pull-right">
                                         @Html.ActionLink("Thoát", "Logout", new { area = "", controller = "Login" }, new { @class = "btn btn-default btn-flat" })
                                     </div>
@@ -98,14 +106,14 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/Assets/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                        <img src="@session.avatar_str" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>@session.user_name</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
                     </div>
                 </div>
-                <!-- search form -->
+                <!-- search form
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
@@ -116,17 +124,17 @@
                         </span>
                     </div>
                 </form>
-                <!-- /.search form -->
+                /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="menu-open">
-                        <a href="quantri_index.html">
+                        <a href="@Url.Action("Index", "Home")">
                             <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                         </a>
                     </li>
 
                     <li class="">
-                        <a href="quantri_phanhe_danh-sach-phan-he.html">
+                        <a href="@Url.Action("Index", "Home")">
                             <i class="fa fa-star"></i> <span>Phân hệ</span>
                         </a>
                     </li>
@@ -139,10 +147,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="">
-                                <a href="quantri_nguoidung_danh-sach-dang-hoat-dong.html"><i class="fa fa-users"></i>Đang hoạt động</a>
+                                <a href="@Url.Action("Index", "DanhSachNguoiDungHoatDong")"><i class="fa fa-users"></i>Đang hoạt động</a>
                             </li>
                             <li>
-                                <a href="quantri_nguoidung_danh-sach-dung-hoat-dong.html"><i class="fa fa-users"></i> Đã dừng hoạt động</a>
+                                <a href="@Url.Action("Index", "DanhSachNguoiDungHoatDong")"><i class="fa fa-users"></i> Đã dừng hoạt động</a>
                             </li>
                         </ul>
                     </li>
@@ -155,7 +163,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="">
-                                <a href="quantri_hanghoa_danh-sach-danh-muc.html"><i class="fa fa-tags"></i>Danh mục</a>
+                                <a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-tags"></i>Danh mục</a>
                             </li>
                             <li class="treeview">
                                 <a href="#">
@@ -165,8 +173,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li class=""><a href="quanly_hanghoa_tao-yeu-cau-nhap.html"><i class="fa fa-edit"></i> Đang kinh doanh</a></li>
-                                    <li class=""><a href="quanly_hanghoa_nhap-hoa-don.html"><i class="fa fa-id-card-o"></i> Ngừng kinh doanh</a></li>
+                                    <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-edit"></i> Đang kinh doanh</a></li>
+                                    <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-id-card-o"></i> Ngừng kinh doanh</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -180,10 +188,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="">
-                                <a href="quantri_tainguyen_danh-sach-trang.html"><i class="fa fa-list-alt"></i>Danh sách trang</a>
+                                <a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-list-alt"></i>Danh sách trang</a>
                             </li>
                             <li>
-                                <a href="quantri_tainguyen_danh-sach-file.html"><i class="fa fa-files-o"></i> Các file tải lên</a>
+                                <a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-files-o"></i> Các file tải lên</a>
                             </li>
                         </ul>
                     </li>

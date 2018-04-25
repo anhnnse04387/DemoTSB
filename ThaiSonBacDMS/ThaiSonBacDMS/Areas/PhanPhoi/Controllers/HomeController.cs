@@ -9,11 +9,10 @@ using ThaiSonBacDMS.Common;
 using ThaiSonBacDMS.Controllers;
 using Models.Framework;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/Home
         [HttpGet]
@@ -152,14 +151,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 tsc.diffrentPercent = 0;
                 int valuePrevious = orderItemDAO.
                     getCategoryQuantityByDate(item.Key, firstMonthPrevious, lastMonthPrevious);
-                if (item.Value >= valuePrevious && valuePrevious != 0)
+                if (item.Value >= valuePrevious)
                 {
                     tsc.categoryFlag = true;
-                    tsc.diffrentPercent = (decimal) (item.Value - valuePrevious) / valuePrevious * 100;
-                }else if(item.Value != 0)
+                    tsc.diffrentPercent = valuePrevious == 0 ? 100 : (decimal)(item.Value - valuePrevious) / valuePrevious * 100;
+                }
+                else
                 {
                     tsc.categoryFlag = false;
-                    tsc.diffrentPercent = (valuePrevious - item.Value) / item.Value * 100;
+                    tsc.diffrentPercent = item.Value == 0 ? 100 : (valuePrevious - item.Value) / item.Value * 100;
                 }
                 listTSC.Add(tsc);
             }
@@ -176,7 +176,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var notiDAO = new NotificationDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 List<Notification> listNoti = new List<Notification>();
-                listNoti = notiDAO.getByUserID(session.user_id);
+                listNoti.AddRange(notiDAO.getByUserID(session.user_id));
+                listNoti.AddRange(notiDAO.getByRoleID(session.roleSelectedID));
                 return PartialView(listNoti);
             }
             catch(Exception e)
@@ -185,6 +186,34 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 RedirectToAction("Index");
             }
             return PartialView();
+        }
+
+        public ActionResult ChangeStatusNote(string link, int notiID)
+        {
+            link = "/ChiTietPhieu/Index?orderId=O1";
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            new NotificationDAO().changeStatus(notiID);
+            switch(session.roleSelectedID)
+            {
+                case 1:
+                    link = "/QuanTri" + link;
+                    break;
+                case 2:
+                    link = "/QuanLy" + link;
+                    break;
+                case 3:
+                    link = "/PhanPhoi" + link;
+                    break;
+                case 4:
+                    link = "/HangHoa" + link;
+                    break;
+                case 5:
+                    link = "/KeToan" + link;
+                    break;
+                default:
+                    break;
+            }
+            return Redirect(link);
         }
         [ChildActionOnly]
         public PartialViewResult NoteEdit()

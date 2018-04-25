@@ -15,13 +15,13 @@ using ThaiSonBacDMS.Controllers;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class DanhSachNhaCungCapController : BaseController
+    public class DanhSachNhaCungCapController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/DanhSachNhaCungCap
         [HttpGet]
         public ActionResult Index()
         {
-            DanhSachCungCapModel model = new DanhSachCungCapModel();
+            DanhSachConNoCungCapModel model = new DanhSachConNoCungCapModel();
             model.lstSupp = new List<Supplier>();
             model.lstSupp = new SupplierDAO().getSupplier();
             return View(model);
@@ -30,7 +30,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         [HttpPost]
         public ActionResult Index(string supp_name, string dateFrom, string dateTo)
         {
-            DanhSachCungCapModel model = new DanhSachCungCapModel();
+            DanhSachConNoCungCapModel model = new DanhSachConNoCungCapModel();
             model.lstSupp = new List<Supplier>();
             List<Supplier> sup = new SupplierDAO().getSupplier();
             try
