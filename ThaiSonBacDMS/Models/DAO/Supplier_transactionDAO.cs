@@ -27,7 +27,7 @@ namespace Models.DAO
                 foreach (var item in query)
                 {
                     ChiTietNoCungCap obj = new ChiTietNoCungCap();
-                    obj.ngay = item.st.Date_Created?.ToString("dd/MM/yyyy");
+                    obj.ngay = item.st.Date_Created?.ToString("dd-MM-yyyy");
                     obj.soPo = item.PO_no;
                     obj.dienGiai = item.st.Description;
                     obj.tienHang = item.st.Sub_total;
@@ -107,7 +107,7 @@ namespace Models.DAO
             }
             return debt;
         }
-        public int insertData(string supplierId,string ngay, string dienGiai, string noCu, string tienHang, string thanhToan, string duNo, string ghiChu,int userId)
+        public int insertData(string supplierId, string ngay, string dienGiai, string noCu, string tienHang, string thanhToan, string duNo, string ghiChu, int userId)
         {
             Supplier_transaction item = new Supplier_transaction();
 
@@ -123,6 +123,149 @@ namespace Models.DAO
             db.Supplier_transaction.Add(item);
             return db.SaveChanges();
         }
+        //danh sach cong no cung cap
+        public List<DanhSachNoCungCap> listDebtSupplier()
+        {
+            List<DanhSachNoCungCap> lst = new List<DanhSachNoCungCap>();
+            var query1 = from supplier in db.Supplier_transaction
+                         group supplier by supplier.Supplier_ID into g
+                         select new
+                         {
+                             transactionId = g.Max(x => x.Transaction_ID)
+                         };
+            var query2 = from supplier in db.Supplier_transaction
+                         join maxId in query1 on supplier.Transaction_ID equals maxId.transactionId
+                         join sup in db.Suppliers on supplier.Supplier_ID equals sup.Supplier_ID
+                         select new
+                         {
+                             supplier,
+                             tenNhaCungCap = sup.Supplier_name
+                         };
 
+            if (query2 != null)
+            {
+                foreach (var item in query2)
+                {
+                    DanhSachNoCungCap ds = new DanhSachNoCungCap();
+
+                    ds.tenNhaCungCap = item.tenNhaCungCap;
+                    ds.noDauKy = Convert.ToDecimal(item.supplier.Old_debt);
+                    ds.nhapTrongKy = Convert.ToDecimal(item.supplier.Sub_total);
+                    ds.thanhToan = Convert.ToDecimal(item.supplier.Pay);
+                    ds.conNo = Convert.ToDecimal(item.supplier.Debt);
+                    ds.supplierId = Convert.ToInt32(item.supplier.Supplier_ID);
+                    ds.dienGiai = item.supplier.Description;
+
+                    lst.Add(ds);
+                }
+            }
+            return lst;
+        }
+        public List<DanhSachNoCungCap> lstSearchDebtSupplier(string supplierId, string fromValue, string toValue)
+        {
+            List<DanhSachNoCungCap> lst = new List<DanhSachNoCungCap>();
+            var query1 = from supplier in db.Supplier_transaction
+                         group supplier by supplier.Supplier_ID into g
+                         select new
+                         {
+                             transactionId = g.Max(x => x.Supplier_ID)
+                         };
+            var query2 = from supplier in db.Supplier_transaction
+                         join maxId in query1 on supplier.Transaction_ID equals maxId.transactionId
+                         join sup in db.Suppliers on supplier.Supplier_ID equals sup.Supplier_ID
+                         select new
+                         {
+                             supplier,
+                             tenNhaCungCap = sup.Supplier_name
+                         };
+            if (!string.IsNullOrEmpty(supplierId))
+            {
+                query2 = query2.Where(x => x.tenNhaCungCap.ToString().Equals(supplierId));
+            }
+            if (!string.IsNullOrEmpty(fromValue) && string.IsNullOrEmpty(toValue))
+            {
+                Decimal value = Convert.ToDecimal(fromValue);
+                query2 = query2.Where(x => x.supplier.Debt >= value);
+            }
+            if (string.IsNullOrEmpty(fromValue) && !string.IsNullOrEmpty(toValue))
+            {
+                Decimal value = Convert.ToDecimal(toValue);
+                query2 = query2.Where(x => x.supplier.Debt <= value);
+            }
+            if (!string.IsNullOrEmpty(fromValue) && !string.IsNullOrEmpty(toValue))
+            {
+                Decimal value1 = Convert.ToDecimal(fromValue);
+                Decimal value2 = Convert.ToDecimal(toValue);
+                query2 = query2.Where(x => x.supplier.Debt >= value1 && x.supplier.Debt <= value2);
+            }
+            if (query2 != null)
+            {
+                foreach (var item in query2)
+                {
+                    DanhSachNoCungCap ds = new DanhSachNoCungCap();
+
+                    ds.tenNhaCungCap = item.tenNhaCungCap;
+                    ds.noDauKy = Convert.ToDecimal(item.supplier.Old_debt);
+                    ds.nhapTrongKy = Convert.ToDecimal(item.supplier.Sub_total);
+                    ds.thanhToan = Convert.ToDecimal(item.supplier.Pay);
+                    ds.conNo = Convert.ToDecimal(item.supplier.Debt);
+                    ds.supplierId = Convert.ToInt32(item.supplier.Supplier_ID);
+                    ds.dienGiai = item.supplier.Description;
+
+                    lst.Add(ds);
+                }
+            }
+            return lst;
+        }
+        public List<Autocomplete> autoCompleteNameSearch(string searchValue)
+        {
+            List<Autocomplete> lst = new List<Autocomplete>();
+
+            var query1 = from supplier in db.Supplier_transaction
+                         group supplier by supplier.Supplier_ID into g
+                         select new
+                         {
+                             transactionId = g.Max(x => x.Transaction_ID)
+                         };
+            var query2 = from supplier in db.Supplier_transaction
+                         join maxId in query1 on supplier.Transaction_ID equals maxId.transactionId
+                         join sup in db.Suppliers on supplier.Supplier_ID equals sup.Supplier_ID
+                         select new
+                         {
+                             supplier,
+                             tenNhaCungCap = sup.Supplier_name
+                         };
+
+            query2 = query2.Where(x => x.tenNhaCungCap.ToLower().Contains(searchValue.ToLower()));
+            if (query2 != null)
+            {
+                foreach (var item in query2)
+                {
+                    Autocomplete obj = new Autocomplete();
+                    obj.key = item.tenNhaCungCap;
+                    obj.value = Convert.ToInt32(item.supplier.Supplier_ID);
+                    lst.Add(obj);
+                }
+            }
+            return lst;
+        }
+        public int insertNewSupplierDebt(string supplierId, string nhapTrongKy, string thanhToan, string conNo, string noDauKy, string dienGiai, int userId)
+        {
+            Supplier_transaction item = new Supplier_transaction();
+
+            item.Date_Created = DateTime.Now;
+            item.Supplier_ID = Convert.ToInt32(supplierId);
+            item.Old_debt = Convert.ToDecimal(noDauKy);
+            item.Description = dienGiai;
+            item.Sub_total = nhapTrongKy != "" ? Convert.ToDecimal(nhapTrongKy) : 0;
+            item.Pay = thanhToan != "" ? Convert.ToDecimal(thanhToan) : 0;
+            item.Debt = Convert.ToDecimal(conNo);
+            item.User_ID = Convert.ToInt32(userId);
+
+            db.Supplier_transaction.Add(item);
+
+
+            return db.SaveChanges();
+        }
     }
 }

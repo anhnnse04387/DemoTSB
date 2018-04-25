@@ -108,7 +108,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -129,7 +129,7 @@ namespace Models.DAO
             var query = from user in context.Users
                         join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
                         join role in context.Role_detail on user.Role_ID equals role.Role_ID
-                        where user.Status == 1 && userName.Equals(userName)
+                        where user.Status == 1 && userName.Contains(userName)
                         orderby user.Date_created ascending
                         select new
                         {
@@ -144,7 +144,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -204,7 +204,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -248,7 +248,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -292,7 +292,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -361,7 +361,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -398,7 +398,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -434,7 +434,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -494,7 +494,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -538,7 +538,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -582,7 +582,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -651,7 +651,7 @@ namespace Models.DAO
                 {
                     DanhSachNguoiDung ds = new DanhSachNguoiDung();
 
-
+                    ds.userId = item.user.User_ID;
                     ds.tenNguoiDung = item.user.User_name;
                     ds.anhDaiDien = item.Location;
                     ds.ngayTao = Convert.ToDateTime(item.user.Date_created);
@@ -701,17 +701,19 @@ namespace Models.DAO
                         join media in context.Media on user.Avatar_ID equals media.Media_ID.ToString()
                         join role in context.Role_detail on user.Role_ID equals role.Role_ID
                         join office in context.Offices on user.Office_ID equals office.Office_ID
+                        join acc in context.Accounts on user.User_ID equals acc.User_ID
                         where user.User_ID == userId
                         select new
                         {
                             user,
                             image = media.Location,
                             roleName = role.Role_name,
-                            office = office.Office_name
+                            office = office.Office_name,
+                            acc
                         };
             if (query != null)
             {
-              foreach(var user in query)
+                foreach (var user in query)
                 {
                     item.tenNguoiDung = user.user.User_name;
                     item.anhDaiDien = user.image;
@@ -721,15 +723,65 @@ namespace Models.DAO
                     item.soDienThoai = user.user.Phone;
                     item.trangThai = user.user.Status == 1 ? "Active" : "Deactive";
                     item.chucVu = user.office;
-                    item.ngaySinh = user.user.Date_of_birth.ToString();
-                    item.ngaySinh = Convert.ToDateTime(user.user.Date_of_birth).ToString();
+                    item.ngaySinh = user.user.Date_of_birth?.ToString("dd-MM-yyyy");
                     item.BHYT = user.user.Insurance_Code;
                     item.email = user.user.Mail;
+                    item.roleId = user.user.Role_ID.ToString();
+                    item.officeId = user.user.Office_ID.ToString();
+                    item.account = user.acc.Account_name;
+                    item.accountDateCreated = user.acc.Date_Created?.ToString("dd-MM-yyyy");
 
                 }
 
             }
             return item;
+        }
+        public int checkExsitedEmail(string email)
+        {
+            var query = context.Users.Where(x => x.Mail.Equals(email)).ToList();
+            if (query.Count() != 0)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        public List<string> getAllEmail()
+        {
+            List<string> lst = new List<string>();
+            var query = from user in context.Users
+                        select new
+                        {
+                            user
+                        };
+            if (query.Count() != 0)
+            {
+                foreach (var item in query)
+                {
+                    lst.Add(item.user.Mail);
+                }
+            }
+            return lst;
+        }
+        public int updateUser(string userId, string ten, string chucVu, string phanHe, string soDienThoai, string email, string bhyt, string diaChi, string ngaySinh,string isActive)
+        {
+            int result=0;
+
+            var query = context.Users.Single(x => x.User_ID.ToString().Equals(userId));
+            if (query != null)
+            {
+
+                query.User_name = ten;
+                query.Office_ID = Convert.ToByte(chucVu);
+                query.Role_ID = Convert.ToByte(phanHe);
+                query.Phone = soDienThoai;
+                query.Mail = email;
+                query.Date_of_birth = DateTime.ParseExact(ngaySinh, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query.User_Address = diaChi;
+                query.Status = isActive.Equals("true") ? 1 : 0;
+
+                result = context.SaveChanges();
+            }
+            return result;
         }
     }
 }

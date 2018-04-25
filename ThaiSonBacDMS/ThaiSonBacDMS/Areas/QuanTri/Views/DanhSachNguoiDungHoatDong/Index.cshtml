@@ -200,7 +200,7 @@
                                                 {
                                                     <tr>
                                                         <td class="text-center length">@i</td>
-                                                        <td><a href="quanly_nhanvien_chi-tiet-nhan-vien.html">@item.tenNguoiDung</a></td>
+                                                        <td>@Html.ActionLink(@item.tenNguoiDung,"Index","ChiTietNhanVien",new { userId=@item.userId},null)</td>
                                                         <td class="text-center">
                                                             <image src="@item.anhDaiDien" alt="User Image" style="height: 60px;height: 60px" />
                                                         </td>

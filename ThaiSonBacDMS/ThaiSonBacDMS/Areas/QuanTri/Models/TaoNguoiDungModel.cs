@@ -19,5 +19,6 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Models
         public string insuranceNo { get; set; }
         public List<SelectListItem> lstRole { get; set; }
         public List<SelectListItem> lstOffice { get; set; }
+        public List<string> lstEmail { get; set; }
     }
 }
