@@ -75,9 +75,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             var count = 0;
             var lineStatus = "calc((40% -140px) * 0.5)";
             var dict = new Dictionary<int, StatusDetailModel>();
-            var statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 1).OrderByDescending(x => x.Date_change).FirstOrDefault();
+            var statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 1 || x.Status_ID == 2) && x.Order_part_ID == null).FirstOrDefault();
             dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3).OrderByDescending(x => x.Date_change).FirstOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3 && x.Order_part_ID == null).FirstOrDefault();
             if (statusDetail != null)
             {
                 dict.Add(3, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
@@ -88,7 +88,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 5).OrderByDescending(x => x.Date_change).FirstOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 5 && x.Order_part_ID == null).FirstOrDefault();
             if (count == 1)
             {
                 if (statusDetail != null)
@@ -106,7 +106,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 dict.Add(5, new StatusDetailModel { });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 6).OrderByDescending(x => x.Date_change).FirstOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 6 && x.Order_part_ID == null).FirstOrDefault();
             if (count == 2)
             {
                 if (statusDetail != null)
@@ -124,7 +124,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 dict.Add(6, new StatusDetailModel { });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 7).OrderByDescending(x => x.Date_change).FirstOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 7 && x.Order_part_ID == null).FirstOrDefault();
             if (count == 3)
             {
                 if (statusDetail != null)
@@ -295,9 +295,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 var lineStatus = "calc((40% -140px) * 0.5)";
                 var dict = new Dictionary<int, StatusDetailModel>();
                 var lstStatus = detailStatusDAO.getStatus(op.Order_part_ID);
-                var statusDetail = lstStatus.Where(x => x.Status_ID == 1).OrderByDescending(x => x.Date_change).FirstOrDefault();
+                var statusDetail = lstStatus.Where(x => x.Status_ID == 1 || x.Status_ID == 2).FirstOrDefault();
                 dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
-                statusDetail = lstStatus.Where(x => x.Status_ID == 3).OrderByDescending(x => x.Date_change).FirstOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 3).FirstOrDefault();
                 if (statusDetail != null)
                 {
                     dict.Add(3, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
@@ -308,7 +308,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
                 }
-                statusDetail = lstStatus.Where(x => x.Status_ID == 5).OrderByDescending(x => x.Date_change).FirstOrDefault(); lstStatus.Where(x => x.Status_ID == 5).SingleOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 5).FirstOrDefault();
                 if (count == 1)
                 {
                     if (statusDetail != null)
@@ -326,7 +326,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     dict.Add(5, new StatusDetailModel { });
                 }
-                statusDetail = lstStatus.Where(x => x.Status_ID == 6).OrderByDescending(x => x.Date_change).FirstOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 6).FirstOrDefault();
                 if (count == 2)
                 {
                     if (statusDetail != null)
@@ -344,7 +344,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     dict.Add(6, new StatusDetailModel { });
                 }
-                statusDetail = lstStatus.Where(x => x.Status_ID == 7).OrderByDescending(x => x.Date_change).FirstOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 7).FirstOrDefault();
                 if (count == 3)
                 {
                     if (statusDetail != null)

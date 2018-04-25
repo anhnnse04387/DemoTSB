@@ -26,6 +26,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             model.deliveryAddress = data.Address_delivery;
             model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
+            model.statusId = data.Status_ID;
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
             model.taxCode = data.Tax_code;
@@ -70,7 +71,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.keToan_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count, vat, invoiceNumber);
+                dao.keToan_checkOut(orderId, session.user_id, vat, invoiceNumber);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

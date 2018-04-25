@@ -18,5 +18,10 @@ namespace Models.DAO
         {
             return context.Notifications.Where(x => x.User_ID == user_id).ToList();
         }
+        public void createNotification(Notification nof)
+        {
+            context.Notifications.Add(nof);
+            context.SaveChanges();
+        }
     }
 }

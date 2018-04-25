@@ -16,6 +16,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public String deliveryAddress { get; set; }
         public String invoiceAddress { get; set; }
         public String status { get; set; }
+        public byte? statusId { get; set; }
         public int? rate { get; set; }
         public String taxCode { get; set; }
         public decimal subTotal { get; set; }

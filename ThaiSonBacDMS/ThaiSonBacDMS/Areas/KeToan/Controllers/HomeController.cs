@@ -14,13 +14,13 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
         // GET: PhanPhoi/OrderList
         public ActionResult Index()
         {
-            var orderDAO = new OrderTotalDAO();
+            var orderDAO = new OrderPartDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 3 || x.Status_ID == 10 || x.Status_ID == 11).ToList();
+            var lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID == 3 || x.Status_ID == 10 || x.Status_ID == 11).OrderBy(x => x.Order_part_ID).ToList();
             var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            foreach (Order_part o in lstOrder)
             {
                 var spanClass = "";
                 var status = statusDAO.getStatus(o.Status_ID);
@@ -38,7 +38,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                     orderId = o.Order_ID,
                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
                     date = o.Date_created,
-                    delivery = o.Order_part.Count,
+                    delivery = 1,
                     note = o.Note,
                     total = o.Total_price,
                     status = status,
@@ -50,15 +50,30 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             return View(model);
         }
 
+        public ActionResult ChooseCustomer(String name)
+        {
+            try
+            {
+                var dao = new CustomerDAO();
+                var customer = dao.getCustomer().Where(x => x.Customer_name.Trim().ToLower().Contains(name.Trim().ToLower())).Select(x => x.Customer_name).ToList();
+                return Json(customer, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+        }
+
         public ActionResult Release()
         {
-            var orderDAO = new OrderTotalDAO();
+            var orderDAO = new OrderPartDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 4).ToList();
+            var lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID == 4).OrderBy(x => x.Order_part_ID).ToList();
             var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            foreach (Order_part o in lstOrder)
             {
                 var status = statusDAO.getStatus(o.Status_ID);
                 var item = new ListItemModel
@@ -66,7 +81,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                     orderId = o.Order_ID,
                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
                     date = o.Date_created,
-                    delivery = o.Order_part.Count,
+                    delivery = 1,
                     note = o.Note,
                     total = o.Total_price,
                     status = status,
@@ -82,19 +97,19 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
         {
             try
             {
-                var orderDAO = new OrderTotalDAO();
-                var lstOrder = new List<Order_total>();
+                var orderDAO = new OrderPartDAO();
+                var lstOrder = new List<Order_part>();
                 if (model.statusId == 12)
                 {
-                    lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID > 3 && x.Status_ID < 9).ToList();
+                    lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID > 3 && x.Status_ID < 9).ToList();
                 }
                 else if (model.statusId == 13)
                 {
-                    lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 3 || x.Status_ID == 10 || x.Status_ID == 11).ToList();
+                    lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID == 3 || x.Status_ID == 10 || x.Status_ID == 11).ToList();
                 }
                 else
                 {
-                    lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == model.statusId).ToList();
+                    lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID == model.statusId).ToList();
                 }
                 if (!String.IsNullOrEmpty(model.orderId))
                 {
@@ -119,7 +134,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                 var items = new List<ListItemModel>();
                 var customerDao = new CustomerDAO();
                 var statusDAO = new StatusDAO();
-                foreach (Order_total o in lstOrder)
+                foreach (Order_part o in lstOrder)
                 {
                     var spanClass = "";
                     var status = statusDAO.getStatus(o.Status_ID);
@@ -152,7 +167,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                         orderId = o.Order_ID,
                         customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
                         date = o.Date_created,
-                        delivery = o.Order_part.Count,
+                        delivery = 1,
                         note = o.Note,
                         total = o.Total_price,
                         status = status,
@@ -175,7 +190,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                         items = items.Where(x => x.delivery > 1).ToList();
                     }
                 }
-                model.items = items;
+                model.items = items.OrderBy(x => x.orderId).ToList();
                 return PartialView("_searchPartial", model);
             }
             catch (Exception e)

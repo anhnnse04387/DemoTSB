@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Order_items
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [StringLength(10)]

@@ -101,7 +101,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, dao.getOrder(orderId).Order_part.Count, receiveInvoice, receiveBallot);
+                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, receiveInvoice, receiveBallot);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -117,7 +117,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.kho_checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count, takeInvoice, takeBallot);
+                dao.kho_checkOut(orderId, session.user_id, takeInvoice, takeBallot);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Edit_history
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]

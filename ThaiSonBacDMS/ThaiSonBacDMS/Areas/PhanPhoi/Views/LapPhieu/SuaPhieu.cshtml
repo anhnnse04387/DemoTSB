@@ -8,6 +8,7 @@
         vertical-align: super;
         font-size: medium;
     }
+
     .menu-button {
         background-color: #fcf9f9;
         margin-top: 20px;
@@ -197,6 +198,18 @@
                                                             @Html.TextBoxFor(model => model.taxCode, new { @class = "form-control", @id = "taxCode", @required = "required" })
                                                         </div>
                                                     </div>
+                                                    @if (Model.dateExport != null)
+                                                    {
+                                                        <div class="col-md-6" id="exportDiv">
+                                                            <label>Ngày xuất</label><span style="color: red;">*</span>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                                                <input type="text" style="padding-left: 12px;" value="@Model.dateExport" class="form-control datepicker" id="exportDate" required>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-6">
                                                         <label>Trạng thái</label>
                                                         <div class="input-group" style="margin-top: 7px;">
@@ -240,15 +253,15 @@
                                                         <tr class="addingRow">
                                                             <td>@(i + 1)</td>
                                                             <td style="vertical-align: middle; width: 20%;">
-                                                                <input type="text" value="@Model.readItems[i].code" class="form-control code" required/>
-                                                                <input type="hidden" class="productId" value="@Model.readItems[i].productId"/>
-                                                                <input type="hidden" class="qttInven" value="@Model.readItems[i].qttInven"/>
-                                                                <input type="hidden" class="qttBox" value="@Model.readItems[i].qttBox"/>
+                                                                <input type="text" value="@Model.readItems[i].code" class="form-control code" required />
+                                                                <input type="hidden" class="productId" value="@Model.readItems[i].productId" />
+                                                                <input type="hidden" class="qttInven" value="@Model.readItems[i].qttInven" />
+                                                                <input type="hidden" class="qttBox" value="@Model.readItems[i].qttBox" />
                                                             </td>
                                                             <td style="vertical-align: middle;"><input type="text" value="@Model.readItems[i].param" class="form-control param" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Quantity" style="text-align:right;" class="form-control cai" /></td>
                                                             <td><input type="text" value="@Model.readItems[i].Box" style="text-align:right;" class="form-control thung" /></td>
-                                                            <td><output class="number dongia">@Model.readItems[i].per</output><input type="hidden" class="priceBeforeVAT" value="@Model.readItems[i].priceBeforeVat"/></td>
+                                                            <td><output class="number dongia">@Model.readItems[i].per</output><input type="hidden" class="priceBeforeVAT" value="@Model.readItems[i].priceBeforeVat" /></td>
                                                             <td><output class="number tienchuack">@Model.readItems[i].priceBeforeDiscount</output></td>
                                                             <td><input type="text" value="@Model.readItems[i].Discount" class="form-control number ck" /></td>
                                                             <td><output class="number tiendack">@Model.readItems[i].Price</output></td>
@@ -297,7 +310,7 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td>
-                                                            <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" value="@Model.discount"/>
+                                                            <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" value="@Model.discount" />
                                                         </td>
                                                         <td style="text-align: right; vertical-align: middle;"><output class="tienck number" style="color: #fff; font-weight: bold;">@Model.discountMoney</output></td>
                                                         <td></td>
@@ -514,17 +527,17 @@
                                                                     <tr class="addingSubRow">
                                                                         <td>@(k + 1)</td>
                                                                         <td style="vertical-align: middle; width: 20%;">
-                                                                            <input type="text" required class="form-control subCode" value="@Model.readPart[j].items[k].code"/>
-                                                                            <input type="hidden" class="productId" value="@Model.readPart[j].items[k].productId"/>
-                                                                            <input type="hidden" class="qttInven" value="@Model.readPart[j].items[k].qttInven"/>
-                                                                            <input type="hidden" class="qttBox" value="@Model.readPart[j].items[k].qttBox"/>
+                                                                            <input type="text" required class="form-control subCode" value="@Model.readPart[j].items[k].code" />
+                                                                            <input type="hidden" class="productId" value="@Model.readPart[j].items[k].productId" />
+                                                                            <input type="hidden" class="qttInven" value="@Model.readPart[j].items[k].qttInven" />
+                                                                            <input type="hidden" class="qttBox" value="@Model.readPart[j].items[k].qttBox" />
                                                                         </td>
-                                                                        <td style="vertical-align: middle;"><input type="text" required class="form-control param" value="@Model.readPart[j].items[k].param"/></td>
-                                                                        <td><input type="text" class="form-control cai" style="text-align: right;" required value="@Model.readPart[j].items[k].Quantity"/></td>
-                                                                        <td><input type="text" class="form-control thung" style="text-align: right;" required value="@Model.readPart[j].items[k].Box"/></td>
+                                                                        <td style="vertical-align: middle;"><input type="text" required class="form-control param" value="@Model.readPart[j].items[k].param" /></td>
+                                                                        <td><input type="text" class="form-control cai" style="text-align: right;" required value="@Model.readPart[j].items[k].Quantity" /></td>
+                                                                        <td><input type="text" class="form-control thung" style="text-align: right;" required value="@Model.readPart[j].items[k].Box" /></td>
                                                                         <td><output class="dongia number">@Model.readPart[j].items[k].per</output><input type="hidden" class="priceBeforeVAT" value="@Model.readPart[j].items[k].priceBeforeVat" /></td>
                                                                         <td><output class="tienchuack number">@Model.readPart[j].items[k].priceBeforeDiscount</output></td>
-                                                                        <td><input type="text" class="form-control ck number" value="@Model.readPart[j].items[k].Discount"/></td>
+                                                                        <td><input type="text" class="form-control ck number" value="@Model.readPart[j].items[k].Discount" /></td>
                                                                         <td><output class="tiendack number">@Model.readPart[j].items[k].Price</output></td>
                                                                         <td>
                                                                             @if (k > 0)
@@ -571,7 +584,7 @@
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td>
-                                                                        <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" value="@Model.readPart[j].discount"/>
+                                                                        <input type="text" class="form-control tongck number" style="text-align: right; float: right; font-weight: bold;" value="@Model.readPart[j].discount" />
                                                                     </td>
                                                                     <td style="text-align: right; vertical-align: middle;"><output class="tienck number" style="color: #fff; font-weight: bold;">@Model.readPart[j].discountMoney</output></td>
                                                                     <td></td>

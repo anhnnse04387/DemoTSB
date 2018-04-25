@@ -10,6 +10,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
 {
     public class OrderTotalModel
     {
+        public DateTime? dateExport { get; set; }
         public String invoiceNumber { get; set; }
         public String dayCreated { get; set; }
         public Dictionary<int, StatusDetailModel> dict { get; set; }

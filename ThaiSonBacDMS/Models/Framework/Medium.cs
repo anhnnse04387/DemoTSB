@@ -14,7 +14,6 @@ namespace Models.Framework
             Product_media = new HashSet<Product_media>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Media_ID { get; set; }
 

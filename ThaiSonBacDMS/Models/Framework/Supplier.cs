@@ -15,7 +15,6 @@ namespace Models.Framework
             Supplier_transaction = new HashSet<Supplier_transaction>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Supplier_ID { get; set; }
 

@@ -16,7 +16,6 @@ namespace Models.Framework
             Exchange_rate = new HashSet<Exchange_rate>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int User_ID { get; set; }
 

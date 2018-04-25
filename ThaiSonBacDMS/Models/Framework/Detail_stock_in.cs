@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Detail_stock_in
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? Stock_in_ID { get; set; }

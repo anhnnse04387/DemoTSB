@@ -15,7 +15,6 @@ namespace Models.Framework
             Customer_transaction = new HashSet<Customer_transaction>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Customer_ID { get; set; }
 

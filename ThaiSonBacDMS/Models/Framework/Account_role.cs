@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Account_role
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? Account_ID { get; set; }

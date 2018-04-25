@@ -27,5 +27,10 @@ namespace Models.DAO
             return null;
         }        
 
+        public List<Order_part> getAllOrderPart()
+        {
+            return db.Order_part.ToList();
+        }
+
     }
 }

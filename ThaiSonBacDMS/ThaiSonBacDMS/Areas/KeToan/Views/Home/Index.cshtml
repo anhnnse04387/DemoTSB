@@ -194,7 +194,33 @@
                 }
             });
             $('.datepicker').datepicker();
+            customerATC();
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+        }
+        function customerATC() {
+            $('#customer').autocomplete({
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length > 2) {
+                        $.ajax({
+                            url: '/KeToan/Home/ChooseCustomer',
+                            data: {
+                                name: re
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m,
+                                        value: m
+                                    };
+                                });
+                                responseFn(array);
+                            }
+                        });
+                    }
+                }
+            }).autocomplete("widget").addClass("fixed-height");
         }
         function getData() {
             var orderId = $('#orderId').val();
