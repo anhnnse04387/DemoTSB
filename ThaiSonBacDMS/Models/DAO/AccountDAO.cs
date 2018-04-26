@@ -103,5 +103,32 @@ namespace Models.DAO
         {
             return context.Accounts.SingleOrDefault(x => x.Account_ID == accountId).Account_name;
         }
+
+        public int updateAccount(string userId,string accountName,string roleId,string isActive)
+        {
+            int result = 0;
+            var account = context.Accounts.Single(x => x.User_ID.ToString().Equals(userId));
+            if (account != null)
+            {
+                account.Account_name = accountName;
+                account.Role_ID = Convert.ToByte(roleId);
+                account.Account_Status = isActive.Equals("true") ? "Active" : "Deactive";
+
+                result = context.SaveChanges();
+            }
+            return result;
+        }
+
+        public int resetPassword(string userId,string newPassword)
+        {
+            int result = 0;
+            var account = context.Accounts.SingleOrDefault(x => x.User_ID.Equals(userId));
+            if (account != null)
+            {
+                account.Password = newPassword;
+                result = context.SaveChanges();
+            }
+            return result;
+        }
     }
 }

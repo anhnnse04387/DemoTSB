@@ -299,6 +299,7 @@
                                                     @foreach (var item in Model.lstAllEmail)
                                                     {
                                                         <input type="text" id="email_@i" class="form-control email" value="@item" disabled>
+                                                        i++;
                                                     }
                                                 </div>
                                             </div>
@@ -338,7 +339,7 @@
                                             </div>
                                         </div>
 
-                                        <a id="btnEditSettingAccount" class="btn btn-warning btn-block pull-right" onclick="doEditSettingAccount();" style="width: 15%; margin : 25px 0px 25px 15px; padding : 5px;">
+                                        <a id="btnResetPass" class="btn btn-warning btn-block pull-right" style="width: 15%; margin : 25px 0px 25px 15px; padding : 5px;">
                                             <b>Reset mật khẩu</b>
                                         </a>
                                     </fieldset>
@@ -362,8 +363,25 @@
                         <label>Bạn có chắc chắn muốn sửa đổi?</label>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
                         <input type="button" class="btn btn-success" id="btnSubmit" value="Đồng ý" />
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupResetPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận reset mật khẩu</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn reset mật khẩu?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-success" id="btnOk" value="Đồng ý" />
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
                     </div>
                 </div>
             </div>
@@ -494,7 +512,7 @@
                     })
                 } else {
                     $("#confirm-process").modal("show");
-                    event.preventDefault();
+
                 }
             }
             function validateEmail(email) {
@@ -560,12 +578,13 @@
                     $("#status").prop("checked", false);
                 }
             });
-            $("#btnSubmit").click(function () {
+            $("#btnSubmit").click(function (event) {
+                event.preventDefault();
                 $.ajax({
                     type: 'POST',
                     url: 'ChiTietNhanVien/UpdateData',
                     data: {
-                        userId:$("#userId").val(),
+                        userId: $("#userId").val(),
                         ten: $("#empName").val(),
                         chucVu: $("#Typerole").val(),
                         phanHe: $("#roleLevel").val(),
@@ -574,7 +593,8 @@
                         ngaySinh: $("#birthDate").val(),
                         soDienThoai: $("#phone").val(),
                         email: $("#email").val(),
-                        isActive: $("#status").is(':checked')
+                        isActive: $("#status").is(':checked'),
+                        account: $("#account_name").val()
                     },
                     dataType: 'JSON',
                     success: function (data) {
@@ -585,13 +605,38 @@
                             showConfirmButton: true
                         }).then(function (result) {
                             if (result) {
-                                window.location.href = 'QuanTri/ChiTietNhanVien?userId=' + $("#userId").val();
+                                window.location.href = '/ChiTietNhanVien?userId=' + $("#userId").val();
                             }
                         })
                     }
                 })
 
             });
+            $("#btnResetPass").click(function () {
+                $("#popupResetPass").modal("show");
+            });
+            $("#btnOk").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'ChiTietNhanVien/ResetPassWord',
+                    data: {
+                        userId: $("#userId").val()
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        swal({
+                            title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                            type: 'success',
+                            timer: 5000,
+                            showConfirmButton:true
+                        }).then(function (result) {
+                            if (result) {
+
+                            }
+                        })
+                    }
+                })
+            });
         </script>
     }
-                                                        }
+}
