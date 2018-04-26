@@ -33,5 +33,14 @@ namespace Models.DAO
             return db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderPartId)).ToList();
         }
 
+        public List<Order_detail_status> getStatusByDateAndUserID(DateTime beginDate, DateTime endDate, int userID)
+        {
+            var query = from ods in db.Order_detail_status
+                        where ods.Date_change >= beginDate && ods.Date_change <= endDate
+                        && ods.User_ID == userID
+                        select ods;
+            return query.ToList();
+        }
+
     }
 }

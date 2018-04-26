@@ -1,0 +1,326 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/HangHoa/Views/Shared/_Layout.cshtml";
+}
+@model ThaiSonBacDMS.Areas.HangHoa.Models.OrderListModel
+@section IndexStyle
+{
+    <style>
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
+        th {
+            color: white;
+            background-color: #3c8dbc;
+            font-weight: bold;
+        }
+
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            #example1 tbody td:nth-child(4),
+            #example1 tbody td:nth-child(5),
+            #example1 tbody td:nth-child(6),
+            #example1 tbody td:nth-child(7) {
+                text-align: center;
+            }
+
+            #example1 tbody td:nth-child() {
+                text-align: right;
+            }
+
+        .custom-btn {
+            margin-left: 10px;
+        }
+
+        .custom-chk {
+            padding-left: 15px;
+        }
+
+        .smallBtn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+    </style>
+
+}
+
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard"></i> Trang Chủ
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class=""></i> Phiếu chờ xử lí
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class=""></i> Chờ hàng
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>DANH SÁCH HÀNG CHỜ</b>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Tìm kiếm theo</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                @using (Html.BeginForm("Index", "OrderList", FormMethod.Post))
+                                {
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 9%">Lô số</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.TextBoxFor(model => Model.orderID, new { @type = "text", @class = "form-control", @placeholder= "Lô số..." })
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 13%">Tên khách hàng</td>
+                                                    <td style="width:490px">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.TextBoxFor(model => Model.customerName, new { @type = "text", @class = "form-control", @placeholder = "Tên...", @style = "width:350px" })
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr colspan="2">
+                                                    <td>Số hóa đơn</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.TextBoxFor(model => Model.invoice_number, new { @type = "text", @class = "form-control", @placeholder = "Số hoá đơn..." })
+                                                        </div>
+                                                    </td>
+                                                    <td>Ngày xuất</td>
+                                                    <td>
+
+                                                        <div class="input-group date col-sm-5 no-padding" style="float:left">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @Html.TextBoxFor(model => Model.fromDate, new { @type = "text", @class = "form-control", @placeholder = "Từ ngày...", @style = "width:150px" })
+                                                        </div>
+                                                        <div class="input-group date col-sm-6 col-sm-offset-1 no-padding" style="margin-left: 197px;">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @Html.TextBoxFor(model => Model.toDate, new { @type = "text", @class = "form-control", @placeholder = "Đến ngày...", @style = "width:150px" })
+                                                        </div>
+                                                    </td>
+
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Trạng thái</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-hourglass"></i>
+                                                            </span>
+                                                            <select class="form-control" style="font-family: 'FontAwesome';width:350px">
+                                                                <option value="Đã xuất phiếu">Đã xuất phiếu</option>
+                                                                <option value="Kế toán đã xử lý">Kế toán đã xử lý</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <div class="pagination pagination-sm no-margin pull-right">
+                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm<i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <p />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="example1" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Lô số</th>
+                                        <th>Người tạo phiếu</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Số hóa đơn</th>
+                                        <th>Lấy phiếu</th>
+                                        <th>Lấy hóa đơn</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Ngày giao</th>
+                                        <th>Ghi chú</th>
+                                        <!-- <th>Xử lý</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81269-0</a></td>
+                                        <td>Công ty Long Giang</td>
+                                        <td>24329</td>
+                                        <td>
+                                            <input type="checkbox" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled>
+                                        </td>
+                                        <td>
+                                            <span class="label label-primary">Kế toán đã xử lý</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Giao trước 15-12-2017</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>2</td>
+                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81268-0</a></td>
+                                        <td>Công ty Phú An</td>
+                                        <td>24328</td>
+                                        <td>
+                                            <input type="checkbox" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled>
+                                        </td>
+                                        <td>
+                                            <span class="label label-primary">Kế toán đã xử lí</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Giao trước 11-12-2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81267-1</a></td>
+                                        <td>Công ty Invico</td>
+                                        <td>24327</td>
+                                        <td>
+                                            <input type="checkbox" disabled />
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled />
+                                        </td>
+                                        <td>
+                                            <span class="label label-primary">Kế toán đã xử lí</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Giao trước 19-11-2017</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>4</td>
+                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81266-1</a></td>
+                                        <td>Công ty Sáng Hà</td>
+                                        <td>24326</td>
+                                        <td>
+                                            <input type="checkbox" disabled />
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled />
+                                        </td>
+                                        <td>
+                                            <span class="label label-primary">Đã xuất phiếu</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Giao trước 19-11-2017</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>5</td>
+                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81265-1</a></td>
+                                        <td>Công ty Vạn Xuân</td>
+                                        <td>24325</td>
+                                        <td>
+                                            <input type="checkbox" disabled />
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled />
+                                        </td>
+                                        <td>
+                                            <span class="label label-primary">Đã xuất phiếu</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Giao trước 19-11-2017</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>6</td>
+                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81264-1</a></td>
+                                        <td>Công ty Tương Lai</td>
+                                        <td>24324</td>
+                                        <td>
+                                            <input type="checkbox" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled>
+                                        </td>
+                                        <td>
+                                            <span class="label label-primary">Kế toán đã xử lý</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Giao trước 01-11-2017</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End content -->

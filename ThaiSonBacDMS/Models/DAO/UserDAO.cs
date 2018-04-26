@@ -55,6 +55,11 @@ namespace Models.DAO
             Account a = context.Accounts.SingleOrDefault(y => y.Account_name == account);
             return context.Users.SingleOrDefault(x=>x.User_ID == a.User_ID);
         }
+
+        public List<User> getAllUserByRoleID(int roleID)
+        {
+            return context.Users.Where(x => x.Role_ID == roleID).ToList();
+        }
         //thuongtx
 
 

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "DetailProduct";
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
@@ -49,19 +49,11 @@
                                     <table class="table">
                                         <tbody>
                                             <tr>
-                                                <td style="padding-left: 0px;">Ngày nhập</td>
-                                                <td width="40%">
-                                                    <div class="col-sm-5 no-padding">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">Từ</span>
-                                                            @Html.TextBoxFor(model=>model.fromDate, new { @class= "form-control datepicker", @id= "fromDate" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-5 col-sm-offset-1 no-padding">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">Đến</span>
-                                                            @Html.TextBoxFor(model => model.toDate, new { @class = "form-control datepicker", @id = "toDate" })
-                                                        </div>
+                                                <td style="padding-left: 0px;">Ngày suất</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        @Html.TextBoxFor(model => model.fromDate, new { @class = "form-control datepicker", @id = "fromDate" })
                                                     </div>
                                                 </td>
                                                 <td>Lô Số</td>
@@ -110,7 +102,7 @@
         var timeline = document.getElementById('timeline');
 
         var groups = new vis.DataSet([
-            @foreach(var item in Model.ListOpInfo)
+          @foreach(var item in Model.ListOpInfo)
             {
                 @: { id: @item.indexOf, content: 'Lô số @item.orderName' },
             }
@@ -120,17 +112,8 @@
         var items = new vis.DataSet([
             @foreach (var item in Model.ListOpInfo)
             {
-                @: {
-                @:  group: @item.indexOf, className: 'completed', content: 'Tạo đơn', start: new Date('@item.dateCreated'),
-                @:  title: '<small>Ngày: @item.dateCreated.ToString("dd/MM/yyyy")<br/>Khách hàng: @item.customerName<br/>Nhân viên: @item.userName</small>'
-                @: },
-            }
-            @foreach (var item in Model.ListOpInfo)
-            {
-                @: {
-                @:  group: @item.indexOf, className: '@item.status', content: 'Hoàn thành', start: new Date('@item.dateCompleted'),
-                @:  title: '<small>Ngày: @item.dateCompleted.Value.ToString("dd/MM/yyyy")<br/>Khách hàng: @item.customerName<br/>Nhân viên: @item.userName</small>'
-                @: },
+                @:  { group: @item.indexOf, className: '@item.status', content: 'Số lượng: @item.quantity', start: new Date('@item.dateCompleted'),
+                @:    title: '<small>Xuất ngày: @item.dateCompleted.Value.ToString("dd/MM/yyyy")</small>'  },
             }
         ]);
 
@@ -156,3 +139,4 @@
     </script>
 
 }
+

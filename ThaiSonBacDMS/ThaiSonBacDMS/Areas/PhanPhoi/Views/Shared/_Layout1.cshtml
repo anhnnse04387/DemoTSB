@@ -82,7 +82,7 @@
                                     @if (session.roleSelectFlag)
                                     {
                                         <div class="pull-left" style = "margin-left: 22px;">
-                                            @Html.ActionLink("Đổi phân hệ", "ConfirmRole", new { area = "", controller = "ConfirmRole" }, new { @class = "btn btn-default btn-flat",  })
+                                            @Html.ActionLink("Đổi phân hệ", "ConfirmRole", new { area = "", controller = "ConfirmRole" }, new { @class = "btn btn-default btn-flat", })
                                         </div>
                                     }
                                     <div class="pull-right">
@@ -94,7 +94,7 @@
                     </ul>
                 </div>
                 <!-- Note header-->
-                @*{ Html.RenderAction("NoteHeader", "Home"); }*@
+                @{Html.RenderAction("NoteHeader", "Home");}
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
