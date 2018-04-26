@@ -131,7 +131,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         {
                             orderId = p.Order_part_ID,
                             customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                            date = p.Date_export_order,
+                            date = p.Request_stockout_date,
                             delivery = 1,
                             note = p.Note,
                             total = p.Total_price,
@@ -147,7 +147,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     {
                         orderId = o.Order_ID,
                         customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                        date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                        date = o.Order_part.FirstOrDefault().Request_stockout_date,
                         delivery = o.Order_part.Count,
                         note = o.Note,
                         total = o.Total_price,
@@ -257,7 +257,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 {
                                     orderId = p.Order_part_ID,
                                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                                    date = p.Date_export_order,
+                                    date = p.Request_stockout_date,
                                     delivery = 1,
                                     note = p.Note,
                                     total = p.Total_price,

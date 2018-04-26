@@ -152,7 +152,7 @@ namespace Models.DAO
             }
             return debt;
         }
-        public int insertNewCustomerDebt(int customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai, int userId, string tongCong,string noCu)
+        public int insertNewCustomerDebt(int customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai, int userId, string tongCong, string noCu)
         {
             Customer_transaction ct = new Customer_transaction();
             ct.Customer_ID = customerId;
@@ -172,7 +172,6 @@ namespace Models.DAO
         public List<DanhSachNoKhachHang> danhSachKhachHang()
         {
             List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
-<<<<<<< HEAD
             //var lstCustomer = db.Customers.Distinct().ToList();
             //foreach(Customer c in lstCustomer)
             //{
@@ -189,8 +188,8 @@ namespace Models.DAO
             //                 tenKhachHang = cus.Customer_name,
             //                 transaction,
             //             };
-                       
-          
+
+
             //if (query3.Count() != 0)
             //{
             //    foreach (var item in query3)
@@ -211,8 +210,6 @@ namespace Models.DAO
             //        lst.Add(ds);
             //    }
             //}
-=======
-
             var query1 = from transaction in db.Customer_transaction
                          group transaction by transaction.Customer_ID into g
                          select new
@@ -229,7 +226,7 @@ namespace Models.DAO
                          };
             if (query2 != null)
             {
-               foreach(var item in query2)
+                foreach (var item in query2)
                 {
                     DanhSachNoKhachHang ds = new DanhSachNoKhachHang();
 
@@ -246,8 +243,6 @@ namespace Models.DAO
                     lst.Add(ds);
                 }
             }
-
->>>>>>> 54b1ad8b8ed8d6a974f68eaf549b94ae38ed5277
             return lst;
         }
         public List<Autocomplete> getListAuto(string valueSearch)
@@ -261,7 +256,7 @@ namespace Models.DAO
             var query2 = from tst in db.Customer_transaction
                          join maxTst in query1 on tst.Transaction_ID equals maxTst.transactionId
                          join cus in db.Customers on tst.Customer_ID equals cus.Customer_ID
-                        
+
                          select new
                          {
                              id = tst.Customer_ID,

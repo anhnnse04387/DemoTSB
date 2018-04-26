@@ -23,7 +23,12 @@ namespace Models.DAO
 
         public byte getEditCode(int? productId)
         {
-            return db.Edit_history.Where(x => x.Product_ID == productId).OrderByDescending(x => x.Date_change).FirstOrDefault().Edit_code;
+            var history = db.Edit_history.Where(x => x.Product_ID == productId).OrderByDescending(x => x.Date_change).FirstOrDefault();
+            if(history == null)
+            {
+                return 0;
+            }
+            return history.Edit_code;
         }
 
     }

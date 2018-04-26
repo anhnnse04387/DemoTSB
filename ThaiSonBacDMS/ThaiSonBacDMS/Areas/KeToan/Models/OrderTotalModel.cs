@@ -19,7 +19,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
         public byte? statusId { get; set; }
         public int? rate { get; set; }
         public String taxCode { get; set; }
-        public decimal subTotal { get; set; }
+        public decimal? subTotal { get; set; }
         public decimal? total { get; set; }
         public decimal? vat { get; set; }
         public int? qttTotal { get; set; }

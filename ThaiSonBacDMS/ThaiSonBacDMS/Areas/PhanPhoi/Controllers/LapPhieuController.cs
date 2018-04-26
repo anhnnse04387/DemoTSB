@@ -68,7 +68,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         });
                         for (int i = 0; i < 5; i++)
                         {
-                            nofDAO.createNotification(new Notification
+                            nofDAO.addNotification(new Notification
                             {
                                 Notif_date = DateTime.Now,
                                 Content = "Nhân viên phân phối " + session.user_name + " đã lập phiếu với mã " + model.orderId,
@@ -95,7 +95,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                             Date_change = DateTime.Now,
                                             Order_ID = model.orderId,
                                             Product_ID = i.Product_ID,
-                                            Quantity_change = i.Quantity - o.Quantity,
+                                            Quantity_change = o.Quantity - i.Quantity,
                                             User_ID = session.user_id,
                                             Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
                                         });
@@ -183,7 +183,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Order_part_ID = model.orderId,
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
-                                Date_export_order = model.dateExport,
+                                Request_stockout_date = model.dateExport,
                                 VAT = model.vat,
                                 Status_ID = 1,
                                 Total_price = model.total
@@ -327,7 +327,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var part = new OrderPartModel
                     {
                         Order_part_ID = op.Order_part_ID,
-                        dateShow = op.Date_created.ToString("MM/dd/yyyy"),
+                        dateShow = op.Request_stockout_date.Value.ToString("MM/dd/yyyy"),
                         items = partItems,
                         vat = op.VAT,
                         total = op.Total_price,
@@ -343,7 +343,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             else
             {
-                model.dateExport = data.Order_part.FirstOrDefault().Date_export_order;
+                model.dateExport = data.Order_part.FirstOrDefault().Request_stockout_date;
             }
             model.readPart = parts;
             return View(model);
@@ -385,7 +385,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         });
                         for (int i = 0; i < 5; i++)
                         {
-                            nofDAO.createNotification(new Notification
+                            nofDAO.addNotification(new Notification
                             {
                                 Notif_date = DateTime.Now,
                                 Content = "Nhân viên phân phối " + session.user_name + " đã lập phiếu với mã " + model.orderId,
@@ -411,7 +411,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                             Date_change = DateTime.Now,
                                             Order_ID = model.orderId,
                                             Product_ID = i.Product_ID,
-                                            Quantity_change = i.Quantity - o.Quantity,
+                                            Quantity_change = o.Quantity - i.Quantity,
                                             User_ID = session.user_id,
                                             Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
                                         });
@@ -498,7 +498,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Order_part_ID = model.orderId,
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
-                                Date_export_order = model.dateExport,
+                                Request_stockout_date = model.dateExport,
                                 VAT = model.vat,
                                 Status_ID = 2,
                                 Total_price = model.total

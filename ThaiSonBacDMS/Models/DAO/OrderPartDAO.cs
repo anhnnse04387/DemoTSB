@@ -25,12 +25,16 @@ namespace Models.DAO
                 return orderPart.Order_part_ID;
             }
             return null;
-        }        
+        }
 
         public List<Order_part> getAllOrderPart()
         {
             return db.Order_part.ToList();
         }
 
+        public Order_part getOrderPart(String id)
+        {
+            return db.Order_part.Where(x => x.Order_part_ID.Equals(id)).SingleOrDefault();
+        }
     }
 }

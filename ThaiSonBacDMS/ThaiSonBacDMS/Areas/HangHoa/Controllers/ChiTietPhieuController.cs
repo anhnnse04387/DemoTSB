@@ -15,26 +15,26 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         // GET: PhanPhoi/ChiTietPhieu
         public ActionResult Index(String orderId)
         {
-            var dao = new OrderTotalDAO();
+            var dao = new OrderPartDAO();
             var customerDAO = new CustomerDAO();
-            var data = dao.getOrder(orderId);
+            var data = dao.getOrderPart(orderId);
             var statusDAO = new StatusDAO();
             var model = new OrderTotalModel();
             var productDAO = new ProductDAO();
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
-            model.deliveryAddress = data.Address_delivery;
-            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
+            model.deliveryAddress = data.Order_total.Address_delivery;
+            model.invoiceNumber = data.Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.dateTakeInvoice = data.Order_part.FirstOrDefault().Date_take_invoice.ToString();
-            model.dateTakeBallot = data.Order_part.FirstOrDefault().Date_take_ballot.ToString();
-            model.taxCode = data.Tax_code;
+            model.dateTakeInvoice = data.Date_take_invoice.ToString();
+            model.dateTakeBallot = data.Date_take_ballot.ToString();
+            model.taxCode = data.Order_total.Tax_code;
             var items = new List<OrderItemModel>();
-            foreach (Order_items o in data.Order_items)
+            foreach (Order_items o in data.Order_total.Order_items)
             {
-                if (o.Order_part_ID == null)
+                if (o.Order_part_ID.Equals(data.Order_part_ID))
                 {
                     var product = productDAO.getProductById(o.Product_ID);
                     var item = new OrderItemModel
@@ -53,9 +53,9 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         [HttpGet]
         public ActionResult Delivery(String orderId)
         {
-            var dao = new OrderTotalDAO();
+            var dao = new OrderPartDAO();
             var customerDAO = new CustomerDAO();
-            var data = dao.getOrder(orderId);
+            var data = dao.getOrderPart(orderId);
             var statusDAO = new StatusDAO();
             var daoDelivery = new DeliveryMethodDAO();
             var shipper = new List<SelectListItem>();
@@ -80,16 +80,16 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             });
             model.orderId = orderId;
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
-            model.deliveryAddress = data.Address_delivery;
-            model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
+            model.deliveryAddress = data.Order_total.Address_delivery;
+            model.invoiceNumber = data.Invoice_number;
             model.status = statusDAO.getStatus(data.Status_ID);
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
-            model.taxCode = data.Tax_code;
+            model.taxCode = data.Order_total.Tax_code;
             model.shipper = shipper;
             model.deliveryMethod = delivery;
-            model.dateReceiveInvoice = data.Order_part.FirstOrDefault().Date_reveice_invoice.ToString();
-            model.dateReceiveBallot = data.Order_part.FirstOrDefault().Date_reveice_ballot.ToString();
+            model.dateReceiveInvoice = data.Date_reveice_invoice.ToString();
+            model.dateReceiveBallot = data.Date_reveice_ballot.ToString();
             model.driver = driver;
             return View(model);
         }

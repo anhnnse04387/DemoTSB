@@ -520,7 +520,7 @@ function getAllData() {
             });
             part = {
                 Part_ID: i + 1, Order_part_ID: orderPartId, VAT: partVat,
-                Total_price: partTotal, Date_export_order: Date_export_order
+                Total_price: partTotal, Request_stockout_date: Date_export_order
             };
             parts.push(part);
         }
