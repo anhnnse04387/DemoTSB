@@ -186,6 +186,7 @@
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietNoKhachHangController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\DanhSachCongNoCungCapController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\DanhSachKhachHangController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\DanhSachNhaCungCapController.cs" />
     <Compile Include="Areas\PhanPhoi\Controllers\DanhSachCongNoKhachHangController.cs" />
@@ -209,7 +210,8 @@
     <Compile Include="Areas\PhanPhoi\Models\ChiTietNoCungCapModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\ChiTietNoKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\CongNoKhachHangModel.cs" />
-    <Compile Include="Areas\PhanPhoi\Models\DanhSachCungCapModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\DanhSachCongNoCungCapModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\DanhSachConNoCungCapModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\DanhSachKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\DanhSachCongNoKhachHangModel.cs" />
     <Compile Include="Areas\PhanPhoi\Models\HomeModel.cs" />
@@ -272,7 +274,7 @@
     <Compile Include="Areas\QuanLy\Models\StockItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\StockModel.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
-    <Compile Include="Areas\QuanTri\Controllers\ChiTietNguoiDungController.cs" />
+    <Compile Include="Areas\QuanTri\Controllers\ChiTietNhanVienController.cs" />
     <Compile Include="Areas\QuanTri\Controllers\DanhSachNguoiDungHoatDongController.cs" />
     <Compile Include="Areas\QuanTri\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanTri\Controllers\QuanTriBaseController.cs" />
@@ -289,6 +291,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConfirmRoleController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Common\RemoveVietNameseSign.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -334,7 +337,6 @@
     <Content Include="Areas\PhanPhoi\Views\Stock\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\GiaSanPham\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\SanPhamDangKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\Shared\_Layout2.cshtml" />
     <Content Include="Areas\QuanTri\Views\Shared\NoteEdit.cshtml" />
     <Content Include="Areas\QuanTri\Views\Shared\NoteHeader.cshtml" />
@@ -377,18 +379,14 @@
     <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
     <Content Include="Areas\QuanLy\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\TaoMoi.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\TaoMoi.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\ChiTiet.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\PI\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\PI\_noPartial.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\PI\Detail.cshtml" />
@@ -410,7 +408,11 @@
     <Content Include="Areas\QuanLy\Views\DanhSachNguoiDungNgungHoatDong\Index.cshtml" />
     <Content Include="Areas\QuanTri\Views\DanhSachNguoiDungNgungHoatDong\Index.cshtml" />
     <Content Include="Areas\QuanTri\Views\TaoNguoiDung\Index.cshtml" />
-    <Content Include="Areas\QuanTri\Views\ChiTietNguoiDung\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\DanhSachCongNoCungCap\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\SanPhamDangKinhDoanh\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\ChiTietNoCungCap\Index.cshtml" />
+    <Content Include="Areas\QuanTri\Views\ChiTietNhanVien\Index.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\ChiTietNoKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\OrderTimeLine\Index.cshtml" />
     <Content Include="Views\Login\ForgotPassword.cshtml" />
     <Content Include="Areas\QuanLy\Views\BaoCaoBanHang\Index.cshtml" />
@@ -428,6 +430,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\bower_components\" />
     <Folder Include="Assets\plugins\" />
+    <Folder Include="Views\RemoveVietNameseSign\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

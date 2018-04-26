@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
-    public class DanhSachCungCapModel
+    public class DanhSachConNoCungCapModel
     {
         public string error { set; get; }
         public List<Supplier> lstSupp { set; get; } 

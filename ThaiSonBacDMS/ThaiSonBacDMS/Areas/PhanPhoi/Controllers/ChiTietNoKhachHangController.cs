@@ -14,19 +14,20 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
     {
         // GET: PhanPhoi/ChiTietNoKhachHang
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string customerId)
         {
             try
             {
+               
                 ChiTietNoKhachHangModel model = new ChiTietNoKhachHangModel();
                 Customer_transactionDAO dao = new Customer_transactionDAO();
                 CustomerDAO daoCustomer = new CustomerDAO();
 
                 model.lstDisplay = new List<ChiTietNoKhachHang>();
-                model.lstDisplay = dao.getDetailTransaction(1);
-                model.customerName = daoCustomer.getCustomerById(1).Customer_name;
-                model.customerId = daoCustomer.getCustomerById(1).Customer_ID.ToString();
-                model.lastedDebt = dao.getLastestDebt(1);
+                model.lstDisplay = dao.getDetailTransaction(Convert.ToInt32(customerId));
+                model.customerName = daoCustomer.getCustomerById(Convert.ToInt32(customerId)).Customer_name;
+                model.customerId = daoCustomer.getCustomerById(Convert.ToInt32(customerId)).Customer_ID.ToString();
+                model.lastedDebt = dao.getLastestDebt(Convert.ToInt32(customerId));
 
                 return View(model);
             }
@@ -57,7 +58,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return Json(model,JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult InsertData(string customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai,string tongCong)
+        public ActionResult InsertData(string customerId, string tienHang, string vat, string thanhToan, string duNo, string dienGiai,string tongCong,string noCu)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 Customer_transactionDAO dao = new Customer_transactionDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 int userId = session.accountID;
-                int rowInserted = dao.insertData(Convert.ToInt32(customerId), tienHang, vat, thanhToan, duNo, dienGiai, userId,tongCong);
+                int rowInserted = dao.insertNewCustomerDebt(Convert.ToInt32(customerId), tienHang, vat, thanhToan, duNo, dienGiai, userId,tongCong,noCu);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -60,6 +60,9 @@ namespace Models.Framework
         [Column(TypeName = "date")]
         public DateTime? Date_take_ballot { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime? Request_stockout_date { get; set; }
+
         [StringLength(1)]
         public string Note { get; set; }
 

@@ -1,0 +1,642 @@
+﻿@model ThaiSonBacDMS.Areas.QuanTri.Models.ChiTietNguoiDungModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanTri/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #email {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    .box-body-custom-detail-custom {
+        font-size: 20px;
+    }
+
+    th {
+        color: white;
+        background-color: #3c8dbc;
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        text-align: center;
+    }
+
+    #mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #mainTable tbody td:nth-child() {
+            text-align: left;
+        }
+
+        #mainTable tbody td:nth-child(4),
+        #mainTable tbody td:nth-child(5) {
+            text-align: right;
+        }
+    /* helpers/align.css */
+    .align {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    svg {
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li>
+                <a href="quantri_index.html">
+                    <i class="fa fa-dashboard"></i> Trang chủ
+                </a>
+            </li>
+            <li>
+                <a href="quantri_nguoidung_danh-sach-dang-hoat-dong.html">
+                    <i></i> Danh sách người dùng
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i></i> Chi tiết người dùng
+                </a>
+            </li>
+        </ol>
+    </section>
+    <br>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <img class="profile-user-img img-responsive img-circle" src="@Model.userInfor.anhDaiDien" alt="User profile picture">
+                        <h3 class="profile-username text-center">@Model.userInfor.tenNguoiDung</h3>
+                        <p class="text-muted text-center"></p>
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <div class="form-group row" style="margin-bottom: -5px;">
+                                    <label for="role" class="col-sm-5 col-form-label"><i class="fa fa-codepen"></i> Chức vụ</label>
+                                    <div class="col-sm-7">
+                                        <a class='pull-right' id='role'>@Model.userInfor.chucVu</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-group row" style="margin-bottom: -5px;">
+                                    <label for="roleType" class="col-sm-5 col-form-label"><i class="fa fa-diamond"></i> Phân hệ</label>
+                                    <div class="col-sm-7">
+                                        <a class='pull-right' id='roleType'>@Model.userInfor.phanHe</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-group row" style="margin-bottom: -5px;">
+                                    <label for="UserPhone" class="col-sm-9 col-form-label"><i class="fa fa-phone"></i> Số điện thoại</label>
+                                    <div class="col-sm-3">
+                                        <a class='pull-right' id='UserPhone'>@Model.userInfor.soDienThoai</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-envelope"></i>
+                                <b>Email</b>
+                                <a class="pull-right">@Model.userInfor.email</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-envelope"></i>
+                                <b>Ngày sinh</b>
+                                <a class="pull-right">@Model.userInfor.ngaySinh</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-address-book"></i>
+                                <b>Địa chỉ</b>
+                                <br>
+                                <span id='userAddress' style="color: #4682b4">@Model.userInfor.diaChi</span>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-group row" style="margin-bottom: -5px;">
+                                    <label for="insurranceID" class="col-sm-9 col-form-label"><i class="fa fa-id-card-o"></i> Mã BHYT</label>
+                                    <div class="col-sm-3">
+                                        <a class='pull-right' id='insurranceID'>@Model.userInfor.BHYT</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-group row" style="margin-bottom: -5px;">
+                                    <label class="col-sm-6 col-form-label"><i class="fa fa-address-book"></i> Trạng thái</label>
+                                    <div class="col-sm-6">
+                                        <a class="pull-right text-green"><span class="label label-success" id="isActive">@Model.userInfor.trangThai</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <div class="nav nav-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active" id="tab1">
+                                <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Công việc</a>
+                            </li>
+                            <li class="" id="tab2">
+                                <a href="#mathang" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="doanhthu">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-offset-3" style="display: inline-flex;padding-top: 20px">
+                                        <label style="padding-right: 20px; padding-top: 7px;">Từ: </label>
+                                        <div class="input-group week-select col-md-3 no-padding">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input id="datepicker" type="text" class="form-control" style="width: 150px" value="01/06/2017">
+                                        </div>
+                                        <label style="padding-right: 10px; padding-top: 7px;padding-left:50px">Đến: </label>
+                                        <div class="input-group week-select col-md-3 no-padding">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input id="datepicker2" type="text" class="form-control" style="width: 150px" value="07/01/2018">
+                                        </div>
+                                    </div>
+                                    <canvas id="line-chart" width="800" height="450"></canvas>
+                                </div>
+                                <br>
+                                <div class="row text-center" style="font-size:15px">
+                                    <label class="col-md-4">Thời gian xử lí trung bình</label>
+                                    <label class="col-md-4">Tổng giá trị các đơn hàng</label>
+                                    <label class="col-md-4">Lượng đơn trung bình trong năm</label>
+                                </div>
+                                <div class="row text-center" style="font-size:20px">
+                                    <label class="col-md-4" style="color:#439c07">2 giờ 30 phút</label>
+                                    <label class="col-md-4">350 triệu đồng</label>
+                                    <label class="col-md-4" style="color:#ff3300">8 đơn</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="mathang" style="padding-bottom: 32px;">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <fieldset>
+                                        <legend><b style="font-size: 17px;">Thông tin cá nhân</b></legend>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Trạng thái</label>
+                                                <div class="input-group">
+                                                    <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label id="nameLo" style="font-weight: bold;" class="noDisplay"> Tên nhân viên</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                    <input type="text" class="form-control" id="empName" value="@Model.userInfor.tenNguoiDung" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Chức vụ</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-codepen"></i></span>
+                                                    @*<select class='form-control' id='Typerole' disabled>
+                                                            <option>Giám đốc</option>
+                                                            <option>Nhân viên bán hàng</option>
+                                                            <option>Nhân viên kế toán</option>
+                                                        </select>*@
+                                                    @Html.DropDownListFor(model => model.roleId, Model.lstRole, new { @class = "form-control", @id = "Typerole", @disabled = "true" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Phân hệ</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-diamond"></i></span>
+                                                    @*<select class="form-control" id="roleLevel" disabled>
+                                                            <option>Quản lý</option>
+                                                            <option>Phân phối</option>
+                                                            <option> Kế toán </option>
+                                                            <option> Hàng hóa </option>
+                                                        </select>*@
+                                                    @Html.DropDownListFor(model => model.officeId, Model.lstOffice, new { @class = "form-control", @id = "roleLevel", @disabled = "true" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Số điện thoại</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    <input type="text" class="form-control" id="phone" value="@Model.userInfor.soDienThoai" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    <input id="email" type="text" class="form-control" value="@Model.userInfor.email" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Mã BHYT</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                                    <input id="bhyt" type="text" class="form-control" value="@Model.userInfor.BHYT" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Địa chỉ</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                    <input id="address" type="text" class="form-control" value="@Model.userInfor.diaChi" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Ngày sinh</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input id="birthDate" type="text" class="form-control" value="@Model.userInfor.ngaySinh" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 hide">
+                                                <label>List Email</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    @{ int i = 0;}
+                                                    @foreach (var item in Model.lstAllEmail)
+                                                    {
+                                                        <input type="text" id="email_@i" class="form-control email" value="@item" disabled>
+                                                        i++;
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 hide">
+                                                <label>Mã BHYT</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                                    <input id="userId" type="text" class="form-control" value="@Model.userInfor.userId" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a id="btnEdit" class="btn btn-primary btn-block pull-right" onclick="doEdit();" style="width: 100px; margin-top: 25px;">
+                                            <b>Chỉnh sửa</b>
+                                        </a>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <fieldset>
+                                        <legend><b style="font-size: 17px;">Thông tin tài khoản</b></legend>
+
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Tên tài khoản</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <input type="text" class="form-control" id="account_name" value="@Model.userInfor.account" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Ngày tạo</label><span style="color: red;"></span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input id="birthDate" type="text" class="form-control" value="@Model.userInfor.accountDateCreated" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <a id="btnResetPass" class="btn btn-warning btn-block pull-right" style="width: 15%; margin : 25px 0px 25px 15px; padding : 5px;">
+                                            <b>Reset mật khẩu</b>
+                                        </a>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-process" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận sửa đổi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn sửa đổi?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-success" id="btnSubmit" value="Đồng ý" />
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupResetPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Xác nhận reset mật khẩu</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Bạn có chắc chắn muốn reset mật khẩu?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-success" id="btnOk" value="Đồng ý" />
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @section Index{
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="/Assets/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/Assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script src="/Assets/dist/js/bootstrap-toggle.min.js"></script>
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script>
+
+
+
+            var buttonSave = ["<a id='btnSave' class='btn btn-success btn-block pull-right' onclick='validateData();' style='width: 100px; margin-top: 15px;'><b>Lưu</b></a>"];
+            var buttonEdit = ["<a id='btnEdit' class='btn btn-primary btn-block pull-right' onclick='doEdit();' style='width: 100px; margin-top: 15px;'><b>Chỉnh sửa</b></a>"];
+            function doEdit() {
+                $('#status').bootstrapToggle('enable');
+                $('#Typerole').removeAttr('disabled');
+                $('#roleLevel').removeAttr('disabled');
+                $('#empName').removeAttr('disabled');
+                $('#bhyt').removeAttr('disabled');
+                $('#phone').removeAttr('disabled');
+                $('#address').removeAttr('disabled');
+                $('#email').removeAttr('disabled');
+                $('#birthDate').removeAttr('disabled');
+                $("#birthDate").datepicker({
+                    //endDate: new Date(),
+                    format: 'dd-mm-yyyy'
+                });
+
+                $('#btnEdit').replaceWith(buttonSave);
+
+            };
+            function doSave() {
+                $('#status').bootstrapToggle('disable');
+                $('#Typerole').prop('disabled', true);
+                $('#roleLevel').prop('disabled', true);
+                $('#empName').prop('disabled', true);
+                $('#bhyt').prop('disabled', true);
+                $('#phone').prop('disabled', true);
+                $('#address').prop('disabled', true);
+                $('#email').prop('disabled', true);
+                $('#birthDate').prop('disabled', true);
+                $('#btnSave').replaceWith(buttonEdit);
+            };
+            function validateData() {
+                var ten = $("#empName").val();
+                var chucVu = $("#Typerole").val();
+                var phanHe = $("#roleLevel").val();
+                var bhyt = $("#bhyt").val();
+                var diaChi = $("#address").val();
+                var ngaySinh = $("#birthDate").val();
+                var soDienThoai = $("#phone").val();
+                var email = $("#email").val();
+
+                if (!ten) {
+                    swal({
+                        title: 'Vui lòng nhập tên!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!checkName(ten)) {
+                    swal({
+                        title: 'Vui lòng nhập họ tên!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+
+                } else if (!soDienThoai) {
+                    swal({
+                        title: 'Vui lòng nhập số điện thoại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(soDienThoai)) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng số điện thoại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!email) {
+                    swal({
+                        title: 'Vui lòng nhập email!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!validateEmail(email)) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng email!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!testExistedMail(email)) {
+                    swal({
+                        title: 'Email đã tồn tại!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!bhyt) {
+                    swal({
+                        title: 'Vui lòng nhập số bảo hiểm y tế!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (bhyt.length < 13) {
+                    swal({
+                        title: 'Vui lòng nhập đúng định dạng số bảo hiểm y tế!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else if (!ngaySinh) {
+                    swal({
+                        title: 'Vui lòng nhập ngày sinh!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
+                } else {
+                    $("#confirm-process").modal("show");
+
+                }
+            }
+            function validateEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            };
+            function checkName(name) {
+                name = name.trim();
+                var nameStr = name.split(" ");
+                if (nameStr.length < 2) {
+                    return false;
+                }
+                return true;
+            };
+            function testExistedMail(email) {
+                for (var i = 0; i < $(".email").length; i++) {
+                    if (email === $("#email_" + i).val()) {
+                        return false;
+                        break;
+                    }
+                }
+                return true;
+            }
+            $("#empName").change(function () {
+                upperName($("#empName").val());
+                var name = $("#empName").val().trim().split(" ");
+                var account = "";
+                for (var i = 0; i < name.length; i++) {
+                    account = name[name.length - 1];
+                }
+                for (var i = 0; i < name.length - 1; i++) {
+                    account += name[i].charAt(0);
+                }
+                $.ajax({
+                    url: 'ChiTietNhanVien/checkExistedAcc',
+                    type: 'POST',
+                    data: {
+                        account: account
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $("#account_name").val(data);
+                        $("#account_name").text(data);
+                    }
+                })
+            })
+            function upperName(ten) {
+                var result = "";
+                //var nameStr = name.replace("/(\s+)/", " ");
+                var nameStr = ten.split(" ");
+                for (var i = 0; i < nameStr.length; i++) {
+                    nameStr[i] = nameStr[i].charAt(0).toUpperCase() + nameStr[i].substring(1).toLowerCase();
+                    result += nameStr[i] + " ";
+                }
+                $("#empName").text(result);
+                $("#empName").val(result);
+            };
+            $(document).ready(function () {
+                var isActive = $("#isActive").val();
+                if (isActive == 'Active') {
+                    $("#status").prop("checked", true);
+                } else {
+                    $("#status").prop("checked", false);
+                }
+            });
+            $("#btnSubmit").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'ChiTietNhanVien/UpdateData',
+                    data: {
+                        userId: $("#userId").val(),
+                        ten: $("#empName").val(),
+                        chucVu: $("#Typerole").val(),
+                        phanHe: $("#roleLevel").val(),
+                        bhyt: $("#bhyt").val(),
+                        diaChi: $("#address").val(),
+                        ngaySinh: $("#birthDate").val(),
+                        soDienThoai: $("#phone").val(),
+                        email: $("#email").val(),
+                        isActive: $("#status").is(':checked'),
+                        account: $("#account_name").val()
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        swal({
+                            title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                            type: 'success',
+                            timer: 5000,
+                            showConfirmButton: true
+                        }).then(function (result) {
+                            if (result) {
+                                window.location.href = '/ChiTietNhanVien?userId=' + $("#userId").val();
+                            }
+                        })
+                    }
+                })
+
+            });
+            $("#btnResetPass").click(function () {
+                $("#popupResetPass").modal("show");
+            });
+            $("#btnOk").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'ChiTietNhanVien/ResetPassWord',
+                    data: {
+                        userId: $("#userId").val()
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        swal({
+                            title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                            type: 'success',
+                            timer: 5000,
+                            showConfirmButton:true
+                        }).then(function (result) {
+                            if (result) {
+
+                            }
+                        })
+                    }
+                })
+            });
+        </script>
+    }
+}

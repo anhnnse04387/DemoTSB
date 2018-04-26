@@ -236,6 +236,20 @@
                                                         @Html.TextBoxFor(model => model.address, new { @id = "address", @class = "form-control", @placeholder = "Địa chỉ..." })
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6 hide">
+                                                    <label>list emails</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-book"></i>
+                                                        </span>
+                                                        @{int i = 0;}
+                                                        @foreach (var item in Model.lstEmail)
+                                                        {
+                                                            <input id="email_@i" readonly type="text" value="@item" class="form-control email" />
+                                                            i++;
+                                                        }
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -256,12 +270,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Xác nhận tạo người dùng mới</h4>
+                        <h4 class="modal-title">Xác nhận tạo người dùng mới và active account?</h4>
                     </div>
 
                     <div class="modal-footer" style="margin-right:15px">
                         <div style="margin:0 auto;">
-                            <button id="btnOk" type="button" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button id="btnOk" type="button" style="color:white;background-color:green" class="btn btn-default">Active</button>
+                            <button id="btnDeactive" type="button" style="color:white;background-color:black" class="btn btn-default">Deactive</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -279,9 +294,10 @@
         <script src="/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
         <script>
             $(document).ready(function () {
-                $("#dob").datepicker({
+                $("#hide").hide();
+;                $("#dob").datepicker({
                     endDate: new Date(),
-                    format:'dd-mm-yyyy'
+                    format: 'dd-mm-yyyy'
                 });
                 var label_selected = "<span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>";
                 var label_default = "<span class='glyphicon glyphicon-open' aria-hidden='true'></span>";
@@ -316,7 +332,15 @@
                         timer: 5000,
                         showConfirmButton: true
                     });
-                } else if (!office) {
+                } else if (!checkName(name)) {
+                    swal({
+                        title: 'Vui lòng nhập họ và tên người dùng!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                }
+                else if (!office) {
                     swal({
                         title: 'Vui lòng chọn chức vụ!',
                         type: 'warning',
@@ -351,14 +375,24 @@
                         timer: 5000,
                         showConfirmButton: true
                     });
-                } else if (!phoneNumber) {
+                } else if (!testExistedMail(email)) {
+                    
+                        swal({
+                            title: 'Email đã tồn tại!',
+                            type: 'warning',
+                            timer: 5000,
+                            showConfirmButton: true
+                        });
+                    
+                }
+                else if (!phoneNumber) {
                     swal({
                         title: 'Vui lòng nhập số điện thoại!',
                         type: 'warning',
                         timer: 5000,
                         showConfirmButton: true
                     });
-                } else if (!validatePhoneNumber(phoneNumber)) {
+                } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(phoneNumber)) {
                     swal({
                         title: 'Vui lòng nhập đúng định dạng số điện thoại!',
                         type: 'warning',
@@ -372,13 +406,13 @@
                         timer: 5000,
                         showConfirmButton: true
                     });
-                    //} else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(insuranceNo)) {
-                    //    swal({
-                    //        title: 'Vui lòng chỉ nhập số cho số BHYT!',
-                    //        type: 'warning',
-                    //        timer: 5000,
-                    //        showConfirmButton: true
-                    //    });
+                } else if (insuranceNo.length < 13) {
+                    swal({
+                        title: 'Vui lòng chỉ nhập đúng định dạng cho số BHYT!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
                 } else if (!address) {
                     swal({
                         title: 'Vui lòng nhập tên địa chỉ!',
@@ -414,6 +448,7 @@
                         fileData.append("phoneNumber", phoneNumber);
                         fileData.append("insuranceNo", insuranceNo);
                         fileData.append("address", address);
+                        fileData.append("active", "1");
                         $.ajax({
                             url: '/TaoNguoiDung/UploadFiles',
                             type: "POST",
@@ -421,10 +456,59 @@
                             processData: false, // Not to process data
                             data: fileData,
                             success: function () {
-
+                                swal({
+                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                    type: 'success',
+                                    timer: 5000,
+                                    showConfirmButton: true
+                                }).then(function (result) {
+                                    if (result) {
+                                        window.location.href = '/QuanTri/DanhSachNguoiDungHoatDong';
+                                    }
+                                })
                             }
                         });
                     });
+                    $("#btnDeactive").click(function () {
+                        var fileUpload = $("#image-upload").get(0);
+                        var files = fileUpload.files;
+
+                        // Create FormData object
+                        var fileData = new FormData();
+
+                        // Looping over all files and add it to FormData object
+                        for (var i = 0; i < files.length; i++) {
+                            fileData.append(files[i].name, files[i]);
+                        }
+                        fileData.append('name', name);
+                        fileData.append('dob', dob);
+                        fileData.append("office", office);
+                        fileData.append("role", role);
+                        fileData.append("email", email);
+                        fileData.append("phoneNumber", phoneNumber);
+                        fileData.append("insuranceNo", insuranceNo);
+                        fileData.append("address", address);
+                        fileData.append("active", "0");
+                        $.ajax({
+                            url: '/TaoNguoiDung/UploadFiles',
+                            type: "POST",
+                            contentType: false, // Not to set any content header
+                            processData: false, // Not to process data
+                            data: fileData,
+                            success: function () {
+                                swal({
+                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                    type: 'success',
+                                    timer: 5000,
+                                    showConfirmButton: true
+                                }).then(function (result) {
+                                    if (result) {
+                                        window.location.href = '/QuanTri/DanhSachNguoiDungHoatDong';
+                                    }
+                                })
+                            }
+                        });
+                    })
                 }
 
             });
@@ -432,7 +516,7 @@
             function validateEmail(email) {
                 var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
-            }
+            };
             function validatePhoneNumber(phoneNumber) {
                 var reg = "(\\+84|0)\\d{9,10}";
                 if (phoneNumber.match(reg)) {
@@ -440,7 +524,39 @@
                 } else {
                     return false;
                 }
+            };
+            function checkName(name) {
+                name = name.trim();
+                var nameStr = name.split(" ");
+                if (nameStr.length < 2) {
+                    return false;
+                }
+                return true;
+            };
+            $("#name").change(function () {
+                upperName($("#name").val());
+            })
+            function upperName(name) {
+                var result = "";
+                //var nameStr = name.replace("/(\s+)/", " ");
+                var nameStr = name.split(" ");
+                for (var i = 0; i < nameStr.length; i++) {
+                    nameStr[i] = nameStr[i].charAt(0).toUpperCase() + nameStr[i].substring(1).toLowerCase();
+                    result += nameStr[i] + " ";
+                }
+                $("#name").text(result);
+                $("#name").val(result);
+            };
+            function testExistedMail(email) {
+                for (var i = 0; i < $(".email").length; i++) {
+                    if (email === $("#email_"+i).val()) {
+                        return false;
+                        break;
+                    }
+                }
+                  return true;
             }
+            
         </script>
     }
 }

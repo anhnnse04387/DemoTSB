@@ -14,31 +14,57 @@
                 <th>Trạng thái</th>
                 <th>Ghi chú</th>
                 <th>Số đợt giao</th>
+                @if (Model.statusId == 2)
+                {
+                    <th></th>
+                }
             </tr>
         </thead>
         <tbody>
             @if (Model.items != null)
             {
-                for (int i = 0; i < Model.items.Count; i++)
+                if (Model.items.Count == 0)
                 {
                     <tr>
-                        <td>@(i + 1)</td>
-                        <td>
-                            <a href="/PhanPhoi/ChiTietPhieu/Index?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
-                            @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
-                            {
-                                <span class="custom-span">
-                                    <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                </span>
-                            }
-                        </td>
-                        <td>@Model.items[i].customer</td>
-                        <td>@Model.items[i].date</td>
-                        <td class="number">@Model.items[i].total</td>
-                        <td><span class="label @Model.items[i].spanClass">@Model.items[i].status</span></td>
-                        <td>@Model.items[i].note</td>
-                        <td>@Model.items[i].delivery</td>
+                        <td style="font-size:15px" colspan="9">Không tìm thấy sản phẩm!</td>
                     </tr>
+                }
+                else
+                {
+                    for (int i = 0; i < Model.items.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>
+                                <a href="/PhanPhoi/ChiTietPhieu/Index?orderId=@Model.items[i].orderId" class="orderId">@Model.items[i].orderId</a>
+                                @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                {
+                                    <span class="custom-span">
+                                        <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                    </span>
+                                }
+                            </td>
+                            <td>@Model.items[i].customer</td>
+                            <td>@Model.items[i].date</td>
+                            <td class="number">@Model.items[i].total</td>
+                            <td><span class="label @Model.items[i].spanClass">@Model.items[i].status</span></td>
+                            <td>@Model.items[i].note</td>
+                            <td>@Model.items[i].delivery</td>
+                            @if (Model.statusId == 2)
+                            {
+                                <td style="text-align: right;">
+                                    @if (Model.items[i].date == DateTime.Today)
+                                    {
+                                        {
+                                            <a style="padding-left: 15px;" data-toggle="modal" title="Chốt" data-placement="bottom" onclick="clickBtn(this)">
+                                                <i class="fa fa-check text-green pointerCursor" style="font-size: 20px"></i>
+                                            </a>
+                                        }
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    }
                 }
             }
         </tbody>

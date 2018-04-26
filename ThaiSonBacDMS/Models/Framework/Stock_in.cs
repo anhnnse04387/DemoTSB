@@ -14,7 +14,6 @@ namespace Models.Framework
             Detail_stock_in = new HashSet<Detail_stock_in>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Stock_in_ID { get; set; }
 

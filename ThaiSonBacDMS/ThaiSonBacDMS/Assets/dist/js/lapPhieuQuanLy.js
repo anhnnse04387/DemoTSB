@@ -72,7 +72,7 @@ function donePendingOrder() {
                 animation: false
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/OrderList/Processing';
+                    window.location.href = '/QuanLy/OrderList/Store';
                 }
             });
         },
@@ -127,6 +127,11 @@ function changeQtt() {
             fieldset += '</fieldset>';
             div += fieldset;
         }
+        $('#exportDiv').addClass('noDisplay');
+        $('#exportDate').removeAttr('required');
+    } else {
+        $('#exportDiv').removeClass('noDisplay');
+        $('#exportDate').prop("required", true);
     }
     document.getElementById('deliveryDiv').innerHTML = div;
     initMain();
@@ -135,6 +140,21 @@ function changeQtt() {
 
 function validate() {
     var count = 0;
+    var deliveryQtt = parseInt($('#deliveryQtt').val());
+    if (deliveryQtt > 1) {
+        var date = $(".invoiceDate");
+        for (var i = 0; i < date.length; i++) {
+            if (date.eq(i).closest("fieldset").attr("class") !== 'noDisplay') {
+                if (date.eq(i).val() === "") {
+                    count++;
+                }
+            }
+        }
+    } else {
+        if ($('#exportDate').val() === "") {
+            count++;
+        }
+    }
     if ($('#customer').val() === "") {
         count++;
     }
@@ -477,7 +497,7 @@ function getAllData() {
         for (var i = 0; i < arr.length; i++) {
             var part = [];
             var orderPartId = arr.eq(i).find('.orderPartId').val();
-            var Date_created = arr.eq(i).find('.invoiceDate').val();
+            var Date_export_order = arr.eq(i).find('.invoiceDate').val();
             var table = arr.eq(i).find('.mainTable');
             var partVat = parseFloat(table.find('.tienvat').val().replace(new RegExp(',', 'g'), ''));
             var partTotal = parseFloat(table.find('.tongtiendack').val().replace(new RegExp(',', 'g'), ''));
@@ -500,17 +520,19 @@ function getAllData() {
             });
             part = {
                 Part_ID: i + 1, Order_part_ID: orderPartId, VAT: partVat,
-                Total_price: partTotal, Date_created: Date_created
+                Total_price: partTotal, Request_stockout_date: Date_export_order
             };
             parts.push(part);
         }
+    } else {
+        var dateExport = $('#exportDate').val();
     }
     var data = {
         orderId: orderId, customerId: customerId,
         deliveryAddress: deliveryAddress, deliveryQtt: deliveryQtt,
         invoiceAddress: invoiceAddress, rate: rate, taxCode: taxCode,
         subTotal: subTotal, vat: vat, total: total, discount: discount,
-        items: items, part: parts
+        items: items, part: parts, dateExport: dateExport
     };
     return data;
 }

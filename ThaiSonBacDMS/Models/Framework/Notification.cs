@@ -9,7 +9,6 @@ namespace Models.Framework
     [Table("Notification")]
     public partial class Notification
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Notif_ID { get; set; }
 

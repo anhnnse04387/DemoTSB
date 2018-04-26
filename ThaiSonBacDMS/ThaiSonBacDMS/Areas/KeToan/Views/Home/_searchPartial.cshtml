@@ -19,26 +19,44 @@
         <tbody>
             @if (Model.items != null)
             {
-                for (int i = 0; i < Model.items.Count; i++)
+                if (Model.items.Count == 0)
                 {
                     <tr>
-                        <td>@(i + 1)</td>
-                        <td>
-                            <a href="/KeToan/ChiTietPhieu/Index?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
-                            @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
-                            {
-                                <span class="custom-span">
-                                    <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                </span>
-                            }
-                        </td>
-                        <td>@Model.items[i].customer</td>
-                        <td>@Model.items[i].date</td>
-                        <td class="number">@Model.items[i].total</td>
-                        <td><span class="label @Model.items[i].spanClass">@Model.items[i].status</span></td>
-                        <td>@Model.items[i].note</td>
-                        <td>@Model.items[i].delivery</td>
+                        <td style="font-size:15px" colspan="9">Không tìm thấy sản phẩm!</td>
                     </tr>
+                }
+                else
+                {
+                    if (Model.items.Count == 0)
+                    {
+                        <tr>
+                            <td style="font-size:15px" colspan="9">Không tìm thấy sản phẩm!</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.items.Count; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>
+                                    <a href="/KeToan/ChiTietPhieu/Index?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                    @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                    {
+                                        <span class="custom-span">
+                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                        </span>
+                                    }
+                                </td>
+                                <td>@Model.items[i].customer</td>
+                                <td>@Model.items[i].date</td>
+                                <td class="number">@Model.items[i].total</td>
+                                <td><span class="label @Model.items[i].spanClass">@Model.items[i].status</span></td>
+                                <td>@Model.items[i].note</td>
+                                <td>@Model.items[i].delivery</td>
+                            </tr>
+                        }
+                    }
                 }
             }
         </tbody>

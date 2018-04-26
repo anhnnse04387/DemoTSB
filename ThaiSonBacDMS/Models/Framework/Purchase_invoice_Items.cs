@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Purchase_invoice_Items
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? Purchase_invoice_ID { get; set; }

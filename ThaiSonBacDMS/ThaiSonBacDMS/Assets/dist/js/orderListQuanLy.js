@@ -13,6 +13,67 @@
     });
     setTable();
 });
+
+function clickBtn(btn) {
+    var thisRow = $(btn).parents("tr");
+    $('#orderIdToCheckout').val(thisRow.find('.orderId').text());
+    $('#confirmDone').modal();
+}
+
+function doneOrder() {
+    $.ajax({
+        url: '/QuanLy/OrderList/DoneOrder',
+        type: 'POST',
+        dataType: 'json',
+        data: { orderId: $('#orderIdToCheckout').val() },
+        success: function () {
+            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                type: 'success'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.reload();
+                }
+            });
+        },
+        error: function () {
+            swal({
+                title: '<img src="/Assets/dist/img/messagePic_7.png"/><img src="/Assets/dist/img/messagePic_8.png"/>',
+                type: 'error',
+                showCancelButton: false,
+                showConfirmButton: true
+            });
+        }
+    });
+}
+
+function customerATC() {
+    $('#customer').autocomplete({
+        source: function (req, responseFn) {
+            var re = req.term;
+            if (re.length > 2) {
+                $.ajax({
+                    url: '/QuanLy/OrderList/ChooseCustomer',
+                    data: {
+                        name: re
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var array = data.error ? [] : $.map(data, function (m) {
+                            return {
+                                label: m,
+                                value: m
+                            };
+                        });
+                        responseFn(array);
+                    }
+                });
+            }
+        }
+    }).autocomplete("widget").addClass("fixed-height");
+}
+
 function setTable() {
     $('#dtTable').DataTable({
         'paging': true,
@@ -32,6 +93,7 @@ function setTable() {
             }
         }
     });
+    customerATC();
     $('.datepicker').datepicker();
     $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
 }

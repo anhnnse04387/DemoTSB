@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.DAO_Model
 {
-   public class DanhSachNguoiDung
+    public class DanhSachNguoiDung
     {
         public string tenNguoiDung { get; set; }
         public string anhDaiDien { get; set; }
@@ -20,5 +20,11 @@ namespace Models.DAO_Model
         public string ngaySinh { get; set; }
         public string BHYT { get; set; }
         public string email { get; set; }
+        public int userId { get; set; }
+        public DateTime dob { get; set; }
+        public string roleId { get; set; }
+        public string officeId { get; set; }
+        public string account { get; set; }
+        public string accountDateCreated{ get; set; }
     }
 }

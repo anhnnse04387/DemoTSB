@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Product_media
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? Product_ID { get; set; }

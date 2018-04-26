@@ -2,10 +2,12 @@
 using Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
@@ -18,7 +20,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).ToList();
+            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).OrderBy(x => x.Order_ID).ToList();
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
@@ -40,13 +42,28 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return View(model);
         }
 
+        public ActionResult ChooseCustomer(String name)
+        {
+            try
+            {
+                var dao = new CustomerDAO();
+                var customer = dao.getCustomer().Where(x => x.Customer_name.Trim().ToLower().Contains(name.Trim().ToLower())).Select(x => x.Customer_name).ToList();
+                return Json(customer, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+        }
+
         public ActionResult Complete()
         {
             var orderDAO = new OrderTotalDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).ToList();
+            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).OrderBy(x => x.Order_ID).ToList();
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
@@ -54,7 +71,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     orderId = o.Order_ID,
                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
+                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
                     delivery = o.Order_part.Count,
                     note = o.Note,
                     total = o.Total_price,
@@ -74,7 +91,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 8).ToList();
+            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 8).OrderBy(x => x.Order_ID).ToList();
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
@@ -82,7 +99,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     orderId = o.Order_ID,
                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
+                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
                     delivery = o.Order_part.Count,
                     note = o.Note,
                     total = o.Total_price,
@@ -106,21 +123,42 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
-                var item = new ListItemModel
+                if (o.Order_part.Count > 1)
                 {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-warning"
-                };
-                items.Add(item);
+                    foreach (Order_part p in o.Order_part)
+                    {
+                        var item = new ListItemModel
+                        {
+                            orderId = p.Order_part_ID,
+                            customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                            date = p.Request_stockout_date,
+                            delivery = 1,
+                            note = p.Note,
+                            total = p.Total_price,
+                            status = statusDAO.getStatus(o.Status_ID),
+                            spanClass = "label-warning"
+                        };
+                        items.Add(item);
+                    }
+                }
+                else
+                {
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = o.Order_part.FirstOrDefault().Request_stockout_date,
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-warning"
+                    };
+                    items.Add(item);
+                }
             }
             model.statusId = 2;
-            model.items = items;
+            model.items = items.OrderByDescending(x => x.date).ToList();
             return View(model);
         }
 
@@ -130,7 +168,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).ToList();
+            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).OrderBy(x => x.Order_ID).ToList();
             var items = new List<ListItemModel>();
             foreach (Order_total o in lstOrder)
             {
@@ -157,7 +195,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     orderId = o.Order_ID,
                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
+                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
                     delivery = o.Order_part.Count,
                     note = o.Note,
                     total = o.Total_price,
@@ -176,13 +214,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 var orderDAO = new OrderTotalDAO();
                 var lstOrder = new List<Order_total>();
-                if(model.statusId == 12)
+                if (model.statusId == 12)
                 {
                     lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).ToList();
-                } else
+                }
+                else
                 {
                     lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == model.statusId).ToList();
-                }                                
+                }
                 if (!String.IsNullOrEmpty(model.orderId))
                 {
                     lstOrder = lstOrder.Where(x => x.Order_ID.ToLower().Contains(model.orderId.ToLower())).ToList();
@@ -206,46 +245,88 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var items = new List<ListItemModel>();
                 var customerDao = new CustomerDAO();
                 var statusDAO = new StatusDAO();
-                foreach (Order_total o in lstOrder)
+                if (model.statusId == 2)
                 {
-                    var spanClass = "";
-                    var status = statusDAO.getStatus(o.Status_ID);
-                    if (o.Status_ID == 1)
+                    foreach (Order_total o in lstOrder)
                     {
-                        spanClass = "label-info";
-                    }
-                    else if (o.Status_ID == 3 || o.Status_ID == 4)
-                    {
-                        spanClass = "label-primary";
-                    }
-                    else if (o.Status_ID == 5 || o.Status_ID == 6 || o.Status_ID == 7)
-                    {
-                        spanClass = "label-success";
-                    }
-                    else if (o.Status_ID == 8 || o.Status_ID == 9)
-                    {
-                        spanClass = "label-danger";
-                    }
-                    else
-                    {
-                        if (o.Status_ID == 10 || o.Status_ID == 11)
+                        if (o.Order_part.Count > 1)
                         {
-                            status = status.Substring(0, status.IndexOf("warning") - 1);
+                            foreach (Order_part p in o.Order_part)
+                            {
+                                var item = new ListItemModel
+                                {
+                                    orderId = p.Order_part_ID,
+                                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                                    date = p.Request_stockout_date,
+                                    delivery = 1,
+                                    note = p.Note,
+                                    total = p.Total_price,
+                                    status = statusDAO.getStatus(o.Status_ID),
+                                    spanClass = "label-warning"
+                                };
+                                items.Add(item);
+                            }
                         }
-                        spanClass = "label-warning";
+                        else
+                        {
+                            var item = new ListItemModel
+                            {
+                                orderId = o.Order_ID,
+                                customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                                date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                                delivery = o.Order_part.Count,
+                                note = o.Note,
+                                total = o.Total_price,
+                                status = statusDAO.getStatus(o.Status_ID),
+                                spanClass = "label-warning"
+                            };
+                            items.Add(item);
+                        }
                     }
-                    var item = new ListItemModel
+                }
+                else
+                {
+                    foreach (Order_total o in lstOrder)
                     {
-                        orderId = o.Order_ID,
-                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                        date = o.Date_created,
-                        delivery = o.Order_part.Count,
-                        note = o.Note,
-                        total = o.Total_price,
-                        status = status,
-                        spanClass = spanClass
-                    };
-                    items.Add(item);
+                        var spanClass = "";
+                        var status = statusDAO.getStatus(o.Status_ID);
+                        if (o.Status_ID == 1)
+                        {
+                            spanClass = "label-info";
+                        }
+                        else if (o.Status_ID == 3 || o.Status_ID == 4)
+                        {
+                            spanClass = "label-primary";
+                        }
+                        else if (o.Status_ID == 5 || o.Status_ID == 6 || o.Status_ID == 7)
+                        {
+                            spanClass = "label-success";
+                        }
+                        else if (o.Status_ID == 8 || o.Status_ID == 9)
+                        {
+                            spanClass = "label-danger";
+                        }
+                        else
+                        {
+                            if (o.Status_ID == 10 || o.Status_ID == 11)
+                            {
+                                status = status.Substring(0, status.IndexOf("warning") - 1);
+                            }
+                            spanClass = "label-warning";
+                        }
+                        var item = new ListItemModel
+                        {
+                            orderId = o.Order_ID,
+                            customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                            date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                            delivery = o.Order_part.Count,
+                            note = o.Note,
+                            total = o.Total_price,
+                            status = status,
+                            spanClass = spanClass
+                        };
+                        items.Add(item);
+                    }
                 }
                 if (!String.IsNullOrEmpty(model.customer))
                 {
@@ -262,8 +343,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         items = items.Where(x => x.delivery > 1).ToList();
                     }
                 }
-                model.items = items;
-                if (model.statusId == 1 || model.statusId == 8)
+                if (model.statusId == 2)
+                {
+                    model.items = items.OrderByDescending(x => x.date).ToList();
+                }
+                else
+                {
+                    model.items = items.OrderBy(x => x.orderId).ToList();
+                }
+                if (model.statusId == 1 || model.statusId == 8 || model.statusId == 2)
                 {
                     return PartialView("_searchPartialNormal", model);
                 }
@@ -276,6 +364,22 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index");
+            }
+        }
+
+        public JsonResult DoneOrder(String orderId)
+        {
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderTotalDAO();
+                dao.checkOutOnTime(orderId, session.user_id);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
         }
 

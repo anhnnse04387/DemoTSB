@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class PO_Items
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? PO_ID { get; set; }

@@ -14,5 +14,7 @@ namespace Models.Framework
 
         [StringLength(50)]
         public string Office_name { get; set; }
+
+        public byte? Role_ID { get; set; }
     }
 }

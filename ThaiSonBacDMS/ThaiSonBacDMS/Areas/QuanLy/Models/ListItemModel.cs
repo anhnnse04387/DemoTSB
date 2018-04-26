@@ -10,7 +10,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
 
         public String orderId { get; set; }
         public String customer { get; set; }
-        public DateTime date { get; set; }
+        public DateTime? date { get; set; }
         public decimal? total { get; set; }
         public String status { get; set; }
         public String note { get; set; }

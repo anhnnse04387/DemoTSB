@@ -8,7 +8,6 @@ namespace Models.Framework
 
     public partial class Customer_transaction
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Transaction_ID { get; set; }
 
