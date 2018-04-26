@@ -123,7 +123,7 @@ namespace Models.DAO
             });
             if (orderId.Contains("-"))
             {
-                (from o in db.Order_part where o.Order_ID.Equals(orderId) select o).SingleOrDefault().Status_ID = 3;
+                (from o in db.Order_part where o.Order_part_ID.Equals(orderId) select o).SingleOrDefault().Status_ID = 3;
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = 3,
@@ -160,7 +160,7 @@ namespace Models.DAO
             });
             if (orderId.Contains("-"))
             {
-                var part = (from o in db.Order_part where o.Order_ID.Equals(orderId) select o).SingleOrDefault();
+                var part = (from o in db.Order_part where o.Order_part_ID.Equals(orderId) select o).SingleOrDefault();
                 part.Status_ID = 4;
                 part.VAT = vat;
                 part.Invoice_number = invoiceNumber;
@@ -195,9 +195,9 @@ namespace Models.DAO
 
         public void kho_checkOut(String orderId, int userId, bool takeInvoice, bool takeBallot)
         {
-            var p = db.Order_part.Where(x => x.Order_ID.Equals(orderId)).SingleOrDefault();
+            var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             byte? status = 5;
-            if (p.Status_ID != 4)
+            if (db.Order_detail_status.Where(x=>x.Order_part_ID.Equals(orderId) && x.Status_ID == 4).ToList().Count == 0)
             {
                 status = 10;
             }
@@ -236,18 +236,10 @@ namespace Models.DAO
         }
 
         public void delivery_checkOut(String orderId, int userId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool receiveInvoice, bool receiveBallot)
-        {
-            db.Notifications.Add(new Notification
-            {
-                Notif_date = DateTime.Now,
-                Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã chốt đơn với mã " + orderId,
-                Link = "/ChiTietPhieu/Index?" + orderId,
-                User_ID = db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && x.Status_ID == 1).FirstOrDefault().User_ID,
-                Status = 1
-            });
-            var p = db.Order_part.Where(x => x.Order_ID.Equals(orderId)).SingleOrDefault();
+        {            
+            var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             byte? status = 6;
-            if (p.Status_ID != 4)
+            if (db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && x.Status_ID == 4).ToList().Count == 0)
             {
                 status = 11;
             }
@@ -265,6 +257,14 @@ namespace Models.DAO
             p.Driver_ID = Driver_ID;
             if (orderId.Contains("-"))
             {
+                db.Notifications.Add(new Notification
+                {
+                    Notif_date = DateTime.Now,
+                    Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã chốt đơn với mã " + orderId,
+                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    User_ID = db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && x.Status_ID == 1).FirstOrDefault().User_ID,
+                    Status = 1
+                });
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = status,
@@ -277,6 +277,14 @@ namespace Models.DAO
             else
             {
                 (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).SingleOrDefault().Status_ID = status;
+                db.Notifications.Add(new Notification
+                {
+                    Notif_date = DateTime.Now,
+                    Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã chốt đơn với mã " + orderId,
+                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    User_ID = db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && x.Status_ID == 1).FirstOrDefault().User_ID,
+                    Status = 1
+                });
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = status,
@@ -292,7 +300,7 @@ namespace Models.DAO
         {
             if (orderId.Contains("-"))
             {
-                var p = (from op in db.Order_part where op.Order_ID.Equals(orderId) select op).SingleOrDefault();
+                var p = (from op in db.Order_part where op.Order_part_ID.Equals(orderId) select op).SingleOrDefault();
                 p.Status_ID = 8;
                 p.Note = reason;
                 db.Order_detail_status.Add(new Order_detail_status

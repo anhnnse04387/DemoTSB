@@ -104,8 +104,8 @@
                                 <i class="fa fa-close text-gray"></i>
                                 <span><strong>Hủy</strong></span>
                             </a>
-                            <button class="btn btn-app custom-btn @Model.status == 4 ? 'disabled' : ''" data-toggle="modal" title="Chốt đơn" data-placement="bottom" id="btnSubmit">
-                                <i class="fa fa-check-circle @Model.status == 4 ? 'text-gray' : 'text-green'"></i>
+                            <button class="btn btn-app custom-btn @(@Model.statusId == 4 ? "disabled" : "")" data-toggle="modal" title="Chốt đơn" data-placement="bottom" id="btnSubmit">
+                                <i class="fa fa-check-circle @(@Model.statusId == 4 ? "text-gray" : "text-green")"></i>
                                 <span><strong>Chốt đơn</strong></span>
                             </button>
                             <a class="btn btn-app custom-btn disabled">

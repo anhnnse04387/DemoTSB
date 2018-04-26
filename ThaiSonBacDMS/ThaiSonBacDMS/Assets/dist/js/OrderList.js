@@ -33,7 +33,7 @@ function doneOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/PhanPhoi/OrderList/Processing';
+                    window.location.reload();
                 }
             });
         },

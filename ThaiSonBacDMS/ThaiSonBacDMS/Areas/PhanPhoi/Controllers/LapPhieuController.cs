@@ -99,22 +99,24 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                             User_ID = session.user_id,
                                             Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
                                         });
-                                    }
-                                    lstCompare.Remove(o);
+                                    }                                   
                                 }
                             }
                         }
                         foreach (Order_items i in lstCompare)
                         {
-                            historyDAO.createHistory(new Edit_history
+                            if(orderDAO.getOrder(model.orderId).Order_items.Where(x=>x.Product_ID == i.Product_ID).ToList().Count == 0)
                             {
-                                Date_change = DateTime.Now,
-                                Order_ID = model.orderId,
-                                Product_ID = i.Product_ID,
-                                Quantity_change = i.Quantity,
-                                User_ID = session.user_id,
-                                Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
-                            });
+                                historyDAO.createHistory(new Edit_history
+                                {
+                                    Date_change = DateTime.Now,
+                                    Order_ID = model.orderId,
+                                    Product_ID = i.Product_ID,
+                                    Quantity_change = i.Quantity,
+                                    User_ID = session.user_id,
+                                    Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
+                                });
+                            }
                         }
                         orderDAO.updateOrder(new Order_total
                         {

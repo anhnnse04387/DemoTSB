@@ -34,7 +34,21 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             var items = new List<OrderItemModel>();
             foreach (Order_items o in data.Order_total.Order_items)
             {
-                if (o.Order_part_ID.Equals(data.Order_part_ID))
+                if (o.Order_part_ID != null)
+                {
+                    if (o.Order_part_ID.Equals(data.Order_part_ID))
+                    {
+                        var product = productDAO.getProductById(o.Product_ID);
+                        var item = new OrderItemModel
+                        {
+                            code = product.Product_code,
+                            Box = o.Box,
+                            Quantity = o.Quantity
+                        };
+                        items.Add(item);
+                    }
+                }
+                else
                 {
                     var product = productDAO.getProductById(o.Product_ID);
                     var item = new OrderItemModel

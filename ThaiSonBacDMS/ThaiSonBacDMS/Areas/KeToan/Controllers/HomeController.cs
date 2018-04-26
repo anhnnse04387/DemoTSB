@@ -36,7 +36,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                 }
                 var item = new ListItemModel
                 {
-                    orderId = o.Order_ID,
+                    orderId = o.Order_part_ID,
                     customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
                     date = o.Date_created,
                     delivery = 1,

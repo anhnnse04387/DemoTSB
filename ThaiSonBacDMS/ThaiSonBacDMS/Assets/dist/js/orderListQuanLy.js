@@ -15,8 +15,8 @@
 });
 
 function clickBtn(btn) {
-    var thisRow = $(btn).closest("tr");
-    $('#orderIdToCheckout').val(thisRow.find('.orderId').val());
+    var thisRow = $(btn).parents("tr");
+    $('#orderIdToCheckout').val(thisRow.find('.orderId').text());
     $('#confirmDone').modal();
 }
 
@@ -33,7 +33,7 @@ function doneOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/OrderList/Processing';
+                    window.location.reload();
                 }
             });
         },

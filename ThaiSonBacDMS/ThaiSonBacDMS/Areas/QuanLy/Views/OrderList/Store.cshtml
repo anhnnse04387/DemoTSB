@@ -22,6 +22,10 @@
         #dtTable tbody td:nth-child() {
             text-align: right;
         }
+
+    .pointerCursor {
+        cursor: pointer;
+    }
 </style>
 <section class="content-header">
     <ol class="breadcrumb">
@@ -137,6 +141,7 @@
                         <div class="row" id="item">
                             @Html.Partial("_searchPartialNormal", Model)
                         </div>
+                        <div id="sound"></div>
                     </div>
                 </div>
             </div>
@@ -159,6 +164,7 @@
     </div>
 }
 @section List {
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
     <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script src="/Assets/dist/js/orderListQuanLy.js"></script>

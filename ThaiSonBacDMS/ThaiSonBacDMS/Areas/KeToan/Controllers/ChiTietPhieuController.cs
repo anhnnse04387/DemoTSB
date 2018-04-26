@@ -36,7 +36,26 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             decimal? subTotal = 0;
             foreach (Order_items o in data.Order_total.Order_items)
             {
-                if (o.Order_part_ID.Equals(data.Order_part_ID))
+                if (o.Order_part_ID != null)
+                {
+                    if (o.Order_part_ID.Equals(data.Order_part_ID))
+                    {
+                        var product = productDAO.getProductById(o.Product_ID);
+                        var item = new OrderItemModel
+                        {
+                            code = product.Product_code,
+                            param = product.Product_parameters,
+                            Box = o.Box,
+                            Discount = o.Discount,
+                            Price = o.Price,
+                            Quantity = o.Quantity,
+                            per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                            priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                        };
+                        items.Add(item);
+                    }
+                }
+                else
                 {
                     var product = productDAO.getProductById(o.Product_ID);
                     var item = new OrderItemModel
@@ -51,10 +70,10 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                     };
                     items.Add(item);
-                    model.qttTotal += o.Quantity;
-                    model.boxTotal += o.Box;
-                    subTotal += o.Price;
                 }
+                model.qttTotal += o.Quantity;
+                model.boxTotal += o.Box;
+                subTotal += o.Price;
             }
             model.discount = data.Order_total.Order_discount;
             model.vat = data.VAT;
