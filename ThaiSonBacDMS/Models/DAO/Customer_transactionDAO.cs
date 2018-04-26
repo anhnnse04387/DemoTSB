@@ -172,44 +172,7 @@ namespace Models.DAO
         public List<DanhSachNoKhachHang> danhSachKhachHang()
         {
             List<DanhSachNoKhachHang> lst = new List<DanhSachNoKhachHang>();
-            //var lstCustomer = db.Customers.Distinct().ToList();
-            //foreach(Customer c in lstCustomer)
-            //{
-            //    var data = db.Customer_transaction.Where(x => x.Customer_ID == c.Customer_ID).OrderByDescending(x => x.Date_Created).FirstOrDefault();
-            //    var item = new DanhSachNoKhachHang { };
-            //    lst.Add(item);
-            //}
-            //var query3 = from transaction in db.Customer_transaction
-            //             join maxDate in query1 on transaction.Date_Created.Value.TimeOfDay equals maxDate.maxDate.Value.TimeOfDay
-            //             //join order in query2 on transaction.Order_ID equals order.orderId
-            //             join cus in db.Customers on transaction.Customer_ID equals cus.Customer_ID
-            //             select new
-            //             {
-            //                 tenKhachHang = cus.Customer_name,
-            //                 transaction,
-            //             };
 
-
-            //if (query3.Count() != 0)
-            //{
-            //    foreach (var item in query3)
-            //    {
-            //        DanhSachNoKhachHang ds = new DanhSachNoKhachHang();
-
-            //        ds.customerId = item.transaction.Customer_ID;
-            //        ds.tenKhachHang = item.tenKhachHang;
-            //        ds.noCu = item.transaction.Old_debt;
-            //        //ds.soLuong = item.quantity;
-            //        ds.tienHang = item.transaction.Sub_total;
-            //        ds.vat = item.transaction.VAT;
-            //        ds.tongCong = item.transaction.Total;
-            //        ds.thanhToan = item.transaction.Pay;
-            //        ds.conNo = item.transaction.Debt;
-            //        ds.id = item.transaction.Transaction_ID;
-
-            //        lst.Add(ds);
-            //    }
-            //}
             var query1 = from transaction in db.Customer_transaction
                          group transaction by transaction.Customer_ID into g
                          select new
