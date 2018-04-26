@@ -730,7 +730,7 @@ namespace Models.DAO
                     item.officeId = user.user.Office_ID.ToString();
                     item.account = user.acc.Account_name;
                     item.accountDateCreated = user.acc.Date_Created?.ToString("dd-MM-yyyy");
-
+                    item.userId = userId;
                 }
 
             }
@@ -754,6 +754,24 @@ namespace Models.DAO
                             user
                         };
             if (query.Count() != 0)
+            {
+                foreach (var item in query)
+                {
+                    lst.Add(item.user.Mail);
+                }
+            }
+            return lst;
+        }
+        public List<string> getAllEmail(int userId)
+        {
+            List<string> lst = new List<string>();
+            var query = from user in context.Users
+                        select new
+                        {
+                            user
+                        };
+            query = query.Where(x => x.user.User_ID != userId);
+            if (query != null)
             {
                 foreach (var item in query)
                 {

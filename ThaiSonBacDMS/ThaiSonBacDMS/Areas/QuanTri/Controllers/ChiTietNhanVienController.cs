@@ -21,7 +21,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             ChiTietNguoiDungModel model = new ChiTietNguoiDungModel();
 
             model.userInfor = new DanhSachNguoiDung();
-            model.lstAllEmail = userDao.getAllEmail();
+            model.lstAllEmail = userDao.getAllEmail(userId);
             model.userInfor = userDao.getDetailUser(userId);
             model.roleId = model.userInfor.roleId;
             model.officeId = model.userInfor.officeId;
@@ -82,9 +82,22 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         [HttpPost]
-        public JsonResult UpdateData(string ten,string chucVu,string phanHe,string bhyt,string diaChi,string ngaySinh,string soDienThoai,string email,string isActive)
+        public JsonResult UpdateData(string userId,string ten,string chucVu,string phanHe,string bhyt,string diaChi,string ngaySinh,string soDienThoai,string email,string isActive,string account)
         {
+            UserDAO userDao = new UserDAO();
+            AccountDAO accDao = new AccountDAO();
 
+            userDao.updateUser(userId, ten, chucVu, phanHe, soDienThoai, email, bhyt, diaChi, ngaySinh, isActive);
+            accDao.updateAccount(userId, account, chucVu, isActive);
+             
+            return Json(new { success = true, JsonRequestBehavior.AllowGet });
+        }
+        [HttpPost]
+        public JsonResult ResetPassWord(string userId)
+        {
+            string newPassWord = Common.Encryptor.MD5Hash("123@123");
+            AccountDAO accDao = new AccountDAO();
+            accDao.resetPassword(userId, newPassWord);
             return Json(new { success = true, JsonRequestBehavior.AllowGet });
         }
     }
