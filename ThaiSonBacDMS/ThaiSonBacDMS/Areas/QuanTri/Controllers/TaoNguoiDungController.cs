@@ -9,6 +9,7 @@ using ThaiSonBacDMS.Areas.QuanTri.Models;
 using ThaiSonBacDMS.Common;
 using Models.Framework;
 using System.Globalization;
+using Models.DAO_Model;
 
 namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
 {
@@ -30,16 +31,16 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 model.lstOffice = new List<SelectListItem>();
                 model.lstRole = new List<SelectListItem>();
 
-                var lstOffice = officeDao.getListOffice();
+                //var lstOffice = officeDao.getListOffice();
                 var lstRole = roleDeDao.lstAllRole();
 
-                if (lstRole.Count() != 0)
-                {
-                    foreach (var item in lstOffice)
-                    {
-                        model.lstOffice.Add(new SelectListItem { Text = item.Office_name, Value = item.Office_ID.ToString() });
-                    }
-                }
+                //if (lstRole.Count() != 0)
+                //{
+                //    foreach (var item in lstOffice)
+                //    {
+                //        model.lstOffice.Add(new SelectListItem { Text = item.Office_name, Value = item.Office_ID.ToString() });
+                //    }
+                //}
                 if (lstRole.Count != 0)
                 {
                     foreach (var item in lstRole)
@@ -63,6 +64,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 UserDAO userDao = new UserDAO();
                 MediaDAO mediaDao = new MediaDAO();
                 AccountDAO accDao = new AccountDAO();
+                Account_roleDAO accRoleDao = new Account_roleDAO();
 
                 if (Request.Files.Count > 0)
                 {
@@ -88,14 +90,17 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                     {
                         int accountId = accDao.getMaxId(account);
                         string existedAcc = accDao.getExistingAcc(accountId);
-                        string c = existedAcc.Substring(existedAcc.Length - 1);
-                        if (!Char.IsNumber(Convert.ToChar(c)))
+                        if (!string.IsNullOrEmpty(existedAcc))
                         {
-                            account += "1";
-                        }
-                        else
-                        {
-                            account += Convert.ToInt32(c) + 1;
+                            string c = existedAcc.Substring(existedAcc.Length - 1);
+                            if (!Char.IsNumber(Convert.ToChar(c)))
+                            {
+                                account += "1";
+                            }
+                            else
+                            {
+                                account += Convert.ToInt32(c) + 1;
+                            }
                         }
                     }
 
@@ -140,7 +145,9 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                         int mediaId = mediaDao.insertMedia("User", path, userId);
                         int userID = userDao.insertNewUser(user, mediaId.ToString());
                         string passWord = Common.Encryptor.MD5Hash("123@123");
-                        accDao.insertNewAccount(account, passWord, userID, role, isActive);
+                        int accId = accDao.insertNewAccount(account, passWord, userID, role, isActive);
+                        accRoleDao.insertNewRecord(accId, role);
+
                     }
 
                 }
@@ -158,6 +165,14 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             UserDAO dao = new UserDAO();
             int result = dao.checkExsitedEmail(email);
             return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        [HttpPost]
+        public JsonResult ChangeSelect(string selectedValue)
+        {
+            OfficeDAO dao = new OfficeDAO();
+            var lst = dao.getListBySelectedValue(selectedValue);
+
+            return new JsonResult { Data = lst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }
