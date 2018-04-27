@@ -429,12 +429,18 @@ namespace Models.DAO
 
         public List<Order_items> getProductByExportDate(DateTime export_date, int productID)
         {
-            var query = from oi in db.Order_items
+            List<Order_items> query = (from oi in db.Order_items
                         join op in db.Order_part on oi.Order_part_ID equals op.Order_part_ID
-                        where op.Date_completed >= export_date
+                        where op.Request_stockout_date >= export_date
                         && oi.Product_ID == productID
-                        select oi;
-            return query.ToList();
+                        select oi).ToList();
+            List<Order_items> query2 = (from oi in db.Order_items
+                        join op in db.Order_part on oi.Order_ID equals op.Order_part_ID
+                        where op.Request_stockout_date >= export_date
+                        && oi.Product_ID == productID
+                        select oi).ToList();
+            query.AddRange(query2);
+            return query;
         }
         //thuongtx
         public List<Order_items> getLstOrderItems(int productId)

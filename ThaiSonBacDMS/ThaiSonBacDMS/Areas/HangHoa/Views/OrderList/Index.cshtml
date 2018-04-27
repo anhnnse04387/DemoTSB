@@ -2,10 +2,15 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/HangHoa/Views/Shared/_Layout.cshtml";
+    var i = 1;
 }
 @model ThaiSonBacDMS.Areas.HangHoa.Models.OrderListModel
 @section IndexStyle
 {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Datepicker -->
+    <link href="~/Assets/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
     <style>
         .custom-btn {
             padding: 10px 5px;
@@ -139,13 +144,13 @@
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
-                                                            @Html.TextBoxFor(model => Model.fromDate, new { @type = "text", @class = "form-control", @placeholder = "Từ ngày...", @style = "width:150px" })
+                                                            @Html.TextBoxFor(model => Model.fromDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Từ ngày...", @style = "width:150px" })
                                                         </div>
                                                         <div class="input-group date col-sm-6 col-sm-offset-1 no-padding" style="margin-left: 197px;">
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
-                                                            @Html.TextBoxFor(model => Model.toDate, new { @type = "text", @class = "form-control", @placeholder = "Đến ngày...", @style = "width:150px" })
+                                                            @Html.TextBoxFor(model => Model.toDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Đến ngày...", @style = "width:150px" })
                                                         </div>
                                                     </td>
 
@@ -158,10 +163,17 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-hourglass"></i>
                                                             </span>
-                                                            <select class="form-control" style="font-family: 'FontAwesome';width:350px">
-                                                                <option value="Đã xuất phiếu">Đã xuất phiếu</option>
-                                                                <option value="Kế toán đã xử lý">Kế toán đã xử lý</option>
-                                                            </select>
+                                                            @Html.DropDownListFor(model => model.statusName,
+                                                                new SelectList(
+                                                                  new List<Object>{
+                                                                       new { value = "Đã xuất phiếu" , text = "Đã xuất phiếu"  },
+                                                                       new { value = "Kế toán đã xử lý" , text = "Kế toán đã xử lý" },
+                                                                       
+                                                                    },
+                                                                  "value",
+                                                                   "text"
+                                                                 ),
+                                                                "Chọn trạng thái", new { @class= "form-control", @style= "font-family: 'FontAwesome';width:350px" })
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -171,7 +183,7 @@
                                     <!-- /.box-body -->
                                     <div class="box-footer clearfix">
                                         <div class="pagination pagination-sm no-margin pull-right">
-                                            <button type="button" class="btn btn-block btn-primary">Tìm kiếm<i class="fa fa-search"></i></button>
+                                            <button type="submit" class="btn btn-block btn-primary">Tìm kiếm<i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 }
@@ -193,127 +205,29 @@
                                         <th>Lấy hóa đơn</th>
                                         <th>Trạng Thái</th>
                                         <th>Ngày giao</th>
-                                        <th>Ghi chú</th>
-                                        <!-- <th>Xử lý</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81269-0</a></td>
-                                        <td>Công ty Long Giang</td>
-                                        <td>24329</td>
-                                        <td>
-                                            <input type="checkbox" disabled>
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" disabled>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">Kế toán đã xử lý</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Giao trước 15-12-2017</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>2</td>
-                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81268-0</a></td>
-                                        <td>Công ty Phú An</td>
-                                        <td>24328</td>
-                                        <td>
-                                            <input type="checkbox" disabled>
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" disabled>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">Kế toán đã xử lí</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Giao trước 11-12-2017</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81267-1</a></td>
-                                        <td>Công ty Invico</td>
-                                        <td>24327</td>
-                                        <td>
-                                            <input type="checkbox" disabled />
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" disabled />
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">Kế toán đã xử lí</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Giao trước 19-11-2017</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>4</td>
-                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81266-1</a></td>
-                                        <td>Công ty Sáng Hà</td>
-                                        <td>24326</td>
-                                        <td>
-                                            <input type="checkbox" disabled />
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" disabled />
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">Đã xuất phiếu</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Giao trước 19-11-2017</td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>5</td>
-                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81265-1</a></td>
-                                        <td>Công ty Vạn Xuân</td>
-                                        <td>24325</td>
-                                        <td>
-                                            <input type="checkbox" disabled />
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" disabled />
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">Đã xuất phiếu</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Giao trước 19-11-2017</td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>6</td>
-                                        <td><a href="hanghoa_donhang_chi-tiet-don-hang-xuat-kho.html">81264-1</a></td>
-                                        <td>Công ty Tương Lai</td>
-                                        <td>24324</td>
-                                        <td>
-                                            <input type="checkbox" disabled>
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" disabled>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">Kế toán đã xử lý</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Giao trước 01-11-2017</td>
-
-                                    </tr>
-
+                                    @foreach(var item in Model.listOrderPending) {
+                                         
+                                        <tr>
+                                            <td>@i</td>
+                                            <td><a href="#">@item.orderID</a></td>
+                                            <td>@item.salesUserName</td>
+                                            <td>@item.customerName</td>
+                                            <td>@item.invoiceNumber</td>
+                                            <td>
+                                                <input type="checkbox" checked="@item.takeBallot" disabled>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" checked="@item.takeBallot" disabled>
+                                            </td>
+                                            <td>
+                                                <span class="label label-primary">@item.statusName</span>
+                                            </td>
+                                            <td>@item.dateExport.ToString("dd/MM/yyyy")</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -324,3 +238,33 @@
     </div>
 </section>
 <!-- End content -->
+@section Index {
+    <!-- DataTables -->
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- Datepicker -->
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <!-- Page script-->
+    <script>
+        $(document).ready(function () {
+
+            var table = $('#example1').dataTable({
+                "searching": false,
+                "info": false,
+                "lengthChange": false,
+                "language": {
+                    "zeroRecords": "Không tìm được giá trị phù hợp",
+                    "paginate": {
+                        "first": "Đầu",
+                        "last": "Cuối",
+                        "next": "Tiếp",
+                        "previous": "Sau"
+                    }
+                }
+            });
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+    </script>
+}

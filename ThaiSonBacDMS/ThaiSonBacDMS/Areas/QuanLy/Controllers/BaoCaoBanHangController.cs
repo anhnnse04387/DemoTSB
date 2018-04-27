@@ -59,18 +59,8 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             }
             //get list User Ke Toan
             List<User> lstAccUser = new UserDAO().getAllUserByRoleID(5);
-            model.listAccountingPerformance = setListRolePerformance(lstAccUser, beginDate, endDate);
-            //get list User Hang Hoa
-            List<User> lstWarHouseUser = new UserDAO().getAllUserByRoleID(4);
-            model.listWarhousePerformance = setListRolePerformance(lstWarHouseUser, beginDate, endDate);
-
-            return View(model);
-        }
-
-        private List<RolePerformance> setListRolePerformance(List<User> listUser, DateTime beginDate, DateTime endDate)
-        {
-            List<RolePerformance> retunrList = new List<RolePerformance>();
-            foreach (var item in listUser)
+            model.listAccountingPerformance = new List<RolePerformance>();
+            foreach (var item in lstAccUser)
             {
                 List<Order_detail_status> lstPerformance = new OrderDetailStatusDAO().
                 getStatusByDateAndUserID(beginDate, endDate, item.User_ID);
@@ -81,9 +71,26 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     });
                 var totalTime = q.Where(z => z.differentTime != 0).Sum(z => z.differentTime);
                 double perform = q.Count() == 0 ? 0 : totalTime / q.Count();
-                retunrList.Add(new RolePerformance(item.User_name,q.Count(),perform));
+                model.listAccountingPerformance.Add(new RolePerformance(item.User_name, q.Count(), perform));
             }
-            return retunrList;
+            //get list User Hang Hoa
+            List<User> lstWarHouseUser = new UserDAO().getAllUserByRoleID(4);
+            model.listWarhousePerformance = new List<RolePerformance>();
+            foreach (var item in lstAccUser)
+            {
+                List<Order_detail_status> lstPerformance = new OrderDetailStatusDAO().
+                getStatusByDateAndUserID(beginDate, endDate, item.User_ID);
+                var q = lstPerformance.Where(z => z.Status_ID == 3 || z.Status_ID == 5 || z.Status_ID == 10).OrderBy(z => z.Date_change)
+                    .GroupBy(z => z.Order_part_ID).Select(z => new {
+                        orderName = z.Key,
+                        differentTime = z.Count() != 2 ? 0 : (z.Last().Date_change - z.First().Date_change).Value.TotalHours,
+                    });
+                var totalTime = q.Where(z => z.differentTime != 0).Sum(z => z.differentTime);
+                double perform = q.Count() == 0 ? 0 : totalTime / q.Count();
+                model.listWarhousePerformance.Add(new RolePerformance(item.User_name, q.Count(), perform));
+            }
+
+            return View(model);
         }
     }
 }

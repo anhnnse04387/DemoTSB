@@ -26,7 +26,6 @@ namespace Models.DAO
             }
             return null;
         }
-<<<<<<< HEAD
         
         public List<Order_part> getByCreatedDate(DateTime beginDate, DateTime endDate)
         {
@@ -42,13 +41,11 @@ namespace Models.DAO
         {
             return db.Order_part.Where(x => x.Status_ID == status_ID).ToList();
         }        
-=======
 
         public List<Order_part> getAllOrderPart()
         {
             return db.Order_part.ToList();
         }
->>>>>>> 571d213b296cd6485c5ea01ddfe5475a93ce97ed
 
         public Order_part getOrderPart(String id)
         {

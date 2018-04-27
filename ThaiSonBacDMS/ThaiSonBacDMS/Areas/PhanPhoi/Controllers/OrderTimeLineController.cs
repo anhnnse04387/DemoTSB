@@ -24,9 +24,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 orderName = x.Order_part_ID,
                 customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
                 dateCreated = x.Date_created,
-                dateCompleted = (DateTime) x.Date_completed,
+                dateCompleted = (DateTime) x.Request_stockout_date,
                 userName = new UserDAO().getByID(x.Sales_user_ID).User_name,
-                status = x.Status_ID == 1 ? "completed" : "",
+                status = x.Status_ID == 7 ? "completed" : "",
             }).ToList();
 
             model.ListOpInfo = returnModel;
@@ -79,8 +79,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.ListOpInfo = listOrderItem.Select((x,index) => new OrderPartInfo
             {
                 indexOf = index,
-                orderName = x.Order_part_ID,
-                dateCompleted = new OrderPartDAO().getByName(x.Order_part_ID).Date_completed,
+                orderName = x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID,
+                dateCompleted = new OrderPartDAO().getByName(x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID).Request_stockout_date,
                 quantity = x.Quantity == null ? 0: (int) x.Quantity,
             }).ToList();
             if(model.ListOpInfo.Count!=0)
@@ -98,8 +98,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.ListOpInfo = listOrderItem.Select((x, index) => new OrderPartInfo
             {
                 indexOf = index,
-                orderName = x.Order_part_ID,
-                dateCompleted = new OrderPartDAO().getByName(x.Order_part_ID).Date_completed,
+                orderName = x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID,
+                dateCompleted = new OrderPartDAO().getByName(x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID).Request_stockout_date,
                 quantity = x.Quantity == null ? 0 : (int)x.Quantity,
             }).ToList();
             if (model.ListOpInfo.Count != 0)
