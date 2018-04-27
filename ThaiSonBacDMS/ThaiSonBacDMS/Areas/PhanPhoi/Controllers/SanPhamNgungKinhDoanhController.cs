@@ -9,7 +9,7 @@ using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class SanPhamNgungKinhDoanhController : Controller
+    public class SanPhamNgungKinhDoanhController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/SanPhamNgungKinhDoanh
         public ActionResult Index()

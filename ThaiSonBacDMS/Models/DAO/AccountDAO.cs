@@ -65,14 +65,15 @@ namespace Models.DAO
             acc.Date_Created = DateTime.Now;
 
             context.Accounts.Add(acc);
-            return context.SaveChanges();
+            context.SaveChanges();
+            return acc.Account_ID;
         }
         public int checkExistAcc(string accSearch)
         {
             var query = from acc in context.Accounts
                         where acc.Account_name.ToLower().Equals(accSearch.ToLower())
                         select acc;
-            if (query != null)
+            if (query.Count() != 0)
             {
                 return 1;
             }
@@ -112,7 +113,7 @@ namespace Models.DAO
             {
                 account.Account_name = accountName;
                 account.Role_ID = Convert.ToByte(roleId);
-                account.Account_Status = isActive.Equals("true") ? "Active" : "Deactive";
+                account.Account_Status = isActive.ToLower().Equals("active") ? "Active" : "Deactive";
 
                 result = context.SaveChanges();
             }
@@ -122,13 +123,17 @@ namespace Models.DAO
         public int resetPassword(string userId,string newPassword)
         {
             int result = 0;
-            var account = context.Accounts.SingleOrDefault(x => x.User_ID.Equals(userId));
+            var account = context.Accounts.SingleOrDefault(x => x.User_ID.ToString().Equals(userId));
             if (account != null)
             {
                 account.Password = newPassword;
                 result = context.SaveChanges();
             }
             return result;
+        }
+        public int getAccountId(string acc)
+        {
+            return context.Accounts.SingleOrDefault(x => x.Account_name.ToLower().Equals(acc.ToLower())).Account_ID;
         }
     }
 }

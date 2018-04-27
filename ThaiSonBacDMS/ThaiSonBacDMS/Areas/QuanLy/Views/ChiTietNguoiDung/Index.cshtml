@@ -1,0 +1,415 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietNguoiDungModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    .box-body-custom-detail-custom {
+        font-size: 20px;
+    }
+
+    th {
+        color: white;
+        background-color: #3c8dbc;
+        font-weight: bold;
+    }
+
+    th,
+    td {
+        text-align: center;
+    }
+
+    #mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #mainTable tbody td:nth-child() {
+            text-align: left;
+        }
+
+        #mainTable tbody td:nth-child(4),
+        #mainTable tbody td:nth-child(5) {
+            text-align: right;
+        }
+    /* helpers/align.css */
+    .align {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    svg {
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    #scrollContainer p {
+        margin: 0;
+        line-height: 30px;
+        font-size: 20px;
+        color: white;
+    }
+
+    #scrollContainer {
+        height: 30px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+    #scrollBox {
+        position: relative;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Trang Chủ
+                </a>
+            </li>
+            <li class="active"> Thông tin người dùng </li>
+        </ol>
+    </section>
+    <br>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <img class="profile-user-img img-responsive img-circle" src="@Model.userInfor.anhDaiDien" alt="User profile picture">
+                        <h3 style="margin-top: 20px;" class="profile-username text-center">@Model.userInfor.tenNguoiDung</h3>
+                        <p class="text-muted text-center"></p>
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <i class="fa fa-codepen"></i>
+                                <b>Chức vụ</b>
+                                <a class="pull-right">@Model.userInfor.chucVu</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-diamond"></i>
+                                <b>Phân hệ</b>
+                                <a class="pull-right">@Model.userInfor.phanHe</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-phone"></i>
+                                <b>Số điện thoại</b>
+                                <a class="pull-right">@Model.userInfor.soDienThoai</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-envelope"></i>
+                                <b>Email</b>
+                                <a class="pull-right">@Model.userInfor.email</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-calendar"></i>
+                                <b>Ngày sinh</b>
+                                <a class="pull-right">@Model.userInfor.ngaySinh</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-address-book"></i>
+                                <b>Địa chỉ</b>
+                                <br>
+                                <span style="color: #4682b4">@Model.userInfor.diaChi</span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-id-card-o"></i>
+                                <b>Mã BHYT</b>
+                                <a class="pull-right">@Model.userInfor.BHYT</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <div class="nav nav-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Công việc</a>
+                            </li>
+                            <li class="">
+                                <a href="#mathang" data-toggle="tab" aria-expanded="false">Hoạt động</a>
+                            </li>
+                            <li class="">
+                                <a href="#chinhsua" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="doanhthu">
+                            <div class="container-fluid">
+
+                                <fieldset class="row">
+                                    <legend style="font-size: 17px"><b>KPI trong tháng</b></legend>
+                                    <div class="col-md-6">
+                                        <div class="progress-group">
+                                            <span class="progress-text">Số đơn hàng bán ra</span>
+                                            <span class="progress-number"><b>16</b>/20</span>
+
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="progress-group">
+                                            <span class="progress-text">Tổng tiền thu được</span>
+                                            <span class="progress-number"><b>20,527,000 </b>/30,000,000</span>
+
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-red" style="width: 86.4%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <br>
+                                <fieldset class="row">
+                                    <legend style="font-size: 17px"><b>Ghi chú</b></legend>
+                                    <form>
+                                        <textarea id="editor1" class="textarea" rows="5" style="width: 100%" disabled>
+                                            -Ngày 31/12/2017: Inbox để biết thêm chi tiết
+                                            -Ngày 05/01/2018: Hãy xử lý đơn hàng HD-83157-1
+                                        </textarea>
+                                    </form>
+                                    <a id="btnEditor" onclick="doEdit();" style="width: 100px; margin-top: 20px;" class="btn btn-primary btn-block pull-right">
+                                        <b>Chỉnh sửa</b>
+                                    </a>
+                                </fieldset>
+                                <fieldset class="row">
+
+                                    <legend style="font-size: 17px"><b>Đơn hàng chờ xử lý</b></legend>
+                                    <table id="example1" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Lô số</th>
+                                                <th>Ngày</th>
+                                                <th>Trạng thái</th>
+                                                <th width="20%">Ghi chú</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <a href="#">81265-0</a>
+                                                </td>
+                                                <td>22-12-2017</td>
+                                                <td>
+                                                    <span class="label label-primary">Kế toán đã xử lý</span>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>
+                                                    <a href="#">81264-0</a>
+                                                </td>
+                                                <td>21-12-2017</td>
+                                                <td>
+                                                    <span class="label label-primary">Đã xuất phiếu</span>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>
+                                                    <a href="#">81263-1</a>
+                                                </td>
+                                                <td>19-12-2017</td>
+                                                <td>
+                                                    <span class="label label-primary">Đã xuất phiếu</span>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>
+                                                    <a href="#">81262-1</a>
+                                                </td>
+                                                <td>18-12-2017</td>
+                                                <td>
+                                                    <span class="label label-primary">Kế toán đã xử lý<</span>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>
+                                                    <a href="#">81261-0</a>
+                                                </td>
+                                                <td>01-12-2017</td>
+                                                <td>
+                                                    <span class="label label-primary">Đã xuất phiếu</span>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                </fieldset>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="mathang">
+                            <ul class="timeline">
+
+                                <!-- timeline time label -->
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        26/12/2018
+                                    </span>
+                                </li>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <li>
+                                    <!-- timeline icon -->
+                                    <i class="fa fa-bell bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                        <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Thêm sản phẩm đơn hàng 81265-0</a></h3>
+                                        <div class="timeline-body">
+                                            <a>Bạn</a> đã thêm sản phẩm vào đơn 81265-0
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- END timeline item -->
+                                <!-- timeline time label -->
+                                <li class="time-label">
+                                    <span class="bg-red">
+                                        25/12/2018
+                                    </span>
+                                </li>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <li>
+                                    <!-- timeline icon -->
+                                    <i class="fa fa-bell bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                        <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Xử lí đơn hàng 81265-0</a></h3>
+                                        <div class="timeline-body">
+                                            <a>Bạn</a> đã gửi một yêu cầu sửa đơn 81265-0
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- timeline icon -->
+                                    <i class="fa fa-bell bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                        <h3 class="timeline-header"><a href="quanly_donhang_chi-tiet-phieu-giao-mot-lan.html">Hủy đơn hàng 81265-0</a></h3>
+                                        <div class="timeline-body">
+                                            <a>Bạn</a> đã yêu cầu hủy đơn 81265-0
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- END timeline item -->
+
+                            </ul>
+                        </div>
+                        <div class="tab-pane" id="chinhsua">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <fieldset>
+                                        <legend><b style="font-size: 17px;">Thông tin cá nhân</b></legend>
+
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Số điện thoại</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    <input type="text" class="form-control" id="phone" value="@Model.userInfor.soDienThoai" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    <input type="text" id="email" class="form-control" value="@Model.userInfor.email" disabled>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Địa chỉ</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                                                    <input type="text" id="address" class="form-control" value="@Model.userInfor.diaChi" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Ngày sinh</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input id="birthDate" type="text" class="form-control" value="@Model.userInfor.ngaySinh" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a id="btnEditSetting" class="btn btn-primary btn-block pull-right" onclick="doEditSetting();" style="width: 100px; margin-top: 15px;">
+                                            <b>Chỉnh sửa</b>
+                                        </a>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <fieldset>
+                                        <legend><b style="font-size: 17px;">Thông tin tài khoản</b></legend>
+
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
+                                                <label>Tên tài khoản</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <input type="text" class="form-control" id="account_name" value="@Model.userInfor.account" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Mật khẩu</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                    <input type="password" id="account_pass" class="form-control" value="" disabled>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <a id="btnEditSettingAccount" class="btn btn-primary btn-block pull-right" onclick="doEditSettingAccount();" style="width: 100px; margin-top: 15px;">
+                                            <b>Đổi mật khẩu</b>
+                                        </a>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

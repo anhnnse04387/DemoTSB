@@ -1,4 +1,5 @@
-﻿using Models.Framework;
+﻿using Models.DAO_Model;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,6 @@ namespace Models.DAO
         {
             return db.Role_detail.ToList();
         }
+        
     }
 }

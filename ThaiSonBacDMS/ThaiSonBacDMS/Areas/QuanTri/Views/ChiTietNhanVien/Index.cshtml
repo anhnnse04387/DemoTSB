@@ -212,7 +212,7 @@
                                             <div class="col-md-6">
                                                 <label>Trạng thái</label>
                                                 <div class="input-group">
-                                                    <input type="checkbox" id="status" data-toggle="toggle" checked data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200" disabled>
+                                                    <input type="checkbox" id="status" data-toggle="toggle" data-on="Hoạt động" data-off="Ngưng hoạt động" data-width="200" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -226,6 +226,16 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
+                                                <label>Phân hệ</label><span style="color: red;">*</span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-diamond"></i></span>
+                                                    @Html.DropDownListFor(model => model.roleId, Model.lstRole, new { @class = "form-control", @id = "Typerole", @disabled = "true" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-md-6">
                                                 <label>Chức vụ</label><span style="color: red;">*</span>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-codepen"></i></span>
@@ -234,22 +244,9 @@
                                                             <option>Nhân viên bán hàng</option>
                                                             <option>Nhân viên kế toán</option>
                                                         </select>*@
-                                                    @Html.DropDownListFor(model => model.roleId, Model.lstRole, new { @class = "form-control", @id = "Typerole", @disabled = "true" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="margin-top: 15px;">
-                                            <div class="col-md-6">
-                                                <label>Phân hệ</label><span style="color: red;">*</span>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-diamond"></i></span>
-                                                    @*<select class="form-control" id="roleLevel" disabled>
-                                                            <option>Quản lý</option>
-                                                            <option>Phân phối</option>
-                                                            <option> Kế toán </option>
-                                                            <option> Hàng hóa </option>
-                                                        </select>*@
-                                                    @Html.DropDownListFor(model => model.officeId, Model.lstOffice, new { @class = "form-control", @id = "roleLevel", @disabled = "true" })
+                                                    <div id="selectlistContainer">
+                                                        @Html.DropDownListFor(model => model.officeId, Model.lstOffice, new { @class = "form-control", @id = "roleLevel", @disabled = "true" })
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -431,8 +428,8 @@
             };
             function validateData() {
                 var ten = $("#empName").val();
-                var chucVu = $("#Typerole").val();
-                var phanHe = $("#roleLevel").val();
+                var chucVu = $("#roleLevel").val();
+                var phanHe = $("#Typerole").val();
                 var bhyt = $("#bhyt").val();
                 var diaChi = $("#address").val();
                 var ngaySinh = $("#birthDate").val();
@@ -536,29 +533,29 @@
                 }
                 return true;
             }
-            $("#empName").change(function () {
-                upperName($("#empName").val());
-                var name = $("#empName").val().trim().split(" ");
-                var account = "";
-                for (var i = 0; i < name.length; i++) {
-                    account = name[name.length - 1];
-                }
-                for (var i = 0; i < name.length - 1; i++) {
-                    account += name[i].charAt(0);
-                }
-                $.ajax({
-                    url: 'ChiTietNhanVien/checkExistedAcc',
-                    type: 'POST',
-                    data: {
-                        account: account
-                    },
-                    dataType: 'JSON',
-                    success: function (data) {
-                        $("#account_name").val(data);
-                        $("#account_name").text(data);
-                    }
-                })
-            })
+            //$("#empName").change(function () {
+            //    upperName($("#empName").val());
+            //    var name = $("#empName").val().trim().split(" ");
+            //    var account = "";
+            //    for (var i = 0; i < name.length; i++) {
+            //        account = name[name.length - 1];
+            //    }
+            //    for (var i = 0; i < name.length - 1; i++) {
+            //        account += name[i].charAt(0);
+            //    }
+            //    $.ajax({
+            //        url: 'ChiTietNhanVien/checkExistedAcc',
+            //        type: 'POST',
+            //        data: {
+            //            account: account
+            //        },
+            //        dataType: 'JSON',
+            //        success: function (data) {
+            //            $("#account_name").val(data);
+            //            $("#account_name").text(data);
+            //        }
+            //    })
+            //})
             function upperName(ten) {
                 var result = "";
                 //var nameStr = name.replace("/(\s+)/", " ");
@@ -571,11 +568,11 @@
                 $("#empName").val(result);
             };
             $(document).ready(function () {
-                var isActive = $("#isActive").val();
+                var isActive = $("#isActive").text();
                 if (isActive == 'Active') {
-                    $("#status").prop("checked", true);
+                    $("#status").parent().removeClass("off");
                 } else {
-                    $("#status").prop("checked", false);
+                    $("#status").parent().addClass("off");
                 }
             });
             $("#btnSubmit").click(function (event) {
@@ -593,7 +590,7 @@
                         ngaySinh: $("#birthDate").val(),
                         soDienThoai: $("#phone").val(),
                         email: $("#email").val(),
-                        isActive: $("#status").is(':checked'),
+                        isActive: $("#isActive").text(),
                         account: $("#account_name").val()
                     },
                     dataType: 'JSON',
@@ -605,7 +602,7 @@
                             showConfirmButton: true
                         }).then(function (result) {
                             if (result) {
-                                window.location.href = '/ChiTietNhanVien?userId=' + $("#userId").val();
+                                window.location.href = 'ChiTietNhanVien?userId=' + $("#userId").val();
                             }
                         })
                     }
@@ -628,15 +625,34 @@
                             title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
                             type: 'success',
                             timer: 5000,
-                            showConfirmButton:true
+                            showConfirmButton: true
                         }).then(function (result) {
                             if (result) {
-
+                                window.location.href = 'ChiTietNhanVien?userId=' + $("#userId").val();
                             }
                         })
                     }
                 })
             });
+            $("#Typerole").change(function () {
+                $.ajax({
+                    url: 'ChiTietNhanVien/ChangeSelectList',
+                    type: 'POST',
+                    data: {
+                        selectedValue: $("#Typerole").val()
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $("#selectlistContainer").empty();
+                        var lst = '<select id="roleLevel" class="form-control">';
+                        for (var i = 0; i < data.length; i++) {
+                            lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
+                        };
+                        lst += '</select>';
+                        $("#selectlistContainer").append(lst);
+                    }
+                });
+            });
         </script>
     }
-}
+                                                        }
