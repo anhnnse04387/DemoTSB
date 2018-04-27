@@ -163,8 +163,10 @@
     <Compile Include="Areas\HangHoa\Controllers\ErrorPageController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\HangHoaBaseController.cs" />
     <Compile Include="Areas\HangHoa\Controllers\HomeController.cs" />
+    <Compile Include="Areas\HangHoa\Controllers\OrderListController.cs" />
     <Compile Include="Areas\HangHoa\HangHoaAreaRegistration.cs" />
     <Compile Include="Areas\HangHoa\Models\OrderItemModel.cs" />
+    <Compile Include="Areas\HangHoa\Models\OrderListModel.cs" />
     <Compile Include="Areas\HangHoa\Models\OrderTotalModel.cs" />
     <Compile Include="Areas\KeToan\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\KeToan\Controllers\HomeController.cs" />
@@ -237,6 +239,7 @@
     <Compile Include="Areas\QuanLy\Controllers\BaoCaoCongNoCungCapController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\BaoCaoCongNoKhachHangController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\BaoCaoDoanhThuController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\ChiTietNguoiDungController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ChiTietPhieuController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\DanhSachNguoiDungHoatDongController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\DanhSachNguoiDungNgungHoatDongController.cs" />
@@ -248,10 +251,12 @@
     <Compile Include="Areas\QuanLy\Controllers\POController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\QuanLyBaseController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\StockController.cs" />
+    <Compile Include="Areas\QuanLy\Models\BaoCaoBanHangModel.cs" />
     <Compile Include="Areas\QuanLy\Models\BaoCaoCongNoCungCapModel.cs" />
     <Compile Include="Areas\QuanLy\Models\BaoCaoCongNoKhachHangModel.cs" />
     <Compile Include="Areas\QuanLy\Models\BaoCaoDoanhThuModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ChiTietBaoCaoDoanhThu.cs" />
+    <Compile Include="Areas\QuanLy\Models\ChiTietNguoiDungModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ChiTietNoCungCapModel.cs" />
     <Compile Include="Areas\QuanLy\Models\ChiTietNoKhachHangModel.cs" />
     <Compile Include="Areas\QuanLy\Models\DanhSachNguoiDungHoatDongModel.cs" />
@@ -260,6 +265,7 @@
     <Compile Include="Areas\QuanLy\Models\ListModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderPartModel.cs" />
+    <Compile Include="Areas\PhanPhoi\Models\OrderTimelineModel.cs" />
     <Compile Include="Areas\QuanLy\Models\OrderTotalModel.cs" />
     <Compile Include="Areas\QuanLy\Models\PIItemModel.cs" />
     <Compile Include="Areas\QuanLy\Models\PIModel.cs" />
@@ -374,14 +380,12 @@
     <Content Include="Areas\PhanPhoi\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
     <Content Include="Areas\QuanLy\Views\ChiTietPhieu\OnetimeDelivery.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachNhaCungCap\TaoMoi.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\TaoMoi.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\DanhSachKhachHang\ChiTiet.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\BaoCaoChiTietCongNo\Index.cshtml" />
-    <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\PI\Index.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\PI\_noPartial.cshtml" />
     <Content Include="Areas\PhanPhoi\Views\PI\Detail.cshtml" />
@@ -413,6 +417,12 @@
     <Content Include="Areas\QuanLy\Views\BaoCaoBanHang\Index.cshtml" />
     <Content Include="Areas\KeToan\Views\Shared\NotificationHeader.cshtml" />
     <Content Include="Areas\HangHoa\Views\ChiTietPhieu\Full.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\OrderTimeLine\DetailProduct.cshtml" />
+    <Content Include="Areas\HangHoa\Views\OrderList\Index.cshtml" />
+    <Content Include="Areas\HangHoa\Views\OrderList\Completed.cshtml" />
+    <Content Include="Areas\HangHoa\Views\OrderList\Exchange.cshtml" />
+    <Content Include="Areas\PhanPhoi\Views\SanPhamNgungKinhDoanh\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ChiTietNguoiDung\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

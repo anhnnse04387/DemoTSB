@@ -29,7 +29,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             model.lstRole = new List<SelectListItem>();
 
             var lstAllRole = roleDao.lstAllRoleQuanTri();
-            var lstAllOffice = officeDao.getListOffice();
+            var lstAllOffice = officeDao.getListBySelectedValue(model.userInfor.roleId);
 
             foreach (var item in lstAllRole)
             {
@@ -45,8 +45,8 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             {
                 model.lstOffice.Add(new SelectListItem
                 {
-                    Text = @item.Office_name,
-                    Value = @item.Office_ID.ToString()
+                    Text = @item.key,
+                    Value = @item.value.ToString()
                 });
             }
             return View(model);
@@ -82,14 +82,17 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         [HttpPost]
-        public JsonResult UpdateData(string userId,string ten,string chucVu,string phanHe,string bhyt,string diaChi,string ngaySinh,string soDienThoai,string email,string isActive,string account)
+        public JsonResult UpdateData(string userId, string ten, string chucVu, string phanHe, string bhyt, string diaChi, string ngaySinh, string soDienThoai, string email, string isActive, string account)
         {
             UserDAO userDao = new UserDAO();
             AccountDAO accDao = new AccountDAO();
+            Account_roleDAO roleDao = new Account_roleDAO();
 
-            userDao.updateUser(userId, ten, chucVu, phanHe, soDienThoai, email, bhyt, diaChi, ngaySinh, isActive);
+            userDao.updateUser(userId, ten, phanHe , chucVu, soDienThoai, email, bhyt, diaChi, ngaySinh, isActive);
             accDao.updateAccount(userId, account, chucVu, isActive);
-             
+            int accId = accDao.getAccountId(account);
+            roleDao.updateAccRole(accId, Convert.ToInt32(phanHe));
+
             return Json(new { success = true, JsonRequestBehavior.AllowGet });
         }
         [HttpPost]
@@ -100,5 +103,13 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             accDao.resetPassword(userId, newPassWord);
             return Json(new { success = true, JsonRequestBehavior.AllowGet });
         }
+        [HttpPost]
+        public JsonResult ChangeSelectList(string selectedValue)
+        {
+            OfficeDAO dao = new OfficeDAO();
+            var lst = dao.getListBySelectedValue(selectedValue);
+            return new JsonResult { Data = lst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
     }
+
 }

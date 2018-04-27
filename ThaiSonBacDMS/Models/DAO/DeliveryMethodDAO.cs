@@ -21,5 +21,10 @@ namespace Models.DAO
             return context.Delivery_Method.ToList();
         }
 
+        public Delivery_Method getByID(int deliverID)
+        {
+            return context.Delivery_Method.SingleOrDefault(x => x.Method_ID == deliverID);
+        } 
+
     }
 }

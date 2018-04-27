@@ -2,7 +2,388 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+    var sttSales = 1;
+    var sttAccount = 1;
+    var sttWarhouse = 1;
+}
+@model ThaiSonBacDMS.Areas.QuanLy.Models.BaoCaoBanHangModel
+@section IndexStyle{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Datepicker -->
+    <link href="~/Assets/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <style>
+        .table {
+            background-color: rgb(240, 240, 240);
+        }
+
+            .table thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            .table tbody td:nth-child() {
+                text-align: left;
+            }
+
+            .table tbody td:nth-child() {
+                text-align: right;
+            }
+
+            .table th {
+                background-color: white;
+                color: black;
+            }
+    </style>
+
 }
 
-<h2>Index</h2>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+    </ol>
+</section>
 
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                    <div class="col-md-12">
+                        <h4>
+                            <b>Báo cáo bán hàng</b>
+                        </h4>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box">
+                    <div class="box-header with-border text-center menu-button">
+
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                            <i class="fa fa-plus-square text-grey"></i>
+                            <span><strong>Tạo Mới</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                            <i class="fa fa-edit text-grey"></i>
+                            <span><strong>Sửa</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                            <i class="fa fa-save text-grey"></i>
+                            <span><strong>Lưu</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <i class="fa fa-close text-grey"></i>
+                            <span><strong>Hủy</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                            <i class="fa fa-check-circle text-grey"></i>
+                            <span><strong>Chốt đơn</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                            <i class="fa fa-exchange text-grey"></i>
+                            <span><strong>Đổi trả</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <i class="fa fa-eye text-black"></i>
+                            <span><strong>Xem Trước</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <i class="fa fa-print text-blue"></i>
+                            <span><strong>In</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <i class="fa fa-download text-grey"></i>
+                            <span><strong>Import Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <i class="fa fa-file-excel-o text-green"></i>
+                            <span><strong>Xuất Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <i class="fa fa-file-pdf-o text-gray"></i>
+                            <span><strong>Xuất PDF</strong></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    @using (Html.BeginForm("Index", "BaoCaoBanHang", FormMethod.Post))
+                    {
+                        <div class="col-md-offset-3" style="display: inline-flex;padding-top: 20px; padding-bottom: 20px;">
+                            <label style="padding-right: 10px; padding-top: 7px;">Từ: </label>
+                            <div class="input-group week-select col-md-3 no-padding">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                @Html.TextBoxFor(model=>model.beginDate, new { @class= "form-control datepicker", @style= "width: 150px"})
+                            </div>
+                            <label style="padding-right: 10px; padding-top: 7px;padding-left:5px">Đến: </label>
+                            <div class="input-group week-select col-md-3 no-padding">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                @Html.TextBoxFor(model => model.endDate, new { @class = "form-control datepicker", @style = "width: 150px" })
+                            </div>
+                            <div class="input-group week-select col-md-1 no-padding">
+                                <button type="submit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    }
+                    <div class="row" style="margin-top: 30px;">
+                        <fieldset class="col-md-12">
+                            <legend style="font-size: 17px"><b>Tổng quan bán hàng</b></legend>
+                            <table id="example1" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Báo cáo</th>
+                                        <th>Chỉ số đã đạt</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tổng số đơn đã tạo</td>
+                                        <td style="text-align: right; padding-right: 30%" class="number">@Model.totalOrder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Số đơn đã hoàn thành</td>
+                                        <td style="text-align: right; padding-right: 30%" class="number">@Model.completedOrder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Số đơn đang xử lý</td>
+                                        <td style="text-align: right; padding-right: 30%" class="number">@Model.pendingOrder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Số đơn đã huỷ</td>
+                                        <td style="text-align: right; padding-right: 30%" class="number">@Model.cancelOrder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Tổng doanh thu</td>
+                                        <td style="text-align: right; padding-right: 30%" class="number">@Model.sumMoney</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </fieldset>
+                    </div>
+
+                    <div class="row" style="margin-top: 30px;">
+                        <fieldset class="col-md-12">
+                            <legend style="font-size: 17px"><b>Phân hệ phân phối</b></legend>
+                            <table id="example2" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tên Nhân Viên</th>
+                                        <th>Tổng đơn hàng</th>
+                                        <th>Tổng giá trị</th>
+                                        <th>Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.listSalesPerformance)
+                                    {
+                                        <tr>
+                                            <td>@sttSales</td>
+                                            <td>
+                                                <a href="#">@item.userName</a>
+                                            </td>
+                                            <td class="text-center">@item.numberOrder</td>
+                                            <td class="text-right number" style="padding-right:15%">@item.performance</td>
+                                            <td></td>
+                                        </tr>
+                                        sttSales++;
+                                    }
+                                </tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </fieldset>
+                    </div>
+
+                    <div class="row" style="margin-top: 30px;">
+                        <fieldset class="col-md-12">
+                            <legend style="font-size: 17px"><b>Phân hệ kế toán</b></legend>
+                            <table id="example3" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tên Nhân Viên</th>
+                                        <th>Tổng đơn hàng</th>
+                                        <th>Thời gian giải quyết trung bình</th>
+                                        <th>Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.listSalesPerformance)
+                                    {
+                                        <tr>
+                                            <td>@sttAccount</td>
+                                            <td>
+                                                <a href="#">@item.userName</a>
+                                            </td>
+                                            <td class="text-center">@item.numberOrder</td>
+                                            <td class="text-right number" style="padding-right:15%">@item.performance</td>
+                                            <td></td>
+                                        </tr>
+                                        sttAccount++;
+                                    }
+                                </tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="row" style="margin-top: 30px;">
+                        <fieldset class="col-md-12">
+                            <legend style="font-size: 17px"><b>Phân hệ hàng hóa</b></legend>
+                            <table id="example4" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tên Nhân Viên</th>
+                                        <th>Tổng đơn hàng</th>
+                                        <th>Thời gian giải quyết trung bình</th>
+                                        <th>Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.listSalesPerformance)
+                                    {
+                                        <tr>
+                                            <td>@sttWarhouse</td>
+                                            <td>
+                                                <a href="#">@item.userName</a>
+                                            </td>
+                                            <td class="text-center">@item.numberOrder</td>
+                                            <td class="text-right number" style="padding-right:15%">@item.performance</td>
+                                            <td></td>
+                                        </tr>
+                                        sttWarhouse++;
+                                    }
+                                </tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<p hidden id="errorStr">@Model.errorStr</p>
+<!-- /.content -->
+
+@section Index {
+    <!-- DataTables -->
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- Datepicker -->
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <!-- Select2 -->
+    <script src="/Assets/bower_components/select2/dist/js/select2.full.min.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <!-- Auto Numberic-->
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <!-- Page Script -->
+    <script>
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+            $('#example1').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'language': {
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "lengthMenu": "Hiển thị _MENU_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước"
+                    }
+                }
+            });
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'language': {
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "lengthMenu": "Hiển thị _MENU_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước"
+                    }
+                }
+            });
+            $('#example3').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'language': {
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "lengthMenu": "Hiển thị _MENU_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước"
+                    }
+                }
+            });
+            $('#example4').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'language': {
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "lengthMenu": "Hiển thị _MENU_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước"
+                    }
+                }
+            });
+            if ($('#errorStr').val().length != 0) {
+                swal({
+                    title: '',
+                    text: 'Vui lòng điền đủ định dạng ngày tháng.',
+                    type: 'warning'
+                });
+            }
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+    </script>
+}

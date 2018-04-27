@@ -241,25 +241,7 @@
                 $("#toDate").datepicker({
                     format: 'dd-mm-yyyy'
                 });
-                //$("#nameSearch").autocomplete({
-                //    source: function (request, response) {
-                //        $.ajax({
-                //            type: 'POST',
-                //            url: 'DanhSachNguoiDungHoatDong/autoCompleteNameSearch',
-                //            minLength: 2,
-                //            dataType: "json",
-                //            data: { searchValue: $("#nameSearch").val() },
-                //            success: function (data) {
-                //                response($.map(data, function (item) {
-                //                    return { label: item.key, value: item.strValue }
-                //                }))
-                //            },
-                //            error: function (xhr, status, error) {
-                //                alert("Error");
-                //            }
-                //        });
-                //    }
-                //});
+               
                 $("#nameSearch").autocomplete({
                     source: function (request, response) {
                         $.ajax({
@@ -302,24 +284,6 @@
                     $("#searchBtn").prop('disabled', false);
                 }
             });
-            //$("#searchBtn").click(function () {
-            //    //event.preventDefault();
-            //    $.ajax({
-            //        type: 'POST',
-            //        url: 'Search',
-            //        data: {
-            //            nameSearch: $("#nameSearch").val(),
-            //            roleSearch: $("#roleIdSearch").val(),
-            //            fromDate: $("#fromDate").val(),
-            //            toDate: $("#toDate").val()
-            //        },
-            //        dataType: 'html',
-            //        success: function (data) {
-            //            $("#showData").html(data);
-            //        }
-
-            //    });
-            //});
             function inProgressing() {
                 swal({
                     title: 'Chức năng đang phát triển',
@@ -328,6 +292,7 @@
                     showConfirmButton: true
                 })
             }
+
         </script>
     }
 }

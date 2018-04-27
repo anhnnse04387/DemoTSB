@@ -215,68 +215,18 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             return Redirect(link);
         }
-        [ChildActionOnly]
-        public PartialViewResult NoteEdit()
-        {
-            try
-            {
-                var noteDAO = new NoteDAO();
-                var session = (UserSession)Session[CommonConstants.USER_SESSION];
-                var content = noteDAO.getNotebyAccount(session.accountID);
-
-                return PartialView(content);
-            }
-            catch(Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
-            }
-            return PartialView();
-        }
-
-        [HttpPost]
-        public JsonResult NoteEdit(int accID, string content)
-        {
-            try
-            {
-                var noteDAO = new NoteDAO();
-                noteDAO.editNotebyAccount(accID, content);
-                return Json(content, JsonRequestBehavior.AllowGet);
-            }
-            catch(Exception e) 
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
-            }
-            return Json("", JsonRequestBehavior.AllowGet);
-        }
 
         [ChildActionOnly]
         public PartialViewResult NoteHeader()
         {
-            var noteDAO = new NoteDAO();
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var content = String.Empty;
-            string[] lines = new string[] { };
-            try
+            
+            List<string> lstOrderPartName = new OrderPartDAO()
+                .getByCreatedDate(new DateTime(2018,4,1), new DateTime(2018,4,10)).Select(x=>"Đơn " + x.Order_part_ID + " đang chờ được xử lí").ToList();
+            if(lstOrderPartName.Count == 0)
             {
-                content = noteDAO.getNotebyAccount(session.accountID).Contents;
-                if (content != null && !string.IsNullOrEmpty(content))
-                {
-
-                    lines = content.Trim().Split(Environment.NewLine.ToCharArray());
-                }
-                else
-                {
-                    lines = new string[] { "Hãy điền ghi chú vào đây" };
-                }
+                lstOrderPartName.Add("Không có đơn nào phải xử lí trong hôm nay");
             }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
-            }
-            return PartialView(lines);
+            return PartialView(lstOrderPartName);
         }
     }
 }

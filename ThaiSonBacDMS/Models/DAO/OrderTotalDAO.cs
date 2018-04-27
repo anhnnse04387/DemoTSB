@@ -531,6 +531,7 @@ namespace Models.DAO
             return db.Order_total.Where(s => s.Date_created >= dateBegin && s.Date_created <= dateEnd
             && s.Customer_ID == customerID).ToList();
         }
+
         //thuongtx
         public DateTime? getDate(string orderId)
         {

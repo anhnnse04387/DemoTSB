@@ -167,23 +167,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Chức vụ</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="fa fa-user-circle"></i>
-                                                        </span>
-                                                        @Html.DropDownListFor(model => model.officeId, Model.lstOffice, "Chọn chức vụ", new { @id = "office", @class = "form-control" })
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
                                                     <label>Phân hệ</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-group"></i>
                                                         </span>
                                                         @Html.DropDownListFor(model => model.roleId, Model.lstRole, "Chọn phân hệ", new { @id = "role", @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Chức vụ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user-circle"></i>
+                                                        </span>
+                                                        <div id="selectListContainer">
+                                                            @Html.DropDownListFor(model => model.officeId, Model.lstOffice, "Chọn chức vụ", new { @id = "office", @class = "form-control" })
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -285,278 +287,300 @@
         </div>
     </section>
     <!-- /.content -->
-    @section Index{
-        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
-        <script src="/Assets/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="/Assets/dist/js/autoNumeric.js"></script>
-        <script src="/Assets/dist/js/autoNumeric.min.js"></script>
-        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
-        <script src="/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#hide").hide();
-;                $("#dob").datepicker({
-                    endDate: new Date(),
-                    format: 'dd-mm-yyyy'
-                });
-                var label_selected = "<span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>";
-                var label_default = "<span class='glyphicon glyphicon-open' aria-hidden='true'></span>";
-                $.uploadPreview({
-                    input_field: "#image-upload",
-                    preview_box: "#image-preview",
-                    label_field: "#image-label",
-                    label_default: label_default,
-                    label_selected: label_selected
-                });
+                                                            @section Index{
+                                                                <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+                                                                <script src="/Assets/dist/js/bootstrap-datepicker.min.js"></script>
+                                                                <script src="/Assets/dist/js/autoNumeric.js"></script>
+                                                                <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+                                                                <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+                                                                <script src="/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
+                                                                <script>
+                                                                   
+                                                                    $(document).ready(function () {
+                                                                        $("#hide").hide();
+                                                                        ; $("#dob").datepicker({
+                                                                            endDate: new Date(),
+                                                                            format: 'dd-mm-yyyy'
+                                                                        });
+                                                                        var label_selected = "<span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>";
+                                                                        var label_default = "<span class='glyphicon glyphicon-open' aria-hidden='true'></span>";
+                                                                        $.uploadPreview({
+                                                                            input_field: "#image-upload",
+                                                                            preview_box: "#image-preview",
+                                                                            label_field: "#image-label",
+                                                                            label_default: label_default,
+                                                                            label_selected: label_selected
+                                                                        });
 
-                $("#image-preview label").addClass("btn btn-success");
-                $("#image-preview label").empty();
-                $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
-            });
+                                                                        $("#image-preview label").addClass("btn btn-success");
+                                                                        $("#image-preview label").empty();
+                                                                        $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
+                                                                    });
 
-            $("#btnSave").click(function (event) {
-                event.preventDefault();
-                var name = $("#name").val();
-                var office = $("#office").val();
-                var role = $("#role").val();
-                var dob = $("#dob").val();
-                var email = $("#email").val();
-                var phoneNumber = $("#phoneNumber").val();
-                var insuranceNo = $("#insuranceNo").val();
-                var address = $("#address").val();
-                var image = $("#image-upload").val();
-                if (!name) {
-                    swal({
-                        title: 'Vui lòng nhập tên người dùng!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!checkName(name)) {
-                    swal({
-                        title: 'Vui lòng nhập họ và tên người dùng!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                }
-                else if (!office) {
-                    swal({
-                        title: 'Vui lòng chọn chức vụ!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!role) {
-                    swal({
-                        title: 'Vui lòng chọn phân hệ!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!dob) {
-                    swal({
-                        title: 'Vui lòng chọn ngày sinh!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!email) {
-                    swal({
-                        title: 'Vui lòng nhập email!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!validateEmail(email)) {
-                    swal({
-                        title: 'Vui lòng nhập đúng định dạng email!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!testExistedMail(email)) {
-                    
-                        swal({
-                            title: 'Email đã tồn tại!',
-                            type: 'warning',
-                            timer: 5000,
-                            showConfirmButton: true
-                        });
-                    
-                }
-                else if (!phoneNumber) {
-                    swal({
-                        title: 'Vui lòng nhập số điện thoại!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(phoneNumber)) {
-                    swal({
-                        title: 'Vui lòng nhập đúng định dạng số điện thoại!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!insuranceNo) {
-                    swal({
-                        title: 'Vui lòng nhập số bảo hiểm y tế!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (insuranceNo.length < 13) {
-                    swal({
-                        title: 'Vui lòng chỉ nhập đúng định dạng cho số BHYT!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!address) {
-                    swal({
-                        title: 'Vui lòng nhập tên địa chỉ!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else if (!image) {
-                    swal({
-                        title: 'Vui lòng chọn ảnh!',
-                        type: 'warning',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                } else {
-                    $("#popupConfirm").modal('show');
-                    $("#btnOk").click(function () {
-                        var fileUpload = $("#image-upload").get(0);
-                        var files = fileUpload.files;
+                                                                    $("#role").change(function () {
+                                                                        $.ajax({
+                                                                            type: 'POST',
+                                                                            url: 'ChangeSelect',
+                                                                            data: {
+                                                                                selectedValue: $("#role").val()
+                                                                            },
+                                                                            dataType: 'JSON',
+                                                                            success: function (data) {
+                                                                                $("#selectListContainer").empty();
+                                                                                var lst = '<select id="office" class="form-control">';
+                                                                                lst += '<option>' + 'Chọn chức vụ' + '</option>';
+                                                                                for (var i = 0; i < data.length; i++) {
+                                                                                    lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
+                                                                                };
+                                                                                lst += '</select>';
+                                                                                $("#selectListContainer").append(lst);
+                                                                            }
+                                                                        });
+                                                                    });
 
-                        // Create FormData object
-                        var fileData = new FormData();
+                                                                    $("#btnSave").click(function (event) {
+                                                                        event.preventDefault();
+                                                                        var name = $("#name").val();
+                                                                        var office = $("#office").val();
+                                                                        var role = $("#role").val();
+                                                                        var dob = $("#dob").val();
+                                                                        var email = $("#email").val();
+                                                                        var phoneNumber = $("#phoneNumber").val();
+                                                                        var insuranceNo = $("#insuranceNo").val();
+                                                                        var address = $("#address").val();
+                                                                        var image = $("#image-upload").val();
+                                                                        if (!name) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập tên người dùng!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!checkName(name)) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập họ và tên người dùng!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        }
+                                                                        else if (!office) {
+                                                                            swal({
+                                                                                title: 'Vui lòng chọn chức vụ!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!role) {
+                                                                            swal({
+                                                                                title: 'Vui lòng chọn phân hệ!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!dob) {
+                                                                            swal({
+                                                                                title: 'Vui lòng chọn ngày sinh!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!email) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập email!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!validateEmail(email)) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập đúng định dạng email!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!testExistedMail(email)) {
 
-                        // Looping over all files and add it to FormData object
-                        for (var i = 0; i < files.length; i++) {
-                            fileData.append(files[i].name, files[i]);
-                        }
-                        fileData.append('name', name);
-                        fileData.append('dob', dob);
-                        fileData.append("office", office);
-                        fileData.append("role", role);
-                        fileData.append("email", email);
-                        fileData.append("phoneNumber", phoneNumber);
-                        fileData.append("insuranceNo", insuranceNo);
-                        fileData.append("address", address);
-                        fileData.append("active", "1");
-                        $.ajax({
-                            url: '/TaoNguoiDung/UploadFiles',
-                            type: "POST",
-                            contentType: false, // Not to set any content header
-                            processData: false, // Not to process data
-                            data: fileData,
-                            success: function () {
-                                swal({
-                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
-                                    type: 'success',
-                                    timer: 5000,
-                                    showConfirmButton: true
-                                }).then(function (result) {
-                                    if (result) {
-                                        window.location.href = '/QuanTri/DanhSachNguoiDungHoatDong';
-                                    }
-                                })
-                            }
-                        });
-                    });
-                    $("#btnDeactive").click(function () {
-                        var fileUpload = $("#image-upload").get(0);
-                        var files = fileUpload.files;
+                                                                            swal({
+                                                                                title: 'Email đã tồn tại!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
 
-                        // Create FormData object
-                        var fileData = new FormData();
+                                                                        }
+                                                                        else if (!phoneNumber) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập số điện thoại!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(phoneNumber)) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập đúng định dạng số điện thoại!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!insuranceNo) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập số bảo hiểm y tế!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (insuranceNo.length != 13) {
+                                                                            swal({
+                                                                                title: 'Vui lòng chỉ nhập đúng định dạng cho số BHYT!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!address) {
+                                                                            swal({
+                                                                                title: 'Vui lòng nhập tên địa chỉ!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else if (!image) {
+                                                                            swal({
+                                                                                title: 'Vui lòng chọn ảnh!',
+                                                                                type: 'warning',
+                                                                                timer: 5000,
+                                                                                showConfirmButton: true
+                                                                            });
+                                                                        } else {
+                                                                            $("#popupConfirm").modal('show');
+                                                                            $("#btnOk").click(function () {
+                                                                                var fileUpload = $("#image-upload").get(0);
+                                                                                var files = fileUpload.files;
 
-                        // Looping over all files and add it to FormData object
-                        for (var i = 0; i < files.length; i++) {
-                            fileData.append(files[i].name, files[i]);
-                        }
-                        fileData.append('name', name);
-                        fileData.append('dob', dob);
-                        fileData.append("office", office);
-                        fileData.append("role", role);
-                        fileData.append("email", email);
-                        fileData.append("phoneNumber", phoneNumber);
-                        fileData.append("insuranceNo", insuranceNo);
-                        fileData.append("address", address);
-                        fileData.append("active", "0");
-                        $.ajax({
-                            url: '/TaoNguoiDung/UploadFiles',
-                            type: "POST",
-                            contentType: false, // Not to set any content header
-                            processData: false, // Not to process data
-                            data: fileData,
-                            success: function () {
-                                swal({
-                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
-                                    type: 'success',
-                                    timer: 5000,
-                                    showConfirmButton: true
-                                }).then(function (result) {
-                                    if (result) {
-                                        window.location.href = '/QuanTri/DanhSachNguoiDungHoatDong';
-                                    }
-                                })
-                            }
-                        });
-                    })
-                }
+                                                                                // Create FormData object
+                                                                                var fileData = new FormData();
 
-            });
+                                                                                // Looping over all files and add it to FormData object
+                                                                                for (var i = 0; i < files.length; i++) {
+                                                                                    fileData.append(files[i].name, files[i]);
+                                                                                }
+                                                                                fileData.append('name', name);
+                                                                                fileData.append('dob', dob);
+                                                                                fileData.append("office", office);
+                                                                                fileData.append("role", role);
+                                                                                fileData.append("email", email);
+                                                                                fileData.append("phoneNumber", phoneNumber);
+                                                                                fileData.append("insuranceNo", insuranceNo);
+                                                                                fileData.append("address", address);
+                                                                                fileData.append("active", "1");
+                                                                                $.ajax({
+                                                                                    url: '/TaoNguoiDung/UploadFiles',
+                                                                                    type: "POST",
+                                                                                    contentType: false, // Not to set any content header
+                                                                                    processData: false, // Not to process data
+                                                                                    data: fileData,
+                                                                                    success: function () {
+                                                                                        swal({
+                                                                                            title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                                                                            type: 'success',
+                                                                                            timer: 5000,
+                                                                                            showConfirmButton: true
+                                                                                        }).then(function (result) {
+                                                                                            if (result) {
+                                                                                                window.location.href = '/QuanTri/DanhSachNguoiDungHoatDong';
+                                                                                            }
+                                                                                        })
+                                                                                    }
+                                                                                });
+                                                                            });
+                                                                            $("#btnDeactive").click(function () {
+                                                                                var fileUpload = $("#image-upload").get(0);
+                                                                                var files = fileUpload.files;
 
-            function validateEmail(email) {
-                var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(email);
-            };
-            function validatePhoneNumber(phoneNumber) {
-                var reg = "(\\+84|0)\\d{9,10}";
-                if (phoneNumber.match(reg)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            };
-            function checkName(name) {
-                name = name.trim();
-                var nameStr = name.split(" ");
-                if (nameStr.length < 2) {
-                    return false;
-                }
-                return true;
-            };
-            $("#name").change(function () {
-                upperName($("#name").val());
-            })
-            function upperName(name) {
-                var result = "";
-                //var nameStr = name.replace("/(\s+)/", " ");
-                var nameStr = name.split(" ");
-                for (var i = 0; i < nameStr.length; i++) {
-                    nameStr[i] = nameStr[i].charAt(0).toUpperCase() + nameStr[i].substring(1).toLowerCase();
-                    result += nameStr[i] + " ";
-                }
-                $("#name").text(result);
-                $("#name").val(result);
-            };
-            function testExistedMail(email) {
-                for (var i = 0; i < $(".email").length; i++) {
-                    if (email === $("#email_"+i).val()) {
-                        return false;
-                        break;
-                    }
-                }
-                  return true;
-            }
-            
-        </script>
-    }
-}
+                                                                                // Create FormData object
+                                                                                var fileData = new FormData();
+
+                                                                                // Looping over all files and add it to FormData object
+                                                                                for (var i = 0; i < files.length; i++) {
+                                                                                    fileData.append(files[i].name, files[i]);
+                                                                                }
+                                                                                fileData.append('name', name);
+                                                                                fileData.append('dob', dob);
+                                                                                fileData.append("office", office);
+                                                                                fileData.append("role", role);
+                                                                                fileData.append("email", email);
+                                                                                fileData.append("phoneNumber", phoneNumber);
+                                                                                fileData.append("insuranceNo", insuranceNo);
+                                                                                fileData.append("address", address);
+                                                                                fileData.append("active", "0");
+                                                                                $.ajax({
+                                                                                    url: '/TaoNguoiDung/UploadFiles',
+                                                                                    type: "POST",
+                                                                                    contentType: false, // Not to set any content header
+                                                                                    processData: false, // Not to process data
+                                                                                    data: fileData,
+                                                                                    success: function () {
+                                                                                        swal({
+                                                                                            title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                                                                            type: 'success',
+                                                                                            timer: 5000,
+                                                                                            showConfirmButton: true
+                                                                                        }).then(function (result) {
+                                                                                            if (result) {
+                                                                                                window.location.href = '/QuanTri/DanhSachNguoiDungHoatDong';
+                                                                                            }
+                                                                                        })
+                                                                                    }
+                                                                                });
+                                                                            })
+                                                                        }
+
+                                                                    });
+
+                                                                    function validateEmail(email) {
+                                                                        var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                                                                        return re.test(email);
+                                                                    };
+                                                                    function validatePhoneNumber(phoneNumber) {
+                                                                        var reg = "(\\+84|0)\\d{9,10}";
+                                                                        if (phoneNumber.match(reg)) {
+                                                                            return true;
+                                                                        } else {
+                                                                            return false;
+                                                                        }
+                                                                    };
+                                                                    function checkName(name) {
+                                                                        name = name.trim();
+                                                                        var nameStr = name.split(" ");
+                                                                        if (nameStr.length < 2) {
+                                                                            return false;
+                                                                        }
+                                                                        return true;
+                                                                    };
+                                                                    $("#name").change(function () {
+                                                                        upperName($("#name").val());
+                                                                    })
+                                                                    function upperName(name) {
+                                                                        var result = "";
+                                                                        //var nameStr = name.replace("/(\s+)/", " ");
+                                                                        var nameStr = name.split(" ");
+                                                                        for (var i = 0; i < nameStr.length; i++) {
+                                                                            nameStr[i] = nameStr[i].charAt(0).toUpperCase() + nameStr[i].substring(1).toLowerCase();
+                                                                            result += nameStr[i] + " ";
+                                                                        }
+                                                                        $("#name").text(result);
+                                                                        $("#name").val(result);
+                                                                    };
+                                                                    function testExistedMail(email) {
+                                                                        for (var i = 0; i < $(".email").length; i++) {
+                                                                            if (email === $("#email_" + i).val()) {
+                                                                                return false;
+                                                                                break;
+                                                                            }
+                                                                        }
+                                                                        return true;
+                                                                    }
+
+                                                                </script>
+                                                            }
+                                                            }

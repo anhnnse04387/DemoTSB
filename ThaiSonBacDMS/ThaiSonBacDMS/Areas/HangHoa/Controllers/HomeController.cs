@@ -15,7 +15,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         // GET: HangHoa/Home
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "OrderList");
         }
         [ChildActionOnly]
         public PartialViewResult NotificationHeader()

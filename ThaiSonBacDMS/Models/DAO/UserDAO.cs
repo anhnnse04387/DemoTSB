@@ -55,6 +55,11 @@ namespace Models.DAO
             Account a = context.Accounts.SingleOrDefault(y => y.Account_name == account);
             return context.Users.SingleOrDefault(x=>x.User_ID == a.User_ID);
         }
+
+        public List<User> getAllUserByRoleID(int roleID)
+        {
+            return context.Users.Where(x => x.Role_ID == roleID).ToList();
+        }
         //thuongtx
 
 
@@ -795,7 +800,7 @@ namespace Models.DAO
                 query.Mail = email;
                 query.Date_of_birth = DateTime.ParseExact(ngaySinh, "d-M-yyyy", CultureInfo.InvariantCulture);
                 query.User_Address = diaChi;
-                query.Status = isActive.Equals("true") ? 1 : 0;
+                query.Status = isActive.ToLower().Equals("active") ? 1 : 0;
 
                 result = context.SaveChanges();
             }

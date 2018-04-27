@@ -11,7 +11,7 @@ using ThaiSonBacDMS.Common;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class DanhSachNguoiDungHoatDongController : Controller
+    public class DanhSachNguoiDungHoatDongController :QuanLyBaseController
     {
         // GET: QuanLy/DanhSachNguoiDungHoatDong
         public ActionResult Index()
