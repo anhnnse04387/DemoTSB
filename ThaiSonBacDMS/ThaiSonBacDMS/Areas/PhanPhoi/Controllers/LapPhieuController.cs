@@ -66,17 +66,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             Order_discount = model.discount,
                             Status_ID = 1
                         });
-                        for (int i = 0; i < 5; i++)
-                        {
-                            nofDAO.addNotification(new Notification
-                            {
-                                Notif_date = DateTime.Now,
-                                Content = "Nhân viên phân phối " + session.user_name + " đã lập phiếu với mã " + model.orderId,
-                                Link = "/ChiTietPhieu/Index?" + model.orderId,
-                                Role_ID = (byte)(i + 1),
-                                Status = 1
-                            });
-                        }
                         result++;
                     }
                     else
@@ -384,18 +373,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             Total_price = model.total,
                             Order_discount = model.discount,
                             Status_ID = 2
-                        });
-                        for (int i = 0; i < 5; i++)
-                        {
-                            nofDAO.addNotification(new Notification
-                            {
-                                Notif_date = DateTime.Now,
-                                Content = "Nhân viên phân phối " + session.user_name + " đã lập phiếu với mã " + model.orderId,
-                                Link = "/ChiTietPhieu/Index?" + model.orderId,
-                                Role_ID = (byte)(i + 1),
-                                Status = 1
-                            });
-                        }
+                        });                        
                         result++;
                     }
                     else

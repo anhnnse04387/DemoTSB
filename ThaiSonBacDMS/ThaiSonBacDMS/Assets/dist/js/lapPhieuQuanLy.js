@@ -340,6 +340,8 @@ function productATC() {
                             responseFn(array);
                         }
                     });
+                } else {
+                    $(this).val("");
                 }
             },
             select: function (event, ui) {
@@ -428,6 +430,8 @@ function productSubATC() {
 
                         };
                     }));
+                } else {
+                    $(this).val("");
                 }
             },
             select: function (event, ui) {

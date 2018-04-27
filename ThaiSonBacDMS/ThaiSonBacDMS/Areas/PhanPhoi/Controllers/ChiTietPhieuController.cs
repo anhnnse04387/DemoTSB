@@ -88,12 +88,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 5 && x.Order_part_ID == null).FirstOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 5 || x.Status_ID == 10) && x.Order_part_ID == null).FirstOrDefault();
             if (count == 1)
             {
                 if (statusDetail != null)
                 {
-                    dict.Add(5, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
+                    dict.Add(5, new StatusDetailModel
+                    {
+                        name = statusDetail.Status_ID == 10 ? userDAO.getByID(statusDetail.User_ID).User_name + "\n( Chưa xuất phiếu )" : userDAO.getByID(statusDetail.User_ID).User_name,
+                        date = statusDetail.Date_change,
+                        classAttr = "stepper__step-icon--finish"
+                    });
                     lineStatus = "calc((130% -140px) * 0.5)";
                     count = 2;
                 }
@@ -106,12 +111,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 dict.Add(5, new StatusDetailModel { });
             }
-            statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 6 && x.Order_part_ID == null).FirstOrDefault();
+            statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 6 || x.Status_ID == 11) && x.Order_part_ID == null).FirstOrDefault();
             if (count == 2)
             {
                 if (statusDetail != null)
                 {
-                    dict.Add(6, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
+                    dict.Add(6, new StatusDetailModel
+                    {
+                        name = statusDetail.Status_ID == 11 ? userDAO.getByID(statusDetail.User_ID).User_name + "\n( Chưa xuất phiếu )" : userDAO.getByID(statusDetail.User_ID).User_name,
+                        date = statusDetail.Date_change,
+                        classAttr = "stepper__step-icon--finish"
+                    });
                     lineStatus = "calc((170% -140px) * 0.5)";
                     count = 3;
                 }
@@ -308,7 +318,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
                 }
-                statusDetail = lstStatus.Where(x => x.Status_ID == 5).FirstOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 5 || x.Status_ID == 10).FirstOrDefault();
                 if (count == 1)
                 {
                     if (statusDetail != null)
@@ -326,7 +336,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     dict.Add(5, new StatusDetailModel { });
                 }
-                statusDetail = lstStatus.Where(x => x.Status_ID == 6).FirstOrDefault();
+                statusDetail = lstStatus.Where(x => x.Status_ID == 6 || x.Status_ID == 11).FirstOrDefault();
                 if (count == 2)
                 {
                     if (statusDetail != null)

@@ -29,7 +29,7 @@ function doneOrder() {
         success: function () {
             document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
             swal({
-                title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
@@ -39,7 +39,7 @@ function doneOrder() {
         },
         error: function () {
             swal({
-                title: '<img src="/Assets/dist/img/messagePic_7.png"/><img src="/Assets/dist/img/messagePic_8.png"/>',
+                title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
                 type: 'error',
                 showCancelButton: false,
                 showConfirmButton: true

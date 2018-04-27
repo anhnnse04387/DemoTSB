@@ -9,6 +9,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Models
 {
     public class OrderTotalModel
     {
+        public String spanClass { get; set; }
         public String invoiceNumber { get; set; }
         public String orderId { get; set; }
         public int customerId { get; set; }

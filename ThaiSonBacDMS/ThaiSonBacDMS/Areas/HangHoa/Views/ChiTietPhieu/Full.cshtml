@@ -1,0 +1,561 @@
+﻿@model ThaiSonBacDMS.Areas.HangHoa.Models.OrderTotalModel
+@{
+    ViewBag.Title = "Full";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .label-medium {
+        vertical-align: super;
+        font-size: medium;
+    }
+
+    .input-group {
+        padding-bottom: 10px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    .accountant-view-box-body-custom {
+        font-size: 20px;
+    }
+
+    .a-custom-label {
+        color: white;
+    }
+
+    th {
+        color: white;
+        background-color: #3c8dbc;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    tfoot {
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #544d61;
+    }
+
+    textarea {
+        resize: vertical;
+        resize: horizontal;
+    }
+
+    #mainTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #mainTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #mainTable tbody td:nth-child(2) {
+            text-align: left;
+        }
+
+        #mainTable tbody td:nth-child() {
+            text-align: right;
+        }
+
+    .custom-span {
+        margin: 0 0 0 10px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .noDisplay {
+        display: none;
+    }
+</style>
+
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Đơn hàng</li>
+        <li>Chờ xuất kho</li>
+        <li class="active">Chi tiết phiếu</li>
+    </ol>
+</section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>ĐƠN HÀNG LÔ SỐ: @Model.orderId</b>
+                                <input type="hidden" value="@Model.orderId" id="orderId" />
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button" id="divEdit">
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-plus-square text-gray"></i>
+                                <span><strong>Tạo Mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
+                                <i class="fa fa-edit text-blue"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-save text-gray"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-close text-gray"></i>
+                                <span><strong>Huỷ</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
+                                <i class="fa fa-check-circle text-green"></i>
+                                <span><strong>Hoàn thành</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
+                                <i class="fa fa-exchange text-red"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-eye text-gray"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-download  text-gray"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-green"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-orange"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                        <div class="box-header with-border text-center menu-button noDisplay" id="divSave">
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-plus-square text-gray"></i>
+                                <span><strong>Tạo Mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-edit text-gray"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" data-target="#confirmSave">
+                                <i class="fa fa-save text-orange"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-close text-gray"></i>
+                                <span><strong>Huỷ</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
+                                <i class="fa fa-check-circle text-green"></i>
+                                <span><strong>Hoàn thành</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
+                                <i class="fa fa-exchange text-red"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-eye text-gray"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-download  text-gray"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-green"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-orange"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-header">
+                        <div class="container-fluid">
+                            <fieldset>
+                                <legend><b style="font-size: 17px;">Thông tin đơn hàng</b></legend>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Đơn vị</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user-circle-o"></i>
+                                            </span>
+                                            <input class="form-control" value="@Model.customerName" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>MST</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-bank"></i>
+                                            </span>
+                                            <input class="form-control" value="@Model.taxCode" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Nơi xuất HĐ</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user-circle-o"></i>
+                                            </span>
+                                            <input class="form-control" value="@Model.invoiceAddress" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Địa chỉ giao hàng</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-address-book"></i>
+                                            </span>
+                                            <input class="form-control" value="@Model.deliveryAddress" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Số hóa đơn</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-handshake-o"></i>
+                                            </span>
+                                            <input class="form-control" value="@Model.invoiceNumber" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div style="margin-top: 35px;">
+                                            <span class="custom-span">
+                                                <input type="checkbox" @(Model.dateTakeBallot != null ? "checked" : "") disabled id="takeBallot"/><label style="padding-left:10px;">Lấy phiếu</label>
+                                            </span>
+                                            <span class="custom-span" style="padding-left:15px;">
+                                                <input type="checkbox" @(Model.dateTakeInvoice != null ? "checked" : "") disabled id="takeInvoice"/><label style="padding-left:10px;">Lấy hoá đơn</label>
+                                            </span>
+                                            <span class="custom-span" style="padding-left:15px;">
+                                                <input type="checkbox" @(Model.dateReceiveBallot != null ? "checked" : "") disabled id="receiveBallot"/><label style="padding-left:10px;">Nhận phiếu</label>
+                                            </span>
+                                            <span class="custom-span" style="padding-left:15px;">
+                                                <input type="checkbox" @(Model.dateReceiveInvoice != null ? "checked" : "") disabled id="receiveInvoice"/><label style="padding-left:10px;">Nhận hoá đơn</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>Trạng Thái</label>
+                                        <div class="input-group">
+                                            <span class="label @Model.spanClass label-medium">
+                                                @Model.status
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <p />
+
+                    </div>
+                    <!--giao hàng-->
+                    <div class="box-body pad">
+                        <div class="container-fluid">
+                            <fieldset>
+                                <legend><b style="font-size: 17px;">Thông tin giao hàng</b></legend>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Lựa chọn giao hàng</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-hourglass"></i>
+                                            </span>
+                                            @Html.DropDownListFor(model => model.DeliverMethod_ID, @Model.deliveryMethod, "--Select--", new { @class = "form-control", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Nhân viên giao hàng</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            @Html.DropDownListFor(model => model.Shiper_ID, @Model.shipper, "--Select--", new { @class = "form-control", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Lái xe</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            @Html.DropDownListFor(model => model.Driver_ID, @Model.driver, "--Select--", new { @class = "form-control", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Ngày xuất kho</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input class="form-control" value="@Model.dateWarehouse" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Ngày giao</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input class="form-control" value="@Model.dateExport" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Ngày hoàn thành</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input class="form-control" value="@Model.dateComplete" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                        <div class="container-fluid">
+                            <fieldset>
+                                <legend><b style="font-size: 17px;">Chi tiết đơn hàng</b></legend>
+                                <table class="table table-striped" id="mainTable">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">STT</th>
+                                            <th rowspan="2" style="width: 500px;">Tên hàng</th>
+                                            <th colspan="2">Số lượng</th>
+                                            <th rowspan="2">Đã đủ</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Cái</th>
+                                            <th>Thùng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.readItems.Count; i++)
+                                        {
+                                            <tr>
+                                                <td style="vertical-align: inherit;">@(i + 1)</td>
+                                                <td style="vertical-align: middle;">
+                                                    <output class="form-control">@Model.readItems[i].code</output>
+                                                </td>
+                                                <td><output style="text-align:right;" class="form-control">@Model.readItems[i].Quantity</output></td>
+                                                <td><output style="text-align:right;" class="form-control">@Model.readItems[i].Box</output></td>
+                                                <td style="vertical-align: inherit;"><input type="checkbox" disabled checked /></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </fieldset>
+                        </div>
+                        <div id="sound"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="confirmSave" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận lưu ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="saveOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmDone" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận hoàn thành ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="doneOrder();">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmCancel" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận đổi trả</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Lý do</p>
+                    <textarea style="width: 100%" rows="10" id="reason"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
+                    <button type="button" class="btn btn-danger btn-ok" data-dismiss="modal" onclick="cancelOrder();">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section ChiTietPhieu
+{
+    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+    <script>
+        function enable() {
+            $('#divSave').removeClass('noDisplay');
+            $('#divEdit').addClass('noDisplay');
+            $('#receiveInvoice').prop("disabled", false);
+            $('#receiveBallot').prop("disabled", false);
+            $('#takeInvoice').prop("disabled", false);
+            $('#takeBallot').prop("disabled", false);
+        }
+
+        function doneOrder() {
+            $.ajax({
+                url: '/HangHoa/ChiTietPhieu/Complete',
+                type: 'POST',
+                dataType: 'json',
+                data: { orderId: $('#orderId').val() },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="/Assets/dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/HangHoa/Home/Index';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
+                        text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
+                        type: 'error',
+                        showCancelButton: false,
+                        showConfirmButton: true
+                    });
+                }
+            });
+        }
+
+        function saveOrder() {
+            var receiveInvoice = false;
+            var receiveBallot = false;
+            var takeInvoice = false;
+            var takeBallot = false;
+            if ($('#receiveInvoice').prop("checked")) {
+                receiveInvoice = true;
+            }
+            if ($('#receiveBallot').prop("checked")) {
+                receiveBallot = true;
+            }
+            if ($('#takeInvoice').prop("checked")) {
+                takeInvoice = true;
+            }
+            if ($('#takeBallot').prop("checked")) {
+                takeBallot = true;
+            }
+            $.ajax({
+                url: '/PhanPhoi/LapPhieu/SaveOrder',
+                type: 'POST',
+                dataType: 'json',
+                data: { orderId: $('#orderId').val(), receiveInvoice: receiveInvoice, receiveBallot: receiveBallot, takeInvoice: takeInvoice, takeBallot: takeBallot },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/PhanPhoi/OrderList/Index';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_7.png"/><img src="/Assets/dist/img/messagePic_8.png"/>',
+                        type: 'error',
+                        showCancelButton: false,
+                        showConfirmButton: true
+                    });
+                }
+            });
+        }
+        function cancelOrder() {
+            $.ajax({
+                url: '/HangHoa/ChiTietPhieu/ExchangeOrder',
+                dataType: 'json',
+                data: { orderId: $('#orderId').val(), note: $('#reason').val() },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_10.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/HangHoa/Home/Index';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_11.png"/>',
+                        type: 'error'
+                    });
+                }
+            });
+        }
+    </script>
+}
+
