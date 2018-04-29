@@ -81,6 +81,8 @@ function productATC() {
                             responseFn(array);
                         }
                     });
+                } else {
+                    $(this).val("");
                 }
             },
             select: function (event, ui) {

@@ -25,7 +25,19 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
             model.deliveryAddress = data.Order_total.Address_delivery;
             model.invoiceNumber = data.Invoice_number;
-            model.status = statusDAO.getStatus(data.Status_ID);
+            String status = statusDAO.getStatus(data.Status_ID);
+            String spanClass = "";
+            if (data.Status_ID == 10 || data.Status_ID == 11)
+            {
+                status = status.Substring(0, status.IndexOf("warning") - 1);
+                spanClass = "label-warning";
+            }
+            else
+            {
+                spanClass = "label-primary";
+            }
+            model.spanClass = spanClass;
+            model.status = status;
             model.statusId = data.Status_ID;
             var customer = customerDAO.getCustomerById(data.Customer_ID);
             model.customerName = customer.Customer_name;
@@ -34,9 +46,9 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             model.qttTotal = 0;
             model.boxTotal = 0;
             decimal? subTotal = 0;
-            foreach (Order_items o in data.Order_total.Order_items)
+            if (orderId.Contains("-"))
             {
-                if (o.Order_part_ID != null)
+                foreach (Order_items o in data.Order_total.Order_items.Where(x => x.Order_part_ID != null).ToList())
                 {
                     if (o.Order_part_ID.Equals(data.Order_part_ID))
                     {
@@ -53,9 +65,15 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                             priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                         };
                         items.Add(item);
+                        model.qttTotal += o.Quantity;
+                        model.boxTotal += o.Box;
+                        subTotal += o.Price;
                     }
                 }
-                else
+            }
+            else
+            {
+                foreach (Order_items o in data.Order_total.Order_items.Where(x => x.Order_part_ID == null).ToList())
                 {
                     var product = productDAO.getProductById(o.Product_ID);
                     var item = new OrderItemModel
@@ -70,10 +88,10 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                     };
                     items.Add(item);
+                    model.qttTotal += o.Quantity;
+                    model.boxTotal += o.Box;
+                    subTotal += o.Price;
                 }
-                model.qttTotal += o.Quantity;
-                model.boxTotal += o.Box;
-                subTotal += o.Price;
             }
             model.discount = data.Order_total.Order_discount;
             model.vat = data.VAT;

@@ -115,31 +115,28 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
         public ActionResult Store()
         {
-            var orderDAO = new OrderTotalDAO();
+            var orderDAO = new OrderPartDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
             var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 2).ToList();
+            var lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID == 2).ToList();
             var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            foreach (Order_part o in lstOrder)
             {
-                if (o.Order_part.Count > 1)
+                if (o.Order_part_ID == null)
                 {
-                    foreach (Order_part p in o.Order_part)
+                    var item = new ListItemModel
                     {
-                        var item = new ListItemModel
-                        {
-                            orderId = p.Order_part_ID,
-                            customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                            date = p.Request_stockout_date,
-                            delivery = 1,
-                            note = p.Note,
-                            total = p.Total_price,
-                            status = statusDAO.getStatus(o.Status_ID),
-                            spanClass = "label-warning"
-                        };
-                        items.Add(item);
-                    }
+                        orderId = o.Order_part_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = o.Request_stockout_date,
+                        delivery = 1,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-warning"
+                    };
+                    items.Add(item);
                 }
                 else
                 {
@@ -147,8 +144,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     {
                         orderId = o.Order_ID,
                         customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                        date = o.Order_part.FirstOrDefault().Request_stockout_date,
-                        delivery = o.Order_part.Count,
+                        date = o.Request_stockout_date,
+                        delivery = 1,
                         note = o.Note,
                         total = o.Total_price,
                         status = statusDAO.getStatus(o.Status_ID),

@@ -66,17 +66,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             Order_discount = model.discount,
                             Status_ID = 1
                         });
-                        for (int i = 0; i < 5; i++)
-                        {
-                            nofDAO.addNotification(new Notification
-                            {
-                                Notif_date = DateTime.Now,
-                                Content = "Nhân viên quản lý " + session.user_name + " đã lập phiếu với mã " + model.orderId,
-                                Link = "/ChiTietPhieu/Index?" + model.orderId,
-                                Role_ID = (byte)(i + 1),
-                                Status = 1
-                            });
-                        }
                         result++;
                     }
                     else
@@ -100,21 +89,23 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                             Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
                                         });
                                     }
-                                    lstCompare.Remove(o);
                                 }
                             }
                         }
                         foreach (Order_items i in lstCompare)
                         {
-                            historyDAO.createHistory(new Edit_history
+                            if (orderDAO.getOrder(model.orderId).Order_items.Where(x => x.Product_ID == i.Product_ID).ToList().Count == 0)
                             {
-                                Date_change = DateTime.Now,
-                                Order_ID = model.orderId,
-                                Product_ID = i.Product_ID,
-                                Quantity_change = i.Quantity,
-                                User_ID = session.user_id,
-                                Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
-                            });
+                                historyDAO.createHistory(new Edit_history
+                                {
+                                    Date_change = DateTime.Now,
+                                    Order_ID = model.orderId,
+                                    Product_ID = i.Product_ID,
+                                    Quantity_change = i.Quantity,
+                                    User_ID = session.user_id,
+                                    Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
+                                });
+                            }
                         }
                         orderDAO.updateOrder(new Order_total
                         {
@@ -383,17 +374,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             Order_discount = model.discount,
                             Status_ID = 2
                         });
-                        for (int i = 0; i < 5; i++)
-                        {
-                            nofDAO.addNotification(new Notification
-                            {
-                                Notif_date = DateTime.Now,
-                                Content = "Nhân viên quản lý " + session.user_name + " đã lập phiếu với mã " + model.orderId,
-                                Link = "/ChiTietPhieu/Index?" + model.orderId,
-                                Role_ID = (byte)(i + 1),
-                                Status = 1
-                            });
-                        }
                         result++;
                     }
                     else
