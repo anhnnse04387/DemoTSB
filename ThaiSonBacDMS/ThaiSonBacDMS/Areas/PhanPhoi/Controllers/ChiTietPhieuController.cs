@@ -194,6 +194,214 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return View(model);
         }
 
+        public ActionResult DetailStatus(String orderId)
+        {
+            var model = new OrderTotalModel();
+            var dict = new Dictionary<int, StatusDetailModel>();
+            if (orderId.Contains("-"))
+            {
+                var detailStatusDAO = new OrderDetailStatusDAO();
+                var dao = new OrderPartDAO();
+                var customerDAO = new CustomerDAO();
+                var data = dao.getOrderPart(orderId);
+                var statusDAO = new StatusDAO();
+                var userDAO = new UserDAO();
+                var count = 0;
+                model.orderId = orderId;
+                model.deliveryAddress = data.Order_total.Address_delivery;
+                var customer = customerDAO.getCustomerById(data.Customer_ID);
+                model.customerName = customer.Customer_name;
+                model.tel = customer.Phone;
+                var lineStatus = "calc((40% -140px) * 0.5)";
+                var lstStatus = detailStatusDAO.getStatus(orderId);
+                var statusDetail = lstStatus.Where(x => x.Status_ID == 1 || x.Status_ID == 2).FirstOrDefault();
+                dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
+                statusDetail = lstStatus.Where(x => x.Status_ID == 3).FirstOrDefault();
+                if (statusDetail != null)
+                {
+                    dict.Add(3, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
+                    lineStatus = "calc((90% -140px) * 0.5)";
+                    count = 1;
+                }
+                else
+                {
+                    dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                }
+                statusDetail = lstStatus.Where(x => x.Status_ID == 5 || x.Status_ID == 10).FirstOrDefault();
+                if (count == 1)
+                {
+                    if (statusDetail != null)
+                    {
+                        dict.Add(5, new StatusDetailModel
+                        {
+                            name = statusDetail.Status_ID == 10 ? userDAO.getByID(statusDetail.User_ID).User_name + "\n( Chưa xuất phiếu )" : userDAO.getByID(statusDetail.User_ID).User_name,
+                            date = statusDetail.Date_change,
+                            classAttr = "stepper__step-icon--finish"
+                        });
+                        lineStatus = "calc((130% -140px) * 0.5)";
+                        count = 2;
+                    }
+                    else
+                    {
+                        dict.Add(5, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                    }
+                }
+                else
+                {
+                    dict.Add(5, new StatusDetailModel { });
+                }
+                statusDetail = lstStatus.Where(x => x.Status_ID == 6 || x.Status_ID == 11).FirstOrDefault();
+                if (count == 2)
+                {
+                    if (statusDetail != null)
+                    {
+                        dict.Add(6, new StatusDetailModel
+                        {
+                            name = statusDetail.Status_ID == 11 ? userDAO.getByID(statusDetail.User_ID).User_name + "\n( Chưa xuất phiếu )" : userDAO.getByID(statusDetail.User_ID).User_name,
+                            date = statusDetail.Date_change,
+                            classAttr = "stepper__step-icon--finish"
+                        });
+                        lineStatus = "calc((170% -140px) * 0.5)";
+                        count = 3;
+                    }
+                    else
+                    {
+                        dict.Add(6, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                    }
+                }
+                else
+                {
+                    dict.Add(6, new StatusDetailModel { });
+                }
+                statusDetail = lstStatus.Where(x => x.Status_ID == 7).FirstOrDefault();
+                if (count == 3)
+                {
+                    if (statusDetail != null)
+                    {
+                        dict.Add(7, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
+                    }
+                    else
+                    {
+                        dict.Add(7, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                    }
+                }
+                else
+                {
+                    dict.Add(7, new StatusDetailModel { });
+                }
+                model.lineStatus = lineStatus;
+                if (!String.IsNullOrEmpty(data.Driver_ID))
+                {
+                    model.driverName = userDAO.getByID(int.Parse(data.Driver_ID)).User_name;
+                }
+                model.dateExport = data.Request_stockout_date;
+                if (data.Date_completed != null)
+                {
+                    model.dateComplete = data.Date_completed.Value.ToString("MM/dd/yyyy");
+                }
+                model.dict = dict;
+            }
+            else
+            {
+                var dao = new OrderTotalDAO();
+                var customerDAO = new CustomerDAO();
+                var data = dao.getOrder(orderId);
+                var statusDAO = new StatusDAO();
+                var userDAO = new UserDAO();
+                var count = 0;
+                model.orderId = orderId;
+                model.deliveryAddress = data.Address_delivery;
+                var customer = customerDAO.getCustomerById(data.Customer_ID);
+                model.customerName = customer.Customer_name;
+                model.tel = customer.Phone;
+                var lineStatus = "calc((40% -140px) * 0.5)";
+                var statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 1 || x.Status_ID == 2) && x.Order_part_ID == null).FirstOrDefault();
+                dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
+                statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3 && x.Order_part_ID == null).FirstOrDefault();
+                if (statusDetail != null)
+                {
+                    dict.Add(3, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
+                    lineStatus = "calc((90% -140px) * 0.5)";
+                    count = 1;
+                }
+                else
+                {
+                    dict.Add(3, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                }
+                statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 5 || x.Status_ID == 10) && x.Order_part_ID == null).FirstOrDefault();
+                if (count == 1)
+                {
+                    if (statusDetail != null)
+                    {
+                        dict.Add(5, new StatusDetailModel
+                        {
+                            name = statusDetail.Status_ID == 10 ? userDAO.getByID(statusDetail.User_ID).User_name + "\n( Chưa xuất phiếu )" : userDAO.getByID(statusDetail.User_ID).User_name,
+                            date = statusDetail.Date_change,
+                            classAttr = "stepper__step-icon--finish"
+                        });
+                        lineStatus = "calc((130% -140px) * 0.5)";
+                        count = 2;
+                    }
+                    else
+                    {
+                        dict.Add(5, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                    }
+                }
+                else
+                {
+                    dict.Add(5, new StatusDetailModel { });
+                }
+                statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 6 || x.Status_ID == 11) && x.Order_part_ID == null).FirstOrDefault();
+                if (count == 2)
+                {
+                    if (statusDetail != null)
+                    {
+                        dict.Add(6, new StatusDetailModel
+                        {
+                            name = statusDetail.Status_ID == 11 ? userDAO.getByID(statusDetail.User_ID).User_name + "\n( Chưa xuất phiếu )" : userDAO.getByID(statusDetail.User_ID).User_name,
+                            date = statusDetail.Date_change,
+                            classAttr = "stepper__step-icon--finish"
+                        });
+                        lineStatus = "calc((170% -140px) * 0.5)";
+                        count = 3;
+                    }
+                    else
+                    {
+                        dict.Add(6, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                    }
+                }
+                else
+                {
+                    dict.Add(6, new StatusDetailModel { });
+                }
+                statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 7 && x.Order_part_ID == null).FirstOrDefault();
+                if (count == 3)
+                {
+                    if (statusDetail != null)
+                    {
+                        dict.Add(7, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change, classAttr = "stepper__step-icon--finish" });
+                    }
+                    else
+                    {
+                        dict.Add(7, new StatusDetailModel { classAttr = "stepper__step-icon--pending" });
+                    }
+                }
+                else
+                {
+                    dict.Add(7, new StatusDetailModel { });
+                }
+                model.lineStatus = lineStatus;
+                model.driverName = userDAO.getByID(int.Parse(data.Order_part.SingleOrDefault().Driver_ID)).User_name;
+                model.dateExport = data.Order_part.SingleOrDefault().Request_stockout_date;
+                if (data.Date_completed != null)
+                {
+                    model.dateComplete = data.Date_completed.Value.ToString("MM/dd/yyyy");
+                }
+                model.dict = dict;
+            }
+            return View(model);
+        }
+
         public ActionResult MultipleDelivery(String orderId)
         {
             var detailStatusDAO = new OrderDetailStatusDAO();

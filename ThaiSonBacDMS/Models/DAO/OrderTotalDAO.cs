@@ -194,7 +194,7 @@ namespace Models.DAO
         {
             var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             byte? status = 5;
-            if (db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && x.Status_ID == 4).ToList().Count == 0)
+            if (db.Order_detail_status.Where(x => (x.Order_part_ID.Equals(orderId) || x.Order_ID.Equals(orderId)) && x.Status_ID == 4).ToList().Count == 0)
             {
                 status = 10;
             }
@@ -236,7 +236,7 @@ namespace Models.DAO
         {
             var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             byte? status = 6;
-            if (db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && x.Status_ID == 4).ToList().Count == 0)
+            if (db.Order_detail_status.Where(x => (x.Order_part_ID.Equals(orderId) || x.Order_ID.Equals(orderId)) && x.Status_ID == 4).ToList().Count == 0)
             {
                 status = 11;
             }

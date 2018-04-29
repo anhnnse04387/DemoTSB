@@ -10,6 +10,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class OrderTotalModel
     {
+        public String dateComplete { get; set; }
+        public String driverName { get; set; }
+        public String tel { get; set; }
         public DateTime? dateExport { get; set; }
         public String invoiceNumber { get; set; }
         public String dayCreated { get; set; }
