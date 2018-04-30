@@ -2,9 +2,11 @@
 using Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ThaiSonBacDMS.Areas.HangHoa.Models;
 using ThaiSonBacDMS.Common;
 using ThaiSonBacDMS.Controllers;
 
@@ -13,9 +15,60 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
     public class HomeController : HangHoaBaseController
     {
         // GET: HangHoa/Home
-        public ActionResult Index()
+        public ActionResult Index(OrderListModel model)
         {
-            return RedirectToAction("Index", "OrderList");
+            try
+            {
+                List<Order_part> lstOrder = new OrderPartDAO().getAllOrderPartByStatus(3);
+                lstOrder.AddRange(new OrderPartDAO().getAllOrderPartByStatus(4));
+                model.listOrderPending = lstOrder.Select((x, index) => new OrderListPending
+                {
+                    indexOf = index + 1,
+                    orderID = x.Order_part_ID,
+                    customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
+                    salesUserName = new UserDAO().getByID(x.Sales_user_ID).User_name,
+                    invoiceNumber = x.Invoice_number,
+                    statusName = new StatusDAO().getStatus((byte)x.Status_ID),
+                    takeInvoice = x.Date_take_invoice == null ? false : true,
+                    takeBallot = x.Date_take_ballot == null ? false : true,
+                    dateExport = (DateTime)x.Request_stockout_date,
+                    note = x.Note,
+                }).ToList();
+                if (!string.IsNullOrEmpty(model.orderID))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.orderID.Contains(model.orderID)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.customerName))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.customerName.Contains(model.customerName)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.invoice_number))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.invoiceNumber.Contains(model.invoice_number)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.statusName))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.statusName.Contains(model.statusName)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.fromDate))
+                {
+                    DateTime fromDate = DateTime.ParseExact(model.fromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    model.listOrderPending = model.listOrderPending.Where(x => x.dateExport >= fromDate).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.toDate))
+                {
+                    DateTime toDate = DateTime.ParseExact(model.fromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    model.listOrderPending = model.listOrderPending.Where(x => x.dateExport <= toDate).ToList();
+                }
+                model.listOrderPending = model.listOrderPending.OrderByDescending(x => x.dateExport).ToList();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
         [ChildActionOnly]
         public PartialViewResult NotificationHeader()
