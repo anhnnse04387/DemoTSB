@@ -17,6 +17,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         // GET: HangHoa/Home
         public ActionResult Index(OrderListModel model)
         {
+<<<<<<< HEAD
             try
             {
                 List<Order_part> lstOrder = new OrderPartDAO().getAllOrderPartByStatus(3);
@@ -69,6 +70,9 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             }
 
             return View(model);
+=======
+            return View();
+>>>>>>> ec4f8490cb195df041ca726f882d8df1d6dcafbc
         }
         [ChildActionOnly]
         public PartialViewResult NotificationHeader()

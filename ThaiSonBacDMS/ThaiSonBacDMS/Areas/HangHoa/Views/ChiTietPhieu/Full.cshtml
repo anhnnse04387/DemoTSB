@@ -380,11 +380,10 @@
                                         {
                                             <tr>
                                                 <td style="vertical-align: inherit;">@(i + 1)</td>
-                                                <td style="vertical-align: middle;">
-                                                    <output class="form-control">@Model.readItems[i].code</output>
+                                                <td style="vertical-align: middle;">@Model.readItems[i].code
                                                 </td>
-                                                <td><output style="text-align:right;" class="form-control">@Model.readItems[i].Quantity</output></td>
-                                                <td><output style="text-align:right;" class="form-control">@Model.readItems[i].Box</output></td>
+                                                <td style="text-align:right;">@Model.readItems[i].Quantity</td>
+                                                <td style="text-align:right;">@Model.readItems[i].Box</td>
                                                 <td style="vertical-align: inherit;"><input type="checkbox" disabled checked /></td>
                                             </tr>
                                         }
