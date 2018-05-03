@@ -251,7 +251,7 @@
                                     i++;
                                     <tr>
                                         <td class="text-center">@i</td>
-                                        <td><a href="phanphoi_khachhang_chi-tiet-khach-hang.html">@item.cus_name</a></td>
+                                        <td>@Html.ActionLink(@item.cus_name, "ChiTiet", new { customerId = item.cur_id })</td>
                                         <td>@item.cus_address</td>
                                         <td class="text-right">@item.cur_debt</td>
                                     </tr>

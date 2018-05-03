@@ -19,7 +19,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         public ActionResult Index()
         {
             OrderTotalDAO totalDAO = new OrderTotalDAO();
-            ProductDAO productDAO = new ProductDAO();
             CustomerDAO customerDAO = new CustomerDAO();
             OrderItemDAO orderItemDAO = new OrderItemDAO();
             HomeModel model = new HomeModel();
