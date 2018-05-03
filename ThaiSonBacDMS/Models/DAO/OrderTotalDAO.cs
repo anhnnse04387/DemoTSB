@@ -262,6 +262,12 @@ namespace Models.DAO
                     Order_ID = orderId.Substring(0, orderId.IndexOf("-")),
                     Order_part_ID = orderId
                 });
+                var items = db.Order_items.Where(x => x.Order_part_ID.Equals(orderId)).ToList();
+                foreach (Order_items i in items)
+                {
+                    var product = db.Products.Where(x => x.Product_ID == i.Product_ID).SingleOrDefault();
+                    product.Quantities_in_inventory = product.Quantities_in_inventory - i.Quantity;
+                }
             }
             else
             {
@@ -273,6 +279,12 @@ namespace Models.DAO
                     Date_change = DateTime.Now,
                     Order_ID = orderId
                 });
+                var items = db.Order_items.Where(x => x.Order_ID.Equals(orderId)).ToList();
+                foreach (Order_items i in items)
+                {
+                    var product = db.Products.Where(x => x.Product_ID == i.Product_ID).SingleOrDefault();
+                    product.Quantities_in_inventory = product.Quantities_in_inventory - i.Quantity;
+                }
             }
             db.SaveChanges();
         }
@@ -411,12 +423,12 @@ namespace Models.DAO
                 var order = db.Order_total.Where(x => x.Order_ID.Equals(orderId.Substring(0, orderId.IndexOf("-")))).SingleOrDefault();
                 foreach (Order_part i in order.Order_part)
                 {
-                    if(i.Status_ID == 7)
+                    if (i.Status_ID == 7)
                     {
                         count++;
                     }
                 }
-                if(count == order.Order_part.Count)
+                if (count == order.Order_part.Count)
                 {
                     order.Status_ID = 7;
                     order.Date_completed = DateTime.Now;

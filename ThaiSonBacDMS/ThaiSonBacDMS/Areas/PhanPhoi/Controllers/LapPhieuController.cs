@@ -44,7 +44,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var orderDAO = new OrderTotalDAO();
                     var orderPartDAO = new OrderPartDAO();
-                    var nofDAO = new NotificationDAO();
                     var historyDAO = new EditHistoryDAO();
                     var orderStatusDAO = new OrderDetailStatusDAO();
                     var orderItemDAO = new OrderItemDAO();
@@ -351,7 +350,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var result = 0;
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var orderDAO = new OrderTotalDAO();
-                    var nofDAO = new NotificationDAO();
                     var historyDAO = new EditHistoryDAO();
                     var orderPartDAO = new OrderPartDAO();
                     var orderStatusDAO = new OrderDetailStatusDAO();
