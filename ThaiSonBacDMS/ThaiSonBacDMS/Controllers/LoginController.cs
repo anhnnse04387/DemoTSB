@@ -17,9 +17,10 @@ namespace ThaiSonBacDMS.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var chkSession = (UserSession)Session[CommonConstants.USER_SESSION];
-            if(chkSession!=null)
+            
+            if(Session[CommonConstants.USER_SESSION] != null)
             {
+                var chkSession = (UserSession)Session[CommonConstants.USER_SESSION];
                 switch (chkSession.roleSelectedID)
                 {
                     case 1:
