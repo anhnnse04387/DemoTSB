@@ -75,7 +75,7 @@ function productATC() {
                                 return {
                                     label: m.Product_code,
                                     value: m.Product_ID,
-                                    price: parseFloat(m.Price_before_VAT_USD) * (100 + parseFloat(m.VAT)) / 100
+                                    price: m.CIF_USD
                                 };
                             });
                             responseFn(array);

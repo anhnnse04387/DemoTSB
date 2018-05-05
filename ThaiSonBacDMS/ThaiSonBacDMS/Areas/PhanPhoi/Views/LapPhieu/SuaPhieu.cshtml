@@ -150,7 +150,7 @@
                                                         <label>Lô số</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                            @Html.TextBoxFor(model => model.orderId, new { @class = "form-control", @id = "orderId", @required = "required" })
+                                                            @Html.TextBoxFor(model => model.orderId, new { @class = "form-control", @id = "orderId", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,7 +159,7 @@
                                                         <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                            @Html.TextBoxFor(model => model.deliveryAddress, new { @class = "form-control", @id = "deliveryAddress", @required = "required" })
+                                                            @Html.TextBoxFor(model => model.deliveryAddress, new { @class = "form-control", @id = "deliveryAddress", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -175,7 +175,7 @@
                                                         <label>Địa chỉ xuất HĐ</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                                            @Html.TextBoxFor(model => model.invoiceAddress, new { @class = "form-control", @id = "invoiceAddress", @required = "required" })
+                                                            @Html.TextBoxFor(model => model.invoiceAddress, new { @class = "form-control", @id = "invoiceAddress", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -195,7 +195,7 @@
                                                         <label>Mã số thuế</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-                                                            @Html.TextBoxFor(model => model.taxCode, new { @class = "form-control", @id = "taxCode", @required = "required" })
+                                                            <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="taxCode" value="@Model.taxCode" class="form-control" required />
                                                         </div>
                                                     </div>
                                                     @if (Model.dateExport != null)

@@ -333,7 +333,7 @@ function productATC() {
                                     param: m.Product_parameters,
                                     qttInven: m.Quantities_in_inventory,
                                     qttBox: m.Quantity_in_carton,
-                                    price: parseFloat(m.Price_before_VAT_VND) * (100 + parseFloat(m.VAT)) / 100,
+                                    price: m.Price_before_VAT_VND,
                                     priceBeforeVAT: parseFloat(m.Price_before_VAT_VND) * parseFloat(m.VAT) / 100
                                 };
                             });
@@ -726,7 +726,7 @@ function ck(thisRow) {
 function total(thisTable) {
     var tongck = parseFloat(thisTable.find('.tongck').val());
     var tienck = 0;
-    var tienvat = 0;
+    var tienvat = parseFloat(thisTable.find('.tienvat').val());
     var tongtienchuack = 0;
     var tongtiendack = 0;
     var arrTienDaCk = thisTable.find('.tiendack');
@@ -744,7 +744,7 @@ function total(thisTable) {
             thisTable.find('.tienck').val(0);
         }
         thisTable.find('.conlai').autoNumeric('set', tongtiendack);
-        thisTable.find('.tongtiendack').autoNumeric('set', tongtiendack);
+        thisTable.find('.tongtiendack').autoNumeric('set', tongtiendack + tienvat);
     }
 }
 

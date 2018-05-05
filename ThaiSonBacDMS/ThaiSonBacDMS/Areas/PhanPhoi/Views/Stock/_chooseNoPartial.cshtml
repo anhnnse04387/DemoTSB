@@ -29,7 +29,7 @@
                                 <td>@(i + 1)</td>
                                 <td><input type="hidden" class="productId" value="@Model.items[i].Product_ID" />@Model.items[i].productName</td>
                                 <td><output class="qttInven">@Model.items[i].orderQtt</output></td>
-                                <td><input type="text" class="form-control qtt" value="@Model.items[i].Quantities" onkeyup="calc(this)" required/></td>
+                                <td><input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control qtt" value="@Model.items[i].Quantities" onkeyup="calc(this)" required/></td>
                                 <td><input type="text" class="form-control note" value="@Model.items[i].Note" /></td>
                             </tr>
                         }
