@@ -365,22 +365,23 @@
                 //var isChecked = $('#ckttCheckbox').prop("checked");
                 if (!tienHang) {
                     msgs += "Vui lòng nhập tiền hàng!<br/>";
-                    $("#tienHang").focus();
+                    swal({
+                        title: 'Vui lòng nhập tiền hàng!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton:true
+                    })
                 }
                 if (!thanhToan) {
                     msgs += "Vui lòng nhập thanh toán!<br/>";
-                    $("#thanhToan").focus();
+                    swal({
+                        title: 'Vui lòng nhập thanh toán!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
                 }
-                //if (isChecked) {
-                //    if (!vat) {
-                //        msgs += "Vui lòng nhập VAT!";
-                //        $("#vat").focus();
-                //    }
-                //}
-                if (msgs != "") {
-                    $("#msgs").html(msgs);
-                }
-                else {
+                if (msgs === "") {
                     $("#popupConfirm").modal('show');
                 }
             }

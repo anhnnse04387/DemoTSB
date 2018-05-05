@@ -2,6 +2,7 @@
 using Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,20 +49,20 @@ namespace Models.DAO
                         join po in db.POes on supplier.Supplier_ID equals po.Supplier_ID
                         where supplier.Supplier_ID == supplierId
                         select new { supplier, po.PO_no };
-            if (string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
-            {
-                DateTime fromValue = Convert.ToDateTime(fromDate);
-                query = query.Where(x => x.supplier.Date_Created >= fromValue);
-            }
             if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
-                DateTime toValue = Convert.ToDateTime(toDate);
+                DateTime fromValue = DateTime.ParseExact(fromDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                query = query.Where(x => x.supplier.Date_Created >= fromValue);
+            }
+            if (string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
+            {
+                DateTime toValue = DateTime.ParseExact(toDate, "d-M-yyyy", CultureInfo.InvariantCulture);
                 query = query.Where(x => x.supplier.Date_Created <= toValue);
             }
             if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
             {
-                DateTime fromValue = Convert.ToDateTime(fromDate);
-                DateTime toValue = Convert.ToDateTime(toDate);
+                DateTime fromValue = DateTime.ParseExact(fromDate, "d-M-yyyy", CultureInfo.InvariantCulture);
+                DateTime toValue = DateTime.ParseExact(toDate, "d-M-yyyy", CultureInfo.InvariantCulture); ;
                 query = query.Where(x => x.supplier.Date_Created >= fromValue && x.supplier.Date_Created <= toValue);
             }
             List<ChiTietNoCungCap> lst = new List<ChiTietNoCungCap>();
@@ -70,7 +71,7 @@ namespace Models.DAO
                 foreach (var item in query)
                 {
                     ChiTietNoCungCap obj = new ChiTietNoCungCap();
-                    obj.ngay = item.supplier.Date_Created?.ToString("dd/MM/yyyy");
+                    obj.ngay = item.supplier.Date_Created?.ToString("dd-MM-yyyy");
                     obj.soPo = item.PO_no;
                     obj.dienGiai = item.supplier.Description;
                     obj.tienHang = item.supplier.Sub_total;
