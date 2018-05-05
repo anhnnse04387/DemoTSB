@@ -41,7 +41,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             ChiTietNoCungCapModel model = new ChiTietNoCungCapModel();
             Supplier_transactionDAO dao = new Supplier_transactionDAO();
             SupplierDAO supplierDao = new SupplierDAO();
-
+            model.lstDisplay = dao.getLstSearch(Convert.ToInt32(supplierId),fromDate,toDate);
             model.supplierName = supplierDao.getSupplierName(Convert.ToInt32(supplierId));
             model.supplierId = Convert.ToInt32(supplierId);
             model.lastedDebt = dao.getLastestDebt(Convert.ToInt32(supplierId));

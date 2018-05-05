@@ -111,7 +111,7 @@ namespace Models.DAO
                     ChiTietNoKhachHang ctnkh = new ChiTietNoKhachHang();
 
 
-                    ctnkh.dateString = item.Date_Created?.ToString("dd/MM/yyyy");
+                    ctnkh.dateString = item.Date_Created?.ToString("dd-MM-yyyy");
                     ctnkh.loSo = item.Order_ID;
                     // ctnkh.soLuong = Convert.ToInt32(item.soLuong);
                     ctnkh.dienGiai = item.Description;
