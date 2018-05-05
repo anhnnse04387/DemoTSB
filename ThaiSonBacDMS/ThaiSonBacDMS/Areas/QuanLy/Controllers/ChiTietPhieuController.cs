@@ -391,7 +391,10 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     dict.Add(7, new StatusDetailModel { });
                 }
                 model.lineStatus = lineStatus;
-                model.driverName = userDAO.getByID(int.Parse(data.Order_part.SingleOrDefault().Driver_ID)).User_name;
+                if (data.Order_part.SingleOrDefault().Driver_ID != null)
+                {
+                    model.driverName = userDAO.getByID(int.Parse(data.Order_part.SingleOrDefault().Driver_ID)).User_name;
+                }
                 model.dateExport = data.Order_part.SingleOrDefault().Request_stockout_date;
                 if (data.Date_completed != null)
                 {
