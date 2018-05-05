@@ -1,4 +1,5 @@
 ﻿using Models.DAO;
+using Models.DAO_Model;
 using Models.Framework;
 using System;
 using System.Collections.Generic;
@@ -210,6 +211,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             }
         }
 
+        [ValidateInput(false)]
         public ActionResult ChooseProduct(String input)
         {
             try
@@ -501,6 +503,36 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
                 dao.cancelOrder(orderId, note, session.user_id, dao.getOrder(orderId).Order_part.Count);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult CheckQtt(int productId)
+        {
+            try
+            {
+                var dao = new OrderItemDAO();
+                return Json(dao.getLstByProductId(productId), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Steal(List<CustomOrderItem> lst)
+        {
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderItemDAO();
+                dao.stealProduct(lst, session.user_id);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

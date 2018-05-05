@@ -606,29 +606,66 @@ function configThung() {
 }
 
 function checkQtt(thisRow) {
-    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
     if (thisRow.attr('class') === 'addingRow') {
-        swal({
-            title: '<img src="/Assets/dist/img/messagePic_4.png"/>',
-            type: 'error',
-            html: '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="/Assets/dist/img/xem.png"/></a></div>'
-                    + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
-                    + '<thead>'
-                    + '<tr><th style="background-color: white"><img src="/Assets/dist/img/loso.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluong.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/ngay.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluonglay.png"/></th></tr>'
-                    + '</thead>'
-                    + '<tbody>'
-                    + '<tr><td>O1345</td><td style="text-align: right;">7</td><td>01/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl1"/></td></tr>'
-                    + '<tr><td>O1348</td><td style="text-align: right;">12</td><td>03/01/2018</td><td><input type="text" class="form-control" style="text-align: right; width: 50px; float: right;" id="sl2"/></td></tr>'
-                    + '</tbody>'
-                    + '</table>',
-            showCancelButton: true,
-            width: 550,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '<i class="fa fa-check"></i>',
-            cancelButtonText: '<i class="fa fa-close"></i>'
+        $.ajax({
+            url: '/QuanLy/LapPhieu/CheckQtt',
+            dataType: 'json',
+            data: { productId: thisRow.find(".productId").val() },
+            success: function (data) {
+                var div = '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="/Assets/dist/img/xem.png"/></a></div>'
+                            + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
+                            + '<thead>'
+                            + '<tr><th style="background-color: white"><img src="/Assets/dist/img/loso.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluong.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/ngay.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluonglay.png"/></th></tr>'
+                            + '</thead>'
+                            + '<tbody>';
+                for (var i = 0; i < data.length; i++) {
+                    var tr = '<tr><td><output class="itemOrderId" style="padding-top: initial; font-size: 18px;">' + data[i].orderId + '</output></td><td style="text-align: right;">' + data[i].qtt
+                        + '</td><td>' + data[i].date +
+                        '</td><td><input type="text" class="form-control itemQtt" style="text-align: right; width: 50px; float: right;"/><input type="hidden" class="itemId" value="' + data[i].id + '"/></td></tr>';
+                    div += tr;
+                }
+                div += '</tbody></table>';
+                swal({
+                    title: 'Chỉ còn ' + thisRow.find(".qttInven").val() + ' sản phẩm',
+                    type: 'error',
+                    html: div,
+                    showCancelButton: true,
+                    width: 550,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '<i class="fa fa-check"></i>',
+                    cancelButtonText: '<i class="fa fa-close"></i>'
+                }).then((result) => {
+                    if (result) {
+                        var items = [];
+                        var arr = $('.itemQtt');
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr.eq(i).val() !== "") {
+                                var item = {
+                                    qtt: parseInt(arr.eq(i).val()), id: parseInt($('.itemId').eq(i).val()),
+                                    orderId: $('.itemOrderId').eq(i).val()
+                                };
+                                items.push(item);
+                            }
+                        }
+                        $.ajax({
+                            url: '/QuanLy/LapPhieu/Steal',
+                            dataType: 'json',
+                            data: { lst: items },
+                            success: function () {
+                                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
+                                swal({
+                                    title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
+                                    type: 'success'
+                                });
+                            }
+                        });
+                    } else {
+                        thisRow.find('.cai').val("");
+                    }
+                });
+            }
         });
-        thisRow.find('.cai').val("");
     } else {
         swal({
             title: '<img src="/Assets/dist/img/messagePic_3.png"/>',

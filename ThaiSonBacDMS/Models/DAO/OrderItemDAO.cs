@@ -33,14 +33,34 @@ namespace Models.DAO
         public List<Order_items> getReturnOrderItem(String orderId)
         {
             var lst = new List<Order_items>();
-            foreach(Order_part o in db.Order_part.Where(x=>x.Order_ID.Equals(orderId) && x.Status_ID == 9).ToList())
+            foreach (Order_part o in db.Order_part.Where(x => x.Order_ID.Equals(orderId) && x.Status_ID == 9).ToList())
             {
-                foreach(Order_items i in db.Order_items.Where(x=>x.Order_part_ID.Equals(o.Order_part_ID)))
+                foreach (Order_items i in db.Order_items.Where(x => x.Order_part_ID.Equals(o.Order_part_ID)))
                 {
                     lst.Add(i);
                 }
             }
             return lst;
+        }
+
+        public void stealProduct(List<CustomOrderItem> lst, int userId)
+        {
+            var dao = new EditHistoryDAO();
+            foreach (CustomOrderItem i in lst)
+            {
+                var item = db.Order_items.Where(x => x.ID == i.id).SingleOrDefault();
+                item.Quantity -= i.qtt;
+                db.Edit_history.Add(new Edit_history
+                {
+                    Date_change = DateTime.Now,
+                    Order_ID = i.orderId,
+                    Product_ID = item.Product_ID,
+                    Quantity_change = -(i.qtt),
+                    User_ID = userId,
+                    Edit_code = (byte)(dao.getEditCode(item.Product_ID) + 1)
+                });
+            }
+            db.SaveChanges();
         }
 
         public int countNumberProductSoldMonth(DateTime dateBegin, DateTime dateEnd)
@@ -194,6 +214,40 @@ namespace Models.DAO
                 }
             }
             return total;
+        }
+
+        public List<CustomOrderItem> getLstByProductId(int productId)
+        {
+            var lst = new List<CustomOrderItem>();
+            foreach (Order_items i in db.Order_items.Where(x => x.Product_ID == productId).ToList())
+            {
+                if (db.Order_part.Where(x => x.Order_ID.Equals(i.Order_ID)).ToList().Count == 1)
+                {
+                    var item = new CustomOrderItem
+                    {
+                        id = i.ID,
+                        orderId = i.Order_ID,
+                        qtt = i.Quantity,
+                        date = db.Order_part.Where(x => x.Order_part_ID.Equals(i.Order_ID)).SingleOrDefault().Request_stockout_date.Value.ToString("dd/MM/yyyy")
+                    };
+                    lst.Add(item);
+                }
+                else
+                {
+                    if (i.Order_part_ID != null)
+                    {
+                        var item = new CustomOrderItem
+                        {
+                            id = i.ID,
+                            orderId = i.Order_ID,
+                            qtt = i.Quantity,
+                            date = db.Order_part.Where(x => x.Order_part_ID.Equals(i.Order_part_ID)).SingleOrDefault().Request_stockout_date.Value.ToString("dd/MM/yyyy")
+                        };
+                        lst.Add(item);
+                    }
+                }
+            }
+            return lst;
         }
 
         public Dictionary<DateTime, List<decimal>> getChartData(DateTime beginDate, DateTime endDate, string category_ID)
@@ -415,30 +469,30 @@ namespace Models.DAO
         public Dictionary<string, int?> getProductCustomerBought(int customerID)
         {
             var query = (from oi in db.Order_items
-                        join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
-                        join p in db.Products on oi.Product_ID equals p.Product_ID
-                        where oi.Order_part_ID == null && ot.Customer_ID == customerID
-                        group oi by p.Product_name into g
-                        select new
-                        {
-                            productName = g.Key,
-                            totalQuantity = g.Sum(x => x.Quantity)
-                        }).ToDictionary(x=>x.productName, x=>x.totalQuantity);
+                         join ot in db.Order_total on oi.Order_ID equals ot.Order_ID
+                         join p in db.Products on oi.Product_ID equals p.Product_ID
+                         where oi.Order_part_ID == null && ot.Customer_ID == customerID
+                         group oi by p.Product_name into g
+                         select new
+                         {
+                             productName = g.Key,
+                             totalQuantity = g.Sum(x => x.Quantity)
+                         }).ToDictionary(x => x.productName, x => x.totalQuantity);
             return query;
         }
 
         public List<Order_items> getProductByExportDate(DateTime export_date, int productID)
         {
             List<Order_items> query = (from oi in db.Order_items
-                        join op in db.Order_part on oi.Order_part_ID equals op.Order_part_ID
-                        where op.Request_stockout_date >= export_date
-                        && oi.Product_ID == productID
-                        select oi).ToList();
+                                       join op in db.Order_part on oi.Order_part_ID equals op.Order_part_ID
+                                       where op.Request_stockout_date >= export_date
+                                       && oi.Product_ID == productID
+                                       select oi).ToList();
             List<Order_items> query2 = (from oi in db.Order_items
-                        join op in db.Order_part on oi.Order_ID equals op.Order_part_ID
-                        where op.Request_stockout_date >= export_date
-                        && oi.Product_ID == productID
-                        select oi).ToList();
+                                        join op in db.Order_part on oi.Order_ID equals op.Order_part_ID
+                                        where op.Request_stockout_date >= export_date
+                                        && oi.Product_ID == productID
+                                        select oi).ToList();
             query.AddRange(query2);
             return query;
         }

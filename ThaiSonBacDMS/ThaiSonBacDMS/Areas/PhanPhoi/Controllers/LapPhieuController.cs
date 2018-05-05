@@ -1,4 +1,5 @@
 ﻿using Models.DAO;
+using Models.DAO_Model;
 using Models.Framework;
 using System;
 using System.Collections.Generic;
@@ -87,13 +88,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                             User_ID = session.user_id,
                                             Edit_code = (byte)(historyDAO.getEditCode(i.Product_ID) + 1)
                                         });
-                                    }                                   
+                                    }
                                 }
                             }
                         }
                         foreach (Order_items i in lstCompare)
                         {
-                            if(orderDAO.getOrder(model.orderId).Order_items.Where(x=>x.Product_ID == i.Product_ID).ToList().Count == 0)
+                            if (orderDAO.getOrder(model.orderId).Order_items.Where(x => x.Product_ID == i.Product_ID).ToList().Count == 0)
                             {
                                 historyDAO.createHistory(new Edit_history
                                 {
@@ -210,6 +211,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
         }
 
+        [ValidateInput(false)]
         public ActionResult ChooseProduct(String input)
         {
             try
@@ -371,7 +373,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                             Total_price = model.total,
                             Order_discount = model.discount,
                             Status_ID = 2
-                        });                        
+                        });
                         result++;
                     }
                     else
@@ -506,7 +508,37 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult CheckQtt(int productId)
+        {
+            try
+            {
+                var dao = new OrderItemDAO();
+                return Json(dao.getLstByProductId(productId), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Steal(List<CustomOrderItem> lst)
+        {
+            try
+            {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                var dao = new OrderItemDAO();
+                dao.stealProduct(lst, session.user_id);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index");
             }
         }
 
