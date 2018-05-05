@@ -154,7 +154,7 @@
                                                     <label>Đơn vị</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-                                                        <input type="text" class="form-control" id="donVi" required>
+                                                        <input type="text" class="form-control"  oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" id="donVi" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,14 +163,14 @@
                                                     <label>Địa chỉ</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-                                                        <input type="text" class="form-control" id="address" required>
+                                                        <input type="text" class="form-control" id="address"  oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Số điện thoại</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                        <input type="text" class="form-control" id="tel" required>
+                                                        <input type="text" class="form-control" id="tel" required  oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                     </div>
                                                 </div>
                                             </div>

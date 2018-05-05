@@ -49,7 +49,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var item = new PIItemModel {
                     product = product.Product_name,
                     NOTE = i.NOTE,
-                    per = product.Price_before_VAT_USD,
+                    per = product.CIF_USD,
                     Price = i.Price,
                     Quantity = i.Quantity
                 };
@@ -81,7 +81,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         product = product.Product_name,
                         NOTE = p.NOTE,
                         Quantity = p.Quantity,
-                        per = product.Price_before_VAT_USD,
+                        per = product.CIF_USD,
                         Price = p.Price
                     };
                     total += p.Quantity;

@@ -45,7 +45,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                     };
                     items.Add(item);
@@ -176,7 +176,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                     };
                     items.Add(item);
@@ -459,7 +459,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     Discount = i.Discount,
                     Price = i.Price,
                     Quantity = i.Quantity,
-                    per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                    per = product.Price_before_VAT_VND,
                     priceBeforeDiscount = i.Discount > 0 ? (i.Price * 100 / (100 + i.Discount)) : i.Price,
                     productId = i.Product_ID,
                     qttBox = product.Quantity_in_carton,
@@ -488,7 +488,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
                         productId = o.Product_ID,
                         qttBox = product.Quantity_in_carton,
@@ -593,7 +593,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
                         productId = o.Product_ID,
                         qttBox = product.Quantity_in_carton
