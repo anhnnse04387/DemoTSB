@@ -177,14 +177,14 @@
                                                         <label>Số hóa đơn</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                                            <input class="form-control" id="invoiceNumber" value="@Model.invoiceNumber" required />
+                                                            <input class="form-control" id="invoiceNumber" value="@Model.invoiceNumber" required  oninput="this.value=this.value.replace(/[^0-9]/g,'');"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label>VAT khách hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input class="form-control number" style="text-align: left;" value="@Model.vat" id="vat" required />
+                                                            <input class="form-control number" style="text-align: left;" value="@Model.vat" id="vat" required  oninput="this.value=this.value.replace(/[^0-9\.]/g,'');"/>
                                                         </div>
                                                     </div>
                                                 </div>

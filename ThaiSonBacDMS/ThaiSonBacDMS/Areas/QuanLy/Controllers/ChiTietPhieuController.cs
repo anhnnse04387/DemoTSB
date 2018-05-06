@@ -45,7 +45,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                     };
                     items.Add(item);
@@ -176,7 +176,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
                     };
                     items.Add(item);
@@ -391,7 +391,10 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     dict.Add(7, new StatusDetailModel { });
                 }
                 model.lineStatus = lineStatus;
-                model.driverName = userDAO.getByID(int.Parse(data.Order_part.SingleOrDefault().Driver_ID)).User_name;
+                if (data.Order_part.SingleOrDefault().Driver_ID != null)
+                {
+                    model.driverName = userDAO.getByID(int.Parse(data.Order_part.SingleOrDefault().Driver_ID)).User_name;
+                }
                 model.dateExport = data.Order_part.SingleOrDefault().Request_stockout_date;
                 if (data.Date_completed != null)
                 {
@@ -459,7 +462,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     Discount = i.Discount,
                     Price = i.Price,
                     Quantity = i.Quantity,
-                    per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                    per = product.Price_before_VAT_VND,
                     priceBeforeDiscount = i.Discount > 0 ? (i.Price * 100 / (100 + i.Discount)) : i.Price,
                     productId = i.Product_ID,
                     qttBox = product.Quantity_in_carton,
@@ -488,7 +491,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
                         productId = o.Product_ID,
                         qttBox = product.Quantity_in_carton,
@@ -593,7 +596,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
                         productId = o.Product_ID,
                         qttBox = product.Quantity_in_carton

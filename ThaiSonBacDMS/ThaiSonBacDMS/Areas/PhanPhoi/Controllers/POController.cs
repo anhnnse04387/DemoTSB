@@ -55,7 +55,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     NOTE = i.NOTE,
                     Price = i.Price,
                     Quantity = i.Quantity,
-                    per = product.Price_before_VAT_VND * (100 + product.VAT) / 100
+                    per = product.CIF_USD
                 };
                 totalQtt += i.Quantity;
                 readItems.Add(item);

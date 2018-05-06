@@ -16,7 +16,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
         public ActionResult Index()
         {
             var model = new PIModel();
-            var ddlPO = new List<SelectListItem>();            
+            var ddlPO = new List<SelectListItem>();
             var dao = new PODAO();
             var lstPO = dao.getLstPO();
             lstPO.ForEach(x =>
@@ -46,10 +46,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             foreach (Purchase_invoice_Items i in data.Purchase_invoice_Items)
             {
                 var product = daoProduct.getProductById(i.Product_ID);
-                var item = new PIItemModel {
+                var item = new PIItemModel
+                {
                     product = product.Product_name,
                     NOTE = i.NOTE,
-                    per = product.Price_before_VAT_USD,
+                    per = product.CIF_USD,
                     Price = i.Price,
                     Quantity = i.Quantity
                 };
@@ -81,7 +82,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         product = product.Product_name,
                         NOTE = p.NOTE,
                         Quantity = p.Quantity,
-                        per = product.Price_before_VAT_USD,
+                        per = product.CIF_USD,
                         Price = p.Price
                     };
                     total += p.Quantity;

@@ -78,7 +78,7 @@
                     <div class="box-header" style="margin-top:10px;margin-bottom: -5px">
                         <h4 class="box-title">
                             <b>Tên Nhà Cung Cấp : @Model.supplierName.ToUpper()</b>
-                            <span id="hidden">@Model.supplierId</span>
+                            <span id="supplierId">@Model.supplierId</span>
                         </h4>
                     </div>
 
@@ -139,12 +139,12 @@
                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 10px;">Từ: </label>
                                 <div class="input-group week-select col-md-4">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control datepicker" id="fromDate">
+                                    <input type="text" class="form-control" id="fromDate">
                                 </div>
                                 <label style="padding-left:15px;padding-right: 10px; padding-top: 10px;">Đến: </label>
                                 <div class="input-group week-select col-md-4">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control datepicker" id="toDate">
+                                    <input type="text" class="form-control" id="toDate">
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                         <th style="width: 3%">Ghi chú</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="tBody">
                                     @if (Model.lstDisplay.Count() == 0)
                                     {
                                         <tr>
@@ -176,19 +176,19 @@
                                         {
                                             <tr>
                                                 <td class="length">@item.ngay</td>
-                                                <td>@item.soPo</td>
-                                                <td>@item.dienGiai</td>
+                                                <td class="soPo">@item.soPo</td>
+                                                <td class="dienGiai">@item.dienGiai</td>
                                                 <td class="right number" id="tienHang_@i">@item.tienHang</td>
                                                 <td class="right number" id="thanhToan_@i">@item.thanhToan</td>
                                                 <td class="text-right number" id="duNo_@i">@item.duNo</td>
-                                                <td class="right number"></td>
+                                                <td class="right number ghiChu">@item.ghiChu</td>
                                             </tr>
                                             i++;
                                         }
                                     }
 
                                 </tbody>
-                                <tfoot>
+                                <tfoot id="tFoot">
                                     @if (Model.lstDisplay.Count() != 0)
                                     {
                                         <tr>
@@ -289,37 +289,101 @@
             $(document).ready(function () {
                 tinhTong();
                 init();
+                display();
             });
             function init() {
-                $("#hidden").hide();
+                $("#supplierId").hide();
                 $(".number").autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
                 $("#datepicker").datepicker({
-                    format: 'dd/mm/yyyy'
+                    format: 'dd-mm-yyyy'
+                });
+                $("#fromDate").datepicker({
+                    format: 'dd-mm-yyyy'
+                });
+                $("#toDate").datepicker({
+                    format: 'dd-mm-yyyy'
                 });
             }
 
-            $.datepicker.setDefaults({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd/mm/yy'
-            });
-            $('#fromDate').datepicker({
-                minDate: '+0',
-                onSelectDate: function (dateStr) {
-                    var min = $(this).datepicker('getDate') || new Date(); // Selected date or today if none
-                    var max = new Date(min.getTime());
-                    max.setMonth(max.getMonth() + 1); // Add one month
-                    $('#toDate').datepicker('option', { minDate: min, maxDate: max });
+
+            $("#fromDate , #toDate").change(function () {
+                $.ajax({
+                    url: 'ChiTietNoCungCap/Index',
+                    type: 'POST',
+                    data: {
+                        supplierId: $("#supplierId").text(),
+                        fromDate: $("#fromDate").val(),
+                        toDate: $("#toDate").val()
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        var i = 1;
+                        $("#tBody").empty();
+                        $("#tFoot").empty();
+                        data.lstDisplay.forEach(function (item) {
+                            $("#tBody").append('<tr>'
+                                + '<td class="length date">' + item.ngay + '</td>'
+                                + '<td class="text-center soPo">' + item.soPo + '</td>'
+                                + '<td class="dienGiai">' + item.dienGiai + '</td>'
+                                + '<td class="text-right number tienHang">' + item.tienHang + '</td>'
+                                + '<td class="text-right number thanhToan">' + item.thanhToan + '</td>'
+                                + '<td class="text-right number duNo">' + item.duNo + '</td>'
+                                + '<td class="ghiChu">' + item.ghiChu + '</td?>'
+                                + '</tr>');
+                            i++;
+
+                        });
+                        $("#tFoot").append('<tr>'
+                                                  + '<td colspan="3">' + 'TỔNG' + '</td>'
+                                                  + '<td class="number text-right" id="tienHang"></td>'
+                                                  + '<td class="number text-right" id="thanhToan"></td>'
+                                                  + '<td class="number text-right" id="duNo"></td>'
+                                                  + '<td></td>'
+                                              + '</tr>');
+                        tinhTong1();
+                        display();
+
+                    }
+                });
+            })
+
+            function display() {
+                for (var i = 0; i < $(".soPo").length; i++) {
+                    if ($($(".soPo")[i]).text() === 'null') {
+                        $($(".soPo")[i]).text("");
+                    }
                 }
-            });
-            $('#toDate').datepicker({
-                minDate: '+0',
-                maxDate: '+1m',
-                onSelectDate: function (dateStr) {
-                    var max = $(this).datepicker('getDate'); // Selected date or null if none
-                    $('#fromDate').datepicker('option', { maxDate: max });
+                for (var i = 0; i < $(".dienGiai").length; i++) {
+                    if ($($(".dienGiai")[i]).text() === 'null') {
+                        $($(".dienGiai")[i]).text("");
+                    }
                 }
-            });
+                for (var i = 0; i < $(".ghiChu").length; i++) {
+                    if ($($(".ghiChu")[i]).text() === 'null') {
+                        $($(".ghiChu")[i]).text("");
+                    }
+                }
+            }
+
+            function tinhTong1() {
+                var tienHang = 0;
+                var thanhToan = 0;
+                var duNo = 0;
+
+                for (var i = 0; i < $(".tienHang").length; i++) {
+                    tienHang += parseFloat($($(".tienHang")[i]).text());
+                }
+                for (var i = 0; i < $(".thanhToan").length; i++) {
+                    thanhToan += parseFloat($($(".thanhToan")[i]).text());
+                }
+                for (var i = 0; i < $(".duNo").length; i++) {
+                    duNo += parseFloat($($(".duNo")[i]).text());
+                }
+                $("#tienHang").text(tienHang);
+                $("#thanhToan").text(thanhToan);
+                $("#duNo").text(duNo);
+                $(".number").autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+            }
 
             function tinhTong() {
                 var tienHang = 0;
@@ -337,24 +401,31 @@
 
             function validateData() {
                 var msgs = "";
-                var ngay = $("#datepicker").val();
+
                 var tienHang = $("#tienHang1").val();
                 var thanhToan = $("#thanhToan1").val();
                 var noCu = $("#noCu1").val();
 
-                if (!ngay) {
-                    msgs += "Vui lòng nhập ngày!<br/>";
-                }
+
                 if (!tienHang) {
-                    msgs += "Vui lòng nhập tiền hàng!<br/>";
+                    msgs += "Vui lòng nhập thanh toán!<br/>"
+                    swal({
+                        title: 'Vui lòng nhập tiền hàng',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
                 }
                 if (!thanhToan) {
                     msgs += "Vui lòng nhập thanh toán!<br/>"
+                    swal({
+                        title: 'Vui lòng nhập thanh toán',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    })
                 }
-                if (msgs != "") {
-                    $("#msgs").html(msgs);
-                }
-                else {
+                if (msgs === "") {
                     $("#popupConfirm").modal("show");
                 }
                 $("#btnThanhToan").click(function (event) {

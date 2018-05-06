@@ -348,7 +348,7 @@
                         <h4 class="modal-title">Xác nhận thêm công nợ mới</h4>
                     </div>
                     <div class="modal-body">
-                        Tạo nhà cung cấp mới và thêm công nợ?
+                        Thêm công nợ mới?
                     </div>
                     <div class="modal-footer" style="margin-right:15px">
                         <div style="margin:0 auto;">
@@ -426,7 +426,7 @@
                     $("#btnThanhToan").click(function () {
                         $.ajax({
                             type: 'POST',
-                            url: 'InsertData',
+                            url: 'DanhSachCongNoCungCap/InsertData',
                             data: {
                                 supplierId: $("#supplierId_" + i).val(),
                                 nhapTrongKy: $("#nhapTrongKyNew_" + i).val().replace(/,/g, ''),

@@ -59,14 +59,14 @@
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                                <input type="text" id="orderId" class="form-control" placeholder="Lô số...">
+                                                                <input type="text" oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" id="orderId" class="form-control" placeholder="Lô số...">
                                                             </div>
                                                         </td>
                                                         <td style="width: 10%">Khách</td>
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                <input type="text" id="customer" class="form-control" placeholder="Khách...">
+                                                                <input type="text" oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" id="customer" class="form-control" placeholder="Khách...">
                                                             </div>
                                                         </td>
                                                     </tr>

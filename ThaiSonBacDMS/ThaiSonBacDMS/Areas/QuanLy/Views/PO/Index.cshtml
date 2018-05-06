@@ -134,7 +134,7 @@
                                                     <label>PO No.</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-                                                        <input type="text" class="form-control" required value="@Model.PO_no" id="no">
+                                                        <input type="text" oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" class="form-control" required value="@Model.PO_no" id="no"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,14 +143,14 @@
                                                     <label>Address</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-                                                        <input type="text" class="form-control" id="address" required value="@Model.address">
+                                                        <input type="text" class="form-control" id="address" required value="@Model.address"  oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Tel</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                        <input type="text" class="form-control" id="tel" required value="@Model.tel">
+                                                        <input type="text" class="form-control" id="tel" required value="@Model.tel"  oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,14 +159,14 @@
                                                     <label>Email</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                                                        <input type="text" class="form-control" id="email" required value="@Model.email" />
+                                                        <input type="text" class="form-control" id="email" required value="@Model.email"  oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Payment</label><span style="color: red;">*</span>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                                        <input type="text" class="form-control" id="payment" required value="@Model.Payment">
+                                                        <input type="text" class="form-control" id="payment" required value="@Model.Payment"  oninput="this.value=this.value.replace(/[^a-zA-Z0-9\/]/g,'');">
                                                     </div>
                                                 </div>
                                             </div>

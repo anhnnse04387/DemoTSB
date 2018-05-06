@@ -267,7 +267,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         Discount = o.Discount,
                         Price = o.Price,
                         Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND * (100 + product.VAT) / 100,
+                        per = product.Price_before_VAT_VND,
                         priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price,
                         priceBeforeVat = product.Price_before_VAT_VND * product.VAT / 100,
                         productId = o.Product_ID,
@@ -508,7 +508,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -538,7 +538,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
             }
         }
 
