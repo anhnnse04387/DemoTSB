@@ -1,26 +1,22 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ThaiSonBacDMS.Areas.PhanPhoi.Controllers;
+using ThaiSonBacDMS.Areas.QuanLy.Controllers;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 using ThaiSonBacDMS.Common;
 using Moq;
-using ThaiSonBacDMS.Models;
-using ThaiSonBacDMS.Controllers.Tests;
-using ThaiSonBacDMS.Controllers;
-using System.Web.Routing;
 using System.Web;
+using System.Web.Routing;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
 {
     [TestClass()]
     public class ChiTietPhieuControllerTests
     {
-
         [TestMethod]
         public void TestIndexForRedirect()
         {
