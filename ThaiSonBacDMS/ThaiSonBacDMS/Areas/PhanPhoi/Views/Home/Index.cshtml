@@ -378,6 +378,7 @@
             },
             options: {
                 legend: { display: false },
+                scaleShowLabels: false,
                 title: {
                     display: true,
                     text: 'Tháng @(DateTime.Now.Month-1)'
@@ -386,7 +387,11 @@
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            
+                        }
+                    }]
+                    ,xAxes: [{
+                        ticks: {
+                            display: false
                         }
                     }]
                 }
@@ -407,6 +412,7 @@
             },
             options: {
                 legend: { display: false },
+                scaleShowLabels : false,
                 title: {
                     display: true,
                     text: 'Tháng @DateTime.Now.Month'
@@ -416,6 +422,11 @@
                         ticks: {
                             min: 0,
                             
+                        }
+                    }]
+                    , xAxes: [{
+                        ticks: {
+                            display: false
                         }
                     }]
                 }

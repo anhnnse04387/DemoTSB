@@ -184,7 +184,7 @@ function changeData() {
                 for (var i = 0; i < data.dataPieChart.length; i++) {
                     total = total + data.dataPieChart[i].numberSold;
                 }
-                console.log(total);
+                
                 if (total != 0) {
                     for (var i = 0; i < data.dataPieChart.length; i++) {
                         dataPie.addRow([data.dataPieChart[i].categoryName, data.dataPieChart[i].numberSold]);
@@ -215,20 +215,20 @@ function changeData() {
                 + '<td style="text-align:right" class="number">' + entry.loiNhuan + '</td>'
                 + '</tr>');
                 i++;
-                tongNhapVon += entry.nhapVon;
-                tongXuatVon += entry.xuatVon;
-                tongBanChoKhach += entry.banChoKhach;
-                tongLoiNhuan += entry.loiNhuan;
+                tongNhapVon = tongNhapVon + entry.nhapVon;
+                tongXuatVon = tongXuatVon + entry.xuatVon;
+                tongBanChoKhach = tongBanChoKhach + entry.banChoKhach;
+                tongLoiNhuan = tongLoiNhuan +  entry.loiNhuan;
             });
             $('#tableFoot').append('<tr>'
                 + '<td class="noBorder"></td>'
-                + '<td style="text-align:center">Tổng cộng</td>'
+                + '<td style="text-align:left">Tổng cộng</td>'
                 + '<td style="text-align:right" class="number">' + tongNhapVon + '</td>'
                 + '<td style="text-align:right" class="number">' + tongXuatVon + '</td>'
                 + '<td style="text-align:right" class="number">' + tongBanChoKhach + '</td>'
                 + '<td style="text-align:right" class="number">' + tongLoiNhuan + '</td>'
                 + '</tr>');
-            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
+            $('.number').autoNumeric('init', { vMin: '1', vMax: '9999999999999999', digitGroupSeparator: ',', mDec: '0' })
         },
         async: false
     });
