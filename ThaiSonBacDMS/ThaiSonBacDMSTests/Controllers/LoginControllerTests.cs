@@ -23,10 +23,13 @@ namespace ThaiSonBacDMS.Controllers.Tests
         {
             var context = new Mock<HttpContextBase>();
             var request = new Mock<HttpRequestBase>();
+            var response = new Mock<HttpResponseBase>();
             var session = new Mock<HttpSessionStateBase>();
 
+            response.Setup(r => r.Cookies).Returns(new HttpCookieCollection());
             request.SetupGet(r => r.Cookies).Returns(new HttpCookieCollection());
             context.Setup(ctx => ctx.Request).Returns(request.Object);
+            context.Setup(ctx => ctx.Session).Returns(session.Object);
             context.Setup(ctx => ctx.Session).Returns(session.Object);
 
             RequestContext rc = new RequestContext(context.Object, new RouteData());
@@ -254,8 +257,21 @@ namespace ThaiSonBacDMS.Controllers.Tests
         [TestMethod()]
         public void LoginTest_SaveCookie()
         {
+            var context = new Mock<HttpContextBase>();
+            var request = new Mock<HttpRequestBase>();
+            var response = new Mock<HttpResponseBase>();
+            var session = new Mock<HttpSessionStateBase>();
+
+            response.Setup(r => r.Cookies).Returns(new HttpCookieCollection());
+            request.SetupGet(r => r.Cookies).Returns(new HttpCookieCollection());
+            context.Setup(ctx => ctx.Request).Returns(request.Object);
+            context.Setup(ctx => ctx.Response).Returns(response.Object);
+            context.Setup(ctx => ctx.Session).Returns(session.Object);
+            
+
+            RequestContext rc = new RequestContext(context.Object, new RouteData());
             var controler = new LoginController();
-            controler.ControllerContext = new ControllerContext(setContext(), controler);
+            controler.ControllerContext = new ControllerContext(rc, controler);
 
             var model = new LoginModel();
             model.accountName = "DatLM";

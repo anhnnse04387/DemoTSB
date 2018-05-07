@@ -16,6 +16,25 @@ namespace ThaiSonBacDMS.Controllers
         // GET: ConfirmRole
         public ActionResult ConfirmRole()
         {
+            if (Session[CommonConstants.USER_SESSION] != null)
+            {
+                var chkSession = (UserSession)Session[CommonConstants.USER_SESSION];
+                switch (chkSession.roleSelectedID)
+                {
+                    case 1:
+                        return RedirectToAction("Index", "Quantri/Home");
+                    case 2:
+                        return RedirectToAction("Index", "QuanLy/Home");
+                    case 3:
+                        return RedirectToAction("Index", "PhanPhoi/Home"); ;
+                    case 4:
+                        return RedirectToAction("Index", "HangHoa/Home");
+                    case 5:
+                        return RedirectToAction("Index", "KeToan/Home");
+                    default:
+                        break;
+                }
+            }
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             var roleDAO = new RoleDAO();
             var userDAO = new UserDAO();

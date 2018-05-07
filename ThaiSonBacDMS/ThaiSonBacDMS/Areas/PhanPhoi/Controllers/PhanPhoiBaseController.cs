@@ -17,7 +17,12 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", Area = "" }));
-            }else
+            }
+            else if (session.roleSelectedID == null){
+                filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "ConfirmRole", action = "ConfirmRole", Area = "" }));
+            }
+            else
             {
                 switch (session.roleSelectedID)
                 {

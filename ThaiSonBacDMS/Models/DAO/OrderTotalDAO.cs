@@ -484,6 +484,7 @@ namespace Models.DAO
                          join cus in db.Customers on od.Customer_ID equals cus.Customer_ID
                          join sta in db.Status on od.Status_ID equals sta.Status_ID
                          join u in db.Users on od.User_ID equals u.User_ID
+                         where od.User_ID == user_id
                          orderby od.Date_created
                          select new
                          {

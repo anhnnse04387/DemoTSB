@@ -74,7 +74,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="@Url.Action("Index", "ChiTietNguoiDung")" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        <a href="#" class="btn btn-default btn-flat construct">Hồ sơ</a>
                                     </div>
                                     @if (session.roleSelectFlag)
                                     {
@@ -213,6 +213,8 @@
     <script src="/Assets/dist/js/adminlte.min.js"></script>
     <!-- back-to-top -->
     <script src="/Assets/dist/js/back-to-top.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/Assets/dist/js/demo.js"></script>
     <!-- page script -->
@@ -222,5 +224,14 @@
     @*@{ Html.RenderAction("NoteEdit", "Home"); }*@
     <!-- add script -->
     <script src="~/Assets/dist/js/pages/addNote.js"></script>
+    <script>
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+    </script>
 </body>
 </html>

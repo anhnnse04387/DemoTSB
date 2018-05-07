@@ -135,9 +135,9 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb" style="float:left">
-        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li><a href=""> Báo cáo</a></li>
-        <li><a href="phanphoi_baocao_doanh-thu.html"> Báo cáo doanh thu</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#"> Báo cáo</a></li>
+        <li><a href="@Url.Action("Index", "BaoCaoDoanhThu")"> Báo cáo doanh thu</a></li>
     </ol>
 </section>
 <!-- Main content -->
@@ -181,11 +181,11 @@
                             <i class="fa fa-exchange text-grey"></i>
                             <span><strong>Đổi trả</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn " data-toggle="tooltip" title="Xem trước" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xem trước" data-placement="bottom">
                             <i class="fa fa-eye text-black"></i>
                             <span><strong>Xem trước</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tootip" title="In" data-placement="bottom" data-target="#confirm-print">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tootip" title="In" data-placement="bottom">
                             <i class="fa fa-print text-blue"></i>
                             <span><strong>In</strong></span>
                         </a>
@@ -193,11 +193,11 @@
                             <i class="fa fa-download text-grey"></i>
                             <span><strong>Import Excel</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
                             <i class="fa fa-file-excel-o text-green"></i>
                             <span><strong>Xuất Excel</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
                             <i class="fa fa-file-pdf-o text-red"></i>
                             <span><strong>Xuất PDF</strong></span>
                         </a>
@@ -219,7 +219,7 @@
                                                     <div class="box">
                                                         <div class="row" style="padding-bottom: 15px;">
                                                             <div class="col-md-offset-3" style="display: inline-flex;padding-top: 20px">
-                                                                <label style="padding-right: 32px;margin-left: 15px; padding-top: 7px;padding-left:17px">Năm: </label>
+                                                                <label style="padding-right: 32px;margin-left: 0px; padding-top: 7px;padding-left:17px">Năm: </label>
                                                                 <div class="input-group week-select col-md-3 no-padding">
                                                                     @Html.DropDownListFor(model => model.selectedYear, @Model.listShowYear, new { @class = "form-control select2", @style = "width: 100px", @id = "selectedYear", @onchange = "changeData()" })
                                                                 </div>
@@ -371,6 +371,17 @@
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <!-- momentJS -->
     <script src="~/Assets/bower_components/moment/moment.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
     <!--page js-->
     <script src="~/Assets/dist/js/pages/baoCaoDoanhThu.js"></script>
+    <script>
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+    </script>
 }

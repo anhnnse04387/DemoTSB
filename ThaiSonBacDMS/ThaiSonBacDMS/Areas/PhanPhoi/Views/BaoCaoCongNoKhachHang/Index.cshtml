@@ -204,7 +204,7 @@
                                 <div class="chart row">
                                     <!-- Sales Chart Canvas -->
                                     <canvas id="lineChart2" style="height: 407px;width:1000px"></canvas>
-                                    <small>Đơn vị :<em>%</em></small>
+                                    <small>Đơn vị :<em>Sản phẩm</em></small>
                                 </div>
                                 <!-- /.chart-responsive -->
 
@@ -253,7 +253,7 @@
                                         <td class="text-center">@i</td>
                                         <td>@Html.ActionLink(@item.cus_name, "ChiTiet", new { customerId = item.cur_id })</td>
                                         <td>@item.cus_address</td>
-                                        <td class="text-right">@item.cur_debt</td>
+                                        <td class="text-right number">@item.cur_debt</td>
                                     </tr>
                                 }
                             </tbody>
