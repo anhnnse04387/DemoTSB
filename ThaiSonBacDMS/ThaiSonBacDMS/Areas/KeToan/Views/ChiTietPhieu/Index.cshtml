@@ -334,7 +334,7 @@
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
             $("#btnSubmit").click(function (event) {
                 if (validate() === 0) {
                     event.preventDefault();

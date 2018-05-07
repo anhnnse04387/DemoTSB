@@ -349,6 +349,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     && !String.IsNullOrEmpty(model.deliveryAddress) && !String.IsNullOrEmpty(model.invoiceAddress)
                     && !String.IsNullOrEmpty(model.taxCode) && model.rate > 0 && model.items != null && model.items.Count > 0)
                 {
+                    byte status = 2;
                     var result = 0;
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var orderDAO = new OrderTotalDAO();
@@ -356,6 +357,23 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     var orderPartDAO = new OrderPartDAO();
                     var orderStatusDAO = new OrderDetailStatusDAO();
                     var orderItemDAO = new OrderItemDAO();
+                    if (model.deliveryQtt == 1)
+                    {
+                        if (model.dateExport == DateTime.Today)
+                        {
+                            status = 3;
+                        }
+                    }
+                    else
+                    {
+                        foreach (Order_part part in model.part)
+                        {
+                            if (part.Request_stockout_date == DateTime.Today)
+                            {
+                                status = 3;
+                            }
+                        }
+                    }
                     if (orderDAO.checkOrder(model.orderId) == 0)
                     {
                         orderDAO.createOrder(new Order_total
@@ -372,7 +390,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             VAT = model.vat,
                             Total_price = model.total,
                             Order_discount = model.discount,
-                            Status_ID = 2
+                            Status_ID = status
                         });
                         result++;
                     }
@@ -424,7 +442,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             VAT = model.vat,
                             Total_price = model.total,
                             Order_discount = model.discount,
-                            Status_ID = 2
+                            Status_ID = status
                         });
                         orderDAO.deleteContent(model.orderId);
                         result++;
@@ -441,7 +459,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         orderStatusDAO.createOrderStatus(new Order_detail_status
                         {
                             Order_ID = model.orderId,
-                            Status_ID = 2,
+                            Status_ID = status,
                             Date_change = DateTime.Now,
                             User_ID = session.user_id
                         });
@@ -451,14 +469,14 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                             {
                                 o.Order_ID = model.orderId;
                                 o.Date_created = DateTime.Now;
-                                o.Status_ID = 2;
+                                o.Status_ID = (byte)(o.Request_stockout_date == DateTime.Today ? 3 : 2);
                                 o.Customer_ID = model.customerId;
                                 orderPartDAO.createOrderPart(o);
                                 orderStatusDAO.createOrderStatus(new Order_detail_status
                                 {
                                     Order_ID = model.orderId,
                                     Order_part_ID = o.Order_part_ID,
-                                    Status_ID = 2,
+                                    Status_ID = (byte)(o.Request_stockout_date == DateTime.Today ? 3 : 2),
                                     Date_change = DateTime.Now,
                                     User_ID = session.user_id
                                 });
@@ -480,7 +498,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 Date_created = DateTime.Now,
                                 Request_stockout_date = model.dateExport,
                                 VAT = model.vat,
-                                Status_ID = 2,
+                                Status_ID = (byte)(model.dateExport == DateTime.Today ? 3 : 2),
                                 Total_price = model.total
                             });
                         }

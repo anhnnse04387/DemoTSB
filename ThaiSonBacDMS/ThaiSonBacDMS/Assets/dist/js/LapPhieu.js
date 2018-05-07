@@ -335,7 +335,7 @@ function productATC() {
                         success: function (data) {
                             var array = data.error ? [] : $.map(data, function (m) {
                                 return {
-                                    label: m.Product_code,
+                                    label: m.Product_name,
                                     value: m.Product_ID,
                                     param: m.Product_parameters,
                                     qttInven: m.Quantities_in_inventory,

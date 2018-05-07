@@ -9,39 +9,6 @@ function toBeContinued() {
     });
 }
 
-function doneOrder() {
-    $.ajax({
-        url: '/QuanLy/ChiTietPhieu/CheckOut',
-        type: 'POST',
-        dataType: 'json',
-        data: { orderId: $('#orderId').val() },
-        success: function () {
-            document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';
-            swal({
-                title: '<img src="/Assets/dist/img/messagePic_1.png"/>',
-                imageUrl: '/Assets/dist/img/Noti.gif',
-                imageWidth: 400,
-                imageHeight: 300,
-                imageAlt: 'Custom image',
-                animation: false
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = '/QuanLy/OrderList/Processing';
-                }
-            });
-        },
-        error: function () {
-            swal({
-                title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
-                text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
-                type: 'error',
-                showCancelButton: false,
-                showConfirmButton: true
-            });
-        }
-    });
-}
-
 function cancelOrder() {
     $.ajax({
         url: '/QuanLy/ChiTietPhieu/CancelOrder',

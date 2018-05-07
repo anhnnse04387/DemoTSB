@@ -28,6 +28,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.deliveryAddress = data.Address_delivery;
                 model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
                 model.status = statusDAO.getStatus(data.Status_ID);
+                model.statusId = data.Status_ID;
                 var customer = customerDAO.getCustomerById(data.Customer_ID);
                 model.customerName = customer.Customer_name;
                 model.taxCode = data.Tax_code;
@@ -85,7 +86,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var count = 0;
                 var lineStatus = "calc((40% -140px) * 0.5)";
                 var dict = new Dictionary<int, StatusDetailModel>();
-                var statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 1 || x.Status_ID == 2) && x.Order_part_ID == null).FirstOrDefault();
+                var statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3) && x.Order_part_ID == null).FirstOrDefault();
                 dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
                 statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3 && x.Order_part_ID == null).FirstOrDefault();
                 if (statusDetail != null)
@@ -167,6 +168,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.deliveryAddress = data.Address_delivery;
                 model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
                 model.status = statusDAO.getStatus(data.Status_ID);
+                model.statusId = data.Status_ID;
                 var customer = customerDAO.getCustomerById(data.Customer_ID);
                 model.customerName = customer.Customer_name;
                 model.taxCode = data.Tax_code;
@@ -232,7 +234,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.tel = customer.Phone;
                     var lineStatus = "calc((40% -140px) * 0.5)";
                     var lstStatus = detailStatusDAO.getStatus(orderId);
-                    var statusDetail = lstStatus.Where(x => x.Status_ID == 1 || x.Status_ID == 2).FirstOrDefault();
+                    var statusDetail = lstStatus.Where(x => x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3).FirstOrDefault();
                     dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
                     statusDetail = lstStatus.Where(x => x.Status_ID == 3).FirstOrDefault();
                     if (statusDetail != null)
@@ -333,7 +335,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.customerName = customer.Customer_name;
                     model.tel = customer.Phone;
                     var lineStatus = "calc((40% -140px) * 0.5)";
-                    var statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 1 || x.Status_ID == 2) && x.Order_part_ID == null).FirstOrDefault();
+                    var statusDetail = data.Order_detail_status.Where(x => (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3) && x.Order_part_ID == null).FirstOrDefault();
                     dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
                     statusDetail = data.Order_detail_status.Where(x => x.Status_ID == 3 && x.Order_part_ID == null).FirstOrDefault();
                     if (statusDetail != null)
@@ -447,6 +449,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.taxCode = data.Tax_code;
                 model.deliveryAddress = data.Address_delivery;
                 model.customerName = customer.Customer_name;
+                model.statusId = data.Status_ID;
                 model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
                 var items = new List<OrderItemModel>();
                 var leftItems = new List<OrderItemModel>();
@@ -542,7 +545,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var lineStatus = "calc((40% -140px) * 0.5)";
                     var dict = new Dictionary<int, StatusDetailModel>();
                     var lstStatus = detailStatusDAO.getStatus(op.Order_part_ID);
-                    var statusDetail = lstStatus.Where(x => x.Status_ID == 1 || x.Status_ID == 2).FirstOrDefault();
+                    var statusDetail = lstStatus.Where(x => x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3).FirstOrDefault();
                     dict.Add(1, new StatusDetailModel { name = userDAO.getByID(statusDetail.User_ID).User_name, date = statusDetail.Date_change });
                     statusDetail = lstStatus.Where(x => x.Status_ID == 3).FirstOrDefault();
                     if (statusDetail != null)
@@ -658,22 +661,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 System.Diagnostics.Debug.WriteLine(e);
                 return RedirectToAction("Index", "Home");
-            }
-        }
-
-        public JsonResult CheckOut(String orderId)
-        {
-            try
-            {
-                var session = (UserSession)Session[CommonConstants.USER_SESSION];
-                var dao = new OrderTotalDAO();
-                dao.checkOut(orderId, session.user_id, dao.getOrder(orderId).Order_part.Count);
-                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
             }
         }
 

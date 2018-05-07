@@ -10,6 +10,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
 {
     public class OrderTotalModel
     {
+        public byte? statusId { get; set; }
         public String dateComplete { get; set; }
         public String driverName { get; set; }
         public String tel { get; set; }

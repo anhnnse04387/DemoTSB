@@ -154,32 +154,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         }
 
         [TestMethod]
-        public void TestCheckOutFail()
-        {
-            var controller = new ChiTietPhieuController();
-            var result = controller.CheckOut("") as JsonResult;
-            IDictionary<string, object> data =
-            (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
-            Assert.AreEqual(true, data["error"]);
-        }
-
-        [TestMethod]
-        public void TestCheckOutSuccess()
-        {
-            var httpContextMock = new Mock<HttpContextBase>();
-            var sessionMock = new Mock<HttpSessionStateBase>();
-            var userSession = new UserSession { user_id = 3 };
-            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
-            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
-            var controller = new ChiTietPhieuController();
-            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
-            var result = controller.CheckOut("O1") as JsonResult;
-            IDictionary<string, object> data =
-            (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
-            Assert.AreEqual(true, data["success"]);
-        }
-
-        [TestMethod]
         public void TestCancelOrderFail()
         {
             var controller = new ChiTietPhieuController();

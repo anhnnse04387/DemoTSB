@@ -116,9 +116,8 @@
                         <i class="fa fa-plus-square text-green"></i>
                         <span><strong>Tạo Mới</strong></span>
                     </a>
-
-                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" href="@Url.Action("SuaPhieu", "LapPhieu", new { orderId = Model.orderId })">
-                        <i class="fa fa-edit text-blue"></i>
+                    <a class="btn btn-app custom-btn @(@Model.statusId == 7 ? "disabled" : "")" data-toggle="tooltip" title="Sửa" data-placement="bottom" href="@Url.Action("SuaPhieu", "LapPhieu", new { orderId = Model.orderId })">
+                        <i class="fa fa-edit text-blue @(@Model.statusId == 7 ? "text-gray" : "text-green")"></i>
                         <span><strong>Sửa</strong></span>
                     </a>
                     <a class="btn btn-app custom-btn disabled">
