@@ -64,13 +64,13 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/Assets/dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Lã Mạnh Đạt</span>
+                                <img src="@session.avatar_str" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@session.user_info.User_name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/Assets/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
+                                    <img src="@session.avatar_str" class="img-circle" alt="User Image">
 
                                     <p>
                                         @session.user_name<small>@session.role_name</small>
@@ -79,7 +79,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="@Url.Action("Index", "ChiTietNguoiDung")" class="btn btn-default btn-flat">Hồ sơ</a>
+                                        <a href="#" class="btn btn-default btn-flat">Hồ sơ</a>
                                     </div>
                                     @if (session.roleSelectFlag)
                                     {
@@ -140,7 +140,7 @@
                     </li>
                     <li class="treeview ">
                         <a href="">
-                            <i class="fa fa-address-book"></i> <span>Ngưởi dùng</span>
+                            <i class="fa fa-address-book"></i> <span>Người dùng</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>

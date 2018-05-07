@@ -127,20 +127,17 @@
                 /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="active">
+                    <li class="@Html.IsActive("Index", "Home")">
                         <a href="@Url.Action("Index", "Home")">
                             <i class="fa fa-file-o"></i>
                             <span>Phiếu đang chờ</span>
                         </a>
                     </li>
 
-                    <li class="">
+                    <li class="@Html.IsActive("Pending", "OrderList")">
                         <a href="@Url.Action("Pending", "OrderList")">
                             <i class="fa fa-file-text"></i>
                             <span>Phiếu đã xuất</span>
-                            <span class="pull-right-container">
-                                <span class="label label-primary bg-green">1</span>
-                            </span>
                         </a>
                     </li>
                 </ul>

@@ -198,25 +198,7 @@
                             <div class="chart row" id="defaultChart">
                                 <!-- Sales Chart Canvas -->
                                 <canvas id="lineChart" style="height: 600px;width:1000px"></canvas>
-                                <small>Đơn vị :<em>%</em></small>
-                            </div>
-                            <div id="cbAptomatChart" class="noDisplay">
-                                <div class="chart row">
-                                    <!-- Sales Chart Canvas -->
-                                    <canvas id="lineChart2" style="height: 407px;width:1000px"></canvas>
-                                    <small>Đơn vị :<em>Sản phẩm</em></small>
-                                </div>
-                                <!-- /.chart-responsive -->
-
-                            </div>
-                            <div id="inventerChart" class="noDisplay">
-                                <div class="chart row">
-                                    <!-- Sales Chart Canvas -->
-                                    <canvas id="lineChart3" style="height: 407px;width:1000px"></canvas>
-                                    <small>Đơn vị :<em>%</em></small>
-                                </div>
-                                <!-- /.chart-responsive -->
-
+                                <small>Đơn vị :<em>Sản phẩm</em></small>
                             </div>
                             <div  style="text-align:center;font-weight:bold;font-size:15px">
                                 <h5><b><span id="totalPrice">0</span></b></h5>
@@ -251,7 +233,7 @@
                                     i++;
                                     <tr>
                                         <td class="text-center">@i</td>
-                                        <td>@Html.ActionLink(@item.cus_name, "ChiTiet", new { customerId = item.cur_id })</td>
+                                        <td><a href="@Url.Action("Index", "ChiTietNoKhachHang", new { customerId = item.cus_id })">@item.cus_name</a></td>
                                         <td>@item.cus_address</td>
                                         <td class="text-right number">@item.cur_debt</td>
                                     </tr>

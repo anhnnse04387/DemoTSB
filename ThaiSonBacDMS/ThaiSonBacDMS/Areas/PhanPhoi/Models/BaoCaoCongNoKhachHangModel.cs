@@ -26,11 +26,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
             this.cus_name = cus_name;
             this.cus_address = cus_address;
             this.cur_debt = cur_debt;
-            this.cur_id = cur_id;
+            this.cus_id = cus_id;
         }
         public string cus_name { get; set; }
         public string cus_address { get; set; }
         public decimal cur_debt { get; set; }
-        public int cur_id { get; set; }
+        public int cus_id { get; set; }
     }
 }
