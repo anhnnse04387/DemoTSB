@@ -18,8 +18,11 @@ namespace Models.Framework
         [Key]
         public int Customer_ID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string Customer_name { get; set; }
+
+        [StringLength(50)]
+        public string Acronym { get; set; }
 
         public int? Media_ID { get; set; }
 

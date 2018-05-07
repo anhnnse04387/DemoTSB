@@ -210,13 +210,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         status = status.Substring(0, status.IndexOf("warning") - 1);
                         spanClass = "label-warning";
                     }
-                    if (o.Status_ID == 3 || o.Status_ID == 4)
+                    if (o.Status_ID == 3 || o.Status_ID == 4 || o.Status_ID == 5 || o.Status_ID == 6)
                     {
                         spanClass = "label-primary";
-                    }
-                    if (o.Status_ID == 5 || o.Status_ID == 6)
-                    {
-                        spanClass = "label-success";
                     }
                     if (o.Status_ID == 9)
                     {
@@ -331,11 +327,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         {
                             spanClass = "label-info";
                         }
-                        else if (o.Status_ID == 3 || o.Status_ID == 4)
+                        else if (o.Status_ID == 3 || o.Status_ID == 4 || o.Status_ID == 5 || o.Status_ID == 6)
                         {
                             spanClass = "label-primary";
                         }
-                        else if (o.Status_ID == 5 || o.Status_ID == 6 || o.Status_ID == 7)
+                        else if (o.Status_ID == 7)
                         {
                             spanClass = "label-success";
                         }

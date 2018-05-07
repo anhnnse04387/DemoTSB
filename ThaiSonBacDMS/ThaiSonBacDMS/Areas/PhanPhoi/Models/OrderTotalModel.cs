@@ -18,6 +18,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public String dayCreated { get; set; }
         public Dictionary<int, StatusDetailModel> dict { get; set; }
         public String lineStatus { get; set; }
+        public byte? statusId { get; set; }
         public String orderId { get; set; }
         public int customerId { get; set; }
         public String customerName { get; set; }
