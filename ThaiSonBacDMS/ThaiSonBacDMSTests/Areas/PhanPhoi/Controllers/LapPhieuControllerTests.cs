@@ -153,7 +153,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             {
                 IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
-                Assert.AreEqual(33, data.Count);
+                Assert.AreEqual(2, data.Count);
             }
         }
 

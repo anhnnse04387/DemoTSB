@@ -9,12 +9,18 @@ using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 using ThaiSonBacDMS.Common;
 using Moq;
+using ThaiSonBacDMS.Models;
+using ThaiSonBacDMS.Controllers.Tests;
+using ThaiSonBacDMS.Controllers;
+using System.Web.Routing;
+using System.Web;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
 {
     [TestClass()]
     public class ChiTietPhieuControllerTests
     {
+
         [TestMethod]
         public void TestIndexForRedirect()
         {
@@ -160,9 +166,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod]
         public void TestCheckOutSuccess()
         {
-            var fakeHttpContext = new Mock<UserSession>();
-            fakeHttpContext.Setup(p => p.user_id).Returns(3);
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { user_id = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new ChiTietPhieuController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.CheckOut("O1") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -182,9 +192,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod]
         public void TestCancelOrderSuccess()
         {
-            var fakeHttpContext = new Mock<UserSession>();
-            fakeHttpContext.Setup(p => p.user_id).Returns(3);
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { user_id = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new ChiTietPhieuController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.CancelOrder("O1", "Reason") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
