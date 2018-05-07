@@ -183,7 +183,7 @@ function changeData() {
                             ticks: {
                                 min: 0,
                             }
-                        }]
+                        }],
                     }
                 }
             });

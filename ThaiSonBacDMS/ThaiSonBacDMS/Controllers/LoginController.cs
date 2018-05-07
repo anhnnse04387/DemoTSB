@@ -251,7 +251,7 @@ namespace ThaiSonBacDMS.Controllers
 
         public ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            //FormsAuthentication.SignOut();
             Session.Abandon(); // it will clear the session at the end of request
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             //clear cookie

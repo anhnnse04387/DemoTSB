@@ -139,8 +139,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //Top Selling Category
             Dictionary<string, int> topSellingCategoryCurrent = new Dictionary<string, int>();
             topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, DateTime.Now);
-            Dictionary<string, int> topSellingCategoryPrevious = new Dictionary<string, int>();
-            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, DateTime.Now.AddMonths(-1));
             List<TopSellingCategory> listTSC = new List<TopSellingCategory>();
 
             foreach(var item in topSellingCategoryCurrent) {
@@ -149,7 +147,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 tsc.numberCategory = item.Value;
                 tsc.diffrentPercent = 0;
                 int valuePrevious = orderItemDAO.
-                    getCategoryQuantityByDate(item.Key, firstMonthPrevious, lastMonthPrevious);
+                    getCategoryQuantityByDate(item.Key, firstMonthPrevious, DateTime.Now.AddMonths(-1));
                 if (item.Value >= valuePrevious)
                 {
                     tsc.categoryFlag = true;
@@ -176,7 +174,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 List<Notification> listNoti = new List<Notification>();
                 listNoti.AddRange(notiDAO.getByUserID(session.user_id));
-                listNoti.AddRange(notiDAO.getByRoleID(session.roleSelectedID));
+                listNoti.AddRange(notiDAO.getByRoleID((int) session.roleSelectedID));
                 return PartialView(listNoti);
             }
             catch(Exception e)

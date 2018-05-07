@@ -16,7 +16,7 @@ namespace ThaiSonBacDMS.Common
         public string account_name;
         public string user_name;
         public string role_name;
-        public int roleSelectedID;
+        public int? roleSelectedID;
         public string avatar_str;
     }
 }
