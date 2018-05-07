@@ -8,20 +8,28 @@ namespace Models.Framework
 
     public partial class History_price
     {
+        public int ID { get; set; }
+
         public int? Product_ID { get; set; }
 
-        [Key]
-        [StringLength(10)]
-        public string History_code { get; set; }
+        public int History_code { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? Date_change { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? CIF { get; set; }
+        public int? Category_ID { get; set; }
+
+        public int? Sub_category_ID { get; set; }
+
+        public int? Quantity_in_carton { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? TAX { get; set; }
+        public decimal? CIF_USD { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal? CIF_VND { get; set; }
+
+        public double? TAX { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Price_before_VAT_VND { get; set; }
@@ -29,8 +37,9 @@ namespace Models.Framework
         [Column(TypeName = "money")]
         public decimal? Price_before_VAT_USD { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? VAT { get; set; }
+        public int? VAT { get; set; }
+
+        public int? Status { get; set; }
 
         public int? User_ID { get; set; }
 

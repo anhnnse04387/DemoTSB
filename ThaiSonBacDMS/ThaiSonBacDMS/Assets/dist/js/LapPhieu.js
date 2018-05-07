@@ -55,6 +55,13 @@
     initMain();
 });
 
+function toBeContinued() {
+    swal({
+        title: 'Chức năng này đang được phát triển!',
+        type: "warning",
+    });
+}
+
 function donePendingOrder() {
     $.ajax({
         url: '/PhanPhoi/LapPhieu/CheckOut',

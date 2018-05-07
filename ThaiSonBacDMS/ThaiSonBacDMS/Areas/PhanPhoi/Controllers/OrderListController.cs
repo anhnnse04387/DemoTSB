@@ -16,30 +16,38 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         // GET: PhanPhoi/OrderList
         public ActionResult Index()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).OrderBy(x => x.Order_ID).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                var item = new ListItemModel
+                var orderDAO = new OrderTotalDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).OrderBy(x => x.Order_ID).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_total o in lstOrder)
                 {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-info"
-                };
-                items.Add(item);
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = o.Date_created,
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-info"
+                    };
+                    items.Add(item);
+                }
+                model.statusId = 1;
+                model.items = items;
+                return View(model);
             }
-            model.statusId = 1;
-            model.items = items;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult ChooseCustomer(String name)
@@ -53,40 +61,49 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
+                return RedirectToAction(this.ControllerContext.RouteData.Values["action"].ToString());
             }
         }
 
         public ActionResult Complete()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).OrderBy(x => x.Order_ID).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                var item = new ListItemModel
+                var orderDAO = new OrderTotalDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).OrderBy(x => x.Order_ID).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_total o in lstOrder)
                 {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-success"
-                };
-                items.Add(item);
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-success"
+                    };
+                    items.Add(item);
+                }
+                model.statusId = 7;
+                model.items = items;
+                return View(model);
             }
-            model.statusId = 7;
-            model.items = items;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Cancel()
         {
+            try { 
             var orderDAO = new OrderTotalDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
@@ -111,10 +128,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.statusId = 8;
             model.items = items;
             return View(model);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Store()
         {
+            try { 
             var orderDAO = new OrderPartDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
@@ -157,10 +181,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.statusId = 2;
             model.items = items.OrderByDescending(x => x.date).ToList();
             return View(model);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Processing()
         {
+            try { 
             var orderDAO = new OrderTotalDAO();
             var customerDao = new CustomerDAO();
             var statusDAO = new StatusDAO();
@@ -203,6 +234,12 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             model.items = items;
             return View(model);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Search(ListModel model)
@@ -360,7 +397,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
+                return RedirectToAction(this.ControllerContext.RouteData.Values["action"].ToString());
             }
         }
 
@@ -376,7 +413,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
             }
         }
 

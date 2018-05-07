@@ -25,6 +25,13 @@
     init();
 });
 
+function toBeContinued() {
+    swal({
+        title: 'Chức năng này đang được phát triển!',
+        type: "warning",
+    });
+}
+
 function deleteRow(comp) {
     comp.closest("table").deleteRow(comp.closest("tr").rowIndex);
     calcTotal();

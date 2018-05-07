@@ -15,47 +15,72 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
         // GET: KeToan/ChiTietPhieu
         public ActionResult Index(String orderId)
         {
-            var dao = new OrderPartDAO();
-            var customerDAO = new CustomerDAO();
-            var data = dao.getOrderPart(orderId);
-            var statusDAO = new StatusDAO();
-            var model = new OrderTotalModel();
-            var productDAO = new ProductDAO();
-            model.orderId = orderId;
-            model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
-            model.deliveryAddress = data.Order_total.Address_delivery;
-            model.invoiceNumber = data.Invoice_number;
-            String status = statusDAO.getStatus(data.Status_ID);
-            String spanClass = "";
-            if (data.Status_ID == 10 || data.Status_ID == 11)
+            try
             {
-                status = status.Substring(0, status.IndexOf("warning") - 1);
-                spanClass = "label-warning";
-            }
-            else
-            {
-                spanClass = "label-primary";
-            }
-            model.spanClass = spanClass;
-            model.status = status;
-            model.statusId = data.Status_ID;
-            var customer = customerDAO.getCustomerById(data.Customer_ID);
-            model.customerName = customer.Customer_name;
-            model.taxCode = data.Order_total.Tax_code;
-            var items = new List<OrderItemModel>();
-            model.qttTotal = 0;
-            model.boxTotal = 0;
-            decimal? subTotal = 0;
-            if (orderId.Contains("-"))
-            {
-                foreach (Order_items o in data.Order_total.Order_items.Where(x => x.Order_part_ID != null).ToList())
+                var dao = new OrderPartDAO();
+                var customerDAO = new CustomerDAO();
+                var data = dao.getOrderPart(orderId);
+                var statusDAO = new StatusDAO();
+                var model = new OrderTotalModel();
+                var productDAO = new ProductDAO();
+                model.orderId = orderId;
+                model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
+                model.deliveryAddress = data.Order_total.Address_delivery;
+                model.invoiceNumber = data.Invoice_number;
+                String status = statusDAO.getStatus(data.Status_ID);
+                String spanClass = "";
+                if (data.Status_ID == 10 || data.Status_ID == 11)
                 {
-                    if (o.Order_part_ID.Equals(data.Order_part_ID))
+                    status = status.Substring(0, status.IndexOf("warning") - 1);
+                    spanClass = "label-warning";
+                }
+                else
+                {
+                    spanClass = "label-primary";
+                }
+                model.spanClass = spanClass;
+                model.status = status;
+                model.statusId = data.Status_ID;
+                var customer = customerDAO.getCustomerById(data.Customer_ID);
+                model.customerName = customer.Customer_name;
+                model.taxCode = data.Order_total.Tax_code;
+                var items = new List<OrderItemModel>();
+                model.qttTotal = 0;
+                model.boxTotal = 0;
+                decimal? subTotal = 0;
+                if (orderId.Contains("-"))
+                {
+                    foreach (Order_items o in data.Order_total.Order_items.Where(x => x.Order_part_ID != null).ToList())
+                    {
+                        if (o.Order_part_ID.Equals(data.Order_part_ID))
+                        {
+                            var product = productDAO.getProductById(o.Product_ID);
+                            var item = new OrderItemModel
+                            {
+                                code = product.Product_name,
+                                param = product.Product_parameters,
+                                Box = o.Box,
+                                Discount = o.Discount,
+                                Price = o.Price,
+                                Quantity = o.Quantity,
+                                per = product.Price_before_VAT_VND,
+                                priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
+                            };
+                            items.Add(item);
+                            model.qttTotal += o.Quantity;
+                            model.boxTotal += o.Box;
+                            subTotal += o.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Order_items o in data.Order_total.Order_items.Where(x => x.Order_part_ID == null).ToList())
                     {
                         var product = productDAO.getProductById(o.Product_ID);
                         var item = new OrderItemModel
                         {
-                            code = product.Product_code,
+                            code = product.Product_name,
                             param = product.Product_parameters,
                             Box = o.Box,
                             Discount = o.Discount,
@@ -70,37 +95,20 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                         subTotal += o.Price;
                     }
                 }
+                model.discount = data.Order_total.Order_discount;
+                model.vat = data.VAT;
+                model.subTotal = subTotal;
+                model.discountMoney = data.Order_total.Order_discount > 0 ? (subTotal * (100 - data.Order_total.Order_discount) / 100) : 0;
+                model.afterDiscountMoney = data.Order_total.Order_discount > 0 ? (subTotal - (subTotal * (100 - data.Order_total.Order_discount) / 100)) : subTotal;
+                model.total = data.Total_price;
+                model.readItems = items;
+                return View(model);
             }
-            else
+            catch (Exception e)
             {
-                foreach (Order_items o in data.Order_total.Order_items.Where(x => x.Order_part_ID == null).ToList())
-                {
-                    var product = productDAO.getProductById(o.Product_ID);
-                    var item = new OrderItemModel
-                    {
-                        code = product.Product_code,
-                        param = product.Product_parameters,
-                        Box = o.Box,
-                        Discount = o.Discount,
-                        Price = o.Price,
-                        Quantity = o.Quantity,
-                        per = product.Price_before_VAT_VND,
-                        priceBeforeDiscount = o.Discount > 0 ? (o.Price * 100 / (100 + o.Discount)) : o.Price
-                    };
-                    items.Add(item);
-                    model.qttTotal += o.Quantity;
-                    model.boxTotal += o.Box;
-                    subTotal += o.Price;
-                }
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
             }
-            model.discount = data.Order_total.Order_discount;
-            model.vat = data.VAT;
-            model.subTotal = subTotal;
-            model.discountMoney = data.Order_total.Order_discount > 0 ? (subTotal * (100 - data.Order_total.Order_discount) / 100) : 0;
-            model.afterDiscountMoney = data.Order_total.Order_discount > 0 ? (subTotal - (subTotal * (100 - data.Order_total.Order_discount) / 100)) : subTotal;
-            model.total = data.Total_price;
-            model.readItems = items;
-            return View(model);
         }
 
         [HttpPost]
@@ -116,7 +124,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
             }
         }
     }

@@ -159,6 +159,7 @@
     <script src="/Assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/Assets/dist/js/autoNumeric.min.js"></script>
     <script>
+        setTable();
         $(document).ready(function () {
             $('#btnSearch').click(function () {
                 $.ajax({
@@ -171,8 +172,7 @@
                         setTable();
                     }
                 });
-            });
-            setTable();
+            });            
         });
         function setTable() {
             $('#dtTable').DataTable({
@@ -195,7 +195,7 @@
             });
             $('.datepicker').datepicker();
             customerATC();
-            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
         }
         function customerATC() {
             $('#customer').autocomplete({

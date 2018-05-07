@@ -10,11 +10,11 @@ namespace Models.Framework
     {
         public int ID { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string Order_part_ID { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(20)]
         public string Order_ID { get; set; }
 
         public int? Product_ID { get; set; }

@@ -16,30 +16,38 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
         // GET: QuanLy/OrderList
         public ActionResult Index()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).OrderBy(x => x.Order_ID).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                var item = new ListItemModel
+                var orderDAO = new OrderTotalDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 1).OrderBy(x => x.Order_ID).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_total o in lstOrder)
                 {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = o.Date_created,
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-info"
-                };
-                items.Add(item);
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = o.Date_created,
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-info"
+                    };
+                    items.Add(item);
+                }
+                model.statusId = 1;
+                model.items = items;
+                return View(model);
             }
-            model.statusId = 1;
-            model.items = items;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult ChooseCustomer(String name)
@@ -53,159 +61,188 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
+                return RedirectToAction(this.ControllerContext.RouteData.Values["action"].ToString());
             }
         }
 
         public ActionResult Complete()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).OrderBy(x => x.Order_ID).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                var item = new ListItemModel
+                var orderDAO = new OrderTotalDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 7).OrderBy(x => x.Order_ID).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_total o in lstOrder)
                 {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-success"
-                };
-                items.Add(item);
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-success"
+                    };
+                    items.Add(item);
+                }
+                model.statusId = 7;
+                model.items = items;
+                return View(model);
             }
-            model.statusId = 7;
-            model.items = items;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Cancel()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 8).OrderBy(x => x.Order_ID).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                var item = new ListItemModel
+                var orderDAO = new OrderTotalDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 8).OrderBy(x => x.Order_ID).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_total o in lstOrder)
                 {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = statusDAO.getStatus(o.Status_ID),
-                    spanClass = "label-danger"
-                };
-                items.Add(item);
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = statusDAO.getStatus(o.Status_ID),
+                        spanClass = "label-danger"
+                    };
+                    items.Add(item);
+                }
+                model.statusId = 8;
+                model.items = items;
+                return View(model);
             }
-            model.statusId = 8;
-            model.items = items;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Store()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID == 2).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                if (o.Order_part.Count > 1)
+                var orderDAO = new OrderPartDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getAllOrderPart().Where(x => x.Status_ID == 2).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_part o in lstOrder)
                 {
-                    foreach (Order_part p in o.Order_part)
+                    if (o.Order_part_ID == null)
                     {
                         var item = new ListItemModel
                         {
-                            orderId = p.Order_part_ID,
+                            orderId = o.Order_part_ID,
                             customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                            date = p.Request_stockout_date,
+                            date = o.Request_stockout_date,
                             delivery = 1,
-                            note = p.Note,
-                            total = p.Total_price,
+                            note = o.Note,
+                            total = o.Total_price,
+                            status = statusDAO.getStatus(o.Status_ID),
+                            spanClass = "label-warning"
+                        };
+                        items.Add(item);
+                    }
+                    else
+                    {
+                        var item = new ListItemModel
+                        {
+                            orderId = o.Order_ID,
+                            customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                            date = o.Request_stockout_date,
+                            delivery = 1,
+                            note = o.Note,
+                            total = o.Total_price,
                             status = statusDAO.getStatus(o.Status_ID),
                             spanClass = "label-warning"
                         };
                         items.Add(item);
                     }
                 }
-                else
-                {
-                    var item = new ListItemModel
-                    {
-                        orderId = o.Order_ID,
-                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                        date = o.Order_part.FirstOrDefault().Request_stockout_date,
-                        delivery = o.Order_part.Count,
-                        note = o.Note,
-                        total = o.Total_price,
-                        status = statusDAO.getStatus(o.Status_ID),
-                        spanClass = "label-warning"
-                    };
-                    items.Add(item);
-                }
+                model.statusId = 2;
+                model.items = items.OrderByDescending(x => x.date).ToList();
+                return View(model);
             }
-            model.statusId = 2;
-            model.items = items.OrderByDescending(x => x.date).ToList();
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Processing()
         {
-            var orderDAO = new OrderTotalDAO();
-            var customerDao = new CustomerDAO();
-            var statusDAO = new StatusDAO();
-            var model = new ListModel();
-            var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).OrderBy(x => x.Order_ID).ToList();
-            var items = new List<ListItemModel>();
-            foreach (Order_total o in lstOrder)
+            try
             {
-                var spanClass = "";
-                var status = statusDAO.getStatus(o.Status_ID);
-                if (o.Status_ID == 10 || o.Status_ID == 11)
+                var orderDAO = new OrderTotalDAO();
+                var customerDao = new CustomerDAO();
+                var statusDAO = new StatusDAO();
+                var model = new ListModel();
+                var lstOrder = orderDAO.getLstOrder().Where(x => x.Status_ID != 1 && x.Status_ID != 2 && x.Status_ID != 7 && x.Status_ID != 8).OrderBy(x => x.Order_ID).ToList();
+                var items = new List<ListItemModel>();
+                foreach (Order_total o in lstOrder)
                 {
-                    status = status.Substring(0, status.IndexOf("warning") - 1);
-                    spanClass = "label-warning";
+                    var spanClass = "";
+                    var status = statusDAO.getStatus(o.Status_ID);
+                    if (o.Status_ID == 10 || o.Status_ID == 11)
+                    {
+                        status = status.Substring(0, status.IndexOf("warning") - 1);
+                        spanClass = "label-warning";
+                    }
+                    if (o.Status_ID == 3 || o.Status_ID == 4)
+                    {
+                        spanClass = "label-primary";
+                    }
+                    if (o.Status_ID == 5 || o.Status_ID == 6)
+                    {
+                        spanClass = "label-success";
+                    }
+                    if (o.Status_ID == 9)
+                    {
+                        spanClass = "label-danger";
+                    }
+                    var item = new ListItemModel
+                    {
+                        orderId = o.Order_ID,
+                        customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
+                        date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
+                        delivery = o.Order_part.Count,
+                        note = o.Note,
+                        total = o.Total_price,
+                        status = status,
+                        spanClass = spanClass
+                    };
+                    items.Add(item);
                 }
-                if (o.Status_ID == 3 || o.Status_ID == 4)
-                {
-                    spanClass = "label-primary";
-                }
-                if (o.Status_ID == 5 || o.Status_ID == 6)
-                {
-                    spanClass = "label-success";
-                }
-                if (o.Status_ID == 9)
-                {
-                    spanClass = "label-danger";
-                }
-                var item = new ListItemModel
-                {
-                    orderId = o.Order_ID,
-                    customer = customerDao.getCustomerById(o.Customer_ID).Customer_name,
-                    date = Convert.ToDateTime(o.Date_created.ToString("MM/dd/yyyy")),
-                    delivery = o.Order_part.Count,
-                    note = o.Note,
-                    total = o.Total_price,
-                    status = status,
-                    spanClass = spanClass
-                };
-                items.Add(item);
+                model.items = items;
+                return View(model);
             }
-            model.items = items;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Search(ListModel model)
@@ -363,7 +400,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
+                return RedirectToAction(this.ControllerContext.RouteData.Values["action"].ToString());
             }
         }
 
@@ -379,7 +416,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
             }
         }
 

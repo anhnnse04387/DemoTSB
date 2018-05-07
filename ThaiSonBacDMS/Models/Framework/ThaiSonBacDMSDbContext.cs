@@ -122,15 +122,11 @@ namespace Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<History_price>()
-                .Property(e => e.History_code)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<History_price>()
-                .Property(e => e.CIF)
+                .Property(e => e.CIF_USD)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<History_price>()
-                .Property(e => e.TAX)
+                .Property(e => e.CIF_VND)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<History_price>()
@@ -139,10 +135,6 @@ namespace Models.Framework
 
             modelBuilder.Entity<History_price>()
                 .Property(e => e.Price_before_VAT_USD)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<History_price>()
-                .Property(e => e.VAT)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<KPI_customer>()

@@ -371,6 +371,14 @@
                 }
             });
         }
+
+        function toBeContinued() {
+            swal({
+                title: 'Chức năng này đang được phát triển!',
+                type: "warning",
+            });
+        }
+
         function cancelOrder() {
             $.ajax({
                 url: '/HangHoa/ChiTietPhieu/CancelOrder',

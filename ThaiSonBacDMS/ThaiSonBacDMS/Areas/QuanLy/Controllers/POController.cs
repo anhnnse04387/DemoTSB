@@ -29,40 +29,48 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 
         public ActionResult Detail(int id)
         {
-            var poDAO = new PODAO();
-            var productDAO = new ProductDAO();
-            var supplierDAO = new SupplierDAO();
-            var data = poDAO.getPO(id);
-            var model = new POModel();
-            model.PO_no = data.PO_no;
-            var supplier = supplierDAO.getSupplierById(data.Supplier_ID);
-            model.supplier = supplier.Supplier_name;
-            model.address = supplier.Supplier_address;
-            model.tel = supplier.Phone;
-            model.email = supplier.Mail;
-            model.Payment = data.Payment;
-            model.Date_create = data.Date_create;
-            model.Date_request_ex_work = data.Date_request_ex_work;
-            model.Total_price = data.Total_price;
-            int? totalQtt = 0;
-            var readItems = new List<POItemModel>();
-            foreach (PO_Items i in data.PO_Items)
+            try
             {
-                var product = productDAO.getProductById(i.Product_ID);
-                var item = new POItemModel
+                var poDAO = new PODAO();
+                var productDAO = new ProductDAO();
+                var supplierDAO = new SupplierDAO();
+                var data = poDAO.getPO(id);
+                var model = new POModel();
+                model.PO_no = data.PO_no;
+                var supplier = supplierDAO.getSupplierById(data.Supplier_ID);
+                model.supplier = supplier.Supplier_name;
+                model.address = supplier.Supplier_address;
+                model.tel = supplier.Phone;
+                model.email = supplier.Mail;
+                model.Payment = data.Payment;
+                model.Date_create = data.Date_create;
+                model.Date_request_ex_work = data.Date_request_ex_work;
+                model.Total_price = data.Total_price;
+                int? totalQtt = 0;
+                var readItems = new List<POItemModel>();
+                foreach (PO_Items i in data.PO_Items)
                 {
-                    product = product.Product_code,
-                    NOTE = i.NOTE,
-                    Price = i.Price,
-                    Quantity = i.Quantity,
-                    per = product.CIF_USD
-                };
-                totalQtt += i.Quantity;
-                readItems.Add(item);
+                    var product = productDAO.getProductById(i.Product_ID);
+                    var item = new POItemModel
+                    {
+                        product = product.Product_name,
+                        NOTE = i.NOTE,
+                        Price = i.Price,
+                        Quantity = i.Quantity,
+                        per = product.CIF_USD
+                    };
+                    totalQtt += i.Quantity;
+                    readItems.Add(item);
+                }
+                model.readItems = readItems;
+                model.totalQtt = totalQtt;
+                return View(model);
             }
-            model.readItems = readItems;
-            model.totalQtt = totalQtt;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult ChangeSupplier(int? supplierId)
