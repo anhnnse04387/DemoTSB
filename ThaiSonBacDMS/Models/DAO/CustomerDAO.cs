@@ -68,12 +68,13 @@ namespace Models.DAO
         }
 
         public int editCustomer(string cus_name, int? media_ID, string address, string deliver_address, string phone,
-            string mail, string tax_code, int customerID)
+            string mail, string tax_code, int customerID, string acronym)
         {
             try
             {
                 var query = db.Customers.SingleOrDefault(x=>x.Customer_ID == customerID);
                 query.Customer_name = cus_name;
+                query.Acronym = acronym;
                 query.Media_ID = media_ID;
                 query.Delivery_address = address;
                 query.Export_invoice_address = deliver_address;

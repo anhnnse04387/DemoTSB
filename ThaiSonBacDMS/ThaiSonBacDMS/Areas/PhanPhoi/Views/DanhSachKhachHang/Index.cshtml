@@ -70,7 +70,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
-        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
         <li><a href="@Url.Action("Index", "DanhSachKhachHang")">Danh sách khách hàng</a></li>
     </ol>
 </section>
@@ -153,7 +153,7 @@
                                                         <td width="35%">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Tên..." name="cus_name">
+                                                                <input type="text" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="Tên..." name="cus_name">
                                                             </div>
                                                         </td>
                                                         <td style="padding-left: 80px;width: 170px;">Xếp hạng</td>

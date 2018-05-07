@@ -49,7 +49,7 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="phanphoi_index.html">
+            <a href="@Url.Action("Index", "Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
@@ -57,10 +57,10 @@
             <a href=""> Báo Cáo</a>
         </li>
         <li>
-            <a href="phanphoi_baocao_doanh-thu.html"> Công Nợ</a>
+            <a href="@Url.Action("Index", "BaoCaoCongNoCungCap")"> Công Nợ</a>
         </li>
         <li>
-            <a href="phanphoi_baocao_chi-tiet-doanh-thu.html">
+            <a href="">
                 Chi tiết công nợ cung cấp
             </a>
         </li>
@@ -109,7 +109,7 @@
                             <i class="fa fa-eye text-grey"></i>
                             <span><strong>Xem Trước</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="In" data-placement="bottom">
                             <i class="fa fa-print text-blue"></i>
                             <span><strong>In</strong></span>
                         </a>
@@ -117,11 +117,11 @@
                             <i class="fa fa-download text-grey"></i>
                             <span><strong>Import Excel</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
                             <i class="fa fa-file-excel-o text-green"></i>
                             <span><strong>Xuất Excel</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
                             <i class="fa fa-file-pdf-o text-red"></i>
                             <span><strong>Xuất PDF</strong></span>
                         </a>
@@ -182,14 +182,15 @@
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                                @Html.TextBoxFor(model => model.productCode, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "productName" })
+                                                                @Html.TextBoxFor(model => model.productCode, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "productName",
+                                                               @oninput = "this.value=this.value.replace(/[^0-9]/g,'');" })
                                                             </div>
                                                         </td>
                                                         <td style="width: 80px">Danh mục</td>
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-sliders"></i></span>
-                                                                @Html.DropDownListFor(model => model.categoryName, @Model.lstCategorySearch, "", new { @class = "form-control select2", @id = "cateSearch" })
+                                                                @Html.DropDownListFor(model => model.categoryName, @Model.lstCategorySearch, "Tất cả", new { @class = "form-control select2", @id = "cateSearch" })
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -356,6 +357,13 @@
                     }
                 });
             }
+        });
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
         });
     </script>
 }

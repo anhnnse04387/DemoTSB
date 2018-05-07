@@ -72,9 +72,9 @@
 <section class="content-header">
 
     <ol class="breadcrumb" style="float:left">
-        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="">Báo cáo</a></li>
-        <li><a href="phanphoi_baocao_cong-no-khach-hang.html">Báo cáo công nợ khách hàng</a></li>
+        <li><a href="@Url.Action("Index", "BaoCaoCongNoKhachHang")">Báo cáo công nợ khách hàng</a></li>
     </ol>
 </section>
 
@@ -120,7 +120,7 @@
                             <i class="fa fa-eye text-grey"></i>
                             <span><strong>Xem Trước</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="In" data-placement="bottom">
                             <i class="fa fa-print text-blue"></i>
                             <span><strong>In</strong></span>
                         </a>
@@ -128,11 +128,11 @@
                             <i class="fa fa-download text-grey"></i>
                             <span><strong>Import Excel</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
                             <i class="fa fa-file-excel-o text-green"></i>
                             <span><strong>Xuất Excel</strong></span>
                         </a>
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
                             <i class="fa fa-file-pdf-o text-red"></i>
                             <span><strong>Xuất PDF</strong></span>
                         </a>
@@ -201,7 +201,7 @@
                                 <small>Đơn vị :<em>Sản phẩm</em></small>
                             </div>
                             <div  style="text-align:center;font-weight:bold;font-size:15px">
-                                <h5><b><span id="totalPrice">0</span></b></h5>
+                                <h5><b><span id="totalPrice" class="number">0</span></b></h5>
                                 <span>TỔNG CÔNG NỢ</span>
                             </div>
 
@@ -265,6 +265,17 @@
     <!-- ChartJS -->
     <script src="~/Assets/bower_components/Chart.js/Chart.js"></script>
     <script src="~/Assets/dist/js/Chart.bundle.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
     <!-- Page JS -->
     <script src="~/Assets/dist/js/pages/baoCaoCongNoKhachHang.js"></script>
+    <script>
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+    </script>
 }

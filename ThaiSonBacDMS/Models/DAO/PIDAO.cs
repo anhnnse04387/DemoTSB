@@ -62,6 +62,7 @@ namespace Models.DAO
                         data.categoryName = new CategoryDAO().getCategoryById(i.Key).Category_name;
                         data.totalQuantity = (int)i.Sum(x => x.p_quantity);
                         data.totalPrice = (decimal)i.Sum(x => x.p_price * x.p_quantity);
+                        data.totalPrice = Math.Round(data.totalPrice, 0);
                         lstData.Add(data);
                     }
                     catch(Exception e)
