@@ -62,7 +62,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
+                return RedirectToAction(this.ControllerContext.RouteData.Values["action"].ToString());
             }
         }
 
@@ -197,7 +197,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
+                return RedirectToAction(this.ControllerContext.RouteData.Values["action"].ToString());
             }
         }
 

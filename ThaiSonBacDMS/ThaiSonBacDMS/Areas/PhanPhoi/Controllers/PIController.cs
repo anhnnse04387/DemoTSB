@@ -16,7 +16,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         public ActionResult Index()
         {
             var model = new PIModel();
-            var ddlPO = new List<SelectListItem>();            
+            var ddlPO = new List<SelectListItem>();
             var dao = new PODAO();
             var lstPO = dao.getLstPO();
             lstPO.ForEach(x =>
@@ -29,34 +29,43 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
         public ActionResult Detail(int id)
         {
-            var dao = new PIDAO();
-            var model = new PIModel();
-            var daoProduct = new ProductDAO();
-            var data = dao.getPI(id);
-            model.pi = data;
-            var readItems = new List<PIItemModel>();
-            var ddlPO = new List<SelectListItem>();
-            var poDAO = new PODAO();
-            var lstPO = poDAO.getLstPO();
-            lstPO.ForEach(x =>
+            try
             {
-                ddlPO.Add(new SelectListItem { Text = x.PO_no, Value = x.PO_ID.ToString() });
-            });
-            model.lstPO = ddlPO;
-            foreach (Purchase_invoice_Items i in data.Purchase_invoice_Items)
-            {
-                var product = daoProduct.getProductById(i.Product_ID);
-                var item = new PIItemModel {
-                    product = product.Product_name,
-                    NOTE = i.NOTE,
-                    per = product.CIF_USD,
-                    Price = i.Price,
-                    Quantity = i.Quantity
-                };
-                readItems.Add(item);
+                var dao = new PIDAO();
+                var model = new PIModel();
+                var daoProduct = new ProductDAO();
+                var data = dao.getPI(id);
+                model.pi = data;
+                var readItems = new List<PIItemModel>();
+                var ddlPO = new List<SelectListItem>();
+                var poDAO = new PODAO();
+                var lstPO = poDAO.getLstPO();
+                lstPO.ForEach(x =>
+                {
+                    ddlPO.Add(new SelectListItem { Text = x.PO_no, Value = x.PO_ID.ToString() });
+                });
+                model.lstPO = ddlPO;
+                foreach (Purchase_invoice_Items i in data.Purchase_invoice_Items)
+                {
+                    var product = daoProduct.getProductById(i.Product_ID);
+                    var item = new PIItemModel
+                    {
+                        product = product.Product_name,
+                        NOTE = i.NOTE,
+                        per = product.CIF_USD,
+                        Price = i.Price,
+                        Quantity = i.Quantity
+                    };
+                    readItems.Add(item);
+                }
+                model.readItems = readItems;
+                return View(model);
             }
-            model.readItems = readItems;
-            return View(model);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult ChooseNo(int no)

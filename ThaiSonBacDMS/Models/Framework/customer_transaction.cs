@@ -16,7 +16,7 @@ namespace Models.Framework
 
         public int? Customer_ID { get; set; }
 
-        [StringLength(10)]
+        [StringLength(20)]
         public string Order_ID { get; set; }
 
         public string Description { get; set; }

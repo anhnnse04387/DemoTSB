@@ -11,7 +11,7 @@ namespace Models.Framework
         public int ID { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(20)]
         public string Order_ID { get; set; }
 
         public byte Edit_code { get; set; }

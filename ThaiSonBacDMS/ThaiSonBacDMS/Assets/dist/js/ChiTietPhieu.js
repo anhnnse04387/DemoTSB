@@ -2,6 +2,13 @@
     $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
 });
 
+function toBeContinued() {
+    swal({
+        title: 'Chức năng này đang được phát triển!',
+        type: "warning",
+    });
+}
+
 function doneOrder() {
     $.ajax({
         url: '/PhanPhoi/ChiTietPhieu/CheckOut',

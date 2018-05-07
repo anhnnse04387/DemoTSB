@@ -41,7 +41,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         var product = productDAO.getProductById(o.Product_ID);
                         var item = new OrderItemModel
                         {
-                            code = product.Product_code,
+                            code = product.Product_name,
                             param = product.Product_parameters,
                             Box = o.Box,
                             Discount = o.Discount,
@@ -180,7 +180,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         var product = productDAO.getProductById(o.Product_ID);
                         var item = new OrderItemModel
                         {
-                            code = product.Product_code,
+                            code = product.Product_name,
                             param = product.Product_parameters,
                             Box = o.Box,
                             Discount = o.Discount,
@@ -482,7 +482,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var product = productDAO.getProductById(i.Product_ID);
                     var item = new OrderItemModel
                     {
-                        code = product.Product_code,
+                        code = product.Product_name,
                         param = product.Product_parameters,
                         Box = i.Box,
                         Discount = i.Discount,
@@ -511,7 +511,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         var product = productDAO.getProductById(o.Product_ID);
                         var item = new OrderItemModel
                         {
-                            code = product.Product_code,
+                            code = product.Product_name,
                             param = product.Product_parameters,
                             Box = o.Box,
                             Discount = o.Discount,
@@ -616,7 +616,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         var product = productDAO.getProductById(o.Product_ID);
                         var item = new OrderItemModel
                         {
-                            code = product.Product_code,
+                            code = product.Product_name,
                             param = product.Product_parameters,
                             Box = o.Box,
                             Discount = o.Discount,

@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿setTable();
+$(document).ready(function () {
     $('#btnSearch').click(function () {
         $.ajax({
             url: "/PhanPhoi/OrderList/Search",
@@ -11,7 +12,6 @@
             }
         });
     });
-    setTable();
 });
 
 function clickBtn(btn) {
@@ -95,7 +95,7 @@ function setTable() {
     });
     customerATC();
     $('.datepicker').datepicker();
-    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
+    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0'});
 }
 function getData() {
     var orderId = $('#orderId').val();

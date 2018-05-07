@@ -22,7 +22,7 @@ namespace Models.DAO
             db.Configuration.AutoDetectChangesEnabled = false; //added line
             db.Configuration.LazyLoadingEnabled = false; //added line
             db.Configuration.ProxyCreationEnabled = false; //added line
-            return db.Products.Where(x => x.Product_code.Trim().ToLower().Contains(code.Trim().ToLower()) && x.Status == 1).ToList();
+            return db.Products.Where(x => x.Product_name.Trim().ToLower().Contains(code.Trim().ToLower()) && x.Status == 1).ToList();
         }
 
         public Product getProductById(int? id)

@@ -112,11 +112,11 @@
                                 <i class="fa fa-exchange text-gray"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="toBeContinued();" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                 <i class="fa fa-eye text-black"></i>
                                 <span><strong>Xem Trước</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="toBeContinued();" data-toggle="tooltip" title="In" data-placement="bottom">
                                 <i class="fa fa-print text-blue"></i>
                                 <span><strong>In</strong></span>
                             </a>
@@ -372,6 +372,14 @@
                 }
             });
         }
+
+        function toBeContinued() {
+            swal({
+                title: 'Chức năng này đang được phát triển!',
+                type: "warning",
+            });
+        }
+
         function validate() {
             var count = 0;
             if ($('#vat').val() === "") {

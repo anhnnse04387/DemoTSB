@@ -9,13 +9,13 @@ namespace Models.Framework
     public partial class Order_part
     {
         [Required]
-        [StringLength(10)]
+        [StringLength(20)]
         public string Order_ID { get; set; }
 
         public byte? Part_ID { get; set; }
 
         [Key]
-        [StringLength(10)]
+        [StringLength(50)]
         public string Order_part_ID { get; set; }
 
         public int Customer_ID { get; set; }
@@ -26,7 +26,7 @@ namespace Models.Framework
         [Column(TypeName = "date")]
         public DateTime? Date_completed { get; set; }
 
-        [StringLength(10)]
+        [StringLength(30)]
         public string Invoice_number { get; set; }
 
         [Column(TypeName = "money")]
@@ -45,7 +45,7 @@ namespace Models.Framework
 
         public byte? DeliverMethod_ID { get; set; }
 
-        [StringLength(10)]
+        [StringLength(1)]
         public string Driver_ID { get; set; }
 
         [Column(TypeName = "date")]
@@ -63,7 +63,6 @@ namespace Models.Framework
         [Column(TypeName = "date")]
         public DateTime? Request_stockout_date { get; set; }
 
-        [StringLength(1)]
         public string Note { get; set; }
 
         public virtual Order_total Order_total { get; set; }
