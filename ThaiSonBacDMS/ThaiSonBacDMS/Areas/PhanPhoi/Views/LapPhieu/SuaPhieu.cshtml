@@ -159,7 +159,7 @@
                                                         <label>Địa chỉ giao hàng</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-                                                            @Html.TextBoxFor(model => model.deliveryAddress, new { @class = "form-control", @id = "deliveryAddress", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
+                                                            @Html.TextBoxFor(model => model.deliveryAddress, new { @class = "form-control", @id = "deliveryAddress", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9][,.]/g,'');" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -175,7 +175,7 @@
                                                         <label>Địa chỉ xuất HĐ</label><span style="color: red;">*</span>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                                            @Html.TextBoxFor(model => model.invoiceAddress, new { @class = "form-control", @id = "invoiceAddress", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
+                                                            @Html.TextBoxFor(model => model.invoiceAddress, new { @class = "form-control", @id = "invoiceAddress", @required = "required", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9][,.]/g,'');" })
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">

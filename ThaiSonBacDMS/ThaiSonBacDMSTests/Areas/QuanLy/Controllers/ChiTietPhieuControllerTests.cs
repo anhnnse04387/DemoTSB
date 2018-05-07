@@ -1,16 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ThaiSonBacDMS.Areas.PhanPhoi.Controllers;
+using ThaiSonBacDMS.Areas.QuanLy.Controllers;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 using ThaiSonBacDMS.Common;
 using Moq;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
 {
     [TestClass()]
     public class ChiTietPhieuControllerTests

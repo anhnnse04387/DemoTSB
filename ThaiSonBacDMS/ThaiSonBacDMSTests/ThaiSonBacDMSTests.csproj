@@ -111,10 +111,16 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Areas\PhanPhoi\Controllers\ChiTietPhieuControllerTests.cs" />
+    <Compile Include="Areas\PhanPhoi\Controllers\LapPhieuControllerTests.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\ChiTietPhieuControllerTests.cs" />
     <Compile Include="Controllers\LoginControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{1E25601B-4A2F-46E6-8870-4EBA071BE2A9}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ThaiSonBacDMS\ThaiSonBacDMS.csproj">
       <Project>{46B6DC46-A7F7-4114-8A3B-1F266647856B}</Project>
       <Name>ThaiSonBacDMS</Name>
