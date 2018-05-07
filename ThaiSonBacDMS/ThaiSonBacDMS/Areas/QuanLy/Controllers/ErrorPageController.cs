@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class ErrorPageController : Controller
+    public class ErrorPageController : QuanLyBaseController
     {
         // GET: QuanLy/ErrorPage
         public ActionResult Index()

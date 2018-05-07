@@ -107,9 +107,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             {
                 DataLineChart data = new DataLineChart();
                 data.displayTime = item.Key.ToString("dd/MM");
-                data.nhapVon = item.Value.ElementAt(0);
-                data.xuatVon = item.Value.ElementAt(1);
-                data.banChoKhach = item.Value.ElementAt(2);
+                data.nhapVon = Math.Round(item.Value.ElementAt(0) / 100000000,2) ;
+                data.xuatVon = Math.Round(item.Value.ElementAt(1)/ 100000000,2);
+                data.banChoKhach = Math.Round(item.Value.ElementAt(2)/ 100000000,2);
                 listDataLineChart.Add(data);
             }
             return listDataLineChart;
