@@ -52,7 +52,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             try
             {
-
                 Supplier_transactionDAO dao = new Supplier_transactionDAO();
                 conNoTu = conNoTu.Replace(",", "");
                 conNoDen = conNoDen.Replace(",", "");
