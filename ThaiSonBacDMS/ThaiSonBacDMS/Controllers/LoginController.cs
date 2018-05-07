@@ -143,6 +143,10 @@ namespace ThaiSonBacDMS.Controllers
                     {
                         ModelState.AddModelError("", "Xin hãy điền đầy đủ tài khoản và mật khẩu");
                         return View();
+                    }else if(model.accountName.Length >= 20 || model.password.Length >= 20)
+                    {
+                        ModelState.AddModelError("", "Tài khoản và mật khẩu < 20 ký tự");
+                        return View();
                     }
                     var result = accDAO.Login(model.accountName, encryptor);
                     if (result == 1)
@@ -268,7 +272,7 @@ namespace ThaiSonBacDMS.Controllers
        
         public ActionResult ForgotPassword()
         {
-            return View();
+            return RedirectToAction("ForgotPassword", "Login");
         }
 
         [HttpPost]

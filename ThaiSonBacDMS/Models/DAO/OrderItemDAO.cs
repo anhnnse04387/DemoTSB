@@ -265,8 +265,8 @@ namespace Models.DAO
                             categoryID = c.Category_ID,
                             dateCreated = ot.Date_created,
                             nhapVon = p.CIF_VND * oi.Quantity,
-                            xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
-                            banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
+                            xuatVon = (p.CIF_VND + p.CIF_VND * ((decimal) p.VAT /100)) * oi.Quantity,
+                            banChoKhach = oi.Quantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * ((decimal)p.VAT / 100))
                         };
             if (category_ID != "-1")
             {
@@ -321,8 +321,8 @@ namespace Models.DAO
                             categoryID = c.Category_ID,
                             quantity = oi.Quantity,
                             nhapVon = p.CIF_VND * oi.Quantity,
-                            xuatVon = (p.CIF_VND + p.CIF_VND * (p.VAT / 100)) * oi.Quantity,
-                            banChoKhach = oi.Quantity * (p.Price_before_VAT_USD + p.Price_before_VAT_USD * (p.VAT / 100))
+                            xuatVon = (p.CIF_VND + p.CIF_VND * ((decimal)p.VAT / 100)) * oi.Quantity,
+                            banChoKhach = oi.Quantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * ((decimal)p.VAT / 100))
                         };
             foreach (var item in query)
             {

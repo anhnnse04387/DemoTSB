@@ -72,8 +72,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 dataLineChartCurrentMonth.Add(1, 0);
                 dataLineChartOrderCurrentMonth.Add(1, 0);
             }
-            model.dataLineChartCurrentMonth = dataLineChartCurrentMonth;
-            model.dataLineChartOrderCurrentMonth = dataLineChartOrderCurrentMonth;
+            model.dataLineChartCurrentMonth = dataLineChartCurrentMonth.OrderBy(x=>x.Key).ToDictionary(x=>x.Key, x=>x.Value);
+            model.dataLineChartOrderCurrentMonth = dataLineChartOrderCurrentMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value); ;
             //
 
             Dictionary<int, decimal> dataLineChartPreviousMonth = new Dictionary<int, decimal>();
@@ -97,8 +97,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 dataLineChartPreviousMonth.Add(1, 0);
             }
             
-            model.dataLineChartPreviousMonth = dataLineChartPreviousMonth;
-            model.dataLineChartOrderPreviousMonth = dataLineChartPreviousOrderMonth;
+            model.dataLineChartPreviousMonth = dataLineChartPreviousMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value); ;
+            model.dataLineChartOrderPreviousMonth = dataLineChartPreviousOrderMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value); ;
 
             //count value in previous month
             decimal valueInPreviousMonth = 0;
