@@ -1,0 +1,306 @@
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.SuaSanPhamModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+}
+<style>
+    input[type="file"] {
+        display: block;
+    }
+
+    .imageThumb {
+        max-height: 75px;
+        border: 2px solid;
+        margin: 10px 10px 0 0;
+        padding: 1px;
+    }
+
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 80px;
+        height: 55px;
+    }
+
+    .custom-chk {
+        padding-left: 15px;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    .chosen-container-multi .chosen-choices {
+        width: 98.5% !important;
+    }
+
+        .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+            height: 28px !important;
+            width: 340px;
+        }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.css">
+@using (Html.BeginForm())
+{
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="quantri_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li>Hàng hóa</li>
+            <li><a href="quantri_hanghoa_tao-san-pham.html">Thêm sản phẩm mới</a></li>
+        </ol>
+    </section>
+    //Main content
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>Sửa sản phẩm</b>
+                            </h4>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button">
+
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" id="btnCreate">
+                                <i class="fa fa-plus-square text-green"></i>
+                                <span><strong>Tạo Mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                <i class="fa fa-edit text-grey"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" id="btnUpload" title="Lưu" data-placement="bottom">
+                                <i class="fa fa-save text-yellow"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                                <i class="fa fa-close text-grey"></i>
+                                <span><strong>Hủy</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                                <i class="fa fa-check-circle text-grey"></i>
+                                <span><strong>Chốt đơn</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                <i class="fa fa-exchange text-grey"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                <i class="fa fa-eye text-grey"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-grey"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                <i class="fa fa-download text-black"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-grey"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-grey"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-body" style="padding-bottom: 50px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form form-vertical">
+                                    <div class="col-md-12">
+                                        <span class="btn btn-primary btn-file">
+                                            Chọn Ảnh <input type="file" class="inputfile" id="files" name="files[]" multiple />
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12" style="padding-top: 15px">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Mã máy</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Mã máy..." id="pCode" type="text" value="@Model.itemProduct.Product_code" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Tên Máy</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Tên máy..." id="pName" type="text" value="@Model.itemProduct.Product_name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Thông số máy</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Thông số máy máy..." id="pParam" type="text" value="@Model.itemProduct.Product_parameters" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-4">
+                                                <label>Nhà cung cấp</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-handshake-o"></i>
+                                                    </span>
+                                                    @Html.DropDownList(Model.itemProduct.Supplier_ID, @Model.lstNhaCungCap, new { @class = "form-control",@id="nhaCungCap" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Danh mục</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-sliders"></i>
+                                                    </span>
+                                                    @Html.DropDownList(Model.itemProduct.Category_ID, @Model.lstDanhMuc, new { @class = "form-control",@id="danhMuc" })
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Danh mục con</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-sliders"></i>
+                                                    </span>
+                                                    @Html.DropDownList(Model.itemProduct.Supplier_ID, @Model.lstDanhMucCon, "Chọn danh mục con", new { @class = "form-control",@id="danhMucCon" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-4">
+                                                <label>Số lượng cái/ thùng</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Số lượng" id="pNumberCarton" type="number" value="@Model.itemProduct.Quantity_in_carton"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Giá trước VAT (VNĐ)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền VNĐ" id="pBeforeVatVND" type="text" value="@Model.itemProduct.Price_before_VAT_VND" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Giá trước VAT (USD)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-dollar"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền USD" id="pBeforeVatUSD" type="text" value="@Model.itemProduct.Price_before_VAT_USD" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-4">
+                                                <label>CIF (VNĐ)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-money"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền VNĐ" id="cifVND" type="text" value="@Model.itemProduct.CIF_VND" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>CIF (USD)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-dollar"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền USD" id="cifUSD" type="text" value="@Model.itemProduct.CIF_USD" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>VAT</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-dollar"></i>
+                                                    </span>
+                                                    <input class="form-control number" placeholder="Giá tiền USD" id="vat" type="text" value="@Model.itemProduct.VAT"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-6">
+                                                <label>Tổng quan sản phẩm</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-circle-o"></i>
+                                                    </span>
+                                                    <textarea id="pDescription" class="form-control">@Model.itemProduct.Overview</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Chi tiết sản phẩm</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa-chevron-circle-down"></i>
+                                                    </span>
+                                                    <textarea id="pDetail" class="form-control">@Model.itemProduct.Specification</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--main box-->
+            </div>
+            <!--main col-->
+        </div>
+    </section>
+
+}

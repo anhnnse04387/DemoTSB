@@ -1,4 +1,5 @@
 ﻿using Models.DAO;
+using Models.DAO_Model;
 using Models.Framework;
 using System;
 using System.Collections.Generic;
@@ -28,17 +29,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 
                 //first load page
                 model.lstCategory = daoCategory.getLstCate();
-                model.lstProduct = daoProduct.getListProduct();
-
-                if (model.lstProduct.Count != 0)
-                {
-                    foreach (Product itemProduct in model.lstProduct)
-                    {
-                        ShowProductModel spm = new ShowProductModel();
-                        spm.product = itemProduct;
-                        model.lstDisplay.Add(spm);
-                    }
-                }
+                model.lstSanPham = daoProduct.sanPhamDangKinhDoanh();
 
                 //list cho tim kiem san pham theo Category
                 List<Category> lstAll = daoCategory.getLstCate();
@@ -53,24 +44,24 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     model.lstSupplier.Add(new SelectListItem { Text = @item.Supplier_name, Value = @item.Supplier_ID.ToString() });
                 }
-                model.map = new Dictionary<string, List<ShowProductModel>>();
+                model.mapSanPham = new Dictionary<string, List<SanPham>>();
                 //Loc san pham theo category
                 if (model.lstCategory != null)
                 {
                     foreach (Category item in model.lstCategory)
                     {
-                        List<ShowProductModel> lstProductAdd = new List<ShowProductModel>();
+                        List<SanPham> lstProductAdd = new List<SanPham>();
 
-                        foreach (ShowProductModel p in model.lstDisplay)
+                        foreach (var p in model.lstSanPham)
                         {
-                            if (p.product.Category_ID.Equals(item.Category_ID))
+                            if (p.cateId.Equals(item.Category_ID))
                             {
                                 lstProductAdd.Add(p);
                             }
                         }
-                        model.map.Add(item.Category_name, lstProductAdd);
+                        model.mapSanPham.Add(item.Category_name, lstProductAdd);
                     }
-                    model.map = model.map.Where(x => x.Value.Count() != 0).ToDictionary(x => x.Key, x => x.Value);
+                    model.mapSanPham = model.mapSanPham.Where(x => x.Value.Count() != 0).ToDictionary(x => x.Key, x => x.Value);
                 }
 
                 return View(model);
@@ -89,18 +80,20 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             var daoSupplier = new SupplierDAO();
             ProductPhanPhoiModel model = new ProductPhanPhoiModel();
             Product product = new Product();
-            product.Category_ID = mo.categorySearch;
-            product.Product_code = mo.pCodeSearch;
-            product.Supplier_ID = mo.supplierSearch;
-
 
             model.lstSupplier = new List<SelectListItem>();
             model.lstDisplay = new List<ShowProductModel>();
             model.lstProduct = new List<Product>();
             model.lstCategory = new List<Category>();
 
+            product.Category_ID = mo.categorySearch;
+            product.Supplier_ID = mo.supplierSearch;
+            product.Product_code = mo.pCodeSearch;
+            //first load page
+            model.lstCategory = daoCategory.getLstCate();
+            model.lstSanPham = daoProduct.getLstSearchSanPham(product,mo.fromDate,mo.toDate);
 
-            //khoi tao list cho tim kiem san pham theo Category
+            //list cho tim kiem san pham theo Category
             List<Category> lstAll = daoCategory.getLstCate();
             model.lstCateSearch = new List<SelectListItem>();
             foreach (Category item in lstAll)
@@ -109,91 +102,30 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             }
             //khoi tao list cho tim kiem nha cung cap
             List<Supplier> lstAllSupplier = daoSupplier.getLstSupplier();
-            model.lstSupplier = new List<SelectListItem>();
             foreach (Supplier item in lstAllSupplier)
             {
                 model.lstSupplier.Add(new SelectListItem { Text = @item.Supplier_name, Value = @item.Supplier_ID.ToString() });
             }
-
-
-            if (mo.categorySearch != null || mo.pCodeSearch != null || mo.supplierSearch != null || mo.fromDate != null || mo.toDate != null)
-            {
-                //search products by product code
-                if (mo.categorySearch == null && mo.pCodeSearch != null)
-                {
-                    var cateId = daoProduct.getCateIdByProductName(mo.pCodeSearch);
-                    model.lstCategory = daoCategory.getLstCateSearch(cateId);
-                }
-                //search products by supplier 
-                if (mo.supplierSearch != null)
-                {
-                    List<Product> lstTemp = daoProduct.getLstSearch(product, mo.fromDate, mo.toDate);
-                    List<Category> lstCategoryTemp = new List<Category>();
-                    foreach (Product item in lstTemp)
-                    {
-                        Category cate = new Category();
-                        cate = daoCategory.getCategoryById(item.Category_ID);
-                        lstCategoryTemp.Add(cate);
-                    }
-                    model.lstCategory = lstCategoryTemp;
-                    model.lstCategory = model.lstCategory.Distinct().ToList();
-                }
-                //search products by category
-                if (mo.categorySearch != null)
-                {
-                    model.lstCategory = daoCategory.getLstCateSearch(mo.categorySearch);
-                }
-                if (mo.fromDate != null || mo.toDate != null)
-                {
-                    List<Product> lstTemp = new List<Product>();
-                    lstTemp = daoProduct.getLstSearch(product, mo.fromDate, mo.toDate);
-                    if (lstTemp.Count != 0)
-                    {
-                        foreach (Product item in lstTemp)
-                        {
-                            Category cate = new Category();
-                            cate = daoCategory.getCategoryById(item.Category_ID);
-                            model.lstCategory.Add(cate);
-                        }
-                    }
-                    model.lstCategory = model.lstCategory.Distinct().ToList();
-                }
-            }
-            else
-            {
-                model.lstCategory = daoCategory.getLstCate();
-                model.lstProduct = daoProduct.getListProduct();
-            }
-            model.lstProduct = daoProduct.getLstSearch(product, mo.fromDate, mo.toDate);
-            if (model.lstProduct.Count != 0)
-            {
-                foreach (Product productItem in model.lstProduct)
-                {
-                    ShowProductModel spm = new ShowProductModel();
-                    spm.product = productItem;
-                    model.lstDisplay.Add(spm);
-                }
-            }
-
-            model.map = new Dictionary<string, List<ShowProductModel>>();
-
+            model.mapSanPham = new Dictionary<string, List<SanPham>>();
             //Loc san pham theo category
             if (model.lstCategory != null)
             {
                 foreach (Category item in model.lstCategory)
                 {
-                    List<ShowProductModel> lstProductAdd = new List<ShowProductModel>();
+                    List<SanPham> lstProductAdd = new List<SanPham>();
 
-                    foreach (ShowProductModel p in model.lstDisplay)
+                    foreach (var p in model.lstSanPham)
                     {
-                        if (p.product.Category_ID.Equals(item.Category_ID))
+                        if (p.cateId.Equals(item.Category_ID))
                         {
                             lstProductAdd.Add(p);
                         }
                     }
-                    model.map.Add(item.Category_name, lstProductAdd);
+                    model.mapSanPham.Add(item.Category_name, lstProductAdd);
                 }
+                model.mapSanPham = model.mapSanPham.Where(x => x.Value.Count() != 0).ToDictionary(x => x.Key, x => x.Value);
             }
+
             return View(model);
         }
         public JsonResult GetSearchValue(string searchValue)

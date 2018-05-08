@@ -43,5 +43,9 @@ namespace Models.DAO
         {
             return db.Sub_category.Where(x => x.Status == 1).ToList();
         }
+        public List<Sub_category> getSubCategory(string categoryId)
+        {
+            return db.Sub_category.Where(x => x.Status == 1 && x.Category_ID.Equals(categoryId)).ToList();
+        }
     }
 }

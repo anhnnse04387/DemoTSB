@@ -65,7 +65,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Index");
             }
 
             return View(model);
@@ -170,7 +169,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
-                return RedirectToAction("Completed");
             }
             return View(model);
         }

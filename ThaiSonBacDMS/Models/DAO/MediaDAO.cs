@@ -50,8 +50,26 @@ namespace Models.DAO
                 System.Diagnostics.Debug.WriteLine(e);
                 return 0;
             } 
-            
-            
+        }
+        public List<int?> getMediaId(int productId)
+        {
+            List<int?> lstProductId = new List<int?>();
+            var query = from me in context.Product_media
+                        where me.Product_ID == productId
+                        select me;
+            if(query.Count() != 0)
+            {
+                foreach(var item in query)
+                {
+                    lstProductId.Add(item.Media_ID);
+                }
+            }
+            return lstProductId;
+        }
+        public string getProductMedia(int mediaId)
+        {
+            return context.Media.SingleOrDefault(x => x.Media_ID == mediaId).Location;
+
         }
     }
 }

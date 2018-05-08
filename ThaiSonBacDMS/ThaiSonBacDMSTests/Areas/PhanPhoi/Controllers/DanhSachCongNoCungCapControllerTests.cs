@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 using Models.DAO_Model;
+using Moq;
+using System.Web;
+using ThaiSonBacDMS.Common;
+using System.Web.Routing;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
 {
@@ -35,7 +39,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_Without_All_Null_Value()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("", "", "", "", "", "") as JsonResult;
             IDictionary<string, object> data = (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
             Assert.AreEqual(false, data["success"]);
@@ -44,7 +54,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InserData_With_Supplier_Id_Is_Character()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("a", "2,000,000", "500,000", "1,500,000", "0", "") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -54,7 +70,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_Without_Supplier_Id()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("", "2,000,000", "500,000", "1,500,000", "0", "") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -64,7 +86,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_With_ThanhToan_Is_Null()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("1", "2,000,000", "", "1,500,000", "0", "") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -74,7 +102,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_With_ThanhToan_Is_Character()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("1", "2,000,000", "a", "1,500,000", "0", "") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -84,7 +118,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_With_NhapTrongKy_Is_Null()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("1", "", "2,000,000", "1,500,000", "0", "") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -94,7 +134,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_With_NhapTrongKy_Is_Character()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("1", "a", "2,000,000", "1,500,000", "0", "") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
@@ -104,7 +150,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         [TestMethod()]
         public void InsertData_With_Validate_Values()
         {
+            var httpContextMock = new Mock<HttpContextBase>();
+            var sessionMock = new Mock<HttpSessionStateBase>();
+            var userSession = new UserSession { accountID = 3 };
+            sessionMock.Setup(n => n["USER_SESSION"]).Returns(userSession);
+            httpContextMock.Setup(n => n.Session).Returns(sessionMock.Object);
             var controller = new DanhSachCongNoCungCapController();
+            controller.ControllerContext = new ControllerContext(httpContextMock.Object, new RouteData(), controller);
             var result = controller.InsertData("1", "4000000", "2000000", "2000000", "5000000", "tra tien hang") as JsonResult;
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);

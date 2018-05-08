@@ -544,6 +544,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Steal(List<CustomOrderItem> lst)
         {
             try
