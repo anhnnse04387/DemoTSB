@@ -184,7 +184,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (Model.lstProduct.Count == 0)
+                                        @if (Model.lstSanPham.Count == 0)
                                         {
                                             <tr>
                                                 <td style="font-size:15px" colspan="9">Không tìm thấy sản phẩm!</td>
@@ -193,7 +193,7 @@
                                         else
                                         {
                                             int i = 1;
-                                            foreach (var itemCate in Model.map)
+                                            foreach (var itemCate in Model.mapSanPham)
                                             {
                                                 <tr style="background-color:yellow">
                                                     <td style="border-right:none !important"></td>
@@ -208,9 +208,9 @@
                                                 {
                                                     <tr>
                                                         <td style="vertical-align: middle; text-align: center;">@i</td>
-                                                        <td style="vertical-align: middle;">@Html.ActionLink(@items.product.Product_name, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)<span style="float: right; margin-right: 5px;">@Html.ActionLink(@items.product.Product_parameters, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)</span></td>
+                                                        <td style="vertical-align: middle;">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.productId }, null)<span style="float: right; margin-right: 5px;">@Html.ActionLink(@items.pParam, "Index", "ChiTietSanPham", new { product_Id = @items.productId }, null)</span></td>
                                                         <td style="vertical-align: middle;">@itemCate.Key</td>
-                                                        <td style="vertical-align: middle; text-align: center;">@items.product.Quantities_in_inventory</td>
+                                                        <td style="vertical-align: middle; text-align: center;">@items.quantity</td>
                                                         <td style="vertical-align: middle;">@items.supplierName</td>
                                                         <td style="vertical-align: middle; text-align: center;">
                                                             <a id="btn_row_@i" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">

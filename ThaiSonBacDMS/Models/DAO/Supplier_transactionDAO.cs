@@ -169,7 +169,7 @@ namespace Models.DAO
                          group supplier by supplier.Supplier_ID into g
                          select new
                          {
-                             transactionId = g.Max(x => x.Supplier_ID)
+                             transactionId = g.Max(x => x.Transaction_ID)
                          };
             var query2 = from supplier in db.Supplier_transaction
                          join maxId in query1 on supplier.Transaction_ID equals maxId.transactionId

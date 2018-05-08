@@ -16,12 +16,24 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             ProductDAO daoProduct = new ProductDAO();
             OrderItemDAO daoOrderItem = new OrderItemDAO();
-
+            MediaDAO daoMedia = new MediaDAO();
             ChiTietSanPhamModel model = new ChiTietSanPhamModel();
+            var lstMedia= daoMedia.getMediaId(product_Id);
+            model.lstLocation = new List<string>();
+            if(lstMedia.Count() > 0)
+            {
+                foreach(var item in lstMedia)
+                {
+                    string location = daoMedia.getProductMedia(Convert.ToInt32(item));
+                    model.lstLocation.Add(location);
+                }
+            }
+           
             model.lstDisplay = new List<ShowOrderItemModel>();
 
             List<Order_items> lstTemp = new List<Order_items>();
             lstTemp = daoOrderItem.getLstOrderItems(product_Id);
+
             if (lstTemp.Count != 0)
             {
                foreach(Order_items item in lstTemp)
