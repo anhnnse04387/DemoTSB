@@ -450,7 +450,6 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 model.deliveryAddress = data.Address_delivery;
                 model.customerName = customer.Customer_name;
                 model.statusId = data.Status_ID;
-                model.invoiceNumber = data.Order_part.FirstOrDefault().Invoice_number;
                 var items = new List<OrderItemModel>();
                 var leftItems = new List<OrderItemModel>();
                 model.qttTotal = 0;
@@ -505,7 +504,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 model.leftDiscountMoney = data.Order_discount > 0 ? (model.leftSubTotal * (100 - data.Order_discount) / 100) : 0;
                 model.leftAfterDiscountMoney = data.Order_discount > 0 ? model.leftSubTotal - model.leftDiscountMoney : model.leftSubTotal;
-                model.leftTotal = data.VAT > 0 ? model.leftAfterDiscountMoney + model.leftVatMoney : model.leftAfterDiscountMoney;
+                model.leftTotal = model.leftVatMoney > 0 ? model.leftAfterDiscountMoney + model.leftVatMoney : model.leftAfterDiscountMoney;
                 model.leftItems = leftItems;
                 foreach (Order_items o in data.Order_items)
                 {
@@ -637,6 +636,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     }
                     var part = new OrderPartModel
                     {
+                        invoiceNumber = op.Invoice_number,
                         Order_part_ID = op.Order_part_ID,
                         dateShow = op.Date_created.ToString("dd/MM/yyyy"),
                         items = partItems,

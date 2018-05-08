@@ -36,7 +36,14 @@
                         <tr>
                             <td>@(i + 1)</td>
                             <td>
-                                <a href="/QuanLy/ChiTietPhieu/Index?orderId=@Model.items[i].orderId" class="orderId">@Model.items[i].orderId</a>
+                                @if (Model.items[i].orderId.Contains("-"))
+                                {
+                                    <a href="/QuanLy/ChiTietPhieu/Index?orderId=@Model.items[i].orderId.Substring(0, Model.items[i].orderId.IndexOf("-"))" class="orderId">@Model.items[i].orderId</a>
+                                }
+                                else
+                                {
+                                    <a href="/QuanLy/ChiTietPhieu/Index?orderId=@Model.items[i].orderId" class="orderId">@Model.items[i].orderId</a>
+                                }
                                 @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
                                 {
                                     <span class="custom-span">
@@ -56,8 +63,8 @@
                                     @if (Model.items[i].date == DateTime.Today)
                                     {
                                         {
-                                            <a style="padding-left: 15px;" data-toggle="modal" title="Chốt" data-placement="bottom" id="btnDone">
-                                                <i class="fa fa-check text-green" style="font-size: 20px"></i>
+                                            <a style="padding-left: 15px;" data-toggle="modal" title="Chốt" data-placement="bottom" onclick="clickBtn(this)">
+                                                <i class="fa fa-check text-green pointerCursor" style="font-size: 20px"></i>
                                             </a>
                                         }
                                     }

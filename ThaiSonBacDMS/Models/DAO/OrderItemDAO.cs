@@ -49,7 +49,11 @@ namespace Models.DAO
             foreach (CustomOrderItem i in lst)
             {
                 var item = db.Order_items.Where(x => x.ID == i.id).SingleOrDefault();
-                item.Quantity -= i.qtt;
+                foreach (Order_items oi in db.Order_items.Where(x => x.Order_ID.Equals(item.Order_ID)
+                && x.Product_ID == item.Product_ID).ToList())
+                {
+                    oi.Quantity -= i.qtt;
+                }
                 db.Edit_history.Add(new Edit_history
                 {
                     Date_change = DateTime.Now,
@@ -219,31 +223,34 @@ namespace Models.DAO
         public List<CustomOrderItem> getLstByProductId(int productId)
         {
             var lst = new List<CustomOrderItem>();
-            foreach (Order_items i in db.Order_items.Where(x => x.Product_ID == productId).ToList())
+            foreach (Order_total o in db.Order_total.Where(x => x.Status_ID == 1 || x.Status_ID == 2).ToList())
             {
-                if (db.Order_part.Where(x => x.Order_ID.Equals(i.Order_ID)).ToList().Count == 1)
+                foreach (Order_items i in o.Order_items.Where(x => x.Product_ID == productId).ToList())
                 {
-                    var item = new CustomOrderItem
-                    {
-                        id = i.ID,
-                        orderId = i.Order_ID,
-                        qtt = i.Quantity,
-                        date = db.Order_part.Where(x => x.Order_part_ID.Equals(i.Order_ID)).SingleOrDefault().Request_stockout_date.Value.ToString("dd/MM/yyyy")
-                    };
-                    lst.Add(item);
-                }
-                else
-                {
-                    if (i.Order_part_ID != null)
+                    if (o.Order_part.Count == 1)
                     {
                         var item = new CustomOrderItem
                         {
                             id = i.ID,
                             orderId = i.Order_ID,
                             qtt = i.Quantity,
-                            date = db.Order_part.Where(x => x.Order_part_ID.Equals(i.Order_part_ID)).SingleOrDefault().Request_stockout_date.Value.ToString("dd/MM/yyyy")
+                            date = o.Order_part.SingleOrDefault().Request_stockout_date.Value.ToString("dd/MM/yyyy")
                         };
                         lst.Add(item);
+                    }
+                    else
+                    {
+                        if (i.Order_part_ID != null)
+                        {
+                            var item = new CustomOrderItem
+                            {
+                                id = i.ID,
+                                orderId = i.Order_ID,
+                                qtt = i.Quantity,
+                                date = o.Order_part.Where(x => x.Order_part_ID.Equals(i.Order_part_ID)).SingleOrDefault().Request_stockout_date.Value.ToString("dd/MM/yyyy")
+                            };
+                            lst.Add(item);
+                        }
                     }
                 }
             }
@@ -265,7 +272,7 @@ namespace Models.DAO
                             categoryID = c.Category_ID,
                             dateCreated = ot.Date_created,
                             nhapVon = p.CIF_VND * oi.Quantity,
-                            xuatVon = (p.CIF_VND + p.CIF_VND * ((decimal) p.VAT /100)) * oi.Quantity,
+                            xuatVon = (p.CIF_VND + p.CIF_VND * ((decimal)p.VAT / 100)) * oi.Quantity,
                             banChoKhach = oi.Quantity * (p.Price_before_VAT_VND + p.Price_before_VAT_VND * ((decimal)p.VAT / 100))
                         };
             if (category_ID != "-1")

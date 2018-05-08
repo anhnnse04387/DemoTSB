@@ -8,6 +8,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
 {
     public class OrderPartModel
     {
+        public String invoiceNumber { get; set; }
         public String lineStatus { get; set; }
         public Dictionary<int, StatusDetailModel> dict { get; set; }
         public string Order_part_ID { get; set; }

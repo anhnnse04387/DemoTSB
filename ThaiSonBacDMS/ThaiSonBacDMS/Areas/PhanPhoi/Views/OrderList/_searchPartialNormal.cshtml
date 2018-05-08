@@ -36,7 +36,14 @@
                         <tr>
                             <td>@(i + 1)</td>
                             <td>
-                                <a href="/PhanPhoi/ChiTietPhieu/Index?orderId=@Model.items[i].orderId" class="orderId">@Model.items[i].orderId</a>
+                                @if (Model.items[i].orderId.Contains("-"))
+                                {
+                                    <a href="/PhanPhoi/ChiTietPhieu/Index?orderId=@Model.items[i].orderId.Substring(0, Model.items[i].orderId.IndexOf("-"))" class="orderId">@Model.items[i].orderId</a>
+                                }
+                                else
+                                {
+                                    <a href="/PhanPhoi/ChiTietPhieu/Index?orderId=@Model.items[i].orderId" class="orderId">@Model.items[i].orderId</a>
+                                }                                
                                 @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
                                 {
                                     <span class="custom-span">

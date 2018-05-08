@@ -544,6 +544,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Steal(List<CustomOrderItem> lst)
         {
             try

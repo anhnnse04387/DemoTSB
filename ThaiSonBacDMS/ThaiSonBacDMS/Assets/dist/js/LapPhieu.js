@@ -643,7 +643,7 @@ function checkQtt(thisRow) {
                     confirmButtonText: '<i class="fa fa-check"></i>',
                     cancelButtonText: '<i class="fa fa-close"></i>'
                 }).then((result) => {
-                    if (result) {
+                    if (result.value) {
                         var items = [];
                         var arr = $('.itemQtt');
                         for (var i = 0; i < arr.length; i++) {
@@ -658,6 +658,7 @@ function checkQtt(thisRow) {
                         $.ajax({
                             url: '/PhanPhoi/LapPhieu/Steal',
                             dataType: 'json',
+                            type: 'POST',
                             data: { lst: items },
                             success: function () {
                                 document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="dist/facebook_sound.mp3" /></audio>';

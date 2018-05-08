@@ -173,6 +173,7 @@
             });            
         });
         function setTable() {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
             $('#dtTable').DataTable({
                 'paging': true,
                 'lengthChange': true,
@@ -193,7 +194,6 @@
             });
             $('.datepicker').datepicker();
             customerATC();
-            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
         }
         function customerATC() {
             $('#customer').autocomplete({

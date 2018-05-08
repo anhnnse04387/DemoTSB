@@ -117,7 +117,7 @@
                         <span><strong>Tạo Mới</strong></span>
                     </a>
                     <a class="btn btn-app custom-btn @(@Model.statusId == 7 ? "disabled" : "")" data-toggle="tooltip" title="Sửa" data-placement="bottom" href="@Url.Action("SuaPhieu", "LapPhieu", new { orderId = Model.orderId })">
-                        <i class="fa fa-edit text-blue @(@Model.statusId == 7 ? "text-gray" : "text-green")"></i>
+                        <i class="fa fa-edit text-blue @(@Model.statusId == 7 ? "text-gray" : "text-blue")"></i>
                         <span><strong>Sửa</strong></span>
                     </a>
                     <a class="btn btn-app custom-btn disabled">
@@ -497,7 +497,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa fa-handshake-o"></i>
                                                     </span>
-                                                    <input class="form-control" value="@Model.invoiceNumber" disabled>
+                                                    <input class="form-control" value="@Model.readPart[i].invoiceNumber" disabled>
                                                 </div>
                                             </div>
 

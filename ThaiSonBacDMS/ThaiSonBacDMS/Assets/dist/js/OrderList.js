@@ -75,6 +75,7 @@ function customerATC() {
 }
 
 function setTable() {
+    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
     $('#dtTable').DataTable({
         'paging': true,
         'lengthChange': true,
@@ -94,8 +95,7 @@ function setTable() {
         }
     });
     customerATC();
-    $('.datepicker').datepicker();
-    $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0'});
+    $('.datepicker').datepicker();    
 }
 function getData() {
     var orderId = $('#orderId').val();
