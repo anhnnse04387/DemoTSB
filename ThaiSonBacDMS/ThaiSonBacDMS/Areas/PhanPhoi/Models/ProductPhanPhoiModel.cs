@@ -1,4 +1,5 @@
 ﻿using Models.DAO;
+using Models.DAO_Model;
 using Models.Framework;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,10 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public string suppliers { get; set; }
         public string VAT { get; set; }
         public List<ShowProductModel> lstDisplay { get; set; }
+        public List<SanPham> lstSanPham { get; set; }
+        public Dictionary<string, List<SanPham>> mapSanPham { get; set; }
+        public List<GiaSanPham> lstGiaSanPham { get; set; }
+        public Dictionary<string,List<GiaSanPham>> mapGiaSanPham { get; set; }
       
     }
     public class ShowProductModel

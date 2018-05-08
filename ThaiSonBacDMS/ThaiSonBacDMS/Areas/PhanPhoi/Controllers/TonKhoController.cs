@@ -1,4 +1,5 @@
 ﻿using Models.DAO;
+using Models.DAO_Model;
 using Models.Framework;
 using System;
 using System.Collections.Generic;
@@ -30,40 +31,23 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 {
                     model.lstCategorySearch.Add(new SelectListItem { Text = itemCate.Category_name, Value = itemCate.Category_ID });
                 }
-
             }
-
-            model.lstDisplay = new List<ShowTonKhoModel>();
-            model.lstProduct = new List<Product>();
-            model.lstProduct = daoProduct.getAllProduct();
-            if (model.lstProduct.Count() != 0)
+            model.lstDisplay = new List<TonKho>();
+            model.lstDisplay = daoProduct.getAllProduct();
+            model.map = new Dictionary<string, List<TonKho>>();
+            foreach(Category itemCate in model.lstCategory)
             {
-                foreach (Product itemProduct in model.lstProduct)
+                List<TonKho> lst = new List<TonKho>();
+                foreach (TonKho itemTonKho in model.lstDisplay)
                 {
-                    ShowTonKhoModel stm = new ShowTonKhoModel();
-                    stm.product = itemProduct;
-                    model.lstDisplay.Add(stm);
-                }
-            }
-            //nhom san pham theo category
-            model.map = new Dictionary<string, List<ShowTonKhoModel>>();
-            //Loc san pham theo category
-            if (model.lstCategory != null)
-            {
-                foreach (Category item in model.lstCategory)
-                {
-                    List<ShowTonKhoModel> lstProductAdd = new List<ShowTonKhoModel>();
-
-                    foreach (ShowTonKhoModel p in model.lstDisplay)
+                    if (itemTonKho.categoryId.Equals(itemCate.Category_ID))
                     {
-                        if (p.product.Category_ID.Equals(item.Category_ID))
-                        {
-                            lstProductAdd.Add(p);
-                        }
+                        lst.Add(itemTonKho);
                     }
-                    model.map.Add(item.Category_name, lstProductAdd);
                 }
+                model.map.Add(itemCate.Category_name, lst);
             }
+            model.map = model.map.Where(x => x.Value.Count != 0).ToDictionary(x => x.Key, x => x.Value);
             return View(model);
         }
         [HttpPost]
@@ -77,7 +61,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //khoi tao list category
             model.lstCategory = new List<Category>();
             List<Category> lstTemp = new List<Category>();
-            model.map = new Dictionary<string, List<ShowTonKhoModel>>();
+            model.map = new Dictionary<string, List<TonKho>>();
             lstTemp = daoCate.getLstCate();
             model.lstCategorySearch = new List<SelectListItem>();
             if (lstTemp.Count() != 0)
@@ -88,56 +72,23 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
 
             }
-            model.lstDisplay = new List<ShowTonKhoModel>();
-            if (mo.categorySearch != null || mo.fromValue != null || mo.toValue != null || mo.pCodeSearch != null)
-            {
+            model.lstDisplay = new List<TonKho>();
+            model.lstDisplay = daoProduct.getLstProductSearch(mo.fromValue,mo.toValue,mo.pCodeSearch,mo.categorySearch);
 
-                model.lstProduct = daoProduct.getLstProductSearch(mo.fromValue, mo.toValue, mo.pCodeSearch, mo.categorySearch);
-                if (model.lstProduct.Count() != 0)
-                {
-                    foreach (Product itemProduct in model.lstProduct)
-                    {                       
-                        Category cate = new Category();
-                        cate = daoCate.getCategoryById(itemProduct.Category_ID);
-                        model.lstCategory.Add(cate);
-                    }
-                    model.lstCategory = model.lstCategory.Distinct().ToList();
-
-                }
-            }
-            else
-            {
-                model.lstCategory = daoCate.getLstCate();
-                model.lstProduct = daoProduct.getAllProduct();
-            }
-
-            if (model.lstProduct.Count() != 0)
-            {
-                foreach (Product itemProduct in model.lstProduct)
-                {
-                    ShowTonKhoModel stm = new ShowTonKhoModel();
-                    stm.product = itemProduct;
-                    model.lstDisplay.Add(stm);
-                }
-            }
-           
             //Nhom san pham theo category
-            if (model.lstCategory != null)
+            foreach (Category itemCate in lstTemp)
             {
-                foreach (Category item in model.lstCategory)
+                List<TonKho> lst = new List<TonKho>();
+                foreach (TonKho itemTonKho in model.lstDisplay)
                 {
-                    List<ShowTonKhoModel> lstProductAdd = new List<ShowTonKhoModel>();
-
-                    foreach (ShowTonKhoModel p in model.lstDisplay)
+                    if (itemTonKho.categoryId.Equals(itemCate.Category_ID))
                     {
-                        if (p.product.Category_ID.Equals(item.Category_ID))
-                        {
-                            lstProductAdd.Add(p);
-                        }
+                        lst.Add(itemTonKho);
                     }
-                    model.map.Add(item.Category_name, lstProductAdd);
                 }
+                model.map.Add(itemCate.Category_name, lst);
             }
+            model.map = model.map.Where(x => x.Value.Count != 0).ToDictionary(x => x.Key, x => x.Value);
             return View(model);
         }
         [HttpPost]
@@ -173,6 +124,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 return RedirectToAction("Index");
             }
 
+        }
+        public JsonResult GetSearchValue(string searchValue)
+        {
+            var daoProduct = new ProductDAO();
+            var lstProduct = daoProduct.getLstProductTonKho(searchValue);
+            List<ProductPhanPhoiModel> allSearch = lstProduct.Select(x => new ProductPhanPhoiModel()
+            {
+                pCodeSearch = x.productName,
+                pNameSearch = x.productName,
+            }).ToList();
+            return new JsonResult { Data = allSearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 

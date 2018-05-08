@@ -113,7 +113,7 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Trực tuyến</a>
                     </div>
                 </div>
-                <!-- search form 
+                <!-- search form
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group" style="padding-bottom: 0px;">
                         <input type="text" name="q" class="form-control" placeholder="Tìm Kiếm...">
@@ -127,20 +127,16 @@
                 /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="active">
+                    <li class="@Html.IsActive("Index", "Home")">
                         <a href="@Url.Action("Index", "Home")">
                             <i class="fa fa-file-o"></i>
                             <span>Phiếu đang chờ</span>
                         </a>
                     </li>
-
-                    <li class="">
+                    <li class="@Html.IsActive("Release", "Home")">
                         <a href="@Url.Action("Release", "Home")">
                             <i class="fa fa-file-text"></i>
                             <span>Phiếu đã xuất</span>
-                            <span class="pull-right-container">
-                                <span class="label label-primary bg-green">1</span>
-                            </span>
                         </a>
                     </li>
                 </ul>

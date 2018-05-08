@@ -202,6 +202,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var deliver_address = Request.Form.GetValues("deliver_address")[0];
                     var email = Request.Form.GetValues("email")[0];
                     var mst = Request.Form.GetValues("mst")[0];
+                    var acronym = Request.Form.GetValues("acronym")[0];
                     var customerID = Request.Form.GetValues("customerID")[0];
                     Regex phoneRegex = new Regex(CommonConstants.PHONE_REGEX, RegexOptions.IgnoreCase);
                     Regex mstRegex = new Regex(CommonConstants.MST_REGEX, RegexOptions.IgnoreCase);
@@ -255,7 +256,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                         lastIDMedia = new MediaDAO().insertMedia(newFname, "/Assets/dist/img/Resource/" + newFname, session.accountID);
 
                     }
-                    int cusID = new CustomerDAO().editCustomer(supplierName, lastIDMedia, address, deliver_address, supplierPhone, email, mst, int.Parse(customerID));
+                    int cusID = new CustomerDAO().editCustomer(supplierName, lastIDMedia, address, deliver_address, supplierPhone, email, mst, int.Parse(customerID), acronym);
                     if (cusID == -1)
                     {
                         return Json("-1");

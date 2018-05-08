@@ -188,7 +188,7 @@ function changeData() {
                 }
             });
             //Total Price
-            $("#totalPrice").replaceWith("<span id='totalPrice'>" + data.totalPrice + "</span>");            
+            $("#totalPrice").replaceWith("<span id='totalPrice' class='number'>" + data.totalPrice + "</span>");            
             
         },
         async: false

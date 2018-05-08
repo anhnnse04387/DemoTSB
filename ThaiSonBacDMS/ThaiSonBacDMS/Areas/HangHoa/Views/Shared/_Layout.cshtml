@@ -123,7 +123,10 @@
                 /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="treeview">
+                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "Home"
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "ChiTietPhieu"
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "OrderList"
+                        ? "active" : "")">
                         <a href="#">
                             <i class="fa fa-file-o"></i> Đơn hàng
                             <span class="pull-right-container">
@@ -131,8 +134,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu ">
-                            <li class="">
-                                <a href="@Url.Action("Index", "ErrorPage")">
+                            <li class="@Html.IsActive("Index", "OrderList")">
+                                <a href="@Url.Action("Index", "OrderList")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Chờ xuất kho</span>
                                 </a>
@@ -143,7 +146,7 @@
                                     <span>Đã chuẩn bị hàng</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="@Html.IsActive("Delivery", "ChiTietPhieu")">
                                 <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Đang giao hàng</span>
@@ -155,7 +158,7 @@
                                     <span>Đổi trả</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="@Html.IsActive("Completed", "OrderList")">
                                 <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Hoàn thành</span>

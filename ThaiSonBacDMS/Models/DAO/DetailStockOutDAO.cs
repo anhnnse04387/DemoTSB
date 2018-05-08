@@ -16,7 +16,7 @@ namespace Models.DAO
         }
         public int getStockOutQuantities(int productId)
         {
-            return (int)db.Detail_stock_out.SingleOrDefault(x => x.Product_ID == productId).Quantities;
+            return Convert.ToInt32(db.Detail_stock_out.SingleOrDefault(x => x.Product_ID == productId).Quantities);
         }
         //update quantities
         public int updateQuantites(int productId,string xuat)

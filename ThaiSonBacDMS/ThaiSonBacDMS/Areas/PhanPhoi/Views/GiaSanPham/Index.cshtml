@@ -168,16 +168,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if (Model.lstDisplay.Count == 0)
+                                            @if (Model.lstGiaSanPham.Count == 0)
                                             {
                                                 <tr>
-                                                    <td style="font-size:17px" colspan="11"> Không tìm thấy sản phẩm! </td>
+                                                    <td style="border-right: none !important;"></td>
+                                                    <td style="border-right: none !important;border-left:none !important;text-align:right">Không tìm thấy bản ghi nào!</td>
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    @*<td style="border-right: none !important;border-left:none !important"></td>*@
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    <td style="border-right: none !important;border-left:none !important"></td>
+                                                    <td class="right"></td>
                                                 </tr>
                                             }
                                             else
                                             {
                                                 int i = 1;
-                                                foreach (var itemCate in Model.map)
+                                                foreach (var itemCate in Model.mapGiaSanPham)
                                                 {
                                                     <tr style="background-color:yellow">
                                                         <td style="border-right: none !important;"></td>
@@ -197,16 +207,16 @@
                                                     {
                                                         <tr>
                                                             <td style="text-align: left">@i</td>
-                                                            <td style="border-right: none;text-align:left">@Html.ActionLink(@items.product.Product_name, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)
-                                                            <td style="border-left: none;text-align:left">@Html.ActionLink(@items.product.Product_parameters, "Index", "ChiTietSanPham", new { product_Id = @items.product.Product_ID }, null)</td>
+                                                            <td style="border-right: none;text-align:left">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)
+                                                            <td style="border-left: none;text-align:left">@Html.ActionLink(@items.pParam, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
-                                                            <td class="text-center number">@items.product.CIF_USD</td>
+                                                            <td class="text-center number">@items.cif</td>
                                                             @*<td class="text-center number">@items.product.CIF_VND</td>*@
-                                                            <td class="right number">@Convert.ToDouble(@items.product.Price_before_VAT_USD)</td>
-                                                            <td class="right number">@items.product.Price_before_VAT_VND</td>
-                                                            <td class="text-center">@items.product.VAT<span>%</span></td>
-                                                            <td class="right number">@items.Price_after_VAT_VND</td>
-                                                            <td class="right number">@items.Price_after_VAT_USD</td>
+                                                            <td class="right number">@items.price_before_vat_usd</td>
+                                                            <td class="right number">@items.price_before_vat_vnd</td>
+                                                            <td class="text-center">@items.vat<span>%</span></td>
+                                                            <td class="right number">@items.price_after_vat_usd</td>
+                                                            <td class="right number">@items.price_before_vat_vnd</td>
                                                         </tr>
 
                                                         i++;

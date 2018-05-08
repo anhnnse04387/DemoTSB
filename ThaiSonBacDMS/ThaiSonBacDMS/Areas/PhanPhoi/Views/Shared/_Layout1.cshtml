@@ -135,7 +135,8 @@
 
                     <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "OrderList"
                         || ViewContext.RouteData.Values["Controller"].ToString() == "LapPhieu"
-                        || ViewContext.RouteData.Values["Controller"].ToString() == "OrderTimeLine" ? "active" : "")">
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "OrderTimeLine"
+                        ? "active" : "")">
                         <a href="#">
                             <i class="fa fa-file-o"></i> <span>Đơn hàng</span>
                             <span class="pull-right-container">
@@ -143,7 +144,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="@Html.IsActive("Index", "LapPhieu")"><a href="@Url.Action("Index", "LapPhieu")"><i class="fa fa-edit"></i> Lập Phiếu</a></li>
+                            <li class="@Html.IsActive("Index", "LapPhieu")">
+                                <a href="@Url.Action("Index", "LapPhieu")"><i class="fa fa-edit">
+                                    </i> Lập Phiếu
+                                </a>
+                            </li>
                             <li class="@Html.IsActive("Index", "OrderList")">
                                 <a href="@Url.Action("Index", "OrderList")">
                                     <i class="fa fa-file-text"></i>
@@ -162,13 +167,13 @@
                                     <span>Phiếu đã hoàn thành</span>
                                 </a>
                             </li>
-                            <li class="@Html.IsActive("Processing", "OrderList")">
+                            <li class="@Html.IsActive("Store", "OrderList")">
                                 <a href="@Url.Action("Store", "OrderList")">
                                     <i class="fa fa-book"></i>
                                     <span>Phiếu giữ hàng</span>
                                 </a>
                             </li>
-                            <li class="@Html.IsActive("Processing", "OrderList")">
+                            <li class="@Html.IsActive("Index", "OrderTimeLine")">
                                 <a href="@Url.Action("Index", "OrderTimeLine")">
                                     <i class="fa fa-calendar-minus-o"></i>
                                     <span>Lịch giao hàng</span>
@@ -178,7 +183,12 @@
                         </ul>
                     </li>
 
-                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "LapPhieu" ? "active" : "")">
+                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "GiaSanPham"
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "TonKho"
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "PO"
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "PI"
+                        || ViewContext.RouteData.Values["Controller"].ToString() == "Stock"
+                        ? "active" : "")">
                         <a href="#">
                             <i class="fa fa-folder"></i> <span>Hàng hoá</span>
                             <span class="pull-right-container">
@@ -186,9 +196,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class=""><a href="@Url.Action("Index", "GiaSanPham")"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
-                            <li class=""><a href="@Url.Action("Index", "TonKho")"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
-                            <li class="treeview">
+                            <li class="@Html.IsActive("Index", "GiaSanPham")"><a href="@Url.Action("Index", "GiaSanPham")"><i class="fa fa-dollar"></i> Giá hàng hóa</a></li>
+                            <li class="@Html.IsActive("Index", "TonKho")"><a href="@Url.Action("Index", "TonKho")"><i class="fa fa-dropbox"></i> Hàng tồn kho</a></li>
+                            <li class="treeview  @(ViewContext.RouteData.Values["Controller"].ToString() == "PO"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "PI"
+                            ? "active" : "")">
                                 <a href="#">
                                     <i class="fa fa-hand-o-right"></i> Yêu cầu nhập
                                     <span class="pull-right-container">
@@ -196,12 +208,13 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li class=""><a href="@Url.Action("Index", "PO")"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
-                                    <li class=""><a href="@Url.Action("Index", "PI")"><i class="fa fa-id-card-o"></i> Nhập hoá đơn</a></li>
-                                    <li class=""><a href="@Url.Action("Store", "ErrorPage")"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
+                                    <li class="@Html.IsActive("Index", "PO")"><a href="@Url.Action("Index", "PO")"><i class="fa fa-edit"></i> Tạo yêu cầu nhập</a></li>
+                                    <li class="@Html.IsActive("Index", "PI")"><a href="@Url.Action("Index", "PI")"><i class="fa fa-id-card-o"></i> Nhập hoá đơn</a></li>
+                                    <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-table"></i> Lịch sử yêu cầu nhập</a></li>
                                 </ul>
                             </li>
-                            <li class="treeview">
+                            <li class="treeview  @(ViewContext.RouteData.Values["Controller"].ToString() == "Stock"
+                            ? "active" : "")">
                                 <a href="#">
                                     <i class="fa fa-hand-o-right"></i> Nhập hàng
                                     <span class="pull-right-container">
@@ -209,14 +222,16 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li class=""><a href="@Url.Action("Index", "Stock")"><i class="fa fa-edit"></i> Tạo đợt nhập mới</a></li>
+                                    <li class="@Html.IsActive("Index", "Stock")"><a href="@Url.Action("Index", "Stock")"><i class="fa fa-edit"></i> Tạo đợt nhập mới</a></li>
                                     <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-table"></i> Lịch sử nhập hàng</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="treeview">
+                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "DanhSachCongNoKhachHang"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "DanhSachCongNoCungCap"
+                            ? "active" : "")">
                         <a href="#">
                             <i class="fa fa-table"></i> <span>Công nợ</span>
                             <span class="pull-right-container">
@@ -224,8 +239,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class=""><a href="@Url.Action("Index", "DanhSachCongNoKhachHang")"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
-                            <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
+                            <li class="@Html.IsActive("Index", "DanhSachCongNoKhachHang")"><a href="@Url.Action("Index", "DanhSachCongNoKhachHang")"><i class="fa fa-hand-o-right"></i> Công nợ khách hàng</a></li>
+                            <li class="@Html.IsActive("Index", "DanhSachCongNoCungCap")"><a href="@Url.Action("Index", "DanhSachCongNoCungCap")"><i class="fa fa-hand-o-right"></i> Công nợ nhà cung cấp</a></li>
                         </ul>
                     </li>
 
@@ -244,7 +259,10 @@
                         </ul>
                     </li>
 
-                    <li class="treeview menu-open">
+                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "BaoCaoDoanhThu"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "BaoCaoCongNoKhachHang"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "BaoCaoCongNoCungCap"
+                            ? "active" : "")">
                         <a href="#">
                             <i class="fa fa-pencil-square"></i> <span>Báo cáo</span>
                             <span class="pull-right-container">
@@ -252,21 +270,25 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="">
+                            <li class="@Html.IsActive("Index", "BaoCaoDoanhThu")">
                                 <a href="@Url.Action("Index", "BaoCaoDoanhThu")"><i class="fa fa-line-chart"></i> Doanh thu</a>
                             </li>
 
-                            <li class="">
+                            <li class="@Html.IsActive("Index", "BaoCaoCongNoKhachHang")">
                                 <a href="@Url.Action("Index", "BaoCaoCongNoKhachHang")"><i class="fa fa-line-chart"></i> Công nợ khách hàng</a>
                             </li>
 
-                            <li class="">
+                            <li class="@Html.IsActive("Index", "BaoCaoCongNoCungCap")">
                                 <a href="@Url.Action("Index", "BaoCaoCongNoCungCap")"><i class="fa fa-line-chart"></i> Công nợ nhà cung cấp</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="treeview ">
+                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "DanhSachKhachHang"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "DanhSachNhaCungCap"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "SanPhamDangKinhDoanh"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "SanPhamNgungKinhDoanh"
+                            ? "active" : "")">
                         <a href="#">
                             <i class="fa fa-database"></i> <span>Quản trị</span>
                             <span class="pull-right-container">
@@ -274,13 +296,15 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="">
+                            <li class="@Html.IsActive("Index", "DanhSachKhachHang")">
                                 <a href="@Url.Action("Index", "DanhSachKhachHang")"><i class="fa fa-users"></i> Danh sách khách hàng</a>
                             </li>
-                            <li class="">
+                            <li class="@Html.IsActive("Index", "DanhSachNhaCungCap")">
                                 <a href="@Url.Action("Index", "DanhSachNhaCungCap")"><i class="fa fa-users"></i> Danh sách nhà cung cấp</a>
                             </li>
-                            <li class="treeview">
+                            <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "SanPhamDangKinhDoanh"
+                            || ViewContext.RouteData.Values["Controller"].ToString() == "SanPhamNgungKinhDoanh"
+                            ? "active" : "")">
                                 <a href="#">
                                     <i class="fa fa-paper-plane"></i> Hàng hoá
                                     <span class="pull-right-container">
@@ -289,7 +313,9 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-tags"></i> Danh mục</a></li>
-                                    <li class="treeview">
+                                    <li class="treeview @(ViewContext.RouteData.Values["Controller"].ToString() == "SanPhamDangKinhDoanh"
+                                    || ViewContext.RouteData.Values["Controller"].ToString() == "SanPhamNgungKinhDoanh"
+                                    ? "active" : "")">
                                         <a href="#">
                                             <i class="fa fa-anchor"></i> Sản phẩm
                                             <span class="pull-right-container">
@@ -297,8 +323,8 @@
                                             </span>
                                         </a>
                                         <ul class="treeview-menu">
-                                            <li class=""><a href="@Url.Action("Index", "SanPhamDangKinhDoanh")"><i class="fa fa-edit"></i> Đang kinh doanh</a></li>
-                                            <li class=""><a href="@Url.Action("Index", "SanPhamNgungKinhDoanh")"><i class="fa fa-id-card-o"></i> Ngừng kinh doanh</a></li>
+                                            <li class="@Html.IsActive("Index", "SanPhamDangKinhDoanh")"><a href="@Url.Action("Index", "SanPhamDangKinhDoanh")"><i class="fa fa-edit"></i> Đang kinh doanh</a></li>
+                                            <li class="@Html.IsActive("Index", "SanPhamNgungKinhDoanh")"><a href="@Url.Action("Index", "SanPhamNgungKinhDoanh")"><i class="fa fa-id-card-o"></i> Ngừng kinh doanh</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -308,7 +334,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="">
+                    <li class="@Html.IsActive("Index", "WorkFlow")">
                         <a href="@Url.Action("Index", "WorkFlow")">
                             <i class="fa fa-question-circle"></i> <span>Help</span>
                         </a>

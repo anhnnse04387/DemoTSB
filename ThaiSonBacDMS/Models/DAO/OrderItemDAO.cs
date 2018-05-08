@@ -462,7 +462,7 @@ namespace Models.DAO
                         : (decimal)x.Price - (decimal)x.Price * ((decimal)x.Discount / 100));
                         listCategory.Add(data);
                     }
-                    var cusName = new CustomerDAO().getCustomerById(item.Key).Customer_name;
+                    var cusName = new CustomerDAO().getCustomerById(item.Key).Acronym;
                     listData.Add(cusName, listCategory);
                 }
                 catch (Exception e)

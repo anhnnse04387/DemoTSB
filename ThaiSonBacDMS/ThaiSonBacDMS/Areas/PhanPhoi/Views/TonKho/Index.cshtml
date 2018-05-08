@@ -128,23 +128,23 @@
                                 <i class="fa fa-exchange text-grey"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
                                 <i class="fa fa-eye text-grey"></i>
                                 <span><strong>Xem Trước</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="inProgressing()" data-toggle="tooltip" title="In" data-placement="bottom">
                                 <i class="fa fa-print text-blue"></i>
                                 <span><strong>In</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn disabled" onclick="inProgressing()" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
                                 <i class="fa fa-download text-grey"></i>
                                 <span><strong>Import Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="inProgressing()" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
                                 <i class="fa fa-file-excel-o text-green"></i>
                                 <span><strong>Xuất Excel</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" onclick="inProgressing()" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
                                 <i class="fa fa-file-pdf-o text-red"></i>
                                 <span><strong>Xuất PDF</strong></span>
                             </a>
@@ -211,11 +211,10 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 1%">STT</th>
-                                            <th colspan="2" style="width: 12%">Mã hàng</th>
+                                            <th colspan="2" style="width: 5%">Mã hàng</th>
                                             <th style="width: 4%">Tổng nhập</th>
                                             <th style="width: 4%">Tổng xuất</th>
                                             <th style="width: 3%">Tổng tồn</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -233,7 +232,7 @@
                                             {
                                                 <tr style="background-color: yellow">
                                                     <td></td>
-                                                    <td style="border-right:none" class="key">@itemCate.Key</td>
+                                                    <td style="border-right:none" class="key text-center">@itemCate.Key</td>
                                                     <td style="border-left: none"></td>
                                                     <td></td>
                                                     <td></td>
@@ -244,93 +243,93 @@
                                                 {
                                                     <tr>
                                                         <td class="text-center index">@i</td>
-                                                        <td style="border-right: none;text-align: left">@items.product.Product_name</td>
-                                                        <td style="border-left: none !important;text-align: right">@items.product.Product_parameters</td>
-                                                        <td class="right nhap_@j">@items.TongNhap</td>
-                                                        <td class="right xuat_@j">@items.TongXuat</td>
-                                                        <td class="right ton_@j">@items.TongTon</td>
+                                                        <td style="border-right: none;text-align: left">@Html.ActionLink(@items.productName, "Index", "ChiTietSanPham", new { @product_Id = @items.productId }, null)</td>
+                                                        <td style="border-left: none !important;text-align: left;width:3%">@Html.ActionLink(@items.productParameter, "Index", "ChiTietSanPham", new { @product_Id = @items.productId }, null)</td>
+                                                        <td class="text-center nhap_@j">@items.tongNhap</td>
+                                                        <td class="text-center xuat_@j">@items.tongXuat</td>
+                                                        <td class="text-center ton_@j">@items.tongTon</td>
                                                     </tr>
-                                                        @*<td style="text-align:center">
-                                                                    <a id="btn_row_@i" onclick="showHide('@i')" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                                        <i class="fa fa-edit text-blue"></i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr id="row_@i">
-                                                                <td colspan="10">
-                                                                    <div class="container-fluid">
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label>Tổng nhập</label>
-                                                                                <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                                    </span>
-                                                                                    <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongNhap" id="editNhap_@i" />
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label>Tổng xuất</label>
-                                                                                <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                                    </span>
-                                                                                    <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongXuat" id="editXuat_@i" />
-
-                                                                                </div>
-
+                                                    @*<td style="text-align:center">
+                                                                <a id="btn_row_@i" onclick="showHide('@i')" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                    <i class="fa fa-edit text-blue"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="row_@i">
+                                                            <td colspan="10">
+                                                                <div class="container-fluid">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng nhập</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongNhap" id="editNhap_@i" />
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label>Tổng tồn</label>
-                                                                                <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                                                                    </span>
-                                                                                    <output class="form-control" id="editTon_@i">@items.TongTon</output>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row hidden">
-                                                                            <div class="col-md-6">
-                                                                                <label>Tổng tồn</label>
-                                                                                <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-usd" aria-hidden="true"></i>
-                                                                                    </span>
-                                                                                    <input type="text" class="form-control" value="@items.product.Product_ID" id="productId_@i" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng xuất</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongXuat" id="editXuat_@i" />
 
-                                                                        <br>
-                                                                        <div class="row">
-                                                                            <div class="">
-                                                                                <div class="col-md-10"></div>
-                                                                                <div class="col-md-1">
-                                                                                    <a href="" id="cancel_btn_@i" onclick="closePannel('@i')" class="btn btn-default btn-block">Hủy</a>
-                                                                                </div>
-                                                                                <div class="col-md-1">
-                                                                                    <a href="" class="btn btn-danger btn-block" onclick="validate('@i')">Sửa</a>
-                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng tồn</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <output class="form-control" id="editTon_@i">@items.TongTon</output>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </td>
-                                                            </tr>*@
+                                                                    <div class="row hidden">
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng tồn</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <input type="text" class="form-control" value="@items.product.Product_ID" id="productId_@i" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <div class="">
+                                                                            <div class="col-md-10"></div>
+                                                                            <div class="col-md-1">
+                                                                                <a href="" id="cancel_btn_@i" onclick="closePannel('@i')" class="btn btn-default btn-block">Hủy</a>
+                                                                            </div>
+                                                                            <div class="col-md-1">
+                                                                                <a href="" class="btn btn-danger btn-block" onclick="validate('@i')">Sửa</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>*@
                                             i++;
                                         }
-                                        if (Model.lstProduct.Count != 0)
+                                        if (Model.lstDisplay.Count != 0)
                                         {
                                             <tr style="background-color: #00b3b3;font-weight: bold">
-                                                @*<td></td>*@
                                                 <td style="border-right: none"></td>
-                                                <td style="text-align: left;border-left: none;color: white">Tổng</td>
-                                                <td class="right" id="sumNhap_@j"></td>
-                                                <td class="right" id="sumXuat_@j"></td>
-                                                <td class="right" id="sumTon_@j"></td>
-                                                <td></td>
+                                                <td style="text-align: left;border-left: none;color: white;border-right:none">Tổng</td>
+                                                <td style="border-left:none;"></td>
+                                                <td class="text-center" id="sumNhap_@j"></td>
+                                                <td class="text-center" id="sumXuat_@j"></td>
+                                                <td class="text-center" id="sumTon_@j"></td>
+
                                             </tr>
                                                 }
                                                 j++;
@@ -340,12 +339,12 @@
 
                                     <tfoot>
                                         <tr>
-                                            <td></td>
-                                            <td style="text-align: left;border-right: none">Tổng cộng</td>
-                                            <td style="border-left: none"></td>
-                                            <td class="right" id="totalNhap"></td>
-                                            <td class="right" id="totalXuat"></td>
-                                            <td class="right" id="totalTon"></td>
+                                            <td style="border-right:none"></td>
+                                            <td colspan="2" style="text-align: left;border-left:none;border-right: none">Tổng cộng</td>
+
+                                            <td class="text-center" id="totalNhap"></td>
+                                            <td class="text-center" id="totalXuat"></td>
+                                            <td class="text-center" id="totalTon"></td>
                                             @*<td></td>*@
                                         </tr>
                                     </tfoot>
@@ -478,7 +477,7 @@
             $("#pCodeSearch").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: '@Url.Action("GetSearchValue", "SanPhamDangKinhDoanh")',
+                        url: '@Url.Action("GetSearchValue", "TonKho")',
                         minLength: 2,
                         dataType: "json",
                         data: { searchValue: $("#pCodeSearch").val() },
@@ -577,8 +576,15 @@
                     $("#editTon_" + i).val(ton);
                     $("#editTon_" + i).autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
                 }
+            }
 
-
+            function inProgressing() {
+                swal({
+                    title: 'Chức năng đang phát triển',
+                    type: 'warning',
+                    timer: 5000,
+                    showConfirmButton: true
+                })
             }
         </script>
     }

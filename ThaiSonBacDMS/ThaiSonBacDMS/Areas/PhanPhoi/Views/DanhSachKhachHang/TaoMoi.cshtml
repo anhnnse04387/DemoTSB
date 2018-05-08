@@ -59,9 +59,9 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
-        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-        <li>Danh sách khách hàng</li>
-        <li><a href="phanphoi_cungcap_tao-nha-cung-cap.html">Thêm khách hàng</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("Index", "DanhSachKhachHang")"></a>Danh sách khách hàng</li>
+        <li><a href="">Thêm khách hàng</a></li>
     </ol>
 </section>
 
@@ -161,7 +161,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Tên khách hàng..." id="supplier_name">
+                                                    <input class="form-control" placeholder="Tên khách hàng..." id="supplier_name" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -170,7 +170,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-phone"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Số điện thoại..." type="text" id="phone">
+                                                    <input class="form-control" placeholder="Số điện thoại..." type="text" id="phone" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                 </div>
                                             </div>
                                         </div>
@@ -181,7 +181,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-address-book"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Địa chỉ nhận hóa đơn..." type="text" id="address">
+                                                    <input class="form-control" placeholder="Địa chỉ nhận hóa đơn..." type="text" id="address" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -190,7 +190,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-address-book"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Địa chỉ giao hàng..." type="text" id="deliver_address">
+                                                    <input class="form-control" placeholder="Địa chỉ giao hàng..." type="text" id="deliver_address" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                 </div>
                                             </div>
 
@@ -211,7 +211,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-bank"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Mã số thuế..." type="text" id="mst">
+                                                    <input class="form-control" placeholder="Mã số thuế..." type="text" id="mst" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                                 </div>
                                             </div>
                                         </div>

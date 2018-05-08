@@ -90,12 +90,12 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="#">
+            <a href="@Url.Action("Index", "Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="@Url.Action("Index", "DanhSachKhachHang")">
                 <i class=""></i> Danh sách khách hàng
             </a>
         </li>
@@ -255,7 +255,7 @@
                               
                                                         else if (item.Status_ID == 7)
                                                         {
-                                                            <span class="label label-success">Hoàn thành"</span>
+                                                            <span class="label label-success">Hoàn thành</span>
                                                         }
                                                         else if (item.Status_ID == 8)
                                                         {
@@ -274,14 +274,6 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="label label-default pull-right" id="attach_box" style="padding : 5px;">
-                                        <a href="phanphoi_toBeContinue.html" style="color:black">Xem tất cả</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <br>
                             <br>
                         </div>
                     </div>
@@ -316,6 +308,15 @@
                                                             <i class="fa fa-user"></i>
                                                         </span>
                                                         <input class="form-control" value="@Model.customer.Customer_name" id="supplier_name">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>Tên viết tắt</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Acronym" type="text" id="acronym">
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 10px;">
@@ -519,6 +520,7 @@
                             fileData.append('supplierPhone', supp_phone);
                             fileData.append('address', supp_address);
                             fileData.append('deliver_address', supp_d_address);
+                            fileData.append('acronym', acronym);
                             fileData.append('email', supp_email);
                             fileData.append('mst', supp_mst);
                             fileData.append('customerID', @Model.customer.Customer_ID);
@@ -541,11 +543,6 @@
                             } else if (isEmpty(supp_d_address)) {
                                 swal({
                                     title: 'Địa chỉ giao hàng không được bỏ trống',
-                                    type: 'warning'
-                                });
-                            } else if (!validateEmail(supp_email)) {
-                                swal({
-                                    title: 'Sai Email',
                                     type: 'warning'
                                 });
                             } else if (!RegExp("^([0-9]{2})[0-9]{8}$").test(supp_mst)) {

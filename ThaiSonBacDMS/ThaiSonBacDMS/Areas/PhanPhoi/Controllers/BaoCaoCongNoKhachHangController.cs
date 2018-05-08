@@ -34,7 +34,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.listCongNo = new List<CongNoKhachHang>();
             foreach (var x in new CustomerDAO().getTop10CustomerDebt())
             {
-                model.listCongNo.Add(new CongNoKhachHang(x.Customer_name, x.Delivery_address, (decimal)x.Current_debt, 1));
+                model.listCongNo.Add(new CongNoKhachHang(x.Customer_name, x.Delivery_address, (decimal)x.Current_debt, x.Customer_ID));
             }
             return View(model);
         }
