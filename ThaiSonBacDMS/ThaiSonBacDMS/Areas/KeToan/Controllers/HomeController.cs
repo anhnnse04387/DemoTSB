@@ -47,7 +47,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                 };
                 items.Add(item);
             }
-            model.items = items;
+            model.items = items.OrderByDescending(x=>x.date).ToList();
             return View(model);
         }
 
@@ -90,7 +90,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                 };
                 items.Add(item);
             }
-            model.items = items;
+            model.items = items.OrderByDescending(x => x.date).ToList();
             return View(model);
         }
 
@@ -191,7 +191,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                         items = items.Where(x => x.delivery > 1).ToList();
                     }
                 }
-                model.items = items.OrderBy(x => x.orderId).ToList();
+                model.items = items.OrderByDescending(x => x.date).ToList();
                 return PartialView("_searchPartial", model);
             }
             catch (Exception e)

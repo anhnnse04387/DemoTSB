@@ -17,6 +17,8 @@
         if (validate() === 0) {
             event.preventDefault();
             $('#preview').removeClass('noDisplay');
+            $('#headerPreview').removeClass('noDisplay');
+            $('#header').addClass('noDisplay');
             $('#normal').addClass('noDisplay');
             $('form :input').not($('#btnSubmit')).prop('disabled', true);
         } else {
@@ -24,6 +26,8 @@
         }
     });
     $('#btnCancelPreview').click(function () {
+        $('#header').removeClass('noDisplay');
+        $('#headerPreview').addClass('noDisplay');
         $('#preview').addClass('noDisplay');
         $('#normal').removeClass('noDisplay');
         $('form :input').prop('disabled', false);

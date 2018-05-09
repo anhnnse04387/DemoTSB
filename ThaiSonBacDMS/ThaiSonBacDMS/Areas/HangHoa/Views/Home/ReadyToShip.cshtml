@@ -1,0 +1,884 @@
+﻿@model ThaiSonBacDMS.Areas.HangHoa.Models.OrderListModel
+@{
+    ViewBag.Title = "ReadyToShip";
+    Layout = "~/Areas/HangHoa/Views/Shared/_Layout.cshtml";
+}
+<!-- DataTables -->
+<link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<!-- Datepicker -->
+<link href="~/Assets/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<style>
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    th {
+        color: white;
+        background-color: #3c8dbc;
+        font-weight: bold;
+    }
+
+    #example1 {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #example1 tbody td:nth-child(4),
+        #example1 tbody td:nth-child(5),
+        #example1 tbody td:nth-child(6),
+        #example1 tbody td:nth-child(7) {
+            text-align: center;
+        }
+
+        #example1 tbody td:nth-child() {
+            text-align: right;
+        }
+
+    .custom-btn {
+        margin-left: 10px;
+    }
+
+    .custom-chk {
+        padding-left: 15px;
+    }
+
+    .modal-dialog-table {
+        width: 70%;
+    }
+
+    #popTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #popTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #popTable tbody td:nth-child(3),
+        #popTable tbody td:nth-child(4),
+        #popTable tbody td:nth-child(5),
+        #popTable tbody td:nth-child(6) {
+            text-align: center;
+        }
+
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Đơn hàng</li>
+        <li class="active">Đã chuẩn bị hàng</li>
+    </ol>
+</section>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    <b>DANH SÁCH CHỜ VẬN CHUYỂN</b>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Lô số</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control" placeholder="Lô số...">
+                                                        </div>
+                                                    </td>
+                                                    <td>Tên khách hàng</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            <input style="width:357px" type="text" class="form-control" placeholder="Tên...">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Số hóa đơn</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control" placeholder="Số hoá đơn...">
+                                                        </div>
+                                                    </td>
+                                                    <td>Ngày xuất kho</td>
+                                                    <td>
+                                                        <div class="input-group date col-sm-5 no-padding" style="float:left">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            <input style="width:150px" type="text" class="form-control" placeholder="Từ ngày...">
+                                                        </div>
+                                                        <div class="input-group date col-sm-6 col-sm-offset-1 no-padding">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            <input style="width:150px" type="text" class="form-control" placeholder="Đến ngày...">
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Trạng thái</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-hourglass"></i>
+                                                            </span>
+                                                            <select class="form-control" style="font-family: 'FontAwesome';width:357px">
+                                                                <option>Đã xuất kho</option>
+                                                                <option class="text-yellow">Đã xuất kho&#xf071;</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        Kiểm tra
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="checkbox" />
+                                                            <label style="padding-left : 10px; padding-right:30px;">
+                                                                Lấy phiếu
+                                                            </label>
+                                                            <input type="checkbox" />
+                                                            <label style="padding-left : 10px;">
+                                                                Lấy hoá đơn
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <div class="pagination pagination-sm no-margin pull-right">
+                                            <button type="button" class="btn btn-block btn-primary">
+                                                Tìm kiếm
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="example1" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Lô số</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Số hóa đơn</th>
+                                            <th>Lấy hoá đơn</th>
+                                            <th>Lấy phiếu</th>
+                                            <th>Trạng thái</th>
+                                            <th>Ngày giao</th>
+                                            <th>Ngày hoàn thành</th>
+                                            <th>Ghi chú</th>
+                                            <th>Sửa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <a href="hanghoa_donhang_chi-tiet-van-chuyen.html">81269-0</a>
+                                            </td>
+                                            <td>Công ty Long Giang</td>
+                                            <td>24329</td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+
+                                            <td>
+                                                <span class="label label-primary">Đã xuất kho</span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Giao trước 15-12-2017</td>
+                                            <td>
+                                                <a id="btn_row1" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr id="row1">
+                                            <td colspan="13">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Biển kiểm soát</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-hourglass"></i>
+                                                                </span>
+                                                                <select class="form-control">
+                                                                    <option>30A-342.21</option>
+                                                                    <option>29A-652.12</option>
+                                                                    <option>28A-113.121</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Nhân viên giao hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Lương Đức Chinh</option>
+                                                                    <option>Hà Văn Thanh</option>
+                                                                    <option>Vũ Xuân Trường</option>
+                                                                    <option>Nguyễn Văn Hậu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Lái xe</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Nguyễn Ngọc Hải</option>
+                                                                    <option>Nguyễn Văn Toàn</option>
+                                                                    <option>Lê Duy Mạnh</option>
+                                                                    <option>Trần Minh Long</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px; padding-right:30px;">
+                                                                    Lấy phiếu
+                                                                </label>
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px;">
+                                                                    Lấy hoá đơn
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-md-offset-6">
+                                                            <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-warning btn-warning btn-block btn-block" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success btn-success btn-block btn-block" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>
+                                                <a href="hanghoa_donhang_chi-tiet-van-chuyen.html">81268-0</a>
+                                            </td>
+                                            <td>Công ty Phú An</td>
+                                            <td>24328</td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+
+                                            <td>
+                                                <span class="label label-primary">Đã xuất kho</span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td> Giao trước 11-12-2017</td>
+                                            <td>
+                                                <a id="btn_row2" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr id="row2">
+                                            <td colspan="13">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Biển kiểm soát</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-hourglass"></i>
+                                                                </span>
+                                                                <select class="form-control">
+                                                                    <option>30A-342.21</option>
+                                                                    <option>29A-652.12</option>
+                                                                    <option>28A-113.121</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Nhân viên giao hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Lương Đức Chinh</option>
+                                                                    <option>Hà Văn Thanh</option>
+                                                                    <option>Vũ Xuân Trường</option>
+                                                                    <option>Nguyễn Văn Hậu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Lái xe</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Nguyễn Ngọc Hải</option>
+                                                                    <option>Nguyễn Văn Toàn</option>
+                                                                    <option>Lê Duy Mạnh</option>
+                                                                    <option>Trần Minh Long</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px; padding-right:30px;">
+                                                                    Lấy phiếu
+                                                                </label>
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px;">
+                                                                    Lấy hoá đơn
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-md-offset-6">
+                                                            <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-warning btn-warning btn-block btn-block" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success btn-success btn-block btn-block" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>
+                                                <a href="hanghoa_donhang_chi-tiet-van-chuyen.html">81267-0</a>
+                                            </td>
+                                            <td>Công ty Invico</td>
+                                            <td>24327</td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+
+                                            <td>
+                                                <span class="label label-warning">Đã xuất kho</span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Giao trước 06-03-2015</td>
+                                            <td>
+                                                <a id="btn_row3" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr id="row3">
+                                            <td colspan="13">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Biển kiểm soát</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-hourglass"></i>
+                                                                </span>
+                                                                <select class="form-control">
+                                                                    <option>30A-342.21</option>
+                                                                    <option>29A-652.12</option>
+                                                                    <option>28A-113.121</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Nhân viên giao hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Lương Đức Chinh</option>
+                                                                    <option>Hà Văn Thanh</option>
+                                                                    <option>Vũ Xuân Trường</option>
+                                                                    <option>Nguyễn Văn Hậu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Lái xe</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Nguyễn Ngọc Hải</option>
+                                                                    <option>Nguyễn Văn Toàn</option>
+                                                                    <option>Lê Duy Mạnh</option>
+                                                                    <option>Trần Minh Long</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px; padding-right:30px;">
+                                                                    Lấy phiếu
+                                                                </label>
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px;">
+                                                                    Lấy hoá đơn
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-md-offset-6">
+                                                            <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-warning btn-warning btn-block btn-block" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success btn-success btn-block btn-block" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>
+                                                <a href="hanghoa_donhang_chi-tiet-van-chuyen.html">81266-0</a>
+                                            </td>
+                                            <td>Công ty Sáng Hà</td>
+                                            <td>24326</td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+
+                                            <td>
+                                                <span class="label label-primary">Đã xuất kho</span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Giao trước 19-11-2017</td>
+                                            <td>
+                                                <a id="btn_row4" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr id="row4">
+                                            <td colspan="13">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Biển kiểm soát</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-hourglass"></i>
+                                                                </span>
+                                                                <select class="form-control">
+                                                                    <option>30A-342.21</option>
+                                                                    <option>29A-652.12</option>
+                                                                    <option>28A-113.121</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Nhân viên giao hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Lương Đức Chinh</option>
+                                                                    <option>Hà Văn Thanh</option>
+                                                                    <option>Vũ Xuân Trường</option>
+                                                                    <option>Nguyễn Văn Hậu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Lái xe</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Nguyễn Ngọc Hải</option>
+                                                                    <option>Nguyễn Văn Toàn</option>
+                                                                    <option>Lê Duy Mạnh</option>
+                                                                    <option>Trần Minh Long</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px; padding-right:30px;">
+                                                                    Lấy phiếu
+                                                                </label>
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px;">
+                                                                    Lấy hoá đơn
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-md-offset-6">
+                                                            <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-warning btn-warning btn-block btn-block" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success btn-success btn-block btn-block" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>
+                                                <a href="hanghoa_donhang_chi-tiet-van-chuyen.html">81265-1</a>
+                                            </td>
+                                            <td>Công ty Vạn Xuân</td>
+                                            <td>24325</td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+
+                                            <td>
+                                                <span class="label label-warning">Đã xuất kho</span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Giao trước 19-11-2017</td>
+                                            <td>
+                                                <a id="btn_row5" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr id="row5">
+                                            <td colspan="13">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Biển kiểm soát</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-hourglass"></i>
+                                                                </span>
+                                                                <select class="form-control">
+                                                                    <option>30A-342.21</option>
+                                                                    <option>29A-652.12</option>
+                                                                    <option>28A-113.121</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Nhân viên giao hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Lương Đức Chinh</option>
+                                                                    <option>Hà Văn Thanh</option>
+                                                                    <option>Vũ Xuân Trường</option>
+                                                                    <option>Nguyễn Văn Hậu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Lái xe</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Nguyễn Ngọc Hải</option>
+                                                                    <option>Nguyễn Văn Toàn</option>
+                                                                    <option>Lê Duy Mạnh</option>
+                                                                    <option>Trần Minh Long</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px; padding-right:30px;">
+                                                                    Lấy phiếu
+                                                                </label>
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px;">
+                                                                    Lấy hoá đơn
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-md-offset-6">
+                                                            <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-warning btn-warning btn-block btn-block" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success btn-success btn-block btn-block" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>
+                                                <a href="hanghoa_donhang_chi-tiet-van-chuyen.html">81264-1</a>
+                                            </td>
+                                            <td>Công ty Tương Lai</td>
+                                            <td>24324</td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+                                            <td>
+                                                <center> <input type="checkbox" disabled /> </center>
+                                            </td>
+
+                                            <td>
+                                                <span class="label label-primary">Đã xuất kho</span>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Giao trước 01-11-2017</td>
+                                            <td>
+                                                <a id="btn_row6" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                    <i class="fa fa-edit text-blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr id="row6">
+                                            <td colspan="13">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Biển kiểm soát</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-hourglass"></i>
+                                                                </span>
+                                                                <select class="form-control">
+                                                                    <option>30A-342.21</option>
+                                                                    <option>29A-652.12</option>
+                                                                    <option>28A-113.121</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Nhân viên giao hàng</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Lương Đức Chinh</option>
+                                                                    <option>Hà Văn Thanh</option>
+                                                                    <option>Vũ Xuân Trường</option>
+                                                                    <option>Nguyễn Văn Hậu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>Lái xe</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <select class="form-control" style="font-family: 'FontAwesome';">
+                                                                    <option>Nguyễn Ngọc Hải</option>
+                                                                    <option>Nguyễn Văn Toàn</option>
+                                                                    <option>Lê Duy Mạnh</option>
+                                                                    <option>Trần Minh Long</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px; padding-right:30px;">
+                                                                    Lấy phiếu
+                                                                </label>
+                                                                <input type="checkbox" />
+                                                                <label style="padding-left : 10px;">
+                                                                    Lấy hoá đơn
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-md-offset-6">
+                                                            <a id="btn_row11" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-warning btn-warning btn-block btn-block" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success btn-success btn-block btn-block" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Index {
+    <!-- DataTables -->
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- Datepicker -->
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <!-- Page script-->
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+    </script>
+    <script>
+        @foreach(var item in Model.listOrderPending)
+        {
+            @:$('#row_@item.orderID').hide();
+            @:$('#btn_row_@item.orderID').click(function () {
+            @:    $('#row_@item.orderID').toggle();
+            @:});
+            @:$('#btn_off_row_@item.orderID').click(function () {
+            @:    $('#row_@item.orderID').toggle();
+            @:});
+        }
+
+    </script>
+}
+

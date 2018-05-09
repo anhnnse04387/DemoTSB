@@ -18,6 +18,9 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
         public string statusName { get; set; }
         public string deliverMethod { get; set; }
         public string driverName { get; set; }
+        public bool takeInvoice { get; set; }
+        public bool takeBallot { get; set; }
+        public byte statusId { get; set; }
         public string shipperName { get; set; }
         public IList<SelectListItem> listDriver { get; set; }
         public IList<SelectListItem> listShipper { get; set; }
@@ -42,5 +45,8 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
         public DateTime dateExport { get; set; }
         public DateTime dateCompleted { get; set; }
         public string note { get; set; }
+        public byte? DeliverMethod_ID { get; set; }
+        public string Driver_ID { get; set; }
+        public int? Shiper_ID { get; set; }
     }
 }
