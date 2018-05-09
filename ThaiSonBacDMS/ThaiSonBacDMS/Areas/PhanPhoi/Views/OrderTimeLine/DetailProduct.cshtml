@@ -106,6 +106,10 @@
             {
                 @: { id: @item.indexOf, content: 'Lô số @item.orderName' },
             }
+          @foreach(var item in Model.ListPI_Info)
+            {
+                @: { id: @item.indexOf, content: 'PI no @item.orderName' },
+            }
         ]);
 
         // create a dataset with items
@@ -114,6 +118,11 @@
             {
                 @:  { group: @item.indexOf, className: '@item.status', content: 'Số lượng: @item.quantity', start: new Date('@item.dateCompleted'),
                 @:    title: '<small>Xuất ngày: @item.dateCompleted.Value.ToString("dd/MM/yyyy")</small>'  },
+            }
+            @foreach (var item in Model.ListPI_Info)
+            {
+                @:  { group: @item.indexOf, className: '@item.status', content: 'Số lượng: @item.quantity', start: new Date('@item.dateCompleted'),
+                @:    title: '<small>Nhập về: @item.dateCompleted.Value.ToString("dd/MM/yyyy")</small>'  },
             }
         ]);
 

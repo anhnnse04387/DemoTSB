@@ -83,10 +83,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 dateCompleted = new OrderPartDAO().getByName(x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID).Request_stockout_date,
                 quantity = x.Quantity == null ? 0: (int) x.Quantity,
             }).ToList();
-            if(model.ListOpInfo.Count!=0)
+            var tempCount = model.ListOpInfo.Count;
+            model.ListPI_Info = new PIDAO().getProductByExportDate(DateTime.Now, productID).Select((x, index) => new OrderPartInfo
             {
-                model.ListOpInfo.First().status = "completed";
-            }
+                indexOf = index + 1 + tempCount,
+                orderName = x.Purchase_invoice.Purchase_invoice_no,
+                dateCompleted = x.Purchase_invoice.Shipment_date,
+                quantity = x.Quantity == null ? 0 : (int)x.Quantity,
+                status = "completed"
+            }).ToList();
+
             return View(model);
         }
 
@@ -101,11 +107,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 orderName = x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID,
                 dateCompleted = new OrderPartDAO().getByName(x.Order_part_ID == null ? x.Order_ID : x.Order_part_ID).Request_stockout_date,
                 quantity = x.Quantity == null ? 0 : (int)x.Quantity,
+                
             }).ToList();
-            if (model.ListOpInfo.Count != 0)
+            var tempCount = model.ListOpInfo.Count;
+            model.ListPI_Info = new PIDAO().getProductByExportDate(DateTime.Now, productID).Select((x, index) => new OrderPartInfo
             {
-                model.ListOpInfo.First().status = "completed";
-            }
+                indexOf = index + 1 + tempCount,
+                orderName = x.Purchase_invoice.Purchase_invoice_no,
+                dateCompleted = x.Purchase_invoice.Shipment_date,
+                quantity = x.Quantity == null ? 0 : (int)x.Quantity,
+                status = "completed"
+            }).ToList();
             if (!string.IsNullOrEmpty(model.orderName))
             {
                 model.ListOpInfo = model.ListOpInfo.Where(x => x.orderName.Contains(model.orderName)).ToList();
