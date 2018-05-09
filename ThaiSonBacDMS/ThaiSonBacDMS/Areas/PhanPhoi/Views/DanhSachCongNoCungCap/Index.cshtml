@@ -411,7 +411,7 @@
             }
             function validateData(i) {
                 var thanhToan = $("#thanhToanNew_" + i).val();
-                var nhapTrongKy = $("nhapTrongKyNew_" + i).val();
+                var nhapTrongKy = $("#nhapTrongKyNew_" + i).val();
                 if (!isEmpty(thanhToan) && !isEmpty(nhapTrongKy)) {
                     swal({
                         title: 'Vui lòng nhập dữ liệu!',
@@ -426,7 +426,7 @@
                     $("#btnThanhToan").click(function () {
                         $.ajax({
                             type: 'POST',
-                            url: 'DanhSachCongNoCungCap/InsertData',
+                            url: 'InsertData',
                             data: {
                                 supplierId: $("#supplierId_" + i).val(),
                                 nhapTrongKy: $("#nhapTrongKyNew_" + i).val().replace(/,/g, ''),

@@ -28,11 +28,19 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         [HttpPost]
         public ActionResult InsertData(string supplierId, string nhapTrongKy, string thanhToan, string conNo, string noDauKy, string dienGiai)
         {
-            Supplier_transactionDAO dao = new Supplier_transactionDAO();
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            int userId = session.accountID;
-            dao.insertNewSupplierDebt(supplierId, nhapTrongKy, thanhToan, conNo, noDauKy, dienGiai, userId);
-            return Json(new { success = true, JsonRequestBehavior.AllowGet });
+            try
+            {
+                Supplier_transactionDAO dao = new Supplier_transactionDAO();
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                int userId = session.accountID;
+                dao.insertNewSupplierDebt(supplierId, nhapTrongKy, thanhToan, conNo, noDauKy, dienGiai, userId);
+                return Json(new { success = true, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Write(e);
+                return Json(new { success = false, JsonRequestBehavior.AllowGet });
+            }
         }
         [HttpPost]
         public JsonResult autoComplete(string searchValue)

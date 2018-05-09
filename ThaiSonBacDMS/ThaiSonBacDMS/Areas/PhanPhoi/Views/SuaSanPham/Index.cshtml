@@ -5,6 +5,137 @@
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 <style>
+    /*jssor slider loading skin spin css*/
+    .jssorl-009-spin img {
+        animation-name: jssorl-009-spin;
+        animation-duration: 1.6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+
+    /*
+             keyframes jssorl-009-spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        */
+
+    /*jssor slider arrow skin 106 css*/
+    .jssora106 {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+    }
+
+        .jssora106 .c {
+            fill: #fff;
+            opacity: .3;
+        }
+
+        .jssora106 .a {
+            fill: none;
+            stroke: #000;
+            stroke-width: 350;
+            stroke-miterlimit: 10;
+        }
+
+        .jssora106:hover .c {
+            opacity: .5;
+        }
+
+        .jssora106:hover .a {
+            opacity: .8;
+        }
+
+        .jssora106.jssora106dn .c {
+            opacity: .2;
+        }
+
+        .jssora106.jssora106dn .a {
+            opacity: 1;
+        }
+
+        .jssora106.jssora106ds {
+            opacity: .3;
+            pointer-events: none;
+        }
+
+    /*jssor slider thumbnail skin 101 css*/
+    .jssort101 .p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        background: #000;
+    }
+
+        .jssort101 .p .cv {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #000;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+    .jssort101 .a {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 400;
+        stroke-miterlimit: 10;
+        visibility: hidden;
+    }
+
+    .jssort101 .p:hover .cv, .jssort101 .p.pdn .cv {
+        border: none;
+        border-color: transparent;
+    }
+
+    .jssort101 .p:hover {
+        padding: 2px;
+    }
+
+        .jssort101 .p:hover .cv {
+            background-color: rgba(0,0,0,6);
+            opacity: .35;
+        }
+
+        .jssort101 .p:hover.pdn {
+            padding: 0;
+        }
+
+            .jssort101 .p:hover.pdn .cv {
+                border: 2px solid #fff;
+                background: none;
+                opacity: .35;
+            }
+
+    .jssort101 .pav .cv {
+        border-color: #fff;
+        opacity: .35;
+    }
+
+    .jssort101 .pav .a, .jssort101 .p:hover .a {
+        visibility: visible;
+    }
+
+    .jssort101 .t {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        opacity: .6;
+    }
+
+    .jssort101 .pav .t, .jssort101 .p:hover .t {
+        opacity: 1;
+    }
+
     input[type="file"] {
         display: block;
     }
@@ -74,9 +205,9 @@
 {
     <section class="content-header">
         <ol class="breadcrumb">
-            <li><a href="quantri_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
             <li>Hàng hóa</li>
-            <li><a href="quantri_hanghoa_tao-san-pham.html">Thêm sản phẩm mới</a></li>
+            <li><a href="@Url.Action("Index","SuaSanPham",new { @product_Id = Model.itemProduct.Product_ID})">Sửa sản phẩm</a></li>
         </ol>
     </section>
     //Main content
@@ -88,8 +219,9 @@
                         <div class="col-md-12">
                             <h4>
                                 <b>Sửa sản phẩm</b>
+                               
                             </h4>
-
+                            <div class="hide" id="pId">@Model.pId</div>
                         </div>
 
                     </div>
@@ -97,7 +229,7 @@
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
 
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" id="btnCreate">
+                            <a class="btn btn-app custom-btn" href="@Url.Action("Index","TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" id="btnCreate">
                                 <i class="fa fa-plus-square text-green"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
@@ -105,7 +237,7 @@
                                 <i class="fa fa-edit text-grey"></i>
                                 <span><strong>Sửa</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" id="btnUpload" title="Lưu" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" id="btnSave" title="Lưu" data-placement="bottom">
                                 <i class="fa fa-save text-yellow"></i>
                                 <span><strong>Lưu</strong></span>
                             </a>
@@ -130,7 +262,7 @@
                                 <span><strong>In</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
-                                <i class="fa fa-download text-black"></i>
+                                <i class="fa fa-download text-grey"></i>
                                 <span><strong>Import Excel</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
@@ -162,6 +294,15 @@
                                                     </span>
                                                     <input class="form-control" placeholder="Mã máy..." id="pCode" type="text" value="@Model.itemProduct.Product_code" />
                                                 </div>
+                                                @foreach (var item in Model.lstProductCode)
+                                                {
+                                                    <div class="input-group hide">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-file"></i>
+                                                        </span>
+                                                        <input class="form-control existedCode" placeholder="Mã máy..." type="text" value="@item" />
+                                                    </div>
+                                                }
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Tên Máy</label>
@@ -171,6 +312,15 @@
                                                     </span>
                                                     <input class="form-control" placeholder="Tên máy..." id="pName" type="text" value="@Model.itemProduct.Product_name" />
                                                 </div>
+                                                @foreach (var item in Model.lstProductName)
+                                                {
+                                                    <div class="input-group hide">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-file"></i>
+                                                        </span>
+                                                        <input class="form-control existedName" placeholder="Mã máy..." type="text" value="@item" />
+                                                    </div>
+                                                }
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Thông số máy</label>
@@ -180,6 +330,15 @@
                                                     </span>
                                                     <input class="form-control" placeholder="Thông số máy máy..." id="pParam" type="text" value="@Model.itemProduct.Product_parameters" />
                                                 </div>
+                                                @foreach (var item in Model.lstProductPram)
+                                                {
+                                                    <div class="input-group hide">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-file"></i>
+                                                        </span>
+                                                        <input class="form-control existedParam" placeholder="Mã máy..." type="text" value="@item" />
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 10px;">
@@ -189,7 +348,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-handshake-o"></i>
                                                     </span>
-                                                    @Html.DropDownList(Model.itemProduct.Supplier_ID, @Model.lstNhaCungCap, new { @class = "form-control",@id="nhaCungCap" })
+                                                    @Html.DropDownListFor(model => model.itemProduct.Supplier_ID, Model.lstNhaCungCap, new { @class = "form-control", @id = "pSupplier" })
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -198,7 +357,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-sliders"></i>
                                                     </span>
-                                                    @Html.DropDownList(Model.itemProduct.Category_ID, @Model.lstDanhMuc, new { @class = "form-control",@id="danhMuc" })
+                                                    @Html.DropDownListFor(model => model.itemProduct.Category_ID, Model.lstDanhMuc, new { @class = "form-control", @id = "pCategory" })
 
                                                 </div>
                                             </div>
@@ -208,7 +367,9 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-sliders"></i>
                                                     </span>
-                                                    @Html.DropDownList(Model.itemProduct.Supplier_ID, @Model.lstDanhMucCon, "Chọn danh mục con", new { @class = "form-control",@id="danhMucCon" })
+                                                   <div id="selectlistContainer">
+                                                       @Html.DropDownListFor(model => model.itemProduct.Sub_category_ID, Model.lstDanhMucCon, new { @class = "form-control", @id = "pSubCategory" })
+                                                   </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,7 +380,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-money"></i>
                                                     </span>
-                                                    <input class="form-control number" placeholder="Số lượng" id="pNumberCarton" type="number" value="@Model.itemProduct.Quantity_in_carton"/>
+                                                    <input class="form-control number" placeholder="Số lượng" id="pNumberCarton" type="number" value="@Model.itemProduct.Quantity_in_carton" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -228,7 +389,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-money"></i>
                                                     </span>
-                                                    <input class="form-control number" placeholder="Giá tiền VNĐ" id="pBeforeVatVND" type="text" value="@Model.itemProduct.Price_before_VAT_VND" />
+                                                    <input class="form-control numberVND" placeholder="Giá tiền VNĐ" id="pBeforeVatVND" type="text" value="@Model.itemProduct.Price_before_VAT_VND" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -237,7 +398,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-dollar"></i>
                                                     </span>
-                                                    <input class="form-control number" placeholder="Giá tiền USD" id="pBeforeVatUSD" type="text" value="@Model.itemProduct.Price_before_VAT_USD" />
+                                                    <input class="form-control numberUSD" placeholder="Giá tiền USD" id="pBeforeVatUSD" type="text" value="@Model.itemProduct.Price_before_VAT_USD" />
                                                 </div>
                                             </div>
                                         </div>
@@ -248,7 +409,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-money"></i>
                                                     </span>
-                                                    <input class="form-control number" placeholder="Giá tiền VNĐ" id="cifVND" type="text" value="@Model.itemProduct.CIF_VND" />
+                                                    <input class="form-control numberVND" placeholder="Giá tiền VNĐ" id="cifVND" type="text" value="@Model.itemProduct.CIF_VND" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -257,7 +418,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-dollar"></i>
                                                     </span>
-                                                    <input class="form-control number" placeholder="Giá tiền USD" id="cifUSD" type="text" value="@Model.itemProduct.CIF_USD" />
+                                                    <input class="form-control numberUSD" placeholder="Giá tiền USD" id="cifUSD" type="text" value="@Model.itemProduct.CIF_USD" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -266,7 +427,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-dollar"></i>
                                                     </span>
-                                                    <input class="form-control number" placeholder="Giá tiền USD" id="vat" type="text" value="@Model.itemProduct.VAT"/>
+                                                    <input class="form-control" placeholder="Giá tiền USD" id="vat" type="text" value="@Model.itemProduct.VAT" />
                                                 </div>
                                             </div>
                                         </div>
@@ -290,6 +451,150 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-6">
+                                                <label>Ảnh sản phẩm</label>
+                                                <div style="text-align : center">
+                                                    <!-- #region Jssor Slider Begin -->
+                                                    <!-- Generator: Jssor Slider Maker -->
+                                                    <!-- Source: https://www.jssor.com -->
+                                                    <script src="/Assets/dist/js/jssor.slider-26.9.0.min.js" type="text/javascript"></script>
+                                                    <script type="text/javascript">
+                                                        jssor_1_slider_init = function () {
+
+                                                            var jssor_1_SlideshowTransitions = [
+                                                                { $Duration: 800, x: 0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: -0.3, $SlideOut: true, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: -0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: 0.3, $SlideOut: true, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: 0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: -0.3, $SlideOut: true, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: -0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: 0.3, $SlideOut: true, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: 0.3, $Cols: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Column: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: 0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: 0.3, $Rows: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Row: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: 0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: 0.3, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Column: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, y: -0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: 0.3, $Rows: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Row: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: -0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, $Delay: 20, $Clip: 3, $Assembly: 260, $Easing: { $Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, $Delay: 20, $Clip: 12, $Assembly: 260, $Easing: { $Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                                                { $Duration: 800, $Delay: 20, $Clip: 12, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 }
+                                                            ];
+
+                                                            var jssor_1_options = {
+                                                                $AutoPlay: 1,
+                                                                $Cols: 1,
+                                                                $Align: 0,
+                                                                $SlideshowOptions: {
+                                                                    $Class: $JssorSlideshowRunner$,
+                                                                    $Transitions: jssor_1_SlideshowTransitions,
+                                                                    $TransitionsOrder: 1
+                                                                },
+                                                                $ArrowNavigatorOptions: {
+                                                                    $Class: $JssorArrowNavigator$
+                                                                },
+                                                                $ThumbnailNavigatorOptions: {
+                                                                    $Class: $JssorThumbnailNavigator$,
+                                                                    $Cols: 5,
+                                                                    $SpacingX: 5,
+                                                                    $SpacingY: 5,
+                                                                    $Align: 390
+                                                                }
+                                                            };
+
+                                                            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+                                                            /*#region responsive code begin*/
+
+                                                            var MAX_WIDTH = 400;
+
+                                                            function ScaleSlider() {
+                                                                var containerElement = jssor_1_slider.$Elmt.parentNode;
+                                                                var containerWidth = containerElement.clientWidth;
+
+                                                                if (containerWidth) {
+
+                                                                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                                                                    jssor_1_slider.$ScaleWidth(expectedWidth);
+                                                                } else {
+                                                                    window.setTimeout(ScaleSlider, 30);
+                                                                }
+                                                            }
+
+                                                            ScaleSlider();
+
+                                                            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+                                                            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+                                                            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+                                                            /*#endregion responsive code end*/
+                                                        };
+                                                    </script>
+
+                                                    <div id="jssor_1" style="position:relative;margin:0 auto;top:20px;left:0px;width:980px;height:800px;overflow:hidden;visibility:hidden;">
+                                                        <!-- Loading Screen -->
+                                                        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                                                            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Assets/dist/img/spin.svg" />
+                                                        </div>
+                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:600px;overflow:hidden;">
+                                                            @foreach (var item in Model.locationImage)
+                                                            {
+                                                            <div data-p="170.00">
+                                                                <img data-u="image" src="@item" />
+                                                                <img data-u="thumb" src="@item" />
+                                                            </div>
+
+                                                            }
+
+                                                        </div>
+                                                        <!-- Thumbnail Navigator -->
+                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;bottom:0px;width:980px;height:100px;background-color:#000;" data-autocenter="1" data-scale-bottom="0.75">
+                                                            <div data-u="slides">
+                                                                <div data-u="prototype" class="p" style="width:190px;height:90px;">
+                                                                    <div data-u="thumbnailtemplate" class="t"></div>
+                                                                    <svg viewbox="0 0 16000 16000" class="cv">
+                                                                        <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
+                                                                        <line class="a" x1="6190.5" y1="8000" x2="9809.5" y2="8000"></line>
+                                                                        <line class="a" x1="8000" y1="9809.5" x2="8000" y2="6190.5"></line>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Arrow Navigator -->
+                                                        <div data-u="arrowleft" class="jssora106" style="width:55px;height:55px;top:262px;left:30px;" data-scale="0.75">
+                                                            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                                                <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                                                                <polyline class="a" points="7930.4,5495.7 5426.1,8000 7930.4,10504.3 "></polyline>
+                                                                <line class="a" x1="10573.9" y1="8000" x2="5426.1" y2="8000"></line>
+                                                            </svg>
+                                                        </div>
+                                                        <div data-u="arrowright" class="jssora106" style="width:55px;height:55px;top:262px;right:30px;" data-scale="0.75">
+                                                            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                                                <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                                                                <polyline class="a" points="8069.6,5495.7 10573.9,8000 8069.6,10504.3 "></polyline>
+                                                                <line class="a" x1="5426.1" y1="8000" x2="10573.9" y2="8000"></line>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <script type="text/javascript">jssor_1_slider_init();</script>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Trạng thái sản phẩm</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa-chevron-circle-down"></i>
+                                                    </span>
+                                                    @Html.DropDownListFor(model => model.itemProduct.Status, Model.lstStatus, new { @class = "form-control", @id = "status" })
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -301,6 +606,266 @@
             </div>
             <!--main col-->
         </div>
-    </section>
+        <div class="modal fade" id="popupConfirm" role="dialog">
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận lưu thông tin đã sửa?</h4>
+                    </div>
+
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnOk" type="button" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @section Index{
+        <!-- sweet Alert-->
+        <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+        <script src="~/Assets/dist/js/autoNumeric.min.js"></script>
+        <script src="~/Assets/dist/js/autoNumeric.js"></script>
+        <!-- page script -->
+        <script>
+
+            $(document).ready(function () {
+               
+                $("#vat").autoNumeric('init', { vMin: '1', vMax: '30', digitGroupSeparator: ',', mDec: '0' });
+                $(".numberUSD").autoNumeric('init', { vMin: '1', vMax: '999999999', digitGroupSeparator: ',', mDec: '2' });
+                $(".numberVND").autoNumeric('init', { vMin: '1', vMax: '999999999', digitGroupSeparator: ',', mDec: '0' });
+                if (window.File && window.FileList && window.FileReader) {
+                    $("#files").on("change", function (e) {
+                        var files = e.target.files,
+                        filesLength = files.length;
+                        for (var i = 0; i < filesLength ; i++) {
+                            var f = files[i]
+                            var fileReader = new FileReader();
+                            fileReader.onload = (function (e) {
+                                var file = e.target;
+                                $("<img></img>", {
+                                    class: "imageThumb",
+                                    src: e.target.result,
+                                    title: file.name
+                                }).insertAfter("#files");
+                            });
+                            fileReader.readAsDataURL(f);
+                        }
+                    });
+                } else { alert("Your browser doesn't support to File API") }
+            });
+            $("#btnSave").click(function () {
+
+                var pCode = $("#pCode").val();
+                var pName = $("#pName").val();
+                var pParam = $("#pParam").val();
+                var pSupplier = $('#pSupplier').val();
+                var pCategory = $('#pCategory').val();
+                var pSubCategory = $('#pSubCategory').val();
+                var pNumberCarton = $('#pNumberCarton').val();
+                var pBeforeVatVND = $('#pBeforeVatVND').val();
+                var pBeforeVatUSD = $('#pBeforeVatUSD').val();
+                var cifVND = $('#cifVND').val();
+                var cifUSD = $('#cifUSD').val();
+                var vat = $('#vat').val();
+                var pDescription = $('#pDescription').val();
+                var pDetail = $('#pDetail').val();
+                var pStatus = $('#status').val()
+                var pId = $("#pId").text();
+
+                if (!pCode) {
+                    swal({
+                        text: 'Vui lòng nhập mã mãy!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!checkExistedCode(pCode)) {
+                    swal({
+                        text: 'Mã máy đã tồn tại vui lòng nhập mã máy khác',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pName) {
+                    swal({
+                        text: 'Vui lòng nhập tên máy!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pParam) {
+                    swal({
+                        text: 'Vui lòng nhập thông số máy!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pSupplier) {
+                    swal({
+                        text: 'Vui lòng chọn nhà cung cấp!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pCategory) {
+                    swal({
+                        text: 'Vui lòng chọn danh mục!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pSubCategory) {
+                    swal({
+                        text: 'Vui lòng chọn danh mục con!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pNumberCarton) {
+                    swal({
+                        text: 'Vui lòng nhập số lượng cái/thùng!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pBeforeVatUSD) {
+                    swal({
+                        text: 'Vui lòng nhập giá trước VAT (USD)!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pBeforeVatVND) {
+                    swal({
+                        text: 'Vui lòng nhập giá trước VAT(VND)!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!cifUSD) {
+                    swal({
+                        text: 'Vui lòng nhập CIF(USD)!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!cifVND) {
+                    swal({
+                        text: 'Vui lòng nhập CIF(VND)!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!vat) {
+                    swal({
+                        text: 'Vui lòng nhập VAT!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pDescription) {
+                    swal({
+                        text: 'Vui lòng nhập tổng quan sản phẩm!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else if (!pDetail) {
+                    swal({
+                        text: 'Vui lòng nhập chi tiết sản phẩm!',
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 5000
+                    })
+                } else {
+                    $("#popupConfirm").modal("show");
+                    $("#btnOk").click(function () {
+                        if (window.FormData !== undefined) {
+                            var fileUpload = $("#files").get(0);
+                            var files = fileUpload.files;
+
+                            // Create FormData object
+                            var fileData = new FormData();
+
+                            // Looping over all files and add it to FormData object
+                            for (var i = 0; i < files.length; i++) {
+                                fileData.append(files[i].name, files[i]);
+                            }
+                            fileData.append('pCode', pCode);
+                            fileData.append('pName', pName);
+                            fileData.append('pParam', pParam);
+                            fileData.append('pSupplier', pSupplier);
+                            fileData.append('pCategory', pCategory);
+                            fileData.append('pSubCategory', pSubCategory);
+                            fileData.append('pNumberCarton', pNumberCarton);
+                            fileData.append('pBeforeVatVND', pBeforeVatVND);
+                            fileData.append('pBeforeVatUSD', pBeforeVatUSD);
+                            fileData.append('cifVND', cifVND);
+                            fileData.append('cifUSD', cifUSD);
+                            fileData.append('vat', vat);
+                            fileData.append('pDescription', pDescription);
+                            fileData.append('pDetail', pDetail);
+                            fileData.append('pStatus', pStatus);
+                            fileData.append('pId', pId);
+
+                            $.ajax({
+                                url: '/SuaSanPham/UploadFiles',
+                                type: "POST",
+                                contentType: false, // Not to set any content header
+                                processData: false, // Not to process data
+                                data: fileData,
+                                success: function (result) {
+                                    swal({
+                                        title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                        type: 'success',
+                                        timer: 5000,
+                                        showConfirmButton: true
+                                    }).then(function (result) {
+                                        if (result) {
+                                            window.location.href = 'SuaSanPham?product_Id=' + $("#pId").text();
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+            function checkExistedCode(value) {
+                for (var i = 0; i < $(".existedCode").length; i++) {
+                    if (value === $($(".existedCode")[i]).val()) {
+                        return false;
+                        break;
+                    }
+                }
+                return true;
+            }
+            $('#pCategory').change(function () {
+                $.ajax({
+                    url: '/SuaSanPham/ChangeList',
+                    data: {
+                        cateId: $('#pCategory').val()
+                    },
+                    dataType: 'JSON',
+                    type: 'POST',
+                    success: function (data) {
+                        $("#selectlistContainer").empty();
+                        var lst = '<select id="pSubCategory" class="form-control">';
+                        lst += '<option value="0">' + "Chọn danh mục con" + '</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            lst += '<option value="' + data[i].strValue + '">' + data[i].key + '</option>'
+                        };
+                        lst += '</select>';
+                        $("#selectlistContainer").append(lst);
+                    }
+                })
+            })
+        </script>
+    }
 }
