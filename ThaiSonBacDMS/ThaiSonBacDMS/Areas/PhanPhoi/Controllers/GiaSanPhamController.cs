@@ -17,45 +17,40 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             try
             {
-                var productDAO = new ProductDAO();
-                var daoCategory = new CategoryDAO();
+                var productDao = new ProductDAO();
+                var cateDao = new CategoryDAO();
 
-
-                ProductPhanPhoiModel model = new ProductPhanPhoiModel();
-                model.lstGiaSanPham = new List<GiaSanPham>();
+                GiaSanPhamModel model = new GiaSanPhamModel();
                 model.lstCateSearch = new List<SelectListItem>();
-                model.lstCategory = daoCategory.getLstCate();
-                model.lstProduct = new List<Product>();
+                model.lstGiaSanPham = new List<GiaSanPham>();
+                model.map = new Dictionary<string, List<GiaSanPham>>();
 
-                //add item vao search danh muc
-                List<Category> lstCateTemp = daoCategory.getLstCate();
-                foreach (Category item in lstCateTemp)
+                var lstCate = cateDao.getLstCate();
+                if (lstCate.Count() > 0)
                 {
-                    model.lstCateSearch.Add(new SelectListItem { Text = item.Category_name, Value = item.Category_ID });
-                }
-
-                //first load page              
-                model.lstGiaSanPham = productDAO.giaSanPham();
-
-                model.mapGiaSanPham = new Dictionary<string, List<GiaSanPham>>();
-                //Loc san pham theo category
-                if (model.lstCategory != null)
-                {
-                    foreach (Category item in model.lstCategory)
+                    foreach (var item in lstCate)
                     {
-                        List<GiaSanPham> lstProductAdd = new List<GiaSanPham>();
-
-                        foreach (var p in model.lstGiaSanPham)
+                        model.lstCateSearch.Add(new SelectListItem
                         {
-                            if (p.pCateId.ToString().Equals(item.Category_ID.ToString()))
-                            {
-                                lstProductAdd.Add(p);
-                            }
-                        }
-                        model.mapGiaSanPham.Add(item.Category_name, lstProductAdd);
+                            Text = item.Category_name,
+                            Value = item.Category_ID
+                        });
                     }
-                    model.mapGiaSanPham = model.mapGiaSanPham.Where(x => x.Value.Count != 0).ToDictionary(x => x.Key, x => x.Value);
                 }
+                model.lstGiaSanPham = productDao.giaSanPham();
+                foreach(var itemCate in lstCate)
+                {
+                    List<GiaSanPham> lst = new List<GiaSanPham>();
+                    foreach(var item in model.lstGiaSanPham)
+                    {
+                        if (itemCate.Category_ID.Equals(item.pCateId))
+                        {
+                            lst.Add(item);
+                        }
+                    }
+                    model.map.Add(itemCate.Category_name, lst);
+                }
+
                 return View(model);
             }
             catch (Exception ex)
@@ -65,66 +60,76 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Index(ProductPhanPhoiModel mo)
+        public ActionResult Index(GiaSanPhamModel mo)
         {
             try
             {
 
-                //bool checkboxValue = false;
-                //var productDAO = new ProductDAO();
-                //var daoCategory = new CategoryDAO();
+                bool checkboxValue = false;
+                var productDAO = new ProductDAO();
+                var daoCategory = new CategoryDAO();
 
-                ProductPhanPhoiModel model = new ProductPhanPhoiModel();
-                //model.mapGiaSanPham = new Dictionary<string, List<GiaSanPham>>();
-                //model.lstCateSearch = new List<SelectListItem>();
-                //model.lstCategory = daoCategory.getLstCate();
-                //model.lstProduct = new List<Product>();
-                //model.priceFrom = mo.priceFrom;
-                //model.priceTo = mo.priceTo;
-                //model.lstGiaSanPham = new List<GiaSanPham>();
+                GiaSanPhamModel model = new GiaSanPhamModel();
+                model.map = new Dictionary<string, List<GiaSanPham>>();
+                model.lstCateSearch = new List<SelectListItem>();
+                model.priceFrom = mo.priceFrom;
+                model.priceTo = mo.priceTo;
+                model.lstGiaSanPham = new List<GiaSanPham>();
 
-                //Product product = new Product();
-                //product.Category_ID = mo.categorySearch;
-                //product.Product_code = mo.pCodeSearch;
-                //product.Supplier_ID = mo.supplierSearch;
-                //if (mo.VAT != null)
-                //{
-                //    if (mo.VAT.Equals("1"))
-                //    {
-                //        checkboxValue = true;
-                //    }
-                //}
-                ////add item vao search danh muc
-                //List<Category> lstCateTemp = daoCategory.getLstCate();
-                //foreach (Category item in lstCateTemp)
-                //{
-                //    model.lstCateSearch.Add(new SelectListItem { Text = item.Category_name, Value = item.Category_ID });
-                //}
-                //model.lstGiaSanPham = productDAO.giaSanPham(product, mo.priceFrom == null ? 0 : Decimal.Parse(mo.priceFrom), mo.priceTo == null ? 0 : Decimal.Parse(mo.priceTo), checkboxValue);
-                ////Nhom san pham theo category
-                //if (model.lstCategory != null)
-                //{
-                //    foreach (Category item in model.lstCategory)
-                //    {
-                //        List<GiaSanPham> lstProductAdd = new List<GiaSanPham>();
+                Product product = new Product();
+                product.Category_ID = mo.categorySearch;
+                product.Product_code = mo.pCodeSearch;
+           
+                if (mo.VAT != null)
+                {
+                    if (mo.VAT.Equals("1"))
+                    {
+                        checkboxValue = true;
+                    }
+                }
+                //add item vao search danh muc
+                List<Category> lstCateTemp = daoCategory.getLstCate();
+                foreach (Category item in lstCateTemp)
+                {
+                    model.lstCateSearch.Add(new SelectListItem { Text = item.Category_name, Value = item.Category_ID });
+                }
+                model.lstGiaSanPham = productDAO.giaSanPham(product, mo.priceFrom == null ? 0 : Decimal.Parse(mo.priceFrom), mo.priceTo == null ? 0 : Decimal.Parse(mo.priceTo), checkboxValue);
+                //Nhom san pham theo category
+                if (lstCateTemp != null)
+                {
+                    foreach (Category item in lstCateTemp)
+                    {
+                        List<GiaSanPham> lstProductAdd = new List<GiaSanPham>();
 
-                //        foreach (var p in model.lstGiaSanPham)
-                //        {
-                //            if (p.pCateId.Equals(item.Category_ID))
-                //            {
-                //                lstProductAdd.Add(p);
-                //            }
-                //        }
-                //        model.mapGiaSanPham.Add(item.Category_name, lstProductAdd);
-                //    }
-                //}
-                //model.mapGiaSanPham = model.mapGiaSanPham.Where(x => x.Value.Count != 0).ToDictionary(x => x.Key, x => x.Value);
+                        foreach (var p in model.lstGiaSanPham)
+                        {
+                            if (p.pCateId.Equals(item.Category_ID))
+                            {
+                                lstProductAdd.Add(p);
+                            }
+                        }
+                        model.map.Add(item.Category_name, lstProductAdd);
+                    }
+                }
+                model.map= model.map.Where(x => x.Value.Count != 0).ToDictionary(x => x.Key, x => x.Value);
                 return View(model);
             }
             catch (Exception ex)
             {
-                throw ex;
+                System.Diagnostics.Debug.Write(ex);
+                return RedirectToAction("Index");
             }
+        }
+        public JsonResult GetSearchValue(string searchValue)
+        {
+            var daoProduct = new ProductDAO();
+            var lstProduct = daoProduct.autocompleteSanPhamKinhDoanh(searchValue);
+            List<Autocomplete> allSearch = lstProduct.Select(x => new Autocomplete()
+            {
+                key = x.key,
+                strValue = x.key,
+            }).ToList();
+            return new JsonResult { Data = allSearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

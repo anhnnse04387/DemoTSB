@@ -17,5 +17,6 @@ namespace Models.DAO_Model
         public string supplierName { get; set; }
         public string productId { get; set; }
         public string ngayNhap { get; set; }
+        public string subCate { get; set; }
     }
 }

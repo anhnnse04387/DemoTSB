@@ -11,6 +11,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
 {
     public class ProductPhanPhoiModel
     {
+        public List<SelectListItem> lstSubCate { get; set; }
+        public string subCateSearch { get; set; }
         public string pCodeSearch { get; set; }
         public string pNameSearch { get; set; }
         public string productIdSearch { get; set; }

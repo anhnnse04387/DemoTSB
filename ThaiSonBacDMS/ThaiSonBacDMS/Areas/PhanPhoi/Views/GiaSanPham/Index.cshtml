@@ -1,7 +1,7 @@
-﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ProductPhanPhoiModel
+﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.GiaSanPhamModel
 
 @{
-    ViewBag.Title = "GiaSanPham";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
@@ -10,12 +10,19 @@
         background-color: rgb(240, 240, 240);
     }
 
-        #example1 thead tr th {
-            vertical-align: middle !important;
-            text-align: center;
-            background-color: #3c8dbc;
-            color: #fff;
-        }
+    .ui-autocomplete {
+        max-height: 300px;
+        overflow-y: auto; /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index: 1000 !important;
+    }
+
+    #example1 thead tr th {
+        vertical-align: middle !important;
+        text-align: center;
+        background-color: #3c8dbc;
+        color: #fff;
+    }
 
     tfoot {
         color: white;
@@ -159,7 +166,6 @@
                                                 <th colspan="2">Tên sản phẩm</th>
                                                 <th>Danh Mục</th>
                                                 <th>CIF(USD)</th>
-                                                @*<th>CIF(VND)</th>*@
                                                 <th>Giá Trước VAT (USD)</th>
                                                 <th>Giá Trước VAT (VND)</th>
                                                 <th>VAT</th>
@@ -175,7 +181,6 @@
                                                     <td style="border-right: none !important;border-left:none !important;text-align:right">Không tìm thấy bản ghi nào!</td>
                                                     <td style="border-right: none !important;border-left:none !important"></td>
                                                     <td style="border-right: none !important;border-left:none !important"></td>
-                                                    @*<td style="border-right: none !important;border-left:none !important"></td>*@
                                                     <td style="border-right: none !important;border-left:none !important"></td>
                                                     <td style="border-right: none !important;border-left:none !important"></td>
                                                     <td style="border-right: none !important;border-left:none !important"></td>
@@ -187,14 +192,13 @@
                                             else
                                             {
                                                 int i = 1;
-                                                foreach (var itemCate in Model.mapGiaSanPham)
+                                                foreach (var itemCate in Model.map)
                                                 {
                                                     <tr style="background-color:yellow">
                                                         <td style="border-right: none !important;"></td>
                                                         <td style="border-right: none !important;border-left:none !important;text-align:right">@itemCate.Key</td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
-                                                        @*<td style="border-right: none !important;border-left:none !important"></td>*@
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
                                                         <td style="border-right: none !important;border-left:none !important"></td>
@@ -207,26 +211,21 @@
                                                     {
                                                         <tr>
                                                             <td style="text-align: left">@i</td>
-                                                            <td style="border-right: none;text-align:left">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)
+                                                            <td style="border-right: none;text-align:left">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)</td>
                                                             <td style="border-left: none;text-align:left">@Html.ActionLink(@items.pParam, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
                                                             <td class="text-center number">@items.cif</td>
-                                                            @*<td class="text-center number">@items.product.CIF_VND</td>*@
                                                             <td class="right number">@items.price_before_vat_usd</td>
                                                             <td class="right number">@items.price_before_vat_vnd</td>
                                                             <td class="text-center">@items.vat<span>%</span></td>
                                                             <td class="right number">@items.price_after_vat_usd</td>
-                                                            <td class="right number">@items.price_before_vat_vnd</td>
+                                                            <td class="right number">@items.price_after_vat_vnd</td>
                                                         </tr>
-
                                                         i++;
                                                     }
-
                                                 }
                                             }
-
                                         </tbody>
-
                                     </table>
                                 </fieldset>
                             </div>
@@ -267,13 +266,13 @@
             $("#pCodeSearch").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: '@Url.Action("GetSearchValue", "SanPhamDangKinhDoanh")',
+                        url: '@Url.Action("GetSearchValue", "GiaSanPham")',
                         minLength: 2,
                         dataType: "json",
                         data: { searchValue: $("#pCodeSearch").val() },
                         success: function (data) {
                             response($.map(data, function (item) {
-                                return { label: item.pNameSearch, value: item.pNameSearch }
+                                return { label: item.key, value: item.strValue }
                             }))
                         },
 
