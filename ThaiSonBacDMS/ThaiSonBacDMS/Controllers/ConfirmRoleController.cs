@@ -16,6 +16,23 @@ namespace ThaiSonBacDMS.Controllers
         // GET: ConfirmRole
         public ActionResult ConfirmRole()
         {
+            
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            var roleDAO = new RoleDAO();
+            var userDAO = new UserDAO();
+
+            var currentUser = userDAO.getByAccountID(session.accountID);
+            var listRole = roleDAO.getRoleByAccount(session.accountID);
+            
+
+            var display = new RoleConfirmModel();
+            display.account_name = currentUser.User_name;
+            display.account_role = new List<SelectListItem>();
+            foreach (var i in listRole)
+            {
+                var item = new SelectListItem { Text = i.Role_name, Value = i.Role_ID.ToString() };
+                display.account_role.Add(item);
+            }
             if (Session[CommonConstants.USER_SESSION] != null)
             {
                 var chkSession = (UserSession)Session[CommonConstants.USER_SESSION];
@@ -32,24 +49,8 @@ namespace ThaiSonBacDMS.Controllers
                     case 5:
                         return RedirectToAction("Index", "KeToan/Home");
                     default:
-                        break;
+                        return View(display);
                 }
-            }
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var roleDAO = new RoleDAO();
-            var userDAO = new UserDAO();
-
-            var currentUser = userDAO.getByAccountID(session.accountID);
-            var listRole = roleDAO.getRoleByAccount(session.accountID);
-            
-
-            var display = new RoleConfirmModel();
-            display.account_name = currentUser.User_name;
-            display.account_role = new List<SelectListItem>();
-            foreach (var i in listRole)
-            {
-                var item = new SelectListItem { Text = i.Role_name, Value = i.Role_ID.ToString() };
-                display.account_role.Add(item);
             }
             return View(display);
         }
@@ -104,6 +105,13 @@ namespace ThaiSonBacDMS.Controllers
             }
             
             return View();
+        }
+
+        public ActionResult outConfirmRole()
+        {
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            var tempSession = session;
+            return RedirectToAction("ConfirmRole", "ConfirmRole");
         }
     }
 }

@@ -22,6 +22,10 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             {
                 switch (session.roleSelectedID)
                 {
+                    case 0:
+                        filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "ConfirmRole", action = "ConfirmRole", Area = "" }));
+                        break;
                     case 2:
                         filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Home", action = "Index", Area = "QuanLy" }));
