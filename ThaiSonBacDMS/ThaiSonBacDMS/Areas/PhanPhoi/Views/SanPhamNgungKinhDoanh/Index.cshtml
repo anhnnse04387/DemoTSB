@@ -5,6 +5,12 @@
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 <style>
+    .ui-autocomplete {
+        max-height: 300px;
+        overflow-y: auto; /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index: 1000 !important;
+    }
     .chosen-container-multi .chosen-choices {
         height: 33.99px !important;
         width: 370.22px;
@@ -120,35 +126,30 @@
                                                             @Html.TextBoxFor(model => model.pCodeSearch, new { @class = "form-control", @id = "pCodeSearch" })
                                                         </div>
                                                     </td>
-                                                    <td>Nhà cung cấp</td>
-                                                    <td>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-                                                            @Html.DropDownListFor(model => model.supplierSearch, @Model.lstSupplier, "Tất cả nhà cung cấp", new { @class = "form-control select2", @id = "supplierSearch" })
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="padding-left: 0px;">Ngày nhập</td>
-                                                    <td>
-                                                        <div class="col-sm-5 no-padding">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">Từ</span>
-                                                                @Html.TextBoxFor(model => model.fromDate, new { @class = "form-control datepicker", @id = "fromDate" })
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">Đến</span>
-                                                                @Html.TextBoxFor(model => model.toDate, new { @class = "form-control datepicker", @id = "toDate" })
-                                                            </div>
-                                                        </div>
-                                                    </td>
                                                     <td>Danh mục</td>
                                                     <td width="35%">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-tree"></i></span>
-                                                            @Html.DropDownListFor(model => model.categorySearch, @Model.lstCateSearch, "Tất cả danh mục", new { @class = "form-control", @id = "categorySearch" })
+                                                            @Html.DropDownListFor(model => model.categorySearch, @Model.lstCateSearch, "Tất cả", new { @class = "form-control", @id = "categorySearch" })
+                                                        </div>
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>      
+                                                    <td>Danh mục con</td>    
+                                                    <td width="35%">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-tree"></i></span>
+                                                           <div id="selectlistContainer">
+                                                               @Html.DropDownListFor(model => model.subCateSearch, @Model.lstSubCate, "Tất cả", new { @class = "form-control", @id = "subCategorySearch" })
+                                                           </div>
+                                                        </div>
+                                                    </td>                                        
+                                                    <td>Nhà cung cấp</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                            @Html.DropDownListFor(model => model.supplierSearch, @Model.lstSupplier, "Tất cả", new { @class = "form-control select2", @id = "supplierSearch" })
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -176,8 +177,9 @@
                                             <th style="width: 3%;">STT</th>
                                             <th style="width: 12%;">Sản phẩm</th>
                                             <th style="width: 5%;">Danh mục</th>
+                                            <th style="width:5%">Danh mục con</th>
                                             <th style="width: 5%;">Số lượng cái/thùng</th>
-                                            <th style="width: 15%;">Nhà cung cấp</th>
+                                            <th style="width: 7%;">Nhà cung cấp</th>
                                             <th style="width: 5%;">Thay đổi</th>
 
                                         </tr>
@@ -187,7 +189,8 @@
                                         {
                                             <tr>
                                                 <td style="border-right:none !important"></td>
-                                                <td style="border-right:none !important;border-left:none !important; font-size:17px">Không tìm thấy bản ghi nào!</td>
+                                                <td style="border-right:none !important;border-left:none !important;font-size:17px">Không tìm thấy bản ghi nào!</td>
+                                                <td style="border-right:none !important;border-left:none !important"></td>
                                                 <td style="border-right:none !important;border-left:none !important"></td>
                                                 <td style="border-right:none !important;border-left:none !important"></td>
                                                 <td style="border-right:none !important;border-left:none !important"></td>
@@ -206,6 +209,7 @@
                                                     <td style="border-right:none !important;border-left:none !important"></td>
                                                     <td style="border-right:none !important;border-left:none !important"></td>
                                                     <td style="border-right:none !important;border-left:none !important"></td>
+                                                    <td style="border-right:none !important;border-left:none !important"></td>
                                                 </tr>
 
                                                 foreach (var items in itemCate.Value.ToList())
@@ -214,6 +218,7 @@
                                                         <td style="vertical-align: middle; text-align: center;">@i</td>
                                                         <td style="vertical-align: middle;">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.productId }, null)<span style="float: right; margin-right: 5px;">@Html.ActionLink(@items.pParam, "Index", "ChiTietSanPham", new { product_Id = @items.productId }, null)</span></td>
                                                         <td style="vertical-align: middle;">@itemCate.Key</td>
+                                                        <td style="vertical-align: middle;">@items.subCate</td>
                                                         <td style="vertical-align: middle; text-align: center;">@items.quantity</td>
                                                         <td style="vertical-align: middle;">@items.supplierName</td>
                                                         <td style="vertical-align: middle; text-align: center;">
@@ -286,32 +291,9 @@
             }
         });
 
-        $("#fromDate, #toDate").change(function () {
-            if ($("#fromDate").val() && $("#toDate").val()) {
-                var fromDate = $("#fromDate").val().split("-");
-                var toDate = $("#toDate").val().split("-");
-                var date1 = new Date(fromDate[2], fromDate[1] - 1, fromDate[0]);
-                var date2 = new Date(toDate[2], toDate[1] - 1, toDate[0]);
-                if (date2.getTime() < date1.getTime()) {
-                    swal({
-                        title: 'Ngày nhập không đúng định dạng!',
-                        type: 'error',
-                        timer: 5000,
-                        showConfirmButton: true
-                    });
-                    $("#btnSumit").prop('disabled', true);
-                } else {
-                    $("#btnSumit").prop('disabled', false);
-                }
-            }
-            else {
-                $("#btnSumit").prop('disabled', false);
-            }
-        });
+       
         $(document).ready(function () {
-            $('.datepicker').datepicker({
-                format: 'dd-mm-yyyy'
-            });
+            
             $('#example1').DataTable({
                 'paging': true,
                 'lengthChange': true,
@@ -341,5 +323,28 @@
                 timer: 5000
             });
         }
+
+        $("#categorySearch").change(function () {
+            $.ajax({
+                url: 'generateSubCateList',
+                type: 'POST',
+                data: {
+                    cateId: $("#categorySearch").val()
+                },
+                dataType: 'JSON',
+                success: function (data) {
+                    $("#selectlistContainer").empty();
+                    var lst = '<select id="subCategorySearch" class="form-control">';
+                    lst += '<option value="0">' + "Tất cả" + '</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
+                    };
+                    lst += '</select>';
+                    $("#selectlistContainer").append(lst);
+                }
+
+            })
+        });
+
     </script>
 }

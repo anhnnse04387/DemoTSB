@@ -91,7 +91,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             product.Product_code = mo.pCodeSearch;
             //first load page
             model.lstCategory = daoCategory.getLstCate();
-            model.lstSanPham = daoProduct.getLstSearchSanPham(product,mo.fromDate,mo.toDate);
+            model.lstSanPham = daoProduct.getLstSearchSanPham(product);
 
             //list cho tim kiem san pham theo Category
             List<Category> lstAll = daoCategory.getLstCate();
