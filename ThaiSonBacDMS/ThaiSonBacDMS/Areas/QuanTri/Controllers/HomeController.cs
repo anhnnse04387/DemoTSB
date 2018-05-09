@@ -141,5 +141,12 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             }
             return Redirect(link);
         }
+
+        public ActionResult outConfirmRole()
+        {
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            session.roleSelectedID = 0;
+            return RedirectToAction("ConfirmRole", "ConfirmRole", new { area = "" });
+        }
     }
 }

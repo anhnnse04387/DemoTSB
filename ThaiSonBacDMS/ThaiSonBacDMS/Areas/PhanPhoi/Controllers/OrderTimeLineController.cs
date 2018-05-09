@@ -54,7 +54,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     orderName = x.Order_part_ID,
                     customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
                     dateCreated = x.Date_created,
-                    dateCompleted = x.Date_completed,
+                    dateCompleted = x.Request_stockout_date,
                     userName = new UserDAO().getByID(x.Sales_user_ID).User_name,
                     status = x.Status_ID == 1 ? "completed" : "",
                 }).ToList();

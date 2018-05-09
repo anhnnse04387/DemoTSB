@@ -247,6 +247,12 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
             }
             return PartialView();
         }
+        public ActionResult outConfirmRole()
+        {
+            var session = (UserSession)Session[CommonConstants.USER_SESSION];
+            session.roleSelectedID = 0;
+            return RedirectToAction("ConfirmRole", "ConfirmRole", new { area = "" });
+        }
     }
 
 }

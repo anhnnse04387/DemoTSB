@@ -14,7 +14,6 @@ namespace ThaiSonBacDMS
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
-
         protected void Application_BeginRequest()
         {
             Response.Cache.SetCacheability(HttpCacheability.NoCache);

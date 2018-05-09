@@ -21,6 +21,8 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 var daoProduct = new ProductDAO();
                 var daoCategory = new CategoryDAO();
                 var daoSupplier = new SupplierDAO();
+                var daoSubCate = new Sub_CategoryDAO();
+
                 ProductPhanPhoiModel model = new ProductPhanPhoiModel();
 
                 model.lstSupplier = new List<SelectListItem>();
@@ -32,6 +34,23 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 //first load page
                 model.lstCategory = daoCategory.getLstCate();
                 model.lstSanPham = daoProduct.sanPhamNgungKinhDoanh();
+
+                model.lstSubCate = new List<SelectListItem>();
+
+                //first load page
+                var lstSubCate = daoSubCate.getAllSubCate();
+                if (lstSubCate.Count() > 0)
+                {
+                    foreach (var item in lstSubCate)
+                    {
+                        model.lstSubCate.Add(new SelectListItem
+                        {
+                            Text = item.Sub_category_name,
+                            Value = item.Sub_category_ID
+                        });
+                    }
+
+                }
 
                 //list cho tim kiem san pham theo Category
                 List<Category> lstAll = daoCategory.getLstCate();
@@ -80,11 +99,15 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             var daoProduct = new ProductDAO();
             var daoCategory = new CategoryDAO();
             var daoSupplier = new SupplierDAO();
+            var daoSubCate = new Sub_CategoryDAO();
+
             ProductPhanPhoiModel model = new ProductPhanPhoiModel();
+
             Product product = new Product();
             product.Category_ID = mo.categorySearch;
             product.Product_name = mo.pCodeSearch;
             product.Supplier_ID = mo.supplierSearch;
+            product.Sub_category_ID = mo.subCateSearch;
 
 
             model.lstSupplier = new List<SelectListItem>();
@@ -92,6 +115,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.lstProduct = new List<Product>();
             model.lstCategory = new List<Category>();
             model.lstSanPham = new List<SanPham>();
+            model.lstSubCate = new List<SelectListItem>();
 
             model.lstCategory = daoCategory.getLstCate();
             model.mapSanPham = new Dictionary<string, List<SanPham>>();
@@ -112,7 +136,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
 
 
-            model.lstSanPham = daoProduct.getLstSearchSanPhamNgungKD(product, mo.fromDate, mo.toDate);
+            model.lstSanPham = daoProduct.getLstSearchSanPhamNgungKD(product);
+
+            var lstSubCate = daoSubCate.getSubCateByCateId(mo.categorySearch);
+            if (lstSubCate.Count() > 0)
+            {
+                foreach (var item in lstSubCate)
+                {
+                    model.lstSubCate.Add(new SelectListItem { Text = item.key, Value = item.strValue });
+                }
+            }
 
             //Loc san pham theo category
             if (model.lstCategory != null)
@@ -146,5 +179,12 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return new JsonResult { Data = allSearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        [HttpPost]
+        public JsonResult generateSubCateList(string cateId)
+        {
+            var subCateDao = new Sub_CategoryDAO();
+            var lstSubCate = subCateDao.getSubCateByCateId(cateId);
+            return new JsonResult { Data = lstSubCate, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
     }
 }
