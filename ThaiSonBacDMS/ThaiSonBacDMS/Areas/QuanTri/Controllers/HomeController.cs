@@ -40,7 +40,9 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 var notiDAO = new NotificationDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 List<Notification> listNoti = new List<Notification>();
-                listNoti = notiDAO.getByUserID(session.user_id);
+                listNoti.AddRange(notiDAO.getByUserID(session.user_id));
+                listNoti.AddRange(notiDAO.getByRoleID((int)session.roleSelectedID));
+                listNoti = listNoti.OrderBy(x => x.Notif_date).OrderBy(x => x.Status).ToList();
                 return PartialView(listNoti);
             }
             catch (Exception e)

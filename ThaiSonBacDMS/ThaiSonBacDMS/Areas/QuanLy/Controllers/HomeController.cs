@@ -15,11 +15,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
     public class HomeController : QuanLyBaseController
     {
+        // GET: PhanPhoi/Home
         [HttpGet]
         public ActionResult Index()
         {
             OrderTotalDAO totalDAO = new OrderTotalDAO();
-            ProductDAO productDAO = new ProductDAO();
             CustomerDAO customerDAO = new CustomerDAO();
             OrderItemDAO orderItemDAO = new OrderItemDAO();
             HomeModel model = new HomeModel();
@@ -73,8 +73,8 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 dataLineChartCurrentMonth.Add(1, 0);
                 dataLineChartOrderCurrentMonth.Add(1, 0);
             }
-            model.dataLineChartCurrentMonth = dataLineChartCurrentMonth;
-            model.dataLineChartOrderCurrentMonth = dataLineChartOrderCurrentMonth;
+            model.dataLineChartCurrentMonth = dataLineChartCurrentMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+            model.dataLineChartOrderCurrentMonth = dataLineChartOrderCurrentMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value); ;
             //
 
             Dictionary<int, decimal> dataLineChartPreviousMonth = new Dictionary<int, decimal>();
@@ -98,8 +98,8 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 dataLineChartPreviousMonth.Add(1, 0);
             }
 
-            model.dataLineChartPreviousMonth = dataLineChartPreviousMonth;
-            model.dataLineChartOrderPreviousMonth = dataLineChartPreviousOrderMonth;
+            model.dataLineChartPreviousMonth = dataLineChartPreviousMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value); ;
+            model.dataLineChartOrderPreviousMonth = dataLineChartPreviousOrderMonth.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value); ;
 
             //count value in previous month
             decimal valueInPreviousMonth = 0;
@@ -141,8 +141,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             //Top Selling Category
             Dictionary<string, int> topSellingCategoryCurrent = new Dictionary<string, int>();
             topSellingCategoryCurrent = orderItemDAO.getTopSellingCategory(firstDayOfMonth, DateTime.Now);
-            Dictionary<string, int> topSellingCategoryPrevious = new Dictionary<string, int>();
-            topSellingCategoryPrevious = orderItemDAO.getTopSellingCategory(firstMonthPrevious, DateTime.Now.AddMonths(-1));
             List<TopSellingCategory> listTSC = new List<TopSellingCategory>();
 
             foreach (var item in topSellingCategoryCurrent)
@@ -152,11 +150,11 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 tsc.numberCategory = item.Value;
                 tsc.diffrentPercent = 0;
                 int valuePrevious = orderItemDAO.
-                    getCategoryQuantityByDate(item.Key, firstMonthPrevious, lastMonthPrevious);
+                    getCategoryQuantityByDate(item.Key, firstMonthPrevious, DateTime.Now.AddMonths(-1));
                 if (item.Value >= valuePrevious)
                 {
                     tsc.categoryFlag = true;
-                    tsc.diffrentPercent = valuePrevious == 0 ? 100 : (decimal) (item.Value - valuePrevious) / valuePrevious * 100;
+                    tsc.diffrentPercent = valuePrevious == 0 ? 100 : (decimal)(item.Value - valuePrevious) / valuePrevious * 100;
                 }
                 else
                 {
@@ -178,7 +176,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 var notiDAO = new NotificationDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 List<Notification> listNoti = new List<Notification>();
-                listNoti = notiDAO.getByUserID(session.user_id);
+                listNoti.AddRange(notiDAO.getByUserID(session.user_id));
+                listNoti.AddRange(notiDAO.getByRoleID((int)session.roleSelectedID));
+                listNoti = listNoti.OrderByDescending(x => x.Status).ToList();
                 return PartialView(listNoti);
             }
             catch (Exception e)
@@ -187,69 +187,6 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 RedirectToAction("Index");
             }
             return PartialView();
-        }
-        [ChildActionOnly]
-        public PartialViewResult NoteEdit()
-        {
-            try
-            {
-                var noteDAO = new NoteDAO();
-                var session = (UserSession)Session[CommonConstants.USER_SESSION];
-                var content = noteDAO.getNotebyAccount(session.accountID);
-
-                return PartialView(content);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
-            }
-            return PartialView();
-        }
-
-        [HttpPost]
-        public JsonResult NoteEdit(int accID, string content)
-        {
-            try
-            {
-                var noteDAO = new NoteDAO();
-                noteDAO.editNotebyAccount(accID, content);
-                return Json(content, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
-            }
-            return Json("", JsonRequestBehavior.AllowGet);
-        }
-
-        [ChildActionOnly]
-        public PartialViewResult NoteHeader()
-        {
-            var noteDAO = new NoteDAO();
-            var session = (UserSession)Session[CommonConstants.USER_SESSION];
-            var content = String.Empty;
-            string[] lines = new string[] { };
-            try
-            {
-                content = noteDAO.getNotebyAccount(session.accountID).Contents;
-                if (content != null && !string.IsNullOrEmpty(content))
-                {
-
-                    lines = content.Trim().Split(Environment.NewLine.ToCharArray());
-                }
-                else
-                {
-                    lines = new string[] { "Hãy điền ghi chú vào đây" };
-                }
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e);
-                RedirectToAction("Index");
-            }
-            return PartialView(lines);
         }
 
         public ActionResult ChangeStatusNote(string link, int notiID)
@@ -278,6 +215,19 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                     break;
             }
             return Redirect(link);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult NoteHeader()
+        {
+
+            List<string> lstOrderPartName = new OrderPartDAO()
+                .getByCreatedDate(new DateTime(2018, 4, 1), new DateTime(2018, 4, 10)).Select(x => "Đơn " + x.Order_part_ID + " đang chờ được xử lí").ToList();
+            if (lstOrderPartName.Count == 0)
+            {
+                lstOrderPartName.Add("Không có đơn nào phải xử lí trong hôm nay");
+            }
+            return PartialView(lstOrderPartName);
         }
 
         public ActionResult outConfirmRole()

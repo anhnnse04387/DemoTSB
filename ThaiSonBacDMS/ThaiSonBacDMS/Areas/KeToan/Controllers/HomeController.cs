@@ -237,7 +237,9 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                 var notiDAO = new NotificationDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 List<Notification> listNoti = new List<Notification>();
-                listNoti = notiDAO.getByUserID(session.user_id);
+                listNoti.AddRange(notiDAO.getByUserID(session.user_id));
+                listNoti.AddRange(notiDAO.getByRoleID((int)session.roleSelectedID));
+                listNoti = listNoti.OrderByDescending(x => x.Status).ToList();
                 return PartialView(listNoti);
             }
             catch (Exception e)
