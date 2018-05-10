@@ -1,0 +1,582 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.DanhSachCongNoCungCapModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    #example1 {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+    tfoot {
+        color: white;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: #544d61;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .khachHang {
+        text-align: left;
+    }
+
+    .modal-header {
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+        background-color: aliceblue;
+    }
+
+    .modal-body {
+        position: relative;
+        padding: 15px;
+        background-color: white;
+    }
+
+    .modal-footer {
+        border-top-color: #f4f4f4;
+        background-color: white;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .edit-btn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index","Home")">
+                    <i class="fa fa-dashboard"></i> Trang Chủ
+                </a>
+            </li>
+            <li><a href="">Công nợ</a></li>
+            <li><a href="@Url.Action("Index","DanhSachCongNoCungCap")">Công nợ nhà cung cấp</a></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header" style="margin-top:10px">
+                        <h4 class="box-title">
+                            <b>Nợ Nhà Cung Cấp</b>
+                        </h4>
+                    </div>
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button">
+                            <a id="btnAdd" href="#" class="btn btn-app custom-btn disabled" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                <i class="fa fa-plus-square text-grey"></i>
+                                <span><strong>Tạo mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                <i class="fa fa-edit text-grey"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                <i class="fa fa-save text-grey"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                                <i class="fa fa-close text-grey"></i>
+                                <span><strong>Hủy</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-target="#popupConfirm" data-toggle="modal" title="Chốt đơn" data-placement="bottom">
+                                <i class="fa fa-check-circle text-grey"></i>
+                                <span><strong>Chốt đơn</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                <i class="fa fa-exchange text-grey"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                <i class="fa fa-eye text-black"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                <i class="fa fa-download text-grey"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-green"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing(); return false;" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-red"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="row" style="margin-left :0px; margin-right:0px">
+                            <div class="col-md-12">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Tìm kiếm theo</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-2">Tên nhà cung cấp</div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(model => model.supplierId, new { @class = "form-control", @id = "nameSearch", @placeholder = "Tên nhà cung cấp" })
+                                                @*<input placeholder="Từ" type="text" class="form-control number" id="fromValue">*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-1">Còn nợ</div>
+                                        <div class="col-md-2">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.conNoTu, new { @class = "form-control number", @id = "fromValue", @placeholder = "Từ" })
+                                                @*<input placeholder="Từ" type="text" class="form-control number" id="fromValue">*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.conNoDen, new { @class = "form-control number", @id = "toValue", @placeholder = "Đến" })
+                                                @*<input placeholder="Đến" type="text" class="form-control number" id="toValue">*@
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- /.box-body -->
+                            <div class="box-footer clearfix">
+                                <div class="pagination pagination-sm no-margin pull-right">
+                                    <button id="btnSearch" class="btn btn-block btn-primary">
+                                        Tìm kiếm
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Nhà cung cấp</th>
+                                            <th>Nợ đầu kỳ</th>
+                                            <th>Nhập trong kỳ</th>
+                                            <th>Thanh toán</th>
+                                            <th>Diễn giải</th>
+                                            <th>Còn nợ</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.lstDisplay.Count() == 0)
+                                        {
+                                            <tr>
+                                                <td colspan="9" ;font-size:17px">Không tìm thấy bản ghi nào!</td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            int i = 1;
+                                            foreach (var item in Model.lstDisplay)
+                                            {
+                                                <tr>
+                                                    <td class="text-center length">@i</td>
+                                                    <td class="khachHang">
+                                                        @Html.ActionLink(@item.tenNhaCungCap, "Index", "ChiTietNoCungCap", new { supplierId = @item.supplierId }, null)
+                                                    </td>
+                                                    <td class="right number" id="noDauKy_@i">@item.noDauKy</td>
+                                                    <td class="right number" id="nhapTrongKy_@i">@item.nhapTrongKy</td>
+                                                    <td class="right number" id="thanhToan_@i">@item.thanhToan</td>
+                                                    <td class="right" id="dienGiai">@item.dienGiai</td>
+                                                    <td class="right number" id="conNo_@i">@item.conNo</td>
+                                                    <td class="text-center">
+                                                        <a id="btn_row_@i" onclick="openPannel('@i')" href="javascript:void(0);" class="btn btn-app edit-btn" title="Sửa" data-placement="bottom">
+                                                            <i class="fa fa-edit text-blue"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr id="row_@i">
+                                                    <td colspan="8">
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>Nợ đầu kỳ</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <input readonly type="text" id="noDauKyNew_@i" class="form-control number" placeholder="" value="@item.conNo" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Diễn giải</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-book" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <input type="text" id="dienGiaiNew_@i" class="form-control " placeholder="" value="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>Nhập trong kỳ</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-money" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <input id="nhapTrongKyNew_@i" onchange="tinhToan('@i');return false;" class="form-control number" placeholder="" value="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Thanh toán</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-money" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <input type="text" id="thanhToanNew_@i" onchange="tinhToan('@i');return false;" class="form-control number" placeholder="" value="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Còn nợ</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-money" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <input type="text" id="conNoNew_@i" class="form-control number" placeholder="" readonly value="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 supplierId">
+                                                                    <label>Còn nợ</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-money" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <input type="text" id="supplierId_@i" class="form-control number" placeholder="" readonly value="@item.supplierId">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="">
+                                                                    <div class="col-md-10"></div>
+                                                                    <div class="col-md-1">
+                                                                        <a href="" onlick="closePannel('@i');return false;" class="btn btn-default btn-block">Hủy</a>
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <a href="" class="btn btn-danger btn-block" onclick="validateData('@i');return false;">Sửa</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                i++;
+                                            }
+                                        }
+
+                                    </tbody>
+                                    @if (Model.lstDisplay.Count() != 0)
+                                    {
+                                        <tfoot>
+                                            <tr class="sum">
+                                                <td class="khachHang" colspan="2">Tổng</td>
+                                                <td class="right number" id="sumNoDauKy"></td>
+                                                <td class="right number" id="sumNhapTrongKy"></td>
+                                                <td class="right number" id="sumThanhToan"></td>
+                                                <td class="right"></td>
+                                                <td class="right number" id="sumConNo"></td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="popupConfirm" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận thêm công nợ mới</h4>
+                    </div>
+                    <div class="modal-body">
+                        Thêm công nợ mới?
+                    </div>
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnThanhToan" type="button" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            </div>
+        </div>
+    </section>
+    @section Index{
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script src="~/Assets/dist/js/autoNumeric.js"></script>
+        <script src="~/Assets/dist/js/autoNumeric.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                calculate();
+                init();
+            });
+            function init() {
+                $(".number").autoNumeric("init", { vMin: '0', vMax: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+
+                for (var i = 1; i <= $(".length").length; i++) {
+                    $("#row_" + i).hide();
+                }
+                $(".supplierId").hide();
+            };
+            function calculate() {
+                var noDauKy = 0;
+                var nhapTrongKy = 0;
+                var thanhToan = 0;
+                var conNo = 0;
+                for (var i = 1; i <= $('.length').length; i++) {
+                    noDauKy += parseFloat($("#noDauKy_" + i).text().replace(/,/g, ''));
+                    nhapTrongKy += parseFloat($("#nhapTrongKy_" + i).text().replace(/,/g, ''));
+                    thanhToan += parseFloat($("#thanhToan_" + i).text().replace(/,/g, ''));
+                    conNo += parseFloat($("#conNo_" + i).text().replace(/,/g, ''));
+                }
+                $("#sumNoDauKy").text(noDauKy);
+                $("#sumNhapTrongKy").text(nhapTrongKy);
+                $("#sumThanhToan").text(thanhToan);
+                $("#sumConNo").text(conNo);
+            }
+            function closePannel(i) {
+                $("#row_" + i).toggle();
+                event.preventDefault();
+            }
+            function openPannel(i) {
+                $("#row_" + i).toggle();
+                event.preventDefault();
+            }
+            function isEmpty(value) {
+                if (value === null || value === "") {
+                    return false;
+                }
+                return true;
+            }
+            function validateData(i) {
+                var thanhToan = $("#thanhToanNew_" + i).val();
+                var nhapTrongKy = $("#nhapTrongKyNew_" + i).val();
+                if (!isEmpty(thanhToan) && !isEmpty(nhapTrongKy)) {
+                    swal({
+                        title: 'Vui lòng nhập dữ liệu!',
+                        type: 'warning',
+                        timer: 5000,
+                        showConfirmButton: true
+                    });
+                }
+                else {
+                    $("#popupConfirm").modal('show');
+                    event.preventDefault();
+                    $("#btnThanhToan").click(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/QuanLy/DanhSachCongNoCungCap/InsertData',
+                            data: {
+                                supplierId: $("#supplierId_" + i).val(),
+                                nhapTrongKy: $("#nhapTrongKyNew_" + i).val().replace(/,/g, ''),
+                                thanhToan: $("#thanhToanNew_" + i).val().replace(/,/g, ''),
+                                conNo: $("#conNoNew_" + i).val().replace(/,/g, ''),
+                                noDauKy: $("#noDauKyNew_" + i).val().replace(/,/g, ''),
+                                dienGiai: $("#dienGiaiNew_" + i).val()
+                            },
+                            dataType: 'JSON',
+                            success: function (data) {
+                                swal({
+                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                    type: 'success',
+                                    timer: 5000,
+                                    showConfirmButton: true
+                                }).then((result) => {
+                                    if (result.value) {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                        });
+                    });
+                }
+            };
+            function inProgressing() {
+                swal({
+                    title: 'Chức năng đang phát triển',
+                    type: 'warning',
+                    timer: 5000,
+                    showConfirmButton: true
+                })
+            };
+            $("#fromValue,#toValue").change(function () {
+                var value1 = $("#fromValue").val();
+                var value2 = $("#toValue").val();
+
+                if (value1 && value2) {
+                    value1 = parseInt(value1.replace(/,/g, ''));
+                    value2 = parseInt(value2.replace(/,/g, ''));
+                    if (value2 < value1) {
+                        swal({
+                            title: 'Giá trị còn nợ đến phải lớn hơn giá trị còn nợ từ!',
+                            type: 'error',
+                            timer: 5000,
+                            showConfirmButton: true
+                        });
+                        $("#btnSearch").prop('disabled', true);
+                    } else {
+                        $("#btnSearch").prop('disabled', false);
+                    }
+                } else {
+                    $("#btnSearch").prop('disabled', false);
+                }
+            });
+            function tinhToan(i) {
+                var noDauKy = $("#noDauKyNew_" + i).val().replace(/,/g, '');
+                var nhapTrongKy = $("#nhapTrongKyNew_" + i).val().replace(/,/g, '');
+                var thanhToan = $("#thanhToanNew_" + i).val().replace(/,/g, '');
+                var conNo = $("#conNoNew_" + i).val().replace(/,/g, '');
+                if (!thanhToan) {
+                    thanhToan = 0;
+                }
+                if (!nhapTrongKy) {
+                    nhapTrongKy = 0;
+                }
+                conNo = parseFloat(noDauKy) + parseFloat(nhapTrongKy) - parseFloat(thanhToan);
+                conNo = conNo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                $("#conNoNew_" + i).text(conNo);
+                $("#conNoNew_" + i).val(conNo);
+            };
+
+            $("#nameSearch").autocomplete({
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length >= 2) {
+                        $.ajax({
+                            url: '/QuanLy/DanhSachCongNoCungCap/autoComplete',
+                            data: {
+                                searchValue: $("#nameSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.key,
+                                        value: m.key,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#nameSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#nameSearch").val("");
+                    }
+                },
+                change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#nameSearch").val(ui.item.value);
+                    } else {
+                        $("#nameSearch").val("");
+                        $("#nameSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#nameSearch").val(ui.item.value);
+                    event.preventDefault();
+                }
+            }).autocomplete("widget").addClass("fixed-height");
+            $("#btnSearch").click(function () {
+                //event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'Index',
+                    data: {
+                        supplierId: $("#nameSearch").val(),
+                        conNoTu: $("#fromValue").val().replace(/,/g, ''),
+                        conNoDen: $("#toValue").val().replace(/,/g, '')
+                    },
+                    dataType: 'json',
+                    error: function () {
+                        alert: "Error";
+                    }
+
+                });
+                setData();
+            });
+            function setData() {
+                var priceFrom = $('#fromValue').val();
+                var priceTo = $('#toValue').val();
+                if (priceFrom !== "" && priceFrom !== 0) {
+                    //$('#priceFrom').text(priceFrom);
+                    priceFrom = priceFrom.replace(/,/g, '');
+                    $('#fromValue').val(priceFrom);
+                    //$('#priceFrom').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                }
+                if (priceTo !== "" && priceTo !== 0) {
+                    priceTo = priceTo.replace(/,/g, '');
+                    $('#toValue').val(priceTo);
+                }
+            }
+        </script>
+    }
+
+}
+
+
+
+

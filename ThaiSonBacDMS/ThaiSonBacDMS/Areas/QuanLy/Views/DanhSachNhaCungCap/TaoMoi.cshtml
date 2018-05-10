@@ -1,0 +1,367 @@
+﻿
+@{
+    ViewBag.Title = "TaoMoi";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout1.cshtml";
+}
+
+@section IndexStyle{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 80px;
+            height: 55px;
+        }
+
+        .custom-chk {
+            padding-left: 15px;
+        }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+
+        #image-preview {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            color: #ecf0f1;
+            margin-left: 30px;
+            background-image: url('/Assets/dist/img/default_avatar_male.jpg');
+            background-repeat: no-repeat;
+            background-position: 20px 30px;
+            border: solid 1px;
+        }
+
+            #image-preview input {
+                position: absolute;
+                opacity: 0;
+            }
+
+            #image-preview label {
+                position: absolute;
+                cursor: pointer;
+                text-transform: uppercase;
+                margin: auto;
+                margin-top: 160px;
+                margin-left: -18px;
+                text-align: center;
+                font-size: 10px;
+            }
+    </style>
+
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
+        <li><a href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")">Thêm nhà cung cấp</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border text-center menu-button">
+
+                    <a class="btn btn-app custom-btn disabled" target="_blank" href="#" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                        <i class="fa fa-plus-square text-grey"></i>
+                        <span>
+                            <strong>Trang mới</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                        <i class="fa fa-edit text-grey"></i>
+                        <span><strong>Sửa</strong></span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="modal" title="Lưu" data-placement="bottom">
+                        <i class="fa fa-save text-grey"></i>
+                        <span>
+                            <strong>Lưu</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                        <i class="fa fa-close text-grey"></i>
+                        <span>
+                            <strong>Hủy</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo mới" data-placement="bottom" id="btnCreate">
+                        <i class="fa fa-check-circle text-green"></i>
+                        <span>
+                            <strong>Tạo mới</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                        <i class="fa fa-exchange text-grey"></i>
+                        <span>
+                            <strong>Đổi trả</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                        <i class="fa fa-eye text-grey"></i>
+                        <span>
+                            <strong>Xem Trước</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                        <i class="fa fa-print text-grey"></i>
+                        <span>
+                            <strong>In</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                        <i class="fa fa-download text-grey"></i>
+                        <span>
+                            <strong>Import Excel</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                        <i class="fa fa-file-excel-o text-grey"></i>
+                        <span>
+                            <strong>Xuất Excel</strong>
+                        </span>
+                    </a>
+                    <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                        <i class="fa fa-file-pdf-o text-grey"></i>
+                        <span>
+                            <strong>Xuất PDF</strong>
+                        </span>
+                    </a>
+                </div>
+
+                <hr>
+
+                <h3 style="text-align: center; font-weight: 600;">THÊM NHÀ CUNG CẤP</h3>
+
+                <div class="box-body" style="padding-bottom: 50px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form form-vertical">
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <div id="image-preview">
+                                            <label for="image-upload" id="image-label">Chọn hình ảnh</label>
+                                            <input type="file" name="image" id="image-upload" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9" style="padding-top: 0px">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Đơn vị</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Tên nhà cung cấp..." id="supplier_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Số điện thoại</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Số điện thoại..." type="text" id="phone">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-6">
+                                                <label>Địa chỉ nhận hóa đơn</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-address-book"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Địa chỉ nhận hóa đơn..." type="text" id="address">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Email..." type="text" id="supplier_email">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-md-6">
+                                                <label>MST</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-bank"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Mã số thuế..." type="text" id="mst">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- /.content -->
+
+
+@section Index{
+    <script src="~/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <!-- page script -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var label_selected = "<span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>";
+            var label_default = "<span class='glyphicon glyphicon-open' aria-hidden='true'></span>";
+            $.uploadPreview({
+                input_field: "#image-upload",
+                preview_box: "#image-preview",
+                label_field: "#image-label",
+                label_default: label_default,
+                label_selected: label_selected
+            });
+
+            $("#image-preview label").addClass("btn btn-success");
+            $("#image-preview label").empty();
+            $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnCreate").click(function () {
+                swal({
+                    title: 'Lưu thông tin?',
+                    text: "Bạn có muốn lưu toàn bộ thông tin!",
+                    type: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Lưu',
+                    cancelButtonText: 'Trở lại'
+                }).then((result) => {
+                    if (result.value) {
+                        // Checking whether FormData is available in browser
+                        if (window.FormData !== undefined) {
+
+                            var fileUpload = $("#image-upload").get(0);
+                            var files = fileUpload.files;
+
+                            // Create FormData object
+                            var fileData = new FormData();
+
+                            // Looping over all files and add it to FormData object
+                            for (var i = 0; i < files.length; i++) {
+                                fileData.append(files[i].name, files[i]);
+                            }
+
+                            // Adding one more key to FormData object
+
+                            var supp_name = $("#supplier_name").val();
+                            var supp_phone = $("#phone").val();
+                            var supp_address = $("#address").val();
+                            var supp_email = $("#supplier_email").val();
+                            var supp_mst = $("#mst").val();
+                            fileData.append('supplierName', supp_name);
+                            fileData.append('supplierPhone', supp_phone);
+                            fileData.append('address', supp_address);
+                            fileData.append('email', supp_email);
+                            fileData.append('mst', supp_mst);
+                            if (isEmpty(supp_name)) {
+                                swal({
+                                    title: 'Tên nhà cung cấp không được bỏ trống',
+                                    type: 'warning'
+                                });
+                            } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(supp_phone)) {
+                                swal({
+                                    title: 'Sai số điện thoại',
+                                    type: 'warning'
+                                });
+                            } else if (isEmpty(supp_address)) {
+                                swal({
+                                    title: 'Địa chỉ không được bỏ trống',
+                                    type: 'warning'
+                                });
+
+                            } else if (!validateEmail(supp_email)) {
+                                swal({
+                                    title: 'Sai Email',
+                                    type: 'warning'
+                                });
+                            } else if (!RegExp("^([0-9]{2})[0-9]{8}$").test(supp_mst)) {
+                                swal({
+                                    title: 'Sai mã số thuế',
+                                    type: 'warning'
+                                });
+                            } else {
+                                $.ajax({
+                                    url: '/QuanLy/DanhSachNhaCungCap/UploadFiles',
+                                    type: "POST",
+                                    contentType: false, // Not to set any content header
+                                    processData: false, // Not to process data
+                                    data: fileData,
+                                    success: function (result) {
+                                        if (result == "1") {
+                                            swal(
+                                                 'Thành công',
+                                                 'Bạn đã thêm nhà cung cấp thành công.',
+                                                 'success'
+                                            ).then(function () {
+                                                window.location.href = '@Url.Action("Index", "DanhSachNhaCungCap")';
+                                            });
+                                        } else {
+                                            swal(
+                                                 'Lỗi',
+                                                 result,
+                                                 'warning'
+                                            );
+                                        }
+
+                                    },
+                                    error: function (err) {
+                                        swal({
+                                            title: err,
+                                            type: 'warning',
+                                        });
+                                    }
+                                });
+                            }
+                        } else {
+                            swal({
+                                title: "FormData is not supported.",
+                                type: 'warning',
+                            });
+                        }
+
+                    }
+                });
+            });
+        });
+
+        function isEmpty(value) {
+            return (value == null || value.length === 0);
+        }
+        function validateEmail(email) {
+            var re = /^\w+@@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            return re.test(email);
+        }
+    </script>
+}
+
+

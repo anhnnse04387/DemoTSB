@@ -90,5 +90,10 @@ namespace Models.DAO
                 return -1;
             }
         }
+
+        public bool checkExitsMail(string mail)
+        {
+            return db.Customers.Where(x=>x.Mail == mail).Any();
+        }
     }
 }

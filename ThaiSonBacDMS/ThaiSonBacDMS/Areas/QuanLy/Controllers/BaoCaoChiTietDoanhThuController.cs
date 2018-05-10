@@ -13,7 +13,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
     public class BaoCaoChiTietDoanhThuController : QuanLyBaseController
     {
-        // GET: PhanPhoi/BaoCaoChiTietDoanhThu
+        // GET: QuanLy/BaoCaoChiTietDoanhThu
         [HttpGet]
         public ActionResult Index()
         {

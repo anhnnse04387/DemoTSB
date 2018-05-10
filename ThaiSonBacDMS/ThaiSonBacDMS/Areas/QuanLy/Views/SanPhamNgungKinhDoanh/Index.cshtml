@@ -1,0 +1,379 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.ProductPhanPhoiModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .ui-autocomplete {
+        max-height: 300px;
+        overflow-y: auto; /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index: 1000 !important;
+    }
+
+    .chosen-container-multi .chosen-choices {
+        height: 33.99px !important;
+        width: 370.22px;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-color: #d2d6de !important;
+        box-shadow: none !important;
+        padding-top: 3px !important;
+    }
+
+    .chosen-container-multi .chosen-drop .result-selected {
+        display: list-item;
+        color: #ccc;
+        cursor: default;
+        width: 385.22px !important;
+    }
+
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+</style>
+<!-- Main content -->
+@using (Html.BeginForm())
+{
+                <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li>Quản trị</li>
+            <li>Hàng hóa</li>
+            <li class="active"><a href="@Url.Action("Index","SanPhamNgungKinhDoanh")">Sản phẩm ngừng kinh doanh</a></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="row" style="margin-left:0px; margin-top:10px;">
+                        <div class="col-md-12">
+                            <h4>
+                                <b>DANH SÁCH SẢN PHẨM</b>
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button">
+                            <a class="btn btn-app custom-btn" href="@Url.Action("Index","TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                                <i class="fa fa-plus-square text-green"></i>
+                                <span><strong>Tạo Mới</strong></span>
+                            </a>
+
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-edit text-gray"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-save text-gray"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-close text-gray"></i>
+                                <span><strong>Hủy</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-check-circle text-gray"></i>
+                                <span><strong>Chốt đơn</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-exchange text-gray"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-eye text-gray"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing()" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled">
+                                <i class="fa fa-download text-gray"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing()" title="In" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-green"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" onclick="inProgressing()" title="In" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-orange"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-body" style="margin-top: 25px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding-left: 0px;">Tên Sản Phẩm</td>
+                                                    <td width="35%">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                            @Html.TextBoxFor(model => model.pCodeSearch, new { @class = "form-control", @id = "pCodeSearch" })
+                                                        </div>
+                                                    </td>
+                                                    <td>Danh mục</td>
+                                                    <td width="35%">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-tree"></i></span>
+                                                            @Html.DropDownListFor(model => model.categorySearch, @Model.lstCateSearch, "Tất cả", new { @class = "form-control", @id = "categorySearch" })
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Danh mục con</td>
+                                                    <td width="35%">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-tree"></i></span>
+                                                            <div id="selectlistContainer">
+                                                                @Html.DropDownListFor(model => model.subCateSearch, @Model.lstSubCate, "Tất cả", new { @class = "form-control", @id = "subCategorySearch" })
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Nhà cung cấp</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                                                            @Html.DropDownListFor(model => model.supplierSearch, @Model.lstSupplier, "Tất cả", new { @class = "form-control select2", @id = "supplierSearch" })
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="box-footer clearfix">
+                                        <div class="pagination pagination-sm no-margin pull-right">
+                                            <button id="btnSumit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row search form -->
+                    </div>
+
+                    <div class="box-body">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-12">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr style="background-color: #3c8dbc;color: white;">
+                                            <th style="width: 3%;">STT</th>
+                                            <th style="width: 12%;">Sản phẩm</th>
+                                            <th style="width: 5%;">Danh mục</th>
+                                            <th style="width:5%">Danh mục con</th>
+                                            <th style="width: 5%;">Số lượng cái/thùng</th>
+                                            <th style="width: 7%;">Nhà cung cấp</th>
+                                            <th style="width: 5%;">Thay đổi</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.lstSanPham.Count == 0)
+                                        {
+                                            <tr>
+                                                <td style="border-right:none !important"></td>
+                                                <td style="border-right:none !important;border-left:none !important;font-size:17px">Không tìm thấy bản ghi nào!</td>
+                                                <td style="border-right:none !important;border-left:none !important"></td>
+                                                <td style="border-right:none !important;border-left:none !important"></td>
+                                                <td style="border-right:none !important;border-left:none !important"></td>
+                                                <td style="border-right:none !important;border-left:none !important"></td>
+                                                <td style="border-right:none !important;border-left:none !important"></td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            int i = 1;
+                                            foreach (var itemCate in Model.mapSanPham)
+                                            {
+                                                <tr style="background-color:yellow">
+                                                    <td style="border-right:none !important"></td>
+                                                    <td style="border-right:none !important;border-left:none !important; text-align:center">@itemCate.Key</td>
+                                                    <td style="border-right:none !important;border-left:none !important"></td>
+                                                    <td style="border-right:none !important;border-left:none !important"></td>
+                                                    <td style="border-right:none !important;border-left:none !important"></td>
+                                                    <td style="border-right:none !important;border-left:none !important"></td>
+                                                    <td style="border-right:none !important;border-left:none !important"></td>
+                                                </tr>
+
+                                                foreach (var items in itemCate.Value.ToList())
+                                                {
+                                                    <tr>
+                                                        <td style="vertical-align: middle; text-align: center;">@i</td>
+                                                        <td style="vertical-align: middle;">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.productId }, null)<span style="float: right; margin-right: 5px;">@Html.ActionLink(@items.pParam, "Index", "ChiTietSanPham", new { product_Id = @items.productId }, null)</span></td>
+                                                        <td style="vertical-align: middle;">@itemCate.Key</td>
+                                                        <td style="vertical-align: middle;">@items.subCate</td>
+                                                        <td style="vertical-align: middle; text-align: center;">@items.quantity</td>
+                                                        <td style="vertical-align: middle;">@items.supplierName</td>
+                                                        <td style="vertical-align: middle; text-align: center;">
+                                                            <a id="btn_row_@i" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                <i class="fa fa-edit text-blue"></i>
+                                                            </a>
+                                                        </td>
+
+                                                    </tr>
+                                                    i++;
+                                                }
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- ./row -->
+
+    </section>
+    <!-- /.content -->
+    }
+    @section Index{
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script>
+
+        $("#btnSubmit").click(function (event) {
+            event.preventDefault();
+            var data = {
+                pCodeSearch: $("#pCodeSearch").val(),
+                supplierSearch: $("#supplierSearch").val(),
+                categorySearch: $("#categorySearch").val(),
+                fromDate: $("#fromDate").val(),
+                toDate: $("#toDate").val()
+            }
+            $.ajax({
+
+                type: "POST",
+                url: "SanPhamNgungKinhDoanh/Index",
+                data: JSON.stringify({ mo: data }),
+                dataType: "json",
+                success: function (result) {
+
+                }
+            })
+        });
+        $("#pCodeSearch").autocomplete({
+            source: function (req, responseFn) {
+                var re = req.term;
+                if (re.length >= 2) {
+                    $.ajax({
+                        url: '/QuanLy/SanPhamNgungKinhDoanh/GetSearchValue',
+                        data: {
+                            searchValue: $("#pCodeSearch").val()
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            var array = data.error ? [] : $.map(data, function (m) {
+                                return {
+                                    label: m.key,
+                                    value: m.key,
+                                };
+                            });
+                            if (array.length == 0) {
+                                $("#pCodeSearch").val("");
+                            }
+                            responseFn(array);
+                        }
+                    });
+                } else {
+                    $("#pCodeSearch").val("");
+                }
+            },
+            change: function (event, ui) {
+                if (ui.item) {
+                    event.preventDefault();
+                    $("#pCodeSearch").val(ui.item.value);
+                } else {
+                    $("#pCodeSearch").val("");
+                    $("#pCodeSearch").text("");
+                }
+            }, focus: function (event, ui) {
+                $("#pCodeSearch").val(ui.item.value);
+                event.preventDefault();
+            }
+        }).autocomplete("widget").addClass("fixed-height");
+        
+
+
+        $(document).ready(function () {
+
+            $('#example1').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': false,
+                'info': true,
+                'autoWidth': false,
+                'language': {
+                    "lengthMenu": "Hiển thị _MENU_ dòng",
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước",
+                    }
+                }
+
+            });
+
+        });
+        function inProgressing() {
+            swal({
+                title: 'Chức năng đang phát triển',
+                type: 'warning',
+                showConfirmButton: true,
+                timer: 5000
+            });
+        }
+
+        $("#categorySearch").change(function () {
+            $.ajax({
+                url: 'generateSubCateList',
+                type: 'POST',
+                data: {
+                    cateId: $("#categorySearch").val()
+                },
+                dataType: 'JSON',
+                success: function (data) {
+                    $("#selectlistContainer").empty();
+                    var lst = '<select id="subCategorySearch" class="form-control">';
+                    lst += '<option value="0">' + "Tất cả" + '</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
+                    };
+                    lst += '</select>';
+                    $("#selectlistContainer").append(lst);
+                }
+
+            })
+        });
+
+        </script>
+    }
+
+
+}
+

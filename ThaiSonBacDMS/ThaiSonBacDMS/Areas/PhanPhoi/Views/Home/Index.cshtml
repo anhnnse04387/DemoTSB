@@ -144,6 +144,14 @@
                                         {
                                             <td class="text-center"><span class="label label-success">@item.status</span></td>
                                         }
+                                        else if (item.status == "Đã xuất kho warning")
+                                        {
+                                            <td class="text-center"><span class="label label-warning">Đã xuất kho</span></td>
+                                        }
+                                        else if (item.status == "Đang giao hàng warning")
+                                        {
+                                            <td class="text-center"><span class="label label-warning">Đang giao hàng</span></td>
+                                        }
                                         else
                                         {
                                             <td class="text-center"><span class="label label-danger">@item.status</span></td>

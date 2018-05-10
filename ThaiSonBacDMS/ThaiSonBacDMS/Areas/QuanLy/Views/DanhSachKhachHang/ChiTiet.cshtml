@@ -1,0 +1,619 @@
+﻿
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietKhachHangModel
+
+@section IndexStyle{
+    <!--Preview Avatar-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
+        .box-body-custom-detail-custom {
+            font-size: 20px;
+        }
+
+        th {
+            color: white;
+            background-color: #3c8dbc;
+            font-weight: bold;
+        }
+
+        th,
+        td {
+            text-align: center;
+        }
+
+        #mainTable {
+            background-color: rgb(240, 240, 240);
+        }
+
+            #mainTable thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            #mainTable tbody td:nth-child() {
+                text-align: left;
+            }
+
+            #mainTable tbody td:nth-child(4),
+            #mainTable tbody td:nth-child(5) {
+                text-align: right;
+            }
+        /* helpers/align.css */
+        .align {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+         #image-preview {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            color: #ecf0f1;
+            margin-left: 30px;
+            background-image: url('@Model.avatar_str');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: solid 1px;
+        }
+
+            #image-preview input {
+                position: absolute;
+                opacity: 0;
+            }
+
+            #image-preview label {
+                position: absolute;
+                cursor: pointer;
+                text-transform: uppercase;
+                margin: auto;
+                margin-top: 160px;
+                margin-left: -18px;
+                text-align: center;
+                font-size: 10px;
+            }
+    </style>
+}
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home")">
+                <i class="fa fa-dashboard"></i> Trang Chủ
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "DanhSachKhachHang")">
+                <i class=""></i> Danh sách khách hàng
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class=""></i> Chi tiết khách hàng
+            </a>
+        </li>
+    </ol>
+</section>
+<br>
+<section class="content">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="@Model.avatar_str" alt="User profile picture">
+                    <h3 class="profile-username text-center">@Model.customer.Customer_name</h3>
+                    <p class="text-muted text-center"></p>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <i class="fa fa-codepen"></i>
+                            <b>Mã KH</b>
+                            <a class="pull-right" id="cusomterID">@Model.customer.Customer_ID</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-diamond"></i>
+                            <b>Xếp hạng</b>
+                            <a class="pull-right">
+                                <span class="label label-primary">@Model.customer.Rank</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-address-book"></i>
+                            <b>Địa chỉ</b>
+                            <br>
+                            <span style="color: #4682b4">@Model.customer.Delivery_address</span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-address-book"></i>
+                            <b>Email</b>
+                            <br>
+                            <span style="color: #4682b4">@Model.customer.Mail</span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-bank"></i>
+                            <b>MST</b>
+                            <a class="pull-right">@Model.customer.Tax_code</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-phone"></i>
+                            <b>Số điện thoại</b>
+                            <a class="pull-right">@Model.customer.Phone</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-phone"></i>
+                            <b>Ngày tạo</b>
+                            <a class="pull-right">@Model.customer.Date_Created.Value.ToString("dd/MM/yyyy")</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <div class="nav nav-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Doanh thu</a>
+                        </li>
+                        <li class="">
+                            <a href="#mathang" data-toggle="tab" aria-expanded="false">Mặt hàng</a>
+                        </li>
+                        <li class="">
+                            <a href="#chinhsua" data-toggle="tab" aria-expanded="false">Chỉnh sửa</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="doanhthu">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h2 class="text-center">
+                                    <strong>Doanh thu 6 tháng gần nhất</strong>
+                                </h2>
+                                <canvas id="line-chart" width="800" height="450"></canvas>
+                            </div>
+                            <br>
+                            <div class="row text-center" style="font-size:15px">
+                                <label class="col-md-4">Số đơn hàng</label>
+                                <label class="col-md-4">Tổng giá trị các đơn hàng</label>
+                                <label class="col-md-4">Còn nợ</label>
+                            </div>
+                            <div class="row text-center" style="font-size:20px">
+                                <label class="col-md-4" style="color:#439c07"><span class="number">@Model.numberOrder</span> lần</label>
+                                <label class="col-md-4"><span class="number">@Model.priceOrder</span> đồng</label>
+                                <label class="col-md-4" style="color:#ff3300"><span class="number">@Model.currentDebt</span> đồng</label>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <b>DANH SÁCH ĐƠN HÀNG</b>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <table id="mainTable" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Lô số</th>
+                                                <th>Ngày</th>
+                                                <th>Tổng tiền</th>
+                                                <th>Trạng thái</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ var i = 1; }
+                                            @foreach (var item in Model.lstTotal)
+                                            {
+                                                <tr>
+                                                    <td>@i</td>
+                                                    <td>
+                                                        <a href="#">@item.Order_ID</a>
+                                                    </td>
+                                                    <td>@item.Date_created.ToString("dd/MM/yyyy")</td>
+                                                    <td class="number">@item.Total_price</td>
+                                                    <td>
+                                                        @if (item.Status_ID == 1)
+                                                        {
+                                                            <span class="label label-info">Bản Nháp</span>
+                                                        }
+                                                        else if (item.Status_ID == 2)
+                                                        {
+                                                            <span class="label label-warning">Chưa xuất phiếu</span>
+                                                        }
+                                                        else if (item.Status_ID == 3)
+                                                        {
+                                                            <span class="label label-primary">Đã xuất phiếu</span>
+                                                        }
+                                                        else if (item.Status_ID == 4)
+                                                        {
+                                                            <span class="label label-primary">Kế toán đã xử lí</span>
+                                                        }
+                                                        else if (item.Status_ID == 5)
+                                                        {
+                                                            <span class="label label-primary">Đã xuất kho</span>
+                                                        }
+                                                        else if (item.Status_ID == 6)
+                                                        {
+                                                            <span class="label label-primary">Đang giao hàng</span>
+                                                        }
+
+                                                        else if (item.Status_ID == 7)
+                                                        {
+                                                            <span class="label label-success">Hoàn thành</span>
+                                                        }
+                                                        else if (item.Status_ID == 8)
+                                                        {
+                                                            <span class="label label-danger">Đã hủy</span>
+                                                        }
+                                                        else if (item.Status_ID == 9)
+                                                        {
+                                                            <span class="label label-danger">Từ Chối</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                i++;
+                                            }
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="mathang">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h2 class="text-center">
+                                    <strong>CÁC MẶT HÀNG MUA NHIỀU NHẤT</strong>
+                                </h2>
+                                <canvas id="doughnut-chart" width="640" height="360"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="chinhsua" style="padding-top: 32px;">
+                        <div class="row">
+                            <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+                            <form class="form form-vertical">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-4 text-center">
+                                            <div id="image-preview">
+                                                <label for="image-upload" id="image-label">Chọn hình ảnh</label>
+                                                <input type="file" name="image" id="image-upload" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <label>Đơn vị</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Customer_name" id="supplier_name">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>Tên viết tắt</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Acronym" type="text" id="acronym">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>Số điện thoại</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-phone"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Phone" type="text" id="phone">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>Địa chỉ</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-book"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Delivery_address" type="text" id="address">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>Địa chỉ giao hàng</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-book"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Export_invoice_address" type="text" id="deliver_address">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>Email</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Mail" type="text" id="supplier_email">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 10px;">
+                                                    <label>MST</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-bank"></i>
+                                                        </span>
+                                                        <input class="form-control" value="@Model.customer.Tax_code" type="text" id="mst">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a id="btnCreate" class="btn btn-primary btn-block pull-right" style="width: 100px; margin-right: 15px; margin-top: 20px;" disabled>
+                                    <b>Chỉnh sửa</b>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End content -->
+@section Index {
+    <script src="~/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
+    <!-- DataTables -->
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- Select2 -->
+    <script src="/Assets/bower_components/select2/dist/js/select2.full.min.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <!-- Chart JS -->
+    <script src="/Assets/dist/js/Chart.min.js"></script>
+    <!-- Auto Numberic-->
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <!--Page script-->
+    <script>
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: [@Html.Raw(String.Join(",", Model.dataLineChart.Select(x => "\"" + x.Key + "\"")))],
+                datasets: [{
+                    data: [@Html.Raw(String.Join(",", Model.dataLineChart.Select(x => "\"" + x.Value + "\"")))],
+                    label: "Doanh thu",
+                    backgroundColor: "#3cba9f",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: ''
+                }
+            }
+        });
+    </script>
+    <script>
+        new Chart(document.getElementById("doughnut-chart"), {
+            type: 'doughnut',
+            data: {
+                labels: [@Html.Raw(String.Join(",", Model.displayDonutChart.Select(x => "\"" + x.Key + "\"")))],
+                datasets: [{
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#f70404"],
+                    data: [@Html.Raw(String.Join(",", Model.displayDonutChart.Select(x => "\"" + x.Value + "\"")))]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
+
+            var table = $('#mainTable').dataTable({
+                "searching": false,
+                "info": false,
+                "lengthChange": false,
+                "language": {
+                    "zeroRecords": "Không tìm được giá trị phù hợp",
+                    "paginate": {
+                        "first": "Đầu",
+                        "last": "Cuối",
+                        "next": "Tiếp",
+                        "previous": "Sau"
+                    }
+                }
+            });
+
+            var label_selected = "<span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>";
+            var label_default = "<span class='glyphicon glyphicon-open' aria-hidden='true'></span>";
+            $.uploadPreview({
+                input_field: "#image-upload",
+                preview_box: "#image-preview",
+                label_field: "#image-label",
+                label_default: label_default,
+                label_selected: label_selected
+            });
+
+            $("#image-preview label").addClass("btn btn-success");
+            $("#image-preview label").empty();
+            $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#supplier_name, #phone, #address, #deliver_address, #supplier_email, #mst, #acronym").keyup(function () {
+                $("#btnCreate").removeAttr('disabled');
+            });
+            $("#image-upload").change(function () {
+                $("#btnCreate").removeAttr('disabled');
+            });
+            $("#btnCreate").click(function () {
+                swal({
+                    title: 'Lưu thông tin?',
+                    text: "Bạn có muốn lưu toàn bộ thông tin!",
+                    type: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Lưu',
+                    cancelButtonText: 'Trở lại'
+                }).then((result) => {
+                    if (result.value) {
+                        // Checking whether FormData is available in browser
+                        if (window.FormData !== undefined) {
+
+                            var fileUpload = $("#image-upload").get(0);
+                            var files = fileUpload.files;
+
+                            // Create FormData object
+                            var fileData = new FormData();
+
+                            // Looping over all files and add it to FormData object
+                            for (var i = 0; i < files.length; i++) {
+                                fileData.append(files[i].name, files[i]);
+                            }
+
+                            // Adding one more key to FormData object
+
+                            var supp_name = $("#supplier_name").val();
+                            var supp_phone = $("#phone").val();
+                            var supp_address = $("#address").val();
+                            var supp_d_address = $("#deliver_address").val();
+                            var supp_email = $("#supplier_email").val();
+                            var supp_mst = $("#mst").val();
+                            var acronym = $("#acronym").val();
+                            fileData.append('supplierName', supp_name);
+                            fileData.append('supplierPhone', supp_phone);
+                            fileData.append('address', supp_address);
+                            fileData.append('deliver_address', supp_d_address);
+                            fileData.append('acronym', acronym);
+                            fileData.append('email', supp_email);
+                            fileData.append('mst', supp_mst);
+                            fileData.append('customerID', @Model.customer.Customer_ID);
+                            if (isEmpty(supp_name)) {
+                                swal({
+                                    title: 'Tên nhà cung cấp không được bỏ trống',
+                                    type: 'warning'
+                                });
+                            } else if (!RegExp("^(01[2689]|09)[0-9]{8}$").test(supp_phone)) {
+                                swal({
+                                    title: 'Sai số điện thoại',
+                                    type: 'warning'
+                                });
+                            } else if (isEmpty(supp_address)) {
+                                swal({
+                                    title: 'Địa chỉ không được bỏ trống',
+                                    type: 'warning'
+                                });
+
+                            } else if (isEmpty(supp_d_address)) {
+                                swal({
+                                    title: 'Địa chỉ giao hàng không được bỏ trống',
+                                    type: 'warning'
+                                });
+                            } else if (!RegExp("^([0-9]{2})[0-9]{8}$").test(supp_mst)) {
+                                swal({
+                                    title: 'Sai mã số thuế',
+                                    type: 'warning'
+                                });
+                            } else {
+                                $.ajax({
+                                    url: '/QuanLy/DanhSachKhachHang/UpdateCustomer',
+                                    type: "POST",
+                                    contentType: false, // Not to set any content header
+                                    processData: false, // Not to process data
+                                    data: fileData,
+                                    success: function (result) {
+                                        if (result == "-1") {
+                                            swal(
+                                                 'Lỗi',
+                                                 'Có lỗi xảy ra khi tạo',
+                                                 'warning'
+                                            );
+                                        } else if (result == "-2") {
+                                            swal(
+                                                 'Lỗi',
+                                                 'Chưa chọn ảnh',
+                                                 'warning'
+                                            );
+                                        }else if (result == "-3") {
+                                            swal(
+                                                 'Lỗi',
+                                                 'Trùng email',
+                                                 'warning'
+                                            );
+                                        } else {
+                                            swal(
+                                                 'Thành công',
+                                                 'Bạn đã chỉnh sửa thành công.',
+                                                 'success'
+                                            ).then(function () {
+                                                window.location.reload();
+                                            });;
+                                        }
+                                    },
+                                    error: function (err) {
+                                        swal({
+                                            title: err,
+                                            type: 'warning',
+                                        });
+                                    }
+                                });
+                            }
+                        } else {
+                            swal({
+                                title: "FormData is not supported.",
+                                type: 'warning',
+                            });
+                        }
+
+                    }
+                });
+            });
+        });
+
+        function isEmpty(value) {
+            return (value == null || value.length === 0);
+        }
+        function validateEmail(email) {
+            var re = /^\w+@@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            return re.test(email);
+        }
+    </script>
+}

@@ -99,7 +99,7 @@
                                 <i class="fa fa-save text-grey"></i>
                                 <span><strong>Lưu</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
                                 <i class="fa fa-close text-grey"></i>
                                 <span><strong>Hủy</strong></span>
                             </a>
@@ -426,7 +426,7 @@
                     $("#btnThanhToan").click(function () {
                         $.ajax({
                             type: 'POST',
-                            url: 'InsertData',
+                            url: '/PhanPhoi/DanhSachCongNoCungCap/InsertData',
                             data: {
                                 supplierId: $("#supplierId_" + i).val(),
                                 nhapTrongKy: $("#nhapTrongKyNew_" + i).val().replace(/,/g, ''),
@@ -498,25 +498,47 @@
                 $("#conNoNew_" + i).text(conNo);
                 $("#conNoNew_" + i).val(conNo);
             };
+           
             $("#nameSearch").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/DanhSachCongNoCungCap/autoComplete',
-                        minLength: 2,
-                        dataType: "json",
-                        data: { searchValue: $("#nameSearch").val() },
-                        success: function (data) {
-                            response($.map(data, function (item) {
-                                return { label: item.key, value: item.key }
-                            }))
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error");
-                        }
-                    });
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length >= 2) {
+                        $.ajax({
+                            url: '/PhanPhoi/DanhSachCongNoCungCap/autoComplete',
+                            data: {
+                                searchValue: $("#nameSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.key,
+                                        value: m.key,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#nameSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#nameSearch").val("");
+                    }
+                },
+                change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#nameSearch").val(ui.item.value);
+                    } else {
+                        $("#nameSearch").val("");
+                        $("#nameSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#nameSearch").val(ui.item.value);
+                    event.preventDefault();
                 }
-            });
+            }).autocomplete("widget").addClass("fixed-height");
             $("#btnSearch").click(function () {
                 //event.preventDefault();
                 $.ajax({

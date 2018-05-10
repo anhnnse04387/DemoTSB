@@ -806,5 +806,12 @@ namespace Models.DAO
             }
             return result;
         }
+
+        public int insertUser(User u)
+        {
+            context.Users.Add(u);
+            context.SaveChanges();
+            return u.User_ID;
+        }
     }
 }

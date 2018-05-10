@@ -162,9 +162,9 @@
                                                                 <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
                                                                 <select class="form-control" name="cus_rank">
                                                                     <option value="0">Tất cả</option>
-                                                                    <option value="Khách mới">Khách mới</option>
-                                                                    <option value="Khách quen">Khách quen</option>
-                                                                    <option value="Khách Vip">Khách VIP</option>
+                                                                    <option value="Khách mới ">Khách mới</option>
+                                                                    <option value="Khách quen ">Khách quen</option>
+                                                                    <option value="Khách V">Khách VIP</option>
                                                                 </select>
                                                             </div>
                                                         </td>
@@ -211,11 +211,11 @@
                                                         </td>
                                                         <td>@item.Delivery_address</td>
                                                         <td>
-                                                            @if (item.Rank == "Khách mới")
+                                                            @if (item.Rank.Contains("Khách mới"))
                                                             {
                                                                 <span class="label label-primary">KHÁCH MỚI</span>
                                                             }
-                                                            else if(item.Rank == "Khách Vip")
+                                                            else if(item.Rank.Contains("Khách Vip") || item.Rank.Contains("Khách VIP"))
                                                             {
                                                                 <span class="label label-danger">KHÁCH VIP</span>
                                                             }

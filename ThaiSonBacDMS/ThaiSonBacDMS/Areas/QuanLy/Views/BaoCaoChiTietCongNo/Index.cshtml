@@ -1,0 +1,379 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietNoCungCapModel
+@section IndexStyle{
+    <style>
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
+
+            #example1 thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+        tr td:nth-child(3) {
+            text-align: left;
+        }
+
+        tr td:nth-child(5) {
+            text-align: right;
+        }
+
+        tfoot {
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #544d61;
+        }
+
+        .noBorder {
+            border-right-style: hidden !important;
+        }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+    </style>
+
+}
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home")">
+                <i class="fa fa-dashboard"></i> Trang Chủ
+            </a>
+        </li>
+        <li>
+            <a href=""> Báo Cáo</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "BaoCaoCongNoCungCap")"> Công Nợ</a>
+        </li>
+        <li>
+            <a href="">
+                Chi tiết công nợ cung cấp
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                    <div class="col-md-12">
+                        <h4>
+                            <b>Chi Tiết Công Nợ @Model.supp.Supplier_name</b>
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-header with-border text-center menu-button">
+
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                            <i class="fa fa-plus-square text-gray"></i>
+                            <span><strong>Tạo Mới</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                            <i class="fa fa-edit text-grey"></i>
+                            <span><strong>Sửa</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                            <i class="fa fa-save text-grey"></i>
+                            <span><strong>Lưu</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <i class="fa fa-close text-grey"></i>
+                            <span><strong>Hủy</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                            <i class="fa fa-check-circle text-grey"></i>
+                            <span><strong>Chốt đơn</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                            <i class="fa fa-exchange text-grey"></i>
+                            <span><strong>Đổi trả</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <i class="fa fa-eye text-grey"></i>
+                            <span><strong>Xem Trước</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <i class="fa fa-print text-blue"></i>
+                            <span><strong>In</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <i class="fa fa-download text-grey"></i>
+                            <span><strong>Import Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <i class="fa fa-file-excel-o text-green"></i>
+                            <span><strong>Xuất Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn construct" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <i class="fa fa-file-pdf-o text-red"></i>
+                            <span><strong>Xuất PDF</strong></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="box">
+                    @using (Html.BeginForm("Index", "BaoCaoChiTietCongNo", new { @supplierID = Model.supp.Supplier_ID }, FormMethod.Post))
+                    {
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-offset-2" style="display: inline-flex;padding-top: 20px">
+                                    <label style="padding-right: 32px;margin-left: 15px; padding-top: 7px;padding-left:17px">Năm: </label>
+                                    <div class="input-group week-select col-md-3 no-padding">
+                                        @Html.DropDownListFor(model => model.selectedYear, @Model.listShowYear, new { @class = "form-control select2", @style = "width: 100px", @id = "selectedYear" })
+                                    </div>
+                                    <label style="padding-right: 10px; padding-left: 10px; padding-top: 7px;">Tháng: </label>
+                                    <div class="input-group week-select col-md-3 no-padding">
+                                        @Html.DropDownListFor(model => model.selectedMonth,
+                                                   new List<SelectListItem> {
+                                                                               new SelectListItem { Value = "-1" , Text = "Tất cả" },
+                                                                               new SelectListItem { Value = "1" , Text = "1" },
+                                                                               new SelectListItem { Value = "2" , Text = "2" },
+                                                                               new SelectListItem { Value = "3" , Text = "3" },
+                                                                               new SelectListItem { Value = "4" , Text = "4" },
+                                                                               new SelectListItem { Value = "5" , Text = "5" },
+                                                                               new SelectListItem { Value = "6" , Text = "6" },
+                                                                               new SelectListItem { Value = "7" , Text = "7" },
+                                                                               new SelectListItem { Value = "8" , Text = "8" },
+                                                                               new SelectListItem { Value = "9" , Text = "9" },
+                                                                               new SelectListItem { Value = "10" , Text = "10" },
+                                                                               new SelectListItem { Value = "11" , Text = "11" },
+                                                                               new SelectListItem { Value = "12" , Text = "12" },
+                                                     },
+                                                   new { @class = "form-control select2", @style = "width: 100px", @id = "selectedMonth" })
+                                    </div>
+                                    <label style="margin-left: 5px; padding-top: 7px; width:100px;">Từ ngày: </label>
+                                    @Html.DropDownListFor(model => model.selectedDay,
+                                                        new List<SelectListItem> { },
+                                                        new { @class = "form-control select2", @style = "width: 150px", @id = "selectedWeek" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Tìm kiếm theo</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+
+                                        <div class="box-body">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 80px">Mã hàng</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                                @Html.TextBoxFor(model => model.productCode, new
+                                                           {
+                                                               @class = "form-control",
+                                                               @placeholder = "Mã hàng...",
+                                                               @id = "productName",
+                                                               @oninput = "this.value=this.value.replace(/[^0-9]/g,'');"
+                                                           })
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 80px">Danh mục</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-sliders"></i></span>
+                                                                @Html.DropDownListFor(model => model.categoryName, @Model.lstCategorySearch, "Tất cả", new { @class = "form-control select2", @id = "cateSearch" })
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Số lượng</td>
+                                                        <td>
+
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Từ</span>
+                                                                    @Html.TextBoxFor(model => model.numberSoldFrom, new { @class = "form-control", @id = "numberFrom" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Đến</span>
+                                                                    @Html.TextBoxFor(model => model.numberSoldTo, new { @class = "form-control", @id = "numberTo" })
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 80px">Tổng tiền</td>
+                                                        <td>
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Từ</span>
+                                                                    @Html.TextBoxFor(model => model.priceFrom, new { @class = "form-control", @id = "priceFrom" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Đến</span>
+                                                                    @Html.TextBoxFor(model => model.priceTo, new { @class = "form-control", @id = "priceTo" })
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="box-footer clearfix">
+                                            <div class="pagination pagination-sm no-margin pull-right">
+                                                <button type="submit" class="btn btn-block btn-primary" id="searchBtn">Tìm kiếm <i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                        <p />
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="box-body">
+                    <div class="row">
+                        <fieldset class="col-sm-12">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>MÃ HÀNG</th>
+                                        <th>DANH MỤC</th>
+                                        <th>SỐ LƯỢNG</th>
+                                        <th>TỔNG TIỀN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.data)
+                                    {
+                                        var c = 1;
+                                        <tr style="background-color:yellow">
+                                            <td class="noBorder"></td>
+                                            <td class="noBorder" style="text-align:center">@item.Key</td>
+                                            <td class="noBorder"></td>
+                                            <td class="noBorder"></td>
+                                            <td></td>
+                                        </tr>
+                                        foreach (var i in item.Value)
+                                        {
+                                            <tr>
+                                                <td style="text-align: left">@c</td>
+                                                <td style="border-right: none;text-align:left"><a href="#"> @i.productName</a></td>
+                                                <td>@i.categoryName</td>
+                                                <td style="text-align:right" class="number">@i.totalQuantity</td>
+                                                <td style="text-align:right" class="number">@i.totalPrice</td>
+                                            </tr>
+                                            c++;
+                                        }
+                                        <tr style="background-color:#00b3b3;color:white;font-weight:bold">
+                                            <td class="noBorder"></td>
+                                            <td class="noBorder" style="text-align:center">Tổng</td>
+                                            <td></td>
+                                            <td style="text-align:right" class="number">@item.Value.Sum(x => x.totalQuantity)</td>
+                                            <td style="text-align:right" class="number">@item.Value.Sum(x => x.totalPrice)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="noBorder"></td>
+                                        <td class="noBorder" style="text-align:center">Tổng Cộng</td>
+                                        <td></td>
+                                        <td style="text-align:right" class="number">@Model.data.Sum(x => x.Value.Sum(s => s.totalQuantity))</td>
+                                        <td style="text-align:right" class="number">@Model.data.Sum(x => x.Value.Sum(s => s.totalPrice))</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <!--end main box-->
+        </div>
+        <div id="errorMgs" hidden>@Model.errorString</div>
+    </div>
+    <!--end main-col-->
+</section>
+
+@section Index{
+    <!-- momentJS -->
+    <script src="~/Assets/bower_components/moment/moment.js"></script>
+    <!-- Auto Numberic-->
+    <script src="/Assets/dist/js/autoNumeric.js"></script>
+    <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <!-- page JS-->
+    <script src="~/Assets/dist/js/pages/chiTietBaoCaoDoanhThu.js"></script>
+    <script>
+        function isEmpty(str) {
+            return (!str || 0 === str.length);
+        }
+        var x = $('#errorMgs').html();
+        if (!isEmpty(x)) {
+            swal({
+                title: x,
+                type: 'warning'
+            });
+        }
+
+
+        $(document).ready(function () {
+            $("#numberFrom").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#numberTo").autoNumeric("init", { minValue: "1", maxValue: "9999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#priceFrom").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#priceTo").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#doanhThuFrom").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+            $("#doanhThuTo").autoNumeric('init', { minValue: "1", maxValue: "999999999", digitGroupSeparator: ',', mDec: '0' });
+        });
+        $("#productName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetSearchValue","SanPhamDangKinhDoanh")',
+                    minLength: 2,
+                    dataType: "json",
+                    data: { searchValue: $("#productName").val() },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.pCodeSearch, value: item.pCodeSearch }
+                        }))
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            }
+        });
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+    </script>
+}
+
+
+
+
+

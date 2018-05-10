@@ -72,7 +72,7 @@
             <div class="box">
                 <div class="box-header with-border text-center menu-button">
 
-                    <a class="btn btn-app custom-btn disabled" target="_blank" href="phanphoi_cungcap_tao-nha-cung-cap.html" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                    <a class="btn btn-app custom-btn disabled" target="_blank" href="#" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
                         <i class="fa fa-plus-square text-grey"></i>
                         <span>
                             <strong>Trang mới</strong>
@@ -327,7 +327,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/DanhSachKhachHang/UploadFiles',
+                                    url: '/PhanPhoi/DanhSachKhachHang/UploadFiles',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data
@@ -345,13 +345,19 @@
                                                  'Chưa chọn ảnh',
                                                  'warning'
                                             );
+                                        } else if (result == "-3") {
+                                            swal(
+                                                 'Lỗi',
+                                                 'Trùng email',
+                                                 'warning'
+                                            );
                                         } else {
                                             swal(
                                                  'Thành công',
                                                  'Bạn đã thêm khách hàng thành công.',
                                                  'success'
                                             ).then(function () {
-                                                window.location.href = '/ChiTiet?customerID=' + result;
+                                                window.location.href = '/PhanPhoi/DanhSachKhachHang/ChiTiet?customerID=' + result;
                                             });;
                                         }   
                                     },

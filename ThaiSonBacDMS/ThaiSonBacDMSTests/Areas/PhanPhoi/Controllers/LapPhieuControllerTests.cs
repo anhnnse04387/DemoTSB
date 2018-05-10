@@ -191,6 +191,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
         }
 
         [TestMethod]
+        public void TestCancelOrderFailed()
+        {
+            var controller = new LapPhieuController();
+            var result = controller.CancelOrder("", "") as JsonResult;
+            IDictionary<string, object> data =
+            (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
+            Assert.AreEqual(true, data["error"]);
+        }
+
+        [TestMethod]
         public void TestSaveOrderForRedirect()
         {
             var controller = new LapPhieuController();
@@ -282,6 +292,21 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
             Assert.AreEqual(true, data["success"]);
+        }
+
+        [TestMethod]
+        public void TestChangedCustomerForViewData()
+        {
+            var controller = new LapPhieuController();
+            var result = controller.ChangeCustomer(1) as JsonResult;
+            if (result != null)
+            {
+                IDictionary<string, object> data =
+            (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
+                Assert.AreEqual("108 Nguyễn Trãi, Thanh Xuân Hà Nội", data["deliveryAddress"]);
+                Assert.AreEqual("23476889", data["taxCode"]);
+                Assert.AreEqual("108 Nguyễn Hoàng, Mỹ Đình 2 Từ Liêm Hà Nội", data["invoiceAddress"]);
+            }
         }
     }
 }

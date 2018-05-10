@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+@model ThaiSonBacDMS.Areas.QuanLy.Models.OrderTimelineModel
+@section IndexStyle{
+    <!-- Timeline -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+    <style>
+        .vis-item.completed {
+            color: white;
+            background-color: green;
+        }
+    </style>
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li>Đơn hàng</li>
+        <li><a href="@Url.Action("Index", "OrderTimeLine")"> Lịch giao hàng</a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row" style="margin-left:0px; margin-top:10px;">
+                    <div class="col-md-12">
+                        <h4>
+                            <b style="padding-left: 10px;">LỊCH GIAO HÀNG</b>
+                        </h4>
+                    </div>
+                </div>
+                <!--\ box header -->
+                <div class="box-body">
+                    <div class="col-md-12">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Tìm kiếm theo</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-left: 0px;">Ngày suất</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        @Html.TextBoxFor(model => model.fromDate, new { @class = "form-control datepicker", @id = "fromDate" })
+                                                    </div>
+                                                </td>
+                                                <td>Lô Số</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                        @Html.TextBoxFor(model => model.orderName, new { @class = "form-control" })
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="box-footer clearfix">
+                                    <div class="pagination pagination-sm no-margin pull-right">
+                                        <button id="btnSumit" type="submit" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                        <div style="margin-top: 16px;">
+                            <div id="timeline"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End content -->
+@section Index {
+    <!-- jQuery 3 -->
+    <script src="/Assets/bower_components/moment/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/vi.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <!-- Date picker-->
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+        // DOM element where the Timeline will be attached
+        var timeline = document.getElementById('timeline');
+
+        var groups = new vis.DataSet([
+          @foreach(var item in Model.ListOpInfo)
+            {
+                @: { id: @item.indexOf, content: 'Lô số @item.orderName' },
+            }
+          @foreach(var item in Model.ListPI_Info)
+            {
+                @: { id: @item.indexOf, content: 'PI no @item.orderName' },
+            }
+        ]);
+
+        // create a dataset with items
+        var items = new vis.DataSet([
+            @foreach (var item in Model.ListOpInfo)
+            {
+                @:  { group: @item.indexOf, className: '@item.status', content: 'Số lượng: @item.quantity', start: new Date('@item.dateCompleted'),
+                @:    title: '<small>Xuất ngày: @item.dateCompleted.Value.ToString("dd/MM/yyyy")</small>'  },
+            }
+            @foreach (var item in Model.ListPI_Info)
+            {
+                @:  { group: @item.indexOf, className: '@item.status', content: 'Số lượng: @item.quantity', start: new Date('@item.dateCompleted'),
+                @:    title: '<small>Nhập về: @item.dateCompleted.Value.ToString("dd/MM/yyyy")</small>'  },
+            }
+        ]);
+
+        // Configuration for the Timeline
+        var options = {
+            margin: {
+                item: 10, // minimal margin between items
+                axis: 5   // minimal margin between items and the axis
+            },
+            moveable: true,
+            locales: {
+                // create a new locale (text strings should be replaced with localized strings)
+                vi_VN: {
+                    current: 'current',
+                    time: 'time',
+                }
+            },
+            locale: 'vi_VN'
+        };
+
+        // Create a Timeline
+        var timeline = new vis.Timeline(timeline, items, groups, options);
+    </script>
+
+}
+

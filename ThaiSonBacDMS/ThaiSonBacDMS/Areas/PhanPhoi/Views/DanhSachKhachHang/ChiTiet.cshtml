@@ -476,7 +476,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#supplier_name, #phone, #address, #deliver_address, #supplier_email, #mst").keyup(function () {
+            $("#supplier_name, #phone, #address, #deliver_address, #supplier_email, #mst, #acronym").keyup(function () {
                 $("#btnCreate").removeAttr('disabled');
             });
             $("#image-upload").change(function () {
@@ -516,6 +516,7 @@
                             var supp_d_address = $("#deliver_address").val();
                             var supp_email = $("#supplier_email").val();
                             var supp_mst = $("#mst").val();
+                            var acronym = $("#acronym").val();
                             fileData.append('supplierName', supp_name);
                             fileData.append('supplierPhone', supp_phone);
                             fileData.append('address', supp_address);
@@ -552,7 +553,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/DanhSachKhachHang/UpdateCustomer',
+                                    url: '/PhanPhoi/DanhSachKhachHang/UpdateCustomer',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data
@@ -568,6 +569,12 @@
                                             swal(
                                                  'Lỗi',
                                                  'Chưa chọn ảnh',
+                                                 'warning'
+                                            );
+                                        }else if (result == "-3") {
+                                            swal(
+                                                 'Lỗi',
+                                                 'Trùng email',
                                                  'warning'
                                             );
                                         } else {

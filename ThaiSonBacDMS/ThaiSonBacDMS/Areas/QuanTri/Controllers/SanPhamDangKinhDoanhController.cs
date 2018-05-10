@@ -156,6 +156,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             }
             return View(model);
         }
+        [ValidateInput(false)]
         public JsonResult GetSearchValue(string searchValue)
         {
             var daoProduct = new ProductDAO();

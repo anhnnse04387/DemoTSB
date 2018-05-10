@@ -34,7 +34,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             model.listCongNo = new List<CongNoKhachHang>();
             foreach (var x in new CustomerDAO().getTop10CustomerDebt())
             {
-                model.listCongNo.Add(new CongNoKhachHang(x.Customer_name, x.Delivery_address, (decimal)x.Current_debt));
+                model.listCongNo.Add(new CongNoKhachHang(x.Customer_name, x.Delivery_address, (decimal)x.Current_debt, x.Customer_ID));
             }
             return View(model);
         }
@@ -92,9 +92,9 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 lastDate = firstDate.AddDays(6);
             }
             model.dataCongNo = new OrderItemDAO().getDataCongNoKhachHang(firstDate, lastDate, model.selectedCategory);
-            model.totalPrice = model.dataCongNo.Sum(x=>x.Value.Sum(s=>s.totalPrice));
-            
-            
+            model.totalPrice = model.dataCongNo.Sum(x => x.Value.Sum(s => s.totalPrice));
+
+
             return Json(model, JsonRequestBehavior.AllowGet);
         }
     }

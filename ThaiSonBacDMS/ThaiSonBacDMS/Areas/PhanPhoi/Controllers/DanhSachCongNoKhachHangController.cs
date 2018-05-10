@@ -31,7 +31,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 return RedirectToAction("Index");
             }
         }
-        [HttpPost]
+        [ValidateInput(false)]
         public JsonResult autoComplete(string searchValue)
         {
             Customer_transactionDAO dao = new Customer_transactionDAO();

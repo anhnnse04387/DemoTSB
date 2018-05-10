@@ -59,9 +59,9 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
-        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-        <li>Danh sách nhà cung cấp</li>
-        <li><a href="phanphoi_cungcap_tao-nha-cung-cap.html">Thêm nhà cung cấp</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
+        <li><a href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")">Thêm nhà cung cấp</a></li>
     </ol>
 </section>
 
@@ -72,7 +72,7 @@
             <div class="box">
                 <div class="box-header with-border text-center menu-button">
 
-                    <a class="btn btn-app custom-btn disabled" target="_blank" href="phanphoi_cungcap_tao-nha-cung-cap.html" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
+                    <a class="btn btn-app custom-btn disabled" target="_blank" href="#" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
                         <i class="fa fa-plus-square text-grey"></i>
                         <span>
                             <strong>Trang mới</strong>
@@ -311,7 +311,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/DanhSachNhaCungCap/UploadFiles',
+                                    url: '/PhanPhoi/DanhSachNhaCungCap/UploadFiles',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data

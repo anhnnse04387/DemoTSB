@@ -11,7 +11,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
     public class BaoCaoDoanhThuController : QuanLyBaseController
     {
-        // GET: PhanPhoi/BaoCaoDoanhThu
+        // GET: QuanLy/BaoCaoDoanhThu
         [HttpGet]
         public ActionResult Index()
         {
@@ -42,7 +42,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             DateTime selectedDate = new DateTime();
             DateTime firstDate = new DateTime();
             DateTime lastDate = new DateTime();
-            
+
 
             if (model.selectedDay == "-1" && model.selectedMonth != "-1")
             {
@@ -63,13 +63,13 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 
 
             }
-            else if(model.selectedMonth == "-1")
+            else if (model.selectedMonth == "-1")
             {
                 try
                 {
                     selectYear = int.Parse(model.selectedYear);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e);
                     return RedirectToAction("Index");
@@ -85,7 +85,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                 {
                     selectedDate = DateTime.Parse(model.selectedDay);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e);
                     return RedirectToAction("Index");
@@ -107,15 +107,15 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
             {
                 DataLineChart data = new DataLineChart();
                 data.displayTime = item.Key.ToString("dd/MM");
-                data.nhapVon = item.Value.ElementAt(0);
-                data.xuatVon = item.Value.ElementAt(1);
-                data.banChoKhach = item.Value.ElementAt(2);
+                data.nhapVon = Math.Round(item.Value.ElementAt(0) / 100000000, 2);
+                data.xuatVon = Math.Round(item.Value.ElementAt(1) / 100000000, 2);
+                data.banChoKhach = Math.Round(item.Value.ElementAt(2) / 100000000, 2);
                 listDataLineChart.Add(data);
             }
             return listDataLineChart;
         }
 
-        private List<DataPieChart> returnPieChartData(DateTime firstDate, DateTime lastDate) 
+        private List<DataPieChart> returnPieChartData(DateTime firstDate, DateTime lastDate)
         {
             List<DataPieChart> dataPieChart = new List<DataPieChart>();
             foreach (var item in new OrderItemDAO().getPieChartData(firstDate, lastDate))

@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.DanhSachCungCapModel
+@model ThaiSonBacDMS.Areas.PhanPhoi.Models.DanhSachConNoCungCapModel
 
 @section IndexStyle{
     <!-- DataTables -->
@@ -50,7 +50,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
-        <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
         <li><a href="@Url.Action("Index", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
     </ol>
 </section>
@@ -179,7 +179,7 @@
                                                     <th style="width: 15%">Địa chỉ</th>
                                                     <th style="width: 5%">Mã số thuế</th>
                                                     <th style="width: 5%">Ngày tạo</th>
-                                                    <th style="width: 5%">Thay đổi</th>
+                                                    <th style="width: 5%">Chi Tiết</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -195,8 +195,8 @@
                                                         <td class="text-left">@item.Tax_code</td>
                                                         <td class="text-center">@item.Date_Created.Value.ToString("dd/MM/yyyy")</td>
                                                         <td style="text-align: center">
-                                                            <a class="btn btn-app custom-btn edit-btn" href="@Url.Action("ChiTiet", "DanhSachNhaCungCap", new {  supllierID=item.Supplier_ID } )" data-toggle="tooltip" title="Sửa" data-placement="bottom">
-                                                                <i class="fa fa-edit text-blue"></i>
+                                                            <a class="btn btn-app custom-btn edit-btn" href="@Url.Action("ChiTiet", "DanhSachNhaCungCap", new {  supllierID=item.Supplier_ID } )" data-toggle="tooltip" title="Xem" data-placement="bottom">
+                                                                <i class="fa fa-eye text-blue"></i>
                                                             </a>
                                                         </td>
                                                     </tr>

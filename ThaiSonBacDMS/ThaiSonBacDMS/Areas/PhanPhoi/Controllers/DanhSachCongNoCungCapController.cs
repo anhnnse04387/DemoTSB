@@ -42,7 +42,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 return Json(new { success = false, JsonRequestBehavior.AllowGet });
             }
         }
-        [HttpPost]
+        [ValidateInput(false)]
         public JsonResult autoComplete(string searchValue)
         {
             Supplier_transactionDAO dao = new Supplier_transactionDAO();

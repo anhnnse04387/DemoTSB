@@ -191,36 +191,37 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             try
             {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+
+                var supplierName = Request.Form.GetValues("supplierName")[0];
+                var supplierPhone = Request.Form.GetValues("supplierPhone")[0];
+                var address = Request.Form.GetValues("address")[0];
+                var email = Request.Form.GetValues("email")[0];
+                var mst = Request.Form.GetValues("mst")[0];
+                var supplierID = Request.Form.GetValues("supplierID")[0];
+                Regex phoneRegex = new Regex(CommonConstants.PHONE_REGEX, RegexOptions.IgnoreCase);
+                Regex mstRegex = new Regex(CommonConstants.MST_REGEX, RegexOptions.IgnoreCase);
+                MailAddress m = new MailAddress(email);
+                if (string.IsNullOrEmpty(supplierName))
+                {
+                    return Json("-1");
+                }
+                else if (!phoneRegex.Match(supplierPhone).Success)
+                {
+                    return Json("-1");
+                }
+                else if (string.IsNullOrEmpty(address))
+                {
+                    return Json("-1");
+                }
+                else if (!mstRegex.Match(mst).Success)
+                {
+                    return Json("-1");
+                }
                 // Checking no of files injected in Request object  
                 if (Request.Files.Count > 0)
                 {
-                    var session = (UserSession)Session[CommonConstants.USER_SESSION];
-
-                    var supplierName = Request.Form.GetValues("supplierName")[0];
-                    var supplierPhone = Request.Form.GetValues("supplierPhone")[0];
-                    var address = Request.Form.GetValues("address")[0];
-                    var email = Request.Form.GetValues("email")[0];
-                    var mst = Request.Form.GetValues("mst")[0];
-                    var supplierID = Request.Form.GetValues("supplierID")[0];
-                    Regex phoneRegex = new Regex(CommonConstants.PHONE_REGEX, RegexOptions.IgnoreCase);
-                    Regex mstRegex = new Regex(CommonConstants.MST_REGEX, RegexOptions.IgnoreCase);
-                    MailAddress m = new MailAddress(email);
-                    if (string.IsNullOrEmpty(supplierName))
-                    {
-                        return Json("-1");
-                    }
-                    else if (!phoneRegex.Match(supplierPhone).Success)
-                    {
-                        return Json("-1");
-                    }
-                    else if (string.IsNullOrEmpty(address))
-                    {
-                        return Json("-1");
-                    }
-                    else if (!mstRegex.Match(mst).Success)
-                    {
-                        return Json("-1");
-                    }
+                    
 
                     int? lastIDMedia = null;
                     //  Get all files from Request object  
@@ -260,7 +261,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 else
                 {
-                    return Json("-2");
+                    var lastIDMedia = new SupplierDAO().getSupplierById(int.Parse(supplierID)).Media_ID;
+                    bool supID = new SupplierDAO().editSupplier(supplierName, lastIDMedia, address, supplierPhone, email, mst, int.Parse(supplierID));
+                    if (!supID)
+                    {
+                        return Json("-1");
+                    }
+
+                    return Json(supID);
                 }
             }
             catch (Exception e)

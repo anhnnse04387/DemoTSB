@@ -6,6 +6,12 @@
 }
 
 <style>
+    .ui-autocomplete {
+        max-height: 300px;
+        overflow-y: auto; /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index: 1000 !important;
+    }
     #example1 {
         background-color: rgb(240, 240, 240);
     }
@@ -69,11 +75,10 @@
     }
 
     .smallBtn {
-        padding: 10px 5px;
-        min-width: 60px;
-        height: 40px;
+        padding: 0px 6px;
+        min-width: 18px;
+        height: 25px;
     }
-
     label {
         display: inline-block;
         max-width: 100%;
@@ -116,7 +121,7 @@
                                 <i class="fa fa-save text-grey"></i>
                                 <span><strong>Lưu</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
                                 <i class="fa fa-close text-grey"></i>
                                 <span><strong>Hủy</strong></span>
                             </a>
@@ -171,7 +176,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-sliders"></i>
                                             </span>
-                                            @Html.DropDownListFor(model => model.categorySearch, Model.lstCategorySearch, "Tất cả các danh mục", new { @class = "form-control select2", @id = "categorySearch" })
+                                            @Html.DropDownListFor(model => model.categorySearch, Model.lstCategorySearch, "Tất cả", new { @class = "form-control select2", @id = "categorySearch" })
                                         </div>
                                     </td>
                                 </tr>
@@ -230,18 +235,22 @@
                                             int j = 0;
                                             foreach (var itemCate in Model.map)
                                             {
-                                                <tr style="background-color: yellow">
-                                                    <td></td>
-                                                    <td style="border-right:none" class="key text-center">@itemCate.Key</td>
-                                                    <td style="border-left: none"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                <tr style="background-color: yellow" class="total">
+                                                    <td style="border-right:none"></td>
+                                                    <td style="border-right:none;border-left:none" class="key text-center">@itemCate.Key</td>
+                                                    <td style="border-right:none;border-left:none"></td>
+                                                    <td style="border-right:none;border-left:none"></td>
+                                                    <td style="border-right:none;border-left:none"></td>
+                                                    <td style="border-right:none;border-left:none;" class="text-right">
+                                                        <a id="btn_row_@j" onclick="showRow('@j')" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Hiển thị" data-placement="bottom">
+                                                            <i id="arrow_@j" class="fa fa-angle-left pull-right"></i>
+                                                        </a>
+                                                    </td>
 
                                                 </tr>
                                                 foreach (var items in itemCate.Value.ToList())
                                                 {
-                                                    <tr>
+                                                    <tr class="rowHide_@j">
                                                         <td class="text-center index">@i</td>
                                                         <td style="border-right: none;text-align: left">@Html.ActionLink(@items.productName, "Index", "ChiTietSanPham", new { @product_Id = @items.productId }, null)</td>
                                                         <td style="border-left: none !important;text-align: left;width:3%">@Html.ActionLink(@items.productParameter, "Index", "ChiTietSanPham", new { @product_Id = @items.productId }, null)</td>
@@ -404,6 +413,17 @@
         <script src="/Assets/dist/js/autoNumeric.js"></script>
         <script src="/Assets/dist/js/autoNumeric.min.js"></script>
         <script>
+
+            function showRow(i) {
+                $(".rowHide_" + i).toggle();
+                if ($("#arrow_" + i).hasClass("fa fa-angle-left pull-right")) {
+                    $("#arrow_" + i).removeClass("fa fa-angle-left pull-right");
+                    $("#arrow_" + i).addClass("fa fa-angle-down pull-right")
+                } else {
+                    $("#arrow_" + i).removeClass("fa fa-angle-down pull-right");
+                    $("#arrow_" + i).addClass("fa fa-angle-left pull-right")
+                }
+            }
             function setData() {
                 var priceFrom = $('#fromSearch').val();
                 var priceTo = $('#toSearch').val();
@@ -423,7 +443,9 @@
             }
             $(document).ready(function () {
 
-              
+                for (var i = 0; i < $(".total").length; i++) {
+                    $(".rowHide_" + i).hide();
+                }
 
                 setData();
 
@@ -479,23 +501,65 @@
             }
             $("#pCodeSearch").autocomplete({
                 source: function (request, response) {
-                    $.ajax({
-                        url: '@Url.Action("GetSearchValue", "TonKho")',
-                        minLength: 2,
-                        dataType: "json",
-                        data: { searchValue: $("#pCodeSearch").val() },
-                        success: function (data) {
-                            response($.map(data, function (item) {
-                                return { label: item.pCodeSearch, value: item.pCodeSearch }
-                            }))
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error");
-                        }
-                    });
+                    if (request.term.length > 2) {
+                        $.ajax({
+                            url: '@Url.Action("GetSearchValue", "TonKho")',
+                            dataType: "json",
+                            data: { searchValue: $("#pCodeSearch").val() },
+                            success: function (data) {
+                                response($.map(data, function (item) {
+                                    return { label: item.pCodeSearch, value: item.pCodeSearch }
+                                }))
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Error");
+                            }
+                        });
+                    } else {
+                        $(this).val("");
+                    }
                 }
             });
-
+            $("#pCodeSearch").autocomplete({
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length > 2) {
+                        $.ajax({
+                            url: '/PhanPhoi/TonKho/GetSearchValue',
+                            data: {
+                                searchValue: $("#pCodeSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.key,
+                                        value: m.key,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#pCodeSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#pCodeSearch").val("");
+                    }
+                },
+                 change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#pCodeSearch").val(ui.item.value);
+                    } else {
+                        $("#pCodeSearch").val("");
+                        $("#pCodeSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#pCodeSearch").val(ui.item.value);
+                    event.preventDefault();
+                }
+            }).autocomplete("widget").addClass("fixed-height");
             $("#btnSearch").click(function () {
                 //event.preventDefault();
                 var data = {

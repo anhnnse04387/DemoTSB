@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
 <style>
@@ -70,7 +70,7 @@
     <section class="content-header">
         <ol class="breadcrumb">
             <li>
-                <a href="phanphoi_index.html">
+                <a href="@Url.Action("Index", "Home")">
                     <i class="fa fa-dashboard"></i> Trang Chủ
                 </a>
             </li>
@@ -394,25 +394,47 @@
                 init();
             });
 
+         
             $("#customerSearch").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/DanhSachCongNoKhachHang/autoComplete',
-                        minLength: 2,
-                        dataType: "json",
-                        data: { searchValue: $("#customerSearch").val() },
-                        success: function (data) {
-                            response($.map(data, function (item) {
-                                return { label: item.key, value: item.key }
-                            }))
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error");
-                        }
-                    });
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length > 2) {
+                        $.ajax({
+                            url: '/PhanPhoi/DanhSachCongNoKhachHang/autoComplete',
+                            data: {
+                                searchValue: $("#customerSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.key,
+                                        value: m.key,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#customerSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#customerSearch").val("");
+                    }
+                },
+                change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#customerSearch").val(ui.item.value);
+                    } else {
+                        $("#customerSearch").val("");
+                        $("#customerSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#customerSearch").val(ui.item.value);
+                    event.preventDefault();
                 }
-            });
+            }).autocomplete("widget").addClass("fixed-height");
             function init() {
 
                 $(".number").autoNumeric("init", { vMin: '0', vMax: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
