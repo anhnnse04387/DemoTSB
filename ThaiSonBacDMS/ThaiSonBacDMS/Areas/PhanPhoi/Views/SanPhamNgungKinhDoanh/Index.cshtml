@@ -40,10 +40,10 @@
                 <!-- Content Header (Page header) -->
     <section class="content-header">
         <ol class="breadcrumb">
-            <li><a href="phanphoi_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
             <li>Quản trị</li>
             <li>Hàng hóa</li>
-            <li class="active">Sản phẩm</li>
+            <li class="active"><a href="@Url.Action("Index","SanPhamNgungKinhDoanh")">Sản phẩm ngừng kinh doanh</a></li>
         </ol>
     </section>
     <section class="content">
@@ -60,7 +60,7 @@
                     <!-- /.box-header -->
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" onclick="window.open('phanphoi_hanghoa_tao-san-pham.html', '_blank');">
+                            <a class="btn btn-app custom-btn" href="@Url.Action("Index","TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" ">
                                 <i class="fa fa-plus-square text-green"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>

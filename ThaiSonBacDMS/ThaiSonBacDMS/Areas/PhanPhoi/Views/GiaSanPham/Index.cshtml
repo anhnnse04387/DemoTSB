@@ -60,12 +60,12 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="phanphoi_index.html">
+            <a href="@Url.Action("Index","Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
         <li><a href="">Hàng hóa</a></li>
-        <li><a href="phanphoi_hanghoa_gia-hang-hoa.html">Giá Hàng Hóa</a></li>
+        <li><a href="@Url.Action("Index","GiaSanPham")">Giá Hàng Hóa</a></li>
     </ol>
 </section>
 @using (Html.BeginForm("Index", "GiaSanPham", FormMethod.Post))
@@ -322,7 +322,7 @@
                     value2 = parseInt(value2.replace(/,/g, ''));
                     if (value2 < value1) {
                         swal({
-                            title: 'Giá đến phải lớn hơn giá từ!',
+                            text: 'Giá đến phải lớn hơn giá từ!',
                             type: 'error',
                             timer: 5000,
                             showConfirmButton: true
