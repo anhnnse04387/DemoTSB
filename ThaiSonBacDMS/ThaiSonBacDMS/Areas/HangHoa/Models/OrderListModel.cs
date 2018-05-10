@@ -22,6 +22,11 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
         public bool takeBallot { get; set; }
         public byte statusId { get; set; }
         public string shipperName { get; set; }
+        public bool reveiceBallot { get; set; }
+        public bool reveiceInvoice { get; set; }
+        public byte? DeliverMethod_ID { get; set; }
+        public string Driver_ID { get; set; }
+        public int? Shiper_ID { get; set; }
         public IList<SelectListItem> listDriver { get; set; }
         public IList<SelectListItem> listShipper { get; set; }
         public IList<SelectListItem> listMethod { get; set; }

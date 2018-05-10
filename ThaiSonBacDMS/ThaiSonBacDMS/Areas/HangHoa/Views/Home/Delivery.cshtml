@@ -128,8 +128,9 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-user"></i>
-                                                            </span>
-                                                            @Html.TextBoxFor(model => Model.customerName, new { @type = "text", @class = "form-control", @placeholder = "Tên...", @style = "width:357px" })
+                                                            </span>                                                            
+                                                            <input type="text" oninput="this.value=this.value.replace(/\`|\~|\!|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\''|\;|\:/g,'');" 
+                                                                   value="@Model.customerName" class="form-control" placeholder="Tên..." style="width: 357px;"/>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -143,7 +144,7 @@
                                                             @Html.TextBoxFor(model => Model.invoice_number, new { @type = "text", @class = "form-control", @placeholder = "Số hoá đơn..." })
                                                         </div>
                                                     </td>
-                                                    <td>Ngày xuất kho</td>
+                                                    <td>Ngày giao</td>
                                                     <td>
                                                         <div class="input-group date col-sm-5 no-padding" style="float:left">
                                                             <div class="input-group-addon">
@@ -158,9 +159,37 @@
                                                             @Html.TextBoxFor(model => Model.toDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Đến ngày...", @style = "width:150px" })
                                                         </div>
                                                     </td>
-
                                                 </tr>
                                                 <tr>
+                                                    <td>Lựa chọn giao</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-hourglass"></i>
+                                                            </span>
+                                                            @Html.DropDownListFor(model => model.DeliverMethod_ID, @Model.listMethod, "--Select--", new { @class = "form-control" })
+                                                        </div>
+                                                    </td>
+                                                    <td>Nhân viên giao</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.DropDownListFor(model => model.Shiper_ID, @Model.listShipper, "--Select--", new { @class = "form-control", @style = "width: 78%;" })
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lái xe</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.DropDownListFor(model => model.Driver_ID, @Model.listDriver, "--Select--", new { @class = "form-control" })
+                                                        </div>
+                                                    </td>
                                                     <td>Trạng thái</td>
                                                     <td>
                                                         <div class="input-group">
@@ -168,23 +197,33 @@
                                                                 <i class="fa fa-hourglass"></i>
                                                             </span>
                                                             @Html.DropDownListFor(model => model.statusId, new SelectList(new List<Object> {
-                                                                                                                           new { value = 5, text = "Đã xuất kho"},
-                                                                                                                           new { value = 10, text = "Đã xuất kho warning"} },
+                                                                                                                           new { value = 6, text = "Đang giao hàng"},
+                                                                                                                           new { value = 11, text = "Đang giao hàng warning"} },
                                                                                                                            "value", "text", Model.statusId), new { @class = "form-control", @style = "font-family: 'FontAwesome'; width: 357px" })
                                                         </div>
                                                     </td>
+                                                </tr>
+                                                <tr>
                                                     <td>
                                                         Kiểm tra
                                                     </td>
-                                                    <td>
+                                                    <td colspan="3">
                                                         <div class="form-group">
                                                             <input type="checkbox" checked="@Model.takeBallot" />
                                                             <label style="padding-left : 10px; padding-right:30px;">
                                                                 Lấy phiếu
                                                             </label>
                                                             <input type="checkbox" checked="@Model.takeInvoice" />
-                                                            <label style="padding-left : 10px;">
+                                                            <label style="padding-left : 10px; padding-right:30px;">
                                                                 Lấy hoá đơn
+                                                            </label>
+                                                            <input type="checkbox" checked="@Model.reveiceBallot" />
+                                                            <label style="padding-left : 10px; padding-right:30px;">
+                                                                Nhận phiếu
+                                                            </label>
+                                                            <input type="checkbox" checked="@Model.reveiceInvoice" />
+                                                            <label style="padding-left : 10px;">
+                                                                Nhận hoá đơn
                                                             </label>
                                                         </div>
                                                     </td>
@@ -216,6 +255,8 @@
                                             <th>Số hóa đơn</th>
                                             <th>Lấy hoá đơn</th>
                                             <th>Lấy phiếu</th>
+                                            <th>Nhận phiếu</th>
+                                            <th>Nhận hóa đơn</th>
                                             <th>Trạng thái</th>
                                             <th>Ngày giao</th>
                                             <th>Ngày hoàn thành</th>
@@ -229,7 +270,7 @@
                                             <tr>
                                                 <td>@item.indexOf</td>
                                                 <td>
-                                                    <a href="/HangHoa/ChiTietPhieu/Delivery?orderId=@item.orderID">@item.orderID</a>
+                                                    <a href="/HangHoa/ChiTietPhieu/Full?orderId=@item.orderID">@item.orderID</a>
                                                 </td>
                                                 <td>@item.customerName</td>
                                                 <td>@item.invoiceNumber</td>
@@ -239,13 +280,20 @@
                                                 <td>
                                                     <center> <input type="checkbox" checked="@item.takeBallot" disabled /> </center>
                                                 </td>
-
+                                                <td>
+                                                    <center> <input type="checkbox" checked="@item.reveiceBallot" disabled /> </center>
+                                                </td>
+                                                <td>
+                                                    <center> <input type="checkbox" checked="@item.reveiceInvoice" disabled /> </center>
+                                                </td>
                                                 <td>
                                                     <span class="label @item.spanClass">@item.statusName</span>
                                                 </td>
                                                 <td>@item.dateExport.ToString("dd/MM/yyyy")</td>
-                                                <td>@if (item.dateCompleted != null)
-                                                {@item.dateCompleted.Value.ToString("dd/MM/yyyy")}</td>
+                                                <td>
+                                                    @if (item.dateCompleted != null)
+                                                    {@item.dateCompleted.Value.ToString("dd/MM/yyyy")}
+                                                </td>
                                                 <td>@item.note</td>
                                                 <td>
                                                     <a id="btn_row_@item.orderID" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
@@ -263,7 +311,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-hourglass"></i>
                                                                     </span>
-                                                                    @Html.DropDownListFor(model => item.DeliverMethod_ID, new SelectList(Model.listMethod, "Value", "Text", item.DeliverMethod_ID), "--Select--", new { @class = "form-control methodId" })
+                                                                    @Html.DropDownListFor(model => item.DeliverMethod_ID, new SelectList(Model.listMethod, "Value", "Text", item.DeliverMethod_ID), "--Select--", new { @class = "form-control", @disabled = "disabled" })
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -272,7 +320,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user"></i>
                                                                     </span>
-                                                                    @Html.DropDownListFor(model => item.Shiper_ID, new SelectList(Model.listShipper, "Value", "Text", item.Shiper_ID), "--Select--", new { @class = "form-control shipperId" })
+                                                                    @Html.DropDownListFor(model => item.Shiper_ID, new SelectList(Model.listShipper, "Value", "Text", item.Shiper_ID), "--Select--", new { @class = "form-control", @disabled = "disabled" })
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -281,33 +329,50 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user"></i>
                                                                     </span>
-                                                                    @Html.DropDownListFor(model => item.Driver_ID, new SelectList(Model.listDriver, "Value", "Text", item.Driver_ID), "--Select--", new { @class = "form-control driverId" })
+                                                                    @Html.DropDownListFor(model => item.Driver_ID, new SelectList(Model.listDriver, "Value", "Text", item.Driver_ID), "--Select--", new { @class = "form-control", @disabled = "disabled" })
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <br>
                                                         <div class="row">
-                                                            <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <input type="checkbox" class="takeBallot" checked="@item.takeBallot" />
-                                                                    <label style="padding-left : 10px; padding-right:30px;">
-                                                                        Lấy phiếu
-                                                                    </label>
-                                                                    <input type="checkbox" class="takeInvoice" checked="@item.takeInvoice" />
-                                                                    <label style="padding-left : 10px;">
-                                                                        Lấy hoá đơn
-                                                                    </label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" class="takeBallot" checked="@item.takeBallot" />
+                                                                        <label style="padding-left : 10px; padding-right:30px;">
+                                                                            Lấy phiếu
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" class="takeInvoice" checked="@item.takeInvoice" />
+                                                                        <label style="padding-left : 10px;">
+                                                                            Lấy hoá đơn
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" class="receiveBallot" checked="@item.reveiceBallot" />
+                                                                        <label style="padding-left : 10px; padding-right:30px;">
+                                                                            Nhận phiếu
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input type="checkbox" class="receiveInvoice" checked="@item.reveiceInvoice" />
+                                                                        <label style="padding-left : 10px;">
+                                                                            Nhận hoá đơn
+                                                                        </label>
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                         <br />
                                                         <div class="row">
-                                                            <div class="col-md-2 col-md-offset-6">
+                                                            <div class="col-md-2 col-md-offset-4">
                                                                 <a id="btn_off_row_@item.orderID" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <a class="btn btn-warning btn-warning btn-block btn-block openDialog" data-toggle="modal" title="Lưu" data-target="#confirmSave">Lưu</a>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <a class="btn btn-danger btn-block btn-block openDialog" data-toggle="modal" title="Đổi trả" data-target="#confirmExchange">Đổi trả</a>
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <a class="btn btn-success btn-success btn-block btn-block openDialog" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
@@ -333,13 +398,29 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Xác nhận giao hàng ?</h4>
+                    <h4 class="modal-title">Xác nhận hoàn thành đơn hàng ?</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" onclick="editOrder();">Đồng ý</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmExchange" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận đổi trả ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button style="background-color:#d73925 !important;color:white !important" onclick="exchangeOrder();" class="btn btn-default">Đổi trả</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+
         </div>
     </div>
 		<!-- modal comfirm save-->
@@ -376,20 +457,47 @@
         });
         $(document).on("click", ".openDialog", function () {
             var thisRow = $(this).closest('tr');
-            var method = thisRow.find('.methodId').val();
-            var driver = thisRow.find('.driverId').val();
-            var shipper = thisRow.find('.shipperId').val();
-            var ballot = thisRow.find('.takeBallot').prop("checked");
-            var invoice = thisRow.find('.takeInvoice').prop("checked");
+            var receiveBallot = thisRow.find('.receiveBallot').prop("checked");
+            var receiveInvoice = thisRow.find('.receiveInvoice').prop("checked");
+            var takeBallot = thisRow.find('.takeBallot').prop("checked");
+            var takeInvoice = thisRow.find('.takeInvoice').prop("checked");
             var orderId = thisRow.attr("id").replace('row_', '');
             item = {
-                Driver_ID: driver, Shiper_ID: shipper, DeliverMethod_ID: method,
-                takeInvoice: invoice, takeBallot: ballot, orderID: orderId
+                reveiceBallot: receiveBallot, reveiceInvoice: receiveInvoice,
+                takeInvoice: takeInvoice, takeBallot: takeBallot, orderID: orderId
             };
         });
+        function exchangeOrder() {
+            $.ajax({
+                url: '/HangHoa/Home/ExchangeOrder',
+                type: 'POST',
+                dataType: 'json',
+                data: { orderId: item.orderId },
+                success: function () {
+                    document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="/Assets/dist/facebook_sound.mp3" /></audio>';
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_6.png"/>',
+                        type: 'success'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = '/HangHoa/Home/Exchange';
+                        }
+                    });
+                },
+                error: function () {
+                    swal({
+                        title: '<img src="/Assets/dist/img/messagePic_9.png"/>',
+                        text: '<img src="/Assets/dist/img/messagePic_8.png"/>',
+                        type: 'error',
+                        showCancelButton: false,
+                        showConfirmButton: true
+                    });
+                }
+            });
+        }
         function saveOrder() {
             $.ajax({
-                url: '/HangHoa/Home/SaveDelivery',
+                url: '/HangHoa/Home/SaveOrder',
                 type: 'POST',
                 dataType: 'json',
                 data: { model: item },
@@ -417,7 +525,7 @@
         }
         function editOrder() {
             $.ajax({
-                url: '/HangHoa/Home/DoneDelivery',
+                url: '/HangHoa/Home/DoneOrder',
                 type: 'POST',
                 dataType: 'json',
                 data: { model: item },

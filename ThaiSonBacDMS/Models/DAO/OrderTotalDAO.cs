@@ -145,7 +145,7 @@ namespace Models.DAO
                 var order = db.Order_total.Where(x => x.Order_ID.Equals(orderId.Substring(0, orderId.IndexOf("-")))).SingleOrDefault();
                 order.Status_ID = status;
                 decimal? vatTotal = 0;
-                foreach(Order_part p in order.Order_part)
+                foreach (Order_part p in order.Order_part)
                 {
                     vatTotal += p.VAT;
                 }
@@ -216,6 +216,7 @@ namespace Models.DAO
 
         public void delivery_checkOut(String orderId, int userId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool takeInvoice, bool takeBallot)
         {
+            var count = 0;
             var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             byte? status = 6;
             if (db.Order_detail_status.Where(x => (x.Order_part_ID.Equals(orderId) || x.Order_ID.Equals(orderId)) && x.Status_ID == 4).ToList().Count == 0)
@@ -226,9 +227,21 @@ namespace Models.DAO
             {
                 p.Date_take_invoice = DateTime.Now;
             }
+            else
+            {
+                count++;
+            }
             if (takeBallot)
             {
                 p.Date_take_ballot = DateTime.Now;
+            }
+            else
+            {
+                count++;
+            }
+            if (count > 0)
+            {
+                status = 11;
             }
             p.Status_ID = status;
             p.Shiper_ID = Shiper_ID;
@@ -354,6 +367,14 @@ namespace Models.DAO
         {
             if (orderId.Contains("-"))
             {
+                db.Notifications.Add(new Notification
+                {
+                    Notif_date = DateTime.Now,
+                    Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã đổi trả đơn với mã " + orderId,
+                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    User_ID = db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3)).FirstOrDefault().User_ID,
+                    Status = 1
+                });
                 var p = (from op in db.Order_part where op.Order_part_ID.Equals(orderId) select op).SingleOrDefault();
                 p.Status_ID = 9;
                 p.Note = reason;
@@ -371,6 +392,14 @@ namespace Models.DAO
             }
             else
             {
+                db.Notifications.Add(new Notification
+                {
+                    Notif_date = DateTime.Now,
+                    Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã đổi trả đơn với mã " + orderId,
+                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    User_ID = db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3)).FirstOrDefault().User_ID,
+                    Status = 1
+                });
                 var order = (from o in db.Order_total where o.Order_ID.Equals(orderId) select o).SingleOrDefault();
                 order.Status_ID = 9;
                 order.Note = reason;
@@ -388,7 +417,7 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
-        public void completeOrder(String orderId, int userId)
+        public void completeOrder(String orderId, int userId, bool receiveInvoice, bool receiveBallot, bool takeInvoice, bool takeBallot)
         {
             if (orderId.Contains("-"))
             {
@@ -403,6 +432,22 @@ namespace Models.DAO
                 var p = (from op in db.Order_part where op.Order_part_ID.Equals(orderId) select op).SingleOrDefault();
                 p.Status_ID = 7;
                 p.Date_completed = DateTime.Now;
+                if (receiveInvoice)
+                {
+                    p.Date_reveice_invoice = DateTime.Now;
+                }
+                if (receiveBallot)
+                {
+                    p.Date_reveice_ballot = DateTime.Now;
+                }
+                if (takeInvoice)
+                {
+                    p.Date_take_invoice = DateTime.Now;
+                }
+                if (takeBallot)
+                {
+                    p.Date_take_ballot = DateTime.Now;
+                }
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = 7,
@@ -421,8 +466,8 @@ namespace Models.DAO
                     }
                 }
                 if (count == order.Order_part.Count && order.Order_items
-                    .Where(x=>x.Order_part_ID == null).ToList().Count == order.Order_items
-                    .Where(x=>x.Order_part_ID != null).ToList().Count)
+                    .Where(x => x.Order_part_ID == null).ToList().Count == order.Order_items
+                    .Where(x => x.Order_part_ID != null).ToList().Count)
                 {
                     order.Status_ID = 7;
                     order.Date_completed = DateTime.Now;
@@ -451,6 +496,22 @@ namespace Models.DAO
                 var p = (from op in db.Order_part where op.Order_part_ID.Equals(orderId) select op).SingleOrDefault();
                 p.Status_ID = 7;
                 p.Date_completed = DateTime.Now;
+                if (receiveInvoice)
+                {
+                    p.Date_reveice_invoice = DateTime.Now;
+                }
+                if (receiveBallot)
+                {
+                    p.Date_reveice_ballot = DateTime.Now;
+                }
+                if (takeInvoice)
+                {
+                    p.Date_take_invoice = DateTime.Now;
+                }
+                if (takeBallot)
+                {
+                    p.Date_take_ballot = DateTime.Now;
+                }
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = 7,

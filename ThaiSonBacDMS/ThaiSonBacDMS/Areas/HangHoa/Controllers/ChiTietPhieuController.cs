@@ -332,13 +332,13 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             }
         }
 
-        public JsonResult Complete(String orderId)
+        public JsonResult Complete(String orderId, bool receiveInvoice, bool receiveBallot, bool takeInvoice, bool takeBallot)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.completeOrder(orderId, session.user_id);
+                dao.completeOrder(orderId, session.user_id, receiveInvoice, receiveBallot, takeInvoice, takeBallot);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
