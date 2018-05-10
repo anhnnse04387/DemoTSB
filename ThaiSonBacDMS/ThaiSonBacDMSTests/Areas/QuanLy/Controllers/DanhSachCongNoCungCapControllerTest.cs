@@ -211,26 +211,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
             var x = result.Model as DanhSachCongNoCungCapModel;
             Assert.IsTrue(x.lstDisplay.Count > 0);
         }
-        //test search in range [noTu,noDen]
-        [TestMethod()]
-        public void TestSearch_By_Debt_From_To()
-        {
-            var controller = new DanhSachCongNoCungCapController();
-            var model = new DanhSachCongNoCungCapModel();
-            var result = controller.Index("", "200,000,000", "2,000,000,000") as ViewResult;
-            var x = result.Model as DanhSachCongNoCungCapModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
-        }
-        //test all values
-        [TestMethod()]
-        public void TestSearch_By_All_Values()
-        {
-            var controller = new DanhSachCongNoCungCapController();
-            var model = new DanhSachCongNoCungCapModel();
-            var result = controller.Index("Thái Nam Sơn", "50,000,000", "2,000,000,000") as ViewResult;
-            var x = result.Model as DanhSachCongNoCungCapModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
-        }
+
         //test search by debt from is character
         public void TestSearch_By_Debt_From_Is_Character()
         {
