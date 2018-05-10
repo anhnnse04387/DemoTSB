@@ -226,7 +226,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-hourglass"></i>
                                             </span>
-                                            @Html.DropDownListFor(model => model.DeliverMethod_ID, @Model.deliveryMethod, "--Select--", new { @class = "form-control", @id = "delivery", @required = "required" })
+                                            @Html.DropDownListFor(model => model.DeliverMethod_ID, new SelectList(Model.deliveryMethod, "Value", "Text", Model.DeliverMethod_ID), "--Select--", new { @class = "form-control", @id = "delivery", @required = "required" })
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -235,7 +235,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-user"></i>
                                             </span>
-                                            @Html.DropDownListFor(model => model.Shiper_ID, @Model.shipper, "--Select--", new { @class = "form-control", @id = "shipper", @required = "required" })
+                                            @Html.DropDownListFor(model => model.Shiper_ID, new SelectList(Model.shipper, "Value", "Text", Model.Shiper_ID), "--Select--", new { @class = "form-control", @id = "shipper", @required = "required" })
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -244,16 +244,16 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-user"></i>
                                             </span>
-                                            @Html.DropDownListFor(model => model.Driver_ID, @Model.driver, "--Select--", new { @class = "form-control", @id = "driver", @required = "required" })
+                                            @Html.DropDownListFor(model => model.Driver_ID, new SelectList(Model.driver, "Value", "Text", Model.Driver_ID), "--Select--", new { @class = "form-control", @id = "driver", @required = "required" })
                                         </div>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="row">
-                                    <div class="col-md-4"><input type="checkbox" id="receiveInvoice">&nbsp;<label>Đã nhận hoá đơn từ công ty</label></div>
-                                    <div class="col-md-4"><input type="checkbox" id="receiveBallot">&nbsp;<label>Đã nhận phiếu từ công ty</label></div>
-                                    <input type="hidden" id="dateReceiveInvoice" value="@Model.dateReceiveInvoice"/>
-                                    <input type="hidden" id="dateReceiveBallot" value="@Model.dateReceiveBallot" />
+                                    <div class="col-md-4"><input type="checkbox" id="receiveInvoice">&nbsp;<label>Đã lấy hoá đơn từ công ty</label></div>
+                                    <div class="col-md-4"><input type="checkbox" id="receiveBallot">&nbsp;<label>Đã lấy phiếu từ công ty</label></div>
+                                    <input type="hidden" id="dateReceiveInvoice" value="@Model.dateTakeInvoice"/>
+                                    <input type="hidden" id="dateReceiveBallot" value="@Model.dateTakeBallot" />
                                 </div>
                                 <hr>
                             </div>
@@ -349,7 +349,7 @@
                 url: '/HangHoa/ChiTietPhieu/DeliveryCheckOut',
                 type: 'POST',
                 dataType: 'json',
-                data: { orderId: $('#orderId').val(), DeliverMethod_ID: $('#delivery').val(), Driver_ID: $('#driver').val(), Shiper_ID: $('#shipper').val(), receiveInvoice: receiveInvoice, receiveBallot: receiveBallot },
+                data: { orderId: $('#orderId').val(), DeliverMethod_ID: $('#delivery').val(), Driver_ID: $('#driver').val(), Shiper_ID: $('#shipper').val(), takeInvoice: receiveInvoice, takeBallot: receiveBallot },
                 success: function () {
                     document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="/Assets/dist/facebook_sound.mp3" /></audio>';
                     swal({

@@ -134,19 +134,19 @@
                             </span>
                         </a>
                         <ul class="treeview-menu ">
-                            <li class="@Html.IsActive("Index", "OrderList")">
-                                <a href="@Url.Action("Index", "OrderList")">
+                            <li class="@Html.IsActive("Index", "Home")">
+                                <a href="@Url.Action("Index", "Home")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Chờ xuất kho</span>
                                 </a>
                             </li>
-                            <li class="">
-                                <a href="@Url.Action("Index", "ErrorPage")">
+                            <li class="@Html.IsActive("ReadyToShip", "Home")">
+                                <a href="@Url.Action("ReadyToShip", "Home")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Đã chuẩn bị hàng</span>
                                 </a>
                             </li>
-                            <li class="@Html.IsActive("Delivery", "ChiTietPhieu")">
+                            <li class="@Html.IsActive("Delivery", "Home")">
                                 <a href="@Url.Action("Index", "ErrorPage")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Đang giao hàng</span>
@@ -158,8 +158,8 @@
                                     <span>Đổi trả</span>
                                 </a>
                             </li>
-                            <li class="@Html.IsActive("Completed", "OrderList")">
-                                <a href="@Url.Action("Index", "ErrorPage")">
+                            <li class="@Html.IsActive("Completed", "Home")">
+                                <a href="@Url.Action("Completed", "Home")">
                                     <i class="fa fa-file-text"></i>
                                     <span>Hoàn thành</span>
                                 </a>
