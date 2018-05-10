@@ -53,6 +53,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             var x = result.Model as ProductPhanPhoiModel;
             Assert.IsTrue(x.lstDisplay.Count > 0);
         }
+
+        //test function search by value is null
+        [TestMethod()]
+        public void TestSearchingValueIsNull()
+        {
+            var controller = new SanPhamDangKinhDoanhController();
+            var result = controller.GetSearchValue("") as JsonResult;
+            Assert.IsTrue(result.Data != null);
+        }
+
         [TestMethod()]
         public void TestSearch_ByNameAndSupplier()
         {
@@ -188,6 +198,17 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             var controller = new SanPhamDangKinhDoanhController();
             var result = controller.GetSearchValue("MC150") as JsonResult;
             Assert.IsTrue(result.Data != null);
+        }
+
+        [TestMethod()]
+        public void TestSearch_ByProductNameNotNull()
+        {
+            var model = new ProductPhanPhoiModel();
+            model.categorySearch = "10";
+            var controller = new SanPhamDangKinhDoanhController();
+            var result = controller.Index(model) as ViewResult;
+            var x = result.Model as ProductPhanPhoiModel;
+            Assert.IsTrue(x.lstDisplay.Count > 0);
         }
     }
 }

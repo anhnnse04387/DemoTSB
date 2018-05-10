@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
-        <li><a href="quantri_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
     </ol>
 </section>
 
@@ -24,7 +24,7 @@
                     </div>
                     <div class="box-body">
                         <div class="row" style="margin-top: 50px">
-                            <a href="quantri_phanhe_danh-sach-phan-he.html" class="col-md-3">
+                            <a href="#" class="col-md-3 construct">
                                 <!-- small box -->
                                 <div class="small-box" style="background-color: #ffff1a;  color: white">
                                     <div class="inner">
@@ -41,7 +41,7 @@
                             <!-- ./col -->
                             <div class="col-md-3" style="margin-left: 12.5%">
                                 <!-- small box -->
-                                <a href="quantri_nguoidung_danh-sach-nguoi-dung.html" class="small-box bg-yellow">
+                                <a href="#" class="small-box bg-yellow construct">
                                     <div class="inner">
                                         <h3>@Model.categoryCount</h3>
 
@@ -56,7 +56,7 @@
                             <!-- ./col -->
                             <div class="col-md-3" style="margin-left: 12.5%">
                                 <!-- small box -->
-                                <a href="quantri_tainguyen_danh-sach-trang.html" class="small-box bg-green">
+                                <a href="#" class="small-box bg-green construct">
                                     <div class="inner">
                                         <h3>@Model.pageCount</h3>
 
@@ -72,7 +72,7 @@
                         </div>
                         <!-- /.row -->
                         <div class="row" style="margin-top: 60px; margin-bottom: 30px;">
-                            <a href="quantri_hanghoa_danh-sach-danh-muc.html" class="col-md-3">
+                            <a href="#" class="col-md-3 construct">
                                 <!-- small box -->
                                 <div class="small-box bg-aqua">
                                     <div class="inner">
@@ -87,7 +87,7 @@
                                 </div>
                             </a>
                             <!-- ./col -->
-                            <a href="quantri_hanghoa_danh-sach-san-pham.html" class="col-md-3" style="margin-left: 12.5%">
+                            <a href="#" class="col-md-3 construct" style="margin-left: 12.5%">
                                 <!-- small box -->
                                 <div class="small-box" style="background-color: #ff6666; color: white">
                                     <div class="inner">
@@ -104,7 +104,7 @@
                             <!-- ./col -->
                             <div class="col-md-3" style="margin-left: 12.5%">
                                 <!-- small box -->
-                                <a href="quantri_tainguyen_danh-sach-file.html" class="small-box" style="background-color: #ff33ff; color: white">
+                                <a href="#" class="small-box construct" style="background-color: #ff33ff; color: white">
                                     <div class="inner">
                                         <h3>@Model.fileCount</h3>
 
@@ -127,5 +127,20 @@
     </div>
 </section>
 <!-- /.content -->
+
+@section Index {
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <script>
+        $('.construct').click(function () {
+            swal({
+                title: '',
+                text: 'Chức năng đang được phát triển',
+                type: 'warning'
+            });
+        });
+    </script>
+    
+}
 
 

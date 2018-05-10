@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ChiTietSanPham";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout2.cshtml";
+    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
 }
 
 <style>
@@ -206,12 +206,12 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="phanphoi_index.html">
+            <a href="@Url.Action("Index", "Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
         <li>Danh sách sản phẩm</li>
-        <li><a href="phanphoi_hanghoa_chi-tiet-san-pham.html">Chi tiết sản phẩm</a></li>
+        <li>Chi tiết sản phẩm</li>
     </ol>
 </section>
 <section class="content">

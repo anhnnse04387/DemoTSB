@@ -27,6 +27,16 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
         }
 
         [TestMethod]
+        public void TestCancelOrderFailed()
+        {
+            var controller = new ChiTietPhieuController();
+            var result = controller.CancelOrder("", "") as JsonResult;
+            IDictionary<string, object> data =
+            (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
+            Assert.AreEqual(true, data["error"]);
+        }
+
+        [TestMethod]
         public void TestIndexForViewResult()
         {
             var controller = new ChiTietPhieuController();
@@ -173,6 +183,31 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
             IDictionary<string, object> data =
             (IDictionary<string, object>)new System.Web.Routing.RouteValueDictionary(result.Data);
             Assert.AreEqual(true, data["success"]);
+        }
+
+        [TestMethod]
+        public void TestViewForData()
+        {
+            var controller = new ChiTietPhieuController();
+            var result = controller.Index("O1") as ViewResult;
+            if (result != null)
+            {
+                Assert.IsInstanceOfType(result.Model, typeof(OrderTotalModel));
+                var model = result.Model as OrderTotalModel;
+                if (model != null)
+                {
+                    Assert.IsTrue(model.readItems.Count == 8);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestMultipleDeliveryForRedirected()
+        {
+            var controller = new ChiTietPhieuController();
+            var result = controller.MultipleDelivery("") as RedirectToRouteResult;
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Home", result.RouteValues["controller"]);
         }
     }
 }
