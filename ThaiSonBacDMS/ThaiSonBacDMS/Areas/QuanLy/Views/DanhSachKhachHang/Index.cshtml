@@ -1,9 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.DanhSachKhachHangModel
+@model ThaiSonBacDMS.Areas.QuanLy.Models.DanhSachKhachHangModel
 
 @section IndexStyle{
     <!-- DataTables -->
@@ -14,21 +14,22 @@
     <link rel="stylesheet" href="/Assets/bower_components/select2/dist/css/select2.min.css">
     <style>
         #example1 th {
-                color: white;
-                background-color: #3c8dbc;
-                font-weight: bold;
-            }
+            color: white;
+            background-color: #3c8dbc;
+            font-weight: bold;
+        }
 
-            #example1 th, #example1 td {
-                text-align: center;
-            }
-            .select2-container--default .select2-selection--multiple .select2-selection__choice {
-                background-color: dodgerblue;
-            }
+        #example1 th, #example1 td {
+            text-align: center;
+        }
 
-            #example1 {
-                background-color: rgb(240, 240, 240);
-            }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: dodgerblue;
+        }
+
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
 
             #example1 thead tr th {
                 vertical-align: middle !important;
@@ -46,25 +47,29 @@
             #example1 tbody td:nth-child() {
                 text-align: right;
             }
-            .custom-btn {
-                padding: 10px 5px;
-                min-width: 80px;
-                height: 55px;
-            }
-            .menu-button {
-                background-color: #fcf9f9;
-                margin-top: 20px;
-                padding-top: 20px;
-                padding-right: 25px;
-            }
-            .smallBtn {
-                padding: 10px 5px;
-                min-width: 60px;
-                height: 40px;
-            }
-            .custom-chk {
-                padding-left: 15px;
-            }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 80px;
+            height: 55px;
+        }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+
+        .smallBtn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
+        .custom-chk {
+            padding-left: 15px;
+        }
     </style>
 }
 <!-- Content Header (Page header) -->
@@ -215,7 +220,7 @@
                                                             {
                                                                 <span class="label label-primary">KHÁCH MỚI</span>
                                                             }
-                                                            else if(item.Rank.Contains("Khách Vip") || item.Rank.Contains("Khách VIP"))
+                                                            else if (item.Rank.Contains("Khách Vip") || item.Rank.Contains("Khách VIP"))
                                                             {
                                                                 <span class="label label-danger">KHÁCH VIP</span>
                                                             }
@@ -264,7 +269,7 @@
     <script src="/Assets/bower_components/select2/dist/js/select2.full.min.js"></script>
     <!-- sweet Alert-->
     <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
-    
+
     <script>
         function isEmpty(str) {
             return (!str || 0 === str.length);

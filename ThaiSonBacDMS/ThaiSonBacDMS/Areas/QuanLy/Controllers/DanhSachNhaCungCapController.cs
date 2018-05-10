@@ -9,15 +9,14 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Common;
-using ThaiSonBacDMS.Controllers;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class DanhSachNhaCungCapController : PhanPhoiBaseController
+    public class DanhSachNhaCungCapController : QuanLyBaseController
     {
-        // GET: PhanPhoi/DanhSachNhaCungCap
+        // GET: QuanLy/DanhSachNhaCungCap
         [HttpGet]
         public ActionResult Index()
         {
@@ -34,21 +33,21 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.lstSupp = new List<Supplier>();
             List<Supplier> sup = new SupplierDAO().getSupplier();
             try
-            { 
+            {
                 DateTime? dFrom = string.IsNullOrEmpty(dateFrom) ?
                     dFrom = null : dFrom = DateTime.ParseExact(dateFrom, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 DateTime? dTo = string.IsNullOrEmpty(dateTo) ?
                     dTo = null : dTo = DateTime.ParseExact(dateFrom, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 if (!string.IsNullOrEmpty(supp_name))
                 {
-                    sup = sup.Where(x=> x.Supplier_name.Contains(supp_name)).ToList();
+                    sup = sup.Where(x => x.Supplier_name.Contains(supp_name)).ToList();
                 }
-                if(dFrom >= dTo)
+                if (dFrom >= dTo)
                 {
                     model.error = "Ngày từ không được lớn hơn ngày tới";
                     return View(model);
                 }
-                if(dFrom!=null)
+                if (dFrom != null)
                 {
                     sup = sup.Where(x => x.Date_Created >= dFrom).ToList();
                 }
@@ -58,7 +57,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e);
                 model.error = "Sai định dạng ngày tháng";
@@ -160,7 +159,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             ChiTietCungCapModel model = new ChiTietCungCapModel();
             //get supllier
             model.supllier = new SupplierDAO().getSupplierById(supllierID);
-            model.avatar_str = new MediaDAO().getMediaByID((int) model.supllier.Media_ID).Location;
+            model.avatar_str = new MediaDAO().getMediaByID((int)model.supllier.Media_ID).Location;
             //get product of suppllier
             model.lstProduct = new ProductDAO().lstProductBySupplierId(supllierID.ToString());
             //get PI
@@ -172,7 +171,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.dataLineChart = new Dictionary<string, decimal>();
             for (var i = 0; i < 6; i++)
             {
-                model.dataLineChart.Add(beginDate.ToString("MM/yyyy"), Math.Round(new PIDAO().getDataCungCapByID(beginDate, endDate, supllierID),2));
+                model.dataLineChart.Add(beginDate.ToString("MM/yyyy"), Math.Round(new PIDAO().getDataCungCapByID(beginDate, endDate, supllierID), 2));
                 beginDate = beginDate.AddMonths(-1);
                 endDate = endDate.AddMonths(-1);
             }
@@ -180,9 +179,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //get current PI
             model.numberOrder = new PIDAO().getPIbySupplierID(DateTime.Now.AddMonths(-6), DateTime.Now, supllierID).Count;
             //get current PI total price
-            model.priceOrder = (decimal) new PIDAO().getPIbySupplierID(DateTime.Now.AddMonths(-6), DateTime.Now, supllierID).Sum(x => x.Total_price);
+            model.priceOrder = (decimal)new PIDAO().getPIbySupplierID(DateTime.Now.AddMonths(-6), DateTime.Now, supllierID).Sum(x => x.Total_price);
             //get current debt
-            model.currentDebt = (decimal) model.supllier.Current_debt;
+            model.currentDebt = (decimal)model.supllier.Current_debt;
             return View(model);
         }
 
@@ -221,7 +220,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 // Checking no of files injected in Request object  
                 if (Request.Files.Count > 0)
                 {
-                    
+
 
                     int? lastIDMedia = null;
                     //  Get all files from Request object  

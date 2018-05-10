@@ -1,9 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "ChiTiet";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ChiTietKhachHangModel
+@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietKhachHangModel
 
 @section IndexStyle{
     <!--Preview Avatar-->
@@ -219,7 +219,8 @@
                                         </thead>
                                         <tbody>
                                             @{ var i = 1; }
-                                            @foreach(var item in Model.lstTotal) { 
+                                            @foreach (var item in Model.lstTotal)
+                                            {
                                                 <tr>
                                                     <td>@i</td>
                                                     <td>
@@ -230,7 +231,7 @@
                                                     <td>
                                                         @if (item.Status_ID == 1)
                                                         {
-                                                        <span class="label label-info">Bản Nháp</span>
+                                                            <span class="label label-info">Bản Nháp</span>
                                                         }
                                                         else if (item.Status_ID == 2)
                                                         {
@@ -252,7 +253,7 @@
                                                         {
                                                             <span class="label label-primary">Đang giao hàng</span>
                                                         }
-                              
+
                                                         else if (item.Status_ID == 7)
                                                         {
                                                             <span class="label label-success">Hoàn thành</span>
@@ -264,7 +265,7 @@
                                                         else if (item.Status_ID == 9)
                                                         {
                                                             <span class="label label-danger">Từ Chối</span>
-                                                        } 
+                                                        }
                                                     </td>
                                                 </tr>
                                                 i++;
@@ -364,7 +365,7 @@
                                                         <input class="form-control" value="@Model.customer.Tax_code" type="text" id="mst">
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -471,7 +472,7 @@
             $("#image-preview label").empty();
             $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
         });
-        
+
     </script>
 
     <script>
@@ -553,7 +554,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/PhanPhoi/DanhSachKhachHang/UpdateCustomer',
+                                    url: '/QuanLy/DanhSachKhachHang/UpdateCustomer',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data

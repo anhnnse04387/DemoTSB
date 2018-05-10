@@ -1,10 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
 
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.BaoCaoDoanhThuModel
+@model ThaiSonBacDMS.Areas.QuanLy.Models.BaoCaoDoanhThuModel
 @section IndexStyle {
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="/Assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -173,7 +173,7 @@
                             <i class="fa fa-close text-grey"></i>
                             <span><strong>Hủy</strong></span>
                         </a>
-                        <a href="#" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
+                        <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" data-toggle="modal" title="Giao hàng" data-placement="bottom" data-target="#confirm-process">
                             <i class="fa fa-check-circle text-grey"></i>
                             <span><strong>Giao hàng</strong></span>
                         </a>
@@ -317,7 +317,7 @@
                                 <div class="box-body">
                                     <fieldset>
                                         <span class="pull-left" style="font-size:17px"><b>CHI TIẾT DOANH THU</b></span><br>
-                                        <h5><i>@Html.ActionLink("Xem chi tiết","Index", "BaoCaoChiTietDoanhThu")</i></h5>
+                                        <h5><i>@Html.ActionLink("Xem chi tiết", "Index", "BaoCaoChiTietDoanhThu")</i></h5>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
@@ -340,7 +340,7 @@
                                                 </tr>
                                             </tbody>
                                             <tfoot id="tableFoot">
-                                                
+
                                             </tfoot>
                                         </table>
                                     </fieldset>
@@ -353,9 +353,9 @@
         </div>
         <!-- div chung cho tab -->
 
-        
 
-        
+
+
     </div>
 </section>
 <!-- /.content -->

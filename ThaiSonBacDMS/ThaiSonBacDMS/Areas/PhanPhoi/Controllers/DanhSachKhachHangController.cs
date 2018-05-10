@@ -40,7 +40,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
                 if (cus_rank != "0")
                 {
-                    cus = cus.Where(x => x.Rank == cus_rank).ToList();
+                    cus = cus.Where(x => x.Rank.Contains(cus_rank) ).ToList();
                 }
             }
             catch (Exception e)
@@ -97,6 +97,9 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     else if (!mstRegex.Match(mst).Success)
                     {
                         return Json("-1");
+                    }else if(new CustomerDAO().checkExitsMail(email.Trim()))
+                    {
+                        return Json("-3");
                     }
 
                     int? lastIDMedia = null;
@@ -191,43 +194,47 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
         {
             try
             {
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+
+                var supplierName = Request.Form.GetValues("supplierName")[0];
+                var supplierPhone = Request.Form.GetValues("supplierPhone")[0];
+                var address = Request.Form.GetValues("address")[0];
+                var deliver_address = Request.Form.GetValues("deliver_address")[0];
+                var email = Request.Form.GetValues("email")[0];
+                var mst = Request.Form.GetValues("mst")[0];
+                var acronym = Request.Form.GetValues("acronym")[0];
+                var customerID = Request.Form.GetValues("customerID")[0];
+                Regex phoneRegex = new Regex(CommonConstants.PHONE_REGEX, RegexOptions.IgnoreCase);
+                Regex mstRegex = new Regex(CommonConstants.MST_REGEX, RegexOptions.IgnoreCase);
+                MailAddress m = new MailAddress(email);
+                if (string.IsNullOrEmpty(supplierName))
+                {
+                    return Json("-1");
+                }
+                else if (!phoneRegex.Match(supplierPhone).Success)
+                {
+                    return Json("-1");
+                }
+                else if (string.IsNullOrEmpty(address))
+                {
+                    return Json("-1");
+                }
+                else if (string.IsNullOrEmpty(deliver_address))
+                {
+                    return Json("-1");
+                }
+                else if (!mstRegex.Match(mst).Success)
+                {
+                    return Json("-1");
+                }
+                else if (new CustomerDAO().checkExitsMail(email.Trim()))
+                {
+                    return Json("-3");
+                }
                 // Checking no of files injected in Request object  
                 if (Request.Files.Count > 0)
                 {
-                    var session = (UserSession)Session[CommonConstants.USER_SESSION];
-
-                    var supplierName = Request.Form.GetValues("supplierName")[0];
-                    var supplierPhone = Request.Form.GetValues("supplierPhone")[0];
-                    var address = Request.Form.GetValues("address")[0];
-                    var deliver_address = Request.Form.GetValues("deliver_address")[0];
-                    var email = Request.Form.GetValues("email")[0];
-                    var mst = Request.Form.GetValues("mst")[0];
-                    var acronym = Request.Form.GetValues("acronym")[0];
-                    var customerID = Request.Form.GetValues("customerID")[0];
-                    Regex phoneRegex = new Regex(CommonConstants.PHONE_REGEX, RegexOptions.IgnoreCase);
-                    Regex mstRegex = new Regex(CommonConstants.MST_REGEX, RegexOptions.IgnoreCase);
-                    MailAddress m = new MailAddress(email);
-                    if (string.IsNullOrEmpty(supplierName))
-                    {
-                        return Json("-1");
-                    }
-                    else if (!phoneRegex.Match(supplierPhone).Success)
-                    {
-                        return Json("-1");
-                    }
-                    else if (string.IsNullOrEmpty(address))
-                    {
-                        return Json("-1");
-                    }
-                    else if (string.IsNullOrEmpty(deliver_address))
-                    {
-                        return Json("-1");
-                    }
-                    else if (!mstRegex.Match(mst).Success)
-                    {
-                        return Json("-1");
-                    }
-
+                    
                     int? lastIDMedia = null;
                     //  Get all files from Request object  
                     HttpFileCollectionBase files = Request.Files;
@@ -266,7 +273,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 }
                 else
                 {
-                    return Json("-2");
+                    var lastIDMedia = new CustomerDAO().getCustomerById(int.Parse(customerID)).Media_ID;
+                    int cusID = new CustomerDAO().editCustomer(supplierName, lastIDMedia, address, deliver_address, supplierPhone, email, mst, int.Parse(customerID), acronym);
+                    if (cusID == -1)
+                    {
+                        return Json("-1");
+                    }
+                    return Json(cusID);
                 }
             }
             catch (Exception e)

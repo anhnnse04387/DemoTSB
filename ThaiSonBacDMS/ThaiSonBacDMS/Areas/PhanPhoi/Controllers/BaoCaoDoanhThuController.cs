@@ -131,7 +131,5 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             return dataPieChart;
         }
-
-
     }
 }

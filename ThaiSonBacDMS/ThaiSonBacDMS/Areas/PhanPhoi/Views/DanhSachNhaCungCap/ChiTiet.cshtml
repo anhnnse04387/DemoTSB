@@ -92,21 +92,9 @@
 
 <section class="content-header">
     <ol class="breadcrumb">
-        <li>
-            <a href="#">
-                <i class="fa fa-dashboard"></i> Trang Chủ
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class=""></i> Danh sách nhà cung cấp
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class=""></i> Chi tiết nhà cung cấp
-            </a>
-        </li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
+        <li><a href="">Chi tiết nhà cung cấp</a></li>
     </ol>
 </section>
 <br>
@@ -531,7 +519,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/DanhSachNhaCungCap/UpdateSupplier',
+                                    url: '/PhanPhoi/DanhSachNhaCungCap/UpdateSupplier',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data

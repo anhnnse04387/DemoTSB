@@ -1,10 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "ChiTiet";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ChiTietKhachHangModel
-
+@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietCungCapModel
 @section IndexStyle{
     <!--Preview Avatar-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
@@ -15,47 +14,6 @@
             height: 40px;
         }
 
-        .box-body-custom-detail-custom {
-            font-size: 20px;
-        }
-
-        th {
-            color: white;
-            background-color: #3c8dbc;
-            font-weight: bold;
-        }
-
-        th,
-        td {
-            text-align: center;
-        }
-
-        #mainTable {
-            background-color: rgb(240, 240, 240);
-        }
-
-            #mainTable thead tr th {
-                vertical-align: middle !important;
-                text-align: center;
-                background-color: #3c8dbc;
-                color: #fff;
-            }
-
-            #mainTable tbody td:nth-child() {
-                text-align: left;
-            }
-
-            #mainTable tbody td:nth-child(4),
-            #mainTable tbody td:nth-child(5) {
-                text-align: right;
-            }
-        /* helpers/align.css */
-        .align {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
 
          #image-preview {
             width: 200px;
@@ -69,6 +27,50 @@
             background-repeat: no-repeat;
             border: solid 1px;
         }
+         .box-body-custom-detail-custom {
+                font-size: 20px;
+            }
+
+            th {
+                color: white;
+                background-color: #3c8dbc;
+                font-weight: bold;
+            }
+
+            th,
+            td {
+                text-align: center;
+            }
+
+            td {
+            }
+
+            .customTab {
+                background-color: rgb(240, 240, 240);
+            }
+
+            .customTab thead tr th {
+                vertical-align: middle !important;
+                text-align: center;
+                background-color: #3c8dbc;
+                color: #fff;
+            }
+
+            .customTab tbody td:nth-child() {
+                text-align: left;
+            }
+
+            .customTab tbody td:nth-child(5) {
+                text-align: right;
+            }
+            /* helpers/align.css */
+
+            .align {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
 
             #image-preview input {
                 position: absolute;
@@ -87,23 +89,12 @@
             }
     </style>
 }
+
 <section class="content-header">
     <ol class="breadcrumb">
-        <li>
-            <a href="@Url.Action("Index", "Home")">
-                <i class="fa fa-dashboard"></i> Trang Chủ
-            </a>
-        </li>
-        <li>
-            <a href="@Url.Action("Index", "DanhSachKhachHang")">
-                <i class=""></i> Danh sách khách hàng
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class=""></i> Chi tiết khách hàng
-            </a>
-        </li>
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
+        <li><a href="">Chi tiết nhà cung cấp</a></li>
     </ol>
 </section>
 <br>
@@ -113,49 +104,42 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     <img class="profile-user-img img-responsive img-circle" src="@Model.avatar_str" alt="User profile picture">
-                    <h3 class="profile-username text-center">@Model.customer.Customer_name</h3>
+                    <h3 class="profile-username text-center">@Model.supllier.Supplier_name</h3>
                     <p class="text-muted text-center"></p>
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
                             <i class="fa fa-codepen"></i>
                             <b>Mã KH</b>
-                            <a class="pull-right" id="cusomterID">@Model.customer.Customer_ID</a>
+                            <a class="pull-right">@Model.supllier.Supplier_ID</a>
                         </li>
                         <li class="list-group-item">
-                            <i class="fa fa-diamond"></i>
-                            <b>Xếp hạng</b>
-                            <a class="pull-right">
-                                <span class="label label-primary">@Model.customer.Rank</span>
-                            </a>
+                            <i class="fa fa-phone"></i>
+                            <b>Số điện thoại</b>
+                            <a class="pull-right">@Model.supllier.Phone</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-envelope"></i>
+                            <b>Email</b>
+                            <a class="pull-right">@Model.supllier.Mail</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-bank"></i>
+                            <b>MST</b>
+                            <a class="pull-right">@Model.supllier.Tax_code</a>
                         </li>
                         <li class="list-group-item">
                             <i class="fa fa-address-book"></i>
                             <b>Địa chỉ</b>
                             <br>
-                            <span style="color: #4682b4">@Model.customer.Delivery_address</span>
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fa fa-address-book"></i>
-                            <b>Email</b>
-                            <br>
-                            <span style="color: #4682b4">@Model.customer.Mail</span>
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fa fa-bank"></i>
-                            <b>MST</b>
-                            <a class="pull-right">@Model.customer.Tax_code</a>
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fa fa-phone"></i>
-                            <b>Số điện thoại</b>
-                            <a class="pull-right">@Model.customer.Phone</a>
+                            <span style="color: #4682b4">@Model.supllier.Supplier_address</span>
                         </li>
                         <li class="list-group-item">
                             <i class="fa fa-phone"></i>
                             <b>Ngày tạo</b>
-                            <a class="pull-right">@Model.customer.Date_Created.Value.ToString("dd/MM/yyyy")</a>
+                            <a class="pull-right">@Model.supllier.Date_Created</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -164,7 +148,7 @@
                 <div class="nav nav-tabs">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Doanh thu</a>
+                            <a href="#doanhthu" data-toggle="tab" aria-expanded="true">Nhập hàng</a>
                         </li>
                         <li class="">
                             <a href="#mathang" data-toggle="tab" aria-expanded="false">Mặt hàng</a>
@@ -179,18 +163,18 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <h2 class="text-center">
-                                    <strong>Doanh thu 6 tháng gần nhất</strong>
+                                    <strong>Nhập hàng 6 tháng gần nhất</strong>
                                 </h2>
                                 <canvas id="line-chart" width="800" height="450"></canvas>
                             </div>
                             <br>
                             <div class="row text-center" style="font-size:15px">
-                                <label class="col-md-4">Số đơn hàng</label>
+                                <label class="col-md-4">Lần giao dịch</label>
                                 <label class="col-md-4">Tổng giá trị các đơn hàng</label>
                                 <label class="col-md-4">Còn nợ</label>
                             </div>
                             <div class="row text-center" style="font-size:20px">
-                                <label class="col-md-4" style="color:#439c07"><span class="number">@Model.numberOrder</span> lần</label>
+                                <label class="col-md-4" style="color:#439c07"><span class="number">@Model.numberOrder</span></label>
                                 <label class="col-md-4"><span class="number">@Model.priceOrder</span> đồng</label>
                                 <label class="col-md-4" style="color:#ff3300"><span class="number">@Model.currentDebt</span> đồng</label>
                             </div>
@@ -199,73 +183,87 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h4>
-                                        <b>DANH SÁCH ĐƠN HÀNG</b>
+                                        <b>TOP 10 ĐƠN NHẬP HÀNG GẦN NHẤT</b>
                                     </h4>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-
                                 <div class="col-md-12">
-                                    <table id="mainTable" class="table table-striped">
+                                    <table id="mainTable2" class="table table-striped customTab">
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
                                                 <th>Lô số</th>
-                                                <th>Ngày</th>
+                                                <th>Ngày yêu cầu</th>
+                                                <th>Ngày tới nơi</th>
                                                 <th>Tổng tiền</th>
-                                                <th>Trạng thái</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ var j = 1;}
+                                            @foreach (var item in Model.lstTotal)
+                                            {
+                                                <tr>
+                                                    <td>@j</td>
+                                                    <td>
+                                                        <a href="@Url.Action("Detail", "PI", new { product_Id = item.Supplier_ID })">@item.Purchase_invoice_no</a>
+                                                    </td>
+                                                    <td>@item.Date_requested.Value.ToString("dd/MM/yyyy")</td>
+                                                    <td>@item.Shipment_date.Value.ToString("dd/MM/yyyy")</td>
+                                                    <td class="number">@item.Total_price</td>
+                                                </tr>
+                                                j++;
+                                            }
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="label label-primary pull-right" id="attach_box">
+                                        <a href="@Url.Action("Index", "ErrorPage")" style="color:white">Xem tất cả</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="active tab-pane" id="mathang">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <b>CÁC MẶT HÀNG CUNG CẤP</b>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="mainTable" class="table table-striped customTab">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Mã hàng</th>
+                                                <th>Danh mục</th>
+                                                <th>Giá tiền gốc (VNĐ)</th>
+                                                <th>VAT</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @{ var i = 1; }
-                                            @foreach(var item in Model.lstTotal) { 
+                                            @foreach (var item in Model.lstProduct)
+                                            {
                                                 <tr>
                                                     <td>@i</td>
                                                     <td>
-                                                        <a href="#">@item.Order_ID</a>
+                                                        <a href="@Url.Action("Index", "ChiTietSanPham", new { product_Id = item.Product_ID })">@item.Product_name</a>
                                                     </td>
-                                                    <td>@item.Date_created.ToString("dd/MM/yyyy")</td>
-                                                    <td class="number">@item.Total_price</td>
-                                                    <td>
-                                                        @if (item.Status_ID == 1)
-                                                        {
-                                                        <span class="label label-info">Bản Nháp</span>
-                                                        }
-                                                        else if (item.Status_ID == 2)
-                                                        {
-                                                            <span class="label label-warning">Chưa xuất phiếu</span>
-                                                        }
-                                                        else if (item.Status_ID == 3)
-                                                        {
-                                                            <span class="label label-primary">Đã xuất phiếu</span>
-                                                        }
-                                                        else if (item.Status_ID == 4)
-                                                        {
-                                                            <span class="label label-primary">Kế toán đã xử lí</span>
-                                                        }
-                                                        else if (item.Status_ID == 5)
-                                                        {
-                                                            <span class="label label-primary">Đã xuất kho</span>
-                                                        }
-                                                        else if (item.Status_ID == 6)
-                                                        {
-                                                            <span class="label label-primary">Đang giao hàng</span>
-                                                        }
-                              
-                                                        else if (item.Status_ID == 7)
-                                                        {
-                                                            <span class="label label-success">Hoàn thành</span>
-                                                        }
-                                                        else if (item.Status_ID == 8)
-                                                        {
-                                                            <span class="label label-danger">Đã hủy</span>
-                                                        }
-                                                        else if (item.Status_ID == 9)
-                                                        {
-                                                            <span class="label label-danger">Từ Chối</span>
-                                                        } 
-                                                    </td>
+                                                    <td>@item.Category.Category_name</td>
+                                                    <td class="number">@item.CIF_VND</td>
+                                                    <td><span class="number">@item.VAT</span>%</td>
                                                 </tr>
                                                 i++;
                                             }
@@ -274,20 +272,15 @@
                                     </table>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <span class="label label-primary pull-right" id="attach_box">Xem tất cả</span>
+                                </div>
+                            </div>
                             <br>
                         </div>
                     </div>
-                    <div class="tab-pane" id="mathang">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <h2 class="text-center">
-                                    <strong>CÁC MẶT HÀNG MUA NHIỀU NHẤT</strong>
-                                </h2>
-                                <canvas id="doughnut-chart" width="640" height="360"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="chinhsua" style="padding-top: 32px;">
+                    <div class="tab-pane" id="chinhsua" style="padding-bottom: 32px;">
                         <div class="row">
                             <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
                             <form class="form form-vertical">
@@ -307,25 +300,16 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-user"></i>
                                                         </span>
-                                                        <input class="form-control" value="@Model.customer.Customer_name" id="supplier_name">
+                                                        <input class="form-control" id="supplier_name" value="@Model.supllier.Supplier_name">
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 10px;">
-                                                    <label>Tên viết tắt</label>
+                                                    <label>Email</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="fa fa-user"></i>
+                                                            <i class="fa fa-address-book"></i>
                                                         </span>
-                                                        <input class="form-control" value="@Model.customer.Acronym" type="text" id="acronym">
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="margin-top: 10px;">
-                                                    <label>Số điện thoại</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="fa fa-phone"></i>
-                                                        </span>
-                                                        <input class="form-control" value="@Model.customer.Phone" type="text" id="phone">
+                                                        <input class="form-control" id="supplier_email" value="@Model.supllier.Mail" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 10px;">
@@ -334,25 +318,16 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-address-book"></i>
                                                         </span>
-                                                        <input class="form-control" value="@Model.customer.Delivery_address" type="text" id="address">
+                                                        <input class="form-control" id="address" value="@Model.supllier.Supplier_address" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 10px;">
-                                                    <label>Địa chỉ giao hàng</label>
+                                                    <label>Số điện thoại</label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="fa fa-address-book"></i>
+                                                            <i class="fa fa-phone"></i>
                                                         </span>
-                                                        <input class="form-control" value="@Model.customer.Export_invoice_address" type="text" id="deliver_address">
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="margin-top: 10px;">
-                                                    <label>Email</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </span>
-                                                        <input class="form-control" value="@Model.customer.Mail" type="text" id="supplier_email">
+                                                        <input class="form-control" id="phone" value="@Model.supllier.Phone" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 10px;">
@@ -361,10 +336,9 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-bank"></i>
                                                         </span>
-                                                        <input class="form-control" value="@Model.customer.Tax_code" type="text" id="mst">
+                                                        <input class="form-control" id="mst" value="@Model.supllier.Tax_code" type="text">
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                     </div>
@@ -374,16 +348,14 @@
                                 </a>
                             </form>
                         </div>
+                        <br>
                     </div>
                 </div>
-                <br>
-                <br>
-
             </div>
         </div>
     </div>
 </section>
-<!-- End content -->
+<!-- End Main Content -->
 @section Index {
     <script src="~/Assets/dist/js/pages/jquery.uploadPreview.min.js"></script>
     <!-- DataTables -->
@@ -421,28 +393,25 @@
         });
     </script>
     <script>
-        new Chart(document.getElementById("doughnut-chart"), {
-            type: 'doughnut',
-            data: {
-                labels: [@Html.Raw(String.Join(",", Model.displayDonutChart.Select(x => "\"" + x.Key + "\"")))],
-                datasets: [{
-                    label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#f70404"],
-                    data: [@Html.Raw(String.Join(",", Model.displayDonutChart.Select(x => "\"" + x.Value + "\"")))]
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                }
-            }
-        });
-    </script>
-    <script>
         $(document).ready(function () {
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' })
 
             var table = $('#mainTable').dataTable({
+                "searching": false,
+                "info": false,
+                "lengthChange": false,
+                "language": {
+                    "zeroRecords": "Không tìm được giá trị phù hợp",
+                    "paginate": {
+                        "first": "Đầu",
+                        "last": "Cuối",
+                        "next": "Tiếp",
+                        "previous": "Sau"
+                    }
+                }
+            });
+
+            var table2 = $('#mainTable2').dataTable({
                 "searching": false,
                 "info": false,
                 "lengthChange": false,
@@ -471,12 +440,12 @@
             $("#image-preview label").empty();
             $("#image-preview label").append("<span class='glyphicon glyphicon-open' aria-hidden='true'></span>");
         });
-        
+
     </script>
 
     <script>
         $(document).ready(function () {
-            $("#supplier_name, #phone, #address, #deliver_address, #supplier_email, #mst, #acronym").keyup(function () {
+            $("#supplier_name, #phone, #address, #deliver_address, #supplier_email, #mst").keyup(function () {
                 $("#btnCreate").removeAttr('disabled');
             });
             $("#image-upload").change(function () {
@@ -516,15 +485,13 @@
                             var supp_d_address = $("#deliver_address").val();
                             var supp_email = $("#supplier_email").val();
                             var supp_mst = $("#mst").val();
-                            var acronym = $("#acronym").val();
                             fileData.append('supplierName', supp_name);
                             fileData.append('supplierPhone', supp_phone);
                             fileData.append('address', supp_address);
                             fileData.append('deliver_address', supp_d_address);
-                            fileData.append('acronym', acronym);
                             fileData.append('email', supp_email);
                             fileData.append('mst', supp_mst);
-                            fileData.append('customerID', @Model.customer.Customer_ID);
+                            fileData.append('supplierID', @Model.supllier.Supplier_ID);
                             if (isEmpty(supp_name)) {
                                 swal({
                                     title: 'Tên nhà cung cấp không được bỏ trống',
@@ -535,15 +502,15 @@
                                     title: 'Sai số điện thoại',
                                     type: 'warning'
                                 });
-                            } else if (isEmpty(supp_address)) {
+                            } else if (isEmpty(address)) {
                                 swal({
                                     title: 'Địa chỉ không được bỏ trống',
                                     type: 'warning'
                                 });
 
-                            } else if (isEmpty(supp_d_address)) {
+                            } else if (!validateEmail(supp_email)) {
                                 swal({
-                                    title: 'Địa chỉ giao hàng không được bỏ trống',
+                                    title: 'Sai Email',
                                     type: 'warning'
                                 });
                             } else if (!RegExp("^([0-9]{2})[0-9]{8}$").test(supp_mst)) {
@@ -553,7 +520,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/PhanPhoi/DanhSachKhachHang/UpdateCustomer',
+                                    url: '/QuanLy/DanhSachNhaCungCap/UpdateSupplier',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data
@@ -569,12 +536,6 @@
                                             swal(
                                                  'Lỗi',
                                                  'Chưa chọn ảnh',
-                                                 'warning'
-                                            );
-                                        }else if (result == "-3") {
-                                            swal(
-                                                 'Lỗi',
-                                                 'Trùng email',
                                                  'warning'
                                             );
                                         } else {

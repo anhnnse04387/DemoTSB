@@ -1,9 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ChiTietNoCungCapModel
+@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietNoCungCapModel
 @section IndexStyle{
     <style>
         #example1 {
@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="box">
-                    @using (Html.BeginForm("Index", "BaoCaoChiTietCongNo",new { @supplierID = Model.supp.Supplier_ID}, FormMethod.Post))
+                    @using (Html.BeginForm("Index", "BaoCaoChiTietCongNo", new { @supplierID = Model.supp.Supplier_ID }, FormMethod.Post))
                     {
                         <div class="box-body">
                             <div class="row">
@@ -182,8 +182,13 @@
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                                @Html.TextBoxFor(model => model.productCode, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "productName",
-                                                               @oninput = "this.value=this.value.replace(/[^0-9]/g,'');" })
+                                                                @Html.TextBoxFor(model => model.productCode, new
+                                                           {
+                                                               @class = "form-control",
+                                                               @placeholder = "Mã hàng...",
+                                                               @id = "productName",
+                                                               @oninput = "this.value=this.value.replace(/[^0-9]/g,'');"
+                                                           })
                                                             </div>
                                                         </td>
                                                         <td style="width: 80px">Danh mục</td>

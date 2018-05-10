@@ -1,34 +1,19 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.DanhSachKhachHangModel
+@model ThaiSonBacDMS.Areas.QuanLy.Models.DanhSachConNoCungCapModel
 
 @section IndexStyle{
     <!-- DataTables -->
     <link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Datepicker -->
     <link href="~/Assets/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <!-- Select2 -->
-    <link rel="stylesheet" href="/Assets/bower_components/select2/dist/css/select2.min.css">
     <style>
-        #example1 th {
-                color: white;
-                background-color: #3c8dbc;
-                font-weight: bold;
-            }
-
-            #example1 th, #example1 td {
-                text-align: center;
-            }
-            .select2-container--default .select2-selection--multiple .select2-selection__choice {
-                background-color: dodgerblue;
-            }
-
-            #example1 {
-                background-color: rgb(240, 240, 240);
-            }
+        #example1 {
+            background-color: rgb(240, 240, 240);
+        }
 
             #example1 thead tr th {
                 vertical-align: middle !important;
@@ -37,41 +22,36 @@
                 color: #fff;
             }
 
-            #example1 tbody td:nth-child(2),
-            #example1 tbody td:nth-child(4) {
-                text-align: left;
-            }
-
-            #example1 tbody td:nth-child(),
-            #example1 tbody td:nth-child() {
+            #example1 tbody td:nth-child(6), #example1 tbody td:nth-child(7),
+            #example1 tbody td:nth-child(9) {
                 text-align: right;
             }
-            .custom-btn {
-                padding: 10px 5px;
-                min-width: 80px;
-                height: 55px;
-            }
-            .menu-button {
-                background-color: #fcf9f9;
-                margin-top: 20px;
-                padding-top: 20px;
-                padding-right: 25px;
-            }
-            .smallBtn {
-                padding: 10px 5px;
-                min-width: 60px;
-                height: 40px;
-            }
-            .custom-chk {
-                padding-left: 15px;
-            }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 80px;
+            height: 55px;
+        }
+
+        .edit-btn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
     </style>
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-        <li><a href="@Url.Action("Index", "DanhSachKhachHang")">Danh sách khách hàng</a></li>
+        <li><a href="@Url.Action("Index", "DanhSachNhaCungCap")">Danh sách nhà cung cấp</a></li>
     </ol>
 </section>
 
@@ -83,7 +63,7 @@
                 <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
                     <div class="col-md-12">
                         <h4>
-                            <b>Danh sách khách hàng</b>
+                            <b>Danh sách nhà cung cấp</b>
                         </h4>
                     </div>
                 </div>
@@ -91,7 +71,7 @@
                 <div class="box">
                     <div class="box-header with-border text-center menu-button">
 
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="@Url.Action("TaoMoi", "DanhSachKhachHang")" target="_blank" title="Tạo Mới" data-placement="bottom">
+                        <a class="btn btn-app custom-btn" data-toggle="tooltip" href="@Url.Action("TaoMoi", "DanhSachNhaCungCap")" target="_blank" title="Tạo Mới" data-placement="bottom">
                             <i class="fa fa-plus-square text-green"></i>
                             <span><strong>Tạo Mới</strong></span>
                         </a>
@@ -144,7 +124,7 @@
                                         <h3 class="box-title">Tìm kiếm theo</h3>
                                     </div>
                                     <div class="box-body">
-                                        @using (Html.BeginForm("Index", "DanhSachKhachHang", FormMethod.Post))
+                                        @using (Html.BeginForm("Index", "DanhSachNhaCungCap", FormMethod.Post))
                                         {
                                             <table class="table">
                                                 <tbody>
@@ -153,19 +133,22 @@
                                                         <td width="35%">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Tên..." name="cus_name">
+                                                                <input type="text" class="form-control" placeholder="Tên..." name="supp_name">
                                                             </div>
                                                         </td>
-                                                        <td style="padding-left: 80px;width: 170px;">Xếp hạng</td>
-                                                        <td style="width: 40%;padding-right: 30px;">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
-                                                                <select class="form-control" name="cus_rank">
-                                                                    <option value="0">Tất cả</option>
-                                                                    <option value="Khách mới ">Khách mới</option>
-                                                                    <option value="Khách quen ">Khách quen</option>
-                                                                    <option value="Khách V">Khách VIP</option>
-                                                                </select>
+                                                        <td style="padding-left: 90px;">Ngày tạo</td>
+                                                        <td>
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input style="width: 150px" type="text" class="form-control datepicker" name="dateFrom" placeholder="Từ...">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input style="width: 155px" type="text" class="form-control datepicker" name="dateTo" placeholder="Đến...">
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -191,43 +174,28 @@
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>STT</th>
-                                                    <th>Tên</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Xếp hạng</th>
-                                                    <th>Mã số thuế</th>
-                                                    <th>Ngày tạo</th>
-                                                    <th>Chi tiết</th>
+                                                    <th style="width: 2%">STT</th>
+                                                    <th style="width: 5%">Tên</th>
+                                                    <th style="width: 15%">Địa chỉ</th>
+                                                    <th style="width: 5%">Mã số thuế</th>
+                                                    <th style="width: 5%">Ngày tạo</th>
+                                                    <th style="width: 5%">Chi Tiết</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @{ var i = 1; }
-                                                @foreach (var item in Model.lstCus)
+                                                @foreach (var item in Model.lstSupp)
                                                 {
                                                     <tr>
-                                                        <td>@i</td>
-                                                        <td>
-                                                            @Html.ActionLink(@item.Customer_name, "ChiTiet", new { customerId = item.Customer_ID })
+                                                        <td class="text-center">@i</td>
+                                                        <td class="text-left">
+                                                            @Html.ActionLink(@item.Supplier_name, "ChiTiet", new { supllierID = item.Supplier_ID })
                                                         </td>
-                                                        <td>@item.Delivery_address</td>
-                                                        <td>
-                                                            @if (item.Rank.Contains("Khách mới"))
-                                                            {
-                                                                <span class="label label-primary">KHÁCH MỚI</span>
-                                                            }
-                                                            else if(item.Rank.Contains("Khách Vip") || item.Rank.Contains("Khách VIP"))
-                                                            {
-                                                                <span class="label label-danger">KHÁCH VIP</span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="label label-success">KHÁCH QUEN</span>
-                                                            }
-                                                        </td>
-                                                        <td>@item.Tax_code</td>
-                                                        <td>@item.Date_Created.Value.ToString("dd/MM/yyyy")</td>
-                                                        <td>
-                                                            <a class="btn btn-app custom-btn smallBtn" href="@Url.Action("ChiTiet", "DanhSachKhachHang", new {  customerId=item.Customer_ID } )" data-toggle="tooltip" title="Chi Tiết" data-placement="bottom">
+                                                        <td class="text-left">@item.Supplier_address</td>
+                                                        <td class="text-left">@item.Tax_code</td>
+                                                        <td class="text-center">@item.Date_Created.Value.ToString("dd/MM/yyyy")</td>
+                                                        <td style="text-align: center">
+                                                            <a class="btn btn-app custom-btn edit-btn" href="@Url.Action("ChiTiet", "DanhSachNhaCungCap", new {  supllierID=item.Supplier_ID } )" data-toggle="tooltip" title="Xem" data-placement="bottom">
                                                                 <i class="fa fa-eye text-blue"></i>
                                                             </a>
                                                         </td>
@@ -260,11 +228,8 @@
     <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <!-- Datepicker -->
     <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
-    <!-- Select2 -->
-    <script src="/Assets/bower_components/select2/dist/js/select2.full.min.js"></script>
     <!-- sweet Alert-->
     <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
-    
     <script>
         function isEmpty(str) {
             return (!str || 0 === str.length);
@@ -297,7 +262,6 @@
             $('.datepicker').datepicker({
                 format: 'dd/mm/yyyy'
             });
-            $('.select2').select2();
         });
 
         $('.construct').click(function() {

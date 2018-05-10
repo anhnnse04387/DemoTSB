@@ -1,7 +1,6 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout1.cshtml";
 }
 @model ThaiSonBacDMS.Areas.QuanLy.Models.HomeModel
 <!-- Content Header (Page header) -->
@@ -144,6 +143,14 @@
                                         else if (item.status == "Hoàn thành")
                                         {
                                             <td class="text-center"><span class="label label-success">@item.status</span></td>
+                                        }
+                                        else if (item.status == "Đã xuất kho warning")
+                                        {
+                                            <td class="text-center"><span class="label label-warning">Đã xuất kho</span></td>
+                                        }
+                                        else if (item.status == "Đang giao hàng warning")
+                                        {
+                                            <td class="text-center"><span class="label label-warning">Đang giao hàng</span></td>
                                         }
                                         else
                                         {
@@ -336,7 +343,7 @@
             }
 
             <div>
-                <a href="phanphoi_toBeContinue.html" class="btn btn-block btn-default">
+                <a href="#" class="btn btn-block btn-default construct">
                     Xem thêm
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>
@@ -535,5 +542,4 @@
         });
     </script>
 }
-
 

@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "TaoMoi";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
 
 @section IndexStyle{
@@ -170,7 +170,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-phone"></i>
                                                     </span>
-                                                    <input class="form-control" placeholder="Số điện thoại..." type="text" id="phone" >
+                                                    <input class="form-control" placeholder="Số điện thoại..." type="text" id="phone">
                                                 </div>
                                             </div>
                                         </div>
@@ -327,7 +327,7 @@
                                 });
                             } else {
                                 $.ajax({
-                                    url: '/PhanPhoi/DanhSachKhachHang/UploadFiles',
+                                    url: '/QuanLy/DanhSachKhachHang/UploadFiles',
                                     type: "POST",
                                     contentType: false, // Not to set any content header
                                     processData: false, // Not to process data
@@ -357,9 +357,9 @@
                                                  'Bạn đã thêm khách hàng thành công.',
                                                  'success'
                                             ).then(function () {
-                                                window.location.href = '/PhanPhoi/DanhSachKhachHang/ChiTiet?customerID=' + result;
+                                                window.location.href = '/QuanLy/DanhSachKhachHang/ChiTiet?customerID=' + result;
                                             });;
-                                        }   
+                                        }
                                     },
                                     error: function (err) {
                                         swal({

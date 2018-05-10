@@ -21,14 +21,16 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Models
     }
     public class CongNoKhachHang
     {
-        public CongNoKhachHang(string cus_name, string cus_address, decimal cur_debt)
+        public CongNoKhachHang(string cus_name, string cus_address, decimal cur_debt, int cus_id)
         {
             this.cus_name = cus_name;
             this.cus_address = cus_address;
             this.cur_debt = cur_debt;
+            this.cus_id = cus_id;
         }
         public string cus_name { get; set; }
         public string cus_address { get; set; }
         public decimal cur_debt { get; set; }
+        public int cus_id { get; set; }
     }
 }

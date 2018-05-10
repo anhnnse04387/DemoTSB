@@ -1,9 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+
 }
-@model ThaiSonBacDMS.Areas.PhanPhoi.Models.ChiTietNoCungCapModel
+@model ThaiSonBacDMS.Areas.QuanLy.Models.ChiTietBaoCaoDoanhThu
 @section IndexStyle{
     <style>
         #example1 {
@@ -54,14 +55,14 @@
             </a>
         </li>
         <li>
-            <a href=""> Báo Cáo</a>
+            <a href="#"> Báo Cáo</a>
         </li>
         <li>
-            <a href="@Url.Action("Index", "BaoCaoCongNoCungCap")"> Công Nợ</a>
+            <a href="@Url.Action("Index", "BaoCaoDoanhThu")"> Doanh thu</a>
         </li>
         <li>
-            <a href="">
-                Chi tiết công nợ cung cấp
+            <a href="#">
+                Chi tiết doanh thu
             </a>
         </li>
     </ol>
@@ -73,7 +74,7 @@
                 <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
                     <div class="col-md-12">
                         <h4>
-                            <b>Chi Tiết Công Nợ @Model.supp.Supplier_name</b>
+                            <b>Chi Tiết Doanh Thu</b>
                         </h4>
                     </div>
                 </div>
@@ -128,7 +129,7 @@
                     </div>
                 </div>
                 <div class="box">
-                    @using (Html.BeginForm("Index", "BaoCaoChiTietCongNo",new { @supplierID = Model.supp.Supplier_ID}, FormMethod.Post))
+                    @using (Html.BeginForm("Index", "BaoCaoChiTietDoanhThu", FormMethod.Post))
                     {
                         <div class="box-body">
                             <div class="row">
@@ -178,12 +179,11 @@
                                             <table class="table">
                                                 <tbody>
                                                     <tr>
-                                                        <td style="width: 80px">Mã hàng</td>
+                                                        <td>Mã hàng</td>
                                                         <td>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                                                @Html.TextBoxFor(model => model.productCode, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "productName",
-                                                               @oninput = "this.value=this.value.replace(/[^0-9]/g,'');" })
+                                                                @Html.TextBoxFor(model => model.productCode, new { @class = "form-control", @placeholder = "Mã hàng...", @id = "productName", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
                                                             </div>
                                                         </td>
                                                         <td style="width: 80px">Danh mục</td>
@@ -211,8 +211,9 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td style="width: 80px">Tổng tiền</td>
+                                                        <td>Giá</td>
                                                         <td>
+
                                                             <div class="col-sm-5 no-padding">
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">Từ</span>
@@ -223,6 +224,24 @@
                                                                 <div class="input-group">
                                                                     <span class="input-group-addon">Đến</span>
                                                                     @Html.TextBoxFor(model => model.priceTo, new { @class = "form-control", @id = "priceTo" })
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 80px">Doanh thu</td>
+                                                        <td>
+
+                                                            <div class="col-sm-5 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Từ</span>
+                                                                    @Html.TextBoxFor(model => model.doanhThuFrom, new { @class = "form-control", @id = "doanhThuFrom" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">Đến</span>
+                                                                    @Html.TextBoxFor(model => model.doanhThuTo, new { @class = "form-control", @id = "doanhThuTo" })
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -253,8 +272,9 @@
                                         <th>STT</th>
                                         <th>MÃ HÀNG</th>
                                         <th>DANH MỤC</th>
-                                        <th>SỐ LƯỢNG</th>
-                                        <th>TỔNG TIỀN</th>
+                                        <th>SỐ LƯỢNG BÁN RA</th>
+                                        <th>GIÁ</th>
+                                        <th>DOANH THU</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -266,6 +286,7 @@
                                             <td class="noBorder" style="text-align:center">@item.Key</td>
                                             <td class="noBorder"></td>
                                             <td class="noBorder"></td>
+                                            <td class="noBorder"></td>
                                             <td></td>
                                         </tr>
                                         foreach (var i in item.Value)
@@ -275,7 +296,8 @@
                                                 <td style="border-right: none;text-align:left"><a href="#"> @i.productName</a></td>
                                                 <td>@i.categoryName</td>
                                                 <td style="text-align:right" class="number">@i.totalQuantity</td>
-                                                <td style="text-align:right" class="number">@i.totalPrice</td>
+                                                <td class="number">@i.price</td>
+                                                <td style="text-align:right" class="number">@i.doanhThu</td>
                                             </tr>
                                             c++;
                                         }
@@ -284,7 +306,8 @@
                                             <td class="noBorder" style="text-align:center">Tổng</td>
                                             <td></td>
                                             <td style="text-align:right" class="number">@item.Value.Sum(x => x.totalQuantity)</td>
-                                            <td style="text-align:right" class="number">@item.Value.Sum(x => x.totalPrice)</td>
+                                            <td style="text-align:right"></td>
+                                            <td style="text-align:right" class="number">@item.Value.Sum(x => x.doanhThu)</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -293,8 +316,9 @@
                                         <td class="noBorder"></td>
                                         <td class="noBorder" style="text-align:center">Tổng Cộng</td>
                                         <td></td>
-                                        <td style="text-align:right" class="number">@Model.data.Sum(x => x.Value.Sum(s => s.totalQuantity))</td>
-                                        <td style="text-align:right" class="number">@Model.data.Sum(x => x.Value.Sum(s => s.totalPrice))</td>
+                                        <td style="text-align:right">@Model.data.Sum(x => x.Value.Sum(s => s.totalQuantity))</td>
+                                        <td style="text-align:right"></td>
+                                        <td style="text-align:right">@Model.data.Sum(x => x.Value.Sum(s => s.doanhThu))</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -324,6 +348,7 @@
             return (!str || 0 === str.length);
         }
         var x = $('#errorMgs').html();
+        console.log(x);
         if (!isEmpty(x)) {
             swal({
                 title: x,
@@ -367,8 +392,4 @@
         });
     </script>
 }
-
-
-
-
 
