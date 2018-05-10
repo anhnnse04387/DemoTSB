@@ -180,6 +180,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 model.invoiceAddress = "Công ty TNHH Thái Sơn Bắc";
                 model.deliveryAddress = data.Order_total.Address_delivery;
                 model.invoiceNumber = data.Invoice_number;
+                model.statusId = data.Status_ID;
                 String status = statusDAO.getStatus(data.Status_ID);
                 String spanClass = "";
                 if (data.Status_ID == 10 || data.Status_ID == 11)

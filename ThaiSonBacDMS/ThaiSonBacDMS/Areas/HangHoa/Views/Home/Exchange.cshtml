@@ -1,0 +1,400 @@
+﻿@model ThaiSonBacDMS.Areas.HangHoa.Models.OrderListModel
+@{
+    ViewBag.Title = "Exchange";
+    Layout = "~/Areas/HangHoa/Views/Shared/_Layout.cshtml";
+}
+<!-- DataTables -->
+<link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<!-- Datepicker -->
+<link href="~/Assets/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<style>
+    .custom-btn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+
+    th {
+        color: white;
+        background-color: #3c8dbc;
+        font-weight: bold;
+    }
+
+    #example1 {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #example1 tbody td:nth-child(4),
+        #example1 tbody td:nth-child(5),
+        #example1 tbody td:nth-child(6),
+        #example1 tbody td:nth-child(7) {
+            text-align: center;
+        }
+
+        #example1 tbody td:nth-child() {
+            text-align: right;
+        }
+
+    .custom-btn {
+        margin-left: 10px;
+    }
+
+    .custom-chk {
+        padding-left: 15px;
+    }
+
+    .modal-dialog-table {
+        width: 70%;
+    }
+
+    #popTable {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #popTable thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+        #popTable tbody td:nth-child(3),
+        #popTable tbody td:nth-child(4),
+        #popTable tbody td:nth-child(5),
+        #popTable tbody td:nth-child(6) {
+            text-align: center;
+        }
+
+    .smallBtn {
+        padding: 10px 5px;
+        min-width: 60px;
+        height: 40px;
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i>&nbsp;&nbsp;&nbsp;@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li>Đơn hàng</li>
+        <li class="active">Đổi trả</li>
+    </ol>
+</section>
+
+@using (Html.BeginForm("Exchange", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    <b>DANH SÁCH ĐỔI TRẢ</b>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Tìm kiếm theo</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Lô số</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.TextBoxFor(model => Model.orderID, new { @type = "text", @class = "form-control", @placeholder = "Lô số..." })
+                                                        </div>
+                                                    </td>
+                                                    <td>Tên khách hàng</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            <input type="text" oninput="this.value=this.value.replace(/\`|\~|\!|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\''|\;|\:/g,'');"
+                                                                   value="@Model.customerName" class="form-control" placeholder="Tên..." style="width: 357px;" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Số hóa đơn</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.TextBoxFor(model => Model.invoice_number, new { @type = "text", @class = "form-control", @placeholder = "Số hoá đơn..." })
+                                                        </div>
+                                                    </td>
+                                                    <td>Ngày giao</td>
+                                                    <td>
+                                                        <div class="input-group date col-sm-5 no-padding" style="float:left">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @Html.TextBoxFor(model => Model.fromDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Từ ngày...", @style = "width:150px" })
+                                                        </div>
+                                                        <div class="input-group date col-sm-6 col-sm-offset-1 no-padding">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @Html.TextBoxFor(model => Model.toDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Đến ngày...", @style = "width:150px" })
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lựa chọn giao</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-hourglass"></i>
+                                                            </span>
+                                                            @Html.DropDownListFor(model => model.DeliverMethod_ID, @Model.listMethod, "--Select--", new { @class = "form-control" })
+                                                        </div>
+                                                    </td>
+                                                    <td>Nhân viên giao</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.DropDownListFor(model => model.Shiper_ID, @Model.listShipper, "--Select--", new { @class = "form-control", @style = "width: 78%;" })
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lái xe</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                            @Html.DropDownListFor(model => model.Driver_ID, @Model.listDriver, "--Select--", new { @class = "form-control" })
+                                                        </div>
+                                                    </td>
+                                                    <td>Ngày đổi trả</td>
+                                                    <td>
+                                                        <div class="input-group date col-sm-5 no-padding" style="float:left">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @Html.TextBoxFor(model => Model.fromCompletedDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Từ ngày...", @style = "width:150px" })
+                                                        </div>
+                                                        <div class="input-group date col-sm-6 col-sm-offset-1 no-padding">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            @Html.TextBoxFor(model => Model.toCompletedDate, new { @type = "text", @class = "form-control datepicker", @placeholder = "Đến ngày...", @style = "width:150px" })
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Kiểm tra
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <div class="form-group">
+                                                            <input type="checkbox" checked="@Model.takeBallot" />
+                                                            <label style="padding-left : 10px; padding-right:30px;">
+                                                                Lấy phiếu
+                                                            </label>
+                                                            <input type="checkbox" checked="@Model.takeInvoice" />
+                                                            <label style="padding-left : 10px; padding-right:30px;">
+                                                                Lấy hoá đơn
+                                                            </label>
+                                                            <input type="checkbox" checked="@Model.reveiceBallot" />
+                                                            <label style="padding-left : 10px; padding-right:30px;">
+                                                                Nhận phiếu
+                                                            </label>
+                                                            <input type="checkbox" checked="@Model.reveiceInvoice" />
+                                                            <label style="padding-left : 10px;">
+                                                                Nhận hoá đơn
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <div class="pagination pagination-sm no-margin pull-right">
+                                            <button type="submit" class="btn btn-block btn-primary">
+                                                Tìm kiếm
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="example1" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Lô số</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Số hóa đơn</th>
+                                            <th>Lấy hoá đơn</th>
+                                            <th>Lấy phiếu</th>
+                                            <th>Nhận phiếu</th>
+                                            <th>Nhận hóa đơn</th>
+                                            <th>Trạng thái</th>
+                                            <th>Ngày giao</th>
+                                            <th>Ngày hoàn thành</th>
+                                            <th>Ghi chú</th>
+                                            <th>Sửa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.listOrderPending)
+                                        {
+                                            <tr>
+                                                <td>@item.indexOf</td>
+                                                <td>
+                                                    <a href="/HangHoa/ChiTietPhieu/Full?orderId=@item.orderID">@item.orderID</a>
+                                                </td>
+                                                <td>@item.customerName</td>
+                                                <td>@item.invoiceNumber</td>
+                                                <td>
+                                                    <center> <input type="checkbox" checked="@item.takeInvoice" disabled /> </center>
+                                                </td>
+                                                <td>
+                                                    <center> <input type="checkbox" checked="@item.takeBallot" disabled /> </center>
+                                                </td>
+                                                <td>
+                                                    <center> <input type="checkbox" checked="@item.reveiceBallot" disabled /> </center>
+                                                </td>
+                                                <td>
+                                                    <center> <input type="checkbox" checked="@item.reveiceInvoice" disabled /> </center>
+                                                </td>
+                                                <td>
+                                                    <span class="label label-danger">@item.statusName</span>
+                                                </td>
+                                                <td>@item.dateExport.ToString("dd/MM/yyyy")</td>
+                                                <td>
+                                                    @if (item.dateCompleted != null)
+                                                    {@item.dateCompleted.Value.ToString("dd/MM/yyyy")}
+                                                </td>
+                                                <td>@item.note</td>
+                                                <td>
+                                                    <a id="btn_row_@item.orderID" href="javascript:void(0);" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Chi tiết" data-placement="bottom">
+                                                        <i class="fa fa-eye text-black"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr id="row_@item.orderID">
+                                                <td colspan="13">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label>Lựa chọn giao hàng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-hourglass"></i>
+                                                                    </span>
+                                                                    @Html.DropDownListFor(model => item.DeliverMethod_ID, new SelectList(Model.listMethod, "Value", "Text", item.DeliverMethod_ID), "--Select--", new { @class = "form-control", @disabled = "disabled" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label>Nhân viên giao hàng</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    @Html.DropDownListFor(model => item.Shiper_ID, new SelectList(Model.listShipper, "Value", "Text", item.Shiper_ID), "--Select--", new { @class = "form-control", @disabled = "disabled" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label>Lái xe</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </span>
+                                                                    @Html.DropDownListFor(model => item.Driver_ID, new SelectList(Model.listDriver, "Value", "Text", item.Driver_ID), "--Select--", new { @class = "form-control", @disabled = "disabled" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label>Lý do</label>
+                                                                <input type="text" class="form-control" disabled value="@item.note">
+                                                            </div>
+
+                                                        </div>
+                                                        <br />
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-md-offset-10">
+                                                                <a id="btn_off_row_@item.orderID" class="btn btn-default btn-block" data-toggle="tooltip" title="Hủy" data-placement="bottom">Hủy</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Index {
+    <!-- DataTables -->
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- Datepicker -->
+    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+    <!-- Page script-->
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+        @foreach(var item in Model.listOrderPending)
+        {
+            @:$('#row_@item.orderID').hide();
+            @:$('#btn_row_@item.orderID').click(function () {
+            @:$('#row_@item.orderID').toggle();
+            @:});
+            @:$('#btn_off_row_@item.orderID').click(function () {
+            @:$('#row_@item.orderID').toggle();
+            @:});
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+

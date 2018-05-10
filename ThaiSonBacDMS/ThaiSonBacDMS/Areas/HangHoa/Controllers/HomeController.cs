@@ -152,10 +152,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.devilerMethod.Contains(model.deliverMethod)).ToList();
                 }
-                if (!string.IsNullOrEmpty(model.deliverMethod))
-                {
-                    model.listOrderPending = model.listOrderPending.Where(x => x.devilerMethod.Contains(model.deliverMethod)).ToList();
-                }
                 if (!string.IsNullOrEmpty(model.driverName))
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.driverName.Contains(model.driverName)).ToList();
@@ -405,7 +401,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                     takeBallot = x.Date_take_ballot == null ? false : true,
                     statusName = new StatusDAO().getStatus((byte)x.Status_ID),
                     dateExport = (DateTime)x.Request_stockout_date,
-                    dateCompleted = (DateTime)x.Date_completed,
+                    dateCompleted = x.Date_completed,
                     note = x.Note,
                     devilerMethod = new DeliveryMethodDAO().getByID((byte)x.DeliverMethod_ID).Method_name,
                     shipperName = new UserDAO().getByID(x.Shiper_ID).User_name,
@@ -424,10 +420,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 if (!string.IsNullOrEmpty(model.invoice_number))
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.invoiceNumber.Contains(model.invoice_number)).ToList();
-                }
-                if (!string.IsNullOrEmpty(model.statusName))
-                {
-                    model.listOrderPending = model.listOrderPending.Where(x => x.statusName.Contains(model.statusName)).ToList();
                 }
                 if (!string.IsNullOrEmpty(model.fromDate))
                 {
@@ -453,10 +445,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.devilerMethod.Contains(model.deliverMethod)).ToList();
                 }
-                if (!string.IsNullOrEmpty(model.deliverMethod))
-                {
-                    model.listOrderPending = model.listOrderPending.Where(x => x.devilerMethod.Contains(model.deliverMethod)).ToList();
-                }
                 if (!string.IsNullOrEmpty(model.driverName))
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.driverName.Contains(model.driverName)).ToList();
@@ -464,6 +452,22 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 if (!string.IsNullOrEmpty(model.shipperName))
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.shipperName.Contains(model.shipperName)).ToList();
+                }
+                if (model.takeInvoice)
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.takeInvoice == true).ToList();
+                }
+                if (model.takeBallot)
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.takeBallot == true).ToList();
+                }
+                if (model.reveiceInvoice)
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.reveiceInvoice == true).ToList();
+                }
+                if (model.reveiceBallot)
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.reveiceBallot == true).ToList();
                 }
                 model.listOrderPending = model.listOrderPending.OrderByDescending(x => x.dateExport).ToList();
             }

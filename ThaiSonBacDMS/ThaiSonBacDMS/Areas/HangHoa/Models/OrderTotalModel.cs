@@ -22,7 +22,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
         public String invoiceAddress { get; set; }
         public String taxCode { get; set; }
         public String status { get; set; }
-        public byte statusId { get; set; }
+        public byte? statusId { get; set; }
         public IList<SelectListItem> deliveryMethod { get; set; }
         public byte? DeliverMethod_ID { get; set; }
         public string Driver_ID { get; set; }

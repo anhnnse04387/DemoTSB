@@ -358,6 +358,7 @@
                                         <th>Lấy phiếu</th>
                                         <th>Nhận phiếu</th>
                                         <th>Nhận hóa đơn</th>
+                                        <th>Trạng thái</th>
                                         <th>Ngày giao</th>
                                         <th>Ngày hoàn thành</th>
                                         <th>Chi tiết</th>
@@ -369,7 +370,7 @@
                                         <tr>
                                             <td>@i</td>
                                             <td>
-                                                <a href="#">@item.orderID</a>
+                                                <a href="/HangHoa/ChiTietPhieu/Full?orderId=@item.orderID">@item.orderID</a>
                                             </td>
                                             <td>@item.customerName</td>
                                             <td>@item.invoiceNumber</td>
@@ -385,6 +386,7 @@
                                             <td>
                                                 <center> <input type="checkbox" checked="@item.reveiceBallot" disabled /> </center>
                                             </td>
+                                            <td><span class="label label-success">@item.statusName</span></td>
                                             <td>@item.dateExport.ToString("dd/MM/yyyy")</td>
                                             <td>@item.dateCompleted.Value.ToString("dd/MM/yyyy")</td>
                                             <td>

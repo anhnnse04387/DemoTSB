@@ -121,7 +121,7 @@
                                 <i class="fa fa-plus-square text-gray"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "disabled" : "")" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "" : "disabled")" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
                                 <i class="fa fa-edit @(@Model.statusId < 7 ? "text-blue" : "text-gray")"></i>
                                 <span><strong>Sửa</strong></span>
                             </a>
@@ -133,11 +133,11 @@
                                 <i class="fa fa-close text-gray"></i>
                                 <span><strong>Huỷ</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "disabled" : "")" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "" : "disabled")" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
                                 <i class="fa fa-check-circle @(@Model.statusId < 7 ? "text-green" : "text-gray")"></i>
                                 <span><strong>Hoàn thành</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "disabled" : "")" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "" : "disabled")" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
                                 <i class="fa fa-exchange @(@Model.statusId < 7 ? "text-red" : "text-gray")"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
