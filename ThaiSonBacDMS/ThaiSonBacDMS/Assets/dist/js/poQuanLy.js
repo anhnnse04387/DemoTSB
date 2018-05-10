@@ -80,7 +80,7 @@ function productATC() {
                         success: function (data) {
                             var array = data.error ? [] : $.map(data, function (m) {
                                 return {
-                                    label: m.Product_code,
+                                    label: m.Product_name,
                                     value: m.Product_ID,
                                     price: m.CIF_USD
                                 };
@@ -156,7 +156,7 @@ function doneOrder() {
                 type: 'success'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/QuanLy/PO/History';
+                    window.location.href = '/QuanLy/Home/Index';
                 }
             });
         },

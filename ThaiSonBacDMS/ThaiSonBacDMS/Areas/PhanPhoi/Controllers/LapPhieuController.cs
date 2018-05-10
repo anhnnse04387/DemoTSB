@@ -355,6 +355,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var result = 0;
                     var session = (UserSession)Session[CommonConstants.USER_SESSION];
                     var orderDAO = new OrderTotalDAO();
+                    var nofDAO = new NotificationDAO();
                     var historyDAO = new EditHistoryDAO();
                     var orderPartDAO = new OrderPartDAO();
                     var orderStatusDAO = new OrderDetailStatusDAO();
@@ -489,6 +490,25 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                     i.Order_part_ID = o.Order_part_ID;
                                     orderItemDAO.createOrderItem(i);
                                 }
+                                if (o.Request_stockout_date == DateTime.Today)
+                                {
+                                    nofDAO.addNotification(new Notification
+                                    {
+                                        Notif_date = DateTime.Now,
+                                        Content = "Nhân viên phân phối " + session.user_name + " đã chốt đơn với mã " + o.Order_part_ID,
+                                        Link = "/ChiTietPhieu/Index?" + o.Order_part_ID,
+                                        Role_ID = 4,
+                                        Status = 1
+                                    });
+                                    nofDAO.addNotification(new Notification
+                                    {
+                                        Notif_date = DateTime.Now,
+                                        Content = "Nhân viên phân phối " + session.user_name + " đã chốt đơn với mã " + o.Order_part_ID,
+                                        Link = "/ChiTietPhieu/Index?" + o.Order_part_ID,
+                                        Role_ID = 5,
+                                        Status = 1
+                                    });
+                                }
                             }
                         }
                         else
@@ -505,6 +525,25 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Status_ID = (byte)(model.dateExport == DateTime.Today ? 3 : 2),
                                 Total_price = model.total
                             });
+                            if (model.dateExport == DateTime.Today)
+                            {
+                                nofDAO.addNotification(new Notification
+                                {
+                                    Notif_date = DateTime.Now,
+                                    Content = "Nhân viên phân phối " + session.user_name + " đã chốt đơn với mã " + model.orderId,
+                                    Link = "/ChiTietPhieu/Index?" + model.orderId,
+                                    Role_ID = 4,
+                                    Status = 1
+                                });
+                                nofDAO.addNotification(new Notification
+                                {
+                                    Notif_date = DateTime.Now,
+                                    Content = "Nhân viên phân phối " + session.user_name + " đã chốt đơn với mã " + model.orderId,
+                                    Link = "/ChiTietPhieu/Index?" + model.orderId,
+                                    Role_ID = 5,
+                                    Status = 1
+                                });
+                            }
                         }
                     }
                     return Json(new { success = true }, JsonRequestBehavior.AllowGet);

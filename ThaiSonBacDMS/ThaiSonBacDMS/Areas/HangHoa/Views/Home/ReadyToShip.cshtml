@@ -120,7 +120,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-user"></i>
                                                             </span>
-                                                            @Html.TextBoxFor(model => Model.orderID, new { @type = "text", @class = "form-control", @placeholder = "Lô số..." })
+                                                            @Html.TextBoxFor(model => Model.orderID, new { @type = "text", @class = "form-control", @placeholder = "Lô số...", @oninput = "this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" })
                                                         </div>
                                                     </td>
                                                     <td>Tên khách hàng</td>
@@ -129,7 +129,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-user"></i>
                                                             </span>
-                                                            @Html.TextBoxFor(model => Model.customerName, new { @type = "text", @class = "form-control", @placeholder = "Tên...", @style = "width:357px" })
+                                                            @Html.TextBoxFor(model => Model.customerName, new { @type = "text", @class = "form-control", @placeholder = "Tên...", @style = "width:357px"})
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -140,7 +140,7 @@
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-user"></i>
                                                             </span>
-                                                            @Html.TextBoxFor(model => Model.invoice_number, new { @type = "text", @class = "form-control", @placeholder = "Số hoá đơn..." })
+                                                            @Html.TextBoxFor(model => Model.invoice_number, new { @type = "text", @class = "form-control", @placeholder = "Số hoá đơn...", @oninput = "this.value=this.value.replace(/[^0-9]/g,'');" })
                                                         </div>
                                                     </td>
                                                     <td>Ngày xuất kho</td>

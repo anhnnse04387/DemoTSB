@@ -54,6 +54,13 @@
     .noDisplay {
         display: none !important;
     }
+
+    .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto; /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index: 1000 !important;
+    }
 </style>
 
 <!-- Content Header (Page header) -->
@@ -190,8 +197,8 @@
                                                     <div class="col-md-6">
                                                         <label>Lô số</label><span style="color: red;">*</span>
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-file"></i></span>                                                            
-                                                            <input type="text" value="@Model.orderId" oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" class="form-control" id="orderId" required/>
+                                                            <span class="input-group-addon"><i class="fa fa-file"></i></span>
+                                                            <input type="text" value="@Model.orderId" oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');" class="form-control" id="orderId" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -235,8 +242,8 @@
                                                     <div class="col-md-6">
                                                         <label>Mã số thuế</label><span style="color: red;">*</span>
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>                                                            
-                                                            <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="taxCode" value="@Model.taxCode" class="form-control" required/>
+                                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                                            <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="taxCode" value="@Model.taxCode" class="form-control" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" id="exportDiv">
@@ -286,7 +293,7 @@
                                                         <td style="vertical-align: middle;"><input type="text" required class="form-control param" /></td>
                                                         <td><input type="text" class="form-control cai" style="text-align: right;" required /></td>
                                                         <td><input type="text" class="form-control thung" style="text-align: right;" required /></td>
-                                                        <td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT"/></td>
+                                                        <td><output class="dongia number"></output><input type="hidden" class="priceBeforeVAT" /></td>
                                                         <td><output class="tienchuack number"></output></td>
                                                         <td><input type="text" class="form-control ck number" /></td>
                                                         <td><output class="tiendack number"></output></td>

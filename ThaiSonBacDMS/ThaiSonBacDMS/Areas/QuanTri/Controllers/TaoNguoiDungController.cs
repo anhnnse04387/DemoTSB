@@ -81,6 +81,14 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                     var nameWithoutSign = Common.RemoveVietNameseSign.RemoveSign(name);
                     var st = nameWithoutSign.Trim().Split(' ');
                     var account = st[st.Length - 1];
+                    var mainRole = "";
+                    string[] roles;
+                    if (role.Contains(','))
+                    {
+                        roles = role.Split(',');
+                        mainRole = roles[0];
+                    }
+
                     for (var i = 0; i < st.Length - 1; i++)
                     {
                         account += st[i].ToCharArray()[0];
@@ -109,7 +117,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                     User user = new User();
                     user.User_name = name;
                     user.Office_ID = Convert.ToByte(office);
-                    user.Role_ID = Convert.ToByte(role);
+                    user.Role_ID = Convert.ToByte(mainRole);
                     user.User_Address = address;
                     user.Phone = phoneNumber;
                     user.Date_of_birth = DateTime.ParseExact(dob, "d-M-yyyy", CultureInfo.InvariantCulture);
@@ -145,7 +153,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                         int mediaId = mediaDao.insertMedia("User", path, userId);
                         int userID = userDao.insertNewUser(user, mediaId.ToString());
                         string passWord = Common.Encryptor.MD5Hash("123@123");
-                        int accId = accDao.insertNewAccount(account, passWord, userID, role, isActive);
+                        int accId = accDao.insertNewAccount(account, passWord, userID, mainRole, isActive);
                         accRoleDao.insertNewRecord(accId, role);
 
                     }
@@ -169,7 +177,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
         [HttpPost]
         public JsonResult ChangeSelect(string selectedValue)
         {
-            OfficeDAO dao = new OfficeDAO();            
+            OfficeDAO dao = new OfficeDAO();
             var lst = dao.getListCreatUser(selectedValue);
 
             return new JsonResult { Data = lst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

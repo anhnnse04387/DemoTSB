@@ -1,0 +1,660 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.TonKhoModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .ui-autocomplete {
+        max-height: 300px;
+        overflow-y: auto; /* prevent horizontal scrollbar */
+        overflow-x: hidden; /* add padding to account for vertical scrollbar */
+        z-index: 1000 !important;
+    }
+
+    #example1 {
+        background-color: rgb(240, 240, 240);
+    }
+
+        #example1 thead tr th {
+            vertical-align: middle !important;
+            text-align: center;
+            background-color: #3c8dbc;
+            color: #fff;
+        }
+
+    tfoot {
+        color: white;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: #544d61;
+    }
+
+    .highlight {
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .left {
+        text-align: left;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .menu-button {
+        background-color: #fcf9f9;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+
+    .modal-header {
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+        background-color: aliceblue;
+    }
+
+    .modal-body {
+        position: relative;
+        padding: 15px;
+        background-color: white;
+    }
+
+    .modal-footer {
+        border-top-color: #f4f4f4;
+        background-color: white;
+    }
+
+    .btn-default {
+        background-color: #f4f4f4;
+        color: #444;
+        border-color: #ddd;
+    }
+
+    .smallBtn {
+        padding: 0px 6px;
+        min-width: 18px;
+        height: 25px;
+    }
+
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 500 !important;
+    }
+</style>
+
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li><a href="">Hàng hóa</a></li>
+        <li class="active"><a href="@Url.Action("Index","TonKho")">Hàng tồn kho</a></li>
+    </ol>
+</section>
+@using (Html.BeginForm("Index", "TonKho", FormMethod.Post))
+{
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="row" style="margin-right: 0px;margin-left: 0px;margin-top: 10px">
+                        <div class="col-md-2">
+                            <h4><b>TỒN KHO</b></h4>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header with-border text-center menu-button">
+                            <a id="btnAdd" href="#" class="btn btn-app custom-btn disabled" data-toggle="modal" data-target="#confirm-process" title="Thêm mới" data-placement="bottom">
+                                <i class="fa fa-plus-square text-grey"></i>
+                                <span><strong>Tạo mới</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                <i class="fa fa-edit text-grey"></i>
+                                <span><strong>Sửa</strong></span>
+                            </a>
+
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Lưu" data-placement="bottom">
+                                <i class="fa fa-save text-grey"></i>
+                                <span><strong>Lưu</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
+                                <i class="fa fa-close text-grey"></i>
+                                <span><strong>Hủy</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" title="Chốt đơn" data-placement="bottom">
+                                <i class="fa fa-check-circle text-grey"></i>
+                                <span><strong>Chốt đơn</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                                <i class="fa fa-exchange text-grey"></i>
+                                <span><strong>Đổi trả</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                                <i class="fa fa-eye text-grey"></i>
+                                <span><strong>Xem Trước</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing()" data-toggle="tooltip" title="In" data-placement="bottom">
+                                <i class="fa fa-print text-blue"></i>
+                                <span><strong>In</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn disabled" onclick="inProgressing()" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                                <i class="fa fa-download text-grey"></i>
+                                <span><strong>Import Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing()" data-toggle="tooltip" title="Tải xuống dưới dạng Excel" data-placement="bottom">
+                                <i class="fa fa-file-excel-o text-green"></i>
+                                <span><strong>Xuất Excel</strong></span>
+                            </a>
+                            <a class="btn btn-app custom-btn" onclick="inProgressing()" data-toggle="tooltip" title="Tải xuống dưới dạng PDF" data-placement="bottom">
+                                <i class="fa fa-file-pdf-o text-red"></i>
+                                <span><strong>Xuất PDF</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td style="width:90px">Tên sản phẩm</td>
+                                    <td style="width:400px">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-file"></i>
+                                            </span>
+                                            @Html.TextBoxFor(model => model.pCodeSearch, new { @class = "form-control", @id = "pCodeSearch" })
+                                        </div>
+                                    </td>
+
+                                    <td style="width:80px">Danh mục</td>
+                                    <td style="width:400px">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-sliders"></i>
+                                            </span>
+                                            @Html.DropDownListFor(model => model.categorySearch, Model.lstCategorySearch, "Tất cả", new { @class = "form-control select2", @id = "categorySearch" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tổng tồn</td>
+                                    <td>
+                                        <div class="col-sm-5 no-padding">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Từ</span>
+                                                @Html.TextBoxFor(model => model.fromValue, new { @class = "form-control number", @id = "fromSearch" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-sm-offset-1 no-padding">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Đến</span>
+                                                @Html.TextBoxFor(model => model.toValue, new { @class = "form-control number", @id = "toSearch" })
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="box-footer clearfix">
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                <button id="btnSearch" class="btn btn-block btn-primary">Tìm kiếm <i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="box-body">
+                        <span style="color:red;font-size:15px;margin-left:35%" id="msgs"></span>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 1%">STT</th>
+                                            <th colspan="2" style="width: 5%">Mã hàng</th>
+                                            <th style="width: 4%">Tổng nhập</th>
+                                            <th style="width: 4%">Tổng xuất</th>
+                                            <th style="width: 3%">Tổng tồn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.lstDisplay.Count() == 0)
+                                        {
+                                            <tr>
+                                                <td colspan="7" style="font-size:17px">Không tìm thấy sản phẩm!</td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            int i = 1;
+                                            int j = 0;
+                                            foreach (var itemCate in Model.map)
+                                            {
+                                                <tr style="background-color: yellow" class="total">
+                                                    <td style="border-right:none"></td>
+                                                    <td style="border-right:none;border-left:none" class="key text-center">@itemCate.Key</td>
+                                                    <td style="border-right:none;border-left:none"></td>
+                                                    <td style="border-right:none;border-left:none"></td>
+                                                    <td style="border-right:none;border-left:none"></td>
+                                                    <td style="border-right:none;border-left:none;" class="text-right">
+                                                        <a id="btn_row_@j" onclick="showRow('@j')" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Hiển thị" data-placement="bottom">
+                                                            <i id="arrow_@j" class="fa fa-angle-left pull-right"></i>
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+                                                foreach (var items in itemCate.Value.ToList())
+                                                {
+                                                    <tr class="rowHide_@j">
+                                                        <td class="text-center index">@i</td>
+                                                        <td style="border-right: none;text-align: left">@Html.ActionLink(@items.productName, "Index", "ChiTietSanPham", new { @product_Id = @items.productId }, null)</td>
+                                                        <td style="border-left: none !important;text-align: left;width:3%">@Html.ActionLink(@items.productParameter, "Index", "ChiTietSanPham", new { @product_Id = @items.productId }, null)</td>
+                                                        <td class="text-center nhap_@j">@items.tongNhap</td>
+                                                        <td class="text-center xuat_@j">@items.tongXuat</td>
+                                                        <td class="text-center ton_@j">@items.tongTon</td>
+                                                    </tr>
+                                                    @*<td style="text-align:center">
+                                                                <a id="btn_row_@i" onclick="showHide('@i')" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                                    <i class="fa fa-edit text-blue"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="row_@i">
+                                                            <td colspan="10">
+                                                                <div class="container-fluid">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng nhập</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongNhap" id="editNhap_@i" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng xuất</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <input type="text" class="form-control number" onchange="calculate('@i')" value="@items.TongXuat" id="editXuat_@i" />
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng tồn</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <output class="form-control" id="editTon_@i">@items.TongTon</output>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row hidden">
+                                                                        <div class="col-md-6">
+                                                                            <label>Tổng tồn</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                                                </span>
+                                                                                <input type="text" class="form-control" value="@items.product.Product_ID" id="productId_@i" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <div class="">
+                                                                            <div class="col-md-10"></div>
+                                                                            <div class="col-md-1">
+                                                                                <a href="" id="cancel_btn_@i" onclick="closePannel('@i')" class="btn btn-default btn-block">Hủy</a>
+                                                                            </div>
+                                                                            <div class="col-md-1">
+                                                                                <a href="" class="btn btn-danger btn-block" onclick="validate('@i')">Sửa</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>*@
+                                            i++;
+                                        }
+                                        if (Model.lstDisplay.Count != 0)
+                                        {
+                                            <tr style="background-color: #00b3b3;font-weight: bold">
+                                                <td style="border-right: none"></td>
+                                                <td style="text-align: left;border-left: none;color: white;border-right:none">Tổng</td>
+                                                <td style="border-left:none;"></td>
+                                                <td class="text-center" id="sumNhap_@j"></td>
+                                                <td class="text-center" id="sumXuat_@j"></td>
+                                                <td class="text-center" id="sumTon_@j"></td>
+
+                                            </tr>
+                                                }
+                                                j++;
+                                            }
+                                        }
+                                    </tbody>
+
+                                    <tfoot>
+                                        <tr>
+                                            <td style="border-right:none"></td>
+                                            <td colspan="2" style="text-align: left;border-left:none;border-right: none">Tổng cộng</td>
+
+                                            <td class="text-center" id="totalNhap"></td>
+                                            <td class="text-center" id="totalXuat"></td>
+                                            <td class="text-center" id="totalTon"></td>
+                                            @*<td></td>*@
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="popupConfirm1" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Xác nhận lưu thông tin đã sửa?</h4>
+                    </div>
+
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnSubmit" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            </div>
+        </div>
+        <div class="modal fade" id="popupNotification" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Đã update thành công!</h4>
+                    </div>
+
+                    <div class="modal-footer" style="margin-right:15px">
+                        <div style="margin:0 auto;">
+                            <button id="btnSubmit" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            </div>
+        </div>
+    </section>
+    @section Index{
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script src="/Assets/dist/js/autoNumeric.js"></script>
+        <script src="/Assets/dist/js/autoNumeric.min.js"></script>
+        <script>
+
+            function showRow(i) {
+                $(".rowHide_" + i).toggle();
+                if ($("#arrow_" + i).hasClass("fa fa-angle-left pull-right")) {
+                    $("#arrow_" + i).removeClass("fa fa-angle-left pull-right");
+                    $("#arrow_" + i).addClass("fa fa-angle-down pull-right")
+                } else {
+                    $("#arrow_" + i).removeClass("fa fa-angle-down pull-right");
+                    $("#arrow_" + i).addClass("fa fa-angle-left pull-right")
+                }
+            }
+            function setData() {
+                var priceFrom = $('#fromSearch').val();
+                var priceTo = $('#toSearch').val();
+                if (priceFrom !== "" && priceFrom !== 0) {
+                    //$('#priceFrom').text(priceFrom);
+                    priceFrom = priceFrom.replace(/,/g, '');
+                    $('#fromSearch').val(priceFrom);
+
+                }
+                if (priceTo !== "" && priceTo !== 0) {
+                    priceTo = priceTo.replace(/,/g, '');
+                    $('#toSearch').val(priceTo);
+                }
+                $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                $('#fromSearch').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                $('#toSearch').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+            }
+            $(document).ready(function () {
+
+                for (var i = 0; i < $(".total").length; i++) {
+                    $(".rowHide_" + i).hide();
+                }
+
+                setData();
+
+                var length = $(".key").length;
+                var nhap = 0;
+                var xuat = 0;
+                var ton = 0;
+                $(".hidden").hide();
+                for (var i = 0; i < length; i++) {
+
+
+                    $(".nhap_" + i).each(function () {
+                        nhap += parseInt($(this).text());
+                    });
+
+                    $(".xuat_" + i).each(function () {
+                        xuat += parseInt($(this).text());
+                    });
+
+                    $(".ton_" + i).each(function () {
+                        ton += parseInt($(this).text());
+                    });
+                    $("#sumNhap_" + i).text(nhap);
+                    $("#sumXuat_" + i).text(xuat);
+                    $("#sumTon_" + i).text(ton);
+                    nhap = 0;
+                    xuat = 0;
+                    ton = 0;
+                }
+                var totalNhap = 0;
+                var totalXuat = 0;
+                var totalTon = 0;
+                for (var i = 0; i < length; i++) {
+                    totalNhap += parseInt($("#sumNhap_" + i).text());
+                    totalXuat += parseInt($("#sumXuat_" + i).text());
+                    totalTon += parseInt($("#sumTon_" + i).text())
+                }
+                $("#totalNhap").text(totalNhap);
+                $("#totalXuat").text(totalXuat);
+                $("#totalTon").text(totalTon);
+
+                for (var i = 1; i <= $(".index").length; i++) {
+                    $("#row_" + i).hide();
+                }
+            });
+            function showHide(i) {
+                $('#row_' + i).toggle();
+                event.preventDefault();
+            }
+            function closePannel(i) {
+                $('#row_' + i).toggle();
+                event.preventDefault();
+            }
+            $("#pCodeSearch").autocomplete({
+                source: function (request, response) {
+                    if (request.term.length > 2) {
+                        $.ajax({
+                            url: '@Url.Action("GetSearchValue", "TonKho")',
+                            dataType: "json",
+                            data: { searchValue: $("#pCodeSearch").val() },
+                            success: function (data) {
+                                response($.map(data, function (item) {
+                                    return { label: item.pCodeSearch, value: item.pCodeSearch }
+                                }))
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Error");
+                            }
+                        });
+                    } else {
+                        $(this).val("");
+                    }
+                }
+            });
+            $("#pCodeSearch").autocomplete({
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length > 2) {
+                        $.ajax({
+                            url: '/PhanPhoi/TonKho/GetSearchValue',
+                            data: {
+                                searchValue: $("#pCodeSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.pCodeSearch,
+                                        value: m.pCodeSearch,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#pCodeSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#pCodeSearch").val("");
+                    }
+                },
+                 change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#pCodeSearch").val(ui.item.value);
+                    } else {
+                        $("#pCodeSearch").val("");
+                        $("#pCodeSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#pCodeSearch").val(ui.item.value);
+                    event.preventDefault();
+                }
+            }).autocomplete("widget").addClass("fixed-height");
+            $("#btnSearch").click(function () {
+                //event.preventDefault();
+                var data = {
+                    pCodeSearch: $("#pCodeSearch").val(),
+                    fromValue: $("#fromSearch").val(),
+                    toValue: $("#toSearch").val(),
+                    categorySearch: $("#categorySearch").val()
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/TonKho/Index",
+                    data: { mo: data },
+                    dataType: "json",
+                    success: function (result) {
+                        setData();
+                    }
+                })
+            });
+            function validate(i) {
+
+                var msgs = "";
+                var nhap = $("#editNhap_" + i).val();
+                var xuat = $("#editXuat_" + i).val();
+
+                var ton = 0;
+                if (nhap == null || nhap == '') {
+                    msgs += "Vui lòng nhập tổng nhập!";
+                }
+                if (xuat == null || xuat == "") {
+                    msgs += "Vui lòng nhập tổng xuất!";
+                }
+                if (nhap != null && xuat != null) {
+                    ton = parseInt(nhap.replace(/,/g, "")) - parseInt(xuat.replace(/,/g, ""));
+                }
+                if (ton < 0) {
+                    msgs += "Nhập dữ liệu không hợp lệ!";
+                }
+                if (msgs != null && msgs != "") {
+                    $("#msgs").text(msgs);
+                    event.preventDefault();
+                } else {
+                    $("#popupConfirm1").modal('show');
+                    event.preventDefault();
+                    $("#btnSubmit").click(function () {
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/TonKho/UpdateData",
+                            data: { productId: $("#productId_" + i).val(), nhap: $("#editNhap_" + i).val(), xuat: $("#editXuat_" + i).val() },
+                            dataType: "json",
+                            success: function () {
+                                swal({
+                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                    type: 'success',
+                                    timer: 5000,
+                                    showConfirmButton: false
+                                }).then((result) => {
+                                    if (result.value) {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                        })
+
+                    });
+                }
+            }
+
+            function calculate(i) {
+                var nhap = $("#editNhap_" + i).val().replace(/,/g, "");
+                var xuat = $("#editXuat_" + i).val().replace(/,/g, "");
+                if (xuat > nhap) {
+                    $("#editXuat_" + i).val(nhap);
+                    $("#editXuat_" + i).text(nhap);
+                    xuat = nhap;
+                }
+                var ton = 0;
+                if (nhap != null && nhap != '' && xuat != null && xuat != "") {
+                    ton = parseInt(nhap) - parseInt(xuat);
+                    $("#editTon_" + i).text(ton);
+                    $("#editTon_" + i).val(ton);
+                    $("#editTon_" + i).autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+                }
+            }
+
+            function inProgressing() {
+                swal({
+                    title: 'Chức năng đang phát triển',
+                    type: 'warning',
+                    timer: 5000,
+                    showConfirmButton: true
+                })
+            }
+        </script>
+    }
+
+}

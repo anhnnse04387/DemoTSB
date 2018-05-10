@@ -10,7 +10,7 @@ using ThaiSonBacDMS.Areas.PhanPhoi.Models;
 
 namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 {
-    public class TonKhoController : Controller
+    public class TonKhoController : PhanPhoiBaseController
     {
         // GET: PhanPhoi/TonKho
         public ActionResult Index()
@@ -125,6 +125,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
 
         }
+        [ValidateInput(false)]
         public JsonResult GetSearchValue(string searchValue)
         {
             var daoProduct = new ProductDAO();

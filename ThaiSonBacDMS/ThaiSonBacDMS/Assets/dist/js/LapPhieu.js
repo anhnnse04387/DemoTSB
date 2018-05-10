@@ -22,6 +22,7 @@
             $('#normal').addClass('noDisplay');
             $('form :input').not($('#btnSubmit')).prop('disabled', true);
             $('.btnAddRow').addClass('noDisplay');
+            $('.deleteRow').addClass('noDisplay');
         } else {
             $('form')[0].checkValidity();
         }
@@ -33,6 +34,7 @@
         $('#normal').removeClass('noDisplay');
         $('form :input').prop('disabled', false);
         $('.btnAddRow').removeClass('noDisplay');
+        $('.deleteRow').removeClass('noDisplay');
     });
     $("#btnSave").click(function (event) {
         if (validate() === 0) {
@@ -85,7 +87,12 @@ function donePendingOrder() {
                 animation: false
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '/PhanPhoi/OrderList/Store';
+                    var deliveryQtt = parseInt($('#deliveryQtt').val());
+                    if (deliveryQtt == 1) {
+                        window.location.href = '/PhanPhoi/ChiTietPhieu/OnetimeDelivery?orderId=' + $('#orderId').val();
+                    } else {
+                        window.location.href = '/PhanPhoi/ChiTietPhieu/MultipleDelivery?orderId=' + $('#orderId').val();
+                    }                    
                 }
             });
         },
@@ -240,7 +247,7 @@ function addLstItem(e) {
             + '<td><input type="text" class="form-control ck number"/></td>'
             + '<td><output class="tiendack number"></output></td>'
             + '<td style="vertical-align: middle;">'
-            + '<a data-toggle="tooltip" title="Xóa" data-placement="bottom" onclick="deleteRow(this)" href="javascript:void(0)">'
+            + '<a data-toggle="tooltip" title="Xóa" data-placement="bottom" class="deleteRow" onclick="deleteRow(this)" href="javascript:void(0)">'
             + '<i class="fa fa-close text-red" style="color: #3c8dbc; font-size: 20px"></i>'
             + '</a></td>'
             + '</tr>';
@@ -264,7 +271,7 @@ function addLstSubItem(e) {
             + '<td><input type="text" class="form-control ck number"/></td>'
             + '<td><output class="tiendack number"></output></td>'
             + '<td style="vertical-align: middle;">'
-            + '<a data-toggle="tooltip" title="Xóa" data-placement="bottom" onclick="deleteRow(this)" href="javascript:void(0)">'
+            + '<a data-toggle="tooltip" title="Xóa" data-placement="bottom" class="deleteRow" onclick="deleteRow(this)" href="javascript:void(0)">'
             + '<i class="fa fa-close text-red" style="color: #3c8dbc; font-size: 20px"></i>'
             + '</a></td>'
             + '</tr>';

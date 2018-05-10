@@ -265,25 +265,45 @@
 
 
             $("#pCodeSearch").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: '@Url.Action("GetSearchValue", "GiaSanPham")',
-                        minLength: 2,
-                        dataType: "json",
-                        data: { searchValue: $("#pCodeSearch").val() },
-                        success: function (data) {
-                            response($.map(data, function (item) {
-                                return { label: item.key, value: item.strValue }
-                            }))
-                        },
-
-                        error: function (xhr, status, error) {
-                            alert("Error");
-                            $(this).val("");
-                        }
-                    });
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length > 2) {
+                        $.ajax({
+                            url: '/PhanPhoi/GiaSanPham/GetSearchValue',
+                            data: {
+                                searchValue: $("#pCodeSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.pCodeSearch,
+                                        value: m.pCodeSearch,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#pCodeSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#pCodeSearch").val("");
+                    }
+                },
+                 change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#pCodeSearch").val(ui.item.value);
+                    } else {
+                        $("#pCodeSearch").val("");
+                        $("#pCodeSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#pCodeSearch").val(ui.item.value);
+                    event.preventDefault();
                 }
-            });
+            }).autocomplete("widget").addClass("fixed-height");
             $('#pCodeSearch').on('blur', function () {
                 if ($(this).val().length === 1) {  //check for no. of characters entered
                     $(this).val('');  // clear the textbox

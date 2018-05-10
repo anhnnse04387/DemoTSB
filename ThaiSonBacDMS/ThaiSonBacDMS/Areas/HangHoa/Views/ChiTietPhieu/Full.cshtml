@@ -1,7 +1,7 @@
 ﻿@model ThaiSonBacDMS.Areas.HangHoa.Models.OrderTotalModel
 @{
     ViewBag.Title = "Full";
-    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/HangHoa/Views/Shared/_Layout.cshtml";
 }
 <style>
     .label-medium {
@@ -121,8 +121,8 @@
                                 <i class="fa fa-plus-square text-gray"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
-                                <i class="fa fa-edit text-blue"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "disabled" : "")" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
+                                <i class="fa fa-edit @(@Model.statusId < 7 ? "text-blue" : "text-gray")"></i>
                                 <span><strong>Sửa</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled">
@@ -133,12 +133,12 @@
                                 <i class="fa fa-close text-gray"></i>
                                 <span><strong>Huỷ</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
-                                <i class="fa fa-check-circle text-green"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "disabled" : "")" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
+                                <i class="fa fa-check-circle @(@Model.statusId < 7 ? "text-green" : "text-gray")"></i>
                                 <span><strong>Hoàn thành</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
-                                <i class="fa fa-exchange text-red"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "disabled" : "")" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
+                                <i class="fa fa-exchange @(@Model.statusId < 7 ? "text-red" : "text-gray")"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled">
@@ -267,16 +267,16 @@
                                     <div class="col-md-6">
                                         <div style="margin-top: 35px;">
                                             <span class="custom-span">
-                                                <input type="checkbox" @(Model.dateTakeBallot != null ? "checked" : "") disabled id="takeBallot"/><label style="padding-left:10px;">Lấy phiếu</label>
+                                                <input type="checkbox" @(!String.IsNullOrEmpty(Model.dateTakeBallot) ? "checked" : "") disabled id="takeBallot"/><label style="padding-left:10px;">Lấy phiếu</label>
                                             </span>
                                             <span class="custom-span" style="padding-left:15px;">
-                                                <input type="checkbox" @(Model.dateTakeInvoice != null ? "checked" : "") disabled id="takeInvoice"/><label style="padding-left:10px;">Lấy hoá đơn</label>
+                                                <input type="checkbox" @(!String.IsNullOrEmpty(Model.dateTakeInvoice) ? "checked" : "") disabled id="takeInvoice"/><label style="padding-left:10px;">Lấy hoá đơn</label>
                                             </span>
                                             <span class="custom-span" style="padding-left:15px;">
-                                                <input type="checkbox" @(Model.dateReceiveBallot != null ? "checked" : "") disabled id="receiveBallot"/><label style="padding-left:10px;">Nhận phiếu</label>
+                                                <input type="checkbox" @(!String.IsNullOrEmpty(Model.dateReceiveBallot) ? "checked" : "") disabled id="receiveBallot"/><label style="padding-left:10px;">Nhận phiếu</label>
                                             </span>
                                             <span class="custom-span" style="padding-left:15px;">
-                                                <input type="checkbox" @(Model.dateReceiveInvoice != null ? "checked" : "") disabled id="receiveInvoice"/><label style="padding-left:10px;">Nhận hoá đơn</label>
+                                                <input type="checkbox" @(!String.IsNullOrEmpty(Model.dateReceiveInvoice) ? "checked" : "") disabled id="receiveInvoice"/><label style="padding-left:10px;">Nhận hoá đơn</label>
                                             </span>
                                         </div>
                                     </div>
@@ -464,7 +464,11 @@
                 url: '/HangHoa/ChiTietPhieu/Complete',
                 type: 'POST',
                 dataType: 'json',
-                data: { orderId: $('#orderId').val() },
+                data: {
+                    orderId: $('#orderId').val(), receiveInvoice: $('#receiveInvoice').prop("checked"),
+                    receiveBallot: $('#receiveBallot').prop("checked"), takeInvoice: $('#takeInvoice').prop("checked"),
+                    takeBallot: $('#takeBallot').prop("checked")
+                },
                 success: function () {
                     document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="/Assets/dist/facebook_sound.mp3" type="audio/mpeg" /><embed hidden="true" autostart="true" loop="false" src="/Assets/dist/facebook_sound.mp3" /></audio>';
                     swal({
@@ -472,7 +476,7 @@
                         type: 'success'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/HangHoa/Home/Index';
+                            window.location.href = '/HangHoa/Home/Completed';
                         }
                     });
                 },
@@ -517,7 +521,7 @@
                         type: 'success'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/PhanPhoi/OrderList/Index';
+                            window.location.reload();
                         }
                     });
                 },
@@ -551,7 +555,7 @@
                         type: 'success'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/HangHoa/Home/Index';
+                            window.location.href = '/HangHoa/Home/Exchange';
                         }
                     });
                 },

@@ -488,10 +488,9 @@ namespace Models.DAO
             var query = from p in db.Products
                         join sup in db.Suppliers on p.Supplier_ID.ToString() equals sup.Supplier_ID.ToString()
                         join c in db.Categories on p.Category_ID.ToString() equals c.Category_ID.ToString()
-                        join d in db.Detail_stock_in on p.Product_ID equals d.Product_ID
-                        join s in db.Stock_in on d.Stock_in_ID equals s.Stock_in_ID
+                        join s in db.Sub_category on p.Sub_category_ID.ToString() equals s.Sub_category_ID.ToString()
                         where p.Status == 0 && p.Product_name.ToLower().Contains(searchValue.ToLower())
-                        select new { p, sup, c, s.Date_import };
+                        select new { p, sup, c, s };
             if (query.Count() > 0)
             {
                 foreach (var item in query)
@@ -723,7 +722,7 @@ namespace Models.DAO
                         select m;
             if (query != null)
             {
-                foreach(var item in query)
+                foreach (var item in query)
                 {
                     db.Product_media.Remove(item);
                 }
