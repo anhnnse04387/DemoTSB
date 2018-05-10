@@ -19,7 +19,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             var controller = new SanPhamNgungKinhDoanhController();
             var result = controller.Index() as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
 
         //search by all value is null
@@ -30,7 +30,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             var model = new ProductPhanPhoiModel();
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //search by product name
         [TestMethod]
@@ -41,7 +41,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.productIdSearch = "3";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
 
         }
         //search by supplier
@@ -53,7 +53,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.supplierSearch = "9";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //search by date import from
         [TestMethod()]
@@ -64,7 +64,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.fromDate = "03/10/2018";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //search by date import to
         [TestMethod()]
@@ -75,7 +75,29 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.toDate = "03/10/2018";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
+        }
+        //test search by subcategory_id is null
+        [TestMethod]
+        public void TestSearch_By_Subcategory_Id_IsNull()
+        {
+            var controller = new SanPhamNgungKinhDoanhController();
+            var model = new ProductPhanPhoiModel();
+            model.subCateSearch = "";
+            var result = controller.Index(model) as ViewResult;
+            var x = result.Model as ProductPhanPhoiModel;
+            Assert.IsTrue(x.mapSanPham.Count > 0);
+        }
+        //test search by subcategory_id is character
+        [TestMethod]
+        public void TestSearch_By_Subcategory_Id_Is_Character()
+        {
+            var controller = new SanPhamNgungKinhDoanhController();
+            var model = new ProductPhanPhoiModel();
+            model.subCateSearch = "a";
+            var result = controller.Index(model) as ViewResult;
+            var x = result.Model as ProductPhanPhoiModel;
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //search by date import from and to
         [TestMethod()]
@@ -87,7 +109,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.toDate = "05/25/2018";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //search by category
         [TestMethod()]
@@ -98,7 +120,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.categorySearch = "10";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //search all values
         [TestMethod()]
@@ -113,7 +135,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             model.toDate = "05/25/2018";
             var result = controller.Index(model) as ViewResult;
             var x = result.Model as ProductPhanPhoiModel;
-            Assert.IsTrue(x.lstDisplay.Count > 0);
+            Assert.IsTrue(x.mapSanPham.Count > 0);
         }
         //test search value is null
         [TestMethod()]
@@ -135,5 +157,39 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers.Tests
             Assert.IsTrue(x != null);
 
         }
+        //test search by subcategory_id
+        [TestMethod]
+        public void TestSearch_By_Subcategory_Id()
+        {
+            var controller = new SanPhamNgungKinhDoanhController();
+            var model = new ProductPhanPhoiModel();
+            model.subCateSearch = "1";
+            var result = controller.Index(model) as ViewResult;
+            var x = result.Model as ProductPhanPhoiModel;
+            Assert.IsTrue(x.mapSanPham.Count > 0);
+        }
+        //test search by category and sub category
+        public void TestSearch_By_Subcategory_Id_And_Category()
+        {
+            var controller = new SanPhamNgungKinhDoanhController();
+            var model = new ProductPhanPhoiModel();
+            model.subCateSearch = "1";
+            model.categorySearch = "5";
+            var result = controller.Index(model) as ViewResult;
+            var x = result.Model as ProductPhanPhoiModel;
+            Assert.IsTrue(x.mapSanPham.Count > 0);
+        }
+        [TestMethod]
+        public void TestSearch_By_Subcategory_Id_And_Category_Id_Is_Character()
+        {
+            var controller = new SanPhamNgungKinhDoanhController();
+            var model = new ProductPhanPhoiModel();
+            model.subCateSearch = "a";
+            model.categorySearch = "b";
+            var result = controller.Index(model) as ViewResult;
+            var x = result.Model as ProductPhanPhoiModel;
+            Assert.IsTrue(x.mapSanPham.Count > 0);
+        }
+
     }
 }

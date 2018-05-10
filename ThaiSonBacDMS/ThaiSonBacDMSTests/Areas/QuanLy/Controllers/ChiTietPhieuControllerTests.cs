@@ -41,7 +41,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
         {
             var controller = new ChiTietPhieuController();
             var result = controller.Index("O1");
-            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
                 var model = result.Model as OrderTotalModel;
                 if (model != null)
                 {
-                    Assert.IsTrue(model.readItems.Count == 3);
+                    Assert.IsTrue(model.readItems.Count == 17);
                 }
             }
         }
@@ -121,7 +121,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
                 var model = result.Model as OrderTotalModel;
                 if (model != null)
                 {
-                    Assert.IsTrue(model.customerName.Equals("Công ty Thanh Vinh"));
+                    Assert.IsTrue(model.customerName.Equals("Công ty FPT Shop"));
                 }
             }
         }
@@ -154,7 +154,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers.Tests
                 var model = result.Model as OrderTotalModel;
                 if (model != null)
                 {
-                    Assert.IsTrue(model.readPart.Count == 2);
+                    Assert.IsTrue(model.readPart.Count == 1);
                 }
             }
         }
