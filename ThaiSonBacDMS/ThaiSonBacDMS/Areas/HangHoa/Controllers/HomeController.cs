@@ -26,8 +26,8 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                     indexOf = index + 1,
                     orderID = x.Order_part_ID,
                     customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
-                    salesUserName = new UserDAO().getByID(x.Sales_user_ID).User_name,
-                    invoiceNumber = x.Invoice_number,
+                    salesUserName = x.Sales_user_ID == null ? "" : new UserDAO().getByID(x.Sales_user_ID).User_name,
+                    invoiceNumber = x.Invoice_number == null ? "" : x.Invoice_number,
                     statusName = new StatusDAO().getStatus((byte)x.Status_ID),
                     takeInvoice = x.Date_take_invoice == null ? false : true,
                     takeBallot = x.Date_take_ballot == null ? false : true,
@@ -97,7 +97,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                     indexOf = index + 1,
                     orderID = x.Order_part_ID,
                     customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
-                    invoiceNumber = x.Invoice_number,
+                    invoiceNumber = x.Invoice_number == null ? "" : x.Invoice_number,
                     reveiceBallot = x.Date_reveice_ballot == null ? false : true,
                     reveiceInvoice = x.Date_reveice_invoice == null ? false : true,
                     takeInvoice = x.Date_take_invoice == null ? false : true,
@@ -181,17 +181,17 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 model.listMethod = new DeliveryMethodDAO().getLstDelivery().Select(x => new SelectListItem
                 {
                     Text = x.Method_name,
-                    Value = x.Method_name
+                    Value = x.Method_ID.ToString()
                 }).ToList();
                 model.listDriver = new UserDAO().getLstDriver().Select(x => new SelectListItem
                 {
                     Text = x.User_name,
-                    Value = x.User_name
+                    Value = x.User_ID.ToString()
                 }).ToList();
                 model.listShipper = new UserDAO().getLstShipper().Select(x => new SelectListItem
                 {
                     Text = x.User_name,
-                    Value = x.User_name
+                    Value = x.User_ID.ToString()
                 }).ToList();
                 //prepare data list
                 List<Order_part> lstOrder = new OrderPartDAO().getAllOrderPart().Where(x => x.Status_ID == 5 || x.Status_ID == 10).ToList();
@@ -204,16 +204,105 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                     indexOf = index + 1,
                     orderID = x.Order_part_ID,
                     customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
-                    invoiceNumber = x.Invoice_number,
+                    invoiceNumber = x.Invoice_number == null ? "" : x.Invoice_number,
+                    spanClass = x.Status_ID == 5 ? "label-primary" : "label-warning",
                     takeInvoice = x.Date_take_invoice == null ? false : true,
                     takeBallot = x.Date_take_ballot == null ? false : true,
-                    statusName = new StatusDAO().getStatus((byte)x.Status_ID),
+                    statusName = x.Status_ID == 5 ? new StatusDAO().getStatus((byte)x.Status_ID) : new StatusDAO().getStatus((byte)x.Status_ID).Substring(0, new StatusDAO().getStatus((byte)x.Status_ID).IndexOf("warning")),
                     dateExport = (DateTime)x.Request_stockout_date,
-                    dateCompleted = (DateTime)x.Date_completed,
+                    dateCompleted = x.Date_completed,
                     note = x.Note,
-                    devilerMethod = new DeliveryMethodDAO().getByID((byte)x.DeliverMethod_ID).Method_name,
-                    shipperName = new UserDAO().getByID(x.Shiper_ID).User_name,
-                    driverName = new UserDAO().getByID(int.Parse(x.Driver_ID)).User_name,
+                    Driver_ID = x.Driver_ID,
+                    Shiper_ID = x.Shiper_ID,
+                    DeliverMethod_ID = x.DeliverMethod_ID,
+
+                }).ToList();
+                //search data
+                if (!string.IsNullOrEmpty(model.orderID))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.orderID.Contains(model.orderID)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.customerName))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.customerName.Contains(model.customerName)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.invoice_number))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.invoiceNumber.Contains(model.invoice_number)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.statusName))
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.statusName.Contains(model.statusName)).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.fromDate))
+                {
+                    DateTime fromDate = DateTime.ParseExact(model.fromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    model.listOrderPending = model.listOrderPending.Where(x => x.dateExport >= fromDate).ToList();
+                }
+                if (!string.IsNullOrEmpty(model.toDate))
+                {
+                    DateTime toDate = DateTime.ParseExact(model.fromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    model.listOrderPending = model.listOrderPending.Where(x => x.dateExport <= toDate).ToList();
+                }
+                if (model.takeInvoice)
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.takeInvoice == true).ToList();
+                }                
+                if (model.takeBallot)
+                {
+                    model.listOrderPending = model.listOrderPending.Where(x => x.takeBallot == true).ToList();
+                }                
+                model.listOrderPending = model.listOrderPending.OrderByDescending(x => x.dateExport).ToList();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+            return View(model);
+        }
+
+        public ActionResult Delivery(OrderListModel model)
+        {
+            try
+            {
+                //setup data
+                model.listMethod = new DeliveryMethodDAO().getLstDelivery().Select(x => new SelectListItem
+                {
+                    Text = x.Method_name,
+                    Value = x.Method_ID.ToString()
+                }).ToList();
+                model.listDriver = new UserDAO().getLstDriver().Select(x => new SelectListItem
+                {
+                    Text = x.User_name,
+                    Value = x.User_ID.ToString()
+                }).ToList();
+                model.listShipper = new UserDAO().getLstShipper().Select(x => new SelectListItem
+                {
+                    Text = x.User_name,
+                    Value = x.User_ID.ToString()
+                }).ToList();
+                //prepare data list
+                List<Order_part> lstOrder = new OrderPartDAO().getAllOrderPart().Where(x => x.Status_ID == 5 || x.Status_ID == 10).ToList();
+                if (model.statusId > 0)
+                {
+                    lstOrder = lstOrder.Where(x => x.Status_ID == model.statusId).ToList();
+                }
+                model.listOrderPending = lstOrder.Select((x, index) => new OrderListPending
+                {
+                    indexOf = index + 1,
+                    orderID = x.Order_part_ID,
+                    customerName = new CustomerDAO().getCustomerById(x.Customer_ID).Customer_name,
+                    invoiceNumber = x.Invoice_number == null ? "" : x.Invoice_number,
+                    spanClass = x.Status_ID == 5 ? "label-primary" : "label-warning",
+                    takeInvoice = x.Date_take_invoice == null ? false : true,
+                    takeBallot = x.Date_take_ballot == null ? false : true,
+                    statusName = x.Status_ID == 5 ? new StatusDAO().getStatus((byte)x.Status_ID) : new StatusDAO().getStatus((byte)x.Status_ID).Substring(0, new StatusDAO().getStatus((byte)x.Status_ID).IndexOf("warning")),
+                    dateExport = (DateTime)x.Request_stockout_date,
+                    dateCompleted = x.Date_completed,
+                    note = x.Note,
+                    Driver_ID = x.Driver_ID,
+                    Shiper_ID = x.Shiper_ID,
+                    DeliverMethod_ID = x.DeliverMethod_ID,
 
                 }).ToList();
                 //search data
@@ -247,17 +336,9 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.takeInvoice == true).ToList();
                 }
-                else
-                {
-                    model.listOrderPending = model.listOrderPending.Where(x => x.takeInvoice == false).ToList();
-                }
                 if (model.takeBallot)
                 {
                     model.listOrderPending = model.listOrderPending.Where(x => x.takeBallot == true).ToList();
-                }
-                else
-                {
-                    model.listOrderPending = model.listOrderPending.Where(x => x.takeBallot == false).ToList();
                 }
                 model.listOrderPending = model.listOrderPending.OrderByDescending(x => x.dateExport).ToList();
             }
@@ -266,6 +347,46 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 System.Diagnostics.Debug.WriteLine(e);
             }
             return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult SaveDelivery(OrderListPending model)
+        {
+            try
+            {
+                var dao = new OrderPartDAO();
+                dao.updateOrderPart(new Order_part
+                {
+                    Order_part_ID = model.orderID,
+                    Driver_ID = model.Driver_ID,
+                    DeliverMethod_ID = model.DeliverMethod_ID,
+                    Shiper_ID = model.Shiper_ID
+                }, model.takeInvoice, model.takeBallot);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DoneDelivery(OrderListPending model)
+        {
+            try
+            {
+                var dao = new OrderTotalDAO();
+                var session = (UserSession)Session[CommonConstants.USER_SESSION];
+                dao.delivery_checkOut(model.orderID, session.user_id, model.DeliverMethod_ID, model.Driver_ID,
+                    model.Shiper_ID.Value, model.takeInvoice, model.takeBallot);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+                return Json(new { error = true }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [ChildActionOnly]

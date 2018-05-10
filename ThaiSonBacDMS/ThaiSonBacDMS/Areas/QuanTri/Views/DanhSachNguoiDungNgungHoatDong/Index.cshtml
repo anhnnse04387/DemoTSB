@@ -53,6 +53,13 @@
 
 @using (Html.BeginForm("Index", "DanhSachNguoiDungNgungHoatDong", FormMethod.Post))
 {
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li>Người dùng</li>
+            <li><a href="@Url.Action("Index","DanhSachNguoiDungNgungHoatDong")">Ngừng hoạt động</a></li>
+        </ol>
+    </section>
     <section class="content">
         <div class="row">
             <div class="col-md-12">
@@ -68,7 +75,7 @@
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
 
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" href="quanly_nhanvien_tao-nhan-vien.html" target="_blank" title="Tạo Mới" data-placement="bottom">
+                            <a class="btn btn-app custom-btn" data-toggle="tooltip" href="@Url.Action("Index","TaoNguoiDung")" target="_blank" title="Tạo Mới" data-placement="bottom">
                                 <i class="fa fa-plus-square text-green"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
@@ -303,9 +310,28 @@
 
             //    });
             //});
+            $('#example1').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': false,
+                'info': true,
+                'autoWidth': false,
+                'language': {
+                    "lengthMenu": "Hiển thị _MENU_ dòng",
+                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp",
+                        "previous": "Trước",
+                    }
+                }
+
+            });
             function inProgressing() {
                 swal({
-                    title: 'Chức năng đang phát triển',
+                    text: 'Chức năng đang phát triển',
                     type: 'warning',
                     timer: 5000,
                     showConfirmButton: true

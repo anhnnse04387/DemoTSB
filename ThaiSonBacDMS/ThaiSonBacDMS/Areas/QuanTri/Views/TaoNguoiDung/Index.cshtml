@@ -74,13 +74,15 @@
             font-size: 10px;
         }
 </style>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
 @using (Html.BeginForm())
 {
     <section class="content-header">
         <ol class="breadcrumb">
-            <li><a href="quantri_index.html"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
             <li>Người dùng</li>
-            <li><a href="quantri_nguoidung_tao-nguoi-dung.html">Thêm người dùng</a></li>
+            <li><a href="@Url.Action("Index","TaoNguoiDung")">Thêm người dùng</a></li>
         </ol>
     </section>
      <!-- Main content -->
@@ -95,7 +97,7 @@
 
                     <div class="box-header with-border text-center menu-button">
 
-                        <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="quantri_nguoidung_tao-nguoi-dung.html" title="Tạo Mới" data-placement="bottom">
+                        <a class="btn btn-app custom-btn" data-toggle="tooltip" target="_blank" href="@Url.Action("Index","TaoNguoiDung")" title="Tạo Mới" data-placement="bottom">
                             <i class="fa fa-plus-square text-green"></i>
                             <span><strong>Tạo Mới</strong></span>
                         </a>
@@ -172,7 +174,7 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-group"></i>
                                                         </span>
-                                                        @Html.DropDownListFor(model => model.roleId, Model.lstRole, "Chọn phân hệ", new { @id = "role", @class = "form-control" })
+                                                        @Html.DropDownListFor(model => model.roleId, Model.lstRole, "Chọn phân hệ", new { @id = "role", @class = "form-control", @multiple = "true" })
                                                     </div>
                                                 </div>
                                             </div>
@@ -288,6 +290,7 @@
     </section>
     <!-- /.content -->
                                                             @section Index{
+                                                                <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
                                                                 <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
                                                                 <script src="/Assets/dist/js/bootstrap-datepicker.min.js"></script>
                                                                 <script src="/Assets/dist/js/autoNumeric.js"></script>
@@ -297,6 +300,7 @@
                                                                 <script>
 
                                                                     $(document).ready(function () {
+                                                                        $('#role').chosen();
                                                                         $("#hide").hide();
                                                                         ; $("#dob").datepicker({
                                                                             endDate: new Date(),
@@ -318,11 +322,12 @@
                                                                     });
 
                                                                     $("#role").change(function () {
+                                                                       
                                                                         $.ajax({
                                                                             type: 'POST',
-                                                                            url: 'ChangeSelect',
+                                                                            url: '/QuanTri/TaoNguoiDung/ChangeSelect',
                                                                             data: {
-                                                                                selectedValue: $("#role").val()
+                                                                                selectedValue: $("#role").val().toString()
                                                                             },
                                                                             dataType: 'JSON',
                                                                             success: function (data) {
@@ -514,7 +519,7 @@
                                                                                 fileData.append("address", address);
                                                                                 fileData.append("active", "0");
                                                                                 $.ajax({
-                                                                                    url: '/TaoNguoiDung/UploadFiles',
+                                                                                    url: '/QuanTri/TaoNguoiDung/UploadFiles',
                                                                                     type: "POST",
                                                                                     contentType: false, // Not to set any content header
                                                                                     processData: false, // Not to process data

@@ -55,14 +55,14 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     var pCategory = Request.Form.GetValues("pCategory")[0];
                     var pSubCategory = Request.Form.GetValues("pSubCategory")[0];
                     var pNumberCarton = Request.Form.GetValues("pNumberCarton")[0];
-                    var pBeforeVatVND = Request.Form.GetValues("pBeforeVatVND")[0];
-                    var pBeforeVatUSD = Request.Form.GetValues("pBeforeVatUSD")[0];
-                    var cifVND = Request.Form.GetValues("cifVND")[0];
-                    var cifUSD = Request.Form.GetValues("cifUSD")[0];
+                    var pBeforeVatVND = Request.Form.GetValues("pBeforeVatVND")[0].Replace(",","");
+                    var pBeforeVatUSD = Request.Form.GetValues("pBeforeVatUSD")[0].Replace(",", "");
+                    var cifVND = Request.Form.GetValues("cifVND")[0].Replace(",", "");
+                    var cifUSD = Request.Form.GetValues("cifUSD")[0].Replace(",", "");
                     var vat = Request.Form.GetValues("vat")[0];
                     var pDescription = Request.Form.GetValues("pDescription")[0];
                     var pDetail = Request.Form.GetValues("pDetail")[0];
-                    var userID = Request.Form.GetValues("userID")[0];
+                   
 
                     if (string.IsNullOrEmpty(pCode))
                     {
@@ -125,6 +125,13 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 System.Diagnostics.Debug.WriteLine(e);
                 return Json("-1");
             }
+        }
+        [HttpPost]
+        public JsonResult ChangeList(string cateId)
+        {
+            var subCateDao = new Sub_CategoryDAO();
+            var lstSubCate = subCateDao.getSubCateByCateId(cateId);
+            return new JsonResult { Data = lstSubCate, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

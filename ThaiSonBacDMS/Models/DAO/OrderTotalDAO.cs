@@ -214,7 +214,7 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
-        public void delivery_checkOut(String orderId, int userId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool receiveInvoice, bool receiveBallot)
+        public void delivery_checkOut(String orderId, int userId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool takeInvoice, bool takeBallot)
         {
             var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             byte? status = 6;
@@ -222,13 +222,13 @@ namespace Models.DAO
             {
                 status = 11;
             }
-            if (receiveInvoice)
+            if (takeInvoice)
             {
-                p.Date_reveice_invoice = DateTime.Now;
+                p.Date_take_invoice = DateTime.Now;
             }
-            if (receiveBallot)
+            if (takeBallot)
             {
-                p.Date_reveice_ballot = DateTime.Now;
+                p.Date_take_ballot = DateTime.Now;
             }
             p.Status_ID = status;
             p.Shiper_ID = Shiper_ID;

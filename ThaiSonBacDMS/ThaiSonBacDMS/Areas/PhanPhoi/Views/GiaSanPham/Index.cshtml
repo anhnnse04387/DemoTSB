@@ -60,12 +60,12 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="phanphoi_index.html">
+            <a href="@Url.Action("Index","Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
         <li><a href="">Hàng hóa</a></li>
-        <li><a href="phanphoi_hanghoa_gia-hang-hoa.html">Giá Hàng Hóa</a></li>
+        <li><a href="@Url.Action("Index","GiaSanPham")">Giá Hàng Hóa</a></li>
     </ol>
 </section>
 @using (Html.BeginForm("Index", "GiaSanPham", FormMethod.Post))
@@ -110,7 +110,7 @@
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-tree"></i>
                                                         </span>
-                                                        @Html.DropDownListFor(model => model.categorySearch, Model.lstCateSearch, "Tất cả danh mục", new { @class = "form-control" })
+                                                        @Html.DropDownListFor(model => model.categorySearch, Model.lstCateSearch, "Tất cả", new { @class = "form-control" })
                                                     </div>
                                                 </td>
                                             </tr>
@@ -214,11 +214,11 @@
                                                             <td style="border-right: none;text-align:left">@Html.ActionLink(@items.pName, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)</td>
                                                             <td style="border-left: none;text-align:left">@Html.ActionLink(@items.pParam, "Index", "ChiTietSanPham", new { product_Id = @items.pId }, null)</td>
                                                             <td style="text-align:left">@itemCate.Key</td>
-                                                            <td class="text-center number">@items.cif</td>
-                                                            <td class="right number">@items.price_before_vat_usd</td>
+                                                            <td class="text-center numberUSD">@items.cif</td>
+                                                            <td class="right numberUSD">@items.price_before_vat_usd</td>
                                                             <td class="right number">@items.price_before_vat_vnd</td>
                                                             <td class="text-center">@items.vat<span>%</span></td>
-                                                            <td class="right number">@items.price_after_vat_usd</td>
+                                                            <td class="right numberUSD">@items.price_after_vat_usd</td>
                                                             <td class="right number">@items.price_after_vat_vnd</td>
                                                         </tr>
                                                         i++;
@@ -242,6 +242,7 @@
         <script src="/Assets/dist/js/autoNumeric.min.js"></script>
         <script>
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '0' });
+            $('.numberUSD').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', mDec: '2' });
             $('#example1').DataTable({
                 'paging': true,
                 'lengthChange': true,
@@ -278,6 +279,7 @@
 
                         error: function (xhr, status, error) {
                             alert("Error");
+                            $(this).val("");
                         }
                     });
                 }
@@ -320,7 +322,7 @@
                     value2 = parseInt(value2.replace(/,/g, ''));
                     if (value2 < value1) {
                         swal({
-                            title: 'Giá đến phải lớn hơn giá từ!',
+                            text: 'Giá đến phải lớn hơn giá từ!',
                             type: 'error',
                             timer: 5000,
                             showConfirmButton: true

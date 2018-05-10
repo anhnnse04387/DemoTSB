@@ -149,6 +149,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 o.Date_created = DateTime.Now;
                                 o.Status_ID = 1;
                                 o.Customer_ID = model.customerId;
+                                o.Sales_user_ID = session.user_id;
                                 orderPartDAO.createOrderPart(o);
                                 orderStatusDAO.createOrderStatus(new Order_detail_status
                                 {
@@ -175,6 +176,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
                                 Request_stockout_date = model.dateExport,
+                                Sales_user_ID = session.user_id,
                                 VAT = model.vat,
                                 Status_ID = 1,
                                 Total_price = model.total
@@ -471,6 +473,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 o.Date_created = DateTime.Now;
                                 o.Status_ID = (byte)(o.Request_stockout_date == DateTime.Today ? 3 : 2);
                                 o.Customer_ID = model.customerId;
+                                o.Sales_user_ID = session.user_id;
                                 orderPartDAO.createOrderPart(o);
                                 orderStatusDAO.createOrderStatus(new Order_detail_status
                                 {
@@ -496,6 +499,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                                 Order_part_ID = model.orderId,
                                 Customer_ID = model.customerId,
                                 Date_created = DateTime.Now,
+                                Sales_user_ID = session.user_id,
                                 Request_stockout_date = model.dateExport,
                                 VAT = model.vat,
                                 Status_ID = (byte)(model.dateExport == DateTime.Today ? 3 : 2),

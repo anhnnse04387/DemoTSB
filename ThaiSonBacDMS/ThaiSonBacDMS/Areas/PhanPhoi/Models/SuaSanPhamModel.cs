@@ -13,5 +13,11 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public List<SelectListItem> lstDanhMuc { get; set; }
         public List<SelectListItem> lstNhaCungCap { get; set; }
         public List<SelectListItem> lstDanhMucCon { get; set; }
+        public List<string> locationImage { get; set; }
+        public List<string> lstProductCode { get; set; }
+        public List<string> lstProductName { get; set; }
+        public List<string> lstProductPram { get; set; }
+        public List<SelectListItem> lstStatus { get; set; }
+        public string pId { get; set; }
     }
 }

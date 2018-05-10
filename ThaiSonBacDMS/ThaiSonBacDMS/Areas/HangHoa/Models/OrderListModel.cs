@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace ThaiSonBacDMS.Areas.HangHoa.Models
 {
     public class OrderListModel
-    {
+    {        
         public string orderID { get; set; }
         public string customerName { get; set; }
         public string invoice_number { get; set; }
@@ -29,6 +29,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
     }
     public class OrderListPending
     {
+        public String spanClass { get; set; }
         public int indexOf { get; set; }
         public string orderID { get; set; }
         public string customerName { get; set; }
@@ -43,7 +44,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
         public string driverName { get; set; }
         public bool reveiceBallot { get; set; }
         public DateTime dateExport { get; set; }
-        public DateTime dateCompleted { get; set; }
+        public DateTime? dateCompleted { get; set; }
         public string note { get; set; }
         public byte? DeliverMethod_ID { get; set; }
         public string Driver_ID { get; set; }

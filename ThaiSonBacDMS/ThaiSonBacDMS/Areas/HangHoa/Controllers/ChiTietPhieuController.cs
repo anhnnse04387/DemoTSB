@@ -126,9 +126,12 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 model.customerName = customer.Customer_name;
                 model.taxCode = data.Order_total.Tax_code;
                 model.shipper = shipper;
+                model.Driver_ID = data.Driver_ID;
+                model.DeliverMethod_ID = data.DeliverMethod_ID;
+                model.Shiper_ID = data.Shiper_ID;
                 model.deliveryMethod = delivery;
-                model.dateReceiveInvoice = data.Date_reveice_invoice.ToString();
-                model.dateReceiveBallot = data.Date_reveice_ballot.ToString();
+                model.dateTakeInvoice = data.Date_take_invoice.ToString();
+                model.dateTakeBallot = data.Date_take_ballot.ToString();
                 model.driver = driver;
                 return View(model);
             }
@@ -250,13 +253,13 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
         }
 
         [HttpPost]
-        public JsonResult DeliveryCheckOut(String orderId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool receiveInvoice, bool receiveBallot)
+        public JsonResult DeliveryCheckOut(String orderId, byte? DeliverMethod_ID, string Driver_ID, int Shiper_ID, bool takeInvoice, bool takeBallot)
         {
             try
             {
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
                 var dao = new OrderTotalDAO();
-                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, receiveInvoice, receiveBallot);
+                dao.delivery_checkOut(orderId, session.user_id, DeliverMethod_ID, Driver_ID, Shiper_ID, takeInvoice, takeBallot);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

@@ -68,12 +68,12 @@
     <section class="content-header">
         <ol class="breadcrumb">
             <li>
-                <a href="phanphoi_index.html">
+                <a href="@Url.Action("Index","Home")">
                     <i class="fa fa-dashboard"></i> Trang Chủ
                 </a>
             </li>
             <li><a href="">Công nợ</a></li>
-            <li><a href="phanphoi_congno_danh-sach-cong-no-cung-cap.html">Công nợ nhà cung cấp</a></li>
+            <li><a href="@Url.Action("Index","DanhSachCongNoCungCap")">Công nợ nhà cung cấp</a></li>
         </ol>
     </section>
     <section class="content">
@@ -411,7 +411,7 @@
             }
             function validateData(i) {
                 var thanhToan = $("#thanhToanNew_" + i).val();
-                var nhapTrongKy = $("nhapTrongKyNew_" + i).val();
+                var nhapTrongKy = $("#nhapTrongKyNew_" + i).val();
                 if (!isEmpty(thanhToan) && !isEmpty(nhapTrongKy)) {
                     swal({
                         title: 'Vui lòng nhập dữ liệu!',
@@ -426,7 +426,7 @@
                     $("#btnThanhToan").click(function () {
                         $.ajax({
                             type: 'POST',
-                            url: 'DanhSachCongNoCungCap/InsertData',
+                            url: 'InsertData',
                             data: {
                                 supplierId: $("#supplierId_" + i).val(),
                                 nhapTrongKy: $("#nhapTrongKyNew_" + i).val().replace(/,/g, ''),
