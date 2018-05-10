@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class TonKhoController : PhanPhoiBaseController
+    public class TonKhoController : QuanLyBaseController
     {
-        // GET: PhanPhoi/TonKho
+        // GET: QuanLy/TonKho
         public ActionResult Index()
         {
 
@@ -35,7 +35,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             model.lstDisplay = new List<TonKho>();
             model.lstDisplay = daoProduct.getAllProduct();
             model.map = new Dictionary<string, List<TonKho>>();
-            foreach(Category itemCate in model.lstCategory)
+            foreach (Category itemCate in model.lstCategory)
             {
                 List<TonKho> lst = new List<TonKho>();
                 foreach (TonKho itemTonKho in model.lstDisplay)
@@ -73,7 +73,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
             }
             model.lstDisplay = new List<TonKho>();
-            model.lstDisplay = daoProduct.getLstProductSearch(mo.fromValue,mo.toValue,mo.pCodeSearch,mo.categorySearch);
+            model.lstDisplay = daoProduct.getLstProductSearch(mo.fromValue, mo.toValue, mo.pCodeSearch, mo.categorySearch);
 
             //Nhom san pham theo category
             foreach (Category itemCate in lstTemp)
@@ -116,7 +116,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     model.updated = false;
                 }
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
-               
+
             }
             catch (Exception e)
             {
@@ -138,6 +138,4 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             return new JsonResult { Data = allSearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
-
-
 }

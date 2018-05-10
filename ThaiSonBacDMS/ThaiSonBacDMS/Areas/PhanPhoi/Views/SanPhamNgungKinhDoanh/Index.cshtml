@@ -11,6 +11,7 @@
         overflow-x: hidden; /* add padding to account for vertical scrollbar */
         z-index: 1000 !important;
     }
+
     .chosen-container-multi .chosen-choices {
         height: 33.99px !important;
         width: 370.22px;
@@ -60,7 +61,7 @@
                     <!-- /.box-header -->
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
-                            <a class="btn btn-app custom-btn" href="@Url.Action("Index","TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" ">
+                            <a class="btn btn-app custom-btn" href="@Url.Action("Index","TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
                                 <i class="fa fa-plus-square text-green"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
@@ -133,18 +134,18 @@
                                                             @Html.DropDownListFor(model => model.categorySearch, @Model.lstCateSearch, "Tất cả", new { @class = "form-control", @id = "categorySearch" })
                                                         </div>
                                                     </td>
-                                                    
+
                                                 </tr>
-                                                <tr>      
-                                                    <td>Danh mục con</td>    
+                                                <tr>
+                                                    <td>Danh mục con</td>
                                                     <td width="35%">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-tree"></i></span>
-                                                           <div id="selectlistContainer">
-                                                               @Html.DropDownListFor(model => model.subCateSearch, @Model.lstSubCate, "Tất cả", new { @class = "form-control", @id = "subCategorySearch" })
-                                                           </div>
+                                                            <div id="selectlistContainer">
+                                                                @Html.DropDownListFor(model => model.subCateSearch, @Model.lstSubCate, "Tất cả", new { @class = "form-control", @id = "subCategorySearch" })
+                                                            </div>
                                                         </div>
-                                                    </td>                                        
+                                                    </td>
                                                     <td>Nhà cung cấp</td>
                                                     <td>
                                                         <div class="input-group">
@@ -243,108 +244,132 @@
             <!-- /.col-->
         </div>
         <!-- ./row -->
-
     </section>
-    <!-- /.content -->
-}
-@section Index{
-    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
-    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
-    <script>
+    @section Index{
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script>
 
-        $("#btnSubmit").click(function (event) {
-            event.preventDefault();
-            var data = {
-                pCodeSearch: $("#pCodeSearch").val(),
-                supplierSearch: $("#supplierSearch").val(),
-                categorySearch: $("#categorySearch").val(),
-                fromDate: $("#fromDate").val(),
-                toDate: $("#toDate").val()
-            }
-            $.ajax({
-
-                type: "POST",
-                url: "SanPhamNgungKinhDoanh/Index",
-                data: JSON.stringify({ mo: data }),
-                dataType: "json",
-                success: function (result) {
-
+            $("#btnSubmit").click(function (event) {
+                event.preventDefault();
+                var data = {
+                    pCodeSearch: $("#pCodeSearch").val(),
+                    supplierSearch: $("#supplierSearch").val(),
+                    categorySearch: $("#categorySearch").val(),
+                    fromDate: $("#fromDate").val(),
+                    toDate: $("#toDate").val()
                 }
-            })
-        });
-        $("#pCodeSearch").autocomplete({
-            source: function (request, response) {
                 $.ajax({
-                    url: '@Url.Action("GetSearchValue","SanPhamNgungKinhDoanh")',
-                    minLength: 2,
+
+                    type: "POST",
+                    url: "SanPhamNgungKinhDoanh/Index",
+                    data: JSON.stringify({ mo: data }),
                     dataType: "json",
-                    data: { searchValue: $("#pCodeSearch").val() },
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return { label: item.key, value: item.key }
-                        }))
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Error");
+                    success: function (result) {
+
                     }
+                })
+            });
+           $("#pCodeSearch").autocomplete({
+                source: function (req, responseFn) {
+                    var re = req.term;
+                    if (re.length > 2) {
+                        $.ajax({
+                            url: '/PhanPhoi/GiaSanPham/GetSearchValue',
+                            data: {
+                                searchValue: $("#pCodeSearch").val()
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                var array = data.error ? [] : $.map(data, function (m) {
+                                    return {
+                                        label: m.pCodeSearch,
+                                        value: m.pCodeSearch,
+                                    };
+                                });
+                                if (array.length == 0) {
+                                    $("#pCodeSearch").val("");
+                                }
+                                responseFn(array);
+                            }
+                        });
+                    } else {
+                        $("#pCodeSearch").val("");
+                    }
+                },
+                 change: function (event, ui) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        $("#pCodeSearch").val(ui.item.value);
+                    } else {
+                        $("#pCodeSearch").val("");
+                        $("#pCodeSearch").text("");
+                    }
+                }, focus: function (event, ui) {
+                    $("#pCodeSearch").val(ui.item.value);
+                    event.preventDefault();
+                }
+            }).autocomplete("widget").addClass("fixed-height");
+
+
+            $(document).ready(function () {
+
+                $('#example1').DataTable({
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': false,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': false,
+                    'language': {
+                        "lengthMenu": "Hiển thị _MENU_ dòng",
+                        "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                        "paginate": {
+                            "first": "Trang đầu",
+                            "last": "Trang cuối",
+                            "next": "Tiếp",
+                            "previous": "Trước",
+                        }
+                    }
+
+                });
+
+            });
+            function inProgressing() {
+                swal({
+                    title: 'Chức năng đang phát triển',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
                 });
             }
-        });
 
-       
-        $(document).ready(function () {
-            
-            $('#example1').DataTable({
-                'paging': true,
-                'lengthChange': true,
-                'searching': false,
-                'ordering': false,
-                'info': true,
-                'autoWidth': false,
-                'language': {
-                    "lengthMenu": "Hiển thị _MENU_ dòng",
-                    "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
-                    "paginate": {
-                        "first": "Trang đầu",
-                        "last": "Trang cuối",
-                        "next": "Tiếp",
-                        "previous": "Trước",
+            $("#categorySearch").change(function () {
+                $.ajax({
+                    url: 'generateSubCateList',
+                    type: 'POST',
+                    data: {
+                        cateId: $("#categorySearch").val()
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $("#selectlistContainer").empty();
+                        var lst = '<select id="subCategorySearch" class="form-control">';
+                        lst += '<option value="0">' + "Tất cả" + '</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
+                        };
+                        lst += '</select>';
+                        $("#selectlistContainer").append(lst);
                     }
-                }
 
+                })
             });
 
-        });
-        function inProgressing() {
-            swal({
-                title: 'Chức năng đang phát triển',
-                type: 'warning',
-                showConfirmButton: true,
-                timer: 5000
-            });
-        }
+        </script>
+    }
 
-        $("#categorySearch").change(function () {
-            $.ajax({
-                url: 'generateSubCateList',
-                type: 'POST',
-                data: {
-                    cateId: $("#categorySearch").val()
-                },
-                dataType: 'JSON',
-                success: function (data) {
-                    $("#selectlistContainer").empty();
-                    var lst = '<select id="subCategorySearch" class="form-control">';
-                    lst += '<option value="0">' + "Tất cả" + '</option>';
-                    for (var i = 0; i < data.length; i++) {
-                        lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
-                    };
-                    lst += '</select>';
-                    $("#selectlistContainer").append(lst);
-                }
-
-            })
-        });
-
-    </script>
+    <!-- /.content -->
 }
+
+

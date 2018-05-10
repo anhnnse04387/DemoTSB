@@ -1,9 +1,10 @@
-﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.DanhSachCongNoCungCapModel
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.DanhSachCongNoCungCapModel
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
+
 
 <style>
     #example1 {
@@ -99,7 +100,7 @@
                                 <i class="fa fa-save text-grey"></i>
                                 <span><strong>Lưu</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
                                 <i class="fa fa-close text-grey"></i>
                                 <span><strong>Hủy</strong></span>
                             </a>
@@ -426,7 +427,7 @@
                     $("#btnThanhToan").click(function () {
                         $.ajax({
                             type: 'POST',
-                            url: '/PhanPhoi/DanhSachCongNoCungCap/InsertData',
+                            url: '/QuanLy/DanhSachCongNoCungCap/InsertData',
                             data: {
                                 supplierId: $("#supplierId_" + i).val(),
                                 nhapTrongKy: $("#nhapTrongKyNew_" + i).val().replace(/,/g, ''),
@@ -498,13 +499,13 @@
                 $("#conNoNew_" + i).text(conNo);
                 $("#conNoNew_" + i).val(conNo);
             };
-           
+
             $("#nameSearch").autocomplete({
                 source: function (req, responseFn) {
                     var re = req.term;
                     if (re.length >= 2) {
                         $.ajax({
-                            url: '/PhanPhoi/DanhSachCongNoCungCap/autoComplete',
+                            url: '/QuanLy/DanhSachCongNoCungCap/autoComplete',
                             data: {
                                 searchValue: $("#nameSearch").val()
                             },
@@ -575,3 +576,7 @@
     }
 
 }
+
+
+
+

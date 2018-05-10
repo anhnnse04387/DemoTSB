@@ -5,14 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Common;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class DanhSachCongNoCungCapController : PhanPhoiBaseController
+    public class DanhSachCongNoCungCapController : QuanLyBaseController
     {
-        // GET: PhanPhoi/DanhSachCongNoCungCap
+        // GET: QuanLy/DanhSachCongNoCungCap
+
         public ActionResult Index()
         {
             DanhSachCongNoCungCapModel model = new DanhSachCongNoCungCapModel();
@@ -74,5 +75,4 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
         }
     }
-
 }

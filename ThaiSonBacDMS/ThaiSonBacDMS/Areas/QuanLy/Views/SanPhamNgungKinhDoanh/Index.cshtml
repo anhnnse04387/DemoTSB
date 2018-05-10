@@ -1,9 +1,10 @@
-﻿@model ThaiSonBacDMS.Areas.QuanTri.Models.ProductPhanPhoiModel
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.ProductPhanPhoiModel
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/QuanTri/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
+
 <style>
     .ui-autocomplete {
         max-height: 300px;
@@ -42,8 +43,9 @@
     <section class="content-header">
         <ol class="breadcrumb">
             <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+            <li>Quản trị</li>
             <li>Hàng hóa</li>
-            <li class="active"><a href="@Url.Action("Index","SanPhamDangKinhDoanh")">Sản phẩm đang kinh doanh</a></li>
+            <li class="active"><a href="@Url.Action("Index","SanPhamNgungKinhDoanh")">Sản phẩm ngừng kinh doanh</a></li>
         </ol>
     </section>
     <section class="content">
@@ -60,7 +62,7 @@
                     <!-- /.box-header -->
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
-                            <a class="btn btn-app custom-btn" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom" href="@Url.Action("Index","TaoSanPham")">
+                            <a class="btn btn-app custom-btn" href="@Url.Action("Index","TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" data-placement="bottom">
                                 <i class="fa fa-plus-square text-green"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
@@ -222,7 +224,7 @@
                                                         <td style="vertical-align: middle; text-align: center;">@items.quantity</td>
                                                         <td style="vertical-align: middle;">@items.supplierName</td>
                                                         <td style="vertical-align: middle; text-align: center;">
-                                                            <a id="btn_row_@i" href="@Url.Action("Index","SuaSanPham",new { @product_Id = @items.productId},null)" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <a id="btn_row_@i" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
                                                         </td>
@@ -246,11 +248,11 @@
 
     </section>
     <!-- /.content -->
-}
-@section Index{
-    <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
-    <script src="/Assets/dist/js/sweetalert2.all.js"></script>
-    <script>
+    }
+    @section Index{
+        <script src="/Assets/dist/js/bootstrap-datepicker.js"></script>
+        <script src="/Assets/dist/js/sweetalert2.all.js"></script>
+        <script>
 
         $("#btnSubmit").click(function (event) {
             event.preventDefault();
@@ -258,12 +260,13 @@
                 pCodeSearch: $("#pCodeSearch").val(),
                 supplierSearch: $("#supplierSearch").val(),
                 categorySearch: $("#categorySearch").val(),
-                subCateSearch: $("#subCategorySearch").val()
+                fromDate: $("#fromDate").val(),
+                toDate: $("#toDate").val()
             }
             $.ajax({
 
                 type: "POST",
-                url: "SanPhamDangKinhDoanh/Index",
+                url: "SanPhamNgungKinhDoanh/Index",
                 data: JSON.stringify({ mo: data }),
                 dataType: "json",
                 success: function (result) {
@@ -271,68 +274,48 @@
                 }
             })
         });
-       $("#pCodeSearch").autocomplete({
-                source: function (req, responseFn) {
-                    var re = req.term;
-                    if (re.length > 2) {
-                        $.ajax({
-                            url: '/QuanTri/SanPhamDangKinhDoanh/GetSearchValue',
-                            data: {
-                                searchValue: $("#pCodeSearch").val()
-                            },
-                            dataType: "json",
-                            success: function (data) {
-                                var array = data.error ? [] : $.map(data, function (m) {
-                                    return {
-                                        label: m.key,
-                                        value: m.key,
-                                    };
-                                });
-                                if (array.length == 0) {
-                                    $("#pCodeSearch").val("");
-                                }
-                                responseFn(array);
+        $("#pCodeSearch").autocomplete({
+            source: function (req, responseFn) {
+                var re = req.term;
+                if (re.length >= 2) {
+                    $.ajax({
+                        url: '/QuanLy/SanPhamNgungKinhDoanh/GetSearchValue',
+                        data: {
+                            searchValue: $("#pCodeSearch").val()
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            var array = data.error ? [] : $.map(data, function (m) {
+                                return {
+                                    label: m.key,
+                                    value: m.key,
+                                };
+                            });
+                            if (array.length == 0) {
+                                $("#pCodeSearch").val("");
                             }
-                        });
-                    } else {
-                        $("#pCodeSearch").val("");
-                    }
-                },
-                 change: function (event, ui) {
-                    if (ui.item) {
-                        event.preventDefault();
-                        $("#pCodeSearch").val(ui.item.value);
-                    } else {
-                        $("#pCodeSearch").val("");
-                        $("#pCodeSearch").text("");
-                    }
-                }, focus: function (event, ui) {
-                    $("#pCodeSearch").val(ui.item.value);
+                            responseFn(array);
+                        }
+                    });
+                } else {
+                    $("#pCodeSearch").val("");
+                }
+            },
+            change: function (event, ui) {
+                if (ui.item) {
                     event.preventDefault();
+                    $("#pCodeSearch").val(ui.item.value);
+                } else {
+                    $("#pCodeSearch").val("");
+                    $("#pCodeSearch").text("");
                 }
-            }).autocomplete("widget").addClass("fixed-height");
+            }, focus: function (event, ui) {
+                $("#pCodeSearch").val(ui.item.value);
+                event.preventDefault();
+            }
+        }).autocomplete("widget").addClass("fixed-height");
+        
 
-        $("#categorySearch").change(function () {
-            $.ajax({
-                url: 'SanPhamDangKinhDoanh/generateSubCateList',
-                type: 'POST',
-                data: {
-                    cateId: $("#categorySearch").val()
-                },
-                dataType: 'JSON',
-                success: function (data) {
-                    $("#selectlistContainer").empty();
-                    var lst = '<select id="subCategorySearch" class="form-control">';
-                    lst += '<option value="0">' + "Tất cả" + '</option>';
-                    for (var i = 0; i < data.length; i++) {
-                        lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
-                    };
-                    lst += '</select>';
-                    $("#selectlistContainer").append(lst);
-                }
-
-            })
-        });
 
         $(document).ready(function () {
 
@@ -359,11 +342,38 @@
         });
         function inProgressing() {
             swal({
-                text: 'Chức năng đang phát triển',
+                title: 'Chức năng đang phát triển',
                 type: 'warning',
                 showConfirmButton: true,
                 timer: 5000
             });
         }
-    </script>
+
+        $("#categorySearch").change(function () {
+            $.ajax({
+                url: 'generateSubCateList',
+                type: 'POST',
+                data: {
+                    cateId: $("#categorySearch").val()
+                },
+                dataType: 'JSON',
+                success: function (data) {
+                    $("#selectlistContainer").empty();
+                    var lst = '<select id="subCategorySearch" class="form-control">';
+                    lst += '<option value="0">' + "Tất cả" + '</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        lst += '<option value="' + data[i].value + '">' + data[i].key + '</option>'
+                    };
+                    lst += '</select>';
+                    $("#selectlistContainer").append(lst);
+                }
+
+            })
+        });
+
+        </script>
+    }
+
+
 }
+

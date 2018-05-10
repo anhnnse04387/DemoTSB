@@ -17,12 +17,29 @@ namespace Models.DAO
 
         public int insertNewRecord(int accId, string roleId)
         {
-            Account_role item = new Account_role();
 
-            item.Account_ID = accId;
-            item.Role_ID = Convert.ToByte(roleId);
 
-            db.Account_role.Add(item);
+            if (!roleId.Contains(','))
+            {
+                Account_role item = new Account_role();
+                item.Account_ID = accId;
+                item.Role_ID = Convert.ToByte(roleId);
+                db.Account_role.Add(item);
+            }
+            else
+            {
+
+                string[] roles = roleId.Split(',');
+                foreach (var roleIds in roles)
+                {
+                    Account_role item = new Account_role();
+                    item.Account_ID = accId;
+                    item.Role_ID = Convert.ToByte(roleIds);
+                    db.Account_role.Add(item);
+                }
+            }
+
+
             int result = db.SaveChanges();
             return result;
         }
@@ -33,6 +50,21 @@ namespace Models.DAO
             item.Role_ID = Convert.ToByte(roleId);
             int result = db.SaveChanges();
             return result;
+        }
+        public List<string> getRoleId(int accId)
+        {
+            List<string> lst = new List<string>();
+            var query = from role in db.Account_role
+                        where role.Account_ID == accId
+                        select role;
+            if(query.Count() > 0)
+            {
+                foreach(var item in query)
+                {
+                    lst.Add(item.Role_ID.ToString());
+                }
+            }
+            return lst;
         }
     }
 }

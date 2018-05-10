@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.PhanPhoi.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 using ThaiSonBacDMS.Common;
 
-namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class DanhSachCongNoKhachHangController : PhanPhoiBaseController
+    public class DanhSachCongNoKhachHangController : QuanLyBaseController
     {
+        // GET: QuanLy/DanhSachCongNoKhachHang
         // GET: PhanPhoi/DanhSachCongNoKhachHang
         public ActionResult Index()
         {

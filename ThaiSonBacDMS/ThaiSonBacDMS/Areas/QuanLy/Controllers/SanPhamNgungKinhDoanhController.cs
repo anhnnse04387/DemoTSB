@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ThaiSonBacDMS.Areas.QuanTri.Models;
+using ThaiSonBacDMS.Areas.QuanLy.Models;
 
-namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
+namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
 {
-    public class SanPhamDangKinhDoanhController : QuanTriBaseController
+    public class SanPhamNgungKinhDoanhController : QuanLyBaseController
     {
+        // GET: QuanLy/SanPhamNgungKinhDoanh
         public ActionResult Index()
         {
             try
@@ -24,9 +25,15 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                 ProductPhanPhoiModel model = new ProductPhanPhoiModel();
 
                 model.lstSupplier = new List<SelectListItem>();
+                model.lstDisplay = new List<ShowProductModel>();
                 model.lstProduct = new List<Product>();
                 model.lstCategory = new List<Category>();
                 model.lstSanPham = new List<SanPham>();
+
+                //first load page
+                model.lstCategory = daoCategory.getLstCate();
+                model.lstSanPham = daoProduct.sanPhamNgungKinhDoanh();
+
                 model.lstSubCate = new List<SelectListItem>();
 
                 //first load page
@@ -43,8 +50,6 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                     }
 
                 }
-                model.lstCategory = daoCategory.getLstCate();
-                model.lstSanPham = daoProduct.sanPhamDangKinhDoanh();
 
                 //list cho tim kiem san pham theo Category
                 List<Category> lstAll = daoCategory.getLstCate();
@@ -96,13 +101,16 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             var daoSubCate = new Sub_CategoryDAO();
 
             ProductPhanPhoiModel model = new ProductPhanPhoiModel();
+
             Product product = new Product();
             product.Category_ID = mo.categorySearch;
             product.Product_name = mo.pCodeSearch;
             product.Supplier_ID = mo.supplierSearch;
             product.Sub_category_ID = mo.subCateSearch;
 
+
             model.lstSupplier = new List<SelectListItem>();
+            model.lstDisplay = new List<ShowProductModel>();
             model.lstProduct = new List<Product>();
             model.lstCategory = new List<Category>();
             model.lstSanPham = new List<SanPham>();
@@ -127,7 +135,8 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
             }
 
 
-            model.lstSanPham = daoProduct.getLstSearchSanPham(product);
+            model.lstSanPham = daoProduct.getLstSearchSanPhamNgungKD(product);
+
             var lstSubCate = daoSubCate.getSubCateByCateId(mo.categorySearch);
             if (lstSubCate.Count() > 0)
             {
@@ -136,6 +145,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                     model.lstSubCate.Add(new SelectListItem { Text = item.key, Value = item.strValue });
                 }
             }
+
             //Loc san pham theo category
             if (model.lstCategory != null)
             {
@@ -160,7 +170,7 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
         public JsonResult GetSearchValue(string searchValue)
         {
             var daoProduct = new ProductDAO();
-            var lstProduct = daoProduct.autocompleteSanPhamKinhDoanh(searchValue);
+            var lstProduct = daoProduct.autocompleteSanPhamNgungKD(searchValue);
             List<Autocomplete> allSearch = lstProduct.Select(x => new Autocomplete()
             {
                 key = x.key,

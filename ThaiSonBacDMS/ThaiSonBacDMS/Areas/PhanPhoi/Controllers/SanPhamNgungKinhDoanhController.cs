@@ -167,6 +167,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             }
             return View(model);
         }
+        [ValidateInput(false)]
         public JsonResult GetSearchValue(string searchValue)
         {
             var daoProduct = new ProductDAO();

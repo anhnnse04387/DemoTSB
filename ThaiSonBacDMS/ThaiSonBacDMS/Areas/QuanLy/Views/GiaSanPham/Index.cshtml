@@ -1,8 +1,8 @@
-﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.GiaSanPhamModel
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.GiaSanPhamModel
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -269,7 +269,7 @@
                     var re = req.term;
                     if (re.length > 2) {
                         $.ajax({
-                            url: '/PhanPhoi/GiaSanPham/GetSearchValue',
+                            url: '/QuanLy/TonKho/GetSearchValue',
                             data: {
                                 searchValue: $("#pCodeSearch").val()
                             },

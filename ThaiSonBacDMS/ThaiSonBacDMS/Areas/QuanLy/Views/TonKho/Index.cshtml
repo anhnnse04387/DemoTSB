@@ -1,10 +1,9 @@
-﻿@model ThaiSonBacDMS.Areas.PhanPhoi.Models.TonKhoModel
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.TonKhoModel
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/PhanPhoi/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
 }
-
 <style>
     .ui-autocomplete {
         max-height: 300px;
@@ -12,6 +11,7 @@
         overflow-x: hidden; /* add padding to account for vertical scrollbar */
         z-index: 1000 !important;
     }
+
     #example1 {
         background-color: rgb(240, 240, 240);
     }
@@ -79,6 +79,7 @@
         min-width: 18px;
         height: 25px;
     }
+
     label {
         display: inline-block;
         max-width: 100%;
@@ -121,7 +122,7 @@
                                 <i class="fa fa-save text-grey"></i>
                                 <span><strong>Lưu</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom" href="phanphoi_index.html">
                                 <i class="fa fa-close text-grey"></i>
                                 <span><strong>Hủy</strong></span>
                             </a>
@@ -533,8 +534,8 @@
                             success: function (data) {
                                 var array = data.error ? [] : $.map(data, function (m) {
                                     return {
-                                        label: m.key,
-                                        value: m.key,
+                                        label: m.pCodeSearch,
+                                        value: m.pCodeSearch,
                                     };
                                 });
                                 if (array.length == 0) {

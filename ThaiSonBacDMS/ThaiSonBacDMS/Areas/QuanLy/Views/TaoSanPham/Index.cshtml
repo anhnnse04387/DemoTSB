@@ -1,0 +1,570 @@
+﻿@model ThaiSonBacDMS.Areas.QuanLy.Models.TaoSanPhamModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/_Layout.cshtml";
+}
+
+@section IndexStyle {
+    <style>
+        input[type="file"] {
+            display: block;
+        }
+
+        .imageThumb {
+            max-height: 75px;
+            border: 2px solid;
+            margin: 10px 10px 0 0;
+            padding: 1px;
+        }
+
+        .custom-btn {
+            padding: 10px 5px;
+            min-width: 80px;
+            height: 55px;
+        }
+
+        .custom-chk {
+            padding-left: 15px;
+        }
+
+        .menu-button {
+            background-color: #fcf9f9;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-right: 25px;
+        }
+
+        .smallBtn {
+            padding: 10px 5px;
+            min-width: 60px;
+            height: 40px;
+        }
+
+        .chosen-container-multi .chosen-choices {
+            width: 98.5% !important;
+        }
+
+            .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+                height: 28px !important;
+                width: 340px;
+            }
+
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn-file input[type=file] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                min-width: 100%;
+                min-height: 100%;
+                font-size: 100px;
+                text-align: right;
+                filter: alpha(opacity=0);
+                opacity: 0;
+                outline: none;
+                background: white;
+                cursor: inherit;
+                display: block;
+            }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.css">
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
+        <li>Hàng hóa</li>
+        <li><a href="@Url.Action("Index","TaoSanPham")">Thêm sản phẩm mới</a></li>
+    </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="row" style="margin-left:0px; margin-right:0px; margin-top: 10px;">
+                    <div class="col-md-12">
+                        <h4>
+                            <b>Thêm sản phẩm</b>
+                        </h4>
+
+                    </div>
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box">
+                    <div class="box-header with-border text-center menu-button">
+
+                        <a class="btn btn-app custom-btn" href="@Url.Action("Index", "TaoSanPham")" data-toggle="tooltip" title="Tạo Mới" id="btnCreate">
+                            <i class="fa fa-plus-square text-green"></i>
+                            <span><strong>Tạo Mới</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                            <i class="fa fa-edit text-grey"></i>
+                            <span><strong>Sửa</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn" id="btnUpload" title="Lưu" data-placement="bottom">
+                            <i class="fa fa-save text-yellow"></i>
+                            <span><strong>Lưu</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Hủy" data-placement="bottom">
+                            <i class="fa fa-close text-grey"></i>
+                            <span><strong>Hủy</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Chốt đơn" data-placement="bottom">
+                            <i class="fa fa-check-circle text-grey"></i>
+                            <span><strong>Chốt đơn</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Đổi trả" data-placement="bottom">
+                            <i class="fa fa-exchange text-grey"></i>
+                            <span><strong>Đổi trả</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xem Trước" data-placement="bottom">
+                            <i class="fa fa-eye text-grey"></i>
+                            <span><strong>Xem Trước</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="In" data-placement="bottom">
+                            <i class="fa fa-print text-grey"></i>
+                            <span><strong>In</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disable" data-toggle="tooltip" title="Import Excel" data-placement="bottom">
+                            <i class="fa fa-download text-black"></i>
+                            <span><strong>Import Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất Excel" data-placement="bottom">
+                            <i class="fa fa-file-excel-o text-grey"></i>
+                            <span><strong>Xuất Excel</strong></span>
+                        </a>
+                        <a class="btn btn-app custom-btn disabled" data-toggle="tooltip" title="Xuất PDF" data-placement="bottom">
+                            <i class="fa fa-file-pdf-o text-grey"></i>
+                            <span><strong>Xuất PDF</strong></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="box-body" style="padding-bottom: 50px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form form-vertical">
+                                <div class="col-md-12">
+                                    <span class="btn btn-primary btn-file">
+                                        Chọn Ảnh <input type="file" class="inputfile" id="files" name="files[]" multiple />
+                                    </span>
+                                </div>
+                                <div class="col-md-12" style="padding-top: 15px">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Mã máy</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-file"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Mã máy..." id="pCode" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Tên Máy</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-file"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Tên máy..." id="pName" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Thông số máy</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-file"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Thông số máy máy..." id="pParam" type="text" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-md-4">
+                                            <label>Nhà cung cấp</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-handshake-o"></i>
+                                                </span>
+                                                @Html.DropDownList("pSupplier", @Model.supplierList, "Chọn nhà cung cấp", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Danh mục</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-sliders"></i>
+                                                </span>
+                                                @Html.DropDownList("pCategory", @Model.categoryList, "Chọn danh mục", new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Danh mục con</label>
+                                            <div class="input-group disabled">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-sliders"></i>
+                                                </span>
+                                                <div id="selectlistContainer">
+                                                    @Html.DropDownList("pSubCategory", @Model.subCategoryList, "Chọn danh mục con", new { @class = "form-control", @disabled = true })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-md-4">
+                                            <label>Số lượng cái/ thùng</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Số lượng" id="pNumberCarton" type="number" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Giá trước VAT (VNĐ)</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </span>
+                                                <input class="form-control numberVND" placeholder="Giá tiền VNĐ" id="pBeforeVatVND" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Giá trước VAT (USD)</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-dollar"></i>
+                                                </span>
+                                                <input class="form-control numberUSD" placeholder="Giá tiền USD" id="pBeforeVatUSD" type="text" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-md-4">
+                                            <label>CIF (VNĐ)</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </span>
+                                                <input class="form-control numberVND" placeholder="Giá tiền VNĐ" id="cifVND" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>CIF (USD)</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-dollar"></i>
+                                                </span>
+                                                <input class="form-control numberUSD" placeholder="Giá tiền USD" id="cifUSD" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>VAT</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-dollar"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Giá tiền USD" id="vat" type="text" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                            <label>Tổng quan sản phẩm</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-circle-o"></i>
+                                                </span>
+                                                <textarea id="pDescription" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Chi tiết sản phẩm</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa-chevron-circle-down"></i>
+                                                </span>
+                                                <textarea id="pDetail" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--main box-->
+        </div>
+        <!--main col-->
+    </div>
+    <!--main row-->
+    <div class="modal fade" id="popupConfirm" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận lưu thông tin đã nhập?</h4>
+                </div>
+
+                <div class="modal-footer" style="margin-right:15px">
+                    <div style="margin:0 auto;">
+                        <button id="btnOk" type="submit" style="color:white;background-color:green" class="btn btn-default">OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+@section Index {
+    <!-- sweet Alert-->
+    <script src="~/Assets/dist/js/sweetalert2.all.js"></script>
+    <script src="~/Assets/dist/js/autoNumeric.min.js"></script>
+    <script src="~/Assets/dist/js/autoNumeric.js"></script>
+    <!-- page script -->
+    <script>
+        $(document).ready(function () {
+            $("#vat").autoNumeric('init', { vMin: '1', vMax: '30', digitGroupSeparator: ',', mDec: '0' });
+            $(".numberUSD").autoNumeric('init', { vMin: '1', vMax: '999999999', digitGroupSeparator: ',', mDec: '2' });
+            $(".numberVND").autoNumeric('init', { vMin: '1', vMax: '999999999', digitGroupSeparator: ',', mDec: '0' });
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function (e) {
+                    var files = e.target.files,
+                    filesLength = files.length;
+                    for (var i = 0; i < filesLength ; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function (e) {
+                            var file = e.target;
+                            $("<img></img>", {
+                                class: "imageThumb",
+                                src: e.target.result,
+                                title: file.name
+                            }).insertAfter("#files");
+                        });
+                        fileReader.readAsDataURL(f);
+                    }
+                });
+            } else { alert("Your browser doesn't support to File API") }
+        });
+    </script>
+
+    <script>
+        $("#btnUpload").click(function () {
+
+            var pCode = $("#pCode").val();
+            var pName = $("#pName").val();
+            var pParam = $("#pParam").val();
+            var pSupplier = $('#pSupplier').val();
+            var pCategory = $('#pCategory').val();
+            var pSubCategory = $('#pSubCategory').val();
+            var pNumberCarton = $('#pNumberCarton').val();
+            var pBeforeVatVND = $('#pBeforeVatVND').val();
+            var pBeforeVatUSD = $('#pBeforeVatUSD').val();
+            var cifVND = $('#cifVND').val();
+            var cifUSD = $('#cifUSD').val();
+            var vat = $('#vat').val();
+            var pDescription = $('#pDescription').val();
+            var pDetail = $('#pDetail').val();
+            var file = $("#files").val()
+
+            if (!pCode) {
+                swal({
+                    text: 'Vui lòng nhập mã mãy!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pName) {
+                swal({
+                    text: 'Vui lòng nhập tên máy!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pParam) {
+                swal({
+                    text: 'Vui lòng nhập thông số máy!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pSupplier) {
+                swal({
+                    text: 'Vui lòng chọn nhà cung cấp!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pCategory) {
+                swal({
+                    text: 'Vui lòng chọn danh mục!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pSubCategory) {
+                swal({
+                    text: 'Vui lòng chọn danh mục con!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pNumberCarton) {
+                swal({
+                    text: 'Vui lòng nhập số lượng cái/thùng!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pBeforeVatUSD) {
+                swal({
+                    text: 'Vui lòng nhập giá trước VAT (USD)!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pBeforeVatVND) {
+                swal({
+                    text: 'Vui lòng nhập giá trước VAT(VND)!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!cifUSD) {
+                swal({
+                    text: 'Vui lòng nhập CIF(USD)!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!cifVND) {
+                swal({
+                    text: 'Vui lòng nhập CIF(VND)!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!vat) {
+                swal({
+                    text: 'Vui lòng nhập VAT!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pDescription) {
+                swal({
+                    text: 'Vui lòng nhập tổng quan sản phẩm!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!pDetail) {
+                swal({
+                    text: 'Vui lòng nhập chi tiết sản phẩm!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else if (!file) {
+                swal({
+                    text: 'Vui lòng chọn ảnh!',
+                    type: 'warning',
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            } else {
+                $("#popupConfirm").modal("show");
+                $("#btnOk").click(function () {
+                    if (window.FormData !== undefined) {
+                        var fileUpload = $("#files").get(0);
+                        var files = fileUpload.files;
+
+                        // Create FormData object
+                        var fileData = new FormData();
+
+                        // Looping over all files and add it to FormData object
+                        for (var i = 0; i < files.length; i++) {
+                            fileData.append(files[i].name, files[i]);
+                        }
+                        fileData.append('pCode', pCode);
+                        fileData.append('pName', pName);
+                        fileData.append('pParam', pParam);
+                        fileData.append('pSupplier', pSupplier);
+                        fileData.append('pCategory', pCategory);
+                        fileData.append('pSubCategory', pSubCategory);
+                        fileData.append('pNumberCarton', pNumberCarton);
+                        fileData.append('pBeforeVatVND', pBeforeVatVND);
+                        fileData.append('pBeforeVatUSD', pBeforeVatUSD);
+                        fileData.append('cifVND', cifVND);
+                        fileData.append('cifUSD', cifUSD);
+                        fileData.append('vat', vat);
+                        fileData.append('pDescription', pDescription);
+                        fileData.append('pDetail', pDetail);
+
+
+                        $.ajax({
+                            url: '/TaoSanPham/UploadFiles',
+                            type: "POST",
+                            contentType: false, // Not to set any content header
+                            processData: false, // Not to process data
+                            data: fileData,
+                            success: function (data) {
+                                swal({
+                                    title: '<img src="/Assets/dist/img/messagePic_2.png"/>',
+                                    type: 'success',
+                                    timer: 5000,
+                                    showConfirmButton: true
+                                }).then(function (result) {
+                                    if (result) {
+                                        window.location.href = '/QuanLy/ChiTietSanPham?product_Id=' + data;
+                                    }
+                                })
+                            }
+                        })
+                    }
+                });
+            }
+        });
+        $('#pCategory').change(function () {
+            $.ajax({
+                url: '/TaoSanPham/ChangeList',
+                data: {
+                    cateId :  $('#pCategory').val()
+                },
+                dataType: 'JSON',
+                type: 'POST',
+                success: function (data) {
+                    $("#selectlistContainer").empty();
+                    var lst = '<select id="pSubCategory" class="form-control">';
+                    lst += '<option value="0">' + "Chọn danh mục con" + '</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        lst += '<option value="' + data[i].strValue + '">' + data[i].key + '</option>'
+                    };
+                    lst += '</select>';
+                    $("#selectlistContainer").append(lst);
+                }
+            })
+        })
+    </script>
+}
+
+
+
+
+
+
