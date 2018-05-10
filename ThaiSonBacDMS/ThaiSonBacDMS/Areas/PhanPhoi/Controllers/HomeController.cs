@@ -102,7 +102,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
 
             //count value in previous month
             decimal valueInPreviousMonth = 0;
-
+            listTotalPrevious = totalDAO.getOrderByDateCreated(firstMonthPrevious, DateTime.Now.AddMonths(-1));
             valueInPreviousMonth = (decimal) listTotalPrevious.Sum(x=>x.Total_price);
             model.diffrentValueMonth = 0;
             model.valueFlag = false;
@@ -117,16 +117,16 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
             //different order of month
             model.diffrentOrderMonth = 0;
             model.orderFlag = false;
-            var orderInPreviousMonth = dataLineChartPreviousOrderMonth.Values.Sum();
-            var totalInMonth = dataLineChartOrderCurrentMonth.Values.Sum();
+            decimal orderInPreviousMonth = listTotalPrevious.GroupBy(x => x.Date_created).ToDictionary(x => x.Key.Day, x => (int)x.Count()).Values.Sum();
+            decimal totalInMonth = dataLineChartOrderCurrentMonth.Values.Sum();
             if (totalInMonth >= orderInPreviousMonth)
             {
                 model.orderFlag = true;
-                model.diffrentOrderMonth = valueInPreviousMonth > 0 ? ((valueInMonth - valueInPreviousMonth) / valueInPreviousMonth * 100) : 100;
+                model.diffrentOrderMonth = orderInPreviousMonth > 0 ? ((totalInMonth - orderInPreviousMonth) / orderInPreviousMonth * 100) : 100;
             }
             else
             {
-                model.diffrentOrderMonth = valueInMonth > 0 ? ((valueInPreviousMonth - valueInMonth) / valueInPreviousMonth * 100) : 100;
+                model.diffrentOrderMonth = totalInMonth > 0 ? ((orderInPreviousMonth - totalInMonth) / totalInMonth * 100) : 100;
             }
 
             //Top Selling Product
@@ -175,6 +175,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                 List<Notification> listNoti = new List<Notification>();
                 listNoti.AddRange(notiDAO.getByUserID(session.user_id));
                 listNoti.AddRange(notiDAO.getByRoleID((int) session.roleSelectedID));
+                listNoti = listNoti.OrderByDescending(x => x.Status).ToList();
                 return PartialView(listNoti);
             }
             catch(Exception e)

@@ -228,7 +228,7 @@
                             </thead>
                             <tbody>
                                 @{ var i = 0; }
-                                @foreach (var item in Model.listCongNo)
+                                @foreach (var item in Enumerable.Reverse(Model.listCongNo))
                                 {
                                     i++;
                                     <tr>

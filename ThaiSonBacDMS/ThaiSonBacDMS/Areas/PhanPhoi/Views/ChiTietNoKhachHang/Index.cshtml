@@ -65,13 +65,13 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="phanphoi_index.html">
+            <a href="@Url.Action("Index", "Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
         <li><a>Công nợ</a></li>
-        <li><a href="phanphoi_congno_danh-sach-cong-no-khach-hang.html">Công nợ khách hàng</a></li>
-        <li><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Chi tiết</a></li>
+        <li><a href="@Url.Action("Index", "DanhSachCongNoKhachHang")">Công nợ khách hàng</a></li>
+        <li><a href="#">Chi tiết</a></li>
     </ol>
 </section>
 @using (Html.BeginForm())
@@ -557,6 +557,14 @@
                             }
                         });
                     }
+                });
+            });
+
+            $('.construct').click(function () {
+                swal({
+                    title: '',
+                    text: 'Chức năng đang được phát triển',
+                    type: 'warning'
                 });
             });
         </script>

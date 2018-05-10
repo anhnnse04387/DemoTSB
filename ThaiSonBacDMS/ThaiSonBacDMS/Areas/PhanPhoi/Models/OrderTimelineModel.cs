@@ -11,6 +11,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Models
         public string toDate { get; set; }
         public string orderName { get; set; }
         public List<OrderPartInfo> ListOpInfo { get; set; }
+        public List<OrderPartInfo> ListPI_Info { get; set; }
     }
 
     public class OrderPartInfo

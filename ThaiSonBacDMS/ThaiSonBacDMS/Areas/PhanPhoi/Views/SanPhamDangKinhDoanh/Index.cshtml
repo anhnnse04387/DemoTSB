@@ -222,7 +222,7 @@
                                                         <td style="vertical-align: middle; text-align: center;">@items.quantity</td>
                                                         <td style="vertical-align: middle;">@items.supplierName</td>
                                                         <td style="vertical-align: middle; text-align: center;">
-                                                            <a id="btn_row_@i" href="#" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
+                                                            <a id="btn_row_@i" href="@Url.Action("Index","SuaSanPham",new { @product_Id = @items.productId},null)" class="btn btn-app custom-btn smallBtn" data-toggle="tooltip" title="Sửa" data-placement="bottom">
                                                                 <i class="fa fa-edit text-blue"></i>
                                                             </a>
                                                         </td>

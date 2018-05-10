@@ -511,7 +511,7 @@ namespace Models.DAO
                         join c in db.Categories on p.Category_ID.ToString() equals c.Category_ID.ToString()
                         join s in db.Sub_category on p.Sub_category_ID.ToString() equals s.Sub_category_ID.ToString()
                         where p.Status == 0
-                        select new { p, sup, c, s};
+                        select new { p, sup, c, s };
             if (product.Category_ID != null)
             {
                 query = query.Where(x => x.p.Category_ID == product.Category_ID);
@@ -524,7 +524,7 @@ namespace Models.DAO
             {
                 query = query.Where(x => x.p.Product_name.ToLower().Equals(product.Product_name.ToLower()));
             }
-            if(product.Sub_category_ID != null)
+            if (product.Sub_category_ID != null)
             {
                 query = query.Where(x => x.p.Sub_category_ID.ToString().Equals(product.Sub_category_ID.ToString()));
             }
@@ -645,7 +645,7 @@ namespace Models.DAO
             p.Product_name = pName;
             p.Product_parameters = pParam;
             p.Supplier_ID = pSupplier;
-            p.Category_ID = p.Category_ID;
+            p.Category_ID = pCategory;
             p.Sub_category_ID = pSubCate;
             p.Quantity_in_carton = quantity_Carton;
             p.Overview = pDescription;
@@ -665,7 +665,98 @@ namespace Models.DAO
         {
             return db.Products.Single(x => x.Product_ID.ToString().Equals(productId));
         }
+        public List<string> checkExistedCode(string productId)
+        {
+            List<string> lst = new List<string>();
+            var query = from p in db.Products
+                        where p.Product_ID.ToString() != productId
+                        select new { p };
+            if (query.Count() > 0)
+            {
+                foreach (var item in query)
+                {
+                    lst.Add(item.p.Product_code);
+                }
+            }
+            lst = lst.Distinct().ToList();
+            return lst;
 
+        }
+        public List<string> checkExistedParam(string productId)
+        {
+            List<string> lst = new List<string>();
+            var query = from p in db.Products
+                        where p.Product_ID.ToString() != productId
+                        select new { p };
+            if (query.Count() > 0)
+            {
+                foreach (var item in query)
+                {
+                    lst.Add(item.p.Product_parameters);
+                }
+            }
+            lst = lst.Distinct().ToList();
+            return lst;
+
+        }
+        public List<string> checkExistedName(string productId)
+        {
+            List<string> lst = new List<string>();
+            var query = from p in db.Products
+                        where p.Product_ID.ToString() != productId
+                        select new { p };
+            if (query.Count() > 0)
+            {
+                foreach (var item in query)
+                {
+                    lst.Add(item.p.Product_name);
+                }
+            }
+            lst = lst.Distinct().ToList();
+            return lst;
+
+        }
+        public void deleteRecord(string product_Id)
+        {
+            var query = from m in db.Product_media
+                        where m.Product_ID.ToString().Equals(product_Id)
+                        select m;
+            if (query != null)
+            {
+                foreach(var item in query)
+                {
+                    db.Product_media.Remove(item);
+                }
+
+            }
+            db.SaveChanges();
+        }
+
+        public int updateProduct(Product product)
+        {
+            var query = db.Products.Single(x => x.Product_ID == product.Product_ID);
+            if (query != null)
+            {
+                query.Product_code = product.Product_code;
+                query.Product_name = product.Product_name;
+                query.Product_parameters = product.Product_parameters;
+                query.Supplier_ID = product.Supplier_ID;
+                query.Category_ID = product.Category_ID;
+                query.Sub_category_ID = product.Sub_category_ID;
+                query.Quantity_in_carton = product.Quantity_in_carton;
+                query.Overview = product.Overview;
+                query.Specification = product.Specification;
+                query.CIF_USD = product.CIF_USD;
+                query.CIF_VND = product.CIF_VND;
+                query.Price_before_VAT_USD = product.Price_before_VAT_USD;
+                query.Price_before_VAT_VND = product.Price_before_VAT_VND;
+                query.Status = product.Status;
+                query.VAT = product.VAT;
+
+            }
+            int rowUpdated = db.SaveChanges();
+            return rowUpdated;
+        }
     }
 }
 

@@ -60,13 +60,13 @@
 <section class="content-header">
     <ol class="breadcrumb">
         <li>
-            <a href="phanphoi_index.html">
+            <a href="@Url.Action("Index", "Home")">
                 <i class="fa fa-dashboard"></i> Trang Chủ
             </a>
         </li>
         <li><a>Công nợ</a></li>
-        <li><a href="phanphoi_congno_danh-sach-cong-no-khach-hang.html">Công nợ nhà cung cấp</a></li>
-        <li><a href="phanphoi_congno_chi-tiet-no-khach-hang.html">Chi tiết</a></li>
+        <li><a href="@Url.Action("Index", "DanhSachCongNoCungCap")">Công nợ nhà cung cấp</a></li>
+        <li><a href="#">Chi tiết</a></li>
     </ol>
 </section>
 @using (Html.BeginForm())
@@ -84,7 +84,7 @@
 
                     <div class="box">
                         <div class="box-header with-border text-center menu-button">
-                            <a href="accountant_notification.html" class="btn btn-app custom-btn disabled" title="Tạo Mới" data-placement="bottom">
+                            <a href="#" class="btn btn-app custom-btn disabled" title="Tạo Mới" data-placement="bottom">
                                 <i class="fa fa-plus-square  text-grey"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
@@ -478,6 +478,13 @@
                 $("#duNo1").val(duNo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                 init();
             }
+            $('.construct').click(function () {
+                swal({
+                    title: '',
+                    text: 'Chức năng đang được phát triển',
+                    type: 'warning'
+                });
+            });
         </script>
     }
 }

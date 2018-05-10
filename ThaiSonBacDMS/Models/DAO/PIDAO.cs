@@ -176,5 +176,15 @@ namespace Models.DAO
             return db.Purchase_invoice.Where(s => s.Shipment_date >= dateBegin && s.Shipment_date <= dateEnd
             && s.Supplier_ID == supplierID).ToList();
         }
+
+        public List<Purchase_invoice_Items> getProductByExportDate(DateTime export_date, int productID)
+        {
+            List<Purchase_invoice_Items> query = (from pi_item in db.Purchase_invoice_Items
+                                       join pi in db.Purchase_invoice on pi_item.Purchase_invoice_ID equals pi.Purchase_invoice_ID
+                                       where pi.Shipment_date >= export_date
+                                       && pi_item.Product_ID == productID
+                                       select pi_item).ToList();
+            return query;
+        }
     }
 }
