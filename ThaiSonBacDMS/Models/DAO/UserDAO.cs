@@ -424,7 +424,7 @@ namespace Models.DAO
             var query = from user in context.Users
                         join media in context.Media on user.Avatar_ID.ToString() equals media.Media_ID.ToString()
                         join role in context.Role_detail on user.Role_ID equals role.Role_ID
-                        where user.Status == 0 && userName.Equals(userName)
+                        where user.Status == 0 && user.User_name.Contains(userName)
                         orderby user.Date_created ascending
                         select new
                         {

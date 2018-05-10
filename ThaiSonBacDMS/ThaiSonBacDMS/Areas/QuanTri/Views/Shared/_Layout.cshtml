@@ -16,6 +16,10 @@
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="/Assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/Assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/Assets/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Back to top -->
     <link rel="stylesheet" href="/Assets/dist/css/back-to-top.css">
     <!-- Font Awesome -->
@@ -146,11 +150,14 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
+                            <li>
+                                <a href="@Url.Action("Index", "TaoNguoiDung")"><i class="fa fa-users"></i>Tạo người dùng</a>
+                            </li>
                             <li class="">
                                 <a href="@Url.Action("Index", "DanhSachNguoiDungHoatDong")"><i class="fa fa-users"></i>Đang hoạt động</a>
                             </li>
                             <li>
-                                <a href="@Url.Action("Index", "DanhSachNguoiDungHoatDong")"><i class="fa fa-users"></i> Đã dừng hoạt động</a>
+                                <a href="@Url.Action("Index", "DanhSachNguoiDungNgungHoatDong")"><i class="fa fa-users"></i> Đã dừng hoạt động</a>
                             </li>
                         </ul>
                     </li>
@@ -173,8 +180,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-edit"></i> Đang kinh doanh</a></li>
-                                    <li class=""><a href="@Url.Action("Index", "ErrorPage")"><i class="fa fa-id-card-o"></i> Ngừng kinh doanh</a></li>
+                                    <li class=""><a href="@Url.Action("Index", "SanPhamDangKinhDoanh")"><i class="fa fa-edit"></i> Đang kinh doanh</a></li>
+                                    <li class=""><a href="@Url.Action("Index", "SanPhamNgungKinhDoanh")"><i class="fa fa-id-card-o"></i> Ngừng kinh doanh</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -213,6 +220,8 @@
     <script src="/Assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/Assets/dist/js/jquery-1.12.4.js"></script>
     <script src="/Assets/dist/js/jquery-ui.js"></script>
+    <script src="/Assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/Assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     @*@RenderSection("LapPhieu", false/*required*/)
         @RenderSection("PO", false)
         @RenderSection("Stock", false)

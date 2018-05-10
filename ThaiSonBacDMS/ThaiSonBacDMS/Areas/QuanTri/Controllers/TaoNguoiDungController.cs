@@ -169,8 +169,8 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
         [HttpPost]
         public JsonResult ChangeSelect(string selectedValue)
         {
-            OfficeDAO dao = new OfficeDAO();
-            var lst = dao.getListBySelectedValue(selectedValue);
+            OfficeDAO dao = new OfficeDAO();            
+            var lst = dao.getListCreatUser(selectedValue);
 
             return new JsonResult { Data = lst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
