@@ -469,7 +469,7 @@ ol, ul {
                                                                                 timer: 5000,
                                                                                 showConfirmButton: true
                                                                             });
-                                                                        } else if (insuranceNo.length != 13) {
+                                                                        } else if (insuranceNo.toString().length != 13) {
                                                                             swal({
                                                                                 title: 'Vui lòng chỉ nhập đúng định dạng cho số BHYT!',
                                                                                 type: 'warning',
@@ -513,7 +513,7 @@ ol, ul {
                                                                                 fileData.append("address", address);
                                                                                 fileData.append("active", "1");
                                                                                 $.ajax({
-                                                                                    url: '/TaoNguoiDung/UploadFiles',
+                                                                                    url: '/QuanTri/TaoNguoiDung/UploadFiles',
                                                                                     type: "POST",
                                                                                     contentType: false, // Not to set any content header
                                                                                     processData: false, // Not to process data
