@@ -6,38 +6,41 @@
 }
 
 <style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" / > 
-   .chosen-container-multi .chosen-choices {
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    padding: 0 5px;
-    width: 98%;
-    height: auto !important;
-    height: 1%;
-    border: 1px solid #aaa;
-    background-color: #fff;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
-    background-image: -webkit-linear-gradient(#eeeeee 1%, #ffffff 15%);
-    background-image: -moz-linear-gradient(#eeeeee 1%, #ffffff 15%);
-    background-image: -o-linear-gradient(#eeeeee 1%, #ffffff 15%);
-    background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);
-    cursor: text;
-}
-.chosen-container * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-ol, ul {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" / > .chosen-container-multi .chosen-choices {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0 5px;
+        width: 98%;
+        height: auto !important;
+        height: 1%;
+        border: 1px solid #aaa;
+        background-color: #fff;
+        background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
+        background-image: -webkit-linear-gradient(#eeeeee 1%, #ffffff 15%);
+        background-image: -moz-linear-gradient(#eeeeee 1%, #ffffff 15%);
+        background-image: -o-linear-gradient(#eeeeee 1%, #ffffff 15%);
+        background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);
+        cursor: text;
+    }
+
+    .chosen-container * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    ol, ul {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
     .table-condensed tbody tr td {
         cursor: pointer;
     }
@@ -403,16 +406,17 @@ ol, ul {
                                                                                 showConfirmButton: true
                                                                             });
                                                                         }
-                                                                        else if (!office) {
+                                                                        else if (!role) {
                                                                             swal({
-                                                                                title: 'Vui lòng chọn chức vụ!',
+                                                                                title: 'Vui lòng chọn phân hệ!',
                                                                                 type: 'warning',
                                                                                 timer: 5000,
                                                                                 showConfirmButton: true
                                                                             });
-                                                                        } else if (!role) {
+                                                                        }
+                                                                        else if (isNaN(office)) {
                                                                             swal({
-                                                                                title: 'Vui lòng chọn phân hệ!',
+                                                                                title: 'Vui lòng chọn chức vụ!',
                                                                                 type: 'warning',
                                                                                 timer: 5000,
                                                                                 showConfirmButton: true
