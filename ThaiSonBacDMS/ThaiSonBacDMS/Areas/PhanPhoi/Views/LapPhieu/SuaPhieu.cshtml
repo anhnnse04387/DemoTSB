@@ -99,8 +99,8 @@
                                     <i class="fa fa-edit text-gray"></i>
                                     <span><strong>Sửa</strong></span>
                                 </a>
-                                <button class="btn btn-app custom-btn" data-toggle="modal" title="Lưu" data-placement="bottom" id="btnSave">
-                                    <i class="fa fa-save text-yellow"></i>
+                                <button class="btn btn-app custom-btn @(Model.statusId == 1 ? "" : "disabled")" data-toggle="modal" title="Lưu" data-placement="bottom" id="btnSave">
+                                    <i class="fa fa-save @(Model.statusId == 1 ? "text-yellow" : "text-gray")"></i>
                                     <span><strong>Lưu</strong></span>
                                 </button>
                                 <a class="btn btn-app custom-btn" data-toggle="modal" title="Hủy" data-placement="bottom" data-target="#confirmCancel">

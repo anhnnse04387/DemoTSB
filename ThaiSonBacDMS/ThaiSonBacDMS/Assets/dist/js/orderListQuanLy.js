@@ -95,7 +95,9 @@ function setTable() {
         }
     });
     customerATC();
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        autoclose: true
+    });
 }
 function getData() {
     var orderId = $('#orderId').val();

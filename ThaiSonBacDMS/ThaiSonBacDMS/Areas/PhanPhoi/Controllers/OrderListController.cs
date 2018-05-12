@@ -383,7 +383,7 @@ namespace ThaiSonBacDMS.Areas.PhanPhoi.Controllers
                     }
                 }
                 model.items = items.OrderBy(x => x.orderId).ToList();
-                if (model.statusId == 1 || model.statusId == 8)
+                if (model.statusId == 1 || model.statusId == 8 || model.statusId == 3 || model.statusId == 9)
                 {
                     return PartialView("_searchPartialNormal", model);
                 }

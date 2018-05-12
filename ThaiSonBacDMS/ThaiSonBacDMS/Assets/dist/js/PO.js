@@ -1,5 +1,8 @@
 ﻿$(document).ready(function () {
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        autoclose: true,
+        startDate: new Date()
+    });
     $('#supplier').change(function () {
         var id = parseInt($(this).val());
         $.ajax({

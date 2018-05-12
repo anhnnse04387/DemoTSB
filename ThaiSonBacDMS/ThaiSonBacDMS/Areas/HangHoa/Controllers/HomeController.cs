@@ -558,7 +558,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
             {
                 var dao = new OrderTotalDAO();
                 var session = (UserSession)Session[CommonConstants.USER_SESSION];
-                dao.completeOrder(model.orderID, session.user_id, model.reveiceInvoice, model.reveiceBallot, model.takeInvoice, model.takeBallot);
+                dao.completeOrder(model.orderID, session.user_id);
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -628,7 +628,6 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
 
         public ActionResult ChangeStatusNote(string link, int notiID)
         {
-            link = "/ChiTietPhieu/Index?orderId=O1";
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             new NotificationDAO().changeStatus(notiID);
             switch (session.roleSelectedID)

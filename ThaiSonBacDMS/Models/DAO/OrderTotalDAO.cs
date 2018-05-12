@@ -80,7 +80,7 @@ namespace Models.DAO
                 Notif_date = DateTime.Now,
                 Content = "Nhân viên " + db.Role_detail.Where(x => x.Role_ID == user.Role_ID).SingleOrDefault().Role_name.ToLower()
                 + " " + user.User_name + " đã chốt đơn với mã " + orderId,
-                Link = "/ChiTietPhieu/Index?" + orderId,
+                Link = "/ChiTietPhieu/Index?orderId=" + orderId,
                 Role_ID = 4,
                 Status = 1
             });
@@ -89,7 +89,7 @@ namespace Models.DAO
                 Notif_date = DateTime.Now,
                 Content = "Nhân viên " + db.Role_detail.Where(x => x.Role_ID == user.Role_ID).SingleOrDefault().Role_name.ToLower()
                 + " " + user.User_name + " đã chốt đơn với mã " + orderId,
-                Link = "/ChiTietPhieu/Index?" + orderId,
+                Link = "/ChiTietPhieu/Index?orderId=" + orderId,
                 Role_ID = 5,
                 Status = 1
             });
@@ -287,22 +287,35 @@ namespace Models.DAO
 
         public void kho_updateOrder(String orderId, bool takeInvoice, bool takeBallot, bool receiveInvoice, bool receiveBallot)
         {
+            var count = 0;
             var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             if (receiveInvoice)
             {
                 p.Date_reveice_invoice = DateTime.Now;
+                count++;
             }
             if (receiveBallot)
             {
                 p.Date_reveice_ballot = DateTime.Now;
+                count++;
             }
             if (takeInvoice)
             {
                 p.Date_take_invoice = DateTime.Now;
+                count++;
             }
             if (takeBallot)
             {
                 p.Date_take_ballot = DateTime.Now;
+                count++;
+            }
+            if (count == 4)
+            {
+                p.Status_ID = 6;
+                if (!orderId.Contains("-"))
+                {
+                    db.Order_total.Where(x => x.Order_ID.Equals(orderId)).SingleOrDefault().Status_ID = 6;
+                }
             }
             db.SaveChanges();
         }
@@ -371,7 +384,7 @@ namespace Models.DAO
                 {
                     Notif_date = DateTime.Now,
                     Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã đổi trả đơn với mã " + orderId,
-                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    Link = "/ChiTietPhieu/Index?orderId=" + orderId,
                     User_ID = db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3)).FirstOrDefault().User_ID,
                     Status = 1
                 });
@@ -396,7 +409,7 @@ namespace Models.DAO
                 {
                     Notif_date = DateTime.Now,
                     Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã đổi trả đơn với mã " + orderId,
-                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    Link = "/ChiTietPhieu/Index?orderId=" + orderId,
                     User_ID = db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3)).FirstOrDefault().User_ID,
                     Status = 1
                 });
@@ -417,7 +430,7 @@ namespace Models.DAO
             db.SaveChanges();
         }
 
-        public void completeOrder(String orderId, int userId, bool receiveInvoice, bool receiveBallot, bool takeInvoice, bool takeBallot)
+        public void completeOrder(String orderId, int userId)
         {
             if (orderId.Contains("-"))
             {
@@ -425,29 +438,13 @@ namespace Models.DAO
                 {
                     Notif_date = DateTime.Now,
                     Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã hoàn thành đơn với mã " + orderId,
-                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    Link = "/ChiTietPhieu/Index?orderId=" + orderId,
                     User_ID = db.Order_detail_status.Where(x => x.Order_part_ID.Equals(orderId) && (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3)).FirstOrDefault().User_ID,
                     Status = 1
                 });
                 var p = (from op in db.Order_part where op.Order_part_ID.Equals(orderId) select op).SingleOrDefault();
                 p.Status_ID = 7;
                 p.Date_completed = DateTime.Now;
-                if (receiveInvoice)
-                {
-                    p.Date_reveice_invoice = DateTime.Now;
-                }
-                if (receiveBallot)
-                {
-                    p.Date_reveice_ballot = DateTime.Now;
-                }
-                if (takeInvoice)
-                {
-                    p.Date_take_invoice = DateTime.Now;
-                }
-                if (takeBallot)
-                {
-                    p.Date_take_ballot = DateTime.Now;
-                }
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = 7,
@@ -478,6 +475,15 @@ namespace Models.DAO
                         Date_change = DateTime.Now,
                         Order_ID = orderId
                     });
+                    db.Customer_transaction.Add(new Customer_transaction
+                    {
+                        Date_Created = DateTime.Now,
+                        Customer_ID = order.Customer_ID,
+                        Order_ID = order.Order_ID,
+                        Sub_total = order.Sub_total,
+                        VAT = order.VAT,
+                        Total = order.Total_price
+                    });
                 }
             }
             else
@@ -486,7 +492,7 @@ namespace Models.DAO
                 {
                     Notif_date = DateTime.Now,
                     Content = "Nhân viên hàng hóa " + db.Users.Where(x => x.User_ID == userId).SingleOrDefault().User_name + " đã hoàn thành đơn với mã " + orderId,
-                    Link = "/ChiTietPhieu/Index?" + orderId,
+                    Link = "/ChiTietPhieu/Index?orderId=" + orderId,
                     User_ID = db.Order_detail_status.Where(x => x.Order_ID.Equals(orderId) && (x.Status_ID == 1 || x.Status_ID == 2 || x.Status_ID == 3)).FirstOrDefault().User_ID,
                     Status = 1
                 });
@@ -496,28 +502,21 @@ namespace Models.DAO
                 var p = (from op in db.Order_part where op.Order_part_ID.Equals(orderId) select op).SingleOrDefault();
                 p.Status_ID = 7;
                 p.Date_completed = DateTime.Now;
-                if (receiveInvoice)
-                {
-                    p.Date_reveice_invoice = DateTime.Now;
-                }
-                if (receiveBallot)
-                {
-                    p.Date_reveice_ballot = DateTime.Now;
-                }
-                if (takeInvoice)
-                {
-                    p.Date_take_invoice = DateTime.Now;
-                }
-                if (takeBallot)
-                {
-                    p.Date_take_ballot = DateTime.Now;
-                }
                 db.Order_detail_status.Add(new Order_detail_status
                 {
                     Status_ID = 7,
                     User_ID = userId,
                     Date_change = DateTime.Now,
                     Order_ID = orderId
+                });
+                db.Customer_transaction.Add(new Customer_transaction
+                {
+                    Date_Created = DateTime.Now,
+                    Customer_ID = order.Customer_ID,
+                    Order_ID = order.Order_ID,
+                    Sub_total = order.Sub_total,
+                    VAT = order.VAT,
+                    Total = order.Total_price
                 });
             }
             db.SaveChanges();

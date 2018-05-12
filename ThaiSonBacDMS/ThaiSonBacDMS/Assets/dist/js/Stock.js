@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
     $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        autoclose: true,
+        startDate: new Date()
+    });
     $("#btnSubmit").click(function (event) {
         if (validate() === 0) {
             event.preventDefault();

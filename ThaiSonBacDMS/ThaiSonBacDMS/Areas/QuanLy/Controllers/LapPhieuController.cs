@@ -493,7 +493,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                     {
                                         Notif_date = DateTime.Now,
                                         Content = "Nhân viên quản lý " + session.user_name + " đã chốt đơn với mã " + o.Order_part_ID,
-                                        Link = "/ChiTietPhieu/Index?" + o.Order_part_ID,
+                                        Link = "/ChiTietPhieu/Index?orderId=" + o.Order_part_ID,
                                         Role_ID = 4,
                                         Status = 1
                                     });
@@ -501,7 +501,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                     {
                                         Notif_date = DateTime.Now,
                                         Content = "Nhân viên quản lý " + session.user_name + " đã chốt đơn với mã " + o.Order_part_ID,
-                                        Link = "/ChiTietPhieu/Index?" + o.Order_part_ID,
+                                        Link = "/ChiTietPhieu/Index?orderId=" + o.Order_part_ID,
                                         Role_ID = 5,
                                         Status = 1
                                     });
@@ -527,7 +527,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 {
                                     Notif_date = DateTime.Now,
                                     Content = "Nhân viên quản lý " + session.user_name + " đã chốt đơn với mã " + model.orderId,
-                                    Link = "/ChiTietPhieu/Index?" + model.orderId,
+                                    Link = "/ChiTietPhieu/Index?orderId=" + model.orderId,
                                     Role_ID = 4,
                                     Status = 1
                                 });
@@ -535,7 +535,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                                 {
                                     Notif_date = DateTime.Now,
                                     Content = "Nhân viên quản lý " + session.user_name + " đã chốt đơn với mã " + model.orderId,
-                                    Link = "/ChiTietPhieu/Index?" + model.orderId,
+                                    Link = "/ChiTietPhieu/Index?orderId=" + model.orderId,
                                     Role_ID = 5,
                                     Status = 1
                                 });

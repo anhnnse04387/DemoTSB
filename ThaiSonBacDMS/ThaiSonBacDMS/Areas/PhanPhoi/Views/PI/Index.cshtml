@@ -302,7 +302,10 @@
 
         function init() {
             $('.number').autoNumeric('init', { minimumValue: '1', maximumValue: '9999999999999', digitGroupSeparator: ',', decimalPlacesOverride: '0' });
-            $('.datepicker').datepicker();
+            $('.datepicker').datepicker({
+                autoclose: true,
+                startDate: new Date()
+            });
         }
 
         function getAllData() {

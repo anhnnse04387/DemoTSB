@@ -203,7 +203,6 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
 
         public ActionResult ChangeStatusNote(string link, int notiID)
         {
-            link = "/ChiTietPhieu/Index?orderId=O1";
             var session = (UserSession)Session[CommonConstants.USER_SESSION];
             new NotificationDAO().changeStatus(notiID);
             switch (session.roleSelectedID)

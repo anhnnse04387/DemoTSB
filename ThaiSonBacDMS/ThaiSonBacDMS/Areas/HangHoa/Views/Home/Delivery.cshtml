@@ -375,7 +375,8 @@
                                                                 <a class="btn btn-danger btn-block btn-block openDialog" data-toggle="modal" title="Đổi trả" data-target="#confirmExchange">Đổi trả</a>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <a class="btn btn-success btn-success btn-block btn-block openDialog" data-toggle="modal" title="Giao hàng" data-target="#confirmEdit">Giao hàng</a>
+                                                                <a class="btn btn-success btn-success btn-block btn-block openDialog @(item.reveiceBallot && item.reveiceInvoice && item.takeBallot 
+                                                && item.takeInvoice && item.statusName.Equals("Đang giao hàng") && item.spanClass.Equals("label-primary") ? "" : "disabled")" data-toggle="modal" title="Hoàn thành" data-target="#confirmEdit">Hoàn thành</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -452,7 +453,8 @@
         var item = {};
         $(document).ready(function () {
             $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy'
+                format: 'dd/mm/yyyy',
+                autoclose: true
             });
         });
         $(document).on("click", ".openDialog", function () {

@@ -1,5 +1,8 @@
 ﻿$(document).ready(function () {
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        autoclose: true,
+        startDate: new Date()
+    });
     $('#customer').change(function () {
         var id = parseInt($('#customer').val());
         $.ajax({
@@ -87,12 +90,7 @@ function donePendingOrder() {
                 animation: false
             }).then((result) => {
                 if (result.value) {
-                    var deliveryQtt = parseInt($('#deliveryQtt').val());
-                    if (deliveryQtt == 1) {
-                        window.location.href = '/PhanPhoi/ChiTietPhieu/OnetimeDelivery?orderId=' + $('#orderId').val();
-                    } else {
-                        window.location.href = '/PhanPhoi/ChiTietPhieu/MultipleDelivery?orderId=' + $('#orderId').val();
-                    }                    
+                    window.location.href = '/PhanPhoi/ChiTietPhieu/Index?orderId=' + $('#orderId').val();
                 }
             });
         },
@@ -155,7 +153,10 @@ function changeQtt() {
     }
     document.getElementById('deliveryDiv').innerHTML = div;
     initMain();
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        autoclose: true,
+        startDate: new Date()
+    });
 }
 
 function validate() {
@@ -625,7 +626,7 @@ function configThung() {
     });
 }
 
-function checkQtt(thisRow) {    
+function checkQtt(thisRow) {
     if (thisRow.attr('class') === 'addingRow') {
         $.ajax({
             url: '/PhanPhoi/LapPhieu/CheckQtt',

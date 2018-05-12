@@ -121,8 +121,8 @@
                                 <i class="fa fa-plus-square text-gray"></i>
                                 <span><strong>Tạo Mới</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "" : "disabled")" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
-                                <i class="fa fa-edit @(@Model.statusId < 7 ? "text-blue" : "text-gray")"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 || Model.statusId > 9? "" : "disabled")" data-toggle="tooltip" title="Sửa" data-placement="bottom" onclick="enable();">
+                                <i class="fa fa-edit @(@Model.statusId < 7 || Model.statusId > 9? "text-blue" : "text-gray")"></i>
                                 <span><strong>Sửa</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled">
@@ -137,8 +137,8 @@
                                 <i class="fa fa-check-circle @(@Model.statusId < 7 ? "text-green" : "text-gray")"></i>
                                 <span><strong>Hoàn thành</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "" : "disabled")" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
-                                <i class="fa fa-exchange @(@Model.statusId < 7 ? "text-red" : "text-gray")"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 || Model.statusId > 9 ? "" : "disabled")" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
+                                <i class="fa fa-exchange @(@Model.statusId < 7 || Model.statusId > 9 ? "text-red" : "text-gray")"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled">
@@ -179,12 +179,12 @@
                                 <i class="fa fa-close text-gray"></i>
                                 <span><strong>Huỷ</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
-                                <i class="fa fa-check-circle text-green"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 ? "" : "disabled")" data-toggle="modal" title="Chốt đơn" data-placement="bottom" data-target="#confirmDone">
+                                <i class="fa fa-check-circle @(@Model.statusId < 7 ? "text-green" : "text-gray")"></i>
                                 <span><strong>Hoàn thành</strong></span>
                             </a>
-                            <a class="btn btn-app custom-btn" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
-                                <i class="fa fa-exchange text-red"></i>
+                            <a class="btn btn-app custom-btn @(@Model.statusId < 7 || Model.statusId > 9 ? "" : "disabled")" data-toggle="modal" title="Đổi trả" data-placement="bottom" data-target="#confirmCancel">
+                                <i class="fa fa-exchange @(@Model.statusId < 7 || Model.statusId > 9 ? "text-red" : "text-gray")"></i>
                                 <span><strong>Đổi trả</strong></span>
                             </a>
                             <a class="btn btn-app custom-btn disabled">
@@ -510,7 +510,7 @@
                 takeBallot = true;
             }
             $.ajax({
-                url: '/PhanPhoi/LapPhieu/SaveOrder',
+                url: '/HangHoa/ChiTietPhieu/SaveOrder',
                 type: 'POST',
                 dataType: 'json',
                 data: { orderId: $('#orderId').val(), receiveInvoice: receiveInvoice, receiveBallot: receiveBallot, takeInvoice: takeInvoice, takeBallot: takeBallot },
