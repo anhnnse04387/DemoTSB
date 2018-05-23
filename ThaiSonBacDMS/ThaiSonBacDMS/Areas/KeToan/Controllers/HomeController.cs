@@ -47,7 +47,7 @@ namespace ThaiSonBacDMS.Areas.KeToan.Controllers
                 };
                 items.Add(item);
             }
-            model.items = items.OrderByDescending(x=>x.date).ToList();
+            model.items = items.OrderByDescending(x => x.date).ToList();
             return View(model);
         }
 

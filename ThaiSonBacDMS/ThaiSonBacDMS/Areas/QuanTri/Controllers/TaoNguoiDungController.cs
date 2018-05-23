@@ -88,7 +88,10 @@ namespace ThaiSonBacDMS.Areas.QuanTri.Controllers
                         roles = role.Split(',');
                         mainRole = roles[0];
                     }
-
+                    else
+                    {
+                        mainRole = role;
+                    }
                     for (var i = 0; i < st.Length - 1; i++)
                     {
                         account += st[i].ToCharArray()[0];
