@@ -262,7 +262,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-hourglass"></i>
                                                                     </span>
-                                                                    @Html.DropDownListFor(model => item.DeliverMethod_ID, new SelectList(Model.listMethod, "Value", "Text", item.DeliverMethod_ID), "--Select--", new { @class = "form-control methodId" })
+                                                                    @Html.DropDownListFor(model => item.DeliverMethod_ID, new SelectList(Model.listMethod, "Value", "Text", item.DeliverMethod_ID), new { @class = "form-control methodId" })
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -271,7 +271,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user"></i>
                                                                     </span>
-                                                                    @Html.DropDownListFor(model => item.Shiper_ID, new SelectList(Model.listShipper, "Value", "Text", item.Shiper_ID), "--Select--", new { @class = "form-control shipperId" })
+                                                                    @Html.DropDownListFor(model => item.Shiper_ID, new SelectList(Model.listShipper, "Value", "Text", item.Shiper_ID), new { @class = "form-control shipperId" })
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -280,7 +280,7 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-user"></i>
                                                                     </span>
-                                                                    @Html.DropDownListFor(model => item.Driver_ID, new SelectList(Model.listDriver, "Value", "Text", item.Driver_ID), "--Select--", new { @class = "form-control driverId" })
+                                                                    @Html.DropDownListFor(model => item.Driver_ID, new SelectList(Model.listDriver, "Value", "Text", item.Driver_ID), new { @class = "form-control driverId" })
                                                                 </div>
                                                             </div>
                                                         </div>

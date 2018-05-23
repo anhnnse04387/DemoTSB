@@ -128,7 +128,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 model.shipper = shipper;
                 model.Driver_ID = data.Driver_ID;
                 model.DeliverMethod_ID = data.DeliverMethod_ID;
-                model.Shiper_ID = data.Shiper_ID;
+                model.Shiper_ID = data.Shiper_ID;                
                 model.deliveryMethod = delivery;
                 model.dateTakeInvoice = data.Date_take_invoice.ToString();
                 model.dateTakeBallot = data.Date_take_ballot.ToString();
@@ -181,12 +181,28 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                 model.deliveryAddress = data.Order_total.Address_delivery;
                 model.invoiceNumber = data.Invoice_number;
                 model.statusId = data.Status_ID;
+                if (orderId.Contains("-"))
+                {
+                    model.count = new OrderTotalDAO().getOrder(orderId.Substring(0, orderId.IndexOf("-"))).Order_detail_status.Where(x => x.User_ID == 5).ToList().Count;
+                }
+                else
+                {
+                    model.count = new OrderTotalDAO().getOrder(orderId).Order_detail_status.Where(x => x.User_ID == 5).ToList().Count;
+                }
                 String status = statusDAO.getStatus(data.Status_ID);
                 String spanClass = "";
                 if (data.Status_ID == 10 || data.Status_ID == 11)
                 {
                     status = status.Substring(0, status.IndexOf("warning") - 1);
                     spanClass = "label-warning";
+                }
+                else if (data.Status_ID == 7)
+                {
+                    spanClass = "label-success";
+                }
+                else if (data.Status_ID == 9)
+                {
+                    spanClass = "label-danger";
                 }
                 else
                 {

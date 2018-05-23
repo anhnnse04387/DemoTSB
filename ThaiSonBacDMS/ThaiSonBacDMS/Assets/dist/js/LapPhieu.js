@@ -349,7 +349,7 @@ function productATC() {
                         success: function (data) {
                             var array = data.error ? [] : $.map(data, function (m) {
                                 return {
-                                    label: m.Product_name,
+                                    label: m.Product_name + " - " + m.Product_parameters,
                                     value: m.Product_ID,
                                     param: m.Product_parameters,
                                     qttInven: m.Quantities_in_inventory,
@@ -441,7 +441,7 @@ function productSubATC() {
                 if (re.length > 2) {
                     responseFn($.map(data, function (m) {
                         return {
-                            label: m.label,
+                            label: m.label + " - " + m.param,
                             value: m.value,
                             param: m.param,
                             qttInven: m.qttInven,
@@ -633,7 +633,7 @@ function checkQtt(thisRow) {
             dataType: 'json',
             data: { productId: thisRow.find(".productId").val() },
             success: function (data) {
-                var div = '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a onclick="timeline();"><img src="/Assets/dist/img/xem.png"/></a></div>'
+                var div = '<div style="margin-left: 377px;"><i class="fa fa-eye text-black"></i><a href="/PhanPhoi/OrderTimeLine/DetailProduct?productID=' + thisRow.find(".productId").val() + '">Xem chi tiết</a></div>'
                             + '<table class="table table-striped mainTable" style="margin-top: 10px;">'
                             + '<thead>'
                             + '<tr><th style="background-color: white"><img src="/Assets/dist/img/loso.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluong.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/ngay.png"/></th><th style="background-color: white"><img src="/Assets/dist/img/soluonglay.png"/></th></tr>'
@@ -682,6 +682,13 @@ function checkQtt(thisRow) {
                                 });
                             }
                         });
+                        if (items.length == 0) {
+                            thisRow.find('.cai').val("");
+                        } else {
+                            thisRow.find(".thung").val(parseInt(thisRow.find(".cai").val()) / parseInt(thisRow.find(".qttBox").val()));
+                            thisRow.find(".tienchuack").autoNumeric('set', parseInt(thisRow.find(".cai").val()) * parseFloat(thisRow.find(".dongia").val().replace(new RegExp(',', 'g'), '')));
+                            ck(thisRow);
+                        }
                     } else {
                         thisRow.find('.cai').val("");
                     }

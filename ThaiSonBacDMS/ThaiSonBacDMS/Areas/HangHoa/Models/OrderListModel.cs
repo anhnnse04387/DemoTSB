@@ -34,6 +34,7 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Models
     }
     public class OrderListPending
     {
+        public int count { get; set; }
         public String spanClass { get; set; }
         public int indexOf { get; set; }
         public string orderID { get; set; }

@@ -376,7 +376,7 @@
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <a class="btn btn-success btn-success btn-block btn-block openDialog @(item.reveiceBallot && item.reveiceInvoice && item.takeBallot 
-                                                && item.takeInvoice && item.statusName.Equals("Đang giao hàng") && item.spanClass.Equals("label-primary") ? "" : "disabled")" data-toggle="modal" title="Hoàn thành" data-target="#confirmEdit">Hoàn thành</a>
+                                                && item.takeInvoice && item.statusName.Equals("Đang giao hàng") && item.spanClass.Equals("label-primary") && item.count > 0 ? "" : "disabled")" data-toggle="modal" title="Hoàn thành" data-target="#confirmEdit">Hoàn thành</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -538,7 +538,7 @@
                         type: 'success'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = '/HangHoa/Home/Delivery';
+                            window.location.href = '/HangHoa/Home/Completed';
                         }
                     });
                 },

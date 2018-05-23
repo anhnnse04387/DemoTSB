@@ -56,6 +56,7 @@ namespace ThaiSonBacDMS.Areas.QuanLy.Controllers
                         model.boxTotal += o.Box;
                     }
                 }
+                model.deliveryQtt = data.Order_part.Count;
                 model.discount = data.Order_discount;
                 model.vat = data.VAT;
                 model.subTotal = data.Sub_total;

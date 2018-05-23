@@ -31,29 +31,45 @@
                     {
                         <tr>
                             <td>@(i + 1)</td>
-                            @if (Model.items[i].delivery == 1)
-                        {
+                            @if (Model.items[i].status.Equals("Đổi trả"))
+                            {
                                 <td>
-                                    <a href="/QuanLy/ChiTietPhieu/One?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
-                                    @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                    @if (Model.items[i].orderId.Contains("-"))
                                     {
-                                        <span class="custom-span">
-                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                        </span>
+                                        <a href="/QuanLy/ChiTietPhieu/Index?orderId=@Model.items[i].orderId.Substring(0, Model.items[i].orderId.IndexOf("-"))" class="orderId">@Model.items[i].orderId</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/QuanLy/ChiTietPhieu/Index?orderId=@Model.items[i].orderId" class="orderId">@Model.items[i].orderId</a>
                                     }
                                 </td>
                             }
                             else
                             {
-                                <td>
-                                    <a href="/QuanLy/ChiTietPhieu/Many?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
-                                    @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
-                                    {
-                                        <span class="custom-span">
-                                            <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
-                                        </span>
-                                    }
-                                </td>
+                                if (Model.items[i].delivery == 1)
+                                {
+                                    <td>
+                                        <a href="/QuanLy/ChiTietPhieu/OnetimeDelivery?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                        @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                        {
+                                            <span class="custom-span">
+                                                <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                            </span>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a href="/QuanLy/ChiTietPhieu/MultipleDelivery?orderId=@Model.items[i].orderId">@Model.items[i].orderId</a>
+                                        @if (!String.IsNullOrEmpty(Model.items[i].note) && Model.items[i].note.Length > 0)
+                                        {
+                                            <span class="custom-span">
+                                                <i class="fa fa-exclamation-triangle text-yellow" aria-hidden="true"></i>
+                                            </span>
+                                        }
+                                    </td>
+                                }
                             }
                             <td>@Model.items[i].customer</td>
                             <td>@Model.items[i].date</td>
