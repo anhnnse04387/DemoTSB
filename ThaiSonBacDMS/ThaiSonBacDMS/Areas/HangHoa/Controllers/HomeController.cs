@@ -303,6 +303,17 @@ namespace ThaiSonBacDMS.Areas.HangHoa.Controllers
                     DeliverMethod_ID = x.DeliverMethod_ID,
 
                 }).ToList();
+                foreach(OrderListPending i in model.listOrderPending)
+                {
+                    if (i.orderID.Contains("-"))
+                    {
+                        i.count = new OrderTotalDAO().getOrder(i.orderID.Substring(0, i.orderID.IndexOf("-"))).Order_detail_status.Where(x => x.User_ID == 5).ToList().Count;
+                    }
+                    else
+                    {
+                        i.count = new OrderTotalDAO().getOrder(i.orderID).Order_detail_status.Where(x => x.User_ID == 5).ToList().Count;
+                    }
+                }
                 //search data
                 if (!string.IsNullOrEmpty(model.orderID))
                 {

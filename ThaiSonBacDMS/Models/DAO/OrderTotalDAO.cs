@@ -124,6 +124,10 @@ namespace Models.DAO
         public void keToan_checkOut(String orderId, int userId, decimal? vat, String invoiceNumber)
         {
             byte? status = 4;
+            if (db.Order_detail_status.Where(x => (x.Order_part_ID.Equals(orderId) || x.Order_ID.Equals(orderId)) && x.Status_ID == 10).ToList().Count > 0)
+            {
+                status = 5;
+            }
             if (db.Order_detail_status.Where(x => (x.Order_part_ID.Equals(orderId) || x.Order_ID.Equals(orderId)) && x.Status_ID == 11).ToList().Count > 0)
             {
                 status = 6;
@@ -288,6 +292,7 @@ namespace Models.DAO
         public void kho_updateOrder(String orderId, bool takeInvoice, bool takeBallot, bool receiveInvoice, bool receiveBallot)
         {
             var count = 0;
+            var countList = 0;
             var p = db.Order_part.Where(x => x.Order_part_ID.Equals(orderId)).SingleOrDefault();
             if (receiveInvoice)
             {
@@ -309,7 +314,15 @@ namespace Models.DAO
                 p.Date_take_ballot = DateTime.Now;
                 count++;
             }
-            if (count == 4)
+            if (orderId.Contains("-"))
+            {
+                countList = new OrderTotalDAO().getOrder(orderId.Substring(0, orderId.IndexOf("-"))).Order_detail_status.Where(x => x.Status_ID == 4).ToList().Count;
+            }
+            else
+            {
+                countList = new OrderTotalDAO().getOrder(orderId).Order_detail_status.Where(x => x.Status_ID == 4).ToList().Count;
+            }
+            if (count == 4 && countList > 0)
             {
                 p.Status_ID = 6;
                 if (!orderId.Contains("-"))
